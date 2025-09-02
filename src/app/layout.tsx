@@ -42,9 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body
-        className={`${inter.variable} ${vazirmatn.variable} font-vazirmatn antialiased`}
-      >
+      <body className={`${vazirmatn.variable} font-vazirmatn antialiased`}>
         {children}
       </body>
     </html>

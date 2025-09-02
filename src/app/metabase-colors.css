@@ -1,0 +1,165 @@
+/* Metabase Brand Colors - Tailwind CSS v4 Theme Configuration */
+@theme {
+  /* Metabase Brand Colors */
+  --color-metabase-primary: #509ee3;
+  --color-metabase-primary-dark: #2d86d4;
+  --color-metabase-primary-darker: #1c6bb0;
+  --color-metabase-primary-darkest: #12436e;
+  --color-metabase-primary-light: #5ea4e3;
+  --color-metabase-primary-lighter: #c2daf0;
+
+  /* Metabase Text Colors */
+  --color-metabase-text-primary: #22242b;
+  --color-metabase-text-secondary: #5a6072;
+  --color-metabase-text-light: #8d93a5;
+
+  /* Metabase Background Colors */
+  --color-metabase-bg-off-white: #fcfcfd;
+  --color-metabase-bg-light: #f9fbfe;
+  --color-metabase-bg-neutral: #f9fafb;
+  --color-metabase-bg-neutral-98: #fafbfe;
+
+  /* Metabase Border Colors */
+  --color-metabase-border-light: #e8e8e8;
+  --color-metabase-border-medium: #d1d1d1;
+  --color-metabase-border-dark: #aab7c3;
+
+  /* Metabase Status Colors */
+  --color-metabase-success: #84bb4c;
+  --color-metabase-warning: #f9cf48;
+  --color-metabase-error: #ef8c8c;
+
+  /* Metabase Additional Colors */
+  --color-metabase-purple: #5d60a2;
+  --color-metabase-gray: #6b7389;
+  --color-metabase-gray-light: #949aab;
+}
+
+/* CSS Custom Properties for backward compatibility */
+:root {
+  --metabase-blue: #509ee3;
+  --metabase-blue-dark: #2d86d4;
+  --metabase-blue-darker: #1c6bb0;
+  --metabase-blue-darkest: #12436e;
+  --metabase-blue-light: #5ea4e3;
+  --metabase-blue-lighter: #c2daf0;
+  --metabase-text-primary: #22242b;
+  --metabase-text-secondary: #5a6072;
+  --metabase-text-light: #8d93a5;
+  --metabase-text-white: #ffffff;
+  --metabase-bg-white: #ffffff;
+  --metabase-bg-off-white: #fcfcfd;
+  --metabase-bg-light: #f9fbfe;
+  --metabase-bg-neutral: #f9fafb;
+  --metabase-bg-neutral-98: #fafbfe;
+  --metabase-border-light: #e8e8e8;
+  --metabase-border-medium: #d1d1d1;
+  --metabase-border-dark: #aab7c3;
+  --metabase-success: #84bb4c;
+  --metabase-warning: #f9cf48;
+  --metabase-error: #ef8c8c;
+  --metabase-purple: #5d60a2;
+  --metabase-gray: #6b7389;
+  --metabase-gray-light: #949aab;
+}
+
+/* Tailwind CSS Custom Colors */
+@layer base {
+  .text-metabase-primary {
+    color: var(--metabase-blue);
+  }
+
+  .text-metabase-primary-dark {
+    color: var(--metabase-blue-dark);
+  }
+
+  .text-metabase-primary-darker {
+    color: var(--metabase-blue-darker);
+  }
+
+  .text-metabase-primary-darkest {
+    color: var(--metabase-blue-darkest);
+  }
+
+  .text-metabase-secondary {
+    color: var(--metabase-text-secondary);
+  }
+
+  .text-metabase-light {
+    color: var(--metabase-text-light);
+  }
+
+  .bg-metabase-primary {
+    background-color: var(--metabase-blue);
+  }
+
+  .bg-metabase-primary-dark {
+    background-color: var(--metabase-blue-dark);
+  }
+
+  .bg-metabase-primary-darker {
+    background-color: var(--metabase-blue-darker);
+  }
+
+  .bg-metabase-primary-darkest {
+    background-color: var(--metabase-blue-darkest);
+  }
+
+  .bg-metabase-off-white {
+    background-color: var(--metabase-bg-off-white);
+  }
+
+  .bg-metabase-light {
+    background-color: var(--metabase-bg-light);
+  }
+
+  .bg-metabase-neutral {
+    background-color: var(--metabase-bg-neutral);
+  }
+
+  .bg-metabase-neutral-98 {
+    background-color: var(--metabase-bg-neutral-98);
+  }
+
+  .border-metabase-primary {
+    border-color: var(--metabase-blue);
+  }
+
+  .border-metabase-primary-dark {
+    border-color: var(--metabase-blue-dark);
+  }
+
+  .border-metabase-light {
+    border-color: var(--metabase-border-light);
+  }
+
+  .border-metabase-medium {
+    border-color: var(--metabase-border-medium);
+  }
+
+  /* Hover States */
+  .hover\:bg-metabase-primary-dark:hover {
+    background-color: var(--metabase-blue-dark);
+  }
+
+  .hover\:bg-metabase-primary-darker:hover {
+    background-color: var(--metabase-blue-darker);
+  }
+
+  .hover\:text-metabase-primary-dark:hover {
+    color: var(--metabase-blue-dark);
+  }
+
+  .hover\:border-metabase-primary-dark:hover {
+    border-color: var(--metabase-blue-dark);
+  }
+
+  /* Focus States */
+  .focus\:ring-metabase-primary:focus {
+    --tw-ring-color: var(--metabase-blue);
+  }
+
+  .focus\:border-metabase-primary:focus {
+    border-color: var(--metabase-blue);
+  }
+}

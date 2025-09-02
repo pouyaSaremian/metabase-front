@@ -1,5 +1,12 @@
 @import "tailwindcss";
+@import "./metabase-colors.css";
 
+@theme {
+  --font-family-vazirmatn: var(--font-vazirmatn), ui-sans-serif, system-ui,
+    sans-serif;
+  --font-family-inter: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-vazirmatn: var(--font-vazirmatn);
+}
 /* Custom styles for header animations and compatibility */
 .container {
   max-width: 1200px;
@@ -21,6 +28,10 @@ html[dir="rtl"] .mr-2 {
 html[dir="rtl"] .ml-2 {
   margin-left: 0;
   margin-right: 0.5rem;
+}
+
+html {
+  font-family: var(--font-family-vazirmatn);
 }
 
 /* Mobile menu height calculation */
