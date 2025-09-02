@@ -2,8 +2,6 @@
 
 # dependencies
 /node_modules
-/static
-/.cursor
 /.pnp
 .pnp.*
 .yarn/*

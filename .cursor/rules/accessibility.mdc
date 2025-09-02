@@ -1,0 +1,46 @@
+---
+globs: *.tsx,*.jsx
+description: Accessibility requirements and implementation guidelines
+---
+
+# Accessibility Guidelines
+
+## Required Accessibility Features
+
+Implement accessibility features on all interactive elements:
+
+- Add `tabindex="0"` for keyboard navigation
+- Include `aria-label` attributes for screen readers
+- Implement `onClick` and `onKeyDown` handlers for keyboard interaction
+- Add appropriate ARIA attributes for complex components
+- Ensure proper semantic HTML structure
+
+## Interactive Elements
+
+For clickable elements that are not buttons or links:
+```typescript
+<div
+  tabIndex={0}
+  role="button"
+  aria-label="Descriptive label"
+  onClick={handleClick}
+  onKeyDown={handleKeyDown}
+  className="cursor-pointer"
+>
+  Content
+</div>
+```
+
+## Keyboard Navigation
+
+- Ensure all interactive elements are keyboard accessible
+- Implement proper focus management
+- Provide visual focus indicators
+- Handle Enter and Space key interactions appropriately
+
+## Screen Reader Support
+
+- Use semantic HTML elements when possible
+- Provide alternative text for images
+- Use proper heading hierarchy (h1, h2, h3, etc.)
+- Include skip navigation links where appropriate

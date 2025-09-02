@@ -1,0 +1,30 @@
+---
+globs: *.tsx,*.jsx,*.css
+description: Styling guidelines for TailwindCSS and CSS management
+---
+
+# Styling Guidelines
+
+## TailwindCSS Requirements
+
+- Always use Tailwind classes for styling HTML elements
+- Avoid using direct CSS or style tags whenever possible
+- Use Tailwind instead of direct CSS styling as much as possible
+- Use `class:` instead of the ternary operator in class tags whenever possible
+
+## CSS File Management
+
+- Do NOT use any .css file from static folder directly in the project
+- Instead, use static CSS files as a reference to re-write the CSS using Tailwind classes
+- Reference files in [static/css/](mdc:static/css/) for styling inspiration but implement with Tailwind
+
+## Static Directory Reference
+
+The project contains reference CSS files in the static directory:
+- [main.css](mdc:static/css/main.css)
+- [style.css](mdc:static/css/style.css) 
+- [styles.css](mdc:static/css/styles.css)
+- [docs.css](mdc:static/css/docs.css)
+- [flexboxgrid.min.css](mdc:static/css/flexboxgrid.min.css)
+
+Use these as visual reference but implement styling with Tailwind classes.

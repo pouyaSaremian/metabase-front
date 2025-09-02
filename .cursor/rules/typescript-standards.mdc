@@ -1,0 +1,31 @@
+---
+globs: *.ts,*.tsx
+description: TypeScript coding standards and type safety requirements
+---
+
+# TypeScript Standards
+
+## Type Safety Requirements
+
+- Everything must be typesafe
+- The codebase must not use the TypeScript 'any' type anywhere
+- The project must be well-typed with all types explicitly specified
+- Prefer solving TypeScript type errors properly rather than using @ts-ignore
+- Use consts instead of functions, for example: `const toggle = () => {}`
+- Always define types when possible
+
+## Function and Variable Naming
+
+- Use descriptive variable and function/const names
+- Event functions should be named with a "handle" prefix:
+  - `handleClick` for onClick
+  - `handleKeyDown` for onKeyDown
+  - `handleSubmit` for onSubmit
+- Use early returns whenever possible to make code more readable
+
+## Code Structure
+
+- Follow SOLID principles
+- Implement Next.js and React best practices for scalable and robust code
+- Use DRY principle (Don't Repeat Yourself)
+- Focus on clean, readable code structure

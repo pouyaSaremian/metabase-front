@@ -1,0 +1,1 @@
+function initPassReferralParamsToForms(){document.querySelectorAll("[data-fillout-id]").forEach(e=>{e.setAttribute("signup_path",window.location.pathname);var t=new URLSearchParams(window.location.search).get("prev_page_title");t&&e.setAttribute("prev_page_title",t)})}window.addEventListener("DOMContentLoaded",()=>{initPassReferralParamsToForms()});

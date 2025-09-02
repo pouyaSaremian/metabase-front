@@ -1,0 +1,37 @@
+---
+globs: package.json,yarn.lock
+description: Package management and dependency guidelines
+---
+
+# Package Management Guidelines
+
+## Yarn Usage
+
+- Only use Yarn for package management
+- Do not use npm or other package managers
+- Use `yarn add` for adding dependencies
+- Use `yarn add -D` for development dependencies
+- Maintain [yarn.lock](mdc:yarn.lock) file integrity
+
+## Dependency Management
+
+- Follow SOLID principles in dependency selection
+- Avoid unnecessary dependencies
+- Keep dependencies up to date
+- Use TypeScript-compatible packages when available
+- Verify package compatibility with Next.js and React versions
+
+## Project Configuration
+
+- Configuration files:
+  - [package.json](mdc:package.json) - Project dependencies and scripts
+  - [next.config.ts](mdc:next.config.ts) - Next.js configuration
+  - [tsconfig.json](mdc:tsconfig.json) - TypeScript configuration
+  - [postcss.config.mjs](mdc:postcss.config.mjs) - PostCSS configuration
+  - [eslint.config.mjs](mdc:eslint.config.mjs) - ESLint configuration
+
+## Script Management
+
+- Use Yarn scripts defined in package.json
+- Do not generate or use external scripts for build processes
+- Keep build processes simple and maintainable

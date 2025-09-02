@@ -1,0 +1,36 @@
+---
+alwaysApply: true
+description: Main development rules and guidelines overview
+---
+
+# Metabase Landing Page Development Rules
+
+This file provides an overview of the development standards. Detailed rules are organized in separate files:
+
+## Rule Categories
+
+- **Frontend Development**: [frontend-development.mdc](mdc:frontend-development.mdc) - Core development principles and standards
+- **TypeScript Standards**: [typescript-standards.mdc](mdc:typescript-standards.mdc) - Type safety and TypeScript coding guidelines  
+- **Styling Guidelines**: [styling-guidelines.mdc](mdc:styling-guidelines.mdc) - TailwindCSS and CSS management rules
+- **Persian RTL**: [persian-rtl.mdc](mdc:persian-rtl.mdc) - Persian language and RTL layout requirements
+- **Accessibility**: [accessibility.mdc](mdc:accessibility.mdc) - Accessibility implementation guidelines
+- **Project Structure**: [project-structure.mdc](mdc:project-structure.mdc) - File organization and structure guidelines
+- **Package Management**: [package-management.mdc](mdc:package-management.mdc) - Yarn and dependency management rules
+
+## Quick Reference
+
+### Core Principles
+- Everything must be typesafe
+- Follow SOLID principles  
+- Only use Yarn for package management
+- Persian RTL-only layout (html lang=fa-IR)
+- Use Tailwind for all styling
+- Implement accessibility features
+- No todo's or placeholders in final code
+
+### Key Technologies
+- ReactJS & NextJS
+- TypeScript (no 'any' types)
+- TailwindCSS
+- Persian localization
+- RTL layout support

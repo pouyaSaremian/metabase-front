@@ -1,0 +1,46 @@
+---
+alwaysApply: true
+description: Project structure and file organization guidelines
+---
+
+# Project Structure Guidelines
+
+## Main Application Structure
+
+The project follows Next.js 15 app directory structure:
+
+- Main entry point: [src/app/page.tsx](mdc:src/app/page.tsx)
+- Layout configuration: [src/app/layout.tsx](mdc:src/app/layout.tsx)
+- Global styles: [src/app/globals.css](mdc:src/app/globals.css)
+- Components directory: [src/components/](mdc:src/components/)
+
+## Static Assets Reference
+
+The [static/](mdc:static/) directory contains reference files from the original website:
+
+### CSS References
+- [static/css/main.css](mdc:static/css/main.css) - Main stylesheet reference
+- [static/css/style.css](mdc:static/css/style.css) - Additional styles reference
+- [static/css/styles.css](mdc:static/css/styles.css) - Component styles reference
+
+### JavaScript References
+- [static/js/](mdc:static/js/) - Contains original JavaScript functionality
+- Use as reference for implementing React/Next.js equivalents
+
+### Media Assets
+- [static/images/](mdc:static/images/) - Image assets
+- [static/media/](mdc:static/media/) - Video assets
+- [public/](mdc:public/) - Next.js public assets
+
+## Component Organization
+
+- Place reusable components in [src/components/](mdc:src/components/)
+- Use TypeScript for all components (.tsx extension)
+- Follow Next.js component naming conventions
+- Implement proper component composition and reusability
+
+## File Naming Conventions
+
+- Use PascalCase for component files: `Header.tsx`, `Navigation.tsx`
+- Use camelCase for utility files and hooks
+- Use kebab-case for page routes (following Next.js conventions)

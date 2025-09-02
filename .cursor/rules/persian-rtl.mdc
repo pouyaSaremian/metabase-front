@@ -1,0 +1,28 @@
+---
+globs: *.tsx,*.jsx,*.html
+description: Persian language and RTL layout requirements
+---
+
+# Persian RTL Configuration
+
+## Language Requirements
+
+- All English content should be translated to Persian
+- HTML lang attribute must be set to `fa-IR`
+- There is no LTR layout - everything is RTL only
+- Maintain RTL support with proper spacing and layout adjustments
+
+## RTL Layout Guidelines
+
+- Design components with RTL-first approach
+- Ensure proper text alignment for Persian content
+- Handle RTL-specific spacing and margin adjustments
+- Test all UI components in RTL context
+- Consider Persian text length differences when designing layouts
+
+## Content Translation
+
+- Translate all user-facing text to Persian
+- Maintain semantic meaning in translations
+- Consider cultural context in translations
+- Ensure proper Persian typography and spacing
