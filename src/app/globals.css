@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+/* Custom styles for header animations and compatibility */
+.container {
+  max-width: 1200px;
+}
+
+/* Graph bars animation */
+@keyframes graph-bar-hover {
+  to {
+    height: var(--target-height);
+  }
+}
+
+/* Ensure proper RTL support */
+html[dir="rtl"] .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+html[dir="rtl"] .ml-2 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+/* Mobile menu height calculation */
+@media (max-width: 1023px) {
+  .mobile-menu-height {
+    height: calc(100vh - 72px);
+    max-height: calc(100vh - 72px);
+  }
+}
+
+/* Smooth transitions for mobile hamburger */
+.hamburger-line {
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Dropdown menu positioning */
+.dropdown-menu {
+  transform-origin: top center;
+}
