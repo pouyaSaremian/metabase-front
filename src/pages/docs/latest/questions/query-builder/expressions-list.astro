@@ -1,23 +1,5349 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /docs/latest/questions/query-builder/expressions-list
-// Priority: 0.64
-// Last Modified: 2025-09-16T20:03:10+00:00
+import Base from "../../../../../layouts/Base.astro";
+const title = "List of expressions | Metabase Documentation";
+const description =
+  "List of expressions For an introduction to expressions, check out the overview of custom expressions.   Aggregations  Average Count CountIf Distinct DistinctIf Max Median Min Percentile Share...";
+const seo = {
+  title: "List of expressions | Metabase Documentation",
+  description:
+    "List of expressions For an introduction to expressions, check out the overview of custom expressions.   Aggregations  Average Count CountIf Distinct DistinctIf Max Median Min Percentile Share...",
+  canonical: "/docs/latest/questions/query-builder/expressions-list",
+  og: {
+    title: "List of expressions | Metabase Documentation",
+    description:
+      "List of expressions For an introduction to expressions, check out the overview of custom expressions.   Aggregations  Average Count CountIf Distinct DistinctIf Max Median Min Percentile Share...",
+    image: "https://www.metabase.com/images/docs/docs-og.png",
+    url: "https://www.metabase.com/docs/latest/questions/query-builder/expressions-list",
+    type: "article",
+    site_name:
+      "Metabase | Business Intelligence, Dashboards, and Data Visualization",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "List of expressions | Metabase Documentation",
+    description:
+      "List of expressions For an introduction to expressions, check out the overview of custom expressions.   Aggregations  Average Count CountIf Distinct DistinctIf Max Median Min Percentile Share...",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/docs/docs-og.png",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Docs Latest Questions Query Builder Expressions List</title>
-</head>
-<body>
-    <h1>Docs Latest Questions Query Builder Expressions List</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/docs/latest/questions/query-builder/expressions-list</code></p>
-    <p>Priority: 0.64</p>
-    <p>Last Modified: 2025-09-16T20:03:10+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div>
+    <div class="bootstrap">
+      <div class="learn docs blog-post MB-Page">
+        <div class="learn-left-sidebar" id="main-navigation-content">
+          <div class="docs-learn-toggler">
+            <div class="hover-highlight"></div>
+            <a href="/docs/latest/" class="active">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.25 5.75C19.25 5.19772 18.8023 4.75 18.25 4.75H14C12.8954 4.75 12 5.64543 12 6.75V19.25L12.8284 18.4216C13.5786 17.6714 14.596 17.25 15.6569 17.25H18.25C18.8023 17.25 19.25 16.8023 19.25 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M4.75 5.75C4.75 5.19772 5.19772 4.75 5.75 4.75H10C11.1046 4.75 12 5.64543 12 6.75V19.25L11.1716 18.4216C10.4214 17.6714 9.40401 17.25 8.34315 17.25H5.75C5.19772 17.25 4.75 16.8023 4.75 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Docs</span>
+            </a>
+
+            <a href="/learn/">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 14.0929L20 9.42144L12 4.75L4 9.42144L12 14.0929ZM12 14.0929L17.4756 10.8957C18.196 12.8186 18.4005 14.4134 18.0667 16.45C15.8121 16.68 13.6864 17.6604 12 19.25C10.3138 17.6606 8.18852 16.6802 5.93422 16.45C5.60018 14.4134 5.80465 12.8185 6.52533 10.8957L12 14.0929Z"
+                  stroke="#509EE3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M12.5 9.5C12.5 9.7761 12.2761 10 12 10C11.7239 10 11.5 9.7761 11.5 9.5C11.5 9.2239 11.7239 9 12 9C12.2761 9 12.5 9.2239 12.5 9.5Z"
+                  stroke="#509EE3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Learn</span>
+            </a>
+          </div>
+
+          <a href="/docs/latest/" class="learn-home"> Home </a>
+
+          <h5>Analytics</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/metabase-basics/getting-started/" class="">
+                Getting started
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/learn/metabase-basics/overview/concepts" class="">
+                Metabase concepts
+              </a>
+            </li>
+
+            <li class="expanded">
+              <a href="/docs/latest/questions/start" class="">
+                Queries and charts
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/questions/introduction" class="">
+                    Introduction
+                  </a>
+                </li>
+
+                <li class="expanded">
+                  <a href="#" class="">
+                    Query builder
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/editor"
+                        class=""
+                      >
+                        Editor
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/filters"
+                        class=""
+                      >
+                        Filtering
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/summarizing-and-grouping"
+                        class=""
+                      >
+                        Summarizing and grouping
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/join"
+                        class=""
+                      >
+                        Joining data
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/expressions"
+                        class=""
+                      >
+                        Custom expressions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/expressions-list"
+                        class="selected"
+                      >
+                        List of expressions
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    SQL and native queries
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/writing-sql"
+                        class=""
+                      >
+                        SQL editor
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/sql-parameters"
+                        class=""
+                      >
+                        SQL parameters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/field-filters"
+                        class=""
+                      >
+                        Field filters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/basic-sql-parameters"
+                        class=""
+                      >
+                        Basic SQL parameters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/time-grouping-parameters"
+                        class=""
+                      >
+                        Time grouping parameters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/optional-variables"
+                        class=""
+                      >
+                        Optional variables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/filter-widgets"
+                        class=""
+                      >
+                        Filter widgets
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/referencing-saved-questions-in-queries"
+                        class=""
+                      >
+                        Referencing models and questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/snippets"
+                        class=""
+                      >
+                        Snippets
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/permissions/snippets" class="">
+                        Snippet folder permissions
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Visualizations
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/visualizing-results"
+                        class=""
+                      >
+                        Overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/combo-chart"
+                        class=""
+                      >
+                        Combo chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/detail"
+                        class=""
+                      >
+                        Details chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/funnel"
+                        class=""
+                      >
+                        Funnel chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/gauge"
+                        class=""
+                      >
+                        Gauge chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/line-bar-and-area-charts"
+                        class=""
+                      >
+                        Line, bar, and area charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/map"
+                        class=""
+                      >
+                        Maps
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/numbers"
+                        class=""
+                      >
+                        Number chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/pie-or-donut-chart"
+                        class=""
+                      >
+                        Pie and sunburst charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/pivot-table"
+                        class=""
+                      >
+                        Pivot tables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/progress-bar"
+                        class=""
+                      >
+                        Progress bar
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/sankey"
+                        class=""
+                      >
+                        Sankey chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/scatterplot-or-bubble-chart"
+                        class=""
+                      >
+                        Scatterplot
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/table"
+                        class=""
+                      >
+                        Table
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/trend"
+                        class=""
+                      >
+                        Trend chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/waterfall-chart"
+                        class=""
+                      >
+                        Waterfall chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/tooltips"
+                        class=""
+                      >
+                        Tooltips
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/questions/alerts" class=""> Alerts </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/questions/exporting-results" class="">
+                    Exporting data
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/dashboards/start" class="">
+                Dashboards
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/dashboards/introduction" class="">
+                    Overview
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/filters" class="">
+                    Dashboard filters
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/linked-filters" class="">
+                    Linked filters
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/interactive" class="">
+                    Dashboard interactivity
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/multiple-series" class="">
+                    Charts with multiple series
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/subscriptions" class="">
+                    Dashboard subscriptions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/actions" class="">
+                    Actions on dashboards
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/ai/start" class="">
+                AI
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/ai/metabot" class=""> Metabot AI </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/ai/settings" class="">
+                    Metabot settings
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/data-modeling/start" class="">
+                Data modeling
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/data-modeling/models" class="">
+                    Models
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/data-modeling/model-persistence"
+                    class=""
+                  >
+                    Model persistence
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/metrics" class="">
+                    Metrics
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/data-modeling/metadata-editing"
+                    class=""
+                  >
+                    Table metadata settings
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/field-types" class="">
+                    Data and semantic types
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/formatting" class="">
+                    Formatting defaults
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/json-unfolding" class="">
+                    Working with JSON
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/segments" class="">
+                    Segments
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Actions
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/docs/latest/actions/introduction" class="">
+                        Overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/actions/basic" class="">
+                        Basic actions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/actions/custom" class="">
+                        Custom actions
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/exploration-and-organization/start"
+                class=""
+              >
+                Organization
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/exploration"
+                    class=""
+                  >
+                    Basic exploration
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/keyboard-shortcuts"
+                    class=""
+                  >
+                    Keyboard shortcuts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/collections"
+                    class=""
+                  >
+                    Collections
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/data-model-reference"
+                    class=""
+                  >
+                    Data reference
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/events-and-timelines"
+                    class=""
+                  >
+                    Events and timelines
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/x-rays"
+                    class=""
+                  >
+                    X-rays
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/content-verification"
+                    class=""
+                  >
+                    Content verification
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/history"
+                    class=""
+                  >
+                    History
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/delete-and-restore"
+                    class=""
+                  >
+                    Delete and restore
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Embedding</h5>
+
+          <ul>
+            <li class="">
+              <a href="/docs/latest/embedding/introduction" class="">
+                Overview
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/sdk/introduction" class="">
+                Modular embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/embedded-analytics-js"
+                    class=""
+                  >
+                    Embedded analytics JS
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Embedded analytics SDK
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/introduction"
+                        class=""
+                      >
+                        Introduction
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/quickstart" class="">
+                        Quickstart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/quickstart-cli"
+                        class=""
+                      >
+                        Quickstart with CLI
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/quickstart-with-sample-app"
+                        class=""
+                      >
+                        Quickstart with sample app
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/questions" class="">
+                        Questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/dashboards" class="">
+                        Dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/collections" class="">
+                        Collections
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/authentication"
+                        class=""
+                      >
+                        Authentication
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/appearance" class="">
+                        Appearance
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/config" class="">
+                        Config
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/next-js" class="">
+                        Working with Next.js
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/version" class="">
+                        Versioning
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/upgrade" class="">
+                        Upgrading
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/plugins" class="">
+                        Plugins
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/api/" class="">
+                        API
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/static-embedding" class="">
+                Static embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/embedding/static-embedding" class="">
+                    Overview
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/static-embedding-parameters"
+                    class=""
+                  >
+                    Parameters for static embeds
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/embedding/translations" class="">
+                    Translate embeds
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/interactive-embedding" class="">
+                Interactive embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/interactive-embedding"
+                    class=""
+                  >
+                    Overview
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/interactive-embedding-quick-start-guide"
+                    class=""
+                  >
+                    Quickstart
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/interactive-ui-components"
+                    class=""
+                  >
+                    Parameters for interactive embeds
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/public-links" class="">
+                Public links and embeds
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/securing-embeds" class="">
+                Securing embedded Metabase
+              </a>
+            </li>
+          </ul>
+
+          <h5>Administration</h5>
+
+          <ul>
+            <li class="">
+              <a href="/docs/latest/installation-and-operation/start" class="">
+                Installation
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="#" class="">
+                    Installing Metabase
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/installing-metabase"
+                        class=""
+                      >
+                        Installation overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/cloud/start" class="">
+                        Metabase Cloud
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/running-the-metabase-jar-file"
+                        class=""
+                      >
+                        Running the JAR file
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/running-metabase-on-docker"
+                        class=""
+                      >
+                        Running in Docker
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/installing-metabase#other-installation-options"
+                        class=""
+                      >
+                        Other installation options
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/upgrading-metabase"
+                    class=""
+                  >
+                    Upgrading Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/configuring-application-database"
+                    class=""
+                  >
+                    Configuring the Metabase application database
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/activating-the-enterprise-edition"
+                    class=""
+                  >
+                    Activating Enterprise features
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/migrating-from-h2"
+                    class=""
+                  >
+                    Migrating to a production application database
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/databases/start" class="">
+                Data sources
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/databases/connecting" class="">
+                    Adding and managing databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Supported databases
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/athena"
+                        class=""
+                      >
+                        Athena
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/aws-rds"
+                        class=""
+                      >
+                        Amazon RDS
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/bigquery"
+                        class=""
+                      >
+                        BigQuery
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/clickhouse"
+                        class=""
+                      >
+                        ClickHouse
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/databricks"
+                        class=""
+                      >
+                        Databricks
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/druid"
+                        class=""
+                      >
+                        Druid
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/mariadb"
+                        class=""
+                      >
+                        MariaDB
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/mongodb"
+                        class=""
+                      >
+                        MongoDB
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/mysql"
+                        class=""
+                      >
+                        MySQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/oracle"
+                        class=""
+                      >
+                        Oracle
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/postgresql"
+                        class=""
+                      >
+                        PostgreSQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/presto"
+                        class=""
+                      >
+                        Presto
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/redshift"
+                        class=""
+                      >
+                        Redshift
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/snowflake"
+                        class=""
+                      >
+                        Snowflake
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/sql-server"
+                        class=""
+                      >
+                        SQL Server
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/sqlite"
+                        class=""
+                      >
+                        SQLite
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/sparksql"
+                        class=""
+                      >
+                        Spark SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/starburst"
+                        class=""
+                      >
+                        Starburst
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/vertica"
+                        class=""
+                      >
+                        Vertica
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/developers-guide/community-drivers"
+                        class=""
+                      >
+                        Community drivers
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/databases/users-roles-privileges"
+                    class=""
+                  >
+                    Database users, roles, and privileges
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/sync-scan" class="">
+                    Syncing and scanning databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/databases/encrypting-details-at-rest"
+                    class=""
+                  >
+                    Encrypting your database connection
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/ssh-tunnel" class="">
+                    SSH tunneling
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/ssl-certificates" class="">
+                    SSL certificate
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/uploads" class="">
+                    Setting up data uploads
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/uploads"
+                    class=""
+                  >
+                    Uploading data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/storage" class="">
+                    Metabase Cloud Storage
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/google-sheets" class="">
+                    Sync Google Sheets
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/configuring-metabase/start" class="">
+                Configuration
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/setting-up-metabase"
+                    class=""
+                  >
+                    Setting up Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/settings" class="">
+                    General settings
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/email" class="">
+                    Set up email
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/slack" class="">
+                    Set up Slack
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/webhooks" class="">
+                    Webhooks
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/environment-variables"
+                    class=""
+                  >
+                    Environment variables
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/config-file"
+                    class=""
+                  >
+                    Configuration file
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/config-template"
+                    class=""
+                  >
+                    Config file template
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/log-configuration"
+                    class=""
+                  >
+                    Metabase log configuration
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/timezones"
+                    class=""
+                  >
+                    Timezones
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/localization"
+                    class=""
+                  >
+                    Languages and localization
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/appearance"
+                    class=""
+                  >
+                    Appearance
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/fonts" class="">
+                    Fonts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/caching" class="">
+                    Caching query results
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/custom-maps"
+                    class=""
+                  >
+                    Custom maps
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/customizing-jetty-webserver"
+                    class=""
+                  >
+                    Customizing the Metabase Jetty webserver
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/installation-and-operation/start" class="">
+                Operations and monitoring
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/backing-up-metabase-application-data"
+                    class=""
+                  >
+                    Backing up Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/development-instance"
+                    class=""
+                  >
+                    Development instances
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/monitoring-metabase"
+                    class=""
+                  >
+                    Monitoring your Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/observability-with-prometheus"
+                    class=""
+                  >
+                    Observability with Prometheus
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/serialization"
+                    class=""
+                  >
+                    Serialization
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/commands"
+                    class=""
+                  >
+                    Commands
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/usage-and-performance-tools/usage-analytics"
+                    class=""
+                  >
+                    Usage analytics
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/usage-and-performance-tools/tools"
+                    class=""
+                  >
+                    Admin tools
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/people-and-groups/start" class="">
+                Authentication
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/account-settings"
+                    class=""
+                  >
+                    Account settings
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/changing-password-complexity"
+                    class=""
+                  >
+                    Password complexity
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/changing-session-expiration"
+                    class=""
+                  >
+                    Session expiration
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/google-sign-in"
+                    class=""
+                  >
+                    Google Sign-In
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/ldap" class="">
+                    LDAP
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/user-provisioning"
+                    class=""
+                  >
+                    User provisioning
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/api-keys" class="">
+                    API keys
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/start" class="">
+                    Paid SSO options
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/authenticating-with-jwt"
+                        class=""
+                      >
+                        JWT-based authentication
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/authenticating-with-saml"
+                        class=""
+                      >
+                        SAML-based authentication
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-auth0"
+                        class=""
+                      >
+                        SAML with Auth0
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-azure"
+                        class=""
+                      >
+                        SAML with Microsoft Entra ID
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-google"
+                        class=""
+                      >
+                        SAML with Google
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-keycloak"
+                        class=""
+                      >
+                        SAML with Keycloak
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-okta"
+                        class=""
+                      >
+                        SAML with Okta
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/permissions/start" class="">
+                Permissions
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/permissions/introduction" class="">
+                    Permissions introduction
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/managing" class="">
+                    Managing people and groups
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/data" class="">
+                    Data permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/collections" class="">
+                    Collection permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/application" class="">
+                    Application permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/permissions/row-and-column-security"
+                    class=""
+                  >
+                    Row and column security
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/permissions/row-and-column-security-examples"
+                    class=""
+                  >
+                    Row and column security examples
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/database-routing" class="">
+                    Database routing
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/impersonation" class="">
+                    Impersonation
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/snippets" class="">
+                    Snippets folder permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/notifications" class="">
+                    Notification permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/embedding" class="">
+                    Configuring permissions for embedding
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Other resources</h5>
+
+          <ul>
+            <li class="">
+              <a href="/docs/latest/api" class=""> API </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/cloud/start" class="">
+                Metabase Cloud
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/cloud/cloud-vs-self-hosting" class="">
+                    Cloud vs self-hosted
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/custom-domain" class="">
+                    Custom domain
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/limitations" class="">
+                    Cloud limitations
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/change-region" class="">
+                    Change region
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/cloud/ip-addresses-to-whitelist"
+                    class=""
+                  >
+                    IP addresses to whitelist
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/migrate/guide" class="">
+                    Migrate from self-hosted to Cloud
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/cloud/migrate/cloud-to-self-hosted"
+                    class=""
+                  >
+                    Migrate from Cloud to self-hosted
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/migrate/heroku" class="">
+                    Migrate from Heroku
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/cloud/how-billing-works" class="">
+                Billing
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/cloud/how-billing-works" class="">
+                    How billing works
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/accounts-and-billing" class="">
+                    Accounts and billing
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/troubleshooting-guide/" class="">
+                Troubleshooting
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/developers-guide/start" class="">
+                Developer guide
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/paid-features/" class="">
+                Pro and Enterprise features
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/accessibility"
+                class=""
+              >
+                Accessibility
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/supported-browsers"
+                class=""
+              >
+                Supported browsers
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/privacy"
+                class=""
+              >
+                Privacy
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/information-collection"
+                class=""
+              >
+                About the anonymous usage data we collect
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <article class="learn__post learn__article">
+          <div class="top-bar">
+            <div>
+              <div class="learn-breadcrumb-trail">
+                <div class="bootstrap"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="version__selector cursor-pointer">
+                <span class="version__current">
+                  v0.56
+
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+                <ul class="version__dropdown">
+                  <li>
+                    <a href="/docs/v0.55/"> v0.55 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.54/"> v0.54 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.53/"> v0.53 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.52/"> v0.52 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.51/"> v0.51 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.50/"> v0.50 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.49/"> v0.49 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.48/"> v0.48 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.47/"> v0.47 </a>
+                  </li>
+
+                  <li><a href="/docs/all">See more</a></li>
+                </ul>
+              </div>
+
+              <a href="/releases" class="whats-new">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  ><path
+                    stroke="#509EE3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M16.283 12.26 15.5 15l-.783-2.74a4.333 4.333 0 0 0-2.975-2.976L9 8.5l2.74-.783a4.333 4.333 0 0 0 2.976-2.975L15.5 2l.783 2.74a4.333 4.333 0 0 0 2.975 2.976L22 8.5l-2.74.783a4.334 4.334 0 0 0-2.976 2.975l-.001.001ZM6.5 22l.591-1.774a3.375 3.375 0 0 1 2.135-2.135L11 17.5l-1.774-.591a3.375 3.375 0 0 1-2.135-2.134L6.5 13l-.591 1.774a3.375 3.375 0 0 1-2.134 2.135L2 17.5l1.775.591a3.375 3.375 0 0 1 2.134 2.134L6.5 22Z"
+                  ></path></svg
+                >
+
+                What’s new
+              </a>
+
+              <div id="inkeep"></div>
+            </div>
+          </div>
+
+          <div class="learn__post__content">
+            <div></div>
+
+            <h1 id="list-of-expressions">List of expressions</h1>
+
+            <p>
+              For an introduction to expressions, check out the <a
+                href="/docs/latest/questions/query-builder/expressions"
+                >overview of custom expressions</a
+              >.
+            </p>
+
+            <ul>
+              <li>
+                <p><a href="#aggregations">Aggregations</a></p>
+
+                <ul>
+                  <li><a href="#average">Average</a></li>
+                  <li><a href="#count">Count</a></li>
+                  <li>
+                    <a
+                      href="/docs/latest/questions/query-builder/expressions/countif"
+                      >CountIf</a>
+                  </li>
+                  <li><a href="#distinct">Distinct</a></li>
+                  <li><a href="#distinctif">DistinctIf</a></li>
+                  <li><a href="#max">Max</a></li>
+                  <li><a href="#median">Median</a></li>
+                  <li><a href="#min">Min</a></li>
+                  <li><a href="#percentile">Percentile</a></li>
+                  <li><a href="#share">Share</a></li>
+                  <li><a href="#standarddeviation">StandardDeviation</a></li>
+                  <li><a href="#sum">Sum</a></li>
+                  <li>
+                    <a
+                      href="/docs/latest/questions/query-builder/expressions/sumif"
+                      >SumIf</a>
+                  </li>
+                  <li><a href="#variance">Variance</a></li>
+                  <li>
+                    <a
+                      href="/docs/latest/questions/query-builder/expressions/cumulative"
+                      >CumulativeSum</a>
+                  </li>
+                  <li>
+                    <a
+                      href="/docs/latest/questions/query-builder/expressions/cumulative"
+                      >CumulativeCount</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p>Functions</p>
+
+                <ul>
+                  <li>
+                    <p><a href="#logical-functions">Logical functions</a></p>
+
+                    <ul>
+                      <li><a href="#between">between</a></li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/case"
+                          >case</a>
+                      </li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/coalesce"
+                          >coalesce</a>
+                      </li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/case"
+                          >if</a>
+                      </li>
+                      <li><a href="#in">in</a></li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/isnull"
+                          >isNull</a>
+                      </li>
+                      <li><a href="#notin">notIn</a></li>
+                      <li><a href="#notnull">notNull</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <p><a href="#math-functions">Math functions</a></p>
+
+                    <ul>
+                      <li><a href="#abs">abs</a></li>
+                      <li><a href="#ceil">ceil</a></li>
+                      <li><a href="#exp">exp</a></li>
+                      <li><a href="#floor">floor</a></li>
+                      <li><a href="#integer">integer</a></li>
+                      <li><a href="#log">log</a></li>
+                      <li><a href="#power">power</a></li>
+                      <li><a href="#round">round</a></li>
+                      <li><a href="#sqrt">sqrt</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <p><a href="#string-functions">String functions</a></p>
+
+                    <ul>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/concat"
+                          >concat</a>
+                      </li>
+                      <li><a href="#contains">contains</a></li>
+                      <li><a href="#date">date</a></li>
+                      <li><a href="#datetime">datetime</a></li>
+                      <li><a href="#doesnotcontain">doesNotContain</a></li>
+                      <li><a href="#domain">domain</a></li>
+                      <li><a href="#endswith">endsWith</a></li>
+                      <li><a href="#float">float</a></li>
+                      <li><a href="#host">host</a></li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/isempty"
+                          >isEmpty</a>
+                      </li>
+                      <li><a href="#integer">integer</a></li>
+                      <li><a href="#ltrim">lTrim</a></li>
+                      <li><a href="#length">length</a></li>
+                      <li><a href="#lower">lower</a></li>
+                      <li><a href="#notempty">notEmpty</a></li>
+                      <li><a href="#path">path</a></li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/regexextract"
+                          >regexExtract</a>
+                      </li>
+                      <li><a href="#replace">replace</a></li>
+                      <li><a href="#splitpart">splitPart</a></li>
+                      <li><a href="#rtrim">rTrim</a></li>
+                      <li><a href="#startswith">startsWith</a></li>
+                      <li><a href="#subdomain">subdomain</a></li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/substring"
+                          >substring</a>
+                      </li>
+                      <li><a href="#text">text</a></li>
+                      <li><a href="#trim">trim</a></li>
+                      <li><a href="#upper">upper</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <p><a href="#date-functions">Date functions</a></p>
+
+                    <ul>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/converttimezone"
+                          >convertTimezone</a>
+                      </li>
+                      <li><a href="#date">date</a></li>
+                      <li><a href="#datetime">datetime</a></li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/datetimeadd"
+                          >datetimeAdd</a>
+                      </li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/datetimediff"
+                          >datetimeDiff</a>
+                      </li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/datetimesubtract"
+                          >datetimeSubtract</a>
+                      </li>
+                      <li><a href="#day">day</a></li>
+                      <li><a href="#dayname">dayName</a></li>
+                      <li><a href="#hour">hour</a></li>
+                      <li><a href="#interval">interval</a></li>
+                      <li><a href="#minute">minute</a></li>
+                      <li><a href="#month">month</a></li>
+                      <li><a href="#monthname">monthName</a></li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/now"
+                          >now</a>
+                      </li>
+                      <li><a href="#quarter">quarter</a></li>
+                      <li><a href="#quartername">quarterName</a></li>
+                      <li><a href="#relativedatetime">relativeDateTime</a></li>
+                      <li><a href="#second">second</a></li>
+                      <li><a href="#timespan">timeSpan</a></li>
+                      <li><a href="#today">today</a></li>
+                      <li><a href="#week">week</a></li>
+                      <li><a href="#weekday">weekday</a></li>
+                      <li><a href="#year">year</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="#type-casting-functions"
+                        >Type-casting functions</a>
+                    </p>
+
+                    <ul>
+                      <li><a href="#date">date</a></li>
+                      <li><a href="#datetime">datetime</a></li>
+                      <li><a href="#float">float</a></li>
+                      <li><a href="#integer">integer</a></li>
+                      <li><a href="#text">text</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <p><a href="#window-functions">Window functions</a></p>
+
+                    <ul>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/offset"
+                          >Offset</a>
+                      </li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/cumulative"
+                          >CumulativeCount</a>
+                      </li>
+                      <li>
+                        <a
+                          href="/docs/latest/questions/query-builder/expressions/cumulative"
+                          >CumulativeSum</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p><a href="#limitations">Limitations</a></p>
+                <ul>
+                  <li>
+                    <a href="#database-limitations">Database limitations</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <h2 id="aggregations">Aggregations</h2>
+
+            <p>
+              Aggregation expressions take into account all values in a field.
+              They can only be used in the <strong>Summarize</strong> section of
+              the query builder.
+            </p>
+
+            <h3 id="average">Average</h3>
+
+            <p>Returns the average of the values in the column.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >Average(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >Average([Quantity])</code
+              > would return the mean for the <code
+                class="language-plaintext highlighter-rouge">Quantity</code
+              > field.
+            </p>
+
+            <h3 id="count">Count</h3>
+
+            <p>
+              Returns the count of rows (also known as records) in the selected
+              data.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >Count()</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >Count()</code
+              > If a table or result returns 10 rows, <code
+                class="language-plaintext highlighter-rouge">Count</code
+              > will return <code class="language-plaintext highlighter-rouge"
+                >10</code
+              >.
+            </p>
+
+            <h3 id="countif">
+              <a href="/docs/latest/questions/query-builder/expressions/countif"
+                >CountIf</a>
+            </h3>
+
+            <p>Only counts rows where the condition is true.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >CountIf(condition)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >CountIf([Subtotal] &gt; 100)</code
+              > would return the number of rows where the subtotal were greater than
+              100.
+            </p>
+
+            <h3 id="distinct">Distinct</h3>
+
+            <p>The number of distinct values in this column.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >Distinct(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >Distinct([Last Name])</code
+              >. Returns the count of unique last names in the column.
+              Duplicates (of the last name “Smith” for example) are not counted.
+            </p>
+
+            <h3 id="distinctif">DistinctIf</h3>
+
+            <p>
+              Returns the count of distinct values in a column where the
+              condition is true.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >DistinctIf(column, condition)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >DistinctIf([ID], [Category] = "Gizmo")</code
+              > would return the count of unique IDs where the <code
+                class="language-plaintext highlighter-rouge">Category</code
+              > column is “Gizmo”.
+            </p>
+
+            <h3 id="max">Max</h3>
+
+            <p>Returns the largest value found in the column.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >Max(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >Max([Age])</code
+              > would return the oldest age found across all values in the <code
+                class="language-plaintext highlighter-rouge">Age</code
+              > column.
+            </p>
+
+            <p>
+              Related: <a href="#min">Min</a>, <a href="#average">Average</a>, <a
+                href="#median">Median</a
+              >.
+            </p>
+
+            <h3 id="median">Median</h3>
+
+            <p>Returns the median value of the specified column.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >Median(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >Median([Age])</code
+              > would find the midpoint age where half of the ages are older, and
+              half of the ages are younger.
+            </p>
+
+            <p>
+              Databases that don’t support <code
+                class="language-plaintext highlighter-rouge">median</code
+              >: Druid, MariaDB, MongoDB, MySQL, SQLite, Vertica, and SQL
+              Server. Presto only provides approximate results.
+            </p>
+
+            <p>
+              Related: <a href="#min">Min</a>, <a href="#max">Max</a>, <a
+                href="#average">Average</a
+              >.
+            </p>
+
+            <h3 id="min">Min</h3>
+
+            <p>Returns the smallest value found in the column.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >Min(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >Min([Salary])</code
+              > would find the lowest salary among all salaries in the <code
+                class="language-plaintext highlighter-rouge">Salary</code
+              > column.
+            </p>
+
+            <p>
+              Related: <a href="#max">Max</a>, <a href="#median">Median</a>, <a
+                href="#average">Average</a
+              >.
+            </p>
+
+            <h3 id="percentile">Percentile</h3>
+
+            <p>Returns the value of the column at the percentile value.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >Percentile(column, percentile-value)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >Percentile([Score], 0.9)</code
+              > would return the value at the 90th percentile for all values in that
+              column.
+            </p>
+
+            <p>
+              Databases that don’t support <code
+                class="language-plaintext highlighter-rouge">percentile</code
+              >: Druid, H2, MariaDB, MySQL, MongoDB, SQL Server, SQLite,
+              Vertica. Presto only provides approximate results.
+            </p>
+
+            <h3 id="share">Share</h3>
+
+            <p>
+              Returns the percent of rows in the data that match the condition,
+              as a decimal.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >Share(condition)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >Share([Color] = "Blue")</code
+              > would return the number of rows with the <code
+                class="language-plaintext highlighter-rouge">Color</code
+              > field set to <code class="language-plaintext highlighter-rouge"
+                >Blue</code
+              >, divided by the total number of rows.
+            </p>
+
+            <h3 id="standarddeviation">StandardDeviation</h3>
+
+            <p>
+              Calculates the standard deviation of the column, which is a
+              measure of the variation in a set of values. Low standard
+              deviation indicates values cluster around the mean, whereas a high
+              standard deviation means the values are spread out over a wide
+              range.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >StandardDeviation(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >StandardDeviation([Population])</code
+              > would return the SD for the values in the <code
+                class="language-plaintext highlighter-rouge">Population</code
+              > column.
+            </p>
+
+            <p>
+              Databases that don’t support <code
+                class="language-plaintext highlighter-rouge"
+                >StandardDeviation</code
+              >: Druid, SQLite.
+            </p>
+
+            <h3 id="sum">Sum</h3>
+
+            <p>Adds up all the values of the column.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >Sum(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >Sum([Subtotal])</code
+              > would add up all the values in the <code
+                class="language-plaintext highlighter-rouge">Subtotal</code
+              > column.
+            </p>
+
+            <h3 id="sumif">
+              <a href="/docs/latest/questions/query-builder/expressions/sumif"
+                >SumIf</a>
+            </h3>
+
+            <p>
+              Sums up the specified column only for rows where the condition is
+              true.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >SumIf(column, condition)</code>
+            </p>
+
+            <p>
+              Example:<code class="language-plaintext highlighter-rouge"
+                >SumIf([Subtotal], [Order Status] = "Valid")</code
+              > would add up all the subtotals for orders with a status of “Valid”.
+            </p>
+
+            <h3 id="variance">Variance</h3>
+
+            <p>Returns the numeric variance for a given column.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >Variance(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >Variance([Temperature])</code
+              > will return a measure of the dispersion from the mean temperature
+              for all temps in that column.
+            </p>
+
+            <p>
+              Related: <a href="#standarddeviation">StandardDeviation</a>, <a
+                href="#average">Average</a
+              >.
+            </p>
+
+            <p>
+              Databases that don’t support <code
+                class="language-plaintext highlighter-rouge">Variance</code
+              >: Druid, SQLite.
+            </p>
+
+            <h2 id="functions">Functions</h2>
+
+            <p>
+              Function expressions apply to each individual value. They can be
+              used to alter or filter values in a column, or create new, custom
+              columns.
+            </p>
+
+            <h2 id="logical-functions">Logical functions</h2>
+
+            <p>
+              Logical functions determine if a condition is satisfied or
+              determine what value to return based on a condition.
+            </p>
+
+            <h3 id="between">between</h3>
+
+            <p>
+              Returns true if the value of a date or number column falls within
+              a specified range. Otherwise returns false.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >between(column, start, end)</code>
+            </p>
+
+            <p>
+              Example: If you filtered with the expression <code
+                class="language-plaintext highlighter-rouge"
+                >between([Created At], "2019-01-01", "2020-12-31")</code
+              >, Metabase would return rows that returned true for that
+              expression, in this case where the <code
+                class="language-plaintext highlighter-rouge">Created At</code
+              > date fell <em>within</em> the range of January 1, 2019 and December
+              31, 2020, including the start (<code
+                class="language-plaintext highlighter-rouge">2019-01-01</code
+              >) and end (<code class="language-plaintext highlighter-rouge"
+                >2020-12-31</code
+              >) dates.
+            </p>
+
+            <p>Related: <a href="#interval">interval</a>.</p>
+
+            <h3 id="case">
+              <a href="/docs/latest/questions/query-builder/expressions/case"
+                >case</a>
+            </h3>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">case</code> (alias
+              <code class="language-plaintext highlighter-rouge">if</code>)
+              tests an expression against a list of cases and returns the
+              corresponding value of the first matching case, with an optional
+              default value if nothing else is met.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >case(condition, output, …)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >case([Weight] &gt; 200, "Large", [Weight] &gt; 150, "Medium",
+                "Small")</code
+              > If a <code class="language-plaintext highlighter-rouge"
+                >Weight</code
+              > is 250, the expression would return “Large”. In this case, the default
+              value is “Small”, so any <code
+                class="language-plaintext highlighter-rouge">Weight</code
+              > 150 or less would return “Small”.
+            </p>
+
+            <h3 id="coalesce">
+              <a
+                href="/docs/latest/questions/query-builder/expressions/coalesce"
+                >coalesce</a>
+            </h3>
+
+            <p>
+              Looks at the values in each argument in order and returns the
+              first non-null value for each row.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >coalesce(value1, value2, …)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >coalesce([Comments], [Notes], "No comments")</code
+              >. If both the <code class="language-plaintext highlighter-rouge"
+                >Comments</code
+              > and <code class="language-plaintext highlighter-rouge"
+                >Notes</code
+              > columns are null for that row, the expression will return the string
+              “No comments”.
+            </p>
+
+            <h3 id="if">
+              <a href="/docs/latest/questions/query-builder/expressions/case"
+                >if</a>
+            </h3>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">if</code> is an
+              alias for <a
+                href="/docs/latest/questions/query-builder/expressions/case"
+                >case</a
+              >. Tests an expression against a list of conditionals and returns
+              the corresponding value of the first matching case, with an
+              optional default value if nothing else is met.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >if(condition, output, ...)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >if([Weight] &gt; 200, "Large", [Weight] &gt; 150, "Medium",
+                "Small")</code
+              > If a <code class="language-plaintext highlighter-rouge"
+                >Weight</code
+              > is 250, the expression would return “Large”. In this case, the default
+              value is “Small”, so any <code
+                class="language-plaintext highlighter-rouge">Weight</code
+              > 150 or less would return “Small”.
+            </p>
+
+            <h3 id="in">in</h3>
+
+            <p>
+              Returns true if <code class="language-plaintext highlighter-rouge"
+                >value1</code
+              > equals <code class="language-plaintext highlighter-rouge"
+                >value2</code
+              > (or <code class="language-plaintext highlighter-rouge"
+                >value3</code
+              >, etc., if specified).
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >in(value1, value2, ...)</code>
+            </p>
+
+            <ul>
+              <li>
+                <code class="language-plaintext highlighter-rouge">value1</code
+                >: The column or value to check.
+              </li>
+              <li>
+                <code class="language-plaintext highlighter-rouge"
+                  >value2, ...</code
+                >: The list of columns or values to check against.
+              </li>
+            </ul>
+
+            <p>You can add more values to check against.</p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >in([Category], "Widget", "Gadget")</code
+              > would return true for rows where the <code
+                class="language-plaintext highlighter-rouge">Category</code
+              > is either “Widget” or “Gadget”.
+            </p>
+
+            <p>
+              Related: <a href="#notin">notIn</a>, <a href="#contains"
+                >contains</a
+              >, <a href="#startswith">startsWith</a>, <a href="#endswith"
+                >endsWith</a>
+            </p>
+
+            <h3 id="isnull">
+              <a href="/docs/latest/questions/query-builder/expressions/isnull"
+                >isNull</a>
+            </h3>
+
+            <p>Returns true if the column is null.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >isNull(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >isNull([Tax])</code
+              > would return true if no value were present in the column for that
+              row.
+            </p>
+
+            <p>
+              Related: <a href="#notnull">notNull</a>, <a href="#isempty"
+                >isEmpty</a>
+            </p>
+
+            <h3 id="notnull">notNull</h3>
+
+            <p>Returns true if the column contains a value.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >notNull(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >notNull([Tax])</code
+              > would return true if there is a value present in the column for that
+              row.
+            </p>
+
+            <p>
+              Related: <a href="#isnull">isNull</a>, <a href="#notempty"
+                >notEmpty</a>
+            </p>
+
+            <h3 id="notin">notIn</h3>
+
+            <p>
+              Returns true if <code class="language-plaintext highlighter-rouge"
+                >value1</code
+              > doesn’t equal <code class="language-plaintext highlighter-rouge"
+                >value2</code
+              > (and <code class="language-plaintext highlighter-rouge"
+                >value3</code
+              >, etc., if specified).
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >notIn(value1, value2, ...)</code>
+            </p>
+
+            <ul>
+              <li>
+                <code class="language-plaintext highlighter-rouge">value1</code
+                >: The column or value to check.
+              </li>
+              <li>
+                <code class="language-plaintext highlighter-rouge"
+                  >value2, ...</code
+                >: The column or values to look for.
+              </li>
+            </ul>
+
+            <p>You can add more values to look for.</p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >notIn([Category], "Widget", "Gadget")</code
+              > would return true for rows where the <code
+                class="language-plaintext highlighter-rouge">Category</code
+              > is not “Widget” or “Gadget”.
+            </p>
+
+            <p>
+              Related: <a href="#in">in</a>, <a
+                href="/docs/latest/questions/query-builder/expressions/case"
+                >case</a>
+            </p>
+
+            <h2 id="math-functions">Math functions</h2>
+
+            <p>Math functions implement common mathematical operations.</p>
+
+            <h3 id="abs">abs</h3>
+
+            <p>
+              Returns the absolute (positive) value of the specified column.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >abs(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >abs([Debt])</code
+              >. If <code class="language-plaintext highlighter-rouge"
+                >Debt</code
+              > were -100, <code class="language-plaintext highlighter-rouge"
+                >abs(-100)</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >100</code
+              >.
+            </p>
+
+            <h3 id="ceil">ceil</h3>
+
+            <p>Rounds a decimal up (ceil as in ceiling).</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >ceil(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >ceil([Price])</code
+              >. <code class="language-plaintext highlighter-rouge"
+                >ceil(2.99)</code
+              > would return 3.
+            </p>
+
+            <p>
+              Related: <a href="#floor">floor</a>, <a href="#round">round</a>.
+            </p>
+
+            <h3 id="exp">exp</h3>
+
+            <p>
+              Returns <a
+                href="https://en.wikipedia.org/wiki/E_(mathematical_constant)"
+                >Euler’s number</a
+              >, e, raised to the power of the supplied number. (Euler sounds
+              like “Oy-ler”).
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >exp(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >exp([Interest Months])</code>
+            </p>
+
+            <p>Related: <a href="#power">power</a>.</p>
+
+            <h3 id="floor">floor</h3>
+
+            <p>Rounds a decimal number down.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >floor(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >floor([Price])</code
+              >. If the <code class="language-plaintext highlighter-rouge"
+                >Price</code
+              > were 1.99, the expression would return 1.
+            </p>
+
+            <p>
+              Related: <a href="#ceil">ceil</a>, <a href="#round">round</a>.
+            </p>
+
+            <h3 id="log">log</h3>
+
+            <p>Returns the base 10 log of the number.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >log(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >log([Value])</code
+              >.
+            </p>
+
+            <h3 id="power">power</h3>
+
+            <p>Raises a number to the power of the exponent value.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >power(column, exponent)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >power([Length], 2)</code
+              >. If the length were <code
+                class="language-plaintext highlighter-rouge">3</code
+              >, the expression would return <code
+                class="language-plaintext highlighter-rouge">9</code
+              > (3 to the second power is 3*3).
+            </p>
+
+            <p>
+              Databases that don’t support <code
+                class="language-plaintext highlighter-rouge">power</code
+              >: SQLite.
+            </p>
+
+            <p>Related: <a href="#exp">exp</a>.</p>
+
+            <h3 id="round">round</h3>
+
+            <p>
+              Rounds a decimal number either up or down to the nearest integer
+              value.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >round(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >round([Temperature])</code
+              >. If the temp were <code
+                class="language-plaintext highlighter-rouge">13.5</code
+              > degrees centigrade, the expression would return <code
+                class="language-plaintext highlighter-rouge">14</code
+              >.
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >round([Temperature] * 10) / 10</code
+              >. If the temp were <code
+                class="language-plaintext highlighter-rouge">100.75</code
+              >, the expression would return <code
+                class="language-plaintext highlighter-rouge">100.8</code
+              >.
+            </p>
+
+            <h3 id="sqrt">sqrt</h3>
+
+            <p>Returns the square root of a value.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >sqrt(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >sqrt([Hypotenuse])</code
+              >.
+            </p>
+
+            <p>
+              Databases that don’t support <code
+                class="language-plaintext highlighter-rouge">sqrt</code
+              >: SQLite.
+            </p>
+
+            <p>Related: <a href="#power">power</a>.</p>
+
+            <h2 id="string-functions">String functions</h2>
+
+            <p>String functions manipulate or validate string data.</p>
+
+            <h3 id="concat">
+              <a href="/docs/latest/questions/query-builder/expressions/concat"
+                >concat</a>
+            </h3>
+
+            <p>Combine two or more strings together.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >concat(value1, value2, …)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >concat([Last Name], ", ", [First Name])</code
+              > would produce a string of the format “Last Name, First Name”, like
+              “Palazzo, Enrico”.
+            </p>
+
+            <h3 id="contains">contains</h3>
+
+            <p>
+              Checks to see if <code
+                class="language-plaintext highlighter-rouge">string1</code
+              > contains <code class="language-plaintext highlighter-rouge"
+                >string2</code
+              > within it.
+            </p>
+
+            <p>
+              Performs case-sensitive match by default. You can pass an optional
+              parameter <code class="language-plaintext highlighter-rouge"
+                >"case-insensitive"</code
+              > to perform a case-insensitive match.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >contains(string1, string2)</code
+              > for case-sensitive match.
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge"
+                >contains(string1, string2, "case-insensitive")</code
+              > for case-insensitive match.
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >contains([Status], "Class")</code
+              >.
+            </p>
+
+            <p>
+              If <code class="language-plaintext highlighter-rouge">Status</code
+              > were “Classified”, the expression would return <code
+                class="language-plaintext highlighter-rouge">true</code
+              >. If the <code class="language-plaintext highlighter-rouge"
+                >Status</code
+              > were “<strong>c</strong>lassified”, the expression would return <code
+                class="language-plaintext highlighter-rouge">false</code
+              >, because the case does not match.
+            </p>
+
+            <p>
+              Related: <a href="#doesnotcontain">doesNotContain</a>, <a
+                href="#regexextract">regexExtract</a
+              >.
+            </p>
+
+            <h3 id="date">date</h3>
+
+            <blockquote>
+              <p>Unavailable for Oracle or the non-JDBC Apache Druid driver.</p>
+            </blockquote>
+
+            <ul>
+              <li>
+                When used on a string, converts an ISO 8601 date string to a
+                date. The string <em>must</em> be in a valid ISO 8601 format. If
+                the string contains time, the time part is truncated.
+              </li>
+              <li>
+                When used on a datetime value, truncates datetime to a date.
+              </li>
+            </ul>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >date(value)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >date("2025-03-20")</code
+              > would return a date value so that you can use all the date features
+              in the query builder: group by month, filter by previous 30 days, etc.
+            </p>
+
+            <p>ISO 8601 standard format:</p>
+
+            <ul>
+              <li>Year (YYYY): 2025</li>
+              <li>Month (MM): 03</li>
+              <li>Day (DD): 25</li>
+              <li>Time separator (T)</li>
+              <li>Hours (HH): 14</li>
+              <li>Minutes (MM): 30</li>
+              <li>Seconds (SS): 45</li>
+              <li>UTC timezone indicator (Z)</li>
+            </ul>
+
+            <p>Valid ISO 8601 examples include:</p>
+
+            <ul>
+              <li>
+                Date only: <code class="language-plaintext highlighter-rouge"
+                  >2025-03-25</code>
+              </li>
+              <li>
+                Date with time: <code
+                  class="language-plaintext highlighter-rouge"
+                  >2025-03-25T14:30:45</code>
+              </li>
+              <li>
+                Date with time and timezone offset: <code
+                  class="language-plaintext highlighter-rouge"
+                  >2025-03-25T14:30:45+01:00</code>
+              </li>
+            </ul>
+
+            <p>
+              Another example: <code
+                class="language-plaintext highlighter-rouge"
+                >date(2025-04-19T17:42:53+01:00)</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >2025-04-19</code
+              >.
+            </p>
+
+            <p>Related: <a href="#datetime">datetime</a></p>
+
+            <h3 id="datetime">datetime</h3>
+
+            <blockquote>
+              <p>
+                Available on PostgreSQL, MySQL/MariaDB, BigQuery, Redshift,
+                ClickHouse, and Snowflake
+              </p>
+            </blockquote>
+
+            <p>Converts a datetime string or bytes to a datetime.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >datetime(value, mode)</code>
+            </p>
+
+            <ul>
+              <li>
+                <code class="language-plaintext highlighter-rouge">value</code>:
+                The string, bytes, or number to convert to a datetime.
+              </li>
+              <li>
+                <code class="language-plaintext highlighter-rouge">mode</code>:
+                Optional. The mode indicating the format. One of: <code
+                  class="language-plaintext highlighter-rouge">"simple"</code
+                >, <code class="language-plaintext highlighter-rouge"
+                  >"iso"</code
+                >, <code class="language-plaintext highlighter-rouge"
+                  >"simpleBytes"</code
+                >, <code class="language-plaintext highlighter-rouge"
+                  >"isoBytes"</code
+                >, <code class="language-plaintext highlighter-rouge"
+                  >"unixSeconds"</code
+                >, <code class="language-plaintext highlighter-rouge"
+                  >"unixMilliseconds"</code
+                >, <code class="language-plaintext highlighter-rouge"
+                  >"unixMicroseconds"</code
+                >, <code class="language-plaintext highlighter-rouge"
+                  >"unixNanoseconds"</code
+                >. Default is <code class="language-plaintext highlighter-rouge"
+                  >"iso"</code
+                >.
+              </li>
+            </ul>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >datetime("2025-03-20 12:45:04")</code>
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">datetime</code>
+              supports the following datetime string formats:
+            </p>
+
+            <pre>&lt;code class="language-txt"&gt;2025-05-15T22:20:01
+2025-05-15 22:20:01
+&lt;/code&gt;</pre>
+
+            <p>But some databases may also work with other datetime formats.</p>
+
+            <p>Related: <a href="#date">date</a></p>
+
+            <h3 id="doesnotcontain">doesNotContain</h3>
+
+            <p>
+              Checks to see if <code
+                class="language-plaintext highlighter-rouge">string1</code
+              > contains <code class="language-plaintext highlighter-rouge"
+                >string2</code
+              > within it.
+            </p>
+
+            <p>
+              Performs case-sensitive match by default. You can pass an optional
+              parameter <code class="language-plaintext highlighter-rouge"
+                >"case-insensitive"</code
+              > to perform a case-insensitive match.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >doesNotContain(string1, string2)</code
+              > for case-sensitive match.
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge"
+                >doesNotContain(string1, string2, "case-insensitive")</code
+              > for case-insensitive match.
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >doesNotContain([Status], "Class")</code
+              >. If <code class="language-plaintext highlighter-rouge"
+                >Status</code
+              > were “Classified”, the expression would return <code
+                class="language-plaintext highlighter-rouge">false</code
+              >.
+            </p>
+
+            <p>
+              Related: <a href="#contains">contains</a>, <a href="#regexextract"
+                >regexExtract</a
+              >.
+            </p>
+
+            <h3 id="domain">domain</h3>
+
+            <p>Extracts the domain name from a URL or email.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >domain(urlOrEmail)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >domain([Page URL])</code
+              >. If the <code class="language-plaintext highlighter-rouge"
+                >[Page URL]</code
+              > column had a value of <code
+                class="language-plaintext highlighter-rouge"
+                >https://www.metabase.com</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >domain([Page URL])</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >metabase</code
+              >. <code class="language-plaintext highlighter-rouge"
+                >domain([Email])</code
+              > would extract <code class="language-plaintext highlighter-rouge"
+                >metabase</code
+              > from <code class="language-plaintext highlighter-rouge"
+                >hello@metabase.com</code
+              >.
+            </p>
+
+            <p>
+              Related: <a href="#host">host</a>, <a href="#path">path</a>, <a
+                href="#subdomain">subdomain</a
+              >.
+            </p>
+
+            <h3 id="endswith">endsWith</h3>
+
+            <p>
+              Returns true if the end of the text matches the comparison text.
+            </p>
+
+            <p>
+              Performs case-sensitive match by default. You can pass an optional
+              parameter <code class="language-plaintext highlighter-rouge"
+                >"case-insensitive"</code
+              > to perform a case-insensitive match.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >endsWith(text, comparison)</code
+              > for case-sensitive match.
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge"
+                >endsWith(text, comparison, "case-insensitive")</code
+              > for case-insensitive match.
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >endsWith([Appetite], "hungry")</code>
+            </p>
+
+            <p>
+              Related: <a href="#startswith">startsWith</a>, <a href="#contains"
+                >contains</a
+              >, <a href="#doesnotcontain">doesNotContain</a>.
+            </p>
+
+            <h3 id="float">float</h3>
+
+            <blockquote>
+              <p>
+                Available for PostgreSQL, MySQL/MariaDB, BigQuery, Redshift,
+                ClickHouse, and Snowflake.
+              </p>
+            </blockquote>
+
+            <p>
+              Converts a string to a floating point value. Useful if you want to
+              do some math on numbers, but your data is stored as strings.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >float(value)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >float("123.45")</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >123.45</code
+              > as a floating point value.
+            </p>
+
+            <h3 id="host">host</h3>
+
+            <p>
+              Extracts the host, which is the domain and the TLD, from a URL or
+              email.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >host(urlOrEmail)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >host([Page URL])</code
+              >. If the <code class="language-plaintext highlighter-rouge"
+                >[Page URL]</code
+              > column had a value of <code
+                class="language-plaintext highlighter-rouge"
+                >https://www.metabase.com</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >host([Page URL])</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >metabase.com</code
+              >. <code class="language-plaintext highlighter-rouge"
+                >host([Email])</code
+              > would extract <code class="language-plaintext highlighter-rouge"
+                >metabase.com</code
+              > from <code class="language-plaintext highlighter-rouge"
+                >hello@metabase.com</code
+              >.
+            </p>
+
+            <p>
+              Related: <a href="#domain">domain</a>, <a href="#path">path</a>, <a
+                href="#subdomain">subdomain</a
+              >.
+            </p>
+
+            <h3 id="isempty">
+              <a href="/docs/latest/questions/query-builder/expressions/isempty"
+                >isEmpty</a>
+            </h3>
+
+            <p>
+              Returns true if a <em>string column</em> contains an empty string or
+              is null. Calling this function on a non-string column will cause an
+              error. You can use <a href="#isnull">isNull</a> for non-string columns.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >isEmpty(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >isEmpty([Feedback])</code
+              > would return true if <code
+                class="language-plaintext highlighter-rouge">Feedback</code
+              > was an empty string (<code
+                class="language-plaintext highlighter-rouge">''</code
+              >) or did not contain a value.
+            </p>
+
+            <p>
+              Related: <a href="#notempty">notEmpty</a>, <a href="#isnull"
+                >isNull</a
+              >.
+            </p>
+
+            <h3 id="integer">integer</h3>
+
+            <blockquote>
+              <p>
+                Only available for BigQuery, ClickHouse, MySQL, PostgreSQL,
+                Amazon Redshift, and Snowflake.
+              </p>
+            </blockquote>
+
+            <ul>
+              <li>
+                Converts a string to an integer value. Useful if you want to do
+                some math on numbers, but your data is stored as strings.
+              </li>
+              <li>
+                Converts a floating point value by rounding it to an integer.
+              </li>
+            </ul>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >integer(value)</code>
+            </p>
+
+            <p>
+              String example: <code class="language-plaintext highlighter-rouge"
+                >integer("123")</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >123</code
+              > as an integer. The string must evaluate to an integer (so <code
+                class="language-plaintext highlighter-rouge"
+                >integer("123.45")</code
+              > would return an error.)
+            </p>
+
+            <p>
+              Float example: <code class="language-plaintext highlighter-rouge"
+                >integer(123.45)</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >123</code
+              >.
+            </p>
+
+            <p>Related: <a href="#round">round</a>.</p>
+
+            <h3 id="ltrim">lTrim</h3>
+
+            <p>Removes leading whitespace from a string of text.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >lTrim(text)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >lTrim([Comment])</code
+              >. If the comment were <code
+                class="language-plaintext highlighter-rouge"
+                >" I'd prefer not to"</code
+              >, <code class="language-plaintext highlighter-rouge">lTrim</code>
+              would return <code class="language-plaintext highlighter-rouge"
+                >"I'd prefer not to"</code
+              >.
+            </p>
+
+            <p>
+              Related: <a href="#trim">trim</a> and <a href="#rtrim">rTrim</a>.
+            </p>
+
+            <h3 id="length">length</h3>
+
+            <p>Returns the number of characters in text.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >length(text)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >length([Comment])</code
+              >. If the <code class="language-plaintext highlighter-rouge"
+                >comment</code
+              > were “wizard”, <code
+                class="language-plaintext highlighter-rouge">length</code
+              > would return 6 (“wizard” has six characters).
+            </p>
+
+            <h3 id="lower">lower</h3>
+
+            <p>Returns the string of text in all lower case.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >lower(text)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >lower([Status])</code
+              >. If the <code class="language-plaintext highlighter-rouge"
+                >Status</code
+              > were “QUIET”, the expression would return “quiet”.
+            </p>
+
+            <p>Related: <a href="#upper">upper</a>.</p>
+
+            <h3 id="notempty">notEmpty</h3>
+
+            <p>
+              Returns true if a <em>string column</em> contains a value that is not
+              the empty string. Calling this function on a non-string column will
+              cause an error. You can use <a href="#notnull">notNull</a> on non-string
+              columns.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >notEmpty(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >notEmpty([Feedback])</code
+              > would return true if <code
+                class="language-plaintext highlighter-rouge">Feedback</code
+              > contains a value that isn’t the empty string (<code
+                class="language-plaintext highlighter-rouge">''</code
+              >).
+            </p>
+
+            <p>
+              Related: <a href="#isempty">isEmpty</a>, <a href="#isnull"
+                >isNull</a
+              >, <a href="#notnull">notNull</a>
+            </p>
+
+            <h3 id="path">path</h3>
+
+            <p>Extracts the pathname from a URL.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >path(url)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >path([Page URL])</code
+              >. For example, <code class="language-plaintext highlighter-rouge"
+                >path("https://www.example.com/path/to/page.html?key1=value")</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >/path/to/page.html</code
+              >.
+            </p>
+
+            <p>
+              Related: <a href="#domain">domain</a>, <a href="#host">host</a>, <a
+                href="#subdomain">subdomain</a
+              >.
+            </p>
+
+            <h3 id="regexextract">
+              <a
+                href="/docs/latest/questions/query-builder/expressions/regexextract"
+                >regexExtract</a>
+            </h3>
+
+            <blockquote>
+              <p>
+                ⚠️ <code class="language-plaintext highlighter-rouge"
+                  >regexExtract</code
+                > is unavailable for MongoDB, SQLite, and SQL Server. For Druid,
+                <code class="language-plaintext highlighter-rouge"
+                  >regexExtract</code
+                > is only available for the Druid-JDBC driver.
+              </p>
+            </blockquote>
+
+            <p>
+              Extracts matching substrings according to a regular expression.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >regexExtract(text, regular_expression)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >regexExtract([Address], "[0-9]+")</code>
+            </p>
+
+            <p>
+              Databases that don’t support <code
+                class="language-plaintext highlighter-rouge">regexExtract</code
+              >: H2, SQL Server, SQLite.
+            </p>
+
+            <p>
+              Related: <a href="#contains">contains</a>, <a
+                href="#doesnotcontain">doesNotContain</a
+              >, <a href="#substring">substring</a>.
+            </p>
+
+            <h3 id="replace">replace</h3>
+
+            <p>
+              Replaces all occurrences of a search text in the input text with
+              the replacement text.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >replace(text, find, replace)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >replace([Title], "Enormous", "Gigantic")</code>
+            </p>
+
+            <h3 id="splitpart">splitPart</h3>
+
+            <blockquote>
+              <p>
+                Available in PostgreSQL, MySQL/MariaDB, BigQuery, Redshift,
+                Clickhouse, and Snowflake
+              </p>
+            </blockquote>
+
+            <p>
+              Splits a string on a specified delimiter and returns the nth
+              substring.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >splitPart(text, delimiter, position)</code>
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">text</code>:
+              The column or text to return a portion of.
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">delimiter</code
+              >: The pattern describing where each split should occur.
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">position</code
+              >: Which substring to return after the split. Index starts at
+              position 1.
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >splitPart([Date string], " ", 1)</code
+              >. If the value for <code
+                class="language-plaintext highlighter-rouge">Date string</code
+              > was <code class="language-plaintext highlighter-rouge"
+                >"2024-09-18 16:55:15.373733-07"</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >"2024-09-18"</code
+              > because it split the data on space (<code
+                class="language-plaintext highlighter-rouge">" "</code
+              >, and took the first part (the substring at index 1)).
+            </p>
+
+            <p>
+              Another example: <code
+                class="language-plaintext highlighter-rouge"
+                >splitPart("First name, Middle Name, Last name", ", ", 3)</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >"Last Name"</code
+              > (because we used the comma and space <code
+                class="language-plaintext highlighter-rouge">", "</code
+              > as the delimiter to split the string into parts, and took the third
+              substring).
+            </p>
+
+            <h3 id="rtrim">rTrim</h3>
+
+            <p>Removes trailing whitespace from a string of text.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >rTrim(text)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >rTrim([Comment])</code
+              >. If the comment were “Fear is the mindkiller. “, the expression
+              would return “Fear is the mindkiller.”
+            </p>
+
+            <p>
+              Related: <a href="#trim">trim</a> and <a href="#ltrim">lTrim</a>.
+            </p>
+
+            <h3 id="startswith">startsWith</h3>
+
+            <p>
+              Returns true if the beginning of the text matches the comparison
+              text. Performs case-sensitive match by default. You can pass an
+              optional parameter <code
+                class="language-plaintext highlighter-rouge"
+                >"case-insensitive"</code
+              > to perform a case-insensitive match.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >startsWith(text, comparison)</code
+              > for case-sensitive match.
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge"
+                >startsWith(text, comparison, "case-insensitive")</code
+              > for case-insensitive match.
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >startsWith([Course Name], "Computer Science")</code
+              > would return true for course names that began with “Computer Science”,
+              like “Computer Science 101: An introduction”.
+            </p>
+
+            <p>
+              It would return false for “Computer <strong>s</strong>cience 201:
+              Data structures” because the case of “science” does not match the
+              case in the comparison text.
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge"
+                >startsWith([Course Name], "Computer Science",
+                "case-insensitive")</code
+              > would return true for both “Computer Science 101: An introduction”
+              and “Computer science 201: Data structures”.
+            </p>
+
+            <p>
+              Related: <a href="#endswith">endsWith</a>, <a href="#contains"
+                >contains</a
+              >, <a href="#doesnotcontain">doesNotContain</a>.
+            </p>
+
+            <h3 id="subdomain">subdomain</h3>
+
+            <p>
+              Extracts the subdomain from a URL. Ignores <code
+                class="language-plaintext highlighter-rouge">www</code
+              > (returns a blank string).
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >subdomain(url)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >subdomain([Page URL])</code
+              >. If the <code class="language-plaintext highlighter-rouge"
+                >[Page URL]</code
+              > column had a value of <code
+                class="language-plaintext highlighter-rouge"
+                >https://status.metabase.com</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >subdomain([Page URL])</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >status</code
+              >.
+            </p>
+
+            <p>
+              Related: <a href="#domain">domain</a>, <a href="#host">host</a>, <a
+                href="#path">path</a
+              >.
+            </p>
+
+            <h3 id="substring">
+              <a
+                href="/docs/latest/questions/query-builder/expressions/substring"
+                >substring</a>
+            </h3>
+
+            <p>
+              Returns a portion of the supplied text, specified by a starting
+              position and a length.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >substring(text, position, length)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >substring([Title], 1, 10)</code
+              > returns the first 10 letters of a string (the string index starts
+              at position 1).
+            </p>
+
+            <p>
+              Related: <a href="#regexextract">regexExtract</a>, <a
+                href="#replace">replace</a
+              >.
+            </p>
+
+            <h3 id="text">text</h3>
+
+            <blockquote>
+              <p>Unavailable for the non-JDBC Druid driver</p>
+            </blockquote>
+
+            <p>
+              Converts a number or date to text (a string). Useful for applying
+              text filters or joining with other columns based on text
+              comparisons.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >text(value)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >text(Created At])</code
+              > would take a datetime (<code
+                class="language-plaintext highlighter-rouge">Created At</code
+              >) and return that datetime converted to a string (like <code
+                class="language-plaintext highlighter-rouge"
+                >"2024-03-17 16:55:15.373733-07"</code
+              >).
+            </p>
+
+            <h3 id="trim">trim</h3>
+
+            <p>
+              Removes leading and trailing whitespace from a string of text.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >trim(text)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >trim([Comment])</code
+              > will remove any whitespace characters on either side of a comment.
+            </p>
+
+            <h3 id="upper">upper</h3>
+
+            <p>Returns the text in all upper case.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >upper(text)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >upper([Status])</code
+              >. If status were “hyper”, <code
+                class="language-plaintext highlighter-rouge"
+                >upper("hyper")</code
+              > would return “HYPER”.
+            </p>
+
+            <p>Related: <a href="#lower">lower</a>.</p>
+
+            <h2 id="date-functions">Date functions</h2>
+
+            <p>
+              Date functions manipulate, extract, or create date and time
+              values.
+            </p>
+
+            <h3 id="converttimezone">
+              <a
+                href="/docs/latest/questions/query-builder/expressions/converttimezone"
+                >convertTimezone</a>
+            </h3>
+
+            <p>Shifts a date or timestamp value into a specified time zone.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >convertTimezone(column, target, source)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >convertTimezone("2022-12-28T12:00:00", "Canada/Pacific",
+                "Canada/Eastern")</code
+              > would return the value <code
+                class="language-plaintext highlighter-rouge"
+                >2022-12-28T09:00:00</code
+              >, displayed as <code class="language-plaintext highlighter-rouge"
+                >December 28, 2022, 9:00 AM</code
+              >.
+            </p>
+
+            <p>
+              See the <a
+                href="/docs/latest/questions/query-builder/expressions/converttimezone#limitations"
+                >database limitations</a
+              > for <code class="language-plaintext highlighter-rouge"
+                >convertTimezone</code
+              >.
+            </p>
+
+            <h3 id="datetimeadd">
+              <a
+                href="/docs/latest/questions/query-builder/expressions/datetimeadd"
+                >datetimeAdd</a>
+            </h3>
+
+            <p>Adds some unit of time to a date or timestamp value.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >datetimeAdd(column, amount, unit)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >datetimeAdd("2021-03-25", 1, "month")</code
+              > would return the value <code
+                class="language-plaintext highlighter-rouge">2021-04-25</code
+              >, displayed as <code class="language-plaintext highlighter-rouge"
+                >April 25, 2021</code
+              >.
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">amount</code> must
+              be an integer, not a fractional number. For example, you cannot add
+              “half a year” (0.5).
+            </p>
+
+            <p>
+              Related: <a href="#between">between</a>, <a
+                href="#datetimesubtract">datetimeSubtract</a
+              >.
+            </p>
+
+            <h3 id="datetimediff">
+              <a
+                href="/docs/latest/questions/query-builder/expressions/datetimediff"
+                >datetimeDiff</a>
+            </h3>
+
+            <p>
+              Returns the difference between two datetimes in some unit of time.
+              For example, <code class="language-plaintext highlighter-rouge"
+                >datetimeDiff(d1, d2, "day")</code
+              > will return the number of days between <code
+                class="language-plaintext highlighter-rouge">d1</code
+              > and <code class="language-plaintext highlighter-rouge">d2</code
+              >.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >datetimeDiff(datetime1, datetime2, unit)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >datetimeDiff("2022-02-01", "2022-03-01", "month")</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >1</code
+              >.
+            </p>
+
+            <p>
+              See the <a
+                href="/docs/latest/questions/query-builder/expressions/datetimediff#limitations"
+                >database limitations</a
+              > for <code class="language-plaintext highlighter-rouge"
+                >datetimediff</code
+              >.
+            </p>
+
+            <h3 id="datetimesubtract">
+              <a
+                href="/docs/latest/questions/query-builder/expressions/datetimesubtract"
+                >datetimeSubtract</a>
+            </h3>
+
+            <p>Subtracts some unit of time from a date or timestamp value.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >datetimeSubtract(column, amount, unit)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >datetimeSubtract("2021-03-25", 1, "month")</code
+              > would return the value <code
+                class="language-plaintext highlighter-rouge">2021-02-25</code
+              >, displayed as <code class="language-plaintext highlighter-rouge"
+                >February 25, 2021</code
+              >.
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">amount</code> must
+              be an integer, not a fractional number. For example, you cannot subtract
+              “half a year” (0.5).
+            </p>
+
+            <p>
+              Related: <a href="#between">between</a>, <a href="#datetimeadd"
+                >datetimeAdd</a
+              >.
+            </p>
+
+            <h3 id="day">day</h3>
+
+            <p>
+              Takes a datetime and returns the day of the month as an integer.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >day([datetime column])</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >day("2021-03-25T12:52:37")</code
+              > would return the day as an integer, <code
+                class="language-plaintext highlighter-rouge">25</code
+              >.
+            </p>
+
+            <h3 id="dayname">dayName</h3>
+
+            <p>
+              Returns the localized name of a day of the week, given the day’s
+              number (1-7). Respects the <a
+                href="/docs/latest/configuring-metabase/localization#first-day-of-the-week"
+                >first day of the week setting</a
+              >.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >dayName(dayNumber)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >dayName(1)</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >Sunday</code
+              >, unless you change the <a
+                href="/docs/latest/configuring-metabase/localization#first-day-of-the-week"
+                >first day of the week setting</a
+              >.
+            </p>
+
+            <p>
+              Related: <a href="#quartername">quarterName</a>, <a
+                href="#monthname">monthName</a
+              >.
+            </p>
+
+            <h3 id="hour">hour</h3>
+
+            <p>Takes a datetime and returns the hour as an integer (0-23).</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >hour([datetime column])</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >hour("2021-03-25T12:52:37")</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >12</code
+              >.
+            </p>
+
+            <h3 id="interval">interval</h3>
+
+            <p>
+              Checks a date column’s values to see if they’re within the
+              relative range.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >interval(column, number, text)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >interval([Created At], -1, "month")</code>
+            </p>
+
+            <p>
+              The <code class="language-plaintext highlighter-rouge"
+                >number</code
+              > must be an integer. You cannot use a fractional value.
+            </p>
+
+            <p>Related: <a href="#between">between</a>.</p>
+
+            <h3 id="minute">minute</h3>
+
+            <p>Takes a datetime and returns the minute as an integer (0-59).</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >minute([datetime column])</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >minute("2021-03-25T12:52:37")</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >52</code
+              >.
+            </p>
+
+            <h3 id="month">month</h3>
+
+            <p>
+              Takes a datetime and returns the month number (1-12) as an
+              integer.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >month([datetime column])</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >month("2021-03-25T12:52:37")</code
+              > would return the month as an integer, <code
+                class="language-plaintext highlighter-rouge">3</code
+              >.
+            </p>
+
+            <h3 id="monthname">monthName</h3>
+
+            <p>Returns the localized short name for the given month.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >monthName([Birthday Month])</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >monthName(10)</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >Oct</code
+              > for October.
+            </p>
+
+            <p>
+              Related: <a href="#dayname">dayName</a>, <a href="#quartername"
+                >quarterName</a
+              >.
+            </p>
+
+            <h3 id="now">
+              <a href="/docs/latest/questions/query-builder/expressions/now"
+                >now</a>
+            </h3>
+
+            <p>
+              Returns the current date and time using your Metabase <a
+                href="/docs/latest/configuring-metabase/localization#report-timezone"
+                >report timezone</a
+              >.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >now()</code>
+            </p>
+
+            <h3 id="quarter">quarter</h3>
+
+            <p>
+              Takes a datetime and returns the number of the quarter in a year
+              (1-4) as an integer.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >quarter([datetime column])</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >quarter("2021-03-25T12:52:37")</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >1</code
+              > for the first quarter.
+            </p>
+
+            <h3 id="quartername">quarterName</h3>
+
+            <p>
+              Given the quarter number (1-4), returns a string like <code
+                class="language-plaintext highlighter-rouge">Q1</code
+              >.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >quarterName([Fiscal Quarter])</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >quarterName(3)</code
+              > would return <code class="language-plaintext highlighter-rouge"
+                >Q3</code
+              >.
+            </p>
+
+            <p>
+              Related: <a href="#dayname">dayName</a>, <a href="#monthname"
+                >monthName</a
+              >.
+            </p>
+
+            <h3 id="relativedatetime">relativeDateTime</h3>
+
+            <p>Gets a timestamp relative to the current time.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >relativeDateTime(number, text)</code>
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">number</code>:
+              Period of interval, where negative values are back in time. The <code
+                class="language-plaintext highlighter-rouge">number</code
+              > must be an integer. You cannot use a fractional value.
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">text</code>:
+              Type of interval like <code
+                class="language-plaintext highlighter-rouge">"day"</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >"month"</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >"year"</code>
+            </p>
+
+            <p>
+              Note that <code class="language-plaintext highlighter-rouge"
+                >relativeDateTime()</code
+              > will truncate the result to the unit specified as its argument.
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >[Orders → Created At] &lt; relativeDateTime(-30, "day")</code
+              > will filter for orders created over 30 days ago from current date.
+            </p>
+
+            <p>
+              Related: <a href="#datetimeadd">datetimeAdd</a>, <a
+                href="#datetimesubtract">datetimeSubtract</a
+              >.
+            </p>
+
+            <h3 id="second">second</h3>
+
+            <p>
+              Takes a datetime and returns the number of seconds in the minute
+              (0-59) as an integer.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >second([datetime column])</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >second("2021-03-25T12:52:37")</code
+              > would return the integer <code
+                class="language-plaintext highlighter-rouge">37</code
+              >.
+            </p>
+
+            <h3 id="timespan">timeSpan</h3>
+
+            <p>Gets a time interval of specified length.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >timeSpan(number, text)</code>
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">number</code>:
+              Period of interval, where negative values are back in time. The <code
+                class="language-plaintext highlighter-rouge">number</code
+              > must be an integer. You cannot use a fractional value.
+            </p>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge">text</code>:
+              Type of interval like <code
+                class="language-plaintext highlighter-rouge">"day"</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >"month"</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >"year"</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >[Orders → Created At] + timeSpan(7, "day")</code
+              > will return the date 7 days after the <code
+                class="language-plaintext highlighter-rouge">Created At</code
+              > date.
+            </p>
+
+            <h3 id="today">today</h3>
+
+            <p>Returns the current date (without time).</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >today()</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >today()</code
+              > would return the current date, such as <code
+                class="language-plaintext highlighter-rouge">2025-05-04</code
+              >.
+            </p>
+
+            <p>Related: <a href="#now">now</a>.</p>
+
+            <h3 id="week">
+              <a href="/docs/latest/questions/query-builder/expressions/week"
+                >week</a>
+            </h3>
+
+            <p>Takes a datetime and returns the week as an integer.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >week(column, mode)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >week("2021-03-25T12:52:37")</code
+              > would return the week as an integer, <code
+                class="language-plaintext highlighter-rouge">12</code
+              >.
+            </p>
+
+            <ul>
+              <li>
+                column: the name of the column of the date or datetime value.
+              </li>
+              <li>
+                mode: Optional.
+                <ul>
+                  <li>
+                    ISO: (default) Week 1 starts on the Monday before the first
+                    Thursday of January.
+                  </li>
+                  <li>
+                    US: Week 1 starts on Jan 1. All other weeks start on Sunday.
+                  </li>
+                  <li>
+                    Instance: Week 1 starts on Jan 1. All other weeks start on
+                    the day defined in your Metabase localization settings.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <p>
+              Note that summarizing by week of year in the query builder uses a
+              different mode of determining the first week, see <a
+                href="/docs/latest/questions/query-builder/expressions/week"
+                >Week of year</a
+              > for more information.
+            </p>
+
+            <h3 id="weekday">weekday</h3>
+
+            <p>
+              Takes a datetime and returns an integer (1-7) with the number of
+              the day of the week.
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >weekday(column)</code>
+            </p>
+
+            <ul>
+              <li>column: The datetime column.</li>
+            </ul>
+
+            <p>Example:</p>
+
+            <div class="language-plaintext highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;case(
+  weekday([Created At]) = 1, "Sunday",
+  weekday([Created At]) = 2, "Monday",
+  weekday([Created At]) = 3, "Tuesday",
+  weekday([Created At]) = 4, "Wednesday",
+  weekday([Created At]) = 5, "Thursday",
+  weekday([Created At]) = 6, "Friday",
+  weekday([Created At]) = 7, "Saturday")
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <h3 id="year">year</h3>
+
+            <p>Takes a datetime and returns the year as an integer.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >year([datetime column])</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >year("2021-03-25T12:52:37")</code
+              > would return the year 2021 as an integer, <code
+                class="language-plaintext highlighter-rouge">2,021</code
+              >.
+            </p>
+
+            <h2 id="type-casting-functions">Type-casting functions</h2>
+
+            <ul>
+              <li><a href="#date">date</a></li>
+              <li><a href="#datetime">datetime</a></li>
+              <li><a href="#float">float</a></li>
+              <li><a href="#integer">integer</a></li>
+              <li><a href="#text">text</a></li>
+            </ul>
+
+            <h2 id="window-functions">Window functions</h2>
+
+            <p>
+              Window functions can only be used in the <strong>Summarize</strong
+              > section. They cannot be used to create a custom column or a custom
+              filter.
+            </p>
+
+            <h3 id="cumulativecount">CumulativeCount</h3>
+
+            <p>
+              For more info, check out our page on <a
+                href="/docs/latest/questions/query-builder/expressions/cumulative"
+                >cumulative functions</a
+              >.
+            </p>
+
+            <p>The additive total of rows across a breakout.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >CumulativeCount()</code>
+            </p>
+
+            <h3 id="cumulativesum">CumulativeSum</h3>
+
+            <p>
+              For more info, check out our page on <a
+                href="/docs/latest/questions/query-builder/expressions/cumulative"
+                >cumulative functions</a
+              >.
+            </p>
+
+            <p>The rolling sum of a column across a breakout.</p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >CumulativeSum(column)</code>
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >CumulativeSum([Subtotal])</code>
+            </p>
+
+            <p>
+              Related: <a href="#sum">Sum</a> and <a href="#sumif">SumIf</a>.
+            </p>
+
+            <h3 id="offset">Offset</h3>
+
+            <blockquote>
+              <p>
+                ⚠️ The <code class="language-plaintext highlighter-rouge"
+                  >Offset</code
+                > function is currently unavailable for MySQL/MariaDB, ClickHouse,
+                MongoDB, and Druid.
+              </p>
+            </blockquote>
+
+            <p>
+              For more info, check out our page on <a
+                href="/docs/latest/questions/query-builder/expressions/offset"
+                >Offset</a
+              >.
+            </p>
+
+            <p>
+              Returns the value of an expression in a different row. <code
+                class="language-plaintext highlighter-rouge">Offset</code
+              > can only be used in the query builder’s Summarize step (you cannot
+              use <code class="language-plaintext highlighter-rouge"
+                >Offset</code
+              > to create a custom column).
+            </p>
+
+            <p>
+              Syntax: <code class="language-plaintext highlighter-rouge"
+                >Offset(expression, rowOffset)</code>
+            </p>
+
+            <p>
+              The <code class="language-plaintext highlighter-rouge"
+                >expression</code
+              > is the value to get from a different row.
+            </p>
+
+            <p>
+              The <code class="language-plaintext highlighter-rouge"
+                >rowOffset</code
+              > is the number relative to the current row. For example, <code
+                class="language-plaintext highlighter-rouge">-1</code
+              > for the previous row, or <code
+                class="language-plaintext highlighter-rouge">1</code
+              > for the next row.
+            </p>
+
+            <p>
+              Example: <code class="language-plaintext highlighter-rouge"
+                >Offset(Sum([Total]), -1)</code
+              > would get the <code class="language-plaintext highlighter-rouge"
+                >Sum([Total])</code
+              > value from the previous row.
+            </p>
+
+            <h2 id="limitations">Limitations</h2>
+
+            <ul>
+              <li>
+                <a href="#aggregations">Aggregation expressions</a> can only be used
+                in the <strong>Summarize</strong> section of the query builder.
+              </li>
+            </ul>
+
+            <h2 id="database-limitations">Database limitations</h2>
+
+            <p>
+              Limitations are noted for each aggregation and function above, and
+              here there are in summary:
+            </p>
+
+            <p>
+              <strong>H2</strong> (including Metabase Sample Database): <code
+                class="language-plaintext highlighter-rouge">Median</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >Percentile</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >convertTimezone</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >regexExtract</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >datetime</code
+              >, <code class="language-plaintext highlighter-rouge">float</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              >.
+            </p>
+
+            <p>
+              <strong>Athena</strong>: <code
+                class="language-plaintext highlighter-rouge"
+                >convertTimezone</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >datetime</code
+              >, <code class="language-plaintext highlighter-rouge">float</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              >.
+            </p>
+
+            <p>
+              <strong>Databricks</strong>: <code
+                class="language-plaintext highlighter-rouge"
+                >convertTimezone</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >datetime</code
+              >, <code class="language-plaintext highlighter-rouge">float</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              >.
+            </p>
+
+            <p>
+              <strong>Druid</strong>: <code
+                class="language-plaintext highlighter-rouge">Median</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >Percentile</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >StandardDeviation</code
+              >, <code class="language-plaintext highlighter-rouge">power</code
+              >, <code class="language-plaintext highlighter-rouge">log</code>, <code
+                class="language-plaintext highlighter-rouge">exp</code
+              >, <code class="language-plaintext highlighter-rouge">sqrt</code>, <code
+                class="language-plaintext highlighter-rouge">Offset</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >datetime</code
+              >, <code class="language-plaintext highlighter-rouge">float</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              >. Function <code class="language-plaintext highlighter-rouge"
+                >regexExtract</code
+              > and some <a href="#type-casting-functions"
+                >type casting functions</a
+              > are only available for the Druid-JDBC driver.
+            </p>
+
+            <p>
+              <strong>MongoDB</strong>: <code
+                class="language-plaintext highlighter-rouge">Median</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >Percentile</code
+              >, <code class="language-plaintext highlighter-rouge">power</code
+              >, <code class="language-plaintext highlighter-rouge">log</code>, <code
+                class="language-plaintext highlighter-rouge">exp</code
+              >, <code class="language-plaintext highlighter-rouge">sqrt</code>, <code
+                class="language-plaintext highlighter-rouge">Offset</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >regexExtract</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >datetime</code
+              >, <code class="language-plaintext highlighter-rouge">float</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              >.
+            </p>
+
+            <p>
+              <strong>MariaDB</strong>: <code
+                class="language-plaintext highlighter-rouge">Median</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >Percentile</code
+              >, <code class="language-plaintext highlighter-rouge">Offset</code
+              >.
+            </p>
+
+            <p>
+              <strong>MySQL</strong>: <code
+                class="language-plaintext highlighter-rouge">Median</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >Percentile</code
+              >, <code class="language-plaintext highlighter-rouge">Offset</code
+              >.
+            </p>
+
+            <p>
+              <strong>Oracle</strong>: <code
+                class="language-plaintext highlighter-rouge">date</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >datetime</code
+              >, <code class="language-plaintext highlighter-rouge">float</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              >.
+            </p>
+
+            <p>
+              <strong>Presto</strong>: <code
+                class="language-plaintext highlighter-rouge"
+                >convertTimezone</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >datetime</code
+              >, <code class="language-plaintext highlighter-rouge">float</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              >. Only provides <em>approximate</em> results for <code
+                class="language-plaintext highlighter-rouge">Median</code
+              > and <code class="language-plaintext highlighter-rouge"
+                >Percentile</code
+              >.
+            </p>
+
+            <p>
+              <strong>SparkSQL</strong>: <code
+                class="language-plaintext highlighter-rouge"
+                >convertTimezone</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >datetime</code
+              >, <code class="language-plaintext highlighter-rouge">float</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              >.
+            </p>
+
+            <p>
+              <strong>SQL Server</strong>: <code
+                class="language-plaintext highlighter-rouge">Median</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >Percentile</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >regexExtract</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >datetime</code
+              >, <code class="language-plaintext highlighter-rouge">float</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              >.
+            </p>
+
+            <p>
+              <strong>SQLite</strong>: <code
+                class="language-plaintext highlighter-rouge">exp</code
+              >, <code class="language-plaintext highlighter-rouge">log</code>, <code
+                class="language-plaintext highlighter-rouge">Median</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >Percentile</code
+              >, <code class="language-plaintext highlighter-rouge">power</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >regexExtract</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >StandardDeviation</code
+              >, <code class="language-plaintext highlighter-rouge">sqrt</code>, <code
+                class="language-plaintext highlighter-rouge">Variance</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >datetime</code
+              >, <code class="language-plaintext highlighter-rouge">float</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              >.
+            </p>
+
+            <p>
+              <strong>Vertica</strong>: <code
+                class="language-plaintext highlighter-rouge">Median</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >Percentile</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >datetime</code
+              >, <code class="language-plaintext highlighter-rouge">float</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >splitPart</code
+              >.
+            </p>
+
+            <p>
+              If you’re using or maintaining a third-party database driver,
+              please <a
+                href="https://github.com/metabase/metabase/wiki/What's-new-in-0.35.0-for-Metabase-driver-authors"
+                >refer to the wiki</a
+              > to see how your driver might be impacted.
+            </p>
+
+            <p>
+              Check out our tutorial on <a
+                href="/learn/metabase-basics/querying-and-dashboards/questions/custom-expressions"
+                >custom expressions in the query builder</a
+              > to learn more.
+            </p>
+
+            <div>
+              <div class="widget-separator"></div>
+
+              <p>
+                Read docs for other <a href="/docs/all">versions of Metabase</a
+                >.
+              </p>
+            </div>
+          </div>
+
+          <div class="learn__right-sidebar">
+            <div id="sub-navigation-content"></div>
+            <div id="was-this-helpful-widget">
+              <div id="page-feedback">
+                <h6>Was this helpful?</h6>
+                <button id="page-feedback-vote-up" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  Yes
+                </button>
+                <button id="page-feedback-vote-down" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="rotate-180 me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  No
+                </button>
+              </div>
+
+              <div id="page-comment" class="flex flex-wrap full hide">
+                <p id="page-feedback-question"></p>
+
+                <form id="page-comment-form" class="flex full">
+                  <textarea
+                    id="feedback-comment-text"
+                    name="comment"
+                    placeholder="Type here…"></textarea>
+
+                  <button
+                    id="page-comment-submit"
+                    class="Button flex align-center"
+                  >
+                    Send
+                  </button>
+                </form>
+              </div>
+
+              <div id="page-feedback-message" class="fs-18 hide">
+                <h6 class="page-feedback-title">Thanks for your feedback!</h6>
+              </div>
+
+              <span
+                class="paragraph-6 fs-13 neutral-60"
+                id="page-feedback-footer"
+              >
+                Want to improve these docs? <a
+                  href="https://github.com/metabase/metabase/blob/master/docs/questions/query-builder/expressions-list.md"
+                  target="_blank">Propose a change.</a
+                >
+              </span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

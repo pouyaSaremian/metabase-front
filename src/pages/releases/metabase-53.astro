@@ -1,23 +1,710 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /releases/metabase-53
-// Priority: 0.64
-// Last Modified: 2025-09-16T20:03:12+00:00
+import Base from "../../layouts/Base.astro";
+const title = "Metabase 53";
+const description =
+  "Dashboards, caching, models, and queries made more intuitive, contextual, and performant";
+const seo = {
+  title: "Metabase 53",
+  description:
+    "Dashboards, caching, models, and queries made more intuitive, contextual, and performant",
+  canonical: "/releases/metabase-53",
+  og: {
+    title: "Metabase 53",
+    description:
+      "Dashboards, caching, models, and queries made more intuitive, contextual, and performant",
+    image: "https://www.metabase.com/images/posts/metabase-53/53-cover.png",
+    url: "https://www.metabase.com/releases/metabase-53",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Metabase 53",
+    description:
+      "Dashboards, caching, models, and queries made more intuitive, contextual, and performant",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/posts/metabase-53/53-cover.png",
+    creator: "The Metabase Team",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Releases Metabase 53</title>
-</head>
-<body>
-    <h1>Releases Metabase 53</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/releases/metabase-53</code></p>
-    <p>Priority: 0.64</p>
-    <p>Last Modified: 2025-09-16T20:03:12+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="MB-Page page-content">
+    <div class="progress-bar z1" id="progress-bar"></div>
+
+    <div class="bootstrap">
+      <div class="release container pt-4" id="post">
+        <section class="row">
+          <div class="d-none d-lg-block col-lg-3">
+            <a
+              id="back-button"
+              class="chevron blue-small-left mb-8 fw-bold"
+              href="/releases"
+            >
+              All releases
+            </a>
+            <div id="in-this-release" class="d-flex flex-column pe-12">
+              <h5 class="mb-6">In this release</h5>
+            </div>
+          </div>
+          <div class="content-container col-xs-12 col-lg-9">
+            <a
+              class="chevron blue-small-left fw-bold d-lg-none mb-8"
+              href="/releases">All releases</a
+            >
+            <div id="release-content">
+              <div class="col-xs-12 col-lg-12 mb-8 p-0">
+                <h4>Metabase 53</h4>
+                <h1>
+                  Save questions to dashboards, dynamic iframe cards, preemptive
+                  caching, and more
+                </h1>
+                <div class="header-credits">
+                  <img
+                    class="circle me-2"
+                    src="/images/posts/blog-authors/the-metabase-team.svg"
+                    alt="The Metabase Team Portrait"
+                    width="36"
+                    height="36"
+                  />
+                  <span>The Metabase Team</span>
+                  · Feb 12, 2025 · 7 min read
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <p>
+                  We’re at it again with Metabase 53, making your dashboards,
+                  queries, and—hopefully—your life more intuitive, contextual,
+                  and performant. Let’s get into it.
+                </p>
+
+                <ul>
+                  <li>
+                    <strong
+                      >If you’re hosted on <a href="/cloud/">Metabase Cloud</a
+                      ></strong
+                    >, we’ll be rolling out these new features automatically in
+                    the next few weeks. If you’d like to get it sooner, just let
+                    us know. Email help@metabase.com and we’ll upgrade you.
+                  </li>
+                  <li>
+                    <strong>If you’re self-hosting Metabase</strong>, you (or
+                    your admin) can follow the docs on <a
+                      href="/docs/latest/installation-and-operation/upgrading-metabase"
+                      >how to upgrade</a
+                    >.
+                  </li>
+                </ul>
+
+                <p>
+                  Feel like you <em>just</em> finished an upgrade? <a
+                    href="/upgrade/">Try Metabase Cloud for free</a
+                  > to get automatic upgrades and excellent technical support.
+                </p>
+
+                <h2 id="save-questions-straight-to-dashboards">
+                  Save questions straight to dashboards
+                </h2>
+
+                <p>
+                  <img
+                    src="/images/posts/metabase-53/save-to-dash.jpg"
+                    alt="save-to-dash"
+                  />
+                </p>
+
+                <p>
+                  We 💙 collections for keeping your Metabase organized. But we
+                  also know most questions are only ever used in a single
+                  dashboard. So to keep your Metabase tidier, questions are now
+                  saved into dashboards by default. This also makes building a
+                  dashboard easier, as you don’t have to go via collections.
+                </p>
+
+                <p>
+                  Plus, we’ve added tidying tools for admins, so if you have a
+                  bunch of questions used only in one dashboard, you can <a
+                    href="/docs/v0.53/exploration-and-organization/collections#moving-questions-into-dashboards"
+                    >move the questions into the dashboards</a
+                  > so they don’t clutter up the collection. And for <a
+                    href="/docs/v0.53/exploration-and-organization/collections#cleaning-up-collections"
+                    >questions that haven’t even been looked at in a while, you
+                    can delete them</a
+                  > (on Pro and Enterprise only). If you’re an admin, look for a
+                  little badge at the top-right to start moving questions now.
+                </p>
+
+                <div class="blog-callout p2 mb4 bordered rounded">
+                  <a
+                    href="https://www.youtube.com/watch?v=oti_zGZILIA"
+                    class="callout-link"
+                    >▶️ Watch Alex showcasing how questions are now saved in
+                    dashboards.</a
+                  >
+                </div>
+
+                <h2
+                  id="iframe-and-link-card-parameters-let-you-show-content-dynamically"
+                >
+                  Iframe and link card parameters let you show content
+                  dynamically
+                </h2>
+
+                <div style="width: ; margin-bottom: 2em;">
+                  <div
+                    class="youtube-container"
+                    style="position: relative;
+                    width: 100%;
+                    height: 0;
+                    padding-bottom: 56.25%"
+                  >
+                    <iframe
+                      class="youtube-video"
+                      style="position: absolute;
+                         top: 0;
+                         left: 0;
+                         width: 100%;
+                         height: 100%;
+                         border: 0"
+                      allowfullscreen=""
+                      src="https://www.youtube.com/embed/SMKsq6M__YM"
+                    >
+                    </iframe>
+                  </div>
+                </div>
+
+                <p>
+                  Building on the much loved addition of <a
+                    href="/releases/metabase-51#add-external-content-to-dashboards-with-iframe-cards"
+                    >iframe cards for dashboards from v51</a
+                  >, you can now set variables on <a
+                    href="/docs/latest/dashboards/introduction#iframe-cards"
+                    >iframe and link cards</a
+                  > to update the content dynamically. This lets you use dashboard
+                  filters and custom click behavior to update the content displayed
+                  on the cards.
+                </p>
+
+                <p>
+                  A cool example we came across when testing this feature
+                  internally was in a dashboard for tracking page views in our
+                  docs. We didn’t want to have to flip between windows or tabs
+                  to see the docs page and its data, so we set up the dashboard
+                  so we could filter on specific articles and include an iframe
+                  card of the article itself.
+                </p>
+
+                <h2 id="preemptive-caching-for-faster-queries">
+                  Preemptive caching for faster queries
+                </h2>
+
+                <p>
+                  <img
+                    src="/images/posts/metabase-53/preemptive-caching.jpg"
+                    alt="preemptive-caching"
+                  />
+                </p>
+
+                <p>
+                  <a
+                    href="/docs/v0.53/configuring-metabase/caching#refresh-cache-automatically"
+                    >Automatically refresh the cache</a
+                  > when the cache is invalidated. Metabase now anticipates common
+                  query patterns and preemptively caches results—no more waiting
+                  for someone to trigger a query or view the result.
+                </p>
+
+                <p>
+                  For dashboards with parameters, Metabase will always refresh
+                  the default results, as well as the results for the ten most
+                  frequently applied parameter combinations. This means you get
+                  a better balance between query freshness and cost.
+                </p>
+
+                <p>
+                  <a href="/pricing/">Available on Pro and Enterprise plans.</a>
+                </p>
+
+                <div class="blog-callout p2 mb4 bordered rounded">
+                  <a href="https://youtu.be/PMhXW4ZO0to" class="callout-link"
+                    >▶️ See how to set up preemptive caching</a
+                  >
+                </div>
+
+                <h2 id="model-details-now-in-an-expandable-sidebar">
+                  Model details now in an expandable sidebar
+                </h2>
+
+                <p>
+                  <img
+                    src="/images/posts/metabase-53/model-sidebar.jpg"
+                    alt="model-sidebar"
+                  />
+                </p>
+
+                <p>
+                  All of the metadata previously found in the <a
+                    href="/docs/latest/data-modeling/models">model</a
+                  > detail page can now be found tucked in the sidebar, so it’s easier
+                  to find and closer to other relevant metadata. The model sidebar
+                  includes info like:
+                </p>
+
+                <ul>
+                  <li>Description of the model, and a list of fields</li>
+                  <li>Who created it and who was the last to edit it</li>
+                  <li>
+                    Relationships, like which questions use it, what tables are
+                    linked to it
+                  </li>
+                  <li>
+                    History of edits and if and when it’s been <a
+                      href="/docs/latest/exploration-and-organization/content-verification"
+                      >moderated and verified</a
+                    > (on Pro and Enterprise)
+                  </li>
+                  <li>
+                    Insights (Pro and Enterprise only) <a
+                      href="/features/usage-analytics"
+                      >showing who’s using it, when, and how</a>
+                  </li>
+                </ul>
+
+                <h2 id="query-builder-improvements">
+                  Query builder improvements
+                </h2>
+
+                <p>
+                  <img
+                    src="/images/posts/metabase-53/multiselect-in-Contains.jpg"
+                    alt="multiselect-in-Contains"
+                  />
+                </p>
+
+                <ul>
+                  <li>
+                    We’ve improved filtering in the query builder by allowing
+                    multiple selections in the filter widget when using <code
+                      class="language-plaintext highlighter-rouge"
+                      >contains()</code
+                    >, <code class="language-plaintext highlighter-rouge"
+                      >doesNotContain()</code
+                    >, <code class="language-plaintext highlighter-rouge"
+                      >startsWith()</code
+                    >, and <code class="language-plaintext highlighter-rouge"
+                      >endsWith()</code
+                    >, making it easier to refine your queries without switching
+                    to SQL. Additionally, <a
+                      href="/docs/v0.53/questions/query-builder/expressions"
+                      >custom expressions</a
+                    > now support a more concise way to write multi-select “Is” filters
+                    using <code class="language-plaintext highlighter-rouge"
+                      >in()</code
+                    > and <code class="language-plaintext highlighter-rouge"
+                      >notIn()</code
+                    >, so you no longer need to chain multiple <code
+                      class="language-plaintext highlighter-rouge">OR</code
+                    > conditions manually.
+                  </li>
+                  <li>
+                    But wait, there’s more custom expression goodness! We’ve
+                    made custom expressions more intuitive by adding an <code
+                      class="language-plaintext highlighter-rouge">if()</code
+                    > function as an alias for <code
+                      class="language-plaintext highlighter-rouge">case()</code
+                    >, so Excel-fans can jump right in without needing to check
+                    the docs.
+                  </li>
+                  <li>
+                    We’ve also improved the query builder UI to make controls
+                    more predictable and easier to navigate. Updates include
+                    clearer button labels, better navigation between the
+                    notebook editor, results, and visualization settings, and UI
+                    tweaks to make actions like adding custom columns or viewing
+                    SQL more intuitive.
+                  </li>
+                </ul>
+
+                <div class="blog-callout p2 mb4 bordered rounded">
+                  ▶️ See how <a
+                    href="https://youtu.be/ZNnU8A_RuVk"
+                    class="callout-link">In() and notIn() custom expressions</a
+                  > and <a
+                    href="https://youtu.be/ZNnU8A_RuVk"
+                    class="callout-link"
+                    >Conditional expressions with IF work.</a
+                  >
+                </div>
+
+                <h2
+                  id="more-granularity-to-latitude-and-longitude-binning-on-maps"
+                >
+                  More granularity to latitude and longitude binning on maps
+                </h2>
+
+                <p>
+                  <img
+                    src="/images/posts/metabase-53/latlong-binning.jpg"
+                    alt="latlong-binning"
+                  />
+                </p>
+
+                <p>
+                  Now you can really dial in to group geographical data with
+                  greater precision, making it easier to analyze patterns in
+                  location-based data. Instead of relying on larger bins or
+                  broad geographical regions, you can now zoom in on more
+                  specific latitudes and longitudes.
+                </p>
+
+                <div class="blog-callout p2 mb4 bordered rounded">
+                  <a
+                    href="https://www.youtube.com/watch?v=kSo1IAiALz8"
+                    class="callout-link"
+                  >
+                    ▶️ Watch Alex showcase the new feature.</a
+                  >
+                </div>
+
+                <h2 id="faster-snowflake-sync">Faster Snowflake sync</h2>
+
+                <p>
+                  Snowflake syncs are now on average about 6x faster! That’s
+                  money back in your pocket, time back in your…pocket (on your
+                  watch?). You get the gist.
+                </p>
+
+                <h2 id="paginated-pdf-exports">Paginated PDF exports</h2>
+
+                <p>
+                  If you’ve ever tried printing off a big dashboard as a PDF,
+                  you may be entitled to compensation. Compensation in the form
+                  of a great new solution: we’ve added page breaks to PDFs!
+                  Metabase will find logical places to add page breaks so
+                  there’s no weird cut offs mid-chart. Just neater exports that
+                  print more legibly, and are generally less stressful.
+                </p>
+
+                <div class="blog-callout p2 mb4 bordered rounded">
+                  <a
+                    href="https://www.youtube.com/watch?v=xDLb82VdjwE"
+                    class="callout-link"
+                    >▶️ See how the new paginated PDFs look.</a
+                  >
+                </div>
+
+                <h2 id="new-and-improved-api-docs">
+                  New and improved API docs
+                </h2>
+
+                <p>
+                  We <a href="/docs/latest/api"
+                    >replaced our&nbsp;API docs&nbsp;with Scalar&nbsp;OpenAPI
+                    docs</a
+                  >. In particular, this means we no longer have docs pages with
+                  URLs like&nbsp;/api/card&nbsp;. If you want to link to a
+                  specific endpoint, search for it in Scalar docs, and click
+                  on&nbsp;#&nbsp; next to the header to copy the URL.
+                </p>
+
+                <hr />
+
+                <h2 id="try-the-new-embedded-analytics-sdk-for-react-beta">
+                  Try the new Embedded Analytics SDK for React (Beta)
+                </h2>
+
+                <p>
+                  <img
+                    src="/images/posts/metabase-53/embedding-sdk.jpg"
+                    alt="embedding-sdk"
+                  />
+                </p>
+
+                <p>
+                  The <a href="/product/embedded-analytics-sdk"
+                    >Embedded Analytics SDK for React</a
+                  > gives you more flexibility, customization, and control over how
+                  Metabase integrates into your app.
+                </p>
+
+                <p>
+                  We’re putting a few finishing touches on it and it’s soooo
+                  close to coming out of beta.
+                </p>
+
+                <p>
+                  But you don’t have to wait til then, run this command to try
+                  out the SDK: <code
+                    class="language-plaintext highlighter-rouge"
+                    >npx @metabase/embedding-sdk-react@latest start</code
+                  >.
+                </p>
+
+                <p>Cool stuff you can do with the SDK:</p>
+
+                <ul>
+                  <li>
+                    Embed <em>exactly</em> what you want and place wherever you want.
+                  </li>
+                  <li>
+                    Dynamic theming with maximum customization via CSS
+                    variables.
+                  </li>
+                  <li>Manage interactivity per component and per user.</li>
+                  <li>
+                    Own the UX with options to override Metabase menus, add your
+                    own actions, and more.
+                  </li>
+                </ul>
+
+                <p>
+                  If you’re already embedding Metabase, the SDK will let you
+                  take your in-app reporting to the next level. You can try the
+                  SDK now without interfering with your current setup. And for
+                  the embedding-curious who are looking to get some reporting
+                  into your product, you can <a href="/embedding-demo"
+                    >check out how our different embedding types compare</a
+                  >, and <a href="/docs/latest/embedding/sdk/quickstart"
+                    >take the SDK for a spin for free</a
+                  >.
+                </p>
+
+                <h2
+                  id="support-for-serialization-workflows-in-interactive-embedding"
+                >
+                  Support for serialization workflows in interactive embedding
+                </h2>
+
+                <p>
+                  We introduced&nbsp;Stable entity IDs for serialization
+                  workflows for static and SDK embedding in v51. Now we’ve added
+                  them for interactive as well so they work for all types of
+                  embedding. That means smoother transfer of content between
+                  instances with IDs stay the same regardless of which
+                  environment or instance you’re in.
+                </p>
+
+                <h2 id="breaking-changes">Breaking changes</h2>
+
+                <p>
+                  <strong>Java 21+ required:</strong> Metabase 53 drops support for
+                  Java versions below 21.
+                </p>
+
+                <h2
+                  id="join-the-webinar-for-a-walkthrough-of-these-new-features-with-the-product-team"
+                >
+                  Join the webinar for a walkthrough of these new features with
+                  the product team
+                </h2>
+
+                <p>
+                  <a href="/events/metabase-53-release-webinar"
+                    >Save your spot for the live event on February 25</a
+                  >.
+                </p>
+
+                <h3 id="big-thanks-to-everyone-who-contributed">
+                  Big thanks to everyone who contributed!
+                </h3>
+
+                <p>
+                  Thanks to all those who submitted bug reports, feature
+                  suggestions, translations, and pull requests. Metabase gets
+                  better and better thanks to your efforts.
+                </p>
+
+                <p>
+                  Hope you enjoy the release. If you want to get into the
+                  nitty-gritty, check out our <a
+                    href="https://github.com/metabase/metabase/releases/"
+                    >release notes in GitHub</a
+                  >. To see what other features we have in the works, see our <a
+                    href="/roadmap">product roadmap</a
+                  >.
+                </p>
+
+                <p>Cheers, The Metabase team</p>
+              </div>
+
+              <div class="d-flex flex-column mt-11 d-lg-none">
+                <h5 class="mb-3 neutral-40">Share this release</h5>
+                <div class="d-flex align-items-center gap-3">
+                  <a
+                    href="https://twitter.com/intent/tweet?url=https://metabase.com/releases/metabase-53"
+                    target="popup"
+                    onclick="window.open('https://twitter.com/intent/tweet?url=https://metabase.com/releases/metabase-53','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;"
+                  >
+                    <svg
+                      id=""
+                      class="share-button"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 26 22"
+                      fill="#C6C9D2"
+                    >
+                      <path
+                        d="M24.9465693,3.43255605 C24.0654891,3.83264574 23.1186277,4.10304933 22.1248175,4.22466368 C23.1392117,3.60206278 23.9181606,2.61623318 24.2849927,1.44161435 C23.3357664,2.01802691 22.2843212,2.43668161 21.1652555,2.66233184 C20.2690219,1.68466368 18.9922044,1.07372197 17.5791825,1.07372197 C14.8658686,1.07372197 12.6661022,3.32600897 12.6661022,6.10403587 C12.6661022,6.49829596 12.709635,6.88224215 12.7933723,7.25040359 C8.71021898,7.0406278 5.09016058,5.03793722 2.6670365,1.99452915 C2.24414599,2.73748879 2.00186861,3.60161435 2.00186861,4.52349776 C2.00186861,6.26869955 2.86928467,7.80843049 4.18753285,8.71049327 C3.38213139,8.68439462 2.62464234,8.45811659 1.96218978,8.08134529 C1.96183942,8.10233184 1.96183942,8.12340807 1.96183942,8.14457399 C1.96183942,10.5818834 3.65532847,12.6150673 5.90283212,13.07713 C5.49054015,13.1921076 5.05652555,13.2535426 4.60840876,13.2535426 C4.29185401,13.2535426 3.98405839,13.2220628 3.68414599,13.1633184 C4.30928467,15.1618834 6.12364964,16.6162332 8.27348905,16.656861 C6.59208759,18.006009 4.47369343,18.8102242 2.1719708,18.8102242 C1.77544526,18.8102242 1.38435036,18.7864574 1,18.74 C3.17418978,20.1672646 5.75664234,21 8.53109489,21 C17.567708,21 22.5092555,13.3347982 22.5092555,6.68735426 C22.5092555,6.46923767 22.5045255,6.252287 22.4950657,6.03659193 C23.4548905,5.32735426 24.2878832,4.44134529 24.9465693,3.43255605"
+                      >
+                      </path>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/sharing/share-offsite/?url=https://metabase.com/releases/metabase-53"
+                    target="popup"
+                    onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=https://metabase.com/releases/metabase-53','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;"
+                  >
+                    <svg
+                      id=""
+                      class="share-button"
+                      fill="#C6C9D2"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 30 30"
+                      width="30"
+                      height="30"
+                    >
+                      <path
+                        d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"
+                      ></path>
+                    </svg>
+                  </a>
+                  <a
+                    class="copy-clip position-relative d-flex justify-content-center"
+                    title="Copy to clipboard"
+                  >
+                    <svg
+                      id=""
+                      class="share-button"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="#C6C9D2"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M19.2939 9.17106C19.5246 8.93228 19.8004 8.74183 20.1054 8.61081C20.4104 8.47978 20.7385 8.41082 21.0704 8.40793C21.4024 8.40505 21.7316 8.4683 22.0388 8.59401C22.3461 8.71971 22.6252 8.90534 22.8599 9.14007C23.0947 9.3748 23.2803 9.65393 23.406 9.96117C23.5317 10.2684 23.595 10.5976 23.5921 10.9296C23.5892 11.2615 23.5202 11.5896 23.3892 11.8946C23.2582 12.1996 23.0677 12.4754 22.8289 12.7061L19.0789 16.4561C18.6101 16.9247 17.9744 17.188 17.3114 17.188C16.6485 17.188 16.0128 16.9247 15.5439 16.4561C15.3082 16.2284 14.9924 16.1024 14.6647 16.1052C14.3369 16.1081 14.0234 16.2395 13.7917 16.4713C13.5599 16.703 13.4284 17.0166 13.4256 17.3443C13.4228 17.6721 13.5487 17.9878 13.7764 18.2236C14.7141 19.1609 15.9856 19.6875 17.3114 19.6875C18.6373 19.6875 19.9088 19.1609 20.8464 18.2236L24.5964 14.4736C25.5072 13.5305 26.0112 12.2675 25.9998 10.9566C25.9884 9.64557 25.4626 8.39151 24.5355 7.46447C23.6085 6.53743 22.3544 6.01158 21.0434 6.00019C19.7325 5.9888 18.4695 6.49277 17.5264 7.40356L15.6514 9.27856C15.5321 9.39387 15.4368 9.5318 15.3713 9.6843C15.3058 9.83681 15.2713 10.0008 15.2699 10.1668C15.2684 10.3328 15.3001 10.4974 15.3629 10.651C15.4258 10.8046 15.5186 10.9442 15.6359 11.0616C15.7533 11.1789 15.8929 11.2717 16.0465 11.3346C16.2001 11.3974 16.3647 11.4291 16.5307 11.4276C16.6967 11.4262 16.8607 11.3917 17.0132 11.3262C17.1657 11.2607 17.3036 11.1654 17.4189 11.0461L19.2939 9.17106ZM13.0439 15.4211C13.5128 14.9524 14.1485 14.6891 14.8114 14.6891C15.4744 14.6891 16.1101 14.9524 16.5789 15.4211C16.6942 15.5404 16.8322 15.6357 16.9847 15.7012C17.1372 15.7667 17.3012 15.8012 17.4672 15.8026C17.6332 15.8041 17.7978 15.7724 17.9514 15.7096C18.105 15.6467 18.2446 15.5539 18.3619 15.4366C18.4793 15.3192 18.5721 15.1796 18.635 15.026C18.6978 14.8724 18.7294 14.7078 18.728 14.5418C18.7266 14.3758 18.6921 14.2118 18.6266 14.0593C18.5611 13.9068 18.4658 13.7689 18.3464 13.6536C17.4088 12.7162 16.1373 12.1896 14.8114 12.1896C13.4856 12.1896 12.2141 12.7162 11.2764 13.6536L7.52644 17.4036C7.04889 17.8648 6.66798 18.4165 6.40593 19.0265C6.14389 19.6366 6.00596 20.2927 6.00019 20.9566C5.99442 21.6205 6.12093 22.2788 6.37233 22.8933C6.62374 23.5078 6.995 24.0661 7.46447 24.5355C7.93393 25.005 8.49219 25.3763 9.10667 25.6277C9.72115 25.8791 10.3796 26.0056 11.0434 25.9998C11.7073 25.994 12.3634 25.8561 12.9735 25.5941C13.5835 25.332 14.1352 24.9511 14.5964 24.4736L16.4714 22.5986C16.5908 22.4833 16.6861 22.3453 16.7516 22.1928C16.8171 22.0403 16.8516 21.8763 16.853 21.7103C16.8544 21.5443 16.8228 21.3797 16.76 21.2261C16.6971 21.0725 16.6043 20.9329 16.4869 20.8156C16.3696 20.6982 16.23 20.6054 16.0764 20.5425C15.9228 20.4797 15.7582 20.4481 15.5922 20.4495C15.4262 20.4509 15.2622 20.4854 15.1097 20.5509C14.9572 20.6164 14.8192 20.7117 14.7039 20.8311L12.8289 22.7061C12.5983 22.9448 12.3225 23.1353 12.0175 23.2663C11.7124 23.3973 11.3844 23.4663 11.0524 23.4692C10.7205 23.4721 10.3913 23.4088 10.0841 23.2831C9.77682 23.1574 9.49769 22.9718 9.26295 22.737C9.02822 22.5023 8.84259 22.2232 8.71689 21.9159C8.59118 21.6087 8.52793 21.2795 8.53082 20.9476C8.5337 20.6156 8.60267 20.2876 8.73369 19.9825C8.86471 19.6775 9.05517 19.4017 9.29394 19.1711L13.0439 15.4211Z"
+                      ></path>
+                    </svg>
+
+                    <div class="copied-to-clipboard-wrapper visible invisible">
+                      <div class="caret"></div>
+                      <div class="copied-to-clipboard">Copied to clipboard</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center mt-16">
+              <iframe
+                id="post-signup-form-1"
+                src="../post-signup-form.html"
+                width="100%"
+                height="200px"
+                onload="javascript:(function(o){
+        o.style.height=o.contentWindow.document.getElementById('mc_embed_signup').offsetHeight+'px';
+
+        const resizeObserver = new ResizeObserver(function(entries) {
+            const $firstEntry = entries[0];
+            if ($firstEntry && $firstEntry.borderBoxSize && $firstEntry.borderBoxSize[0]) {
+                const $form = $firstEntry.borderBoxSize[0];
+                if ($form) {
+                    o.style.height = $form.blockSize + 'px';
+                }
+            }
+        });
+        resizeObserver.observe(o.contentWindow.document.getElementById('mc_embed_signup'));
+    }(this));"
+                style="border:none;overflow:hidden;"></iframe>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="d-flex flex-row justify-content-between">
+            <h3 class="mb-0">See previous releases</h3>
+            <a
+              class="chevron blue-small-right fw-bold d-none d-lg-flex"
+              href="/releases">All releases</a
+            >
+          </div>
+          <div class="row mt-10 mt-lg-13">
+            <div class="hover-raise-sm col-xs-12 col-lg-6 mb-8 mb-lg-0">
+              <div
+                class="card hover-shadow hover-pointer border-0 rounded-3 p-6"
+              >
+                <p class="paragraph-5 neutral-60 fw-bold mb-3">Dec 2024</p>
+                <h4 class="mb-4">Metabase 52</h4>
+                <p class="paragraph-5 neutral-60 mb-0">
+                  Happy Metabase Release Day to those who observe. You’ll notice
+                  this one’s a touch lighter than most of our recent releases.
+                  We kept this one a little ...
+                </p>
+                <a href="/releases/metabase-52" class="stretched-link h-0"></a>
+              </div>
+            </div>
+
+            <div class="hover-raise-sm col-xs-12 col-lg-6 mb-8 mb-lg-0">
+              <div
+                class="card hover-shadow hover-pointer border-0 rounded-3 p-6"
+              >
+                <p class="paragraph-5 neutral-60 fw-bold mb-3">Nov 2024</p>
+                <h4 class="mb-4">Metabase 51</h4>
+                <p class="paragraph-5 neutral-60 mb-0">
+                  Metabase 51 has a bunch of new stuff to help your team make
+                  the most of your data: viz upgrades, drill-through
+                  improvements, more tools to manage acco...
+                </p>
+                <a href="/releases/metabase-51" class="stretched-link h-0"></a>
+              </div>
+            </div>
+          </div>
+          <a
+            class="chevron blue-small-right fw-bold d-flex d-lg-none"
+            href="/releases">All releases</a
+          >
+        </section>
+
+        <section>
+          <div class="rounded-4 no-overflow">
+            <div class="get-started">
+              <div class="container">
+                <div class="pt0">
+                  <div class="text-centered bootstrap">
+                    <h2
+                      class="large mt0 neutral-white"
+                      style="margin-bottom: 16px"
+                    >
+                      Get started with Metabase
+                    </h2>
+                    <div
+                      class="d-flex justify-content-center align-items-center gap-2"
+                    >
+                      <a
+                        class="fs-13 Button Button--primary rounded-3 ms-lg-2 py-3 lh-base"
+                        href="https://store.metabase.com/checkout"
+                        >Get started</a
+                      >
+                    </div>
+                    <ul class="horizontal-checklist mt-6">
+                      <li>Free, no-commitment trial</li>
+                      <li>Easy for everyone—no SQL required</li>
+                      <li>Up and running in 5 minutes</li>
+                    </ul>
+                    <div class="img-placeholder ml-auto mr-auto"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

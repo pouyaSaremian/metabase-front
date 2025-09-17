@@ -1,23 +1,2843 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /docs/latest/questions/visualizations/pie-or-donut-chart
-// Priority: 0.64
-// Last Modified: 2025-09-16T20:03:10+00:00
+import Base from "../../../../../layouts/Base.astro";
+const title = "Pie and sunburst charts | Metabase Documentation";
+const description =
+  "Pie and sunburst charts A pie chart can be used when breaking out a metric by a single dimension. In Metabase, pies are donuts. A sunburst chart is a multi-dimensional pie chart with multiple breakouts. <img src=";
+const seo = {
+  title: "Pie and sunburst charts | Metabase Documentation",
+  description:
+    "Pie and sunburst charts A pie chart can be used when breaking out a metric by a single dimension. In Metabase, pies are donuts. A sunburst chart is a multi-dimensional pie chart with multiple breakouts. <img src=",
+  canonical: "/docs/latest/questions/visualizations/pie-or-donut-chart",
+  og: {
+    title: "Pie and sunburst charts | Metabase Documentation",
+    description:
+      "Pie and sunburst charts A pie chart can be used when breaking out a metric by a single dimension. In Metabase, pies are donuts. A sunburst chart is a multi-dimensional pie chart with multiple breakouts. <img src=",
+    image: "https://www.metabase.com/images/docs/docs-og.png",
+    url: "https://www.metabase.com/docs/latest/questions/visualizations/pie-or-donut-chart",
+    type: "article",
+    site_name:
+      "Metabase | Business Intelligence, Dashboards, and Data Visualization",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Pie and sunburst charts | Metabase Documentation",
+    description:
+      "Pie and sunburst charts A pie chart can be used when breaking out a metric by a single dimension. In Metabase, pies are donuts. A sunburst chart is a multi-dimensional pie chart with multiple breakouts. <img src=",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/docs/docs-og.png",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Docs Latest Questions Visualizations Pie Or Donut Chart</title>
-</head>
-<body>
-    <h1>Docs Latest Questions Visualizations Pie Or Donut Chart</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/docs/latest/questions/visualizations/pie-or-donut-chart</code></p>
-    <p>Priority: 0.64</p>
-    <p>Last Modified: 2025-09-16T20:03:10+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div>
+    <div class="bootstrap">
+      <div class="learn docs blog-post MB-Page">
+        <div class="learn-left-sidebar" id="main-navigation-content">
+          <div class="docs-learn-toggler">
+            <div class="hover-highlight"></div>
+            <a href="/docs/latest/" class="active">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.25 5.75C19.25 5.19772 18.8023 4.75 18.25 4.75H14C12.8954 4.75 12 5.64543 12 6.75V19.25L12.8284 18.4216C13.5786 17.6714 14.596 17.25 15.6569 17.25H18.25C18.8023 17.25 19.25 16.8023 19.25 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M4.75 5.75C4.75 5.19772 5.19772 4.75 5.75 4.75H10C11.1046 4.75 12 5.64543 12 6.75V19.25L11.1716 18.4216C10.4214 17.6714 9.40401 17.25 8.34315 17.25H5.75C5.19772 17.25 4.75 16.8023 4.75 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Docs</span>
+            </a>
+
+            <a href="/learn/">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 14.0929L20 9.42144L12 4.75L4 9.42144L12 14.0929ZM12 14.0929L17.4756 10.8957C18.196 12.8186 18.4005 14.4134 18.0667 16.45C15.8121 16.68 13.6864 17.6604 12 19.25C10.3138 17.6606 8.18852 16.6802 5.93422 16.45C5.60018 14.4134 5.80465 12.8185 6.52533 10.8957L12 14.0929Z"
+                  stroke="#509EE3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M12.5 9.5C12.5 9.7761 12.2761 10 12 10C11.7239 10 11.5 9.7761 11.5 9.5C11.5 9.2239 11.7239 9 12 9C12.2761 9 12.5 9.2239 12.5 9.5Z"
+                  stroke="#509EE3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Learn</span>
+            </a>
+          </div>
+
+          <a href="/docs/latest/" class="learn-home"> Home </a>
+
+          <h5>Analytics</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/metabase-basics/getting-started/" class="">
+                Getting started
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/learn/metabase-basics/overview/concepts" class="">
+                Metabase concepts
+              </a>
+            </li>
+
+            <li class="expanded">
+              <a href="/docs/latest/questions/start" class="">
+                Queries and charts
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/questions/introduction" class="">
+                    Introduction
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Query builder
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/editor"
+                        class=""
+                      >
+                        Editor
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/filters"
+                        class=""
+                      >
+                        Filtering
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/summarizing-and-grouping"
+                        class=""
+                      >
+                        Summarizing and grouping
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/join"
+                        class=""
+                      >
+                        Joining data
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/expressions"
+                        class=""
+                      >
+                        Custom expressions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/expressions-list"
+                        class=""
+                      >
+                        List of expressions
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    SQL and native queries
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/writing-sql"
+                        class=""
+                      >
+                        SQL editor
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/sql-parameters"
+                        class=""
+                      >
+                        SQL parameters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/field-filters"
+                        class=""
+                      >
+                        Field filters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/basic-sql-parameters"
+                        class=""
+                      >
+                        Basic SQL parameters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/time-grouping-parameters"
+                        class=""
+                      >
+                        Time grouping parameters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/optional-variables"
+                        class=""
+                      >
+                        Optional variables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/filter-widgets"
+                        class=""
+                      >
+                        Filter widgets
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/referencing-saved-questions-in-queries"
+                        class=""
+                      >
+                        Referencing models and questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/snippets"
+                        class=""
+                      >
+                        Snippets
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/permissions/snippets" class="">
+                        Snippet folder permissions
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="expanded">
+                  <a href="#" class="">
+                    Visualizations
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/visualizing-results"
+                        class=""
+                      >
+                        Overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/combo-chart"
+                        class=""
+                      >
+                        Combo chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/detail"
+                        class=""
+                      >
+                        Details chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/funnel"
+                        class=""
+                      >
+                        Funnel chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/gauge"
+                        class=""
+                      >
+                        Gauge chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/line-bar-and-area-charts"
+                        class=""
+                      >
+                        Line, bar, and area charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/map"
+                        class=""
+                      >
+                        Maps
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/numbers"
+                        class=""
+                      >
+                        Number chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/pie-or-donut-chart"
+                        class="selected"
+                      >
+                        Pie and sunburst charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/pivot-table"
+                        class=""
+                      >
+                        Pivot tables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/progress-bar"
+                        class=""
+                      >
+                        Progress bar
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/sankey"
+                        class=""
+                      >
+                        Sankey chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/scatterplot-or-bubble-chart"
+                        class=""
+                      >
+                        Scatterplot
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/table"
+                        class=""
+                      >
+                        Table
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/trend"
+                        class=""
+                      >
+                        Trend chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/waterfall-chart"
+                        class=""
+                      >
+                        Waterfall chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/tooltips"
+                        class=""
+                      >
+                        Tooltips
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/questions/alerts" class=""> Alerts </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/questions/exporting-results" class="">
+                    Exporting data
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/dashboards/start" class="">
+                Dashboards
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/dashboards/introduction" class="">
+                    Overview
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/filters" class="">
+                    Dashboard filters
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/linked-filters" class="">
+                    Linked filters
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/interactive" class="">
+                    Dashboard interactivity
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/multiple-series" class="">
+                    Charts with multiple series
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/subscriptions" class="">
+                    Dashboard subscriptions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/actions" class="">
+                    Actions on dashboards
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/ai/start" class="">
+                AI
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/ai/metabot" class=""> Metabot AI </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/ai/settings" class="">
+                    Metabot settings
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/data-modeling/start" class="">
+                Data modeling
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/data-modeling/models" class="">
+                    Models
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/data-modeling/model-persistence"
+                    class=""
+                  >
+                    Model persistence
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/metrics" class="">
+                    Metrics
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/data-modeling/metadata-editing"
+                    class=""
+                  >
+                    Table metadata settings
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/field-types" class="">
+                    Data and semantic types
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/formatting" class="">
+                    Formatting defaults
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/json-unfolding" class="">
+                    Working with JSON
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/segments" class="">
+                    Segments
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Actions
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/docs/latest/actions/introduction" class="">
+                        Overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/actions/basic" class="">
+                        Basic actions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/actions/custom" class="">
+                        Custom actions
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/exploration-and-organization/start"
+                class=""
+              >
+                Organization
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/exploration"
+                    class=""
+                  >
+                    Basic exploration
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/keyboard-shortcuts"
+                    class=""
+                  >
+                    Keyboard shortcuts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/collections"
+                    class=""
+                  >
+                    Collections
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/data-model-reference"
+                    class=""
+                  >
+                    Data reference
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/events-and-timelines"
+                    class=""
+                  >
+                    Events and timelines
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/x-rays"
+                    class=""
+                  >
+                    X-rays
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/content-verification"
+                    class=""
+                  >
+                    Content verification
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/history"
+                    class=""
+                  >
+                    History
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/delete-and-restore"
+                    class=""
+                  >
+                    Delete and restore
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Embedding</h5>
+
+          <ul>
+            <li class="">
+              <a href="/docs/latest/embedding/introduction" class="">
+                Overview
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/sdk/introduction" class="">
+                Modular embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/embedded-analytics-js"
+                    class=""
+                  >
+                    Embedded analytics JS
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Embedded analytics SDK
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/introduction"
+                        class=""
+                      >
+                        Introduction
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/quickstart" class="">
+                        Quickstart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/quickstart-cli"
+                        class=""
+                      >
+                        Quickstart with CLI
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/quickstart-with-sample-app"
+                        class=""
+                      >
+                        Quickstart with sample app
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/questions" class="">
+                        Questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/dashboards" class="">
+                        Dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/collections" class="">
+                        Collections
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/authentication"
+                        class=""
+                      >
+                        Authentication
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/appearance" class="">
+                        Appearance
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/config" class="">
+                        Config
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/next-js" class="">
+                        Working with Next.js
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/version" class="">
+                        Versioning
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/upgrade" class="">
+                        Upgrading
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/plugins" class="">
+                        Plugins
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/api/" class="">
+                        API
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/static-embedding" class="">
+                Static embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/embedding/static-embedding" class="">
+                    Overview
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/static-embedding-parameters"
+                    class=""
+                  >
+                    Parameters for static embeds
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/embedding/translations" class="">
+                    Translate embeds
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/interactive-embedding" class="">
+                Interactive embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/interactive-embedding"
+                    class=""
+                  >
+                    Overview
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/interactive-embedding-quick-start-guide"
+                    class=""
+                  >
+                    Quickstart
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/interactive-ui-components"
+                    class=""
+                  >
+                    Parameters for interactive embeds
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/public-links" class="">
+                Public links and embeds
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/securing-embeds" class="">
+                Securing embedded Metabase
+              </a>
+            </li>
+          </ul>
+
+          <h5>Administration</h5>
+
+          <ul>
+            <li class="">
+              <a href="/docs/latest/installation-and-operation/start" class="">
+                Installation
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="#" class="">
+                    Installing Metabase
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/installing-metabase"
+                        class=""
+                      >
+                        Installation overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/cloud/start" class="">
+                        Metabase Cloud
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/running-the-metabase-jar-file"
+                        class=""
+                      >
+                        Running the JAR file
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/running-metabase-on-docker"
+                        class=""
+                      >
+                        Running in Docker
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/installing-metabase#other-installation-options"
+                        class=""
+                      >
+                        Other installation options
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/upgrading-metabase"
+                    class=""
+                  >
+                    Upgrading Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/configuring-application-database"
+                    class=""
+                  >
+                    Configuring the Metabase application database
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/activating-the-enterprise-edition"
+                    class=""
+                  >
+                    Activating Enterprise features
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/migrating-from-h2"
+                    class=""
+                  >
+                    Migrating to a production application database
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/databases/start" class="">
+                Data sources
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/databases/connecting" class="">
+                    Adding and managing databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Supported databases
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/athena"
+                        class=""
+                      >
+                        Athena
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/aws-rds"
+                        class=""
+                      >
+                        Amazon RDS
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/bigquery"
+                        class=""
+                      >
+                        BigQuery
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/clickhouse"
+                        class=""
+                      >
+                        ClickHouse
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/databricks"
+                        class=""
+                      >
+                        Databricks
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/druid"
+                        class=""
+                      >
+                        Druid
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/mariadb"
+                        class=""
+                      >
+                        MariaDB
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/mongodb"
+                        class=""
+                      >
+                        MongoDB
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/mysql"
+                        class=""
+                      >
+                        MySQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/oracle"
+                        class=""
+                      >
+                        Oracle
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/postgresql"
+                        class=""
+                      >
+                        PostgreSQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/presto"
+                        class=""
+                      >
+                        Presto
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/redshift"
+                        class=""
+                      >
+                        Redshift
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/snowflake"
+                        class=""
+                      >
+                        Snowflake
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/sql-server"
+                        class=""
+                      >
+                        SQL Server
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/sqlite"
+                        class=""
+                      >
+                        SQLite
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/sparksql"
+                        class=""
+                      >
+                        Spark SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/starburst"
+                        class=""
+                      >
+                        Starburst
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/vertica"
+                        class=""
+                      >
+                        Vertica
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/developers-guide/community-drivers"
+                        class=""
+                      >
+                        Community drivers
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/databases/users-roles-privileges"
+                    class=""
+                  >
+                    Database users, roles, and privileges
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/sync-scan" class="">
+                    Syncing and scanning databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/databases/encrypting-details-at-rest"
+                    class=""
+                  >
+                    Encrypting your database connection
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/ssh-tunnel" class="">
+                    SSH tunneling
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/ssl-certificates" class="">
+                    SSL certificate
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/uploads" class="">
+                    Setting up data uploads
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/uploads"
+                    class=""
+                  >
+                    Uploading data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/storage" class="">
+                    Metabase Cloud Storage
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/google-sheets" class="">
+                    Sync Google Sheets
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/configuring-metabase/start" class="">
+                Configuration
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/setting-up-metabase"
+                    class=""
+                  >
+                    Setting up Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/settings" class="">
+                    General settings
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/email" class="">
+                    Set up email
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/slack" class="">
+                    Set up Slack
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/webhooks" class="">
+                    Webhooks
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/environment-variables"
+                    class=""
+                  >
+                    Environment variables
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/config-file"
+                    class=""
+                  >
+                    Configuration file
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/config-template"
+                    class=""
+                  >
+                    Config file template
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/log-configuration"
+                    class=""
+                  >
+                    Metabase log configuration
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/timezones"
+                    class=""
+                  >
+                    Timezones
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/localization"
+                    class=""
+                  >
+                    Languages and localization
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/appearance"
+                    class=""
+                  >
+                    Appearance
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/fonts" class="">
+                    Fonts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/caching" class="">
+                    Caching query results
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/custom-maps"
+                    class=""
+                  >
+                    Custom maps
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/customizing-jetty-webserver"
+                    class=""
+                  >
+                    Customizing the Metabase Jetty webserver
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/installation-and-operation/start" class="">
+                Operations and monitoring
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/backing-up-metabase-application-data"
+                    class=""
+                  >
+                    Backing up Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/development-instance"
+                    class=""
+                  >
+                    Development instances
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/monitoring-metabase"
+                    class=""
+                  >
+                    Monitoring your Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/observability-with-prometheus"
+                    class=""
+                  >
+                    Observability with Prometheus
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/serialization"
+                    class=""
+                  >
+                    Serialization
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/commands"
+                    class=""
+                  >
+                    Commands
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/usage-and-performance-tools/usage-analytics"
+                    class=""
+                  >
+                    Usage analytics
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/usage-and-performance-tools/tools"
+                    class=""
+                  >
+                    Admin tools
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/people-and-groups/start" class="">
+                Authentication
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/account-settings"
+                    class=""
+                  >
+                    Account settings
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/changing-password-complexity"
+                    class=""
+                  >
+                    Password complexity
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/changing-session-expiration"
+                    class=""
+                  >
+                    Session expiration
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/google-sign-in"
+                    class=""
+                  >
+                    Google Sign-In
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/ldap" class="">
+                    LDAP
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/user-provisioning"
+                    class=""
+                  >
+                    User provisioning
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/api-keys" class="">
+                    API keys
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/start" class="">
+                    Paid SSO options
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/authenticating-with-jwt"
+                        class=""
+                      >
+                        JWT-based authentication
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/authenticating-with-saml"
+                        class=""
+                      >
+                        SAML-based authentication
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-auth0"
+                        class=""
+                      >
+                        SAML with Auth0
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-azure"
+                        class=""
+                      >
+                        SAML with Microsoft Entra ID
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-google"
+                        class=""
+                      >
+                        SAML with Google
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-keycloak"
+                        class=""
+                      >
+                        SAML with Keycloak
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-okta"
+                        class=""
+                      >
+                        SAML with Okta
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/permissions/start" class="">
+                Permissions
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/permissions/introduction" class="">
+                    Permissions introduction
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/managing" class="">
+                    Managing people and groups
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/data" class="">
+                    Data permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/collections" class="">
+                    Collection permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/application" class="">
+                    Application permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/permissions/row-and-column-security"
+                    class=""
+                  >
+                    Row and column security
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/permissions/row-and-column-security-examples"
+                    class=""
+                  >
+                    Row and column security examples
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/database-routing" class="">
+                    Database routing
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/impersonation" class="">
+                    Impersonation
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/snippets" class="">
+                    Snippets folder permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/notifications" class="">
+                    Notification permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/embedding" class="">
+                    Configuring permissions for embedding
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Other resources</h5>
+
+          <ul>
+            <li class="">
+              <a href="/docs/latest/api" class=""> API </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/cloud/start" class="">
+                Metabase Cloud
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/cloud/cloud-vs-self-hosting" class="">
+                    Cloud vs self-hosted
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/custom-domain" class="">
+                    Custom domain
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/limitations" class="">
+                    Cloud limitations
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/change-region" class="">
+                    Change region
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/cloud/ip-addresses-to-whitelist"
+                    class=""
+                  >
+                    IP addresses to whitelist
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/migrate/guide" class="">
+                    Migrate from self-hosted to Cloud
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/cloud/migrate/cloud-to-self-hosted"
+                    class=""
+                  >
+                    Migrate from Cloud to self-hosted
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/migrate/heroku" class="">
+                    Migrate from Heroku
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/cloud/how-billing-works" class="">
+                Billing
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/cloud/how-billing-works" class="">
+                    How billing works
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/accounts-and-billing" class="">
+                    Accounts and billing
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/troubleshooting-guide/" class="">
+                Troubleshooting
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/developers-guide/start" class="">
+                Developer guide
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/paid-features/" class="">
+                Pro and Enterprise features
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/accessibility"
+                class=""
+              >
+                Accessibility
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/supported-browsers"
+                class=""
+              >
+                Supported browsers
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/privacy"
+                class=""
+              >
+                Privacy
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/information-collection"
+                class=""
+              >
+                About the anonymous usage data we collect
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <article class="learn__post learn__article">
+          <div class="top-bar">
+            <div>
+              <div class="learn-breadcrumb-trail">
+                <div class="bootstrap"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="version__selector cursor-pointer">
+                <span class="version__current">
+                  v0.56
+
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+                <ul class="version__dropdown">
+                  <li>
+                    <a href="/docs/v0.55/"> v0.55 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.54/"> v0.54 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.53/"> v0.53 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.52/"> v0.52 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.51/"> v0.51 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.50/"> v0.50 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.49/"> v0.49 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.48/"> v0.48 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.47/"> v0.47 </a>
+                  </li>
+
+                  <li><a href="/docs/all">See more</a></li>
+                </ul>
+              </div>
+
+              <a href="/releases" class="whats-new">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  ><path
+                    stroke="#509EE3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M16.283 12.26 15.5 15l-.783-2.74a4.333 4.333 0 0 0-2.975-2.976L9 8.5l2.74-.783a4.333 4.333 0 0 0 2.976-2.975L15.5 2l.783 2.74a4.333 4.333 0 0 0 2.975 2.976L22 8.5l-2.74.783a4.334 4.334 0 0 0-2.976 2.975l-.001.001ZM6.5 22l.591-1.774a3.375 3.375 0 0 1 2.135-2.135L11 17.5l-1.774-.591a3.375 3.375 0 0 1-2.135-2.134L6.5 13l-.591 1.774a3.375 3.375 0 0 1-2.134 2.135L2 17.5l1.775.591a3.375 3.375 0 0 1 2.134 2.134L6.5 22Z"
+                  ></path></svg
+                >
+
+                What’s new
+              </a>
+
+              <div id="inkeep"></div>
+            </div>
+          </div>
+
+          <div class="learn__post__content">
+            <div></div>
+
+            <h1 id="pie-and-sunburst-charts">Pie and sunburst charts</h1>
+
+            <p>
+              A <strong>pie chart</strong> can be used when breaking out a metric
+              by a single dimension. In Metabase, pies are donuts. A <strong
+                >sunburst chart</strong
+              > is a multi-dimensional pie chart with multiple breakouts.
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/questions/images/pie-sunburst-demo.png"
+                alt="Pie and sunburst charts"
+              />
+            </p>
+
+            <h2 id="when-to-use-a-pie-or-sunburst-chart">
+              When to use a pie or sunburst chart
+            </h2>
+
+            <p>
+              Pie charts can be used to visualize a metric as part of a whole.
+              Sunburst charts can be used to visualize hierarchical or nested
+              data, or display multiple levels of categorization.
+            </p>
+
+            <p>
+              Pie and sunburst charts work best when when the number of possible
+              breakout values is small, like accounts by plan. These charts
+              should only be used to visualize metrics that add up to 100% (like
+              count or sum of total).
+            </p>
+
+            <p>
+              Pie charts should be used to communicate a general sense of the
+              relative sizes of breakouts. If precise comparison is important so
+              people can see the exact differences between values, or you have
+              more than a few breakouts (like customers per country), it’s
+              usually better to use a bar or row chart.
+            </p>
+
+            <h2 id="how-to-create-a-pie-or-sunburst-chart">
+              How to create a pie or sunburst chart
+            </h2>
+
+            <p>
+              Pie and sunburst charts display a single metric across one or more
+              breakouts. Both pie/donut charts and sunburst charts are available
+              in the “Pie chart” option in the visualization sidebar.
+            </p>
+
+            <p>
+              For a simple pie chart, you’ll need a query with a single breakout
+              and metric, for example:
+            </p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Sum of Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Type">Cat</td>
+                  <td data-label="Sum of Quantity">23</td>
+                </tr>
+                <tr>
+                  <td data-label="Type">Bird</td>
+                  <td data-label="Sum of Quantity">14</td>
+                </tr>
+                <tr>
+                  <td data-label="Type">Dog</td>
+                  <td data-label="Sum of Quantity">35</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>
+              If your query has multiple metrics, you’ll be able to choose the
+              metric for the chart in <a href="#pie-and-sunburst-chart-settings"
+                >chart settings</a
+              >.
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/questions/images/plain-pie.png"
+                alt="Plain pie"
+              />
+            </p>
+
+            <p>
+              For a sunburst (multi-dimensional pie) chart, you’ll need a query
+              with up to three breakouts and a numerical metric. Here’s an
+              example of a query result with two breakouts, <code
+                class="language-plaintext highlighter-rouge">Type</code
+              > and <code class="language-plaintext highlighter-rouge"
+                >Subtype</code
+              >:
+            </p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Subtype</th>
+                  <th>Sum of Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Type">Cat</td>
+                  <td data-label="Subtype">Siamese</td>
+                  <td data-label="Sum of Quantity">4</td>
+                </tr>
+                <tr>
+                  <td data-label="Type">Cat</td>
+                  <td data-label="Subtype">Persian</td>
+                  <td data-label="Sum of Quantity">12</td>
+                </tr>
+                <tr>
+                  <td data-label="Type">Cat</td>
+                  <td data-label="Subtype">Bengal</td>
+                  <td data-label="Sum of Quantity">7</td>
+                </tr>
+                <tr>
+                  <td data-label="Type">Bird</td>
+                  <td data-label="Subtype">Crow</td>
+                  <td data-label="Sum of Quantity">5</td>
+                </tr>
+                <tr>
+                  <td data-label="Type">Bird</td>
+                  <td data-label="Subtype">Parrot</td>
+                  <td data-label="Sum of Quantity">9</td>
+                </tr>
+                <tr>
+                  <td data-label="Type">Dog</td>
+                  <td data-label="Subtype">Corgi</td>
+                  <td data-label="Sum of Quantity">10</td>
+                </tr>
+                <tr>
+                  <td data-label="Type">Dog</td>
+                  <td data-label="Subtype">Poodle</td>
+                  <td data-label="Sum of Quantity">13</td>
+                </tr>
+                <tr>
+                  <td data-label="Type">Dog</td>
+                  <td data-label="Subtype">Bulldog</td>
+                  <td data-label="Sum of Quantity">7</td>
+                </tr>
+                <tr>
+                  <td data-label="Type">Dog</td>
+                  <td data-label="Subtype">Husky</td>
+                  <td data-label="Sum of Quantity">5</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>
+              You can choose which breakouts to assign to the inner, middle, or
+              outer rings of the sunburst chart in <a href="#data-settings"
+                >chart “Data” settings</a
+              >. If your query has multiple metrics, you’ll also be able to
+              choose which metric to display. Here’s the sunburst chart for the
+              example table above:
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/questions/images/sunburst-two-levels.png"
+                alt="Sunburst with two levels"
+              />
+            </p>
+
+            <p>
+              You don’t need to include the percentages in your query. Metabase
+              will automatically compute the percentage of the total for each
+              value of the metric (for example, Metabase will compute that 23
+              Cats make up 31.9% of all pets).
+            </p>
+
+            <h2 id="pie-and-sunburst-chart-settings">
+              Pie and sunburst chart settings
+            </h2>
+
+            <p>
+              To open the chart options, click on the gear icon at the bottom
+              left of the screen. This will open a settings sidebar with <strong
+                >Data</strong
+              > and <strong>Display</strong> tabs.
+            </p>
+
+            <h3 id="data-settings">Data settings</h3>
+
+            <p>
+              You can rename, reorder, or remove slices from the inner ring of a
+              sunburst or pie chart. To reorder the pie slices, drag the cards
+              with the slice names. To rename the slices, click on three dots
+              next to the series name and enter a new name.
+            </p>
+
+            <p>
+              To change the color of the pie slices, click on the color circle
+              next to the slice’s name. In sunburst charts, you can only change
+              the color of the slices in the <em>inner</em> ring (the slices in the
+              outer rings inherit the colors of their parent slices).
+            </p>
+
+            <p>
+              If your query has multiple metrics (columns), you can pick the
+              column that should be depicted on the chart in the <strong
+                >Measure</strong
+              > dropdown.
+            </p>
+
+            <p>
+              To format the total displayed in the middle of the chart, click on
+              the three dots next to the metric name in the <strong
+                >Measure</strong
+              > setting. The measure format options — including the “number of decimal
+              places” option — will only apply to the total, and not to the percentage
+              values or labels. To configure the display of the percentage values
+              and labels, go to the <a href="#display-settings"
+                >display settings</a
+              > tab.
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/questions/images/sunburst-metric-options.png"
+                alt="format sunburst"
+              />
+            </p>
+
+            <h3 id="display-settings">Display settings</h3>
+
+            <p>You can configure whether to show:</p>
+
+            <ul>
+              <li>The legend next to the chart.</li>
+              <li>
+                The total in the center of the chart. The format of the total
+                can be changed in the <a href="#data-settings">data settings</a
+                >.
+              </li>
+              <li>
+                <p>
+                  The labels for the pie slices. The labels for the inner ring
+                  slices can be changed in the <a href="#data-settings"
+                    >data settings</a
+                  >.
+                </p>
+
+                <p>
+                  For sunburst charts with multiple breakouts, only the inner
+                  ring breakout will be displayed in the legend. By default,
+                  “Show labels” will be turned on. If you turn off “Show
+                  labels”, the only way to distinguish slices on a sunburst
+                  chart will be to hover over them.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The percentage values for the slices. If you choose to display
+                  percentages <strong>In the legend</strong>, but then toggle
+                  off <strong>Show legend</strong>, the percentage values won’t
+                  show up on the chart.
+                </p>
+
+                <p>
+                  You can always see percentage values for any slice by hovering
+                  over the slice.
+                </p>
+              </li>
+            </ul>
+
+            <p>
+              To change the number of decimal places in the percentage values,
+              use the <strong>Number of decimal places</strong> setting in the <strong
+                >Display</strong
+              > tab. If you want to change the number of decimal places for the total
+              in the center of the chart, go to <a href="#data-settings"
+                >data settings</a
+              >.
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/questions/images/sunburst-settings-showcase.png"
+                alt="Settings showcase"
+              />
+            </p>
+
+            <p>
+              To make the chart more legible, you can group slices smaller than
+              a certain percentage into one slice by adjusting <strong
+                >Minimum slice percentage</strong
+              >. You’ll be able to see the categories and values in the <strong
+                >Other</strong
+              > slice by hovering over it:
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/questions/images/pie-other-slice.png"
+                alt="Other slice"
+              />
+            </p>
+
+            <p>
+              Currently, you can’t change the color or label of the <strong
+                >Other</strong
+              > slice.
+            </p>
+
+            <h2 id="limitations-and-alternatives">
+              Limitations and alternatives
+            </h2>
+
+            <p>
+              Consider using a bar or row chart (or a <a
+                href="/docs/latest/questions/visualizations/line-bar-and-area-charts#stacked-bar-chart"
+                >stacked bar chart</a
+              >) or a <a
+                href="/docs/latest/questions/visualizations/pivot-table"
+                >pivot table</a
+              > instead of a pie or sunburst chart in the following cases:
+            </p>
+
+            <ul>
+              <li>Your data has more than three breakouts</li>
+              <li>
+                Your metrics don’t add up to 100% (for example, average rating -
+                prefer a gauge chart in that case)
+              </li>
+              <li>You have a lot of categories in each breakout</li>
+            </ul>
+
+            <div>
+              <div class="widget-separator"></div>
+
+              <p>
+                Read docs for other <a href="/docs/all">versions of Metabase</a
+                >.
+              </p>
+            </div>
+          </div>
+
+          <div class="learn__right-sidebar">
+            <div id="sub-navigation-content"></div>
+            <div id="was-this-helpful-widget">
+              <div id="page-feedback">
+                <h6>Was this helpful?</h6>
+                <button id="page-feedback-vote-up" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  Yes
+                </button>
+                <button id="page-feedback-vote-down" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="rotate-180 me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  No
+                </button>
+              </div>
+
+              <div id="page-comment" class="flex flex-wrap full hide">
+                <p id="page-feedback-question"></p>
+
+                <form id="page-comment-form" class="flex full">
+                  <textarea
+                    id="feedback-comment-text"
+                    name="comment"
+                    placeholder="Type here…"></textarea>
+
+                  <button
+                    id="page-comment-submit"
+                    class="Button flex align-center"
+                  >
+                    Send
+                  </button>
+                </form>
+              </div>
+
+              <div id="page-feedback-message" class="fs-18 hide">
+                <h6 class="page-feedback-title">Thanks for your feedback!</h6>
+              </div>
+
+              <span
+                class="paragraph-6 fs-13 neutral-60"
+                id="page-feedback-footer"
+              >
+                Want to improve these docs? <a
+                  href="https://github.com/metabase/metabase/blob/master/docs/questions/visualizations/pie-or-donut-chart.md"
+                  target="_blank">Propose a change.</a
+                >
+              </span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

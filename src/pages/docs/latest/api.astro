@@ -1,23 +1,28 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /docs/latest/api
-// Priority: 0.64
-// Last Modified: 2025-09-16T20:03:10+00:00
+import Base from "../../../layouts/Base.astro";
+const title = "Metabase API documentation | Metabase Documentation";
+const description = "The official API documentation for Metabase.";
+const seo = {
+  title: "Metabase API documentation | Metabase Documentation",
+  description: "The official API documentation for Metabase.",
+  canonical: "/docs/latest/api",
+  og: {
+    title: "Metabase API documentation | Metabase Documentation",
+    description: "The official API documentation for Metabase.",
+    image: "https://www.metabase.com/images/docs/docs-og.png",
+    url: "https://www.metabase.com/docs/latest/api",
+    type: "article",
+    site_name:
+      "Metabase | Business Intelligence, Dashboards, and Data Visualization",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Metabase API documentation | Metabase Documentation",
+    description: "The official API documentation for Metabase.",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/docs/docs-og.png",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Docs Latest Api</title>
-</head>
-<body>
-    <h1>Docs Latest Api</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/docs/latest/api</code></p>
-    <p>Priority: 0.64</p>
-    <p>Last Modified: 2025-09-16T20:03:10+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo} />

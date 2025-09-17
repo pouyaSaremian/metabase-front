@@ -1,23 +1,502 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /security
-// Priority: 0.80
-// Last Modified: 2025-09-16T20:03:12+00:00
+import Base from "../layouts/Base.astro";
+const title = "We don’t want your data.";
+const description =
+  "Yes, we think everyone should be able to explore and learn from data. But we also think you should keep it all to yourself.";
+const seo = {
+  title: "We don’t want your data.",
+  description:
+    "Yes, we think everyone should be able to explore and learn from data. But we also think you should keep it all to yourself.",
+  canonical: "/security",
+  og: {
+    title: "We don’t want your data.",
+    description:
+      "Yes, we think everyone should be able to explore and learn from data. But we also think you should keep it all to yourself.",
+    image: "https://www.metabase.com/images/security/preview.jpg",
+    url: "https://www.metabase.com/security",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "We don’t want your data.",
+    description:
+      "Yes, we think everyone should be able to explore and learn from data. But we also think you should keep it all to yourself.",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/security/preview.jpg",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Security</title>
-</head>
-<body>
-    <h1>Security</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/security</code></p>
-    <p>Priority: 0.80</p>
-    <p>Last Modified: 2025-09-16T20:03:12+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="no-overflow">
+    <div class="bootstrap">
+      <div class="pb-17 centered-content">
+        <div class="centered-content__header-container">
+          <div class="container"></div>
+        </div>
+
+        <div class="container mt-8 mt-md-12 toc toc--1">
+          <div class="col-xs-12 offset-lg-3 col-lg-6 checked-list">
+            <article>
+              <h2 id="introduction">
+                <a href="#introduction">Introduction</a>
+              </h2>
+
+              <h3 id="the-beginning-open-source-in-database-analytics">
+                The beginning: open source, in-database analytics
+              </h3>
+
+              <p>
+                From the very beginning, we’ve built Metabase to treat your data
+                the way we’d want ours treated—private and secure. To accomplish
+                this, we got our start with open source, in-database analytics.
+                That means:
+              </p>
+
+              <ul>
+                <li>
+                  <strong
+                    >Your data stays on your servers—and in your control.</strong
+                  > We never look at or copy your data. Period.
+                </li>
+                <li>
+                  <strong
+                    >You can always look under the hood of our project.</strong
+                  > No black boxes here.
+                </li>
+                <li>
+                  <strong
+                    >On-site or <a href="/product/air-gapping"
+                      >air-gapped deployments</a
+                    > aren’t an afterthought.</strong>
+                </li>
+              </ul>
+
+              <p>
+                Although we offer (clearly marked and completely optional) ways
+                to share anonymized usage data, most people’s open-source
+                instances never need to call into us at all, and we take great
+                care to never see anyone’s data.
+              </p>
+
+              <p>
+                Never seeing your data is only part of the solution. We’ve also
+                built detailed privacy and security features to secure data
+                access within your organization, including finely-grained
+                permissions controls and support for SSO.
+              </p>
+
+              <h3 id="cloud-without-compromises">Cloud without compromises</h3>
+
+              <p>
+                We’ve always known we wanted to make it easier for people to use
+                Metabase. When we decided it was time to offer cloud-hosted
+                plans, we also knew we wanted to bring the same commitment to
+                data security and privacy to these plans.
+              </p>
+
+              <p>
+                To accomplish that, we designed our hosted plans with an
+                architecture designed to support that commitment.
+              </p>
+
+              <figure class="image">
+                <img
+                  class="image__img image__img--md"
+                  src="/images/security/metabase-cloud-architecture-desktop.jpg"
+                  alt="Metabase cloud architecture"
+                  loading="lazy"
+                />
+
+                <img
+                  class="image__img"
+                  src="/images/security/metabase-cloud-architecture-mobile.jpg"
+                  alt="Metabase cloud architecture"
+                  loading="lazy"
+                />
+
+                <figcaption>Metabase cloud architecture</figcaption>
+              </figure>
+
+              <ul>
+                <li>
+                  <strong
+                    >Starter instances of Metabase are just that—our open-source
+                    project conveniently bundled with its own hosting.</strong
+                  > There’s some minor tweaks around the edges, but for the most
+                  part, it’s everything you love about open-source Metabase with
+                  additional convenient hosting. You can even keep it in the neighborhood,
+                  with cloud-hosting options in the US, Europe, Latin America, and
+                  Asia-Pacific.
+                </li>
+                <li>
+                  <strong
+                    >We’ve designed our architecture to prioritize isolation:</strong
+                  > Each of our hosting customers have their own containers, with
+                  no shared clusters. That means requests to your Metabase instance
+                  are your requests.
+                </li>
+                <li>
+                  <strong
+                    >Just like in our open-source offerings, we still very much
+                    don’t want to see your data.</strong
+                  > We keep as much of it as possible on your servers, and what we
+                  do touch, we encrypt in transit and hash any identifiable data.
+                  That means that unless you enable results caching, none of the
+                  data returned by your database is stored on our end, and we never
+                  see that content.
+                </li>
+              </ul>
+
+              <p>
+                Our hosted plans come with the same opt-in options for sharing
+                anonymized usage data and the same privacy and security features
+                to help you secure access within your organization.
+              </p>
+
+              <h2 id="enterprise-grade-compliance">
+                <a href="#enterprise-grade-compliance"
+                  >Enterprise grade compliance</a>
+              </h2>
+
+              <section class="section-with-image">
+                <figure class="image">
+                  <img
+                    src="/images/SOC-2-Badge.png"
+                    alt="SOC 2 Type II"
+                    loading="lazy"
+                  />
+                </figure>
+                <div class="section-with-image__content">
+                  <h4>SOC 2 Type II</h4>
+                  <p>
+                    Our SOC 2 Type II report attests to the controls we have in
+                    place governing the security of customer data as they map to
+                    Trust Service Principles (TSPs) established by the American
+                    Institute of Certified Public Accountants (AICPA).
+                  </p>
+                </div>
+              </section>
+
+              <section class="section-with-image">
+                <figure class="image">
+                  <img
+                    src="/images/security/badge_EU.png"
+                    alt="General Data Protection Regulation"
+                    loading="lazy"
+                  />
+                </figure>
+                <div class="section-with-image__content">
+                  <h4>General Data Protection Regulation</h4>
+                  <p>
+                    At Metabase, we’ve worked to make our products, processes,
+                    and procedures GDPR-compliant.
+                  </p>
+                </div>
+              </section>
+
+              <section class="section-with-image">
+                <figure class="image">
+                  <img
+                    src="/images/security/badge_CCPA.png"
+                    alt="California Consumer Privacy Act (CCPA)"
+                    loading="lazy"
+                  />
+                </figure>
+                <div class="section-with-image__content">
+                  <h4>California Consumer Privacy Act (CCPA)</h4>
+                  <p>
+                    Metabase acts as a service provider to customers under the
+                    California Consumer Privacy Act (CCPA), and we support our
+                    customers’ compliance with the CCPA.
+                  </p>
+                </div>
+              </section>
+
+              <h2 id="data-privacy">
+                <a href="#data-privacy">Data privacy</a>
+              </h2>
+
+              <h3 id="data-sharing-and-processing">
+                Data sharing and processing
+              </h3>
+
+              <ul>
+                <li>
+                  <p>
+                    Metabase follows GDPR and CCPA guidelines to ensure data
+                    protection obligations to our customers. This includes only
+                    collecting, processing, and storing customer data in
+                    compliance with these obligations and providing you the
+                    right to access or delete it at any time.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Metabase provides controls for deleting customer data when
+                    it is no longer needed for a legitimate business purpose and
+                    also provides users the option to opt-out of tracking
+                    cookies on our website.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Metabase also requires our data processing vendors to
+                    certify the use of customer data for no other purposes than
+                    the provision of services.
+                  </p>
+                </li>
+              </ul>
+
+              <h3 id="data-disposal">Data disposal</h3>
+
+              <ul>
+                <li>
+                  As a customer, you can request buyer-related data deletion at
+                  any time.
+                </li>
+                <li>
+                  Instance-related data is removed automatically after a period
+                  of inactivity.
+                </li>
+                <li>
+                  Metabase’s hosting providers maintain industry standard
+                  security practices for ensuring removal of data from storage
+                  media.
+                </li>
+              </ul>
+
+              <h3 id="vendor-management">Vendor management</h3>
+
+              <ul>
+                <li>
+                  Metabase has established agreements that
+                  require&nbsp;subprocessors&nbsp;to adhere to confidentiality
+                  commitments and take appropriate steps to ensure our security
+                  posture is maintained.
+                </li>
+                <li>
+                  Metabase monitors these sub-processing vendors by conducting
+                  reviews of their controls before use and at least annually.
+                </li>
+              </ul>
+
+              <h2 id="penetration-testing-and-vulnerability-disclosure">
+                <a href="#penetration-testing-and-vulnerability-disclosure"
+                  >Penetration testing and vulnerability disclosure</a>
+              </h2>
+
+              <h3 id="penetration-testing">Penetration testing</h3>
+
+              <ul>
+                <li>
+                  In addition to our compliance audits, Metabase engages
+                  independent entities to conduct application-level and
+                  infrastructure-level penetration tests at least twice per
+                  year.
+                </li>
+                <li>
+                  Results of these tests are prioritized, and remediated in a
+                  timely manner, and shared with senior management.
+                </li>
+                <li>
+                  Customers may receive executive summaries of these activities
+                  by requesting them from their success team representative.
+                </li>
+              </ul>
+
+              <h3 id="vulnerability-disclosure">Vulnerability disclosure</h3>
+
+              <ul>
+                <li>
+                  Our engineering processes integrate a real-time vulnerability
+                  scanner.
+                </li>
+                <li>
+                  Metabase is committed to working with security experts across
+                  the world to stay up to date with the latest security
+                  techniques. We publish our security advisories on GitHub.
+                </li>
+              </ul>
+
+              <h2 id="access-management-encryption-and-endpoint-security">
+                <a href="#access-management-encryption-and-endpoint-security"
+                  >Access management, encryption, and endpoint security</a>
+              </h2>
+
+              <h3 id="access-management">Access management</h3>
+
+              <ul>
+                <li>
+                  Metabase adheres to the principles of least privilege and
+                  role-based permissions when provisioning access; workers are
+                  only authorized to access data that they reasonably must
+                  handle in order to fulfill their current job responsibilities.
+                </li>
+                <li>
+                  Metabase requires personnel to use an approved password
+                  manager.
+                </li>
+              </ul>
+
+              <h3 id="encryption">Encryption</h3>
+
+              <ul>
+                <li>
+                  Metabase encrypts data using industry standard protocols.
+                </li>
+                <li>Data in transit is encrypted using TLS 1.2 or higher.</li>
+                <li>
+                  Sensitive data, like connection strings and settings, is
+                  encrypted at row-level with AES256 + SHA512. Additionally AWS
+                  also encrypts the disks where data is written.
+                </li>
+                <li>
+                  Key management is in place for encryption keys for production
+                  services.
+                </li>
+              </ul>
+
+              <h3 id="endpoint-security">Endpoint Security</h3>
+
+              <ul>
+                <li>
+                  All workstations issued to Metabase personnel are configured
+                  by Metabase to comply with our standards for security.
+                </li>
+                <li>
+                  These standards require all workstations to be properly
+                  configured, updated, and tracked and monitored by Metabase’s
+                  endpoint management solutions.
+                </li>
+                <li>
+                  Metabase’s default configuration sets up workstations to
+                  encrypt data at rest, have strong passwords, and lock when
+                  idle.
+                </li>
+                <li>
+                  Workstations run up-to-date monitoring software to report
+                  potential malware.
+                </li>
+              </ul>
+
+              <h2 id="network-security--system-monitoring">
+                <a href="#network-security--system-monitoring"
+                  >Network security &amp; system monitoring</a>
+              </h2>
+
+              <h3 id="network-security-and-server-hardening">
+                Network security and server hardening
+              </h3>
+
+              <ul>
+                <li>
+                  Metabase segments its systems into separate networks with
+                  modern, restrictive firewalls between networks to better
+                  protect sensitive data.
+                </li>
+                <li>
+                  Testing and development systems are hosted in a separate
+                  network from production infrastructure systems.
+                </li>
+                <li>
+                  All servers within our production fleet are hardened according
+                  to industry standard CIS benchmarks.
+                </li>
+                <li>
+                  Network access to Metabase’s production environment from open,
+                  public networks is restricted, with only the load balancers
+                  accessible from the Internet.
+                </li>
+                <li>
+                  Metabase logs, monitors, and audits all system calls, and has
+                  alerting in place for calls that indicate a potential
+                  intrusion or exfiltration attempt.
+                </li>
+              </ul>
+
+              <h3 id="system-monitoring-logging-and-alerting">
+                System monitoring, logging, and alerting
+              </h3>
+
+              <ul>
+                <li>
+                  Metabase monitors infrastructure of servers and workstations
+                  to gain a comprehensive view of the security state.
+                </li>
+                <li>
+                  Administrative access, use of privileged commands, and system
+                  calls on all servers in Metabase’s production network are
+                  logged and monitored.
+                </li>
+                <li>
+                  Analysis of logs is automated to detect potential issues and
+                  alert responsible personnel.
+                </li>
+              </ul>
+
+              <h2 id="disaster-recovery--incident-response">
+                <a href="#disaster-recovery--incident-response"
+                  >Disaster recovery &amp; incident response</a>
+              </h2>
+
+              <h3 id="disaster-recover-and-business-continuity-plan">
+                Disaster recover and business continuity plan
+              </h3>
+
+              <ul>
+                <li>
+                  Metabase utilizes services deployed by its hosting provider to
+                  distribute production operations across separate availability
+                  zones. These distributed zones protect Metabase’s service from
+                  loss of connectivity, power infrastructure, and other common
+                  location-specific failures.
+                </li>
+                <li>
+                  Metabase performs daily backups and replication for its core
+                  databases across these zones and supports restore capability
+                  to protect the availability of Metabase’s service in the event
+                  of a site disaster affecting any of these locations.
+                </li>
+                <li>
+                  Full backups are saved at least once per day and transactions
+                  are saved continuously.
+                </li>
+                <li>
+                  Metabase tests backup and restore capabilities annually to
+                  ensure successful disaster recovery.
+                </li>
+              </ul>
+
+              <h3 id="responding-to-security-incidents">
+                Responding to security incidents
+              </h3>
+
+              <ul>
+                <li>
+                  Metabase has established policies and procedures for
+                  responding to potential security incidents.
+                </li>
+                <li>
+                  All security incidents are managed by Metabase’s dedicated
+                  Incident Response Team. The policies define the types of
+                  events that must be managed via the incident response process
+                  and classifies them based on severity.
+                </li>
+                <li>
+                  In the event of an incident, affected customers will be
+                  informed via email from our customer success team. Incident
+                  response procedures are tested and updated at least annually.
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

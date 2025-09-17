@@ -1,23 +1,3095 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /docs/latest/installation-and-operation/running-metabase-on-azure
-// Priority: 0.64
-// Last Modified: 2025-09-16T20:03:10+00:00
+import Base from "../../../../layouts/Base.astro";
+const title = "Running Metabase on Microsoft Azure | Metabase Documentation";
+const description =
+  "Running Metabase on Microsoft Azure This guide covers the basics for running your Metabase instance in Microsoft Azure using Docker. Step 1: Create the resource group (resource grouping) On the Azure management console, click on the Resource Groups icon at...";
+const seo = {
+  title: "Running Metabase on Microsoft Azure | Metabase Documentation",
+  description:
+    "Running Metabase on Microsoft Azure This guide covers the basics for running your Metabase instance in Microsoft Azure using Docker. Step 1: Create the resource group (resource grouping) On the Azure management console, click on the Resource Groups icon at...",
+  canonical:
+    "/docs/latest/installation-and-operation/running-metabase-on-azure",
+  og: {
+    title: "Running Metabase on Microsoft Azure | Metabase Documentation",
+    description:
+      "Running Metabase on Microsoft Azure This guide covers the basics for running your Metabase instance in Microsoft Azure using Docker. Step 1: Create the resource group (resource grouping) On the Azure management console, click on the Resource Groups icon at...",
+    image: "https://www.metabase.com/images/docs/docs-og.png",
+    url: "https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-azure",
+    type: "article",
+    site_name:
+      "Metabase | Business Intelligence, Dashboards, and Data Visualization",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Running Metabase on Microsoft Azure | Metabase Documentation",
+    description:
+      "Running Metabase on Microsoft Azure This guide covers the basics for running your Metabase instance in Microsoft Azure using Docker. Step 1: Create the resource group (resource grouping) On the Azure management console, click on the Resource Groups icon at...",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/docs/docs-og.png",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Docs Latest Installation And Operation Running Metabase On Azure</title>
-</head>
-<body>
-    <h1>Docs Latest Installation And Operation Running Metabase On Azure</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/docs/latest/installation-and-operation/running-metabase-on-azure</code></p>
-    <p>Priority: 0.64</p>
-    <p>Last Modified: 2025-09-16T20:03:10+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div>
+    <div class="bootstrap">
+      <div class="learn docs blog-post MB-Page">
+        <div class="learn-left-sidebar" id="main-navigation-content">
+          <div class="docs-learn-toggler">
+            <div class="hover-highlight"></div>
+            <a href="/docs/latest/" class="active">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.25 5.75C19.25 5.19772 18.8023 4.75 18.25 4.75H14C12.8954 4.75 12 5.64543 12 6.75V19.25L12.8284 18.4216C13.5786 17.6714 14.596 17.25 15.6569 17.25H18.25C18.8023 17.25 19.25 16.8023 19.25 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M4.75 5.75C4.75 5.19772 5.19772 4.75 5.75 4.75H10C11.1046 4.75 12 5.64543 12 6.75V19.25L11.1716 18.4216C10.4214 17.6714 9.40401 17.25 8.34315 17.25H5.75C5.19772 17.25 4.75 16.8023 4.75 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Docs</span>
+            </a>
+
+            <a href="/learn/">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 14.0929L20 9.42144L12 4.75L4 9.42144L12 14.0929ZM12 14.0929L17.4756 10.8957C18.196 12.8186 18.4005 14.4134 18.0667 16.45C15.8121 16.68 13.6864 17.6604 12 19.25C10.3138 17.6606 8.18852 16.6802 5.93422 16.45C5.60018 14.4134 5.80465 12.8185 6.52533 10.8957L12 14.0929Z"
+                  stroke="#509EE3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M12.5 9.5C12.5 9.7761 12.2761 10 12 10C11.7239 10 11.5 9.7761 11.5 9.5C11.5 9.2239 11.7239 9 12 9C12.2761 9 12.5 9.2239 12.5 9.5Z"
+                  stroke="#509EE3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Learn</span>
+            </a>
+          </div>
+
+          <a href="/docs/latest/" class="learn-home"> Home </a>
+
+          <h5>Analytics</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/metabase-basics/getting-started/" class="">
+                Getting started
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/learn/metabase-basics/overview/concepts" class="">
+                Metabase concepts
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/questions/start" class="">
+                Queries and charts
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/questions/introduction" class="">
+                    Introduction
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Query builder
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/editor"
+                        class=""
+                      >
+                        Editor
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/filters"
+                        class=""
+                      >
+                        Filtering
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/summarizing-and-grouping"
+                        class=""
+                      >
+                        Summarizing and grouping
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/join"
+                        class=""
+                      >
+                        Joining data
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/expressions"
+                        class=""
+                      >
+                        Custom expressions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/query-builder/expressions-list"
+                        class=""
+                      >
+                        List of expressions
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    SQL and native queries
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/writing-sql"
+                        class=""
+                      >
+                        SQL editor
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/sql-parameters"
+                        class=""
+                      >
+                        SQL parameters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/field-filters"
+                        class=""
+                      >
+                        Field filters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/basic-sql-parameters"
+                        class=""
+                      >
+                        Basic SQL parameters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/time-grouping-parameters"
+                        class=""
+                      >
+                        Time grouping parameters
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/optional-variables"
+                        class=""
+                      >
+                        Optional variables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/filter-widgets"
+                        class=""
+                      >
+                        Filter widgets
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/referencing-saved-questions-in-queries"
+                        class=""
+                      >
+                        Referencing models and questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/native-editor/snippets"
+                        class=""
+                      >
+                        Snippets
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/permissions/snippets" class="">
+                        Snippet folder permissions
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Visualizations
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/visualizing-results"
+                        class=""
+                      >
+                        Overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/combo-chart"
+                        class=""
+                      >
+                        Combo chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/detail"
+                        class=""
+                      >
+                        Details chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/funnel"
+                        class=""
+                      >
+                        Funnel chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/gauge"
+                        class=""
+                      >
+                        Gauge chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/line-bar-and-area-charts"
+                        class=""
+                      >
+                        Line, bar, and area charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/map"
+                        class=""
+                      >
+                        Maps
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/numbers"
+                        class=""
+                      >
+                        Number chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/pie-or-donut-chart"
+                        class=""
+                      >
+                        Pie and sunburst charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/pivot-table"
+                        class=""
+                      >
+                        Pivot tables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/progress-bar"
+                        class=""
+                      >
+                        Progress bar
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/sankey"
+                        class=""
+                      >
+                        Sankey chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/scatterplot-or-bubble-chart"
+                        class=""
+                      >
+                        Scatterplot
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/table"
+                        class=""
+                      >
+                        Table
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/trend"
+                        class=""
+                      >
+                        Trend chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/waterfall-chart"
+                        class=""
+                      >
+                        Waterfall chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/questions/visualizations/tooltips"
+                        class=""
+                      >
+                        Tooltips
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/questions/alerts" class=""> Alerts </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/questions/exporting-results" class="">
+                    Exporting data
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/dashboards/start" class="">
+                Dashboards
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/dashboards/introduction" class="">
+                    Overview
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/filters" class="">
+                    Dashboard filters
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/linked-filters" class="">
+                    Linked filters
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/interactive" class="">
+                    Dashboard interactivity
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/multiple-series" class="">
+                    Charts with multiple series
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/subscriptions" class="">
+                    Dashboard subscriptions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/dashboards/actions" class="">
+                    Actions on dashboards
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/ai/start" class="">
+                AI
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/ai/metabot" class=""> Metabot AI </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/ai/settings" class="">
+                    Metabot settings
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/data-modeling/start" class="">
+                Data modeling
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/data-modeling/models" class="">
+                    Models
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/data-modeling/model-persistence"
+                    class=""
+                  >
+                    Model persistence
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/metrics" class="">
+                    Metrics
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/data-modeling/metadata-editing"
+                    class=""
+                  >
+                    Table metadata settings
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/field-types" class="">
+                    Data and semantic types
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/formatting" class="">
+                    Formatting defaults
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/json-unfolding" class="">
+                    Working with JSON
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/data-modeling/segments" class="">
+                    Segments
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Actions
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/docs/latest/actions/introduction" class="">
+                        Overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/actions/basic" class="">
+                        Basic actions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/actions/custom" class="">
+                        Custom actions
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/exploration-and-organization/start"
+                class=""
+              >
+                Organization
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/exploration"
+                    class=""
+                  >
+                    Basic exploration
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/keyboard-shortcuts"
+                    class=""
+                  >
+                    Keyboard shortcuts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/collections"
+                    class=""
+                  >
+                    Collections
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/data-model-reference"
+                    class=""
+                  >
+                    Data reference
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/events-and-timelines"
+                    class=""
+                  >
+                    Events and timelines
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/x-rays"
+                    class=""
+                  >
+                    X-rays
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/content-verification"
+                    class=""
+                  >
+                    Content verification
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/history"
+                    class=""
+                  >
+                    History
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/delete-and-restore"
+                    class=""
+                  >
+                    Delete and restore
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Embedding</h5>
+
+          <ul>
+            <li class="">
+              <a href="/docs/latest/embedding/introduction" class="">
+                Overview
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/sdk/introduction" class="">
+                Modular embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/embedded-analytics-js"
+                    class=""
+                  >
+                    Embedded analytics JS
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Embedded analytics SDK
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/introduction"
+                        class=""
+                      >
+                        Introduction
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/quickstart" class="">
+                        Quickstart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/quickstart-cli"
+                        class=""
+                      >
+                        Quickstart with CLI
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/quickstart-with-sample-app"
+                        class=""
+                      >
+                        Quickstart with sample app
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/questions" class="">
+                        Questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/dashboards" class="">
+                        Dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/collections" class="">
+                        Collections
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/embedding/sdk/authentication"
+                        class=""
+                      >
+                        Authentication
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/appearance" class="">
+                        Appearance
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/config" class="">
+                        Config
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/next-js" class="">
+                        Working with Next.js
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/version" class="">
+                        Versioning
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/upgrade" class="">
+                        Upgrading
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/plugins" class="">
+                        Plugins
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/embedding/sdk/api/" class="">
+                        API
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/static-embedding" class="">
+                Static embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/embedding/static-embedding" class="">
+                    Overview
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/static-embedding-parameters"
+                    class=""
+                  >
+                    Parameters for static embeds
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/embedding/translations" class="">
+                    Translate embeds
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/interactive-embedding" class="">
+                Interactive embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/interactive-embedding"
+                    class=""
+                  >
+                    Overview
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/interactive-embedding-quick-start-guide"
+                    class=""
+                  >
+                    Quickstart
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/embedding/interactive-ui-components"
+                    class=""
+                  >
+                    Parameters for interactive embeds
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/public-links" class="">
+                Public links and embeds
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/embedding/securing-embeds" class="">
+                Securing embedded Metabase
+              </a>
+            </li>
+          </ul>
+
+          <h5>Administration</h5>
+
+          <ul>
+            <li class="">
+              <a href="/docs/latest/installation-and-operation/start" class="">
+                Installation
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="#" class="">
+                    Installing Metabase
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/installing-metabase"
+                        class=""
+                      >
+                        Installation overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/docs/latest/cloud/start" class="">
+                        Metabase Cloud
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/running-the-metabase-jar-file"
+                        class=""
+                      >
+                        Running the JAR file
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/running-metabase-on-docker"
+                        class=""
+                      >
+                        Running in Docker
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/installation-and-operation/installing-metabase#other-installation-options"
+                        class=""
+                      >
+                        Other installation options
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/upgrading-metabase"
+                    class=""
+                  >
+                    Upgrading Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/configuring-application-database"
+                    class=""
+                  >
+                    Configuring the Metabase application database
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/activating-the-enterprise-edition"
+                    class=""
+                  >
+                    Activating Enterprise features
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/migrating-from-h2"
+                    class=""
+                  >
+                    Migrating to a production application database
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/databases/start" class="">
+                Data sources
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/databases/connecting" class="">
+                    Adding and managing databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="#" class="">
+                    Supported databases
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/athena"
+                        class=""
+                      >
+                        Athena
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/aws-rds"
+                        class=""
+                      >
+                        Amazon RDS
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/bigquery"
+                        class=""
+                      >
+                        BigQuery
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/clickhouse"
+                        class=""
+                      >
+                        ClickHouse
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/databricks"
+                        class=""
+                      >
+                        Databricks
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/druid"
+                        class=""
+                      >
+                        Druid
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/mariadb"
+                        class=""
+                      >
+                        MariaDB
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/mongodb"
+                        class=""
+                      >
+                        MongoDB
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/mysql"
+                        class=""
+                      >
+                        MySQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/oracle"
+                        class=""
+                      >
+                        Oracle
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/postgresql"
+                        class=""
+                      >
+                        PostgreSQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/presto"
+                        class=""
+                      >
+                        Presto
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/redshift"
+                        class=""
+                      >
+                        Redshift
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/snowflake"
+                        class=""
+                      >
+                        Snowflake
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/sql-server"
+                        class=""
+                      >
+                        SQL Server
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/sqlite"
+                        class=""
+                      >
+                        SQLite
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/sparksql"
+                        class=""
+                      >
+                        Spark SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/starburst"
+                        class=""
+                      >
+                        Starburst
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/databases/connections/vertica"
+                        class=""
+                      >
+                        Vertica
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/developers-guide/community-drivers"
+                        class=""
+                      >
+                        Community drivers
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/databases/users-roles-privileges"
+                    class=""
+                  >
+                    Database users, roles, and privileges
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/sync-scan" class="">
+                    Syncing and scanning databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/databases/encrypting-details-at-rest"
+                    class=""
+                  >
+                    Encrypting your database connection
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/ssh-tunnel" class="">
+                    SSH tunneling
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/ssl-certificates" class="">
+                    SSL certificate
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/databases/uploads" class="">
+                    Setting up data uploads
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/exploration-and-organization/uploads"
+                    class=""
+                  >
+                    Uploading data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/storage" class="">
+                    Metabase Cloud Storage
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/google-sheets" class="">
+                    Sync Google Sheets
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/configuring-metabase/start" class="">
+                Configuration
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/setting-up-metabase"
+                    class=""
+                  >
+                    Setting up Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/settings" class="">
+                    General settings
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/email" class="">
+                    Set up email
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/slack" class="">
+                    Set up Slack
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/webhooks" class="">
+                    Webhooks
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/environment-variables"
+                    class=""
+                  >
+                    Environment variables
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/config-file"
+                    class=""
+                  >
+                    Configuration file
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/config-template"
+                    class=""
+                  >
+                    Config file template
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/log-configuration"
+                    class=""
+                  >
+                    Metabase log configuration
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/timezones"
+                    class=""
+                  >
+                    Timezones
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/localization"
+                    class=""
+                  >
+                    Languages and localization
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/appearance"
+                    class=""
+                  >
+                    Appearance
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/fonts" class="">
+                    Fonts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/configuring-metabase/caching" class="">
+                    Caching query results
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/custom-maps"
+                    class=""
+                  >
+                    Custom maps
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/configuring-metabase/customizing-jetty-webserver"
+                    class=""
+                  >
+                    Customizing the Metabase Jetty webserver
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/installation-and-operation/start" class="">
+                Operations and monitoring
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/backing-up-metabase-application-data"
+                    class=""
+                  >
+                    Backing up Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/development-instance"
+                    class=""
+                  >
+                    Development instances
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/monitoring-metabase"
+                    class=""
+                  >
+                    Monitoring your Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/observability-with-prometheus"
+                    class=""
+                  >
+                    Observability with Prometheus
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/serialization"
+                    class=""
+                  >
+                    Serialization
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/installation-and-operation/commands"
+                    class=""
+                  >
+                    Commands
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/usage-and-performance-tools/usage-analytics"
+                    class=""
+                  >
+                    Usage analytics
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/usage-and-performance-tools/tools"
+                    class=""
+                  >
+                    Admin tools
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/people-and-groups/start" class="">
+                Authentication
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/account-settings"
+                    class=""
+                  >
+                    Account settings
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/changing-password-complexity"
+                    class=""
+                  >
+                    Password complexity
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/changing-session-expiration"
+                    class=""
+                  >
+                    Session expiration
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/google-sign-in"
+                    class=""
+                  >
+                    Google Sign-In
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/ldap" class="">
+                    LDAP
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/people-and-groups/user-provisioning"
+                    class=""
+                  >
+                    User provisioning
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/api-keys" class="">
+                    API keys
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/start" class="">
+                    Paid SSO options
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/authenticating-with-jwt"
+                        class=""
+                      >
+                        JWT-based authentication
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/authenticating-with-saml"
+                        class=""
+                      >
+                        SAML-based authentication
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-auth0"
+                        class=""
+                      >
+                        SAML with Auth0
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-azure"
+                        class=""
+                      >
+                        SAML with Microsoft Entra ID
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-google"
+                        class=""
+                      >
+                        SAML with Google
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-keycloak"
+                        class=""
+                      >
+                        SAML with Keycloak
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/docs/latest/people-and-groups/saml-okta"
+                        class=""
+                      >
+                        SAML with Okta
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/permissions/start" class="">
+                Permissions
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/permissions/introduction" class="">
+                    Permissions introduction
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/people-and-groups/managing" class="">
+                    Managing people and groups
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/data" class="">
+                    Data permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/collections" class="">
+                    Collection permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/application" class="">
+                    Application permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/permissions/row-and-column-security"
+                    class=""
+                  >
+                    Row and column security
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/permissions/row-and-column-security-examples"
+                    class=""
+                  >
+                    Row and column security examples
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/database-routing" class="">
+                    Database routing
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/impersonation" class="">
+                    Impersonation
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/snippets" class="">
+                    Snippets folder permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/notifications" class="">
+                    Notification permissions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/permissions/embedding" class="">
+                    Configuring permissions for embedding
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Other resources</h5>
+
+          <ul>
+            <li class="">
+              <a href="/docs/latest/api" class=""> API </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/cloud/start" class="">
+                Metabase Cloud
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/cloud/cloud-vs-self-hosting" class="">
+                    Cloud vs self-hosted
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/custom-domain" class="">
+                    Custom domain
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/limitations" class="">
+                    Cloud limitations
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/change-region" class="">
+                    Change region
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/cloud/ip-addresses-to-whitelist"
+                    class=""
+                  >
+                    IP addresses to whitelist
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/migrate/guide" class="">
+                    Migrate from self-hosted to Cloud
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/docs/latest/cloud/migrate/cloud-to-self-hosted"
+                    class=""
+                  >
+                    Migrate from Cloud to self-hosted
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/migrate/heroku" class="">
+                    Migrate from Heroku
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/cloud/how-billing-works" class="">
+                Billing
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/docs/latest/cloud/how-billing-works" class="">
+                    How billing works
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/docs/latest/cloud/accounts-and-billing" class="">
+                    Accounts and billing
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/troubleshooting-guide/" class="">
+                Troubleshooting
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/developers-guide/start" class="">
+                Developer guide
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/docs/latest/paid-features/" class="">
+                Pro and Enterprise features
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/accessibility"
+                class=""
+              >
+                Accessibility
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/supported-browsers"
+                class=""
+              >
+                Supported browsers
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/privacy"
+                class=""
+              >
+                Privacy
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/docs/latest/installation-and-operation/information-collection"
+                class=""
+              >
+                About the anonymous usage data we collect
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <article class="learn__post learn__article">
+          <div class="top-bar">
+            <div>
+              <div class="learn-breadcrumb-trail">
+                <div class="bootstrap"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="version__selector cursor-pointer">
+                <span class="version__current">
+                  v0.56
+
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+                <ul class="version__dropdown">
+                  <li>
+                    <a href="/docs/v0.55/"> v0.55 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.54/"> v0.54 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.53/"> v0.53 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.52/"> v0.52 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.51/"> v0.51 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.50/"> v0.50 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.49/"> v0.49 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.48/"> v0.48 </a>
+                  </li>
+
+                  <li>
+                    <a href="/docs/v0.47/"> v0.47 </a>
+                  </li>
+
+                  <li><a href="/docs/all">See more</a></li>
+                </ul>
+              </div>
+
+              <a href="/releases" class="whats-new">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  ><path
+                    stroke="#509EE3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M16.283 12.26 15.5 15l-.783-2.74a4.333 4.333 0 0 0-2.975-2.976L9 8.5l2.74-.783a4.333 4.333 0 0 0 2.976-2.975L15.5 2l.783 2.74a4.333 4.333 0 0 0 2.975 2.976L22 8.5l-2.74.783a4.334 4.334 0 0 0-2.976 2.975l-.001.001ZM6.5 22l.591-1.774a3.375 3.375 0 0 1 2.135-2.135L11 17.5l-1.774-.591a3.375 3.375 0 0 1-2.135-2.134L6.5 13l-.591 1.774a3.375 3.375 0 0 1-2.134 2.135L2 17.5l1.775.591a3.375 3.375 0 0 1 2.134 2.134L6.5 22Z"
+                  ></path></svg
+                >
+
+                What’s new
+              </a>
+
+              <div id="inkeep"></div>
+            </div>
+          </div>
+
+          <div class="learn__post__content">
+            <div></div>
+
+            <h1 id="running-metabase-on-microsoft-azure">
+              Running Metabase on Microsoft Azure
+            </h1>
+
+            <p>
+              This guide covers the basics for running your Metabase instance in
+              Microsoft Azure using Docker.
+            </p>
+
+            <h2 id="step-1-create-the-resource-group-resource-grouping">
+              Step 1: Create the resource group (resource grouping)
+            </h2>
+
+            <p>
+              On the Azure management console, click on the <strong
+                >Resource Groups</strong
+              > icon at the top of the page (or just search for Resource Groups).
+              If you already have a resource group, you can go straight to <a
+                href="#step-2-create-the-vnet-virtual-network">Step 2</a
+              >.
+            </p>
+
+            <p>
+              On the resource group page, click on the <strong>+ Add</strong> button
+              in the top bar to create a new resource group. On the <strong
+                >Create a resource group</strong
+              > page, select your valid Azure Subscription, enter the name of your
+              resource group, and select a region.
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/installation-and-operation/images/AZResource_group_Add.png"
+                alt="Create a Resource Group"
+              />
+            </p>
+
+            <p>
+              Click <strong>Next</strong> until you see the <strong
+                >Create</strong
+              > button, then click it.
+            </p>
+
+            <p>
+              When selecting the region for your Metabase, you should consider
+              the location of your users and your data warehouse, as well as the
+              infrastructure costs and privacy laws that might restrict
+              cross-border data transfers.
+            </p>
+
+            <h2 id="step-2-create-the-vnet-virtual-network">
+              Step 2: Create the VNET (virtual network)
+            </h2>
+
+            <p>
+              At the center of the page, click on the <strong
+                >Create resources</strong
+              > button. Search for <strong>VNET</strong>:
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/installation-and-operation/images/AZMarketPlaceVnet.png"
+                alt="VNET Marketplace"
+              />
+            </p>
+
+            <p>
+              Select the VNET product from Microsoft, and click <strong
+                >Create</strong
+              >:
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/installation-and-operation/images/AZVnet.png"
+                alt="VNET Product"
+              />
+            </p>
+
+            <p>
+              Enter a name for the virtual network and select the same region
+              you used for the resource group. Click on <strong
+                >Next: IP Addresses</strong
+              > button at the bottom.
+            </p>
+
+            <p>
+              Here we’ll create a secure network composed of a public subnet (a
+              network that is exposed to the internet), and a private network
+              that will contain your application database.
+            </p>
+
+            <p>
+              In the IPv4 address, you should have a default value of
+              10.0.0.0/16 (otherwise add that network space to the box). Next,
+              add two subnets:
+            </p>
+
+            <ul>
+              <li>
+                one subnet named public, with the subnet address range of
+                10.0.1.0/24, and
+              </li>
+              <li>
+                one subnet named private with the subnet range of 10.0.2.0/24.
+              </li>
+            </ul>
+
+            <p>
+              <img
+                src="/docs/latest/installation-and-operation/images/AZNetworks.png"
+                alt="Azure network configuration"
+              />
+            </p>
+
+            <p>
+              Click <strong>Next</strong> until you get to the <strong
+                >Review and create</strong
+              > page, then click on the <strong>Create</strong> button at the bottom
+              to create your network.
+            </p>
+
+            <h2 id="step-3-create-the-application-database-postgresql">
+              Step 3: Create the Application Database (PostgreSQL)
+            </h2>
+
+            <p>
+              From the Azure Management console homepage, create a new resource.
+              This time search for <strong>Azure Database for PostgreSQL</strong
+              >. You can also find this database in the Marketplace menu under <strong
+                >Databases</strong
+              >.
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/installation-and-operation/images/AZDatabase.png"
+                alt="Azure PostgreSQL"
+              />
+            </p>
+
+            <p>
+              In the next page you will have to select the way you will use the
+              service. Choose <strong>Single server</strong> for now, which is a
+              good starting point, but take into account that this will create just
+              one instance of PostgreSQL that will be your single point of failure.
+            </p>
+
+            <p>On the next screen, select or enter the following:</p>
+
+            <ul>
+              <li>
+                <strong>Resource group</strong>: the one you are including all
+                your components.
+              </li>
+              <li>
+                <strong>Server name</strong>: a unique name for your database.
+              </li>
+              <li>
+                <strong>Data Source</strong>: can be left as <code
+                  class="language-plaintext highlighter-rouge">None</code
+                >.
+              </li>
+              <li>
+                <strong>Location</strong>: the same one you used for your
+                Resource Group and VNET.
+              </li>
+              <li><strong>Version</strong>: use the latest one you can.</li>
+              <li>
+                <strong>Compute + Storage</strong>: you can re-dimension your
+                database, but you must select the <code
+                  class="language-plaintext highlighter-rouge"
+                  >General Purpose</code
+                > tier, as it’s the only tier that provides a Private Link.
+              </li>
+            </ul>
+
+            <p>Then choose an admin username and password of your choice.</p>
+
+            <p>
+              Click <strong>Next</strong> until you get to the final page, then click
+              <strong>Create</strong>. It’ll take some time for Azure to create
+              the database. Once the creation is complete, click on the <strong
+                >Go to resource</strong
+              > button.
+            </p>
+
+            <h2 id="step-4-create-the-private-endpoint-connection">
+              Step 4: Create the private endpoint connection
+            </h2>
+
+            <p>
+              On the properties page for the Azure for PostgreSQL database, you
+              can manage parameters for your database. You’ll create the <strong
+                >Private Endpoint</strong
+              > to the database, so all traffic from the web application is routed
+              internally through Azure’s network.
+            </p>
+
+            <p>
+              On the left menu, click on <strong
+                >Private endpoint connection</strong
+              > which is situated under <strong>Security</strong>
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/installation-and-operation/images/AZPostgreSQLMain.png"
+                alt="Azure Database for PostgreSQL"
+              />
+            </p>
+
+            <p>
+              Now click on the button of the top bar with a plus sign that says <strong
+                >Private endpoint</strong
+              >. In the page that opens:
+            </p>
+
+            <ol>
+              <li>
+                Provide a name for this link (any name that describes what you
+                are trying to do is fine, like <code
+                  class="language-plaintext highlighter-rouge"
+                  >metabase_link</code
+                >). Select the region where the database lives, click <strong
+                  >Next</strong
+                >.
+              </li>
+              <li>
+                On the <strong>Resource</strong> section of the configuration, ensure
+                that <strong>Resource type</strong> is set to <code
+                  class="language-plaintext highlighter-rouge"
+                  >Microsoft.DBforPostgreSQL/servers</code
+                > which will enable you to select in the dropdown below the server
+                created in the previous step, and leave <strong
+                  >Target sub-resource</strong
+                > with the default value
+              </li>
+              <li>
+                On the <strong>Configuration</strong> section, the only value that
+                needs to be changed is the <strong>Subnet</strong> one, where you
+                need to select the <strong>private</strong> subnet that you created
+                on the first step of this guide, and leave everything else as it
+                is.
+              </li>
+            </ol>
+
+            <p>
+              <img
+                src="/docs/latest/installation-and-operation/images/AZPrivateLink.png"
+                alt="Azure PrivateLink config"
+              />
+            </p>
+
+            <p>
+              Now go to the last step and click <strong>Create</strong>. Once
+              the endpoint is created, you will need do two things before
+              proceeding:
+            </p>
+
+            <ol>
+              <li>
+                In the page of database server you just created go to the
+                database <strong>Connection Security</strong> item and <strong
+                  >deny all public network access</strong
+                >.
+              </li>
+              <li>
+                In the page of the VNET you created in the previous step, go to <strong
+                  >Connected devices</strong
+                > setting and you should see a device connected to the network. Take
+                note of the IP address, as you’ll need it in Step 5 (this is the
+                IP address that the network has given to the database server).
+              </li>
+            </ol>
+
+            <h2 id="step-5-create-web-application-deploy-metabase">
+              Step 5: Create web application (deploy Metabase)
+            </h2>
+
+            <p>
+              At last, the step where all the magic comes together: go to your
+              resource group and add a new resource, or search for <strong
+                >Web App</strong
+              > in the Marketplace (blue globe icon).
+              <img
+                src="/docs/latest/installation-and-operation/images/AZMarketplaceWebApp.png"
+                alt="Azure web app"
+              />
+            </p>
+
+            <p>
+              Now set up the following values on the page (resource group should
+              be the same as in the first step):
+            </p>
+
+            <ul>
+              <li>
+                <strong>Name</strong>: The name must be unique, as the subdomain
+                is shared across all Azure deployments.
+              </li>
+              <li><strong>Publish</strong>: Docker Container.</li>
+              <li><strong>Operating System</strong>: Linux.</li>
+              <li>
+                <strong>Region</strong>: Use the same region as the previous
+                steps.
+              </li>
+              <li>
+                <strong>App Service Plan</strong>: If you don’t have one a
+                service plan, Azure will create a new one automatically.
+              </li>
+              <li>
+                <strong>SKU and Size</strong>: Set a Production level plan with <strong
+                  >AT LEAST</strong
+                > 200 total ACU and 3.5GB of memory, and click <strong
+                  >Apply</strong
+                >.
+              </li>
+            </ul>
+
+            <p>Now go to the next step where you will select:</p>
+
+            <ul>
+              <li><strong>Options</strong>: Single container.</li>
+              <li><strong>Image source</strong>: DockerHub.</li>
+              <li><strong>Access Type</strong>: Public.</li>
+              <li>
+                <strong>Image and tag</strong>: metabase/metabase:latest (or
+                choose any other docker image tag of your preference, like our
+                Enterprise Edition). To find the latest version, check our <a
+                  href="https://hub.docker.com/r/metabase/metabase/tags?page=1&ordering=last_updated"
+                  >Community Edition Docker Hub repository</a
+                > and also our <a
+                  href="https://hub.docker.com/r/metabase/metabase-enterprise/tags?page=1&ordering=last_updated"
+                  >Enterprise Edition Docker Hub Repository</a
+                >.
+              </li>
+              <li><strong>Startup command</strong>: Leave this field empty.</li>
+            </ul>
+
+            <p>
+              Click <strong>Next</strong> until you get to the last section, then
+              click <strong>Create</strong>, and wait while your application
+              initializes.
+            </p>
+
+            <p>
+              Now go to the application configuration page and click on <strong
+                >Settings</strong
+              > -&gt; <strong>Networking</strong> on the left side of the page. On
+              the next page, click on <strong>Click here to configure</strong> under
+              <strong>VNET integration</strong>.
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/installation-and-operation/images/AZVNETintegration.png"
+                alt="Azure VNET integration"
+              />
+            </p>
+
+            <p>
+              Now click on the huge plus sign next to <strong>Add VNET</strong> and
+              select the VNET that you created, and the public subnet. Click <strong
+                >OK</strong
+              >.
+            </p>
+
+            <p>
+              <img
+                src="/docs/latest/installation-and-operation/images/AZVNETPublicSubnet.png"
+                alt="Azure VNET public subnet"
+              />
+            </p>
+
+            <p>
+              Return to the application configuration page and click on <strong
+                >Settings</strong
+              > -&gt; <strong>Configuration</strong> on the left side of the page.
+              You should see a few Application Settings already configured.
+            </p>
+
+            <p>
+              You’ll need to add the <a
+                href="/docs/latest/configuring-metabase/environment-variables"
+                >environment Variables</a
+              > for connecting Metabase to its <a
+                href="/docs/latest/installation-and-operation/configuring-application-database#postgresql"
+                >PostgreSQL Application Database</a
+              >. Make sure that you use the full <strong
+                >MB_DB_CONNECTION_URI</strong
+              >.
+            </p>
+
+            <p>
+              Also, take into account that the username in Azure PostgreSQL is <code
+                class="language-plaintext highlighter-rouge"
+                >user@name_of_your_database_engine</code
+              > so in this case the entire connection uri would be as follows:
+            </p>
+
+            <div class="language-plaintext highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;postgresql://databasePrivateIPAddress:port/postgres?user=user@name_of_your_database_engine&amp;password=configuredpassword&amp;ssl=true&amp;sslmode=required
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>For example, if your values are:</p>
+
+            <ol>
+              <li><strong>database private IP address</strong>: 10.0.2.4</li>
+              <li>
+                <strong>database port</strong>: 5432 (in the case of Postgres,
+                MySQL/MariaDB default port is 3306)
+              </li>
+              <li>
+                <strong>name of the database server</strong>:
+                metabase-app-database
+              </li>
+              <li><strong>username of the database</strong>: metabase</li>
+              <li><strong>password</strong>: Password1!</li>
+            </ol>
+
+            <p>then your connection string would be:</p>
+
+            <div class="language-plaintext highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;postgresql://10.0.2.4:5432/postgres?user=metabase%40metabase-app-database&amp;password=Password1!&amp;ssl=true&amp;sslmode=require
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              Note: the “@” character has been replaced for “%40”, as the “@”
+              will no longer work in versions &gt; 43
+            </p>
+
+            <p>Click <strong>Save</strong> and the instance will restart.</p>
+
+            <p>
+              Once it finishes, you should be able to visit your Metabase at the
+              URL shown in the “Overview” tab in the web app (under the URL
+              section).
+            </p>
+
+            <h2 id="additional-configurations">Additional configurations</h2>
+
+            <h3 id="how-to-enable-health-checks">
+              How to enable Health checks
+            </h3>
+
+            <p>
+              Enabling health checking in Metabase is a good practice. Go to
+              your <strong>web app</strong> -&gt; <strong>Monitoring</strong> -&gt;
+              <strong>Health Check</strong> -&gt; <strong
+                >Enable health check</strong
+              >, and include in the path <code
+                class="language-plaintext highlighter-rouge">/api/health</code
+              >.
+            </p>
+
+            <h3 id="how-to-upgrade">How to upgrade</h3>
+
+            <p>
+              Go to the Metabase web app you created and click on <strong
+                >Deployment</strong
+              > -&gt; <strong>Deployment Center</strong>.
+            </p>
+
+            <p>
+              Change the version of the container to the new version in the <strong
+                >Full Image Name and Tag</strong
+              > text field under <strong>Registry settings</strong>, and click
+              on <strong>Save</strong>. Available versions of the Metabase
+              Docker image can be found on <a
+                href="https://hub.docker.com/r/metabase/metabase/tags?page=1&ordering=last_updated"
+                >Docker Hub</a
+              >.
+            </p>
+
+            <p>
+              <strong>Important</strong>: always ensure you have backed up the
+              Metabase application database before upgrading, <em>especially</em
+              > when doing so between major versions. Metabase also doesn’t officially
+              support downgrading versions.
+            </p>
+
+            <h3 id="how-to-see-the-logs">How to see the logs</h3>
+
+            <p>
+              Visit your web app in Azure, and navigate to <strong
+                >Monitoring -&gt; Log stream</strong
+              >.
+            </p>
+
+            <p>
+              You should be able to see the logs as well inside Metabase by
+              going to Settings -&gt; Admin -&gt; Tools -&gt; Logs.
+            </p>
+
+            <h3 id="performance-tuning">Performance tuning</h3>
+
+            <ul>
+              <li>Disable FTP State</li>
+              <li>Change HTTP version to 2.0</li>
+              <li>Enable WebSockets</li>
+              <li>ARR Affinity enabled</li>
+            </ul>
+
+            <h3 id="custom-domains">Custom domains</h3>
+
+            <p>
+              In your Azure web app, visit <strong>Settings</strong> -&gt; <strong
+                >Custom domains</strong
+              > to use a custom domain with your own certificates.
+            </p>
+
+            <h3 id="scale-up-vs-scale-out">Scale-up vs Scale-out</h3>
+
+            <p>
+              Azure provides an easy way to increase the server’s capacity by
+              doing a Scale-up. Simply choose a pricing tier with more RAM and
+              CPU count and restart the instance. This approach is easier than
+              scaling out and you should choose this option first before scaling
+              out.
+            </p>
+
+            <p>
+              For a highly-available Metabase deployment, you can tell your web
+              app to scale-out (more servers serving the application in
+              parallel). Simply go to Scale-out and use the slider to ask for
+              more instances, or use a custom autoscaling policy (like using
+              more servers during your work hours and fewer during off hours).
+            </p>
+
+            <h3 id="cors">CORS</h3>
+
+            <p>
+              In case you’re embedding Metabase, you might need to enable CORS
+              in <strong>Settings</strong> -&gt; <strong>CORS</strong> in the web
+              application. You’ll need to fill the origin domains for the app with
+              the embedded Metabase, so Azure knows to enable cross requests from
+              those domains.
+            </p>
+
+            <h3 id="database-name">Database name</h3>
+
+            <p>
+              Azure does not let users create a database upon service creation,
+              that’s the reason why we used <code
+                class="language-plaintext highlighter-rouge">postgres</code
+              > as the database to install Metabase. Although this shouldn’t be a
+              problem, a good practice would be to install the database in a separate
+              database named <code class="language-plaintext highlighter-rouge"
+                >metabase</code
+              >. If you are not in a hurry to try the product, you should create
+              a database named <code
+                class="language-plaintext highlighter-rouge">metabase</code
+              > as soon as you create the database and then use the appropriate connection
+              string when deploying the docker container. In the example above the
+              connection string would be
+            </p>
+
+            <div class="language-plaintext highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;postgresql://10.0.2.4:5432/metabase?user=metabase@metabase-app-database&amp;password=Password1!&amp;ssl=true&amp;sslmode=require
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              If you have trouble connecting, refer to the <a
+                href="/docs/latest/installation-and-operation/configuring-application-database#postgresql"
+                >postgres configuration instructions</a
+              > as you may run into a problem with an <code
+                class="language-plaintext highlighter-rouge">@</code
+              > symbol in the username portion of the connection string. Using a
+              combination of <code class="language-plaintext highlighter-rouge"
+                >MB_DB_CONNECTION_URI</code
+              > with separate <code class="language-plaintext highlighter-rouge"
+                >MB_DB_USER</code
+              > and <code class="language-plaintext highlighter-rouge"
+                >MB_DB_PASSWORD</code
+              > fields also works.
+            </p>
+
+            <div>
+              <div class="widget-separator"></div>
+
+              <p>
+                Read docs for other <a href="/docs/all">versions of Metabase</a
+                >.
+              </p>
+            </div>
+          </div>
+
+          <div class="learn__right-sidebar">
+            <div id="sub-navigation-content"></div>
+            <div id="was-this-helpful-widget">
+              <div id="page-feedback">
+                <h6>Was this helpful?</h6>
+                <button id="page-feedback-vote-up" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  Yes
+                </button>
+                <button id="page-feedback-vote-down" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="rotate-180 me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  No
+                </button>
+              </div>
+
+              <div id="page-comment" class="flex flex-wrap full hide">
+                <p id="page-feedback-question"></p>
+
+                <form id="page-comment-form" class="flex full">
+                  <textarea
+                    id="feedback-comment-text"
+                    name="comment"
+                    placeholder="Type here…"></textarea>
+
+                  <button
+                    id="page-comment-submit"
+                    class="Button flex align-center"
+                  >
+                    Send
+                  </button>
+                </form>
+              </div>
+
+              <div id="page-feedback-message" class="fs-18 hide">
+                <h6 class="page-feedback-title">Thanks for your feedback!</h6>
+              </div>
+
+              <span
+                class="paragraph-6 fs-13 neutral-60"
+                id="page-feedback-footer"
+              >
+                Want to improve these docs? <a
+                  href="https://github.com/metabase/metabase/blob/master/docs/installation-and-operation/running-metabase-on-azure.md"
+                  target="_blank">Propose a change.</a
+                >
+              </span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

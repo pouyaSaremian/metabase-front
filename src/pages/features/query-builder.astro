@@ -1,23 +1,402 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /features/query-builder
-// Priority: 0.80
-// Last Modified: 2025-09-16T20:03:10+00:00
+import Base from "../../layouts/Base.astro";
+const title = "Visual SQL Query builder";
+const description =
+  "Query data without a single line of SQL. With Metabase's query builder you can put together questions in a few clicks by selecting parameters from drop-down menus.";
+const seo = {
+  title: "Visual SQL Query builder",
+  description:
+    "Query data without a single line of SQL. With Metabase's query builder you can put together questions in a few clicks by selecting parameters from drop-down menus.",
+  canonical: "/features/query-builder",
+  og: {
+    title: "Visual SQL Query builder",
+    description:
+      "Query data without a single line of SQL. With Metabase's query builder you can put together questions in a few clicks by selecting parameters from drop-down menus.",
+    image: "https://www.metabase.com/images/features/query-builder.jpg",
+    url: "https://www.metabase.com/features/query-builder",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Visual SQL Query builder",
+    description:
+      "Query data without a single line of SQL. With Metabase's query builder you can put together questions in a few clicks by selecting parameters from drop-down menus.",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/features/query-builder.jpg",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Features Query Builder</title>
-</head>
-<body>
-    <h1>Features Query Builder</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/features/query-builder</code></p>
-    <p>Priority: 0.80</p>
-    <p>Last Modified: 2025-09-16T20:03:10+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="no-overflow">
+    <div class="bootstrap">
+      <div class="responsive-page feature-page">
+        <div class="product-intro hero-neutral-background">
+          <div class="container">
+            <div class="feature-container hero">
+              <div>
+                <div class="feature-title">
+                  <img
+                    alt="Metabase - Query builder"
+                    src="/images/icons/badges/query-builder-icon.svg"
+                  />
+                  Query builder
+                </div>
+                <h1>Get answers in a few clicks with the query builder</h1>
+                <p>
+                  The query builder makes it easy for anyone - even your less
+                  data-savvy teammates - to put together questions with just
+                  clicks, prompts, and, menu choices. No data expertise or SQL
+                  needed.
+                </p>
+
+                <div class="d-flex">
+                  <a
+                    class="btn btn-primary mt-6 px-4 px-lg-5 py-3 mr-2"
+                    href="https://store.metabase.com/checkout"
+                    id="get-started-btn-home"
+                    title="Metabase - Get started"
+                  >
+                    Get started
+                  </a>
+
+                  <a
+                    class="btn btn-primary mt-6 px-4 px-lg-5 py-3 mr-2 btn-outline-blue"
+                    href="/talk-to-a-person/"
+                    id="get-started-btn-home"
+                    title="Metabase - Contact us"
+                  >
+                    Contact us
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <video
+                  class="vjs-player pause-observer lazy"
+                  id="query-builder"
+                  poster="/images/features/query-builder.gif"
+                >
+                  <source
+                    src="/images/features/query-builder1.mp4"
+                    type="video/mp4"
+                  />
+                  <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider
+                    upgrading to a web browser that
+                    <a
+                      href="https://videojs.com/html5-video-support/"
+                      target="_blank">supports HTML5 video</a
+                    >
+                  </p>
+                </video>
+              </div>
+            </div>
+
+            <section class="m-0 mb-15 mb-lg-20 p-0 center-xs">
+              <h2 class="fs-8 fw-bold mb-4 mb-lg-6 mx-auto">
+                Analytics for everyone
+              </h2>
+              <p class="mw--sm mx-auto my-0 neutral-40">
+                Point-and-click tool to self-serve data for those who don’t know
+                SQL (and a mental-shortcut for those who do).
+              </p>
+
+              <div
+                class="align-stretch cards d-flex flex-column flex-md-row flex-wrap gap-6 gap-lg-8 justify-content-center mt-8 mt-lg-13 cards"
+              >
+                <div
+                  class="bg-white border--blue-95 box-shadow-xs mx-0 mt-0 p-4 p-lg-6 rounded-4 text-left w-100 cards__card"
+                >
+                  <img
+                    alt="Worry-free upgrades, backups, and more - Upgrades"
+                    class="mb-4 mb-lg-6 cards__card__icon"
+                    src="/images/icons/filter.svg"
+                    title="Metabase - Filters and summarizations"
+                    loading="lazy"
+                  />
+                  <h3 class="fs-12 fw-bold m-0 mb-2 mb-lg-4 neutral-40">
+                    Filters and summarizations
+                  </h3>
+                  <p class="fs-12 lh-base m-0 neutral-60">
+                    Click and select custom parameters to <a
+                      class="d-inline blue-link-hover text-bold"
+                      href="/docs/latest/questions/introduction">narrow down</a
+                    > and group data from a dropdown menu.
+                  </p>
+                </div>
+
+                <div
+                  class="bg-white border--blue-95 box-shadow-xs mx-0 mt-0 p-4 p-lg-6 rounded-4 text-left w-100 cards__card"
+                >
+                  <img
+                    alt="Worry-free upgrades, backups, and more - Upgrades"
+                    class="mb-4 mb-lg-6 cards__card__icon"
+                    src="/images/icons/join.svg"
+                    title="Metabase - Joins"
+                    loading="lazy"
+                  />
+                  <h3 class="fs-12 fw-bold m-0 mb-2 mb-lg-4 neutral-40">
+                    Joins
+                  </h3>
+                  <p class="fs-12 lh-base m-0 neutral-60">
+                    Use joins to ask questions about data split across multiple
+                    models or tables.
+                  </p>
+                </div>
+
+                <div
+                  class="bg-white border--blue-95 box-shadow-xs mx-0 mt-0 p-4 p-lg-6 rounded-4 text-left w-100 cards__card"
+                >
+                  <img
+                    alt="Worry-free upgrades, backups, and more - Upgrades"
+                    class="mb-4 mb-lg-6 cards__card__icon"
+                    src="/images/icons/formula.svg"
+                    title="Metabase - Custom expressions"
+                    loading="lazy"
+                  />
+                  <h3 class="fs-12 fw-bold m-0 mb-2 mb-lg-4 neutral-40">
+                    Custom expressions
+                  </h3>
+                  <p class="fs-12 lh-base m-0 neutral-60">
+                    Go beyond basic questions with <a
+                      class="d-inline blue-link-hover text-bold"
+                      href="/docs/latest/questions/query-builder/expressions"
+                      >custom expressions</a
+                    > (they’re like formulas in spreadsheets, e.g., a CountIf formula).
+                  </p>
+                </div>
+
+                <div
+                  class="bg-white border--blue-95 box-shadow-xs mx-0 mt-0 p-4 p-lg-6 rounded-4 text-left w-100 cards__card"
+                >
+                  <img
+                    alt="Worry-free upgrades, backups, and more - Upgrades"
+                    class="mb-4 mb-lg-6 cards__card__icon"
+                    src="/images/icons/multi-level.svg"
+                    title="Metabase - Multi-level aggregation"
+                    loading="lazy"
+                  />
+                  <h3 class="fs-12 fw-bold m-0 mb-2 mb-lg-4 neutral-40">
+                    Multi-level aggregation
+                  </h3>
+                  <p class="fs-12 lh-base m-0 neutral-60">
+                    Get a bit fancier with multi-level aggregation to stack more
+                    filters and summarizations step-by-step.
+                  </p>
+                </div>
+
+                <div
+                  class="bg-white border--blue-95 box-shadow-xs mx-0 mt-0 p-4 p-lg-6 rounded-4 text-left w-100 cards__card"
+                >
+                  <img
+                    alt="Worry-free upgrades, backups, and more - Upgrades"
+                    class="mb-4 mb-lg-6 cards__card__icon"
+                    src="/images/icons/play.svg"
+                    title="Metabase - Preview results"
+                    loading="lazy"
+                  />
+                  <h3 class="fs-12 fw-bold m-0 mb-2 mb-lg-4 neutral-40">
+                    Preview results
+                  </h3>
+                  <p class="fs-12 lh-base m-0 neutral-60">
+                    Check your question as you’re adding filters and
+                    summarizations without running the whole query, and make
+                    adjustments as you go.
+                  </p>
+                </div>
+
+                <div
+                  class="bg-white border--blue-95 box-shadow-xs mx-0 mt-0 p-4 p-lg-6 rounded-4 text-left w-100 cards__card"
+                >
+                  <img
+                    alt="Worry-free upgrades, backups, and more - Upgrades"
+                    class="mb-4 mb-lg-6 cards__card__icon"
+                    src="/images/icons/question-blue-circle-outline.svg"
+                    title="Metabase - Question history"
+                    loading="lazy"
+                  />
+                  <h3 class="fs-12 fw-bold m-0 mb-2 mb-lg-4 neutral-40">
+                    Question history
+                  </h3>
+                  <p class="fs-12 lh-base m-0 neutral-60">
+                    Let anyone edit questions while keeping track of the
+                    question’s history. Metabase keeps the <a
+                      class="d-inline blue-link-hover text-bold"
+                      href="/docs/latest/questions/native-editor/writing-sql#question-version-history"
+                      >fifteen most recent versions of each question</a
+                    >.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="m-0 mb-15 mb-lg-20 p-0 center-xs">
+              <h2 class="fs-8 fw-bold mx-auto my-0">
+                More about asking questions in Metabase
+              </h2>
+
+              <div
+                class="align-stretch d-flex flex-column flex-lg-row flex-nowrap gap-6 gap-lg-8 justify-content-between mt-8 mt-lg-13 ctas__cards"
+              >
+                <a
+                  class="bg-white border--blue-95 box-shadow-xs d-block m-0 p-4 p-lg-6 rounded-4 text-left ctas__cards__card"
+                  href="/docs/latest/questions/introduction"
+                  title="Documentation - Asking questions"
+                >
+                  <span
+                    class="bg-blue-95 blue-60 d-inline-block fs-15 fw-bolder m-0 px-3 py-2 rounded-3 text-uppercase"
+                    >Documentation</span
+                  >
+                  <h3 class="fs-10 fw-bold lh-base m-0 mt-4">
+                    Asking questions
+                  </h3>
+                </a>
+
+                <a
+                  class="bg-white border--blue-95 box-shadow-xs d-block m-0 p-4 p-lg-6 rounded-4 text-left ctas__cards__card"
+                  href="/learn/metabase-basics/querying-and-dashboards/questions"
+                  title="Learn - Using the query builder"
+                >
+                  <span
+                    class="bg-blue-95 blue-60 d-inline-block fs-15 fw-bolder m-0 px-3 py-2 rounded-3 text-uppercase"
+                    >Learn</span
+                  >
+                  <h3 class="fs-10 fw-bold lh-base m-0 mt-4">
+                    Using the query builder
+                  </h3>
+                </a>
+
+                <a
+                  class="bg-white border--blue-95 box-shadow-xs d-block m-0 p-4 p-lg-6 rounded-4 text-left ctas__cards__card"
+                  href="/docs/latest/questions/native-editor/writing-sql"
+                  title="SQL Editor - Writing SQL"
+                >
+                  <span
+                    class="bg-blue-95 blue-60 d-inline-block fs-15 fw-bolder m-0 px-3 py-2 rounded-3 text-uppercase"
+                    >SQL Editor</span
+                  >
+                  <h3 class="fs-10 fw-bold lh-base m-0 mt-4">Writing SQL</h3>
+                </a>
+              </div>
+            </section>
+
+            <div class="full-width-centered how-to-analyze-csvs">
+              <h3>How to ask a question with the query builder</h3>
+
+              <div class="numbered-text">
+                <div>
+                  <div>1</div>
+                  <div>
+                    At the top-right corner in your Metabase, click New &gt;
+                    Question to open the query builder. You can also get to the
+                    query builder by clicking Filter and/or Summarize at the top
+                    of a table or model, or clicking column headings and
+                    individual cells.
+                  </div>
+                </div>
+
+                <div>
+                  <div>2</div>
+                  <div>
+                    Select a table or a model or table you want to query, e.g.
+                    the Orders table from the sample dataset that ships with
+                    Metabase.
+                  </div>
+                </div>
+
+                <div>
+                  <div>3</div>
+                  <div>
+                    Click into <b>Filters</b> and select <b>Created at</b>.
+                    Select <b>Last 12 months</b>.
+                  </div>
+                </div>
+
+                <div>
+                  <div>4</div>
+                  <div>
+                    Click + to add another filter. This time select <b
+                      ># Total</b
+                    >, then from the dropdown menu, select <b>Greater than</b>,
+                    and enter 20.00 in the text box.
+                  </div>
+                </div>
+
+                <div>
+                  <div>5</div>
+                  <div>
+                    Next, click into <b>Summarize</b> and select <b>Sum of…</b> and
+                    select <b>Taxes</b> from the menu.
+                  </div>
+                </div>
+
+                <div>
+                  <div>6</div>
+                  <div>
+                    The <b>by</b> box next to it is where you’re going to group your
+                    results. First select <b>Product &gt; Category</b>.
+                  </div>
+                </div>
+
+                <div>
+                  <div>7</div>
+                  <div>
+                    To further group these results by month, click <b>+</b> and select
+                    <b>Created by</b>, and choose <b>month</b> from the menu.
+                  </div>
+                </div>
+
+                <div>
+                  <div>8</div>
+                  <div>
+                    Hit the <b>Visualize</b> button. You’ll see a chart that shows
+                    how taxes are split across product categories on orders month
+                    over month.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="try-metabase-footer">
+          <div class="full-width-centered">
+            <h3>Try Metabase for free for 14 days</h3>
+            <p>
+              Get the query builder with <a
+                class="d-inline blue-link-hover text-bold"
+                href="/pricing/">all Metabase plans</a
+              >, and embed it for customer-facing analytics with Pro or
+              Enterprise.
+            </p>
+
+            <div class="d-flex justify-content-center">
+              <a
+                class="btn btn-primary mt-6 px-4 px-lg-5 py-3 mr-2"
+                href="https://store.metabase.com/checkout"
+                id="get-started-btn-home"
+                title="Metabase - Get started"
+              >
+                Get started
+              </a>
+
+              <a
+                class="btn btn-primary mt-6 px-4 px-lg-5 py-3 mr-2 btn-outline-blue"
+                href="/talk-to-a-person/"
+                id="get-started-btn-home"
+                title="Metabase - Contact us"
+              >
+                Contact us
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

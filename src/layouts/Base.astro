@@ -1,7 +1,14 @@
 ---
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-const { title = "", description = "" } = Astro.props;
+const { title = "", description = "", seo = {} } = Astro.props;
+const seoTitle = seo.title ?? title;
+const seoDescription = seo.description ?? description;
+const seoCanonical = seo.canonical ?? "index.html";
+const og = seo.og ?? {};
+const twitter = seo.twitter ?? {};
+const author = seo.author ?? undefined;
+const keywords = seo.keywords ?? undefined;
 ---
 
 <!doctype html>
@@ -21,43 +28,27 @@ const { title = "", description = "" } = Astro.props;
     />
 
     <!-- Twitter cards -->
-    <meta name="twitter:site" content="@metabase" />
+    <meta name="twitter:site" content={twitter.site ?? "@metabase"} />
     <meta content="no-referrer-when-downgrade" name="referrer" />
-    <meta
-      name="twitter:title"
-      content="Open source Business Intelligence and Embedded Analytics"
-    />
-    <meta
-      name="twitter:description"
-      content="Metabase open source business intelligence and embedded analytics. Create and share dashboards. Dig deeper into your data with no-code tools for data visualization."
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:image"
-      content="https://www.metabase.com/images/opengraph/home-og.jpg"
-    />
+    {author && <meta name="author" content={author} />}
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="twitter:title" content={twitter.title ?? seoTitle} />
+    <meta name="twitter:description" content={twitter.description ?? seoDescription} />
+    <meta name="twitter:card" content={twitter.card ?? "summary_large_image"} />
+    <meta name="twitter:image" content={twitter.image ?? og.image ?? "https://www.metabase.com/images/opengraph/home-og.jpg"} />
+    {twitter.creator && <meta name="twitter:creator" content={twitter.creator} />}
     <!-- end of Twitter cards -->
 
     <!-- Open Graph metadata -->
-    <meta
-      property="og:site_name"
-      content="Metabase | Open source Business Intelligence and Embedded Analytics"
-    />
-    <meta property="og:type" content="article" />
-    <meta
-      name="title"
-      property="og:title"
-      content="Open source Business Intelligence and Embedded Analytics"
-    />
-    <meta property="og:url" content="https://www.metabase.com/" />
-    <meta name="description" property="og:description" content={description} />
-    <meta
-      name="image"
-      property="og:image"
-      content="https://www.metabase.com/images/opengraph/home-og.jpg"
-    />
+    <meta property="og:site_name" content={og.site_name ?? "Metabase | Open source Business Intelligence and Embedded Analytics"} />
+    <meta property="og:type" content={og.type ?? "article"} />
+    <meta name="title" property="og:title" content={og.title ?? seoTitle} />
+    <meta property="og:url" content={og.url ?? seoCanonical} />
+    {og.locale && <meta property="og:locale" content={og.locale} />}
+    <meta name="description" property="og:description" content={og.description ?? seoDescription} />
+    <meta name="image" property="og:image" content={og.image ?? "https://www.metabase.com/images/opengraph/home-og.jpg"} />
     <!-- end of Open Graph metadata -->
-    <link href="index.html" rel="canonical" />
+    <link href={seoCanonical} rel="canonical" />
     <link href="images/favicon.svg" rel="shortcut icon" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -100,7 +91,7 @@ const { title = "", description = "" } = Astro.props;
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>{title}</title>
+    <title>{seoTitle}</title>
   </head>
   <SiteHeader />
   <slot />

@@ -1,23 +1,33 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /cloud/login
-// Priority: 0.80
-// Last Modified: 2025-09-16T20:03:08+00:00
+import Base from "../../layouts/Base.astro";
+const title = "Log in to Metabase Cloud";
+const description = "Log in to your Metabase Cloud instance";
+const seo = {
+  title: "Log in to Metabase Cloud",
+  description: "Log in to your Metabase Cloud instance",
+  canonical: "/cloud/login",
+  og: {
+    title: "Log in to Metabase Cloud",
+    description: "Log in to your Metabase Cloud instance",
+    url: "https://www.metabase.com/cloud/login",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Log in to Metabase Cloud",
+    description: "Log in to your Metabase Cloud instance",
+    card: "summary",
+    image: "https://www.metabase.com/images/twitter/default-share.png",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Cloud Login</title>
-</head>
-<body>
-    <h1>Cloud Login</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/cloud/login</code></p>
-    <p>Priority: 0.80</p>
-    <p>Last Modified: 2025-09-16T20:03:08+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="no-overflow">
+    <div id="Cloud-Login" class="flex justify-center align-center p2">
+      <div id="Cloud-Login-Box" class="card"></div>
+    </div>
+  </div>
+</Base>

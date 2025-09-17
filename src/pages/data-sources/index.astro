@@ -1,23 +1,441 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /data-sources/
-// Priority: 0.80
-// Last Modified: 2025-09-16T20:03:09+00:00
+import Base from "../../layouts/Base.astro";
+const title = "Data Sources | Metabase";
+const description =
+  "Metabase connects with lots of different databases and data warehouses so you can explore and learn from data, no matter where it’s stored.";
+const seo = {
+  title: "Data Sources | Metabase",
+  description:
+    "Metabase connects with lots of different databases and data warehouses so you can explore and learn from data, no matter where it’s stored.",
+  canonical: "/data-sources/",
+  og: {
+    title: "Data Sources | Metabase",
+    description:
+      "Metabase connects with lots of different databases and data warehouses so you can explore and learn from data, no matter where it’s stored.",
+    image: "https://www.metabase.com/images/datasources/data-sources-og.jpg",
+    url: "https://www.metabase.com/data-sources",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Data Sources | Metabase",
+    description:
+      "Metabase connects with lots of different databases and data warehouses so you can explore and learn from data, no matter where it’s stored.",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/datasources/data-sources-og.jpg",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Data Sources</title>
-</head>
-<body>
-    <h1>Data Sources</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/data-sources/</code></p>
-    <p>Priority: 0.80</p>
-    <p>Last Modified: 2025-09-16T20:03:09+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="no-overflow">
+    <div class="bootstrap">
+      <div class="data-sources index-page">
+        <div class="hero">
+          <h2>Data sources</h2>
+          <h1>Built to play well with your stack</h1>
+          <h3>
+            Metabase fits with tools you’re already using to take your data from
+            black box to accessible insights, while staying in control over who
+            sees what.
+          </h3>
+        </div>
+
+        <div class="connector-header" id="official-data-source-connectors">
+          <h4>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              ><path
+                stroke="#509EE3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="m14.25 8.75 4-4H5.75l4 4"></path><path
+                stroke="#509EE3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M17.25 14a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
+              ></path></svg
+            >
+
+            Official Connectors
+          </h4>
+          <p>Built and managed by Metabase, available in all editions.</p>
+        </div>
+
+        <div class="connector-list">
+          <a href="/data-sources/amazon-athena">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/aws-athena.png')"
+              >
+              </div>Amazon Athena
+            </div>
+            <p>
+              Connect a fully managed service for querying S3 data to Metabase
+              for analytics
+            </p>
+          </a>
+
+          <a href="/data-sources/amazon-redshift">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/amazon-redshift.png')"
+              >
+              </div>Amazon Redshift
+            </div>
+            <p>A fully-managed, petabyte-scale data warehouse service</p>
+          </a>
+
+          <a href="/data-sources/bigquery">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/big-query.png')"
+              >
+              </div>BigQuery
+            </div>
+            <p>A fully-managed, serverless data warehouse</p>
+          </a>
+
+          <a href="/data-sources/clickhouse">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/clickhouse.png')"
+              >
+              </div>ClickHouse
+            </div>
+            <p>An open-source analytical database management system</p>
+          </a>
+
+          <a href="/product/csv-uploads">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/icons/badges/upload-promo.svg')"
+              >
+              </div>CSV Uploads
+            </div>
+            <p>
+              Use Metabase with built-in storage. No database or ETL required.
+            </p>
+          </a>
+
+          <a href="/data-sources/databricks">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/databricks.png')"
+              >
+              </div>Databricks
+            </div>
+            <p>A unified analytics platform on top of Spark</p>
+          </a>
+
+          <a href="/data-sources/druid">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/druid.png')"
+              >
+              </div>Druid
+            </div>
+            <p>A column-oriented, open-source, distributed data store</p>
+          </a>
+
+          <a href="/data-sources/google-sheets">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/icons/badges/google-sheets-icon.png')"
+              >
+              </div>Google Sheets
+            </div>
+            <p>
+              Connect Metabase to your Google Sheets with built-in storage. No
+              database or ETL required.
+            </p>
+          </a>
+
+          <a href="/data-sources/mariadb">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/mariadb-circle.png')"
+              >
+              </div>MariaDB
+            </div>
+            <p>An open-source relational database management system</p>
+          </a>
+
+          <a href="/data-sources/microsoft-sql-server">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/microsoft-server.png')"
+              >
+              </div>Microsoft SQL Server
+            </div>
+            <p>
+              Connect to Metabase to query your relational database management
+              system
+            </p>
+          </a>
+
+          <a href="/data-sources/mongo-db">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/mongo-db.png')"
+              >
+              </div>MongoDB
+            </div>
+            <p>
+              A source-available, cross-platform, document-oriented database
+            </p>
+          </a>
+
+          <a href="/data-sources/mysql">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/mysql.png')"
+              >
+              </div>MySQL
+            </div>
+            <p>An open-source relational database management system</p>
+          </a>
+
+          <a href="/data-sources/oracle">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/oracle.png')"
+              >
+              </div>Oracle Database
+            </div>
+            <p>A relational multi-model database management system</p>
+          </a>
+
+          <a href="/data-sources/postgresql">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/post-gre.png')"
+              >
+              </div>PostgreSQL
+            </div>
+            <p>An open-source relational database management system</p>
+          </a>
+
+          <a href="/data-sources/presto">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/presto.png')"
+              >
+              </div>Presto
+            </div>
+            <p>An open-source, distributed query engine</p>
+          </a>
+
+          <a href="/data-sources/snowflake">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/snowflake.png')"
+              >
+              </div>Snowflake
+            </div>
+            <p>A cloud data platform</p>
+          </a>
+
+          <a href="/data-sources/spark">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/spark.png')"
+              >
+              </div>Spark
+            </div>
+            <p>
+              Connect Metabase to Spark, an open-source unified analytics engine
+            </p>
+          </a>
+
+          <a href="/data-sources/sqlite">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/sql-lite.png')"
+              >
+              </div>SQLite
+            </div>
+            <p>A relational database management system</p>
+          </a>
+
+          <a href="/data-sources/starburst">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/starburst.png')"
+              >
+              </div>Starburst
+            </div>
+            <p>A unified query engine</p>
+          </a>
+
+          <a href="/data-sources/vertica">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/vertica.png')"
+              >
+              </div>Vertica
+            </div>
+            <p>A distributed, shared-nothing, database management system</p>
+          </a>
+        </div>
+
+        <div class="connector-header" id="community-data-source-connectors">
+          <h4>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 19.25C16.0041 19.25 19.25 16.0041 19.25 12C19.25 7.99594 16.0041 4.75 12 4.75C7.99594 4.75 4.75 7.99594 4.75 12C4.75 16.0041 7.99594 19.25 12 19.25Z"
+                stroke="#509ee3"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M15.25 12C15.25 16.5 13.2426 19.25 12 19.25C10.7574 19.25 8.75 16.5 8.75 12C8.75 7.5 10.7574 4.75 12 4.75C13.2426 4.75 15.25 7.5 15.25 12Z"
+                stroke="#509ee3"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M5 12H12H19"
+                stroke="#509ee3"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+
+            Community Connectors
+          </h4>
+          <p>
+            Built and managed by our open-source community, available only when
+            self-hosting, and not officially supported by Metabase.
+          </p>
+        </div>
+
+        <div class="connector-list">
+          <a href="/data-sources/apache-pinot">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/apache-pinot-logo.jpg')"
+              >
+              </div>Apache Pinot
+            </div>
+            <p>
+              An open-source column-oriented distributed data store written in
+              Java
+            </p>
+          </a>
+
+          <a href="/data-sources/cube-js">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/cube-js.png')"
+              >
+              </div>Cube
+            </div>
+            <p>An open-source analytical API platform</p>
+          </a>
+
+          <a href="/data-sources/dremio">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/dremio.png')"
+              >
+              </div>Dremio
+            </div>
+            <p>
+              An analytics platform built with open-source standards like Apache
+              Arrow and Apache Iceberg
+            </p>
+          </a>
+
+          <a href="/data-sources/duckdb">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/duckdb.png')"
+              >
+              </div>DuckDB
+            </div>
+            <p>An in-process SQL OLAP database management system</p>
+          </a>
+
+          <a href="/data-sources/exasol">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/exasol.png')"
+              >
+              </div>Exasol
+            </div>
+            <p>An in-memory database built for analytics</p>
+          </a>
+
+          <a href="/data-sources/firebolt">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/firebolt.png')"
+              >
+              </div>Firebolt
+            </div>
+            <p>A cloud data warehouse</p>
+          </a>
+
+          <a href="/data-sources/hydra">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/hydra.png')"
+              >
+              </div>Hydra
+            </div>
+            <p>
+              The unified, consistent data source teams need to solve hard
+              problems quickly
+            </p>
+          </a>
+
+          <a href="/data-sources/materialize">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/materialize-logo.png')"
+              >
+              </div>Materialize
+            </div>
+            <p>A streaming-first data warehouse for operational workloads</p>
+          </a>
+
+          <a href="/data-sources/ocient">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/ocient.png')"
+              >
+              </div>Ocient
+            </div>
+            <p>A hyperscale data warehouse</p>
+          </a>
+
+          <a href="/data-sources/teradata">
+            <div class="logo-and-title">
+              <div
+                style="background-image: url('../images/datasources/circle/teradata.png')"
+              >
+              </div>Teradata
+            </div>
+            <p>A data warehouse built for scale</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

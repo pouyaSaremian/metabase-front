@@ -1,23 +1,500 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /data-sources/mysql
-// Priority: 0.64
-// Last Modified: 2025-09-16T20:03:08+00:00
+import Base from "../../layouts/Base.astro";
+const title = "MySQL";
+const description = "An open-source relational database management system";
+const seo = {
+  title: "MySQL",
+  description: "An open-source relational database management system",
+  canonical: "/data-sources/mysql",
+  og: {
+    title: "MySQL",
+    description: "An open-source relational database management system",
+    image: "https://www.metabase.com/images/datasources/my-sql.jpg",
+    url: "https://www.metabase.com/data-sources/mysql",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "MySQL",
+    description: "An open-source relational database management system",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/datasources/my-sql.jpg",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Data Sources Mysql</title>
-</head>
-<body>
-    <h1>Data Sources Mysql</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/data-sources/mysql</code></p>
-    <p>Priority: 0.64</p>
-    <p>Last Modified: 2025-09-16T20:03:08+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="no-overflow">
+    <div class="bootstrap">
+      <div class="data-sources entry-page">
+        <div>
+          <a href="/data-sources/"
+            ><svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="chevron"
+            >
+              <path
+                opacity="0.9"
+                d="M3 8.96338L16 21.9634L29 8.96338"
+                stroke="#509ee3"
+                stroke-width="5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+            Browse data sources</a
+          >
+
+          <div>
+            <img
+              src="/images/datasources/circle/mysql.png"
+              alt="MySQL"
+              class="logo"
+            />
+            <h3>MySQL</h3>
+            <p>An open-source relational database management system</p>
+
+            <a
+              href="https://store.metabase.com/checkout"
+              class="btn btn-primary">Get started with Metabase</a
+            >
+
+            <h5>Read documentation</h5>
+            <p>
+              <a href="/docs/latest/databases/connections/mysql" target="_blank"
+                >MySQL + Metabase docs</a>
+            </p>
+            <hr />
+            <h5>Type</h5>
+            <p>
+              <a
+                href="/data-sources/#official-data-source-connectors"
+                class="connector"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  ><path
+                    stroke="#509EE3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="m14.25 8.75 4-4H5.75l4 4"></path><path
+                    stroke="#509EE3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M17.25 14a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
+                  ></path></svg
+                >
+
+                Official Connector
+              </a>
+            </p><p>Built and managed by Metabase, available in all editions</p>
+            <p></p>
+            <hr />
+            <h5>Website</h5>
+            <p><a href="https://mysql.com/" target="_blank">mysql.com</a></p>
+            <hr />
+            <h5>Support</h5>
+            <p>Unlimited technical help available on paid plans.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="title-text-and-checks">
+            <h1>
+              Make self-service analytics happen for your data in MySQL with
+              Metabase
+            </h1>
+
+            <p>
+              Metabase lets your whole team visualize and explore your data in
+              MySQL with or without SQL.
+            </p>
+
+            <ul class="checklist-outline">
+              <li>
+                Analyze vast amounts of data with a querying layer that sits on
+                top of your data warehouse so your reports run as quick as
+                MySQL.
+              </li>
+
+              <li>
+                Metabase lets everyone in your team visualize, query, and run
+                reports without technical skills or needing to ask your data
+                team for help.
+              </li>
+            </ul>
+          </div>
+
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide youtube">
+                <div id="youtube-id-P6DFuwqSDmQ"></div>
+              </div>
+
+              <div class="swiper-slide">
+                <img
+                  src="/images/stats-dashboard.svg"
+                  alt="Metabase MySQL analytics"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+
+          <div class="title-text-and-checks">
+            <h2>Easy-to-use data exploration tools for people of all levels</h2>
+            <p>
+              Get a BI tool with friendly UX that lets everyone make sense of
+              your data in MySQL.
+            </p>
+
+            <ul class="checklist-outline">
+              <li>
+                Query data in plain English with <a href="/features/metabot-ai"
+                  >Metabot</a
+                >, your AI data assistant. Chat with your database, generate and
+                debug SQL, get AI-generated summaries on charts, and more
+              </li>
+              <li>
+                Interactive dashboards that load as fast as MySQL does with
+                click-to-explore functionality.
+              </li><li>
+                Click to drill through on interactive charts and dashboards,
+                zoom in on timelines or areas of interest, and break out for
+                more context on a specific area.
+              </li>
+              <li>
+                Ask questions with nothing more than clicks in the Query
+                Builder—no SQL required (or use the SQL editor if that’s more
+                your style).
+              </li>
+              <li>
+                Set up models and metrics to give less technical teammates
+                metadata-rich starting points, with trickier stuff like joins
+                taken care of.
+              </li>
+            </ul>
+          </div>
+
+          <div class="title-text-and-checks">
+            <h2>Give data access with granularity</h2>
+            <p>Keep everyone in their own lane.</p>
+
+            <ul class="checklist-outline">
+              <li>
+                Granular permissions for viewing and querying data, so people
+                can see (and do) what they need to and nothing else.
+              </li>
+              <li>Map permissions to user groups and attributes with SSO.</li>
+              <li>Detailed usage analytics lets you see who did what when.</li>
+            </ul>
+          </div>
+
+          <div class="title-text-and-checks">
+            <h2>
+              Lots of options for sharing charts and dashboards with your
+              team—or your customers
+            </h2>
+            <p>
+              With as much interactivity and room to pull threads (or as little)
+              as you want.
+            </p>
+
+            <ul class="checklist-outline">
+              <li>
+                Customer-facing analytics is just a snippet away. Embed all of
+                Metabase in your app, or just a dashboard.
+              </li>
+              <li>
+                Export charts and dashboards to PDF, CSV, or share via a public
+                link.
+              </li>
+              <li>
+                Set up subscriptions for regularly scheduled updates. Even to
+                people without a Metabase login.
+              </li>
+              <li>Get alerts when things change unexpectedly.</li>
+            </ul>
+          </div>
+
+          <div class="title-text-and-checks">
+            <h2>Keep your data in MySQL</h2>
+            <p>
+              Metabase runs queries directly in MySQL, so your reports are
+              always up-to-date.
+            </p>
+          </div>
+
+          <div class="two-checklists">
+            <h2>Metabase features with MySQL</h2>
+
+            <hr />
+
+            <h3>Available with all data sources</h3>
+
+            <ul class="checklist-outline">
+              <li>Unlimited queries, charts, and dashboards</li>
+              <li>Send dashboards and reports via email and Slack</li>
+              <li>Connect to multiple data sources and integrations</li>
+              <li>Single sign on via SAML, LDAP, or JWT</li>
+              <li>Interactive embedding with white label customization</li>
+              <li>Granular row- and column level permissions</li>
+            </ul>
+
+            <hr />
+
+            <h3>Bonus features with MySQL</h3>
+
+            <ul class="checklist-outline available">
+              <li>
+                <a href="/docs/latest/exploration-and-organization/uploads"
+                  >CSV upload and management</a>
+              </li>
+
+              <li>
+                <a href="/docs/latest/actions/introduction"
+                  >Actions to write back to your database</a>
+              </li>
+
+              <li>
+                <a href="/docs/latest/data-modeling/model-persistence"
+                  >Model persistence</a>
+              </li>
+
+              <li>
+                <a
+                  href="/docs/latest/databases/connections/mysql#unfold-json-columns"
+                  >JSON unfolding</a>
+              </li>
+
+              <li>Report timezone</li>
+            </ul>
+
+            <hr />
+
+            <a href="/pricing/#compare" class="see-all-features"
+              >See all features <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="chevron"
+              >
+                <path
+                  opacity="0.9"
+                  d="M3 8.96338L16 21.9634L29 8.96338"
+                  stroke="#509ee3"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </div>
+
+          <div class="title-text-and-checks">
+            <h2>Keep everything in your own cluster</h2>
+            <p>
+              Self-host Metabase and MySQL to keep everything on your terms. Get
+              your token and go. Both are open source, with optional
+              cloud-hosting.
+            </p>
+          </div>
+
+          <div class="faq-container">
+            <h4 class="faq-headline">Frequently asked questions</h4>
+
+            <div class="faq">
+              <div class="faq-question">
+                <div>
+                  What’s the best business intelligence tool to connect to
+                  MySQL?
+                </div>
+                <img
+                  alt="Chevron Blue"
+                  src="/images/chevron_blue.svg"
+                  width="14"
+                />
+              </div>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    MySQL plays well with most reputable BI tools. Metabase is
+                    the most effective way to let everyone in the team start
+                    working with data. * Because of sophisticated but
+                    easy-to-use data tools like the query builder, which lets
+                    people ask questions without SQL, Metabase has a low
+                    learning curve. Simple drill-through, zoom-in, and breakout
+                    functionality lets people learn more from data with just a
+                    few clicks.
+                  </p><p>
+                    You can set up and connect Metabase to MySQL in about 5
+                    minutes and begin querying immediately, with drill-through
+                    functionality automatically generated and ready for people
+                    to start uncovering insights. Metabase is also open source
+                    and affordable, with plans and pricing that scales with you.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-question">
+                <div>How does Metabase connect to MySQL?</div>
+                <img
+                  alt="Chevron Blue"
+                  src="/images/chevron_blue.svg"
+                  width="14"
+                />
+              </div>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    You can connect to MySQL when you’re setting up a new
+                    Metabase instance, or add a database connection any time in
+                    your admin settings:
+                  </p><p>
+                    To add a database connection, click on
+                    the&nbsp;gear&nbsp;icon in the top right, and navigate
+                    to&nbsp;Admin
+                    settings&nbsp;&gt;&nbsp;Databases&nbsp;&gt;&nbsp;Add a
+                    database.
+                  </p><p>
+                    <a href="/docs/latest/databases/connections/mysql"
+                      >For the full details on connecting Metabase to MySQL,
+                      check out our documentation</a
+                    >.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-question">
+                <div>
+                  Can I use permissions from my MySQL database in Metabase?
+                </div>
+                <img
+                  alt="Chevron Blue"
+                  src="/images/chevron_blue.svg"
+                  width="14"
+                />
+              </div>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    MySQL permissions can't be impersonated in Metabase. (This
+                    is currently only possible for PostgreSQL, Redshift,
+                    Snowflake, and ClickHouse databases).
+                  </p><p>
+                    <a href="/docs/latest/permissions/impersonation"
+                      >Learn more about impersonated permissions in our
+                      documentation.</a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-question">
+                <div>How can you visualize tables in MySQL?</div>
+                <img
+                  alt="Chevron Blue"
+                  src="/images/chevron_blue.svg"
+                  width="14"
+                />
+              </div>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    Metabase fits with MySQL as a querying and visualization
+                    layer on top of your data. With Metabase you can query data
+                    in MySQL - with or without SQL - to create a broad range of
+                    data visualizations and types and tell a story with
+                    interactive dashboards. Viewers can filter and drill-through
+                    to get what’s most relevant, and dig deeper on what’s
+                    important to them. Visualizations and dashboards can even be
+                    shared or embedded in your app.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-question">
+                <div>How can you query data in MySQL?</div>
+                <img
+                  alt="Chevron Blue"
+                  src="/images/chevron_blue.svg"
+                  width="14"
+                />
+              </div>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    Metabase makes it possible for everyone in the team to run
+                    their own reports, without data skills or relying on someone
+                    else to write SQL for them. People used to working in Excel
+                    can leverage skills usually reserved for spreadsheets to get
+                    the answers they need from data in MySQL.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-question">
+                <div>How to create dashboards using MySQL?</div>
+                <img
+                  alt="Chevron Blue"
+                  src="/images/chevron_blue.svg"
+                  width="14"
+                />
+              </div>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    Metabase lets you bring together charts, visualizations, and
+                    questions into interactive dashboards that can be shared
+                    with your team and customers.
+                  </p><p>
+                    The automatically generated drill-through menu lets people
+                    click on charts to zero in on a particular category or
+                    parameter for further analysis; view individual records, or
+                    zoom in on a targeted date range. You can also add filters
+                    to let people slice the data on what’s most important to
+                    them, and add custom-click behaviors to guide data discovery
+                    (e.g. send people to a related dashboard).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="data-sources-footer">
+        <div class="try-metabase-footer">
+          <div class="full-width-centered">
+            <h3>Try Metabase free for 14 days</h3>
+            <p>
+              Set up in 5 minutes, connect to your MySQL database, and start
+              building dashboards.
+            </p>
+            <a
+              id="get-started-btn-home"
+              class="fs-13 Button btn btn-primary rounded-3 ms-lg-2"
+              href="https://store.metabase.com/checkout"
+            >
+              Get started
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

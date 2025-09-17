@@ -1,23 +1,135 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /start/oss/
-// Priority: 0.80
-// Last Modified: 2025-09-16T20:03:11+00:00
+import Base from "../../../layouts/Base.astro";
+const title = "Metabase Open Source Editions";
+const description =
+  "Metabase Open Source edition ships either as a Docker image or a standalone JAR.";
+const seo = {
+  title: "Metabase Open Source Editions",
+  description:
+    "Metabase Open Source edition ships either as a Docker image or a standalone JAR.",
+  canonical: "/start/oss/",
+  og: {
+    title: "Metabase Open Source Editions",
+    description:
+      "Metabase Open Source edition ships either as a Docker image or a standalone JAR.",
+    image:
+      "https://www.metabase.com/images/opengraph/metabase-open-source-og.jpg",
+    url: "https://www.metabase.com/start/oss",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Metabase Open Source Editions",
+    description:
+      "Metabase Open Source edition ships either as a Docker image or a standalone JAR.",
+    card: "summary_large_image",
+    image:
+      "https://www.metabase.com/images/opengraph/metabase-open-source-og.jpg",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Start Oss</title>
-</head>
-<body>
-    <h1>Start Oss</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/start/oss/</code></p>
-    <p>Priority: 0.80</p>
-    <p>Last Modified: 2025-09-16T20:03:11+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="no-overflow">
+    <div class="bootstrap">
+      <div class="start-oss-page">
+        <img
+          alt="Harbor"
+          class="start-oss-page__background-image"
+          src="/images/start/harbor.svg"
+        />
+
+        <div class="start-oss-page__container">
+          <h6>Metabase open source</h6>
+          <h1>Run your own free self-hosted Metabase</h1>
+
+          <div class="start-oss-page__card recommended">
+            <div>
+              <div class="start-oss-page__logo-container">
+                <img
+                  alt="Docker"
+                  src="/images/start/docker.svg"
+                  class="start-oss-page__logo"
+                />
+              </div>
+              <h3>Docker Image</h3>
+              <span class="badge">Recommended</span>
+            </div>
+            <p>
+              Metabase provides an official Docker image via Docker Hub that can
+              be used for deployments on any system that is running Docker.
+              Here’s a one-liner that will start a container running Metabase.
+            </p>
+            <pre
+              data-event-category="docker-script"
+              data-event-action="script-copied"
+              data-event-label="oss-start-page">          &lt;code&gt;docker run -d -p 3000:3000 --name metabase metabase/metabase&lt;/code&gt;
+        </pre>
+            <p>
+              <a
+                href="/docs/latest/installation-and-operation/running-metabase-on-docker"
+                >Running on Docker documentation <img
+                  alt="Chevron Blue Right"
+                  class="chevron-blue-right"
+                  src="/images/chevron_blue_right.svg"
+                /></a>
+            </p>
+          </div>
+
+          <div class="start-oss-page__card">
+            <div class="flex align-center">
+              <div class="start-oss-page__logo-container">
+                <img
+                  alt="Jar"
+                  src="/images/start/jar.svg"
+                  class="start-oss-page__logo"
+                />
+              </div>
+              <h3>JAR file</h3>
+            </div>
+            <ol>
+              <li>
+                <a href="/start/oss/jar" target="_blank">Download Metabase.</a>
+              </li>
+              <li>Create a new directory and move the Metabase JAR into it.</li>
+              <li>Change into your new Metabase directory and run the JAR.</li>
+            </ol>
+            <pre>&lt;code class="start-oss-page__indented"&gt;java --add-opens java.base/java.nio=ALL-UNNAMED -jar metabase.jar&lt;/code&gt;</pre>
+            <p class="small start-oss-page__indented">
+              Metabase will log its progress in the terminal as it starts up.
+              Wait until you see “Metabase Initialization Complete” and visit
+              localhost:3000.
+            </p><p>
+              <a
+                href="/docs/latest/installation-and-operation/running-the-metabase-jar-file"
+                >Running the Jar File documentation <img
+                  alt="Chevron Blue Right"
+                  class="chevron-blue-right"
+                  src="/images/chevron_blue_right.svg"
+                /></a>
+            </p>
+          </div>
+
+          <div class="start-oss-page__help">
+            <h4>
+              Need some help getting started? Check out our <a
+                href="https://discourse.metabase.com/"
+                >friendly community forum</a>
+            </h4>
+            <p>
+              Need an extra hand? All of&nbsp;<a href="/pricing/"
+                >Metabase’s&nbsp;plans</a
+              >&nbsp;include support from our world-class success team.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="light-blue-footer-container">
+    <div class="bootstrap"></div>
+  </div>
+</Base>

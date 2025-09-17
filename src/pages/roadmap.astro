@@ -1,23 +1,1067 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /roadmap
-// Priority: 0.80
-// Last Modified: 2025-09-16T20:03:12+00:00
+import Base from "../layouts/Base.astro";
+const title = "Metabase Product Roadmap";
+const description =
+  "A look at what's coming to Metabase and some of what we recently released.";
+const seo = {
+  title: "Metabase Product Roadmap",
+  description:
+    "A look at what's coming to Metabase and some of what we recently released.",
+  canonical: "/roadmap",
+  og: {
+    title: "Metabase Product Roadmap",
+    description:
+      "A look at what's coming to Metabase and some of what we recently released.",
+    image: "https://www.metabase.com/images/metabase-roadmap.jpg",
+    url: "https://www.metabase.com/roadmap",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Metabase Product Roadmap",
+    description:
+      "A look at what's coming to Metabase and some of what we recently released.",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/metabase-roadmap.jpg",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Roadmap</title>
-</head>
-<body>
-    <h1>Roadmap</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/roadmap</code></p>
-    <p>Priority: 0.80</p>
-    <p>Last Modified: 2025-09-16T20:03:12+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="no-overflow">
+    <div class="bootstrap">
+      <div class="roadmap">
+        <div class="container">
+          <div class="releases-roadmap-nav">
+            <a href="/releases">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                ><path
+                  stroke="#509EE3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M16.283 12.26 15.5 15l-.783-2.74a4.333 4.333 0 0 0-2.975-2.976L9 8.5l2.74-.783a4.333 4.333 0 0 0 2.976-2.975L15.5 2l.783 2.74a4.333 4.333 0 0 0 2.975 2.976L22 8.5l-2.74.783a4.334 4.334 0 0 0-2.976 2.975l-.001.001ZM6.5 22l.591-1.774a3.375 3.375 0 0 1 2.135-2.135L11 17.5l-1.774-.591a3.375 3.375 0 0 1-2.135-2.134L6.5 13l-.591 1.774a3.375 3.375 0 0 1-2.134 2.135L2 17.5l1.775.591a3.375 3.375 0 0 1 2.134 2.134L6.5 22Z"
+                ></path></svg
+              >
+
+              What’s new
+            </a>
+            <a href="/roadmap" class="active">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+              >
+                <path
+                  stroke="#8D93A5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="m4.75 6.75 4.5-2v12.5l-4.5 2V6.75ZM14.75 6.75l4.5-2v12.5l-4.5 2V6.75ZM14.75 6.75l-5.5-2v12.5l5.5 2V6.75Z"
+                ></path>
+              </svg>
+
+              Roadmap
+            </a>
+          </div>
+
+          <h1>Highlights of what we’re cooking</h1>
+        </div>
+
+        <div class="roadmap__content container">
+          <div class="roadmap__navigation now">
+            <button class="roadmap__navigation__now active"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                ><path
+                  stroke="#c6c9d2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="m5.867 13.115 7.808-8.365-1.673 6.135h6.134L10.33 19.25l1.673-6.135H5.867Z"
+                ></path></svg
+              >
+              Now</button
+            >
+            <button class="roadmap__navigation__soon"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+              >
+                <path
+                  stroke="#C6C9D2"
+                  stroke-width="1.5"
+                  d="M12 19.25a7.25 7.25 0 1 0 0-14.5 7.25 7.25 0 0 0 0 14.5Z"
+                ></path>
+                <path stroke="#C6C9D2" stroke-width="1.5" d="M12
+  8v4l2 2"
+                ></path>
+              </svg>
+              Soon</button
+            >
+            <button class="roadmap__navigation__later"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                ><path
+                  stroke="#C6C9D2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M18.25 15.75c-1.015.54-2.02.5-3.25.5A7.25 7.25 0 0 1 7.75 9c0-1.23-.04-2.235.5-3.25-2.289 1.219-3.5 3.476-3.5 6.25A7.25 7.25 0 0 0 12 19.25c2.774 0 5.031-1.211 6.25-3.5ZM16 4.75C16 6.96 14.96 9 12.75 9 14.96 9 16 11.04 16 13.25 16 11.04 17.04 9 19.25 9 17.04 9 16 6.96 16 4.75Z"
+                ></path></svg
+              >
+              Later</button
+            >
+          </div>
+
+          <div class="roadmap__entries">
+            <div class="roadmap__entry">
+              <div class="roadmap__tiles__header roadmap__tiles__header__now">
+                Actively being built
+              </div>
+              <div class="roadmap__tiles roadmap__tiles__now">
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>AI-backed Metabot</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Natural language querying, SQL fixes, result summaries and
+                    quicker actions throughout.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>AI-backed SQL editing</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    SQL generation and fixing backed by LLMs.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>AI-backed querying in embedding</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Natural language querying for embedding users.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>Content localization</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Customize item titles, column names and more in different
+                    languages when embedding.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>Custom SMTP configuration in Metabase Cloud</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Bring your own server to have full control over headers.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>New, simpler iframe-based embedding</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Easier to get going, but with more customization and much
+                    more performant.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>Permissions debugger</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    As an Admin, troubleshoot and set more confident permission
+                    settings.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>Tenant-based user management</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Group your embedding users by the organizations they belong
+                    to, set permissions, seed collections, and overall
+                    streamline configuration with robust data segregation.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Better setup process</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Simplifying how you get up and running, connect your data,
+                    and more.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Dashboard visual cleanup</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Generally improving the look and feel.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Enhanced pivot tables</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Faster and more customizable.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Filters in the body of dashboards</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Get them close to what they’re filtering.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>More improvements to table viz</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Slick design, column totals, multi-select, better support
+                    for categorical columns and more.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Redesigned Admin UI</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Easier to use, easier for to build for. Admins deserve nice
+                    UI too.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Revamped metadata editor</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Unified UX with clearer context for effect of changes.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="roadmap__entry">
+              <div class="roadmap__tiles__header roadmap__tiles__header__soon">
+                Planned for the next release or two
+              </div>
+              <div class="roadmap__tiles roadmap__tiles__soon">
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>Data warehouse cost insights</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Know how much your queries cost, optimize (or kill)
+                    expensive queries.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>Editable notification templates</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Custom email and HTTP formats for alerts, subscriptions,
+                    webhooks, and more.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>Semantic search</strong>
+                  </p>
+                  <p class="roadmap__entry__description"></p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Better Search UX</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Better access to filters and a more useful full results
+                    page.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Boxplot Charts</strong>
+                  </p>
+                  <p class="roadmap__entry__description"></p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Improved data picker</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Lighter, faster source picker in the query builder.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>More dashboard improvements</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Events in dashboards, drag cards from the sidebar, reduce
+                    manual resizing of elements, zoomed in card view, dashboard
+                    templates, and more.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Multiple values in dashboard filters</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    For more interactive and flexible dashboards.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Parameters in snippets</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Ability to include parameters in SQL snippets.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Radar and Treemap Charts</strong>
+                  </p>
+                  <p class="roadmap__entry__description"></p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Relative date expressions in SQL</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    More flexible filters.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Revamped field filters</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    More reliable and flexible (eg working with aliased tables).
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Revamped models</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    More like tables, with faster UX, foreign key mapping,
+                    custom filter values, better persistence and more.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>SQL Editor improvements</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Better ergonomics for day-to-day querying.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong
+                      >Separate left and right split y-axis settings</strong
+                    >
+                  </p>
+                  <p class="roadmap__entry__description">
+                    In line, bar, scatter and other charts.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>User and instance attributes in parameters</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Reference things like user.email or instance.timezone in
+                    your queries.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="roadmap__entry">
+              <div class="roadmap__tiles__header roadmap__tiles__header__later">
+                Coming in the next 6 months or so
+              </div>
+              <div class="roadmap__tiles roadmap__tiles__later">
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>Dashboard drafts and approvals</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    In-product review and change management for dashboards.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>Granular sync controls</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Configure regular sync behavior at the schema level.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>Mandatory filters and partition support</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Ensure all GUI queries use a given filter in order to
+                    support sharded tables or enforce smaller queries.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>More fine-grained permissions</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Query only via models, Edit collections.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <span
+                    class="apply-tooltip"
+                    data-tippy-content="Only available on some paid plans"
+                    data-tippy-placement="top"
+                    data-tippy-theme="black"
+                    data-tippy-duration="200"
+                    data-tippy-trigger="mouseenter"
+                    data-tippy-maxwidth="250"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      ><path
+                        fill="#fff"
+                        fill-rule="evenodd"
+                        d="m13.921 21.851 8.982-11.842c.55-.725.595-1.715.112-2.487l-2.807-4.493A2.193 2.193 0 0 0 18.348 2H6.001c-.757 0-1.46.39-1.86 1.03L1.333 7.522a2.193 2.193 0 0 0 .113 2.487l8.981 11.842a2.193 2.193 0 0 0 3.495 0Z"
+                        clip-rule="evenodd"></path><path
+                        class="stroke"
+                        fill="#00D5FF"
+                        fill-rule="evenodd"
+                        d="M2.547 8.481a.877.877 0 0 0 .14.714l.013.018 8.77 11.694a.877.877 0 0 0 1.404 0l8.772-11.696a.877.877 0 0 0 .05-.977l-2.631-4.386a.877.877 0 0 0-.752-.426H6.033a.877.877 0 0 0-.753.426L2.648 8.234a.876.876 0 0 0-.1.247ZM6.53 5.176l-1.58 2.632h2.873l.614-2.632H6.53ZM5.155 9.562h2.718l1.942 6.214-4.66-6.214Zm7.017 7.875 2.461-7.875H9.711l2.461 7.875Zm4.3-7.875-1.942 6.214 4.66-6.214h-2.719Zm-.013-1.754-.877-2.632h2.234l1.58 2.632h-2.937Zm-2.727-2.632.878 2.632H9.623l.614-2.632h3.494Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </span>
+
+                  <p class="roadmap__entry__title">
+                    <strong>Upgraded status indication</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Mark deprecated items, flag unhealthy data assets, set
+                    expiration dates, add comments and more.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Better control over auto-refresh</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Pre-configured, more granular increments, better UI.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Data source swapping</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    For GUI (non-SQL) questions.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Dynamic goals</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Define goals using other questions.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>More granular permissions</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Create, edit, and use only models or metrics and more.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong
+                      >Parameterization controls in query builder queries</strong
+                    >
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Define what can be parameterized, for control and query
+                    reuse.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Percent of total in table visualizations</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    No complex querying needed.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Pluggable charts</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Bring your own chart type with a little Javascript.
+                  </p>
+                </div>
+
+                <div class="roadmap__entry one-by-two">
+                  <p class="roadmap__entry__title">
+                    <strong>Revamped PDF generation</strong>
+                  </p>
+                  <p class="roadmap__entry__description">
+                    Server-side generated PDFs for download and in
+                    subscriptions.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              Want to see what we shipped recently?
+              <a href="/releases">
+                See what’s new <img
+                  alt="Chevron Blue Right"
+                  class="chevron-blue-right"
+                  src="/images/chevron_blue_right.svg"
+                /></a
+              >
+            </p>
+          </div>
+
+          <div class="roadmap__right-sidebar">
+            <div>
+              <div>
+                <p>
+                  Keep in mind these are non-exhaustive plans and subject to
+                  change. Plans are always clearer for the near future than far
+                  out. Features may not be available in all plans.
+                </p>
+              </div>
+              <div>
+                <p><b>Have a great feature idea?</b></p>
+                <a href="https://github.com/metabase/metabase/issues/new/choose"
+                  >Submit on GitHub <img
+                    alt="Chevron Blue Right"
+                    class="chevron-blue-right"
+                    src="/images/chevron_blue_right.svg"
+                  /></a
+                >
+              </div>
+            </div>
+            <div>
+              <h6>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  ><path
+                    stroke="#509EE3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M16.283 12.26 15.5 15l-.783-2.74a4.333 4.333 0 0 0-2.975-2.976L9 8.5l2.74-.783a4.333 4.333 0 0 0 2.976-2.975L15.5 2l.783 2.74a4.333 4.333 0 0 0 2.975 2.976L22 8.5l-2.74.783a4.334 4.334 0 0 0-2.976 2.975l-.001.001ZM6.5 22l.591-1.774a3.375 3.375 0 0 1 2.135-2.135L11 17.5l-1.774-.591a3.375 3.375 0 0 1-2.135-2.134L6.5 13l-.591 1.774a3.375 3.375 0 0 1-2.134 2.135L2 17.5l1.775.591a3.375 3.375 0 0 1 2.134 2.134L6.5 22Z"
+                  ></path></svg
+                >
+                What’s new
+              </h6>
+              <p>Want to see what we shipped recently?</p>
+              <a href="/releases"
+                >See what’s new <img
+                  alt="Chevron Blue Right"
+                  class="chevron-blue-right"
+                  src="/images/chevron_blue_right.svg"
+                /></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

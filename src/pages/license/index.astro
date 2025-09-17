@@ -1,23 +1,175 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /license/
-// Priority: 0.80
-// Last Modified: 2025-09-16T20:03:12+00:00
+import Base from "../../layouts/Base.astro";
+const title = "Metabase licenses and terms of service";
+const description =
+  "Review Metabase's licensing options, including open-source AGPL and commercial agreements for embedding and hosting.";
+const seo = {
+  title: "Metabase licenses and terms of service",
+  description:
+    "Review Metabase's licensing options, including open-source AGPL and commercial agreements for embedding and hosting.",
+  canonical: "/license/",
+  og: {
+    title: "Metabase licenses and terms of service",
+    description:
+      "Review Metabase's licensing options, including open-source AGPL and commercial agreements for embedding and hosting.",
+    url: "https://www.metabase.com/license",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Metabase licenses and terms of service",
+    description:
+      "Review Metabase's licensing options, including open-source AGPL and commercial agreements for embedding and hosting.",
+    card: "summary",
+    image: "https://www.metabase.com/images/twitter/default-share.png",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>License</title>
-</head>
-<body>
-    <h1>License</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/license/</code></p>
-    <p>Priority: 0.80</p>
-    <p>Last Modified: 2025-09-16T20:03:12+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="no-overflow">
+    <div class="bootstrap">
+      <div class="pb-17 centered-content">
+        <div class="centered-content__header-container">
+          <div class="container"></div>
+        </div>
+
+        <div class="container mt-8 mt-md-12">
+          <div class="col-xs-12 col-lg-9">
+            <article>
+              <p>Here are the main licenses of note.</p>
+
+              <h2 id="metabase-open-source-edition">
+                Metabase Open Source Edition
+              </h2>
+
+              <h3 id="gnu-affero-general-public-license-agpl">
+                <a href="/license/agpl">GNU Affero General Public License</a> (AGPL)
+              </h3>
+
+              <p>The Metabase Open Source Edition is offered under the AGPL.</p>
+
+              <p>
+                <strong>If you want to use the code,</strong> you must abide by the
+                AGPL.
+              </p>
+
+              <p>
+                <strong
+                  >If you want to embed iframes in your application,</strong
+                > you can do it in one of the following ways:
+              </p>
+
+              <ul>
+                <li>Abide by the AGPL.</li>
+                <li>
+                  Abide by the <a
+                    href="https://github.com/metabase/metabase/blob/master/LICENSE-EMBEDDING.txt"
+                    >Embedding License</a
+                  >, which includes leaving the “Powered by Metabase” logo on
+                  embedded artifacts (like dashboards and questions).
+                </li>
+                <li>
+                  Purchase a <a href="/license/commercial/"
+                    >Metabase Commercial Software License</a
+                  >.
+                </li>
+              </ul>
+
+              <p>
+                Though Metabase Enterprise Edition is <a
+                  href="/blog/Opening-Metabase-Enterprise">source available</a
+                >, without the commercial license, you can’t use any of the
+                Enterprise features, like <a
+                  href="/docs/latest/embedding/interactive-embedding"
+                  >interactive embedding</a
+                >, <a
+                  href="/learn/metabase-basics/administration/permissions/data-sandboxing-row-permissions"
+                  >data sandboxing</a
+                >, <a
+                  href="/learn/metabase-basics/administration/permissions/keep-tabs-on-your-data"
+                  >auditing</a
+                >, or SSO with <a
+                  href="/docs/latest/people-and-groups/authenticating-with-saml"
+                  >SAML</a
+                > or <a
+                  href="/docs/latest/people-and-groups/authenticating-with-jwt"
+                  >JWT</a
+                >. For a list of premium features, see our <a href="/pricing/"
+                  >pricing page</a
+                >.
+              </p>
+
+              <h2 id="metabase-enterprise-edition">
+                Metabase Enterprise Edition
+              </h2>
+
+              <h3 id="metabase-commercial-software-license">
+                <a href="/license/commercial/"
+                  >Metabase Commercial Software License</a>
+              </h3>
+
+              <p>
+                Metabase Enterprise Edition binaries are released under our <a
+                  href="/license/commercial/"
+                  >Metabase Commercial Software License</a
+                >. The MCSL applies to all of the packages in <a
+                  href="/product/enterprise">Metabase Enterprise Edition</a
+                >, though which Enterprise functionality you have access to
+                depends on the package you purchase.
+              </p>
+
+              <h2 id="metabase-cloud">Metabase Cloud</h2>
+
+              <h3 id="hosting-terms-of-service">
+                <a href="/license/hosting">Hosting terms of service</a>
+              </h3>
+
+              <p>
+                The <a href="/license/hosting">Hosting terms of service</a> applies
+                to all <a href="/pricing/">Metabase Cloud</a> customers.
+              </p>
+
+              <h2 id="embedding">Embedding</h2>
+
+              <h3 id="premium-embedding-license-legacy">
+                <a href="/license/premium-embedding"
+                  >Premium embedding license</a
+                > (Legacy)
+              </h3>
+
+              <p>
+                Our <a href="/license/premium-embedding"
+                  >Premium Embedding License</a
+                > allows you to remove the “Powered by Metabase” logo on embedded
+                questions and dashboards without making the embedding application
+                subject to the <a href="/license/agpl">AGPL</a>.
+              </p>
+
+              <h2 id="contributors-to-the-metabase-codebase">
+                Contributors to the Metabase codebase
+              </h2>
+
+              <h3 id="individual-contributor-license-agreement">
+                <a
+                  href="https://docs.google.com/a/metabase.com/forms/d/e/1FAIpQLSfc9GWyJ3F9U_4NzHLeTblgtog1FKtG3CjLshE4FAAKSdvNoQ/viewform"
+                  >Individual Contributor License Agreement</a>
+              </h3>
+
+              <p>
+                Contributors to the <a
+                  href="https://github.com/metabase/metabase"
+                  >Metabase codebase</a
+                > will need to sign this agreement.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

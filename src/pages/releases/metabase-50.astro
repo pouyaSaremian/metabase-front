@@ -1,23 +1,1005 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /releases/metabase-50
-// Priority: 0.64
-// Last Modified: 2025-09-16T20:03:12+00:00
+import Base from "../../layouts/Base.astro";
+const title = "Metabase 50";
+const description =
+  "New features and improvements to query and present your data, navigate to find and file stuff faster, manage permissions, and keep everything organized.";
+const seo = {
+  title: "Metabase 50",
+  description:
+    "New features and improvements to query and present your data, navigate to find and file stuff faster, manage permissions, and keep everything organized.",
+  canonical: "/releases/metabase-50",
+  og: {
+    title: "Metabase 50",
+    description:
+      "New features and improvements to query and present your data, navigate to find and file stuff faster, manage permissions, and keep everything organized.",
+    image: "https://www.metabase.com/images/posts/metabase-50/50.jpg",
+    url: "https://www.metabase.com/releases/metabase-50",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Metabase 50",
+    description:
+      "New features and improvements to query and present your data, navigate to find and file stuff faster, manage permissions, and keep everything organized.",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/posts/metabase-50/50.jpg",
+    creator: "The Metabase Team",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Releases Metabase 50</title>
-</head>
-<body>
-    <h1>Releases Metabase 50</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/releases/metabase-50</code></p>
-    <p>Priority: 0.64</p>
-    <p>Last Modified: 2025-09-16T20:03:12+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="MB-Page page-content">
+    <div class="progress-bar z1" id="progress-bar"></div>
+
+    <div class="bootstrap">
+      <div class="release container pt-4" id="post">
+        <section class="row">
+          <div class="d-none d-lg-block col-lg-3">
+            <a
+              id="back-button"
+              class="chevron blue-small-left mb-8 fw-bold"
+              href="/releases"
+            >
+              All releases
+            </a>
+            <div id="in-this-release" class="d-flex flex-column pe-12">
+              <h5 class="mb-6">In this release</h5>
+            </div>
+          </div>
+          <div class="content-container col-xs-12 col-lg-9">
+            <a
+              class="chevron blue-small-left fw-bold d-lg-none mb-8"
+              href="/releases">All releases</a
+            >
+            <div id="release-content">
+              <div class="col-xs-12 col-lg-12 mb-8 p-0">
+                <h4>Metabase 50</h4>
+                <h1>Better caching, permissions, navigation, and more.</h1>
+                <div class="header-credits">
+                  <img
+                    class="circle me-2"
+                    src="/images/posts/blog-authors/the-metabase-team.svg"
+                    alt="The Metabase Team Portrait"
+                    width="36"
+                    height="36"
+                  />
+                  <span>The Metabase Team</span>
+                  · Aug 27, 2024 · 11 min read
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <p>
+                  Metabase 50 is coming in hot with 50+ new features. There’s a
+                  lot here, so get settled in, or <a
+                    href="/events/metabase-50-release-webinar"
+                    >join the webinar on September 3</a
+                  > for a live walkthrough of everything new with our product team.
+                </p>
+
+                <ul>
+                  <li>
+                    <strong
+                      >If you’re hosted on <a href="/cloud/">Metabase Cloud</a
+                      ></strong
+                    >, we’ll be rolling out these new features automatically
+                    over the next few weeks.
+                  </li>
+                  <li>
+                    <strong>If you’re self-hosting Metabase</strong>, you (or
+                    your admin) can follow the docs on <a
+                      href="/docs/latest/installation-and-operation/upgrading-metabase"
+                      >how to upgrade</a
+                    >.
+                  </li>
+                </ul>
+
+                <p>
+                  Feel like you <em>just</em> finished an upgrade? <a
+                    href="/upgrade/">Try Metabase Cloud for free</a
+                  > to automate upgrades and always be on the latest version.
+                </p>
+
+                <h2
+                  id="charts-in-subscriptions-look-the-same-as-they-do-in-metabase"
+                >
+                  Charts in subscriptions look the same as they do in Metabase
+                </h2>
+
+                <video
+                  class="vjs-player lazy w-100 pause-observer autoplay-video overflow-hidden rounded-3"
+                  autoplay=""
+                  muted=""
+                  playsinline=""
+                  id="dash-to-sub"
+                >
+                  <source
+                    src="/images/posts/metabase-50/dash-to-sub.mp4"
+                    type="video/mp4"
+                  />
+
+                  <p class="vjs-no-js">
+                    To view this video please enable JavaScript and consider
+                    upgrading to a web browser that
+                    <a
+                      href="https://videojs.com/html5-video-support/"
+                      target="_blank">supports HTML5 video</a
+                    >
+                  </p>
+                </video>
+
+                <p>
+                  What you see in Metabase is what you get in subscriptions when
+                  it comes to Line, Area, Bar, Combo, Scatter, and Waterfall
+                  charts.
+                </p>
+
+                <h2 id="better-caching-controls">Better caching controls</h2>
+
+                <video
+                  class="vjs-player lazy w-100 pause-observer autoplay-video overflow-hidden rounded-3"
+                  autoplay=""
+                  muted=""
+                  playsinline=""
+                  id="add-section"
+                >
+                  <source
+                    src="/images/posts/metabase-50/caching.mp4"
+                    type="video/mp4"
+                  />
+
+                  <p class="vjs-no-js">
+                    To view this video please enable JavaScript and consider
+                    upgrading to a web browser that
+                    <a
+                      href="https://videojs.com/html5-video-support/"
+                      target="_blank">supports HTML5 video</a
+                    >
+                  </p>
+                </video>
+
+                <p>
+                  <a href="/docs/latest/configuring-metabase/caching"
+                    >Caching controls</a
+                  > now come with more clarity around how we decide to validate cache,
+                  with more options than before. For example, you can schedule your
+                  invalidation policy around the time you know you’re adding new
+                  data to your database. You can set one caching policy for all databases,
+                  or tailor your policies for each database. You can also set caching
+                  policies for questions and dashboards.
+                </p>
+
+                <p>
+                  Advanced caching is available on <a href="/pricing/"
+                    >Metabase Pro and Enterprise plans</a
+                  >.
+                </p>
+
+                <h2
+                  id="improved-permissions-with-more-control-over-how-groups-view-and-query-data"
+                >
+                  Improved permissions with more control over how groups view
+                  and query data
+                </h2>
+
+                <video
+                  class="vjs-player lazy w-100 pause-observer autoplay-video overflow-hidden rounded-3"
+                  autoplay=""
+                  muted=""
+                  playsinline=""
+                  id="duplicate-replace"
+                >
+                  <source
+                    src="/images/posts/metabase-50/data-perms.mp4"
+                    type="video/mp4"
+                  />
+
+                  <p class="vjs-no-js">
+                    To view this video please enable JavaScript and consider
+                    upgrading to a web browser that
+                    <a
+                      href="https://videojs.com/html5-video-support/"
+                      target="_blank">supports HTML5 video</a
+                    >
+                  </p>
+                </video>
+
+                <h3 id="view-data-and-create-queries-access">
+                  View data and create queries access
+                </h3>
+
+                <p>
+                  We split data access into <a
+                    href="/docs/latest/permissions/data"
+                    ><strong>View data</strong> or <strong
+                      >Create queries</strong
+                    ></a
+                  >. This split makes it easier to reason about permissions, and
+                  allows you to set viewing and querying privileges table by
+                  table.
+                </p>
+
+                <h3 id="blocked-access-now-available-at-the-table-level">
+                  Blocked access now available at the table level
+                </h3>
+
+                <p>
+                  You can now <a
+                    href="/docs/latest/permissions/data#blocked-view-data-permission"
+                    >block groups from viewing data</a
+                  > from individual tables, even if the group has collection access
+                  to questions and dashboards that query that data.
+                </p>
+
+                <h3 id="upgrading-from-old-permissions">
+                  Upgrading from old permissions
+                </h3>
+
+                <p>
+                  <a href="/docs/latest/permissions/no-self-service-deprecation"
+                    >Your permissions will automatically be upgraded, with <em
+                      >NO change</em
+                    > to your existing permission settings</a
+                  >. Your permissions settings will look different, but everyone
+                  will have the same access as before, only now you’ll have more
+                  control over permissions if you ever want to change them. In
+                  some rare cases we’ll email you about how to manually migrate
+                  permissions that we couldn’t automatically migrate due to the
+                  limitations of the old system.
+                </p>
+
+                <p>
+                  Advanced permissions are available on <a href="/pricing/"
+                    >Metabase Pro and Enterprise plans</a
+                  >.
+                </p>
+
+                <h2
+                  id="time-over-time-comparisons-in-the-query-builder-with-the-new-offset-custom-expression-yes-window-functions"
+                >
+                  Time-over-time comparisons in the query builder with the new <code
+                    class="language-plaintext highlighter-rouge">Offset</code
+                  > custom expression (yes, window functions!)
+                </h2>
+
+                <p>
+                  It’s now easier to quantify when it has(n’t) been your day,
+                  your week, your month—or even your year. You can now spot it
+                  using the <a
+                    href="/docs/latest/questions/query-builder/expressions/offset"
+                    ><code class="language-plaintext highlighter-rouge"
+                      >Offset</code
+                    > custom expression</a
+                  > to compare numeric data values with previous time period.
+                </p>
+
+                <p>
+                  As one of our most requested features, this opens up the use
+                  of <a
+                    href="/learn/metabase-basics/querying-and-dashboards/time-series/time-series-comparisons"
+                    >window functions in the query builder</a
+                  >. We’ll soon add it as another clickable element in the query
+                  builder to let you and your team skip writing expressions.
+                </p>
+
+                <p>
+                  <a href="https://www.youtube.com/watch?v=LgPiQdkV4g8"
+                    >Watch a video tutorial of Alex making year-over-year
+                    comparison charts.</a>
+                </p>
+
+                <h2 id="cmdk-your-way-around-metabase-with-the-command-palette">
+                  Cmd+k your way around Metabase with the command palette
+                </h2>
+
+                <video
+                  class="vjs-player lazy w-100 pause-observer autoplay-video overflow-hidden rounded-3"
+                  autoplay=""
+                  muted=""
+                  playsinline=""
+                  id="required-filter"
+                >
+                  <source
+                    src="/images/posts/metabase-50/command-palette.mp4"
+                    type="video/mp4"
+                  />
+
+                  <p class="vjs-no-js">
+                    To view this video please enable JavaScript and consider
+                    upgrading to a web browser that
+                    <a
+                      href="https://videojs.com/html5-video-support/"
+                      target="_blank">supports HTML5 video</a
+                    >
+                  </p>
+                </video>
+
+                <p>
+                  Return to a recently viewed question or dashboard. Create a
+                  new query or model. Search and jump to admin settings, and
+                  more. Do whatever you want to do and get wherever you want to
+                  go in Metabase without leaving the comfort of your keyboard.
+                </p>
+
+                <h2
+                  id="improved-menus-for-picking-data-and-moving-stuff-around"
+                >
+                  Improved menus for picking data and moving stuff around
+                </h2>
+
+                <video
+                  class="vjs-player lazy w-100 pause-observer autoplay-video overflow-hidden rounded-3"
+                  autoplay=""
+                  muted=""
+                  playsinline=""
+                  id="trend-chart"
+                >
+                  <source
+                    src="/images/posts/metabase-50/entity-picker.mp4"
+                    type="video/mp4"
+                  />
+
+                  <p class="vjs-no-js">
+                    To view this video please enable JavaScript and consider
+                    upgrading to a web browser that
+                    <a
+                      href="https://videojs.com/html5-video-support/"
+                      target="_blank">supports HTML5 video</a
+                    >
+                  </p>
+                </video>
+
+                <p>
+                  Speaking of smoother ways to get to the things you want, item
+                  menus now set out a clearer path to get to what you need,
+                  whether you’re picking a data source to create a new question,
+                  or finding a dashboard to add a question to.
+                </p>
+
+                <p>
+                  The finder view anticipates obvious choices, like showing
+                  recent items, and organizing stuff into tabs by type, like
+                  models, collections, saved questions, and more.
+                </p>
+
+                <h2
+                  id="new-chart-types-and-ways-to-customize-your-visualizations"
+                >
+                  New chart types and ways to customize your visualizations
+                </h2>
+
+                <p>
+                  Besides the following headliners in this category, we
+                  delivered a bunch of <a
+                    href="https://github.com/metabase/metabase/releases"
+                    >overall improvements to visualizations</a
+                  > to make them better and easier to work with.
+                </p>
+
+                <h3 id="combo-stacked-bar-charts">Combo stacked bar charts</h3>
+
+                <p>
+                  <img
+                    src="/images/posts/metabase-50/combo-stackedbar.png"
+                    alt="combo-stacked-bar"
+                  />
+                </p>
+
+                <p>
+                  A stacked bar chart with trend line is double the chart power
+                  in one card.
+                </p>
+
+                <h3
+                  id="stacked-charts-with-data-values-displayed-on-each-bar-in-the-stack"
+                >
+                  Stacked charts with data values displayed on each bar in the
+                  stack
+                </h3>
+
+                <p>
+                  <img
+                    src="/images/posts/metabase-50/stacked-bar-values.png"
+                    alt="stacked-bar-values"
+                  />
+                </p>
+
+                <p>
+                  In-chart values currently only apply to bar charts, with more
+                  chart types to follow in future versions.
+                </p>
+
+                <h3
+                  id="customize-the-thickness-or-pattern-of-lines-for-each-series-in-charts"
+                >
+                  Customize the thickness or pattern of lines for each series in
+                  charts
+                </h3>
+
+                <p>
+                  <img
+                    src="/images/posts/metabase-50/line-chart-weight.png"
+                    alt="line-chart-weight"
+                  />
+                </p>
+
+                <p>
+                  Make lines in a chart thicker or thinner depending on what you
+                  want to stand out. Also options for dashed and plotted line
+                  patterns.
+                </p>
+
+                <h3 id="unpin-y-axis-from-zero">Unpin y-axis from zero</h3>
+
+                <video
+                  class="vjs-player lazy w-100 pause-observer autoplay-video overflow-hidden rounded-3"
+                  autoplay=""
+                  muted=""
+                  playsinline=""
+                  id="serialization"
+                >
+                  <source
+                    src="/images/posts/metabase-50/unpin-from-zero.mp4"
+                    type="video/mp4"
+                  />
+
+                  <p class="vjs-no-js">
+                    To view this video please enable JavaScript and consider
+                    upgrading to a web browser that
+                    <a
+                      href="https://videojs.com/html5-video-support/"
+                      target="_blank">supports HTML5 video</a
+                    >
+                  </p>
+                </video>
+
+                <p>
+                  Remove unnecessary whitespace from charts to focus on the
+                  range where stuff is actually happening.
+                </p>
+
+                <h2
+                  id="create-custom-columns-with-combine-and-extract-functions-with-a-click-"
+                >
+                  Create custom columns with combine and extract functions with
+                  a click 🪄
+                </h2>
+
+                <p>
+                  Bypass custom expressions to combine values in two columns
+                  into a new column (e.g., First and Last name → Full name), or
+                  pull out part of a value (e.g., email address → domain name).
+                  You now have a button in column headers and shortcuts in the
+                  query builder to combine or extract data in columns.
+                </p>
+
+                <h2 id="the-data-browser-now-includes-models">
+                  The data browser now includes models
+                </h2>
+
+                <p>
+                  <a href="/docs/latest/data-modeling/models">Models</a> claim their
+                  rightful, discoverable place in the left-hand nav panel, alongside
+                  your databases.
+                </p>
+
+                <p>
+                  If you’re on the Metabase Pro or Enterprise plan, you can also
+                  toggle on the verified models filter to give your team an even
+                  more direct path to the most valuable, reliable building
+                  blocks.
+                </p>
+
+                <h2 id="more-ways-to-upload-and-manage-csvs">
+                  More ways to upload and manage CSVs
+                </h2>
+
+                <p>
+                  First there was CSV upload. Then there was Append CSV data. <a
+                    href="/docs/latest/exploration-and-organization/uploads#create-append-or-replace-models-with-uploads"
+                    >Now there’s Replace CSV</a
+                  >. Does what it says, and gives you more ways to bring your
+                  data in and analyze your CSV data in Metabase.
+                </p>
+
+                <p>
+                  Admins on Metabase Pro and Enterprise plans can now also
+                  delete CSVs from a table in the admin panel.
+                </p>
+
+                <h2
+                  id="added-customization-options-for-the-appearance-of-your-metabase-with-white-labeling"
+                >
+                  Added customization options for the appearance of your
+                  Metabase with white-labeling
+                </h2>
+
+                <p>
+                  Turn down the Metabaseness by <a
+                    href="/docs/latest/configuring-metabase/appearance#metabase-illustrations"
+                    >hiding or customizing illustrations on the login page</a
+                  >, the home page, search results and more. You can swap out
+                  images like the lighthouse, sailboat, and others for images
+                  that speak to your own brand, or drop them completely.
+                </p>
+
+                <p>
+                  White-labeling is available on <a href="/pricing/"
+                    >Metabase Pro and Enterprise plans</a
+                  >.
+                </p>
+
+                <h2 id="migrating-to-metabase-cloud-is-smoother-than-ever">
+                  Migrating to Metabase Cloud is smoother than ever
+                </h2>
+
+                <p>
+                  Moving from self-hosted deployment to Metabase Cloud now comes
+                  with more end-to-end control over the migration process, and a
+                  clearer workflow. <a href="/docs/latest/cloud/migrate/guide"
+                    >Check out the guide</a
+                  >.
+                </p>
+
+                <p>
+                  <a href="/cloud/"
+                    >Find out if Metabase Cloud is the way to go for you.</a>
+                </p>
+
+                <h2 id="easier-more-automated-setup-of-air-gapped-metabase">
+                  Easier, more automated setup of air-gapped Metabase
+                </h2>
+
+                <p>
+                  Take your Metabase off the grid. Setting up an <a
+                    href="/product/air-gapping"
+                    >air-gapped, offline version of Metabase</a
+                  > now works almost like any other version of Metabase, with a more
+                  straightforward workflow and less technical knowledge needed.
+                </p>
+
+                <p>
+                  Air-gapped deployment is available on the <a
+                    href="/product/enterprise">Metabase Enterprise plan</a
+                  >.
+                </p>
+
+                <h2 id="smaller-but-still-cool-stuff">
+                  Smaller but still cool stuff
+                </h2>
+
+                <h3 id="brand-new-druid-jdbc-driver-added">
+                  Brand new Druid JDBC driver added
+                </h3>
+
+                <p>
+                  This new Druid driver supports Druid SQL and all available SQL
+                  JDBC features with nested column parsing and querying.
+                </p>
+
+                <p>
+                  The new Druid driver uses a different type of connection and
+                  query language than the previous driver. If you’re using the
+                  previous Druid driver, you’ll need to start over by <a
+                    href="/docs/latest/databases/connections/druid"
+                    >creating a new database connection</a
+                  >.
+                </p>
+
+                <h3
+                  id="clickhouse-driver-now-supports-csv-uploads-and-connection-impersonation"
+                >
+                  ClickHouse driver now supports CSV uploads and connection
+                  impersonation
+                </h3>
+
+                <p>
+                  The ClickHouse driver update now lets you store and analyze
+                  CSVs, and supports impersonated permissions.
+                </p>
+
+                <p>
+                  Impersonation is available on <a href="/pricing/"
+                    >Metabase Pro and Enterprise plans</a
+                  >.
+                </p>
+
+                <h3 id="example-dashboard-ships-with-all-new-metabases">
+                  Example dashboard ships with all new Metabases
+                </h3>
+
+                <p>
+                  For those new to Metabase who want a quick look at dashboards,
+                  there’s now an example dashboard to play with. The dashboard
+                  is made from sample data and ready to embed so you can get a
+                  feel for the embedding setup flow and see how a dashboard will
+                  look in your app.
+                </p>
+
+                <h3 id="new-tooltips-show-metadata-in-more-places">
+                  New tooltips show metadata in more places
+                </h3>
+
+                <p>
+                  We added some handy tooltips in the query builder and in
+                  column headers.
+                </p>
+
+                <h3
+                  id="the-query-builder-now-suggests-custom-expressions-for-easy-reference"
+                >
+                  The query builder now suggests custom expressions for easy
+                  reference
+                </h3>
+
+                <p>
+                  Get the full list of available <a
+                    href="/docs/latest/questions/query-builder/expressions-list"
+                    >aggregations and functions</a
+                  > without having to dip out of the query builder to reference or
+                  search other sources.
+                </p>
+
+                <h3 id="downloaded-data-is-formatted-by-default">
+                  Downloaded data is formatted by default
+                </h3>
+
+                <p>
+                  By default, downloaded data retains the format you set in your
+                  question. You can opt for unformatted downloads by holding
+                  down the ctrl key when you click export.
+                </p>
+
+                <h3
+                  id="new-embedding-setup-flow-to-get-from-zero-to-proof-of-concept"
+                >
+                  New embedding setup flow to get from zero to proof of concept
+                </h3>
+
+                <p>
+                  When setting up a new Metabase for embedding, Metabase can
+                  help you through the setup, with tools and instructions to
+                  embed your first chart fast.
+                </p>
+
+                <h3 id="download-diagnostics-for-quicker-debugging">
+                  Download diagnostics for quicker debugging
+                </h3>
+
+                <p>
+                  Export error logs to figure out what’s going on with your
+                  Metabase and share with our customer success team for speedier
+                  resolution. <a
+                    href="/docs/latest/troubleshooting-guide/diagnostic-info"
+                    >Get diagnostics via the Ctrl+F1 shortcut</a
+                  >.
+                </p>
+
+                <h3 id="new-video-tutorials">New video tutorials</h3>
+
+                <p>
+                  Visual learners, this one’s for you. We’ve added video
+                  tutorials to our Learn repertoire. Brush up or share the love
+                  on <a href="https://www.youtube.com/watch?v=45ltec8BUew"
+                    >searching in tables</a
+                  >, <a href="https://www.youtube.com/watch?v=A6nHjKCfVUA"
+                    >highlighting one bar in a chart</a
+                  >, and more on our channel on YouTube. Like, subscribe, share,
+                  etc.
+                </p>
+
+                <h3 id="metabase-in-danish">Metabase in Danish!</h3>
+
+                <p>Vi støtter nu dansk som nyt sprog. Thanks for the Dansk.</p>
+
+                <h3 id="breaking-changes">Breaking changes</h3>
+
+                <ul>
+                  <li>
+                    <strong
+                      >Google Analytics driver has now been removed.</strong>
+                  </li>
+                  <li>
+                    <strong
+                      ><a
+                        href="https://github.com/metabase/metabase/blob/release-x.50.x/docs/developers-guide/api-changelog.md"
+                        >Check out the API changelog for breaking changes</a
+                      ></strong>
+                  </li>
+                  <li>
+                    <strong
+                      >You can no longer configure uploads via environment
+                      variables.</strong
+                    > - You can no longer configure uploads via environment variables.
+                    The following environment variables no longer work:
+                    <ul>
+                      <li>
+                        <code class="language-plaintext highlighter-rouge"
+                          >MB_UPLOADS_ENABLED</code>
+                      </li>
+                      <li>
+                        <code class="language-plaintext highlighter-rouge"
+                          >MB_UPLOADS_DATABASE_ID</code>
+                      </li>
+                      <li>
+                        <code class="language-plaintext highlighter-rouge"
+                          >MB_UPLOADS_SCHEMA_NAME</code>
+                      </li>
+                      <li>
+                        <code class="language-plaintext highlighter-rouge"
+                          >MB_UPLOADS_TABLE_PREFIX</code>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <p>
+                  If you’re running the Pro or Enterprise version of Metabase,
+                  you can configure uploads on startup via the <a
+                    href="/docs/latest/configuring-metabase/config-file"
+                    >config file</a
+                  >. <code class="language-plaintext highlighter-rouge"
+                    >uploads_enabled</code
+                  >, <code class="language-plaintext highlighter-rouge"
+                    >uploads_schema_name</code
+                  >, and <code class="language-plaintext highlighter-rouge"
+                    >uploads_table_prefix</code
+                  > are now database-specific settings, which you can configure like
+                  so:
+                </p>
+
+                <div class="language-yaml highlighter-rouge">
+                  <div class="highlight">
+                    <pre
+                      class="highlight">&lt;code&gt;&lt;span class="na"&gt;config&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
+  &lt;span class="na"&gt;settings&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
+  &lt;span class="na"&gt;databases&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
+    &lt;span class="pi"&gt;-&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;test-data&lt;/span&gt;
+    &lt;span class="s"&gt;...&lt;/span&gt;
+    &lt;span class="na"&gt;uploads enabled&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+    &lt;span class="na"&gt;uploads_schema_name&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;uploads&lt;/span&gt;
+    &lt;span class="na"&gt;uploads_table_prefix&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;uploads&lt;/span&gt;
+&lt;/code&gt;</pre>
+                  </div>
+                </div>
+
+                <h2
+                  id="join-the-webinar-for-a-walkthrough-of-these-new-features-with-the-product-team"
+                >
+                  Join the webinar for a walkthrough of these new features with
+                  the product team
+                </h2>
+
+                <p>
+                  <a href="/events/metabase-50-release-webinar"
+                    >Save your spot for the live event on September 3</a
+                  >.
+                </p>
+
+                <p>
+                  Or if you want to get into the nitty-gritty, check out our <a
+                    href="https://github.com/metabase/metabase/releases/"
+                    >release notes in GitHub</a
+                  >.
+                </p>
+
+                <h2 id="be-part-of-the-embedded-analytics-sdk-beta-program">
+                  Be part of the embedded analytics SDK beta program
+                </h2>
+
+                <p>
+                  We’re working on an SDK to make interactive embedding more
+                  powerful, flexible and easier to customize, and we’re looking
+                  for people to partner with us and provide feedback to help
+                  shape the final product. Could it be you?
+                </p>
+
+                <p>
+                  <a href="https://forms.gle/PKJBF5pxMwJTTwH4A"
+                    >Sign up for the embedding SDK beta program</a>
+                </p>
+
+                <h3 id="big-thanks-to-everyone-who-contributed">
+                  Big thanks to everyone who contributed!
+                </h3>
+
+                <p>
+                  Thanks to all those who submitted bug reports, feature
+                  suggestions, translations, and pull requests. Metabase gets
+                  better and better thanks to your efforts.
+                </p>
+
+                <p>
+                  Hope you enjoy the release. To see what other features we have
+                  in the works, check out our <a href="/roadmap"
+                    >product roadmap</a
+                  >.
+                </p>
+
+                <p>Cheers,</p>
+
+                <p>The Metabase Team</p>
+              </div>
+
+              <div class="d-flex flex-column mt-11 d-lg-none">
+                <h5 class="mb-3 neutral-40">Share this release</h5>
+                <div class="d-flex align-items-center gap-3">
+                  <a
+                    href="https://twitter.com/intent/tweet?url=https://metabase.com/releases/metabase-50"
+                    target="popup"
+                    onclick="window.open('https://twitter.com/intent/tweet?url=https://metabase.com/releases/metabase-50','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;"
+                  >
+                    <svg
+                      id=""
+                      class="share-button"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 26 22"
+                      fill="#C6C9D2"
+                    >
+                      <path
+                        d="M24.9465693,3.43255605 C24.0654891,3.83264574 23.1186277,4.10304933 22.1248175,4.22466368 C23.1392117,3.60206278 23.9181606,2.61623318 24.2849927,1.44161435 C23.3357664,2.01802691 22.2843212,2.43668161 21.1652555,2.66233184 C20.2690219,1.68466368 18.9922044,1.07372197 17.5791825,1.07372197 C14.8658686,1.07372197 12.6661022,3.32600897 12.6661022,6.10403587 C12.6661022,6.49829596 12.709635,6.88224215 12.7933723,7.25040359 C8.71021898,7.0406278 5.09016058,5.03793722 2.6670365,1.99452915 C2.24414599,2.73748879 2.00186861,3.60161435 2.00186861,4.52349776 C2.00186861,6.26869955 2.86928467,7.80843049 4.18753285,8.71049327 C3.38213139,8.68439462 2.62464234,8.45811659 1.96218978,8.08134529 C1.96183942,8.10233184 1.96183942,8.12340807 1.96183942,8.14457399 C1.96183942,10.5818834 3.65532847,12.6150673 5.90283212,13.07713 C5.49054015,13.1921076 5.05652555,13.2535426 4.60840876,13.2535426 C4.29185401,13.2535426 3.98405839,13.2220628 3.68414599,13.1633184 C4.30928467,15.1618834 6.12364964,16.6162332 8.27348905,16.656861 C6.59208759,18.006009 4.47369343,18.8102242 2.1719708,18.8102242 C1.77544526,18.8102242 1.38435036,18.7864574 1,18.74 C3.17418978,20.1672646 5.75664234,21 8.53109489,21 C17.567708,21 22.5092555,13.3347982 22.5092555,6.68735426 C22.5092555,6.46923767 22.5045255,6.252287 22.4950657,6.03659193 C23.4548905,5.32735426 24.2878832,4.44134529 24.9465693,3.43255605"
+                      >
+                      </path>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/sharing/share-offsite/?url=https://metabase.com/releases/metabase-50"
+                    target="popup"
+                    onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=https://metabase.com/releases/metabase-50','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;"
+                  >
+                    <svg
+                      id=""
+                      class="share-button"
+                      fill="#C6C9D2"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 30 30"
+                      width="30"
+                      height="30"
+                    >
+                      <path
+                        d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"
+                      ></path>
+                    </svg>
+                  </a>
+                  <a
+                    class="copy-clip position-relative d-flex justify-content-center"
+                    title="Copy to clipboard"
+                  >
+                    <svg
+                      id=""
+                      class="share-button"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="#C6C9D2"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M19.2939 9.17106C19.5246 8.93228 19.8004 8.74183 20.1054 8.61081C20.4104 8.47978 20.7385 8.41082 21.0704 8.40793C21.4024 8.40505 21.7316 8.4683 22.0388 8.59401C22.3461 8.71971 22.6252 8.90534 22.8599 9.14007C23.0947 9.3748 23.2803 9.65393 23.406 9.96117C23.5317 10.2684 23.595 10.5976 23.5921 10.9296C23.5892 11.2615 23.5202 11.5896 23.3892 11.8946C23.2582 12.1996 23.0677 12.4754 22.8289 12.7061L19.0789 16.4561C18.6101 16.9247 17.9744 17.188 17.3114 17.188C16.6485 17.188 16.0128 16.9247 15.5439 16.4561C15.3082 16.2284 14.9924 16.1024 14.6647 16.1052C14.3369 16.1081 14.0234 16.2395 13.7917 16.4713C13.5599 16.703 13.4284 17.0166 13.4256 17.3443C13.4228 17.6721 13.5487 17.9878 13.7764 18.2236C14.7141 19.1609 15.9856 19.6875 17.3114 19.6875C18.6373 19.6875 19.9088 19.1609 20.8464 18.2236L24.5964 14.4736C25.5072 13.5305 26.0112 12.2675 25.9998 10.9566C25.9884 9.64557 25.4626 8.39151 24.5355 7.46447C23.6085 6.53743 22.3544 6.01158 21.0434 6.00019C19.7325 5.9888 18.4695 6.49277 17.5264 7.40356L15.6514 9.27856C15.5321 9.39387 15.4368 9.5318 15.3713 9.6843C15.3058 9.83681 15.2713 10.0008 15.2699 10.1668C15.2684 10.3328 15.3001 10.4974 15.3629 10.651C15.4258 10.8046 15.5186 10.9442 15.6359 11.0616C15.7533 11.1789 15.8929 11.2717 16.0465 11.3346C16.2001 11.3974 16.3647 11.4291 16.5307 11.4276C16.6967 11.4262 16.8607 11.3917 17.0132 11.3262C17.1657 11.2607 17.3036 11.1654 17.4189 11.0461L19.2939 9.17106ZM13.0439 15.4211C13.5128 14.9524 14.1485 14.6891 14.8114 14.6891C15.4744 14.6891 16.1101 14.9524 16.5789 15.4211C16.6942 15.5404 16.8322 15.6357 16.9847 15.7012C17.1372 15.7667 17.3012 15.8012 17.4672 15.8026C17.6332 15.8041 17.7978 15.7724 17.9514 15.7096C18.105 15.6467 18.2446 15.5539 18.3619 15.4366C18.4793 15.3192 18.5721 15.1796 18.635 15.026C18.6978 14.8724 18.7294 14.7078 18.728 14.5418C18.7266 14.3758 18.6921 14.2118 18.6266 14.0593C18.5611 13.9068 18.4658 13.7689 18.3464 13.6536C17.4088 12.7162 16.1373 12.1896 14.8114 12.1896C13.4856 12.1896 12.2141 12.7162 11.2764 13.6536L7.52644 17.4036C7.04889 17.8648 6.66798 18.4165 6.40593 19.0265C6.14389 19.6366 6.00596 20.2927 6.00019 20.9566C5.99442 21.6205 6.12093 22.2788 6.37233 22.8933C6.62374 23.5078 6.995 24.0661 7.46447 24.5355C7.93393 25.005 8.49219 25.3763 9.10667 25.6277C9.72115 25.8791 10.3796 26.0056 11.0434 25.9998C11.7073 25.994 12.3634 25.8561 12.9735 25.5941C13.5835 25.332 14.1352 24.9511 14.5964 24.4736L16.4714 22.5986C16.5908 22.4833 16.6861 22.3453 16.7516 22.1928C16.8171 22.0403 16.8516 21.8763 16.853 21.7103C16.8544 21.5443 16.8228 21.3797 16.76 21.2261C16.6971 21.0725 16.6043 20.9329 16.4869 20.8156C16.3696 20.6982 16.23 20.6054 16.0764 20.5425C15.9228 20.4797 15.7582 20.4481 15.5922 20.4495C15.4262 20.4509 15.2622 20.4854 15.1097 20.5509C14.9572 20.6164 14.8192 20.7117 14.7039 20.8311L12.8289 22.7061C12.5983 22.9448 12.3225 23.1353 12.0175 23.2663C11.7124 23.3973 11.3844 23.4663 11.0524 23.4692C10.7205 23.4721 10.3913 23.4088 10.0841 23.2831C9.77682 23.1574 9.49769 22.9718 9.26295 22.737C9.02822 22.5023 8.84259 22.2232 8.71689 21.9159C8.59118 21.6087 8.52793 21.2795 8.53082 20.9476C8.5337 20.6156 8.60267 20.2876 8.73369 19.9825C8.86471 19.6775 9.05517 19.4017 9.29394 19.1711L13.0439 15.4211Z"
+                      ></path>
+                    </svg>
+
+                    <div class="copied-to-clipboard-wrapper visible invisible">
+                      <div class="caret"></div>
+                      <div class="copied-to-clipboard">Copied to clipboard</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center mt-16">
+              <iframe
+                id="post-signup-form-1"
+                src="../post-signup-form.html"
+                width="100%"
+                height="200px"
+                onload="javascript:(function(o){
+        o.style.height=o.contentWindow.document.getElementById('mc_embed_signup').offsetHeight+'px';
+
+        const resizeObserver = new ResizeObserver(function(entries) {
+            const $firstEntry = entries[0];
+            if ($firstEntry && $firstEntry.borderBoxSize && $firstEntry.borderBoxSize[0]) {
+                const $form = $firstEntry.borderBoxSize[0];
+                if ($form) {
+                    o.style.height = $form.blockSize + 'px';
+                }
+            }
+        });
+        resizeObserver.observe(o.contentWindow.document.getElementById('mc_embed_signup'));
+    }(this));"
+                style="border:none;overflow:hidden;"></iframe>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="d-flex flex-row justify-content-between">
+            <h3 class="mb-0">See previous releases</h3>
+            <a
+              class="chevron blue-small-right fw-bold d-none d-lg-flex"
+              href="/releases">All releases</a
+            >
+          </div>
+          <div class="row mt-10 mt-lg-13">
+            <div class="hover-raise-sm col-xs-12 col-lg-6 mb-8 mb-lg-0">
+              <div
+                class="card hover-shadow hover-pointer border-0 rounded-3 p-6"
+              >
+                <p class="paragraph-5 neutral-60 fw-bold mb-3">Apr 2024</p>
+                <h4 class="mb-4">Metabase 49</h4>
+                <p class="paragraph-5 neutral-60 mb-0">
+                  This release is all about making it easier to get stuff done
+                  in Metabase. Dashboard improvements make setup and editing
+                  smoother. Improvements to trend charts are up 400%. You can
+                  append data to CS...
+                </p>
+                <a href="/releases/metabase-49" class="stretched-link h-0"></a>
+              </div>
+            </div>
+
+            <div class="hover-raise-sm col-xs-12 col-lg-6 mb-8 mb-lg-0">
+              <div
+                class="card hover-shadow hover-pointer border-0 rounded-3 p-6"
+              >
+                <p class="paragraph-5 neutral-60 fw-bold mb-3">Jan 2024</p>
+                <h4 class="mb-4">Metabase 48</h4>
+                <p class="paragraph-5 neutral-60 mb-0">
+                  Whether you need to put your data access under a magnifying
+                  glass for compliance and auditing purposes, or you’re looking
+                  for hard evidence on whether...
+                </p>
+                <a href="/releases/metabase-48" class="stretched-link h-0"></a>
+              </div>
+            </div>
+          </div>
+          <a
+            class="chevron blue-small-right fw-bold d-flex d-lg-none"
+            href="/releases">All releases</a
+          >
+        </section>
+
+        <section>
+          <div class="rounded-4 no-overflow">
+            <div class="get-started">
+              <div class="container">
+                <div class="pt0">
+                  <div class="text-centered bootstrap">
+                    <h2
+                      class="large mt0 neutral-white"
+                      style="margin-bottom: 16px"
+                    >
+                      Get started with Metabase
+                    </h2>
+                    <div
+                      class="d-flex justify-content-center align-items-center gap-2"
+                    >
+                      <a
+                        class="fs-13 Button Button--primary rounded-3 ms-lg-2 py-3 lh-base"
+                        href="https://store.metabase.com/checkout"
+                        >Get started</a
+                      >
+                    </div>
+                    <ul class="horizontal-checklist mt-6">
+                      <li>Free, no-commitment trial</li>
+                      <li>Easy for everyone—no SQL required</li>
+                      <li>Up and running in 5 minutes</li>
+                    </ul>
+                    <div class="img-placeholder ml-auto mr-auto"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

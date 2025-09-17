@@ -1,23 +1,2767 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /learn/sql/working-with-sql/sql-best-practices
-// Priority: 0.80
-// Last Modified: 2025-09-16T20:03:11+00:00
+import Base from "../../../../layouts/Base.astro";
+const title = "Best practices for writing SQL queries | Metabase Learn";
+const description =
+  "SQL best practices: a brief guide to writing better SQL queries.";
+const seo = {
+  title: "Best practices for writing SQL queries | Metabase Learn",
+  description:
+    "SQL best practices: a brief guide to writing better SQL queries.",
+  canonical: "/learn/sql/working-with-sql/sql-best-practices",
+  og: {
+    title: "Best practices for writing SQL queries | Metabase Learn",
+    description:
+      "SQL best practices: a brief guide to writing better SQL queries.",
+    image: "https://www.metabase.com/images/learn/default-learn-og.png",
+    url: "https://www.metabase.com/learn/sql/working-with-sql/sql-best-practices",
+    type: "article",
+    site_name:
+      "Metabase | Business Intelligence, Dashboards, and Data Visualization",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Best practices for writing SQL queries | Metabase Learn",
+    description:
+      "SQL best practices: a brief guide to writing better SQL queries.",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/learn/default-learn-og.png",
+    creator: "The Metabase Team",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Learn Sql Working With Sql Sql Best Practices</title>
-</head>
-<body>
-    <h1>Learn Sql Working With Sql Sql Best Practices</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/learn/sql/working-with-sql/sql-best-practices</code></p>
-    <p>Priority: 0.80</p>
-    <p>Last Modified: 2025-09-16T20:03:11+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div>
+    <div class="bootstrap">
+      <div class="learn blog-post MB-Page">
+        <div id="main-navigation-content" class="learn-left-sidebar scrollable">
+          <div class="docs-learn-toggler">
+            <div class="hover-highlight"></div>
+            <a href="/docs/latest/">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.25 5.75C19.25 5.19772 18.8023 4.75 18.25 4.75H14C12.8954 4.75 12 5.64543 12 6.75V19.25L12.8284 18.4216C13.5786 17.6714 14.596 17.25 15.6569 17.25H18.25C18.8023 17.25 19.25 16.8023 19.25 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M4.75 5.75C4.75 5.19772 5.19772 4.75 5.75 4.75H10C11.1046 4.75 12 5.64543 12 6.75V19.25L11.1716 18.4216C10.4214 17.6714 9.40401 17.25 8.34315 17.25H5.75C5.19772 17.25 4.75 16.8023 4.75 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Docs</span>
+            </a>
+
+            <a href="/learn/" class="active">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 14.0929L20 9.42144L12 4.75L4 9.42144L12 14.0929ZM12 14.0929L17.4756 10.8957C18.196 12.8186 18.4005 14.4134 18.0667 16.45C15.8121 16.68 13.6864 17.6604 12 19.25C10.3138 17.6606 8.18852 16.6802 5.93422 16.45C5.60018 14.4134 5.80465 12.8185 6.52533 10.8957L12 14.0929Z"
+                  stroke="#509EE3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M12.5 9.5C12.5 9.7761 12.2761 10 12 10C11.7239 10 11.5 9.7761 11.5 9.5C11.5 9.2239 11.7239 9 12 9C12.2761 9 12.5 9.2239 12.5 9.5Z"
+                  stroke="#509EE3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Learn</span>
+            </a>
+          </div>
+
+          <h5>Courses</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/metabase-basics/getting-started/index-2" class="">
+                Getting started
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/learn/metabase-basics/overview/concepts" class="">
+                    Metabase concepts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/find-data"
+                    class=""
+                  >
+                    Find data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/ask-a-question"
+                    class=""
+                  >
+                    Ask a question
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/create-dashboards"
+                    class=""
+                  >
+                    Create a dashboard
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/explore-data"
+                    class=""
+                  >
+                    Explore dashboards
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/filter"
+                    class=""
+                  >
+                    Filter and limit data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/summarize"
+                    class=""
+                  >
+                    Summarize data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/custom-columns"
+                    class=""
+                  >
+                    Add custom columns
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/dashboard-filters"
+                    class=""
+                  >
+                    Use dashboard filters
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/models"
+                    class=""
+                  >
+                    Build models
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Metabase Basics</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/metabase-basics/overview/" class="">
+                Metabase overview
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/overview/tour-of-metabase"
+                    class=""
+                  >
+                    A tour of Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/learn/metabase-basics/overview/next-steps" class="">
+                    Advanced Metabase features for data analysts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/learn/metabase-basics/overview/beyond-bi" class="">
+                    Beyond BI: other problems you can solve with Metabase
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/metabase-basics/querying-and-dashboards/"
+                class=""
+              >
+                Querying and dashboards
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/questions"
+                    class=""
+                  >
+                    Asking questions
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/drill-through"
+                        class=""
+                      >
+                        Create interactive charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/custom-expressions"
+                        class=""
+                      >
+                        Custom expressions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/joins-in-metabase"
+                        class=""
+                      >
+                        Joins in Metabase
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/cross-db-joins"
+                        class=""
+                      >
+                        Combining data from different databases
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/multi-aggregation"
+                        class=""
+                      >
+                        Multi-level aggregation
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/searching-tables"
+                        class=""
+                      >
+                        Searching in tables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/formatting"
+                        class=""
+                      >
+                        Cleaning and formatting text
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/visualization"
+                    class=""
+                  >
+                    Visualizing data
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/chart-guide"
+                        class=""
+                      >
+                        Which chart should you use?
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/line-charts"
+                        class=""
+                      >
+                        Guide to line charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/bar-charts"
+                        class=""
+                      >
+                        Master the bar chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/histograms"
+                        class=""
+                      >
+                        Histograms
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/dashboards"
+                    class=""
+                  >
+                    Building dashboards
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/bi-dashboard-best-practices"
+                        class=""
+                      >
+                        BI dashboard best practices
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/linking-filters"
+                        class=""
+                      >
+                        Linking filters in dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/custom-destinations"
+                        class=""
+                      >
+                        Custom click destinations on dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/cross-filtering"
+                        class=""
+                      >
+                        Cross-filtering: using a chart to update a dashboard
+                        filter
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/markdown"
+                        class=""
+                      >
+                        Markdown in dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/build-a-record-lookup-tool"
+                        class=""
+                      >
+                        Build a record lookup tool with Metabase
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/"
+                    class=""
+                  >
+                    SQL in Metabase
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/sql-variables"
+                        class=""
+                      >
+                        Create filters using SQL variables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/field-filters"
+                        class=""
+                      >
+                        Field filters for SQL questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/snippets"
+                        class=""
+                      >
+                        Snippets: reuse and share code
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/organizing-sql"
+                        class=""
+                      >
+                        Snippets vs. Saved Questions vs. Views
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/filters"
+                        class=""
+                      >
+                        Adding filters to dashboards with SQL questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/sql-tricks-ordering-charts"
+                        class=""
+                      >
+                        SQL trick: ordering bars in a chart
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/time-series"
+                    class=""
+                  >
+                    Time series analysis
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/time-series/start"
+                        class=""
+                      >
+                        Overview of time series analysis
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/time-series/time-series-comparisons"
+                        class=""
+                      >
+                        Period-over-period comparisons for time series
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/time-series/compare-times"
+                        class=""
+                      >
+                        Best practices for visualizing time series
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/data-browser"
+                    class=""
+                  >
+                    Data reference
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/actions-crud"
+                    class=""
+                  >
+                    Build a basic CRUD app with actions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/mongodb"
+                    class=""
+                  >
+                    Using Metabase with MongoDB
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/learn/metabase-basics/administration/" class="">
+                Administration
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/administration/administration-and-operation/"
+                    class=""
+                  >
+                    Administration and operation
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/guide"
+                        class=""
+                      >
+                        Admin overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-and-your-db"
+                        class=""
+                      >
+                        How Metabase works with your database
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-in-production"
+                        class=""
+                      >
+                        How to run Metabase in production
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/managing-people"
+                        class=""
+                      >
+                        Managing people in Metabase
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/guide-to-sharing-data"
+                        class=""
+                      >
+                        Guide to sharing data
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/same-page"
+                        class=""
+                      >
+                        Keeping your analytics organized
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/multi-env"
+                        class=""
+                      >
+                        Multiple environments
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/serialization"
+                        class=""
+                      >
+                        Serialization: preloading dashboards in a new Metabase
+                        instance
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/git-based-workflow"
+                        class=""
+                      >
+                        Setting up a git-based workflow
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster"
+                        class=""
+                      >
+                        Making dashboards faster
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-at-scale"
+                        class=""
+                      >
+                        Metabase at scale
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/data-engineering"
+                        class=""
+                      >
+                        Metabase for data engineers
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-api"
+                        class=""
+                      >
+                        Working with the Metabase API
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/administration/permissions/"
+                    class=""
+                  >
+                    Permissions
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/strategy"
+                        class=""
+                      >
+                        Permissions strategies
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/data-permissions"
+                        class=""
+                      >
+                        Guide to data permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/collection-permissions"
+                        class=""
+                      >
+                        Working with collection permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/row-permissions"
+                        class=""
+                      >
+                        Row-level permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/column-permissions"
+                        class=""
+                      >
+                        Column-level permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/row-and-column-security-use-cases"
+                        class=""
+                      >
+                        Restricting the data that people can see in Metabase
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/keep-tabs-on-your-data"
+                        class=""
+                      >
+                        How to keep tabs on your data
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/ldap-auth-access-control"
+                        class=""
+                      >
+                        Using LDAP for authentication and access control
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/learn/metabase-basics/embedding" class="">
+                Embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/learn/metabase-basics/embedding/overview" class="">
+                    Strategies for delivering customer-facing analytics
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/embedding/charts-and-dashboards"
+                    class=""
+                  >
+                    Publishing data visualizations to the web
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/embedding/external-sharing"
+                    class=""
+                  >
+                    A Metabase mystery
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/embedding/multi-tenant-self-service-analytics"
+                    class=""
+                  >
+                    Multi-tenant self-service analytics
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Grow your data skills</h5>
+
+          <ul>
+            <li class="expanded">
+              <a href="/learn/sql/" class="">
+                Learn SQL
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/learn/sql/getting-started/" class="">
+                    Get started with SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/sql/getting-started/introduction"
+                        class=""
+                      >
+                        Introduction
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/getting-started/querying-tables"
+                        class=""
+                      >
+                        SQL querying tables
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/learn/sql/filtering/" class="">
+                    SQL filtering
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/learn/sql/filtering/by-text" class="">
+                        SQL filtering by text
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/learn/sql/filtering/by-date" class="">
+                        SQL filtering by date
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/learn/sql/combining-tables/" class="">
+                    Combining tables with SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/learn/sql/working-with-sql/sql-joins" class="">
+                        Combining tables with joins
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/sql-join-types"
+                        class=""
+                      >
+                        SQL join types
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/learn/sql/combining-tables/sql-union" class="">
+                        Combining tables with SQL UNION
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="expanded">
+                  <a href="/learn/sql/working-with-sql/" class="">
+                    Working with SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/sql-best-practices"
+                        class="selected"
+                      >
+                        Best practices for writing SQL queries
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/learn/sql/working-with-sql/sql-cte" class="">
+                        Common Table Expressions (CTEs) in SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/dates-in-sql"
+                        class=""
+                      >
+                        Working with dates in SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/ltv-with-metabase"
+                        class=""
+                      >
+                        How to calculate customer lifetime value (LTV) with SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/syntax-reference"
+                        class=""
+                      >
+                        SQL syntax reference
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/learn/sql/debugging-sql/" class="">
+                    Debugging SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/learn/sql/debugging-sql/sql-syntax" class="">
+                        Debugging SQL syntax errors
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/learn/sql/debugging-sql/sql-logic" class="">
+                        Debugging SQL query logic
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/debugging-sql/sql-logic-duplicated-data"
+                        class=""
+                      >
+                        Debugging duplicated data in SQL query results
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/debugging-sql/sql-logic-missing-data"
+                        class=""
+                      >
+                        Debugging missing data in SQL query results
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/grow-your-data-skills/data-fundamentals/"
+                class=""
+              >
+                Database fundamentals
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/database-basics"
+                    class=""
+                  >
+                    A short overview of databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/data-types-overview"
+                    class=""
+                  >
+                    Data types and metadata
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/table-relationships"
+                    class=""
+                  >
+                    Database table relationships
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/dimensions-and-measures"
+                    class=""
+                  >
+                    Measures and dimensions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/fact-table"
+                    class=""
+                  >
+                    Fact and dimension tables
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/normalization"
+                    class=""
+                  >
+                    Data normalization
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/view"
+                    class=""
+                  >
+                    What is a database view?
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/sql-performance-tuning"
+                    class=""
+                  >
+                    Query performance tuning
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/data-cube"
+                    class=""
+                  >
+                    Data cubes
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/learn/grow-your-data-skills/data-landscape/" class="">
+                Data landscape
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/data-landscape"
+                    class=""
+                  >
+                    A guide to the data landscape
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/types-of-databases"
+                    class=""
+                  >
+                    Types of databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/data-mart-data-warehouse-data-lake"
+                    class=""
+                  >
+                    Data warehouse vs data lake vs data mart
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/which-data-warehouse"
+                    class=""
+                  >
+                    Which data warehouse should you use?
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/etl-landscape"
+                    class=""
+                  >
+                    ETLs, ELTs, and Reverse ETLs
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/learn/grow-your-data-skills/analytics/" class="">
+                Strategies for analytics
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/editing-dashboards"
+                    class=""
+                  >
+                    Why you should regularly edit your dashboards
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/information-budget"
+                    class=""
+                  >
+                    Managing your information budget
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/avoiding-data-jargon"
+                    class=""
+                  >
+                    Don't use "data" as a crutch for lazy thinking
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/data-model-mistakes"
+                    class=""
+                  >
+                    Common data model mistakes made by startups
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/analytics-mistakes"
+                    class=""
+                  >
+                    Ten common analytics mistakes startups make
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/embedding-mistakes"
+                    class=""
+                  >
+                    The five stages of embedding grief
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/push-and-pull"
+                    class=""
+                  >
+                    The push and pull of analytics
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/grow-your-data-skills/data-visualization/"
+                class=""
+              >
+                Data visualization
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-visualization/cumulative-charts"
+                    class=""
+                  >
+                    Cumulative charts to track values over time
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/grow-your-data-skills/business-analysis-methods/"
+                class=""
+              >
+                Business analysis methods
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/business-analysis-methods/how-to-do-funnel-analysis"
+                    class=""
+                  >
+                    How to do funnel analysis
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Cheat sheets</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/cheat-sheets/which-chart-to-use" class="">
+                Which chart to use?
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/cheat-sheets/how-to-choose-the-right-map-visualization"
+                class=""
+              >
+                Which map to use?
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/learn/cheat-sheets/sql-cheat-sheet" class="">
+                SQL cheat sheet
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/learn/cheat-sheets/transition-guides/" class="">
+                Transition from other BI tools
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/cheat-sheets/transition-guides/powerbi-to-metabase"
+                    class=""
+                  >
+                    Power BI to Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/cheat-sheets/transition-guides/tableau-to-metabase"
+                    class=""
+                  >
+                    Tableau to Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/cheat-sheets/transition-guides/looker-to-metabase"
+                    class=""
+                  >
+                    Looker to Metabase
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <article class="learn__post learn__article">
+          <div class="top-bar">
+            <div>
+              <div class="learn-breadcrumb-trail"></div>
+            </div>
+
+            <div></div>
+          </div>
+
+          <div class="learn__post__content">
+            <p>
+              This article covers some best practices for writing SQL queries
+              for data analysts and data scientists. Most of our discussion will
+              concern SQL in general, but we’ll include some notes on features
+              specific to Metabase that make writing SQL a breeze.
+            </p>
+
+            <h2 id="correctness-readability-then-optimization-in-that-order">
+              Correctness, readability, then optimization: in that order
+            </h2>
+
+            <p>
+              The standard warning against premature optimization applies here.
+              Avoid tuning your SQL query until you know your query returns the
+              data you’re looking for. And even then, only prioritize optimizing
+              your query if it’s run frequently (like powering a <a
+                href="/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster"
+                >popular dashboard</a
+              >), or if the query traverses a large number of rows. In general,
+              prioritize accuracy (does the query produce the intended results),
+              and readability (can others easily understand and modify the code)
+              before worrying about performance.
+            </p>
+
+            <h2
+              id="make-your-haystacks-as-small-as-possible-before-searching-for-your-needles"
+            >
+              Make your haystacks as small as possible before searching for your
+              needles
+            </h2>
+
+            <p>
+              Arguably, we’re already getting into optimization here, but the
+              goal should be to tell the database to scan the minimum number of
+              values necessary to retrieve your results.
+            </p>
+
+            <p>
+              Part of SQL’s beauty is its declarative nature. Instead of telling
+              the database how to retrieve records, you need only tell the
+              database which records you need, and the database should figure
+              out the most efficient way to get that information. Consequently,
+              much of the advice about improving the efficiency of queries is
+              simply about showing people how to use the tools in SQL to
+              articulate their needs with more precision.
+            </p>
+
+            <p>
+              We’ll review the general order of query execution, and include
+              tips along the way to reduce your search space. Then we’ll talk
+              about three essential tools to add to your utility belt: <a
+                href="#sql-best-practices-for-index">INDEX</a
+              >, <a href="#explain">EXPLAIN</a>, and <a href="#with">WITH</a>.
+            </p>
+
+            <h2 id="first-get-to-know-your-data">
+              First, get to know your data
+            </h2>
+
+            <p>
+              Familiarize yourself with your data before your write a single
+              line of code by studying the metadata to make sure that a column
+              really does contain the data you expect. The <a
+                href="/docs/latest/questions/native-editor/writing-sql"
+                >SQL editor</a
+              > in Metabase features a handy data reference tab (accessible via the
+              <strong>book icon</strong>), where you can browse through the
+              tables in your database, and view their columns and connections:
+            </p>
+
+            <p>
+              <img
+                src="/learn/images/best-practices-for-writing-sql-queries/view-columns.png"
+                alt="Use the Data Reference sidebar to view a table"
+              />
+            </p>
+
+            <p>You can also view sample values for specific columns:</p>
+
+            <p>
+              <img
+                src="/learn/images/best-practices-for-writing-sql-queries/sample-data.png"
+                alt="Use the Data Reference sidebar to view sample data."
+              />
+            </p>
+
+            <p>
+              Metabase gives you many different ways to explore your data: you
+              can <a href="/docs/latest/exploration-and-organization/x-rays"
+                >X-ray</a
+              > tables, <a href="/docs/latest/questions/introduction"
+                >compose questions</a
+              > using the query builder, convert a saved question to SQL code, or
+              build from an existing SQL query. We cover this in other articles;
+              for now, let’s go through the general workflow of a query.
+            </p>
+
+            <h2 id="developing-your-query">Developing your query</h2>
+
+            <p>
+              Everyone’s method will differ, but here’s an example workflow to
+              follow when developing a query.
+            </p>
+
+            <ul>
+              <li>
+                As above, study the column and table metadata. If you’re using
+                Metabase’s native (SQL) editor, you can also search for <a
+                  href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/snippets"
+                  >Snippets</a
+                > that contain SQL code for the table and columns you’re working
+                with. Snippets allow you to see how other analysts have been querying
+                the data. Or you can <a
+                  href="/docs/latest/questions/native-editor/referencing-saved-questions-in-queries"
+                  >start a query from an existing SQL question</a
+                >.
+              </li>
+              <li>
+                To get a feel for a table’s values, SELECT * from the tables
+                you’re working with and LIMIT your results. Keep the LIMIT
+                applied as you refine your columns (or add more columns via
+                joins).
+              </li>
+              <li>
+                Narrow down the columns to the minimal set required to answer
+                your question.
+              </li>
+              <li>Apply any filters to those columns.</li>
+              <li>
+                If you need to aggregate data, aggregate a small number of rows
+                and confirm that the aggregations are as you expect.
+              </li>
+              <li>
+                Once you have a query returning the results you need, look for
+                sections of the query to save as a Common Table Expression (CTE)
+                to encapsulate that logic.
+              </li>
+              <li>
+                With Metabase, you can also save code as a <a
+                  href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/snippets"
+                  >Snippet</a
+                > to share and reuse in other queries.
+              </li>
+            </ul>
+
+            <h2 id="the-general-order-of-query-execution">
+              The general order of query execution
+            </h2>
+
+            <p>
+              Before we get into individual tips on writing SQL code, it’s
+              important to have a sense of how databases will carry out your
+              query. This differs from the reading order (left to right, top to
+              bottom) you use to compose your query. Query optimizers can change
+              the order of the following list, but this general lifecycle of a
+              SQL query is good to keep in mind when writing SQL. We’ll use the
+              execution order to group the tips on writing good SQL that follow.
+            </p>
+
+            <p>
+              The rule of thumb here is this: the earlier in this list you can
+              eliminate data, the better.
+            </p>
+
+            <ol>
+              <li>
+                <a href="#sql-best-practices-for-from">FROM</a> (and JOIN) get(s)
+                the tables referenced in the query. These tables represent the maximum
+                search space specified by your query. Where possible, restrict this
+                search space before moving forward.
+              </li>
+              <li>
+                <a href="#sql-best-practices-for-where">WHERE</a> filters data.
+              </li>
+              <li>
+                <a href="#sql-best-practices-for-group-by">GROUP BY</a> aggregates
+                data.
+              </li>
+              <li>
+                <a href="#sql-best-practices-for-having">HAVING</a> filters out aggregated
+                data that doesn’t meet the criteria.
+              </li>
+              <li>
+                <a href="#sql-best-practices-for-select">SELECT</a> grabs the columns
+                (then deduplicates rows if DISTINCT is invoked).
+              </li>
+              <li>
+                <a href="#sql-best-practices-for-union">UNION</a> merges the selected
+                data into a results set.
+              </li>
+              <li>
+                <a href="#sql-best-practices-for-order-by">ORDER BY</a> sorts the
+                results.
+              </li>
+            </ol>
+
+            <p>
+              And, of course, there will always be occasions where the query
+              optimizer for your particular database will devise a different
+              query plan, so don’t get hung up on this order.
+            </p>
+
+            <h2 id="some-query-guidelines-not-rules">
+              Some query guidelines (not rules)
+            </h2>
+
+            <p>
+              The following tips are guidelines, not rules, intended to keep you
+              out of trouble. Each database handles SQL differently, has a
+              slightly different set of functions, and takes different
+              approaches to optimizing queries. And that’s before we even get
+              into comparing traditional transactional databases with analytics
+              databases that use columnar storage formats, which have vastly
+              different performance characteristics.
+            </p>
+
+            <h3 id="comment-your-code-especially-the-why">
+              Comment your code, especially the why
+            </h3>
+
+            <p>
+              Help people out (including yourself three months from now) by
+              adding comments that explain different parts of the code. The most
+              important thing to capture here is the “why.” For example, it’s
+              obvious that the code below filters out orders with <code
+                class="language-plaintext highlighter-rouge">ID</code
+              > greater than 10, but the reason it’s doing that is because the first
+              10 orders are used for testing.
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;
+  &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="n"&gt;product&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt;
+  &lt;span class="n"&gt;orders&lt;/span&gt;
+&lt;span class="c1"&gt;-- filter out test orders&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt;
+  &lt;span class="k"&gt;order&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;&gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              The catch here is that you introduce a little maintenance
+              overhead: if you change the code, you need to make sure that the
+              comment is still relevant and up to date. But that’s a small price
+              to pay for readable code.
+            </p>
+
+            <h3 id="sql-best-practices-for-from">
+              SQL best practices for FROM
+            </h3>
+
+            <h4 id="join-tables-using-the-on-keyword">
+              Join tables using the ON keyword
+            </h4>
+
+            <p>
+              Although it’s possible to “join” two tables using a <code
+                class="language-plaintext highlighter-rouge">WHERE</code
+              > clause (that is, to perform an implicit join, like <code
+                class="language-plaintext highlighter-rouge"
+                >SELECT * FROM a,b WHERE a.foo = b.bar</code
+              >), you should instead prefer an <a
+                href="/learn/metabase-basics/querying-and-dashboards/questions/joins-in-metabase"
+                >explicit JOIN</a
+              >:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;
+  &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vendor&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt;
+  &lt;span class="n"&gt;orders&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;
+  &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;products&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              Mostly for readability, as the <code
+                class="language-plaintext highlighter-rouge">JOIN</code
+              > + <code class="language-plaintext highlighter-rouge">ON</code> syntax
+              distinguishes joins from <code
+                class="language-plaintext highlighter-rouge">WHERE</code
+              > clauses intended to filter the results.
+            </p>
+
+            <h4 id="alias-multiple-tables">Alias multiple tables</h4>
+
+            <p>
+              When querying multiple tables, use aliases, and employ those
+              aliases in your select statement, so the database (and your
+              reader) doesn’t need to parse which column belongs to which table.
+              Note that if you have columns with the same name across multiple
+              tables, you will need to explicitly reference them with either the
+              table name or alias.
+            </p>
+
+            <p><strong>Avoid</strong></p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;
+  &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="n"&gt;last_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="n"&gt;first_name&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;fiction_books&lt;/span&gt;
+  &lt;span class="k"&gt;LEFT&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;fiction_authors&lt;/span&gt;
+  &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;fiction_books&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;author_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fiction_authors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p><strong>Prefer</strong></p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;
+  &lt;span class="n"&gt;books&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="n"&gt;authors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="n"&gt;authors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;first_name&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;fiction_books&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;books&lt;/span&gt;
+  &lt;span class="k"&gt;LEFT&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;fiction_authors&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;authors&lt;/span&gt;
+  &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;books&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;author_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;authors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              This is a trivial example, but when the number of tables and
+              columns in your query increases, your readers won’t have to track
+              down which column is in which table. That and your queries might
+              break if you join a table with an ambiguous column name (e.g.,
+              both tables include a field called <code
+                class="language-plaintext highlighter-rouge">Created_At</code
+              >.
+            </p>
+
+            <p>
+              Note that field filters are incompatible with table aliases, so
+              you’ll need to remove aliases when connecting filter widgets to
+              your Field Filters.
+            </p>
+
+            <h3 id="sql-best-practices-for-where">
+              SQL best practices for WHERE
+            </h3>
+
+            <h4 id="filter-with-where-before-having">
+              Filter with WHERE before HAVING
+            </h4>
+
+            <p>
+              Use a <code class="language-plaintext highlighter-rouge"
+                >WHERE</code
+              > clause to filter superfluous rows, so you don’t have to compute those
+              values in the first place. Only after removing irrelevant rows, and
+              after aggregating those rows and grouping them, should you include
+              a <code class="language-plaintext highlighter-rouge">HAVING</code>
+              clause to filter out aggregates.
+            </p>
+
+            <h4 id="avoid-functions-on-columns-in-where-clauses">
+              Avoid functions on columns in WHERE clauses
+            </h4>
+
+            <p>
+              Using a function on a column in a <code
+                class="language-plaintext highlighter-rouge">WHERE</code
+              > clause can really slow down your query, as the function makes the
+              query <a href="https://en.wikipedia.org/wiki/Sargable"
+                >non-sargable</a
+              > (i.e., it prevents the database from using an index to speed up the
+              query). Instead of using the index to skip to the relevant rows, the
+              function on the column forces the database to run the function on each
+              row of the table.
+            </p>
+
+            <p>
+              And remember, the concatenation operator <code
+                class="language-plaintext highlighter-rouge">||</code
+              > is also a function, so don’t get fancy trying to concat strings to
+              filter multiple columns. Prefer multiple conditions instead:
+            </p>
+
+            <p><strong>Avoid</strong></p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;hero&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sidekick&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;superheros&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;hero&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="n"&gt;sidekick&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'BatmanRobin'&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p><strong>Prefer</strong></p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;hero&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sidekick&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;superheros&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt;
+  &lt;span class="n"&gt;hero&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'Batman'&lt;/span&gt;
+  &lt;span class="k"&gt;AND&lt;/span&gt;
+  &lt;span class="n"&gt;sidekick&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'Robin'&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <h4 id="prefer--to-like">
+              Prefer <code class="language-plaintext highlighter-rouge">=</code>
+              to <code class="language-plaintext highlighter-rouge">LIKE</code>
+            </h4>
+
+            <p>
+              This is not always the case. It’s good to know that <code
+                class="language-plaintext highlighter-rouge">LIKE</code
+              > compares characters, and can be paired with wildcard operators like
+              <code class="language-plaintext highlighter-rouge">%</code>,
+              whereas the <code class="language-plaintext highlighter-rouge"
+                >=</code
+              > operator compares strings and numbers for exact matches. The <code
+                class="language-plaintext highlighter-rouge">=</code
+              > can take advantage of <a href="#sql-best-practices-for-index"
+                >indexed</a
+              > columns. This isn’t the case with all databases, as <code
+                class="language-plaintext highlighter-rouge">LIKE</code
+              > can use indexes (if they exist for the field) as long as you avoid
+              prefixing the search term with the wildcard operator, <code
+                class="language-plaintext highlighter-rouge">%</code
+              >. Which brings us to our next point:
+            </p>
+
+            <h4 id="avoid-bookending-wildcards-in-where-statements">
+              Avoid bookending wildcards in WHERE statements
+            </h4>
+
+            <p>
+              Using wildcards for searching can be expensive. Prefer adding
+              wildcards to the end of strings. Prefixing a string with a
+              wildcard can lead to a full table scan.
+            </p>
+
+            <p><strong>Avoid</strong></p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="k"&gt;column&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="k"&gt;table&lt;/span&gt; &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;col&lt;/span&gt; &lt;span class="k"&gt;LIKE&lt;/span&gt; &lt;span class="nv"&gt;"%wizar%"&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p><strong>Prefer</strong></p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="k"&gt;column&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="k"&gt;table&lt;/span&gt; &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;col&lt;/span&gt; &lt;span class="k"&gt;LIKE&lt;/span&gt; &lt;span class="nv"&gt;"wizar%"&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <h4 id="prefer-exists-to-in">Prefer EXISTS to IN</h4>
+
+            <p>
+              If you just need to verify the existence of a value in a table,
+              prefer <code class="language-plaintext highlighter-rouge"
+                >EXISTS</code
+              > to <code class="language-plaintext highlighter-rouge">IN</code>,
+              as the <code class="language-plaintext highlighter-rouge"
+                >EXISTS</code
+              > process exits as soon as it finds the search value, whereas <code
+                class="language-plaintext highlighter-rouge">IN</code
+              > will scan the entire table. <code
+                class="language-plaintext highlighter-rouge">IN</code
+              > should be used for finding values in lists.
+            </p>
+
+            <p>
+              Similarly, prefer <code
+                class="language-plaintext highlighter-rouge">NOT EXISTS</code
+              > to <code class="language-plaintext highlighter-rouge"
+                >NOT IN</code
+              >.
+            </p>
+
+            <h3 id="sql-best-practices-for-group-by">
+              SQL best practices for GROUP BY
+            </h3>
+
+            <h4 id="order-multiple-groupings-by-descending-cardinality">
+              Order multiple groupings by descending cardinality
+            </h4>
+
+            <p>
+              Where possible, <code class="language-plaintext highlighter-rouge"
+                >GROUP BY</code
+              > columns in order of descending cardinality. That is, group by columns
+              with more unique values first (like IDs or phone numbers) before grouping
+              by columns with fewer distinct values (like state or gender).
+            </p>
+
+            <h3 id="sql-best-practices-for-having">
+              SQL best practices for HAVING
+            </h3>
+
+            <h4 id="only-use-having-for-filtering-aggregates">
+              Only use HAVING for filtering aggregates
+            </h4>
+
+            <p>
+              And before <code class="language-plaintext highlighter-rouge"
+                >HAVING</code
+              >, filter out values using a <code
+                class="language-plaintext highlighter-rouge">WHERE</code
+              > clause before aggregating and grouping those values.
+            </p>
+
+            <h3 id="sql-best-practices-for-select">
+              SQL best practices for SELECT
+            </h3>
+
+            <h4 id="select-columns-not-stars">SELECT columns, not stars</h4>
+
+            <p>
+              Specify the columns you’d like to include in the results (though
+              it’s fine to use <code
+                class="language-plaintext highlighter-rouge">*</code
+              > when first exploring tables — just remember to <code
+                class="language-plaintext highlighter-rouge">LIMIT</code
+              > your results).
+            </p>
+
+            <h3 id="sql-best-practices-for-union">
+              SQL best practices for UNION
+            </h3>
+
+            <h4 id="prefer-union-all-to-union">Prefer UNION All to UNION</h4>
+
+            <p>
+              If duplicates are not an issue, <code
+                class="language-plaintext highlighter-rouge">UNION ALL</code
+              > won’t discard them, and since <code
+                class="language-plaintext highlighter-rouge">UNION ALL</code
+              > isn’t tasked with removing duplicates, the query will be more efficient.
+            </p>
+
+            <h3 id="sql-best-practices-for-order-by">
+              SQL best practices for ORDER BY
+            </h3>
+
+            <h4 id="avoid-sorting-where-possible-especially-in-subqueries">
+              Avoid sorting where possible, especially in subqueries
+            </h4>
+
+            <p>
+              Sorting is expensive. If you must sort, make sure your subqueries
+              are not needlessly sorting data.
+            </p>
+
+            <h2 id="sql-best-practices-for-index">
+              SQL best practices for INDEX
+            </h2>
+
+            <p>
+              This section is for the database admins in the crowd (and a topic
+              too large to fit in this article). One of the most common things
+              folks run into when experiencing performance issues in database
+              queries is a lack of adequate indexing.
+            </p>
+
+            <p>
+              Which columns you should index usually depends on the columns
+              you’re filtering by (i.e., which columns typically end up in your <code
+                class="language-plaintext highlighter-rouge">WHERE</code
+              > clauses). If you find that you’re always filtering by a common set
+              of columns, you should consider indexing those columns.
+            </p>
+
+            <h3 id="adding-indexes">Adding indexes</h3>
+
+            <p>
+              Indexing foreign key columns and frequently queried columns can
+              significantly decrease query times. Here’s an example statement to
+              create an index:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;INDEX&lt;/span&gt; &lt;span class="n"&gt;product_title_index&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;products&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              There are different types of indexes available, the most common
+              index type uses a <a href="https://en.wikipedia.org/wiki/B-tree"
+                >B-tree</a
+              > to speed up retrieval. Check out our article on <a
+                href="/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster"
+                >making dashboards faster</a
+              >, and consult your database’s documentation on how to create an
+              index.
+            </p>
+
+            <h3 id="use-partial-indexes">Use partial indexes</h3>
+
+            <p>
+              For particularly large datasets, or lopsided datasets, where
+              certain value ranges appear more frequently, consider creating an
+              index with a <code class="language-plaintext highlighter-rouge"
+                >WHERE</code
+              > clause to limit the number of rows indexed. Partial indexes can also
+              be useful for date ranges as well, for example if you want to index
+              the past week of data only.
+            </p>
+
+            <h3 id="use-composite-indexes">Use composite indexes</h3>
+
+            <p>
+              For columns that typically go together in queries (such as
+              last_name, first_name), consider creating a composite index. The
+              syntax is similar to creating a single index. For example:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;INDEX&lt;/span&gt; &lt;span class="n"&gt;full_name_index&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;customers&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;last_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;first_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <h2 id="explain">EXPLAIN</h2>
+
+            <h3 id="look-for-bottlenecks">Look for bottlenecks</h3>
+
+            <p>
+              Some databases, like PostgreSQL, offer insight into the query plan
+              based on your SQL code. Simply prefix your code with the keywords <code
+                class="language-plaintext highlighter-rouge"
+                >EXPLAIN ANALYZE</code
+              >. You can use these commands to check your query plans and look
+              for bottlenecks, or to compare plans from one version of your
+              query to another to see which version is more efficient.
+            </p>
+
+            <p>
+              Here’s an example query using the <code
+                class="language-plaintext highlighter-rouge">dvdrental</code
+              > sample database available for PostgreSQL.
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;EXPLAIN&lt;/span&gt; &lt;span class="k"&gt;ANALYZE&lt;/span&gt; &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;release_year&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;film&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;release_year&lt;/span&gt; &lt;span class="o"&gt;&gt;&lt;/span&gt; &lt;span class="mi"&gt;2000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>And the output:</p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt; &lt;span class="n"&gt;Seq&lt;/span&gt; &lt;span class="n"&gt;Scan&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;film&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cost&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="mi"&gt;66&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt; &lt;span class="k"&gt;rows&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;actual&lt;/span&gt; &lt;span class="nb"&gt;time&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;008&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;311&lt;/span&gt; &lt;span class="k"&gt;rows&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="n"&gt;loops&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;Filter&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;release_year&lt;/span&gt;&lt;span class="p"&gt;)::&lt;/span&gt;&lt;span class="nb"&gt;integer&lt;/span&gt; &lt;span class="o"&gt;&gt;&lt;/span&gt; &lt;span class="mi"&gt;2000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="n"&gt;Planning&lt;/span&gt; &lt;span class="nb"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;062&lt;/span&gt; &lt;span class="n"&gt;ms&lt;/span&gt;
+ &lt;span class="n"&gt;Execution&lt;/span&gt; &lt;span class="nb"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;416&lt;/span&gt; &lt;span class="n"&gt;ms&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              You’ll see milliseconds required for planning time, execution
+              time, as well as the cost, rows, width, times, loops, memory
+              usage, and more. Reading these analyses is somewhat of an art, but
+              you can use them to identify problem areas in your queries (such
+              as nested loops, or columns that could benefit from indexing), as
+              you refine them.
+            </p>
+
+            <p>
+              Here’s PostreSQL’s documentation on <a
+                href="https://www.postgresql.org/docs/12/using-explain"
+                >using EXPLAIN</a
+              >.
+            </p>
+
+            <h2 id="with">WITH</h2>
+
+            <h3 id="organize-your-queries-with-common-table-expressions-cte">
+              Organize your queries with Common Table Expressions (CTE)
+            </h3>
+
+            <p>
+              Use the <code class="language-plaintext highlighter-rouge"
+                >WITH</code
+              > clause to encapsulate logic in a <a
+                href="/learn/sql/working-with-sql/sql-cte"
+                >common table expression (CTE)</a
+              >. Here’s an example of a query that looks for the products with
+              the highest average revenue per unit sold in 2019, as well as max
+              and min values.
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;product_orders&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+  &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created_at&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;order_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;product_title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subtotal&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quantity&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;revenue_per_unit&lt;/span&gt;
+   &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;orders&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;
+   &lt;span class="k"&gt;LEFT&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;products&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;
+   &lt;span class="c1"&gt;-- Filter out orders placed by customer service for charging customers&lt;/span&gt;
+   &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quantity&lt;/span&gt; &lt;span class="o"&gt;&gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;product_title&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;product&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="k"&gt;AVG&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;revenue_per_unit&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;avg_revenue_per_unit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="k"&gt;MAX&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;revenue_per_unit&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;max_revenue_per_unit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="k"&gt;MIN&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;revenue_per_unit&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;min_revenue_per_unit&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;product_orders&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;order_date&lt;/span&gt; &lt;span class="k"&gt;BETWEEN&lt;/span&gt; &lt;span class="s1"&gt;'2019-01-01'&lt;/span&gt; &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="s1"&gt;'2019-12-31'&lt;/span&gt;
+&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;product&lt;/span&gt;
+&lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;avg_revenue_per_unit&lt;/span&gt; &lt;span class="k"&gt;DESC&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              The <code class="language-plaintext highlighter-rouge">WITH</code>
+              clause makes the code readable, as the main query (what you’re actually
+              looking for) isn’t interrupted by a long sub query.
+            </p>
+
+            <p>
+              You can also use CTEs to make your SQL more readable if, for
+              example, your database has fields that are awkwardly named, or
+              that require a little bit of data munging to get the useful data.
+              For example, CTEs can be useful when working with JSON fields.
+              Here’s an example of extracting and converting fields from a JSON
+              blob of user events.
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;source_data&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+  &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;&lt;span class="o"&gt;-&gt;&lt;/span&gt;&lt;span class="s1"&gt;'data'&lt;/span&gt;&lt;span class="o"&gt;-&gt;&gt;&lt;/span&gt;&lt;span class="s1"&gt;'name'&lt;/span&gt;  &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;event_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="k"&gt;CAST&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;events&lt;/span&gt;&lt;span class="o"&gt;-&gt;&lt;/span&gt;&lt;span class="s1"&gt;'data'&lt;/span&gt;&lt;span class="o"&gt;-&gt;&gt;&lt;/span&gt;&lt;span class="s1"&gt;'ts'&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="nb"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;event_timestamp&lt;/span&gt;
+    &lt;span class="k"&gt;CAST&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;events&lt;/span&gt;&lt;span class="o"&gt;-&gt;&lt;/span&gt;&lt;span class="s1"&gt;'data'&lt;/span&gt;&lt;span class="o"&gt;-&gt;&gt;&lt;/span&gt;&lt;span class="s1"&gt;'cust_id'&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;customer_id&lt;/span&gt;
+  &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;user_activity&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;event_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="n"&gt;event_timestamp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="n"&gt;customer_id&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;source_data&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              Alternatively, you could save a subquery as a <a
+                href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/snippets"
+                >Snippet</a
+              >:
+            </p>
+
+            <p>
+              <img
+                src="/learn/images/best-practices-for-writing-sql-queries/snippet-example.png"
+                alt="Storing a subquery in a snippet and using it in a FROM clause."
+              />
+            </p>
+
+            <p>
+              And yes, as you might expect, the Aerodynamic Leather Toucan
+              fetches the highest average revenue per unit sold.
+            </p>
+
+            <h2 id="with-metabase-you-dont-even-have-to-use-sql">
+              With Metabase, you don’t even have to use SQL
+            </h2>
+
+            <p>
+              SQL is amazing. But so is Metabase’s <a
+                href="/docs/latest/questions/introduction">Query Builder</a
+              >. You can compose queries using Metabase’s graphical interface to <a
+                href="/learn/metabase-basics/querying-and-dashboards/questions/joins-in-metabase"
+                >join tables</a
+              >, filter and summarize data, create <a
+                href="/glossary/custom-column">custom columns</a
+              >, and more. And with <a
+                href="/docs/latest/questions/query-builder/expressions"
+                >custom expressions</a
+              >, you can handle the vast majority of analytical use cases,
+              without ever needing to reach for SQL. Questions composed using
+              the <strong>Query Builderr</strong> also benefit from automatic <a
+                href="/learn/metabase-basics/querying-and-dashboards/questions/drill-through"
+                >drill-through</a
+              >, which allows viewers of your charts to click through and
+              explore the data, a feature not available to questions written in
+              SQL.
+            </p>
+
+            <h2 id="glaring-errors-or-omissions">
+              Glaring errors or omissions?
+            </h2>
+
+            <p>
+              There are libraries of books on SQL, so we’re only scratching the
+              surface here. You can share the secrets of your SQL sorcery with
+              other Metabase users <a href="https://discourse.metabase.com/"
+                >on our forum</a
+              >.
+            </p>
+
+            <div id="was-this-helpful-widget">
+              <div id="page-feedback">
+                <h6>Was this helpful?</h6>
+                <button id="page-feedback-vote-up" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  Yes
+                </button>
+                <button id="page-feedback-vote-down" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="rotate-180 me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  No
+                </button>
+              </div>
+
+              <div id="page-comment" class="flex flex-wrap full hide">
+                <p id="page-feedback-question"></p>
+
+                <form id="page-comment-form" class="flex full">
+                  <textarea
+                    id="feedback-comment-text"
+                    name="comment"
+                    placeholder="Type here…"></textarea>
+
+                  <button
+                    id="page-comment-submit"
+                    class="Button flex align-center"
+                  >
+                    Send
+                  </button>
+                </form>
+              </div>
+
+              <div id="page-feedback-message" class="fs-18 hide">
+                <h6 class="page-feedback-title">Thanks for your feedback!</h6>
+              </div>
+            </div>
+
+            <iframe
+              src="../../../subscribe-to-ai-newsletter-bottom-of-article.html"
+              id="subscribe-to-ai-newsletter-bottom-of-article"
+              class="newsletter-subscribe"
+              onload="javascript:(function(o){
+          o.style.height=o.contentWindow.document.getElementById('newsletter-ajax-form-container-below-article').offsetHeight+'px';
+
+          const resizeObserver = new ResizeObserver(function(entries) {
+              const $firstEntry = entries[0];
+              if ($firstEntry && $firstEntry.borderBoxSize && $firstEntry.borderBoxSize[0]) {
+                  const $form = $firstEntry.borderBoxSize[0];
+                  if ($form) {
+                      o.style.height = $form.blockSize + 'px';
+                  }
+              }
+          });
+          resizeObserver.observe(o.contentWindow.document.getElementById('newsletter-ajax-form-container-below-article'));
+      }(this));"
+            ></iframe>
+
+            <div class="learn__article__nav__container one-nav">
+              <div></div>
+
+              <a
+                href="/learn/sql/working-with-sql/sql-cte"
+                class="learn__article__nav next"
+              >
+                <div>
+                  <h5>Next</h5>
+                  <h4>
+                    Simplify complex queries with Common Table Expressions
+                    (CTEs)
+                  </h4>
+                </div>
+                <div class="learn__article__nav__icon">
+                  <svg
+                    width="12"
+                    height="10"
+                    viewBox="0 0 12 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M0.666992 4.80871C0.666992 4.34363 1.04402 3.96661 1.5091 3.96661L8.31336 3.96661L5.62913 1.52641C5.285 1.21356 5.25964 0.680971 5.57249 0.336838C5.88534 -0.00729488 6.41792 -0.032656 6.76206 0.280192L11.058 4.18561C11.2284 4.34052 11.3279 4.55846 11.3334 4.78868C11.3389 5.01891 11.2499 5.24133 11.087 5.40417L6.79105 9.70013C6.46219 10.029 5.929 10.029 5.60014 9.70013C5.27128 9.37127 5.27128 8.83808 5.60014 8.50921L8.45853 5.65082L1.5091 5.65082C1.04402 5.65082 0.666992 5.2738 0.666992 4.80871Z"
+                      fill="#5A6072"></path>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="learn__right-sidebar">
+            <div id="sub-navigation-content"></div>
+            <div id="right-hand-newsletter-subscribe-widget" class="">
+              <div class="right-hand-newsletter-subscribe-form-container">
+                <h6>Weekly tips for analysts</h6>
+                <h5>
+                  Get actionable insights<br />on AI and data directly to your
+                  inbox
+                </h5>
+
+                <iframe
+                  src="../../../subscribe-to-ai-newsletter-righthandside.html"
+                  id="subscribe-to-ai-newsletter-righthandside"
+                  onload="javascript:(function(o){
+          o.style.height=o.contentWindow.document.getElementById('feedback-widget-newsletter-ajax-form-container').offsetHeight+'px';
+
+          const resizeObserver = new ResizeObserver(function(entries) {
+            const $firstEntry = entries[0];
+            if ($firstEntry && $firstEntry.borderBoxSize && $firstEntry.borderBoxSize[0]) {
+              const $form = $firstEntry.borderBoxSize[0];
+              if ($form) {
+                o.style.height = $form.blockSize + 'px';
+              }
+            }
+
+            if (window.resizeLearnRightSidebar) {
+              window.resizeLearnRightSidebar();
+            }
+          });
+          resizeObserver.observe(o.contentWindow.document.getElementById('feedback-widget-newsletter-ajax-form-container'));
+        }(this));"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

@@ -1,23 +1,89 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /demo
-// Priority: 0.80
-// Last Modified: 2025-09-16T20:03:12+00:00
+import Base from "../layouts/Base.astro";
+const title = "See Metabase in Action";
+const description =
+  "Watch Jess build her first dashboard with Metabase in just 5 minutes";
+const seo = {
+  title: "See Metabase in Action",
+  description:
+    "Watch Jess build her first dashboard with Metabase in just 5 minutes",
+  canonical: "/demo",
+  og: {
+    title: "See Metabase in Action",
+    description:
+      "Watch Jess build her first dashboard with Metabase in just 5 minutes",
+    url: "https://www.metabase.com/demo",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "See Metabase in Action",
+    description:
+      "Watch Jess build her first dashboard with Metabase in just 5 minutes",
+    card: "summary",
+    image: "https://www.metabase.com/images/twitter/default-share.png",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Demo</title>
-</head>
-<body>
-    <h1>Demo</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/demo</code></p>
-    <p>Priority: 0.80</p>
-    <p>Last Modified: 2025-09-16T20:03:12+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="no-overflow">
+    <div class="bootstrap">
+      <div class="demo-page">
+        <div class="container pt-4 pb-12">
+          <div class="row flex-column flex-md-row">
+            <div class="col-12 col-lg-8">
+              <h1 class="h3 mb-6 mt-8">See Metabase in Action</h1>
+              <div
+                class="rounded-4 overflow-hidden mb-3"
+                style="position: relative; padding-bottom: 56.25%; height: 0;"
+              >
+                <iframe
+                  src="https://www.youtube.com/embed/dnT2Xj52mnk?si=kO7P56S82EIoQebv"
+                  frameborder="0"
+                  webkitallowfullscreen=""
+                  mozallowfullscreen=""
+                  allowfullscreen=""
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                ></iframe>
+              </div>
+              <p class="paragraph-5">
+                Watch Jess build her first dashboard with Metabase in just 5
+                minutes
+              </p>
+            </div>
+            <div class="col-12 col-lg-4 pt-4 mt-lg-8">
+              <p class="paragraph-5 neutral-60 mb-6">Next steps</p>
+              <div class="rounded-4 p-6 blue-card mb-5">
+                <h5>Try it yourself</h5>
+                <p class="paragraph-5">
+                  Get started with a 14-day free trial, no-strings-attached.
+                </p>
+                <a
+                  class="Button btn btn-primary w-100"
+                  href="https://store.metabase.com/checkout">Get started</a
+                >
+              </div>
+              <div class="rounded-4 p-6 purple-card">
+                <h5>Talk to an expert</h5>
+                <p class="paragraph-5">
+                  Got questions? We’re happy to help you explore Metabase or
+                  find the right plan.
+                </p>
+                <a
+                  class="Button btn btn-primary-purple w-100"
+                  href="/talk-to-a-person/">Contact Us</a
+                >
+              </div>
+              <div class="rounded-4 p-6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

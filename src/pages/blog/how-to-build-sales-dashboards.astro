@@ -1,23 +1,705 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /blog/how-to-build-sales-dashboards
-// Priority: 0.80
-// Last Modified: 2025-09-16T20:03:12+00:00
+import Base from "../../layouts/Base.astro";
+const title = "How to build sales dashboards that sales teams actually use";
+const description =
+  "Build a sales dashboard your team will actually use. See 10 key metrics, tips, and a live example in Metabase.";
+const seo = {
+  title: "How to build sales dashboards that sales teams actually use",
+  description:
+    "Build a sales dashboard your team will actually use. See 10 key metrics, tips, and a live example in Metabase.",
+  canonical: "/blog/how-to-build-sales-dashboards",
+  og: {
+    title: "How to build sales dashboards that sales teams actually use",
+    description:
+      "Build a sales dashboard your team will actually use. See 10 key metrics, tips, and a live example in Metabase.",
+    image:
+      "https://www.metabase.com/images/posts/sales-dashboards/sales-dashboard-og.jpg",
+    url: "https://www.metabase.com/blog/how-to-build-sales-dashboards",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "How to build sales dashboards that sales teams actually use",
+    description:
+      "Build a sales dashboard your team will actually use. See 10 key metrics, tips, and a live example in Metabase.",
+    card: "summary_large_image",
+    image:
+      "https://www.metabase.com/images/posts/sales-dashboards/sales-dashboard-og.jpg",
+    creator: "Margaret Rimek",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Blog How To Build Sales Dashboards</title>
-</head>
-<body>
-    <h1>Blog How To Build Sales Dashboards</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/blog/how-to-build-sales-dashboards</code></p>
-    <p>Priority: 0.80</p>
-    <p>Last Modified: 2025-09-16T20:03:12+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="MB-Page page-content">
+    <div class="progress-bar z1" id="progress-bar"></div>
+
+    <div class="bootstrap">
+      <div id="post" class="bg-neutral-98-gradient">
+        <div class="container pt-4">
+          <section>
+            <div
+              class="row d-flex flex-column flex-lg-row align-items-start mb-11 mb-lg-13"
+            >
+              <div class="col-xs-12 col-lg-3">
+                <a
+                  class="chevron blue-small-left mb-8 mb-lg-0 fw-bold"
+                  href="/blog">All posts</a
+                >
+              </div>
+              <div class="col-xs-12 col-lg-9">
+                <div class="d-lg-none mb-4 d-flex flex-column flex-sm-row">
+                  <span class="paragraph-5 neutral-60 me-2"
+                    >Jul 09, 2025 in <b class="category-name"
+                      >Analytics and BI</b
+                    ></span
+                  >
+
+                  <p class="paragraph-5 neutral-60 mb-0 d-none d-sm-block me-2">
+                    ‧
+                  </p>
+                  <p class="paragraph-5 neutral-60 mb-0">4 min read</p>
+                </div>
+                <h1 class="h2 mb-6 mb-lg-8">
+                  How to build sales dashboards that sales teams actually use
+                </h1>
+                <div class="d-flex flex-row align-items-center">
+                  <img
+                    class="circle me-2"
+                    src="/images/posts/blog-authors/margaret-rimek.jpg"
+                    alt="Margaret Rimek Portrait"
+                    width="36"
+                    height="36"
+                  />
+                  <h5 class="neutral-40 mb-0 me-2">Margaret Rimek</h5>
+                  <div class="d-none d-lg-flex flex-row">
+                    <span class="paragraph-5 neutral-60 me-2">
+                      ‧ Jul 09, 2025 in <b class="category-name"
+                        >Analytics and BI</b
+                      ></span
+                    >
+
+                    <p class="paragraph-5 neutral-60 mb-0">‧ 4 min read</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <img
+              src="/images/posts/sales-dashboards/sales-dashboard-og.jpg"
+              alt="How to build sales dashboards that sales teams actually use Image"
+              class="w-100 rounded-4"
+              loading="lazy"
+            />
+          </section>
+          <section class="row d-flex">
+            <div class="col-xs-12 col-lg-3 order-1 order-lg-0 mt-11 mt-lg-0">
+              <div
+                style="position: sticky; top: 136px;"
+                class="d-flex flex-column"
+              >
+                <h5 class="mb-3 neutral-40">Share this article</h5>
+                <div class="d-flex align-items-center gap-3">
+                  <a
+                    href="https://twitter.com/intent/tweet?url=https://metabase.com/blog/how-to-build-sales-dashboards"
+                    target="popup"
+                    onclick="window.open('https://twitter.com/intent/tweet?url=https://metabase.com/blog/how-to-build-sales-dashboards','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;"
+                  >
+                    <svg
+                      id=""
+                      class="share-button"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 26 22"
+                      fill="#C6C9D2"
+                    >
+                      <path
+                        d="M24.9465693,3.43255605 C24.0654891,3.83264574 23.1186277,4.10304933 22.1248175,4.22466368 C23.1392117,3.60206278 23.9181606,2.61623318 24.2849927,1.44161435 C23.3357664,2.01802691 22.2843212,2.43668161 21.1652555,2.66233184 C20.2690219,1.68466368 18.9922044,1.07372197 17.5791825,1.07372197 C14.8658686,1.07372197 12.6661022,3.32600897 12.6661022,6.10403587 C12.6661022,6.49829596 12.709635,6.88224215 12.7933723,7.25040359 C8.71021898,7.0406278 5.09016058,5.03793722 2.6670365,1.99452915 C2.24414599,2.73748879 2.00186861,3.60161435 2.00186861,4.52349776 C2.00186861,6.26869955 2.86928467,7.80843049 4.18753285,8.71049327 C3.38213139,8.68439462 2.62464234,8.45811659 1.96218978,8.08134529 C1.96183942,8.10233184 1.96183942,8.12340807 1.96183942,8.14457399 C1.96183942,10.5818834 3.65532847,12.6150673 5.90283212,13.07713 C5.49054015,13.1921076 5.05652555,13.2535426 4.60840876,13.2535426 C4.29185401,13.2535426 3.98405839,13.2220628 3.68414599,13.1633184 C4.30928467,15.1618834 6.12364964,16.6162332 8.27348905,16.656861 C6.59208759,18.006009 4.47369343,18.8102242 2.1719708,18.8102242 C1.77544526,18.8102242 1.38435036,18.7864574 1,18.74 C3.17418978,20.1672646 5.75664234,21 8.53109489,21 C17.567708,21 22.5092555,13.3347982 22.5092555,6.68735426 C22.5092555,6.46923767 22.5045255,6.252287 22.4950657,6.03659193 C23.4548905,5.32735426 24.2878832,4.44134529 24.9465693,3.43255605"
+                      >
+                      </path>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/sharing/share-offsite/?url=https://metabase.com/blog/how-to-build-sales-dashboards"
+                    target="popup"
+                    onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=https://metabase.com/blog/how-to-build-sales-dashboards','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;"
+                  >
+                    <svg
+                      id=""
+                      class="share-button"
+                      fill="#C6C9D2"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 30 30"
+                      width="30"
+                      height="30"
+                    >
+                      <path
+                        d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"
+                      ></path>
+                    </svg>
+                  </a>
+                  <a
+                    class="copy-clip position-relative d-flex justify-content-center"
+                    title="Copy to clipboard"
+                  >
+                    <svg
+                      id=""
+                      class="share-button"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="#C6C9D2"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M19.2939 9.17106C19.5246 8.93228 19.8004 8.74183 20.1054 8.61081C20.4104 8.47978 20.7385 8.41082 21.0704 8.40793C21.4024 8.40505 21.7316 8.4683 22.0388 8.59401C22.3461 8.71971 22.6252 8.90534 22.8599 9.14007C23.0947 9.3748 23.2803 9.65393 23.406 9.96117C23.5317 10.2684 23.595 10.5976 23.5921 10.9296C23.5892 11.2615 23.5202 11.5896 23.3892 11.8946C23.2582 12.1996 23.0677 12.4754 22.8289 12.7061L19.0789 16.4561C18.6101 16.9247 17.9744 17.188 17.3114 17.188C16.6485 17.188 16.0128 16.9247 15.5439 16.4561C15.3082 16.2284 14.9924 16.1024 14.6647 16.1052C14.3369 16.1081 14.0234 16.2395 13.7917 16.4713C13.5599 16.703 13.4284 17.0166 13.4256 17.3443C13.4228 17.6721 13.5487 17.9878 13.7764 18.2236C14.7141 19.1609 15.9856 19.6875 17.3114 19.6875C18.6373 19.6875 19.9088 19.1609 20.8464 18.2236L24.5964 14.4736C25.5072 13.5305 26.0112 12.2675 25.9998 10.9566C25.9884 9.64557 25.4626 8.39151 24.5355 7.46447C23.6085 6.53743 22.3544 6.01158 21.0434 6.00019C19.7325 5.9888 18.4695 6.49277 17.5264 7.40356L15.6514 9.27856C15.5321 9.39387 15.4368 9.5318 15.3713 9.6843C15.3058 9.83681 15.2713 10.0008 15.2699 10.1668C15.2684 10.3328 15.3001 10.4974 15.3629 10.651C15.4258 10.8046 15.5186 10.9442 15.6359 11.0616C15.7533 11.1789 15.8929 11.2717 16.0465 11.3346C16.2001 11.3974 16.3647 11.4291 16.5307 11.4276C16.6967 11.4262 16.8607 11.3917 17.0132 11.3262C17.1657 11.2607 17.3036 11.1654 17.4189 11.0461L19.2939 9.17106ZM13.0439 15.4211C13.5128 14.9524 14.1485 14.6891 14.8114 14.6891C15.4744 14.6891 16.1101 14.9524 16.5789 15.4211C16.6942 15.5404 16.8322 15.6357 16.9847 15.7012C17.1372 15.7667 17.3012 15.8012 17.4672 15.8026C17.6332 15.8041 17.7978 15.7724 17.9514 15.7096C18.105 15.6467 18.2446 15.5539 18.3619 15.4366C18.4793 15.3192 18.5721 15.1796 18.635 15.026C18.6978 14.8724 18.7294 14.7078 18.728 14.5418C18.7266 14.3758 18.6921 14.2118 18.6266 14.0593C18.5611 13.9068 18.4658 13.7689 18.3464 13.6536C17.4088 12.7162 16.1373 12.1896 14.8114 12.1896C13.4856 12.1896 12.2141 12.7162 11.2764 13.6536L7.52644 17.4036C7.04889 17.8648 6.66798 18.4165 6.40593 19.0265C6.14389 19.6366 6.00596 20.2927 6.00019 20.9566C5.99442 21.6205 6.12093 22.2788 6.37233 22.8933C6.62374 23.5078 6.995 24.0661 7.46447 24.5355C7.93393 25.005 8.49219 25.3763 9.10667 25.6277C9.72115 25.8791 10.3796 26.0056 11.0434 25.9998C11.7073 25.994 12.3634 25.8561 12.9735 25.5941C13.5835 25.332 14.1352 24.9511 14.5964 24.4736L16.4714 22.5986C16.5908 22.4833 16.6861 22.3453 16.7516 22.1928C16.8171 22.0403 16.8516 21.8763 16.853 21.7103C16.8544 21.5443 16.8228 21.3797 16.76 21.2261C16.6971 21.0725 16.6043 20.9329 16.4869 20.8156C16.3696 20.6982 16.23 20.6054 16.0764 20.5425C15.9228 20.4797 15.7582 20.4481 15.5922 20.4495C15.4262 20.4509 15.2622 20.4854 15.1097 20.5509C14.9572 20.6164 14.8192 20.7117 14.7039 20.8311L12.8289 22.7061C12.5983 22.9448 12.3225 23.1353 12.0175 23.2663C11.7124 23.3973 11.3844 23.4663 11.0524 23.4692C10.7205 23.4721 10.3913 23.4088 10.0841 23.2831C9.77682 23.1574 9.49769 22.9718 9.26295 22.737C9.02822 22.5023 8.84259 22.2232 8.71689 21.9159C8.59118 21.6087 8.52793 21.2795 8.53082 20.9476C8.5337 20.6156 8.60267 20.2876 8.73369 19.9825C8.86471 19.6775 9.05517 19.4017 9.29394 19.1711L13.0439 15.4211Z"
+                      ></path>
+                    </svg>
+
+                    <div class="copied-to-clipboard-wrapper visible invisible">
+                      <div class="caret"></div>
+                      <div class="copied-to-clipboard">Copied to clipboard</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="content-container col-xs-12 col-lg-6 order-0 order-lg-1"
+            >
+              <div id="post-content">
+                <p>Most sales dashboards get ignored.</p>
+
+                <p>
+                  They’re built to look good in a QBR, not to help someone close
+                  a deal. Reps say they want dashboards-but what they really
+                  want is answers: who to call, what’s stuck, and how close they
+                  are to quota.
+                </p>
+
+                <p>
+                  The truth is, a lot of sales dashboards are built by people
+                  who’ve never sold a thing. The result: performance metrics no
+                  one checks, charts no one trusts, and tools no one opens.
+                </p>
+
+                <p>
+                  If you want a dashboard that gets used, start simple, build
+                  fast, and listen hard. Then iterate. Because usage beats
+                  requirements every time.
+                </p>
+
+                <p>
+                  Check out a <a href="/dashboards/sales-teams"
+                    >live Sales Team Dashboard</a
+                  > built in Metabase.
+                </p>
+
+                <h2 id="why-most-sales-dashboards-get-ignored">
+                  Why most sales dashboards get ignored
+                </h2>
+
+                <p>
+                  Sales dashboards often end up as decoration: nice to look at,
+                  but ignored by the team. Here’s why:
+                </p>
+
+                <ul>
+                  <li>
+                    <strong>They report, not support</strong>: Good for QBRs,
+                    useless for day-to-day work
+                  </li>
+                  <li>
+                    <strong>Vanity metrics everywhere</strong>: Total pipeline,
+                    but no clue what’s actually moving
+                  </li>
+                  <li>
+                    <strong>They go stale</strong>: Data exports, no real-time
+                    updates
+                  </li>
+                  <li>
+                    <strong>They aren’t explorable</strong>: Reps can’t dig into
+                    their own numbers
+                  </li>
+                </ul>
+
+                <h2 id="how-to-build-a-sales-dashboard-team-will-actually-use">
+                  How to build a sales dashboard team will actually use
+                </h2>
+
+                <p>Here’s what actually works:</p>
+
+                <ul>
+                  <li>
+                    <strong>Start with real questions</strong>: What’s slowing
+                    us down? Where are deals stalling? Who needs help?
+                  </li>
+                  <li>
+                    <strong>Keep load time under 3 seconds</strong>: Speed is
+                    table stakes
+                  </li>
+                  <li>
+                    <strong>Prioritize action</strong>: If a chart doesn’t
+                    change behavior, drop it
+                  </li>
+                  <li>
+                    <strong>Build for self-service</strong>: Reps should answer
+                    their own questions without asking for help
+                  </li>
+                </ul>
+
+                <p>
+                  Dashboards that help people do their job get used. Everything
+                  else is noise.
+                </p>
+
+                <h2
+                  id="10-top-metrics-for-a-sales-teams-dashboard-and-how-to-calculate-them"
+                >
+                  10 top metrics for a sales teams dashboard and how to
+                  calculate them
+                </h2>
+
+                <p>
+                  Begin with big-picture metrics to understand overall
+                  performance. Then drill down by rep or stage to spot what
+                  needs attention.
+                </p>
+
+                <h3 id="1-pipeline-by-stage">1. Pipeline by Stage</h3>
+
+                <p>
+                  <strong>Why it matters:</strong> Shows where deals sit in the funnel
+                  and helps identify bottlenecks. In Metabase, you can <a
+                    href="/learn/metabase-basics/querying-and-dashboards/questions/drill-through"
+                    >drill into</a
+                  > each stage to view the underlying deals.
+                </p>
+
+                <p>
+                  <strong>How to build:</strong> Group deals by <code
+                    class="language-plaintext highlighter-rouge"
+                    >stage_name</code
+                  >, count or sum <code
+                    class="language-plaintext highlighter-rouge"
+                    >deal_amount</code
+                  >.
+                </p>
+
+                <iframe
+                  src="https://metabase-public.metabaseapp.com/public/question/68365ae1-b229-4b72-8869-b7bdedb5533e"
+                  frameborder="0"
+                  width="620"
+                  height="465"
+                  allowtransparency=""></iframe>
+
+                <h3 id="2-closed-won-revenue">2. Closed-Won revenue</h3>
+
+                <p>
+                  <strong>Why it matters:</strong> Tracks actual sales outcomes over
+                  time.
+                </p>
+
+                <p>
+                  <strong>How to build:</strong> Filter <code
+                    class="language-plaintext highlighter-rouge"
+                    >stage = 'Closed-Won'</code
+                  >, group by <code class="language-plaintext highlighter-rouge"
+                    >closed_at</code
+                  > month, sum <code
+                    class="language-plaintext highlighter-rouge"
+                    >deal_amount</code
+                  >.
+                </p>
+
+                <h3 id="3-opportunity-win-rate">
+                  3. <strong>Opportunity win rate</strong>
+                </h3>
+
+                <p>
+                  <strong>Why it matters:</strong> Measures efficiency-how many opportunities
+                  convert into closed-won.
+                </p>
+
+                <p>
+                  <strong>How to build:</strong>
+                  <code class="language-plaintext highlighter-rouge"
+                    >closed_won_count / (closed_won_count + closed_lost_count)</code
+                  > grouped by month or rep.
+                </p>
+
+                <iframe
+                  src="https://metabase-public.metabaseapp.com/public/question/c8bdbe43-1a3f-44da-90ef-d6d83499105d"
+                  frameborder="0"
+                  width="620"
+                  height="465"
+                  allowtransparency=""></iframe>
+
+                <h3 id="4-average-deal-size">
+                  4. <strong>Average Deal Size</strong>
+                </h3>
+
+                <p>
+                  <strong>Why it matters:</strong> Bigger deals can skew revenue-track
+                  trends and rep performance.
+                </p>
+
+                <p>
+                  <strong>How to build:</strong>
+                  <code class="language-plaintext highlighter-rouge"
+                    >AVG(deal_amount)</code
+                  > grouped by month or rep.
+                </p>
+
+                <iframe
+                  src="https://metabase-public.metabaseapp.com/public/question/23d58d81-f0fa-4bfb-bc1f-3d867a7fa82f"
+                  frameborder="0"
+                  width="620"
+                  height="465"
+                  allowtransparency=""></iframe>
+
+                <h3 id="5-sales-cycle-length">
+                  5. <strong>Sales cycle length</strong>
+                </h3>
+
+                <p>
+                  <strong>Why it matters:</strong> Helps identify delays in the funnel
+                  and forecast more accurately.
+                </p>
+
+                <p>
+                  <strong>How to build:</strong>
+                  <code class="language-plaintext highlighter-rouge"
+                    >DATEDIFF(closed_at, created_at)</code
+                  > averaged for closed-won deals.
+                </p>
+
+                <iframe
+                  src="https://metabase-public.metabaseapp.com/public/question/fbf0fe7c-478d-483f-89f0-b517b2a7c86d"
+                  frameborder="0"
+                  width="620"
+                  height="465"
+                  allowtransparency=""></iframe>
+
+                <h3 id="6-quota-attainment-by-rep">
+                  6. <strong>Quota attainment by rep</strong>
+                </h3>
+
+                <p>
+                  <strong>Why it matters:</strong> Tracks individual performance
+                  vs. goal.
+                </p>
+
+                <p>
+                  <strong>How to build:</strong> Join deal data with <code
+                    class="language-plaintext highlighter-rouge">quota</code
+                  > table, compare <code
+                    class="language-plaintext highlighter-rouge"
+                    >SUM(closed_won_amount)</code
+                  > to target.
+                </p>
+
+                <iframe
+                  src="https://metabase-public.metabaseapp.com/public/question/b1a54e3b-f78f-4654-958c-86a916d7d64b"
+                  frameborder="0"
+                  width="620"
+                  height="465"
+                  allowtransparency=""></iframe>
+
+                <h3 id="7-pipeline-contribution-by-source-or-rep">
+                  7. <strong>Pipeline contribution (by Source or Rep)</strong>
+                </h3>
+
+                <p>
+                  <strong>Why it matters:</strong> Know who or what channels are
+                  feeding your funnel.
+                </p>
+
+                <p>
+                  <strong>How to build:</strong> Sum <code
+                    class="language-plaintext highlighter-rouge"
+                    >deal_amount</code
+                  > grouped by <code
+                    class="language-plaintext highlighter-rouge">source</code
+                  > or <code class="language-plaintext highlighter-rouge"
+                    >rep</code
+                  >.
+                </p>
+
+                <iframe
+                  src="https://metabase-public.metabaseapp.com/public/question/6bbb4082-4164-4083-9593-af2feddac09d"
+                  frameborder="0"
+                  width="620"
+                  height="465"
+                  allowtransparency=""></iframe>
+
+                <h3 id="8-stage-to-stage-conversion-rates">
+                  8. <strong>Stage-to-stage conversion rates</strong>
+                </h3>
+
+                <p>
+                  <strong>Why it matters:</strong> See where deals drop off in the
+                  funnel.
+                </p>
+
+                <p>
+                  <strong>How to build:</strong> Funnel chart showing count of deals
+                  at each stage transition over time.
+                </p>
+
+                <h3 id="9-commission-forecast-real-time">
+                  9. <strong>Commission Forecast (Real-time)</strong>
+                </h3>
+
+                <p>
+                  <strong>Why it matters:</strong> This is the most viewed dashboard
+                  for many sales teams. It’s personal and drives action.
+                </p>
+
+                <p>
+                  <strong>How to build:</strong> Multiply <code
+                    class="language-plaintext highlighter-rouge"
+                    >deal_amount * probability * commission_rate</code
+                  >. Filter by rep and group by close month.
+                </p>
+
+                <h3 id="10-next-expected-orders">
+                  10. <strong>Next expected orders</strong>
+                </h3>
+
+                <p>
+                  <strong>Why it matters:</strong> Helps reps prioritize outreach
+                  by surfacing accounts likely to buy again soon.
+                </p>
+
+                <p>
+                  <strong>How to build:</strong> Use <code
+                    class="language-plaintext highlighter-rouge"
+                    >expected_close_date</code
+                  > to identify deals closing within the next 7-14 days. Optionally,
+                  base it on reorder history.
+                </p>
+
+                <h2 id="helping-your-sales-team-adopt-self-service-analytics">
+                  Helping your sales team adopt self-service analytics
+                </h2>
+
+                <p>
+                  If a dashboard requires a ticket to update, it won’t get used.
+                  Sales teams need tools they can adjust without help.
+                </p>
+
+                <p><strong>Metabase makes it easy to:</strong></p>
+
+                <ul>
+                  <li>
+                    Build without SQL using the <a
+                      href="/features/query-builder">Visual Query Builder</a>
+                  </li>
+                  <li>
+                    Add <a href="/docs/latest/dashboards/filters">filters</a> for
+                    date, rep, and stage
+                  </li>
+                  <li>
+                    Click into charts to <a href="/features/drill-through"
+                      >drill down</a
+                    > to the raw data
+                  </li>
+                  <li>
+                    Set up <a href="/docs/latest/questions/alerts">alerts</a> when
+                    metrics cross thresholds
+                  </li>
+                </ul>
+
+                <p>
+                  Metabase helps you go from question to chart in minutes. Build
+                  once, share with the team, and let them explore.
+                </p>
+
+                <p>
+                  Explore a real <a href="/dashboards/sales-teams"
+                    >Sales Team Dashboard</a
+                  > or <a href="https://store.metabase.com/checkout"
+                    >get started</a
+                  > with Metabase.
+                </p>
+              </div>
+              <div class="mt-15">
+                <iframe
+                  src="../subscribe-to-ai-newsletter-bottom-of-article.html"
+                  id="subscribe-to-ai-newsletter-bottom-of-article"
+                  class="newsletter-subscribe"
+                  onload="javascript:(function(o){
+          o.style.height=o.contentWindow.document.getElementById('newsletter-ajax-form-container-below-article').offsetHeight+'px';
+
+          const resizeObserver = new ResizeObserver(function(entries) {
+              const $firstEntry = entries[0];
+              if ($firstEntry && $firstEntry.borderBoxSize && $firstEntry.borderBoxSize[0]) {
+                  const $form = $firstEntry.borderBoxSize[0];
+                  if ($form) {
+                      o.style.height = $form.blockSize + 'px';
+                  }
+              }
+          });
+          resizeObserver.observe(o.contentWindow.document.getElementById('newsletter-ajax-form-container-below-article'));
+      }(this));"
+                ></iframe>
+              </div>
+            </div>
+          </section>
+
+          <section class="mt-8">
+            <div class="d-flex flex-row justify-content-between">
+              <h3 class="mb-0">You might also enjoy</h3>
+              <a
+                class="chevron blue-small-right fw-bold d-none d-lg-flex"
+                href="/blog">All posts</a
+              >
+            </div>
+            <div class="row mt-10 mt-lg-13">
+              <div class="hover-raise-sm col-xs-12 col-lg-6 mb-8 mb-lg-0">
+                <div
+                  class="card hover-shadow hover-pointer bg-neutral-white border-0 rounded-3 p-6"
+                >
+                  <img
+                    class="w-100 rounded-2 mb-8"
+                    src="/images/posts/what-is-embedded-analytics/what-is-embedded-analytics.png"
+                    alt="What is embedded analytics? Image"
+                    loading="lazy"
+                  />
+                  <span class="paragraph-5 neutral-60 mb-3"
+                    >May 15, 2025 in <b class="category-name"
+                      >Analytics and BI</b
+                    ></span
+                  >
+                  <h4 class="blog-title mb-4">What is embedded analytics?</h4>
+                  <p class="paragraph-5 mb-6 neutral-40">
+                    Embedded analytics means giving your users access to charts,
+                    metrics, and reports directly inside your product, so they
+                    can explore and act on their data without needing to leave
+                    your app or rely on someone else for answers.
+                  </p>
+                  <div class="d-flex flex-row align-items-center">
+                    <img
+                      class="circle me-2"
+                      src="/images/posts/blog-authors/alex-yarosh.jpg"
+                      alt="Alex Yarosh Portrait"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                    />
+                    <div class="d-flex flex-column flex-sm-row">
+                      <h5 class="neutral-40 mb-0 me-2">Alex Yarosh</h5>
+
+                      <p
+                        class="paragraph-5 neutral-60 mb-0 d-none d-sm-block me-2"
+                      >
+                        ‧
+                      </p>
+                      <p class="paragraph-5 neutral-60 mb-0">13 min read</p>
+                    </div>
+                  </div>
+                  <a
+                    href="/blog/what-is-embedded-analytics"
+                    class="stretched-link h-0"></a>
+                </div>
+              </div>
+
+              <div class="hover-raise-sm col-xs-12 col-lg-6 mb-8 mb-lg-0">
+                <div
+                  class="card hover-shadow hover-pointer bg-neutral-white border-0 rounded-3 p-6"
+                >
+                  <img
+                    class="w-100 rounded-2 mb-8"
+                    src="/images/posts/dashboard-fails.jpg"
+                    alt="Top 5 Dashboard fails (and how to fix them) Image"
+                    loading="lazy"
+                  />
+                  <span class="paragraph-5 neutral-60 mb-3"
+                    >Apr 25, 2025 in <b class="category-name"
+                      >Analytics and BI</b
+                    ></span
+                  >
+                  <h4 class="blog-title mb-4">
+                    Top 5 Dashboard fails (and how to fix them)
+                  </h4>
+                  <p class="paragraph-5 mb-6 neutral-40">
+                    Dashboards are meant to guide decisions, not create
+                    confusion. In this guide, we’ll walk through five common
+                    pitfalls and how to fix them.
+                  </p>
+                  <div class="d-flex flex-row align-items-center">
+                    <img
+                      class="circle me-2"
+                      src="/images/posts/blog-authors/abed-habli.png"
+                      alt="Abed Habli Portrait"
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                    />
+                    <div class="d-flex flex-column flex-sm-row">
+                      <h5 class="neutral-40 mb-0 me-2">Abed Habli</h5>
+
+                      <p
+                        class="paragraph-5 neutral-60 mb-0 d-none d-sm-block me-2"
+                      >
+                        ‧
+                      </p>
+                      <p class="paragraph-5 neutral-60 mb-0">7 min read</p>
+                    </div>
+                  </div>
+                  <a
+                    href="/blog/top-5-dashboard-fails"
+                    class="stretched-link h-0"></a>
+                </div>
+              </div>
+            </div>
+            <a
+              class="chevron blue-small-right fw-bold d-flex d-lg-none"
+              href="/blog">All posts</a
+            >
+          </section>
+
+          <div id="right-hand-newsletter-subscribe-widget" class="bleed-right">
+            <div class="right-hand-newsletter-subscribe-form-container">
+              <h6>Weekly tips for analysts</h6>
+              <h5>
+                Get actionable insights<br />on AI and data directly to your
+                inbox
+              </h5>
+
+              <iframe
+                src="../subscribe-to-ai-newsletter-righthandside.html"
+                id="subscribe-to-ai-newsletter-righthandside"
+                onload="javascript:(function(o){
+          o.style.height=o.contentWindow.document.getElementById('feedback-widget-newsletter-ajax-form-container').offsetHeight+'px';
+
+          const resizeObserver = new ResizeObserver(function(entries) {
+            const $firstEntry = entries[0];
+            if ($firstEntry && $firstEntry.borderBoxSize && $firstEntry.borderBoxSize[0]) {
+              const $form = $firstEntry.borderBoxSize[0];
+              if ($form) {
+                o.style.height = $form.blockSize + 'px';
+              }
+            }
+
+            if (window.resizeLearnRightSidebar) {
+              window.resizeLearnRightSidebar();
+            }
+          });
+          resizeObserver.observe(o.contentWindow.document.getElementById('feedback-widget-newsletter-ajax-form-container'));
+        }(this));"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

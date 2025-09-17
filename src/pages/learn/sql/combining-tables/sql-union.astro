@@ -1,23 +1,3287 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /learn/sql/combining-tables/sql-union
-// Priority: 0.64
-// Last Modified: 2025-09-16T20:03:10+00:00
+import Base from "../../../../layouts/Base.astro";
+const title = "Combining tables with SQL UNION | Metabase Learn";
+const description = "How to combine rows from two tables using SQL UNION.";
+const seo = {
+  title: "Combining tables with SQL UNION | Metabase Learn",
+  description: "How to combine rows from two tables using SQL UNION.",
+  canonical: "/learn/sql/combining-tables/sql-union",
+  og: {
+    title: "Combining tables with SQL UNION | Metabase Learn",
+    description: "How to combine rows from two tables using SQL UNION.",
+    image: "https://www.metabase.com/learn/images/sql-union/sql-union-og.png",
+    url: "https://www.metabase.com/learn/sql/combining-tables/sql-union",
+    type: "article",
+    site_name:
+      "Metabase | Business Intelligence, Dashboards, and Data Visualization",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Combining tables with SQL UNION | Metabase Learn",
+    description: "How to combine rows from two tables using SQL UNION.",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/learn/images/sql-union/sql-union-og.png",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Learn Sql Combining Tables Sql Union</title>
-</head>
-<body>
-    <h1>Learn Sql Combining Tables Sql Union</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/learn/sql/combining-tables/sql-union</code></p>
-    <p>Priority: 0.64</p>
-    <p>Last Modified: 2025-09-16T20:03:10+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div>
+    <div class="bootstrap">
+      <div class="learn blog-post MB-Page">
+        <div id="main-navigation-content" class="learn-left-sidebar scrollable">
+          <div class="docs-learn-toggler">
+            <div class="hover-highlight"></div>
+            <a href="/docs/latest/">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.25 5.75C19.25 5.19772 18.8023 4.75 18.25 4.75H14C12.8954 4.75 12 5.64543 12 6.75V19.25L12.8284 18.4216C13.5786 17.6714 14.596 17.25 15.6569 17.25H18.25C18.8023 17.25 19.25 16.8023 19.25 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M4.75 5.75C4.75 5.19772 5.19772 4.75 5.75 4.75H10C11.1046 4.75 12 5.64543 12 6.75V19.25L11.1716 18.4216C10.4214 17.6714 9.40401 17.25 8.34315 17.25H5.75C5.19772 17.25 4.75 16.8023 4.75 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Docs</span>
+            </a>
+
+            <a href="/learn/" class="active">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 14.0929L20 9.42144L12 4.75L4 9.42144L12 14.0929ZM12 14.0929L17.4756 10.8957C18.196 12.8186 18.4005 14.4134 18.0667 16.45C15.8121 16.68 13.6864 17.6604 12 19.25C10.3138 17.6606 8.18852 16.6802 5.93422 16.45C5.60018 14.4134 5.80465 12.8185 6.52533 10.8957L12 14.0929Z"
+                  stroke="#509EE3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M12.5 9.5C12.5 9.7761 12.2761 10 12 10C11.7239 10 11.5 9.7761 11.5 9.5C11.5 9.2239 11.7239 9 12 9C12.2761 9 12.5 9.2239 12.5 9.5Z"
+                  stroke="#509EE3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Learn</span>
+            </a>
+          </div>
+
+          <h5>Courses</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/metabase-basics/getting-started/index-2" class="">
+                Getting started
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/learn/metabase-basics/overview/concepts" class="">
+                    Metabase concepts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/find-data"
+                    class=""
+                  >
+                    Find data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/ask-a-question"
+                    class=""
+                  >
+                    Ask a question
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/create-dashboards"
+                    class=""
+                  >
+                    Create a dashboard
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/explore-data"
+                    class=""
+                  >
+                    Explore dashboards
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/filter"
+                    class=""
+                  >
+                    Filter and limit data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/summarize"
+                    class=""
+                  >
+                    Summarize data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/custom-columns"
+                    class=""
+                  >
+                    Add custom columns
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/dashboard-filters"
+                    class=""
+                  >
+                    Use dashboard filters
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/models"
+                    class=""
+                  >
+                    Build models
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Metabase Basics</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/metabase-basics/overview/" class="">
+                Metabase overview
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/overview/tour-of-metabase"
+                    class=""
+                  >
+                    A tour of Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/learn/metabase-basics/overview/next-steps" class="">
+                    Advanced Metabase features for data analysts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/learn/metabase-basics/overview/beyond-bi" class="">
+                    Beyond BI: other problems you can solve with Metabase
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/metabase-basics/querying-and-dashboards/"
+                class=""
+              >
+                Querying and dashboards
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/questions"
+                    class=""
+                  >
+                    Asking questions
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/drill-through"
+                        class=""
+                      >
+                        Create interactive charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/custom-expressions"
+                        class=""
+                      >
+                        Custom expressions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/joins-in-metabase"
+                        class=""
+                      >
+                        Joins in Metabase
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/cross-db-joins"
+                        class=""
+                      >
+                        Combining data from different databases
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/multi-aggregation"
+                        class=""
+                      >
+                        Multi-level aggregation
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/searching-tables"
+                        class=""
+                      >
+                        Searching in tables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/formatting"
+                        class=""
+                      >
+                        Cleaning and formatting text
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/visualization"
+                    class=""
+                  >
+                    Visualizing data
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/chart-guide"
+                        class=""
+                      >
+                        Which chart should you use?
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/line-charts"
+                        class=""
+                      >
+                        Guide to line charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/bar-charts"
+                        class=""
+                      >
+                        Master the bar chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/histograms"
+                        class=""
+                      >
+                        Histograms
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/dashboards"
+                    class=""
+                  >
+                    Building dashboards
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/bi-dashboard-best-practices"
+                        class=""
+                      >
+                        BI dashboard best practices
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/linking-filters"
+                        class=""
+                      >
+                        Linking filters in dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/custom-destinations"
+                        class=""
+                      >
+                        Custom click destinations on dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/cross-filtering"
+                        class=""
+                      >
+                        Cross-filtering: using a chart to update a dashboard
+                        filter
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/markdown"
+                        class=""
+                      >
+                        Markdown in dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/build-a-record-lookup-tool"
+                        class=""
+                      >
+                        Build a record lookup tool with Metabase
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/"
+                    class=""
+                  >
+                    SQL in Metabase
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/sql-variables"
+                        class=""
+                      >
+                        Create filters using SQL variables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/field-filters"
+                        class=""
+                      >
+                        Field filters for SQL questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/snippets"
+                        class=""
+                      >
+                        Snippets: reuse and share code
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/organizing-sql"
+                        class=""
+                      >
+                        Snippets vs. Saved Questions vs. Views
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/filters"
+                        class=""
+                      >
+                        Adding filters to dashboards with SQL questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/sql-tricks-ordering-charts"
+                        class=""
+                      >
+                        SQL trick: ordering bars in a chart
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/time-series"
+                    class=""
+                  >
+                    Time series analysis
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/time-series/start"
+                        class=""
+                      >
+                        Overview of time series analysis
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/time-series/time-series-comparisons"
+                        class=""
+                      >
+                        Period-over-period comparisons for time series
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/time-series/compare-times"
+                        class=""
+                      >
+                        Best practices for visualizing time series
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/data-browser"
+                    class=""
+                  >
+                    Data reference
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/actions-crud"
+                    class=""
+                  >
+                    Build a basic CRUD app with actions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/mongodb"
+                    class=""
+                  >
+                    Using Metabase with MongoDB
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/learn/metabase-basics/administration/" class="">
+                Administration
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/administration/administration-and-operation/"
+                    class=""
+                  >
+                    Administration and operation
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/guide"
+                        class=""
+                      >
+                        Admin overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-and-your-db"
+                        class=""
+                      >
+                        How Metabase works with your database
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-in-production"
+                        class=""
+                      >
+                        How to run Metabase in production
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/managing-people"
+                        class=""
+                      >
+                        Managing people in Metabase
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/guide-to-sharing-data"
+                        class=""
+                      >
+                        Guide to sharing data
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/same-page"
+                        class=""
+                      >
+                        Keeping your analytics organized
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/multi-env"
+                        class=""
+                      >
+                        Multiple environments
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/serialization"
+                        class=""
+                      >
+                        Serialization: preloading dashboards in a new Metabase
+                        instance
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/git-based-workflow"
+                        class=""
+                      >
+                        Setting up a git-based workflow
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster"
+                        class=""
+                      >
+                        Making dashboards faster
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-at-scale"
+                        class=""
+                      >
+                        Metabase at scale
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/data-engineering"
+                        class=""
+                      >
+                        Metabase for data engineers
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-api"
+                        class=""
+                      >
+                        Working with the Metabase API
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/administration/permissions/"
+                    class=""
+                  >
+                    Permissions
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/strategy"
+                        class=""
+                      >
+                        Permissions strategies
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/data-permissions"
+                        class=""
+                      >
+                        Guide to data permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/collection-permissions"
+                        class=""
+                      >
+                        Working with collection permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/row-permissions"
+                        class=""
+                      >
+                        Row-level permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/column-permissions"
+                        class=""
+                      >
+                        Column-level permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/row-and-column-security-use-cases"
+                        class=""
+                      >
+                        Restricting the data that people can see in Metabase
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/keep-tabs-on-your-data"
+                        class=""
+                      >
+                        How to keep tabs on your data
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/ldap-auth-access-control"
+                        class=""
+                      >
+                        Using LDAP for authentication and access control
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/learn/metabase-basics/embedding" class="">
+                Embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/learn/metabase-basics/embedding/overview" class="">
+                    Strategies for delivering customer-facing analytics
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/embedding/charts-and-dashboards"
+                    class=""
+                  >
+                    Publishing data visualizations to the web
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/embedding/external-sharing"
+                    class=""
+                  >
+                    A Metabase mystery
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/embedding/multi-tenant-self-service-analytics"
+                    class=""
+                  >
+                    Multi-tenant self-service analytics
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Grow your data skills</h5>
+
+          <ul>
+            <li class="expanded">
+              <a href="/learn/sql/" class="">
+                Learn SQL
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/learn/sql/getting-started/" class="">
+                    Get started with SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/sql/getting-started/introduction"
+                        class=""
+                      >
+                        Introduction
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/getting-started/querying-tables"
+                        class=""
+                      >
+                        SQL querying tables
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/learn/sql/filtering/" class="">
+                    SQL filtering
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/learn/sql/filtering/by-text" class="">
+                        SQL filtering by text
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/learn/sql/filtering/by-date" class="">
+                        SQL filtering by date
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="expanded">
+                  <a href="/learn/sql/combining-tables/" class="">
+                    Combining tables with SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/learn/sql/working-with-sql/sql-joins" class="">
+                        Combining tables with joins
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/sql-join-types"
+                        class=""
+                      >
+                        SQL join types
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/combining-tables/sql-union"
+                        class="selected"
+                      >
+                        Combining tables with SQL UNION
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/learn/sql/working-with-sql/" class="">
+                    Working with SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/sql-best-practices"
+                        class=""
+                      >
+                        Best practices for writing SQL queries
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/learn/sql/working-with-sql/sql-cte" class="">
+                        Common Table Expressions (CTEs) in SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/dates-in-sql"
+                        class=""
+                      >
+                        Working with dates in SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/ltv-with-metabase"
+                        class=""
+                      >
+                        How to calculate customer lifetime value (LTV) with SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/syntax-reference"
+                        class=""
+                      >
+                        SQL syntax reference
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/learn/sql/debugging-sql/" class="">
+                    Debugging SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/learn/sql/debugging-sql/sql-syntax" class="">
+                        Debugging SQL syntax errors
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/learn/sql/debugging-sql/sql-logic" class="">
+                        Debugging SQL query logic
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/debugging-sql/sql-logic-duplicated-data"
+                        class=""
+                      >
+                        Debugging duplicated data in SQL query results
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/debugging-sql/sql-logic-missing-data"
+                        class=""
+                      >
+                        Debugging missing data in SQL query results
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/grow-your-data-skills/data-fundamentals/"
+                class=""
+              >
+                Database fundamentals
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/database-basics"
+                    class=""
+                  >
+                    A short overview of databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/data-types-overview"
+                    class=""
+                  >
+                    Data types and metadata
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/table-relationships"
+                    class=""
+                  >
+                    Database table relationships
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/dimensions-and-measures"
+                    class=""
+                  >
+                    Measures and dimensions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/fact-table"
+                    class=""
+                  >
+                    Fact and dimension tables
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/normalization"
+                    class=""
+                  >
+                    Data normalization
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/view"
+                    class=""
+                  >
+                    What is a database view?
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/sql-performance-tuning"
+                    class=""
+                  >
+                    Query performance tuning
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/data-cube"
+                    class=""
+                  >
+                    Data cubes
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/learn/grow-your-data-skills/data-landscape/" class="">
+                Data landscape
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/data-landscape"
+                    class=""
+                  >
+                    A guide to the data landscape
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/types-of-databases"
+                    class=""
+                  >
+                    Types of databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/data-mart-data-warehouse-data-lake"
+                    class=""
+                  >
+                    Data warehouse vs data lake vs data mart
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/which-data-warehouse"
+                    class=""
+                  >
+                    Which data warehouse should you use?
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/etl-landscape"
+                    class=""
+                  >
+                    ETLs, ELTs, and Reverse ETLs
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/learn/grow-your-data-skills/analytics/" class="">
+                Strategies for analytics
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/editing-dashboards"
+                    class=""
+                  >
+                    Why you should regularly edit your dashboards
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/information-budget"
+                    class=""
+                  >
+                    Managing your information budget
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/avoiding-data-jargon"
+                    class=""
+                  >
+                    Don't use "data" as a crutch for lazy thinking
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/data-model-mistakes"
+                    class=""
+                  >
+                    Common data model mistakes made by startups
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/analytics-mistakes"
+                    class=""
+                  >
+                    Ten common analytics mistakes startups make
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/embedding-mistakes"
+                    class=""
+                  >
+                    The five stages of embedding grief
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/push-and-pull"
+                    class=""
+                  >
+                    The push and pull of analytics
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/grow-your-data-skills/data-visualization/"
+                class=""
+              >
+                Data visualization
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-visualization/cumulative-charts"
+                    class=""
+                  >
+                    Cumulative charts to track values over time
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/grow-your-data-skills/business-analysis-methods/"
+                class=""
+              >
+                Business analysis methods
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/business-analysis-methods/how-to-do-funnel-analysis"
+                    class=""
+                  >
+                    How to do funnel analysis
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Cheat sheets</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/cheat-sheets/which-chart-to-use" class="">
+                Which chart to use?
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/cheat-sheets/how-to-choose-the-right-map-visualization"
+                class=""
+              >
+                Which map to use?
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/learn/cheat-sheets/sql-cheat-sheet" class="">
+                SQL cheat sheet
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/learn/cheat-sheets/transition-guides/" class="">
+                Transition from other BI tools
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/cheat-sheets/transition-guides/powerbi-to-metabase"
+                    class=""
+                  >
+                    Power BI to Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/cheat-sheets/transition-guides/tableau-to-metabase"
+                    class=""
+                  >
+                    Tableau to Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/cheat-sheets/transition-guides/looker-to-metabase"
+                    class=""
+                  >
+                    Looker to Metabase
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <article class="learn__post learn__article">
+          <div class="top-bar">
+            <div>
+              <div class="learn-breadcrumb-trail"></div>
+            </div>
+
+            <div></div>
+          </div>
+
+          <div class="learn__post__content">
+            <h2 id="what-is-sql-union">
+              What is SQL <code class="language-plaintext highlighter-rouge"
+                >UNION</code>
+            </h2>
+
+            <p>
+              Let’s say you want to look at the number of people you have at
+              each stage of the sales pipeline, but there’s a problem: leads and
+              prospects live in one table (although with different filters),
+              trial data live in another table, and customer data in another
+              one. You need to count all of those and combine that info into one
+              table, but they all have different logic and use different
+              sources. SQL has a special operator <code
+                class="language-plaintext highlighter-rouge">UNION</code
+              > that lets you combine query results from different tables.
+            </p>
+
+            <p>
+              There are two <code class="language-plaintext highlighter-rouge"
+                >UNION</code
+              > operators in SQL - <code
+                class="language-plaintext highlighter-rouge">UNION</code
+              > and <code class="language-plaintext highlighter-rouge"
+                >UNION ALL</code
+              >. Most of this article applies both to <code
+                class="language-plaintext highlighter-rouge">UNION</code
+              > and <code class="language-plaintext highlighter-rouge"
+                >UNION ALL</code
+              >.
+            </p>
+
+            <blockquote>
+              <p>
+                Need a quick refresher before diving into advanced SQL? Check
+                out our&nbsp;<a href="/learn/cheat-sheets/sql-cheat-sheet"
+                  >SQL cheat sheet</a
+                >&nbsp;for core commands and syntax. It’s also perfect to share
+                with colleagues starting in data analysis.
+              </p>
+            </blockquote>
+
+            <h2 id="unions-vs-joins-vs-intersections-when-to-use-each-one">
+              Unions vs joins vs intersections: when to use each one
+            </h2>
+
+            <p>
+              There are (at least) three ways to combine results of queries in
+              SQL: <code class="language-plaintext highlighter-rouge">JOIN</code
+              >, <code class="language-plaintext highlighter-rouge">UNION</code
+              >, and <code class="language-plaintext highlighter-rouge"
+                >INTERSECT</code
+              >. They serve different purposes:
+            </p>
+
+            <ul>
+              <li>
+                Use <code class="language-plaintext highlighter-rouge"
+                  >UNION</code
+                > when you want to add more <em>rows</em> to your results.
+              </li>
+              <li>
+                Use <code class="language-plaintext highlighter-rouge"
+                  >JOIN</code
+                > to add more <em>columns</em> to your results.
+              </li>
+              <li>
+                Use <code class="language-plaintext highlighter-rouge"
+                  >INTERSECT</code
+                > when you want to find the common set of rows between tables.
+              </li>
+            </ul>
+
+            <p>
+              <img src="/learn/images/sql-union/union.png" alt="Union" />
+              <img src="/learn/images/sql-union/join.png" alt="Join" />
+              <img
+                src="/learn/images/sql-union/intersect.png"
+                alt="Intersect"
+              />
+            </p>
+
+            <h2 id="combine-query-results-with-sql-union">
+              Combine query results with SQL <code
+                class="language-plaintext highlighter-rouge">UNION</code>
+            </h2>
+
+            <p>
+              To see what <code class="language-plaintext highlighter-rouge"
+                >UNION</code
+              > does, let’s run the following SQL query (for example, you can run
+              it <a href="/docs/latest/questions/native-editor/writing-sql"
+                >in Metabase</a
+              >):
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="nv"&gt;"Kitten"&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_age&lt;/span&gt;
+
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="nv"&gt;"Puppy"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="nv"&gt;"Bird"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>The result is:</p>
+
+            <pre>&lt;code class="language-txt"&gt;| pet_type | pet_age |
+| -------- | ------- |
+| Kitten   | 0.5     |
+| Puppy    | 2       |
+| Bird     | 17      |
+&lt;/code&gt;</pre>
+
+            <p>What’s going on:</p>
+
+            <ol>
+              <li>
+                SQL executes each <code
+                  class="language-plaintext highlighter-rouge">SELECT</code
+                > query between the <code
+                  class="language-plaintext highlighter-rouge">UNION</code
+                > clauses.
+              </li>
+              <li>Stacks the rows of the results.</li>
+              <li>
+                Uses the aliases (<code
+                  class="language-plaintext highlighter-rouge">AS "Kitten"</code
+                >) from the first query as the column headings.
+              </li>
+            </ol>
+
+            <p>
+              Queries that are getting unioned (is that a word?..) don’t need to
+              return a single line - the queries can include filters, grouping,
+              CTEs, and so on. For example, let’s say you have two queries:
+            </p>
+
+            <p><strong>First query</strong></p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="n"&gt;breed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;kittens&lt;/span&gt;
+&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;breed&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>And the first query returns:</p>
+
+            <pre>&lt;code class="language-txt"&gt;| BREED              | COUNT(*)  |
+| ------------------ | --------- |
+| Domestic shorthair | 23        |
+| Domestic longhair  | 10        |
+| Siamese            | 3         |
+&lt;/code&gt;</pre>
+
+            <p><strong>Second query</strong></p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="n"&gt;breed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;puppies&lt;/span&gt;
+&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;breed&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>And the second query returns:</p>
+
+            <pre>&lt;code class="language-txt"&gt;| BREED         | COUNT(*)  |
+| ------------- | --------- |
+| Beagle        | 3         |
+| Borzoi        | 1         |
+| Corgi         | 5         |
+| Very good boy | 37        |
+&lt;/code&gt;</pre>
+
+            <p>Then the union of these queries is:</p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;-- First query&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="n"&gt;breed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;kittens&lt;/span&gt;
+&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;
+
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+
+&lt;span class="c1"&gt;-- Second query&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="n"&gt;breed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;puppies&lt;/span&gt;
+&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              And the result of the <code
+                class="language-plaintext highlighter-rouge">UNION ALL</code
+              > query:
+            </p>
+
+            <pre>&lt;code class="language-txt"&gt;| BREED              | COUNT(*)  |
+| ------------------ | --------- |
+| Domestic shorthair | 23        |
+| Domestic longhair  | 10        |
+| Siamese            | 3         |
+| Beagle             | 3         |
+| Borzoi             | 1         |
+| Corgi              | 5         |
+| Very good boy      | 37        |
+&lt;/code&gt;</pre>
+
+            <p>
+              So <code class="language-plaintext highlighter-rouge"
+                >UNION ALL</code
+              > just executed queries one by one, and stacked the results. There
+              are some nuances in how <code
+                class="language-plaintext highlighter-rouge">UNION (ALL)</code
+              > handles <a href="#sql-union-takes-columns-from-the-first-query"
+                >column names</a
+              >, <a href="#sql-union-columns-must-be-in-the-same-order"
+                >column order</a
+              >, and <a href="#column-data-types-must-match-in-sql-unions"
+                >column types</a
+              >, but at the most basic level, it’s just stacking the rows.
+            </p>
+
+            <h2
+              id="union-all-takes-all-the-rows-union-tries-to-deduplicate-rows"
+            >
+              <code class="language-plaintext highlighter-rouge">UNION ALL</code
+              > takes all the rows, <code
+                class="language-plaintext highlighter-rouge">UNION</code
+              > tries to deduplicate rows
+            </h2>
+
+            <ul>
+              <li>
+                <code class="language-plaintext highlighter-rouge"
+                  >UNION ALL</code
+                > takes query results and stacks them together.
+              </li>
+              <li>
+                <code class="language-plaintext highlighter-rouge">UNION</code> (without
+                the <code class="language-plaintext highlighter-rouge">ALL</code
+                >) does the same, but also tries to <strong
+                  >deduplicate rows</strong
+                >.
+              </li>
+            </ul>
+
+            <p>So for example, let’s say you have two queries:</p>
+
+            <p><strong>First query</strong></p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;kittens&lt;/span&gt;
+&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <pre>&lt;code class="language-txt"&gt;| COLOR  | COUNT(*)  |
+| ------ | --------- |
+| Orange | 18        |
+| Black  | 10        |
+| White  | 8         |
+&lt;/code&gt;</pre>
+
+            <p><strong>Second query</strong></p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;puppies&lt;/span&gt;
+&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <pre>&lt;code class="language-txt"&gt;| COLOR | COUNT(*)  |
+| ----- | --------- |
+| Black | 10        |
+| Brown | 23        |
+| White | 15        |
+&lt;/code&gt;</pre>
+
+            <p>
+              Then the result of <code
+                class="language-plaintext highlighter-rouge">UNION ALL</code
+              > is:
+            </p>
+
+            <pre>&lt;code class="language-txt"&gt;| COLOR  | COUNT(*)  |
+| ------ | --------- |
+| Orange | 18        |
+| Black  | 10        |
+| White  | 8         |
+| Black  | 10        |
+| Brown  | 23        |
+| White  | 15        |
+&lt;/code&gt;</pre>
+
+            <p>
+              Some colors (“Black” and “White”) have multiple rows.
+              <code class="language-plaintext highlighter-rouge">UNION</code> will
+              try deduplicate those repeated rows:
+            </p>
+
+            <pre>&lt;code class="language-txt"&gt;| COLOR  | COUNT(*)  |
+| ------ | --------- |
+| Orange | 18        |
+| Black  | 10        |
+| White  | 8         |
+| Brown  | 23        |
+| White  | 15        |
+&lt;/code&gt;</pre>
+
+            <p>
+              The row <code class="language-plaintext highlighter-rouge"
+                >| Black | 10 |</code
+              > appears in the results of both queries, so <code
+                class="language-plaintext highlighter-rouge">UNION</code
+              > will drop one of the rows. As for the <code
+                class="language-plaintext highlighter-rouge">White</code
+              > rows: even though the color <code
+                class="language-plaintext highlighter-rouge">White</code
+              > appears twice, these rows are <em>not</em> duplicates. One row is
+              <code class="language-plaintext highlighter-rouge"
+                >| White | 8 |</code
+              > and the other is <code
+                class="language-plaintext highlighter-rouge"
+                >| White | 10 |</code
+              >, so <code class="language-plaintext highlighter-rouge"
+                >UNION</code
+              > keeps both.
+            </p>
+
+            <p>
+              SQL <code class="language-plaintext highlighter-rouge">UNION</code
+              > performs deduplication after the query results are retrieved, so
+              if you have any <code class="language-plaintext highlighter-rouge"
+                >LIMIT</code
+              > or <code class="language-plaintext highlighter-rouge"
+                >ORDER</code
+              > clauses in individual queries, the result of a <code
+                class="language-plaintext highlighter-rouge">UNION</code
+              > might not respect those.
+            </p>
+
+            <h2 id="why-in-general-you-should-prefer-union-all-to-union">
+              Why (in general) you should prefer <code
+                class="language-plaintext highlighter-rouge">UNION ALL</code
+              > to <code class="language-plaintext highlighter-rouge"
+                >UNION</code>
+            </h2>
+
+            <p>
+              When you use <code class="language-plaintext highlighter-rouge"
+                >UNION</code
+              > instead of <code class="language-plaintext highlighter-rouge"
+                >UNION ALL</code
+              >, SQL will try to deduplicate the results - <em
+                >even if there are no duplicates</em
+              >. Deduplication can take a long time because SQL needs to go
+              through all the records in each query.
+            </p>
+
+            <p>
+              Only use <code class="language-plaintext highlighter-rouge"
+                >UNION</code
+              > if you really need to drop duplicate rows.
+            </p>
+
+            <h2 id="sql-union-of-complete-tables">
+              SQL <code class="language-plaintext highlighter-rouge">UNION</code
+              > of complete tables
+            </h2>
+
+            <p>
+              You can’t <code class="language-plaintext highlighter-rouge"
+                >UNION ALL</code
+              > plain tables. You can only union query results: This won’t work:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;--this won't work:&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;kittens&lt;/span&gt;
+    &lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+    &lt;span class="n"&gt;puppies&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              If you want to stack several tables together, you’ll need to
+              select all records from each table:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;-- UNION of two full tables&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;kittens&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;puppies&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              (although generally you should avoid using <code
+                class="language-plaintext highlighter-rouge">SELECT *</code
+              > with <code class="language-plaintext highlighter-rouge"
+                >UNION</code
+              >, and instead specify the columns explicitly, see <a
+                href="#unioned-tables-must-have-the-same-number-of-columns"
+                >Unioned tables must have the same number of columns</a
+              >).
+            </p>
+
+            <h2 id="union-all-example-building-a-sales-funnel-in-sql">
+              <code class="language-plaintext highlighter-rouge">UNION ALL</code
+              > example: building a sales funnel in SQL
+            </h2>
+
+            <p>
+              Let’s say you store information about your sales funnel in three
+              tables:
+            </p>
+
+            <ul>
+              <li>
+                <code class="language-plaintext highlighter-rouge">leads</code> table
+                with information about sales leads
+              </li>
+              <li>
+                <code class="language-plaintext highlighter-rouge"
+                  >prospects</code
+                > table with the data about prospects
+              </li>
+              <li>
+                <code class="language-plaintext highlighter-rouge"
+                  >customers</code
+                > table with (you guessed it) information about customers
+              </li>
+            </ul>
+
+            <p>
+              You can run <code class="language-plaintext highlighter-rouge"
+                >COUNT(*)</code
+              > on each of those tables to find the numbers of leads, prospects,
+              and customers independently, but it’d be more helpful to see those
+              numbers together in a single table (for example if you want to understand
+              conversion numbers). That’s where <code
+                class="language-plaintext highlighter-rouge">UNION ALL</code
+              > can come in handy:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;leads&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;prospects&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;customers&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>This query return something like:</p>
+
+            <pre>&lt;code class="language-txt"&gt;| COUNT(*)  |
+| --------- |
+| 1749      |
+| 832       |
+| 562       |
+&lt;/code&gt;</pre>
+
+            <p>
+              So you can see the drop-off at each stage of the query - for
+              example, about 48% of leads become prospects.
+            </p>
+
+            <p>
+              We use <code class="language-plaintext highlighter-rouge"
+                >UNION ALL</code
+              > here to speed up the query, but also make sure duplicates are <strong
+                >not</strong
+              > getting excluded: for example, if you have a killer app with a 100%
+              conversion rate, and your prospect numbers are the same as customer
+              numbers, using <code class="language-plaintext highlighter-rouge"
+                >UNION</code
+              > instead of <code class="language-plaintext highlighter-rouge"
+                >UNION ALL</code
+              > would mean that those duplicate customer numbers would be dropped.
+            </p>
+
+            <p>
+              There are two problems with these results: first, the column name <code
+                class="language-plaintext highlighter-rouge">COUNT(*)</code
+              > is not helpful, and second, the numbers don’t have a lot of context:
+              which one corresponds to which stage? So let’s add column names and
+              an additional field storing the name of the stage:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="s1"&gt;'Leads'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;stage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;ct&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;leads&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="s1"&gt;'Prospects'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;prospects&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="s1"&gt;'Customers'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;customers&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <pre>&lt;code class="language-txt"&gt;| stage     | ct   |
+| --------- | ---- |
+| Leads     | 1749 |
+| Prospects | 832  |
+| Customers | 562  |
+&lt;/code&gt;</pre>
+
+            <p>
+              Notice that we only needed to add column names to the first query
+              in the <code class="language-plaintext highlighter-rouge"
+                >UNION</code
+              > - that’s because <a
+                href="#sql-union-takes-columns-from-the-first-query"
+                >SQL UNION takes column names only from the first query</a
+              >.
+            </p>
+
+            <h2 id="union-all-example-tracking-user-flow-in-sql">
+              <code class="language-plaintext highlighter-rouge">UNION ALL</code
+              > example: tracking user flow in SQL
+            </h2>
+
+            <p>
+              For a more complicated example, let’s say you’re running an
+              eCommerce website, and you want to track the number of people
+              going through the flow of:
+            </p>
+
+            <ol>
+              <li>
+                <strong>Catalog visit</strong>: Look at the product catalog.
+              </li>
+              <li>
+                <strong>Product visit</strong>: Go to the specific product’s
+                page.
+              </li>
+              <li>
+                <strong>Add to cart</strong>: they’ve almost given you money.
+              </li>
+              <li><strong>Order</strong>. They actually gave you money.</li>
+            </ol>
+
+            <p>Your data is in multiple tables:</p>
+
+            <ul>
+              <li>
+                Views to pages on the website (like the catalog page or the
+                product’s page) are in <code
+                  class="language-plaintext highlighter-rouge">page_views</code
+                > table.
+              </li>
+              <li>
+                Events like button clicks are tracked separately in the <code
+                  class="language-plaintext highlighter-rouge">events</code
+                > table.
+              </li>
+              <li>
+                Actual customer orders are in the <code
+                  class="language-plaintext highlighter-rouge">orders</code
+                > table.
+              </li>
+            </ul>
+
+            <p>
+              You can count the total number of page views to the page with the
+              list of products, like this:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;-- Count all views to the catalog page&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt;
+   &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;page_views&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt;
+    &lt;span class="n"&gt;page_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'https://www.whskr.co/catalog'&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              Next, you want to count visits to the page of a particular product
+              - but not <em>all</em> views, just the views coming from the catalog
+              page (as opposed to, for example, search or direct links). This uses
+              the same <code class="language-plaintext highlighter-rouge"
+                >page_views</code
+              > table but with a different filter:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;-- Count views to the product page coming from the catalog page&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;page_views&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt;
+    &lt;span class="n"&gt;page_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'https://www.whskr.co/product/smart-mouse-1234567'&lt;/span&gt;
+    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;referer_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'https://www.whskr.co/catalog'&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              Next, you want to count people who add the product to cart, so you
+              filter all the interaction events. It can look something like
+              this:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;-- Clicks on "Add to cart" button on the product page&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;events&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt;
+    &lt;span class="n"&gt;event_type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'button_clicked'&lt;/span&gt;
+    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;event_subtype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'add-to-cart'&lt;/span&gt;
+    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;source_page&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'https://www.whskr.co/product/smart-mouse-1234567'&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              Finally, you want to know the total number of times people have
+              ordered this product:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;-- Number of orders for the product&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;orders&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;product_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1234567&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              (Here we’re assuming the only way to place an order is from the
+              product’s page.)
+            </p>
+
+            <p>
+              Now, you want to put all these counts into one table so that you
+              can compare the number of people going though each stage. You’ll
+              also want to add a column identifying each stage. That’s where <code
+                class="language-plaintext highlighter-rouge">UNION (ALL)</code
+              > comes in:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;-- Count all views to the catalog page&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt;
+   &lt;span class="s1"&gt;'Catalog visits'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;stage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+   &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;page_views&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt;
+    &lt;span class="n"&gt;page_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'https://www.whskr.co/catalog'&lt;/span&gt;
+
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+
+&lt;span class="c1"&gt;-- Count views to the product page coming from the catalog page&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="s1"&gt;'Product visits'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;page_views&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt;
+    &lt;span class="n"&gt;page_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'https://www.whskr.co/product/smart-mouse-1234567'&lt;/span&gt;
+    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;referer_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'https://www.whskr.co/catalog'&lt;/span&gt;
+
+
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+
+&lt;span class="c1"&gt;-- Clicks on "Add to cart" button on the product page&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="s1"&gt;'Add to cart'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;interaction_events&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt;
+    &lt;span class="n"&gt;event_type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'button_clicked'&lt;/span&gt;
+    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;event_subtype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'cart'&lt;/span&gt;
+    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;source_page&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'https://www.whskr.co/product/smart-mouse-1234567'&lt;/span&gt;
+
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+
+&lt;span class="c1"&gt;-- Number of orders for the product&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="s1"&gt;'Orders'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+     &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;orders&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;product_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1234567&lt;/span&gt;
+
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              Here we’re combining two queries on the <code
+                class="language-plaintext highlighter-rouge">page_views</code
+              > table with two different filters, a query on the <code
+                class="language-plaintext highlighter-rouge">events</code
+              > table, and a query on the <code
+                class="language-plaintext highlighter-rouge">orders</code
+              > table. We’re using <code
+                class="language-plaintext highlighter-rouge">UNION ALL</code
+              > because this isn’t a situation where we’d need to deduplicate the
+              data.
+            </p>
+
+            <p>The result will look something like this:</p>
+
+            <pre>&lt;code class="language-txt"&gt;| stage          | COUNT(*)  |
+| -------------- | --------- |
+| Catalog visits | 5842      |
+| Product visits | 851       |
+| Add to cart    | 592       |
+| Orders         | 346       |
+&lt;/code&gt;</pre>
+
+            <h2 id="union-all-example-combine-data-from-historical-tables">
+              <code class="language-plaintext highlighter-rouge">UNION ALL</code
+              > example: combine data from historical tables
+            </h2>
+
+            <p>
+              Sometimes when tables are large and take a long time to query,
+              people break one big table into several tables by date. For
+              example, you could have a separate table with data for each year,
+              like a table with data for 2023, 2024, 2025… The idea that in
+              2025, you’re probably not constantly querying data from, like,
+              1998, so there’s no need to make the database work to go through
+              that data unless absolutely necessary.
+            </p>
+
+            <p>
+              But sometimes in setups like this you <em>do</em> need to retrieve
+              data from all the previous years, and that’s where <code
+                class="language-plaintext highlighter-rouge">UNION (ALL)</code
+              > can come in handy. For example, if you wanted to get all the order
+              ids, dates, totals over all the years, you could write a query like
+              this (assuming the world began in 2023):
+            </p>
+
+            <pre>&lt;code class="language-SQL"&gt;SELECT id, created_at, total FROM orders_2023
+UNION ALL
+SELECT id, created_at, total FROM orders_2024
+UNION ALL
+SELECT id, created_at, total FROM orders_2023
+&lt;/code&gt;</pre>
+
+            <h2 id="union-all-example-add-a-summary-row">
+              <code class="language-plaintext highlighter-rouge">UNION ALL</code
+              > example: add a summary row
+            </h2>
+
+            <p>
+              Let’s say you’re counting the number of products by category using
+              the following query:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;
+  &lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;ct&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;products&lt;/span&gt;
+&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>with the following result:</p>
+
+            <pre>&lt;code class="language-txt"&gt;| CATEGORY  | ct  |
+| --------- | --- |
+| Doohickey | 42  |
+| Gadget    | 53  |
+| Gizmo     | 51  |
+| Widget    | 54  |
+&lt;/code&gt;</pre>
+
+            <p>
+              You can use <code class="language-plaintext highlighter-rouge"
+                >UNION ALL</code
+              > to add a row with total count of records:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;-- Query results&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt;
+  &lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;ct&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;products&lt;/span&gt;
+&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;category&lt;/span&gt;
+&lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;ct&lt;/span&gt;
+
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+
+&lt;span class="c1"&gt;-- Total row&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt;
+&lt;span class="s1"&gt;'Total'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;products&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>The result will look like this:</p>
+
+            <pre>&lt;code class="language-txt"&gt;| CATEGORY  | ct  |
+| --------- | --- |
+| Doohickey | 42  |
+| Gadget    | 53  |
+| Gizmo     | 51  |
+| Widget    | 54  |
+| Total     | 200 |
+&lt;/code&gt;</pre>
+
+            <p>
+              You can use the same idea to add other kinds of summaries. For
+              example, you can add a row for the average count across
+              categories:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;
+&lt;span class="k"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;ct_by_category&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+  &lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;ct&lt;/span&gt;
+  &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;products&lt;/span&gt;
+  &lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;category&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ct&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;ct_by_category&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="s1"&gt;'Average'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;AVG&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ct&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;ct_by_category&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              Here we pulled the <code
+                class="language-plaintext highlighter-rouge">COUNT</code
+              >ing into a <a href="/learn/sql/working-with-sql/sql-cte">CTE</a> to
+              make the query cleaner.
+            </p>
+
+            <h2 id="how-sql-union-works">
+              How SQL <code class="language-plaintext highlighter-rouge"
+                >UNION</code
+              > works
+            </h2>
+
+            <p>
+              SQL <code class="language-plaintext highlighter-rouge"
+                >UNION (ALL)</code
+              > assumes you know what you’re doing, and doesn’t get in your way -
+              but also doesn’t try to be smart and help you. SQL <code
+                class="language-plaintext highlighter-rouge">UNION (ALL)</code
+              > will just execute the queries that you’re unioning (yep, that’s a
+              word now), and try to stack the result rows. If something goes wrong
+              - like the number of columns is different or or column types doesn’t
+              match - <code class="language-plaintext highlighter-rouge"
+                >UNION (ALL)</code
+              > will just give up.
+            </p>
+
+            <p>Here are some of things to keep in mind:</p>
+
+            <ul>
+              <li>
+                <a href="#sql-union-takes-columns-from-the-first-query"
+                  >SQL <code class="language-plaintext highlighter-rouge"
+                    >UNION</code
+                  > takes columns from the first query</a
+                >.
+              </li>
+              <li>
+                <a href="#sql-union-columns-must-be-in-the-same-order"
+                  ><code class="language-plaintext highlighter-rouge"
+                    >UNION</code
+                  > columns must be in the same order</a
+                >.
+              </li>
+              <li>
+                <a href="#unioned-tables-must-have-the-same-number-of-columns"
+                  >Unioned tables must have the same number of columns</a
+                >.
+              </li>
+              <li>
+                <a href="#column-data-types-must-match-in-sql-unions"
+                  >Column data types must match in SQL <code
+                    class="language-plaintext highlighter-rouge">UNION</code
+                  >s</a
+                >.
+              </li>
+            </ul>
+
+            <h3 id="sql-union-takes-columns-from-the-first-query">
+              SQL <code class="language-plaintext highlighter-rouge">UNION</code
+              > takes columns from the first query
+            </h3>
+
+            <p>
+              <code class="language-plaintext highlighter-rouge"
+                >UNION (ALL)</code
+              > will take the column names from the first query, and ignore any column
+              names in the subsequent queries.
+            </p>
+
+            <p>So let’s say you have a query like this:</p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="s1"&gt;'Kitten'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_age&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="s1"&gt;'Bird'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;age_in_years&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>The result will be:</p>
+
+            <pre>&lt;code class="language-txt"&gt;| pet_type | pet_age |
+| -------- | ------- |
+| Kitten   | 0.5     |
+| Bird     | 17      |
+&lt;/code&gt;</pre>
+
+            <p>
+              SQL <code class="language-plaintext highlighter-rouge"
+                >UNION (ALL)</code
+              > will not create new columns. So as long as the number of columns
+              and the data types match, SQL <code
+                class="language-plaintext highlighter-rouge">UNION (ALL)</code
+              > will just stack the rows. This might not might not be what you expect!
+            </p>
+
+            <p>For example, take the following query:</p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="s1"&gt;'Kitten'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_age&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="s1"&gt;'Senior Software Engineer'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;job_title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;32768&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;favorite_number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>What you might want:</p>
+
+            <pre>&lt;code class="language-txt"&gt;| pet_type | pet_age | job_title                | favorite_number |
+| -------- | ------- | ------------------------ | --------------- |
+| Kitten   | 0.5     |                          |                 |
+|          |         | Senior Software Engineer | 32768           |
+&lt;/code&gt;</pre>
+
+            <p>but what the query actually returns:</p>
+
+            <pre>&lt;code class="language-txt"&gt;| pet_type                 | pet_age |
+| ------------------------ | ------- |
+| Kitten                   | 0.5     |
+| Senior Software Engineer | 32768   |
+&lt;/code&gt;</pre>
+
+            <p>
+              If what you want to keep the different columns and add nulls into
+              the cells that don’t have corresponding data, you could try <a
+                href="/learn/sql/working-with-sql/sql-join-types"
+                >full outer join</a
+              > instead.
+            </p>
+
+            <h3 id="sql-union-columns-must-be-in-the-same-order">
+              SQL <code class="language-plaintext highlighter-rouge">UNION</code
+              > columns must be in the same order
+            </h3>
+
+            <p>
+              If you have columns that you want SQL <code
+                class="language-plaintext highlighter-rouge">UNION (ALL)</code
+              > to “match” to each other, you have to put them in the same order
+              in every query. SQL <code
+                class="language-plaintext highlighter-rouge">UNION (ALL)</code
+              > will just try to put all the values in the first column for all the
+              queries together, all the values in all the second columns together,
+              etc, and will not try to match columns based on names, types or any
+              other characteristics.
+            </p>
+
+            <p>
+              For example, here the query creator might have intended to have
+              two columns <code class="language-plaintext highlighter-rouge"
+                >pet_type</code
+              > and <code class="language-plaintext highlighter-rouge"
+                >pet_age</code
+              >, but the column order is different in two queries:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;-- This will cause an error in most databases:&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="s1"&gt;'Kitten'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_age&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_age&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'Bird'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_type&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>What you might expect:</p>
+
+            <pre>&lt;code class="language-txt"&gt;-- Expected, but not actual the result of the query above
+
+| pet_type | pet_age |
+| -------- | ------- |
+| Kitten   | 0.5     |
+| Bird     | 17      |
+&lt;/code&gt;</pre>
+
+            <p>
+              but the actual result will depend on the database. Most databases
+              will give an error, something like:
+            </p>
+
+            <pre>&lt;code class="language-txt"&gt;ERROR: Data conversion error converting "Kitten";
+&lt;/code&gt;</pre>
+
+            <p>
+              That’s the error message you get on Metabase Sample Database -
+              other databases might give a different error message.
+            </p>
+
+            <p>Some other databases (like MySQL) will give:</p>
+
+            <pre>&lt;code class="language-txt"&gt;| pet_type | pet_age |
+| -------- | ------- |
+| Kitten   | 0.5     |
+| 17       | Bird    |
+&lt;/code&gt;</pre>
+
+            <p>But the result will <em>never</em> be:</p>
+
+            <pre>&lt;code class="language-txt"&gt;-- Can't get this result with query above
+
+| pet_type | pet_age |
+| -------- | ------- |
+| Kitten   | 0.5     |
+| Bird     | 17      |
+&lt;/code&gt;</pre>
+
+            <p>What’s happening here?</p>
+
+            <ul>
+              <li>
+                <p>
+                  First of all, SQL <code
+                    class="language-plaintext highlighter-rouge">UNION</code
+                  > doesn’t care about the column names in the second query, so it’ll
+                  ignore them and will try to put <code
+                    class="language-plaintext highlighter-rouge">'Kitten'</code
+                  > and <code class="language-plaintext highlighter-rouge"
+                    >17</code
+                  > together into one column, and <code
+                    class="language-plaintext highlighter-rouge">0.5</code
+                  > and <code class="language-plaintext highlighter-rouge"
+                    >'Bird'</code
+                  > into another column.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Then, since the types don’t match - <code
+                    class="language-plaintext highlighter-rouge">'Kitten'</code
+                  > is a string and <code
+                    class="language-plaintext highlighter-rouge">17</code
+                  > is a number - most databases will just reject the operation.
+                  MySQL is a bit more generous, and will convert <code
+                    class="language-plaintext highlighter-rouge">17</code
+                  > into a string <code
+                    class="language-plaintext highlighter-rouge">'17'</code
+                  >.
+                </p>
+              </li>
+            </ul>
+
+            <p>
+              This behavior can be especially confusing when the types are <em
+                >not</em
+              > mismatched, and so there’s no error. For example, SQL will happily
+              execute the following query without error, because all columns are
+              strings:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;-- This query will not error out but will produce unexpected results&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="s1"&gt;'Kitten'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'Mittens'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_name&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="s1"&gt;'Professor Beakman'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'Bird'&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pet_type&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>and return</p>
+
+            <pre>&lt;code class="language-txt"&gt;| pet_type          | pet_name |
+| ----------------- | -------- |
+| Kitten            | Mittens  |
+| Professor Beakman | Bird     |
+&lt;/code&gt;</pre>
+
+            <p>which is probably not what you wanted.</p>
+
+            <h3 id="unioned-tables-must-have-the-same-number-of-columns">
+              Unioned tables must have the same number of columns
+            </h3>
+
+            <p>
+              If the results of the queries have varying number of columns, the <code
+                class="language-plaintext highlighter-rouge">UNION (ALL)</code
+              > just won’t work - even if there’s overlap between columns. For example,
+              the following query won’t work regardless of what comes in <code
+                class="language-plaintext highlighter-rouge">...</code
+              >.
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="c1"&gt;--- This query won't work&lt;/span&gt;
+
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;week_num&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt;
+
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt;
+
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              The first query returns three columns, and the second query
+              returns two columns, so <code
+                class="language-plaintext highlighter-rouge">UNION ALL</code
+              > can’t stack those results. It will not create an additional column
+              with a null value for the missing column. Instead, your database will
+              return an error, something like :
+            </p>
+
+            <pre>&lt;code class="language-txt"&gt;ERROR: each UNION query must have the same number of columns
+&lt;/code&gt;</pre>
+
+            <p>
+              This can cause unexpected errors when you’re using <code
+                class="language-plaintext highlighter-rouge">SELECT *</code
+              > instead of specifying columns explicitly, especially if what you’re
+              selecting <code class="language-plaintext highlighter-rouge"
+                >FROM</code
+              > can change. Let’s say you have separate tables storing orders information
+              for each year: <code class="language-plaintext highlighter-rouge"
+                >orders_2024</code
+              >, <code class="language-plaintext highlighter-rouge"
+                >orders_2025</code
+              > etc. To get all the orders over the years, you might run:
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;orders_2023&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;orders_2024&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;orders_2025&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              But this query will start failing if someone adds a new column to <code
+                class="language-plaintext highlighter-rouge">orders_2025</code
+              >.
+            </p>
+
+            <p>
+              So when you’re using <code
+                class="language-plaintext highlighter-rouge">UNION (ALL)</code
+              >, always specify exactly which columns you’re selecting (this is
+              good practice when writing any <code
+                class="language-plaintext highlighter-rouge">SELECT</code
+              > in general, <code class="language-plaintext highlighter-rouge"
+                >UNION</code
+              > or not):
+            </p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;created_at&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;amount&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;orders_2023&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;created_at&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;amount&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;orders_2024&lt;/span&gt;
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;created_at&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;amount&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;orders_2025&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <h3 id="column-data-types-must-match-in-sql-unions">
+              Column data types must match in SQL <code
+                class="language-plaintext highlighter-rouge">UNION</code
+              >s
+            </h3>
+
+            <p>
+              The types of columns in the results of queries must match. So for
+              example, the first column in every query in the <code
+                class="language-plaintext highlighter-rouge">UNION ALL</code
+              > would be a number, every second column would be text, etc. If the
+              types don’t match - for example, one of the queries has a text column
+              as its first SELECTed column, and another query has a number column
+              as its first - then the <code
+                class="language-plaintext highlighter-rouge">UNION</code
+              > query might not work. Whether it works depends on the database and
+              the data types. Most databases will show an error if the types don’t
+              match exactly. Some databases like MySQL will attempt type conversions
+              (e.g., number to string) but will show an error if conversion isn’t
+              possible. Implicit type conversion can also lead to unexpected results.
+            </p>
+
+            <p>For example, take the following query:</p>
+
+            <div class="language-sql highlighter-rouge">
+              <div class="highlight">
+                <pre
+                  class="highlight">&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt;
+
+&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt;
+
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="nb"&gt;DATE&lt;/span&gt; &lt;span class="s1"&gt;'2025-04-19'&lt;/span&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+
+            <p>
+              Here we’re trying to stack a boolean value and a date. Most
+              databases (for example, Postgres), will just give an error.
+            </p>
+
+            <p>MySQL will instead return</p>
+
+            <pre>&lt;code class="language-txt"&gt;| TRUE       |
+| ---------- |
+| 1          |
+| 2025-04-19 |
+&lt;/code&gt;</pre>
+
+            <p>
+              Here MySQL makes <code
+                class="language-plaintext highlighter-rouge">TRUE</code
+              > the header of the column because we didn’t supply any other option.
+              If you check the data type of the returned column, you’ll see that
+              it’s now a <code class="language-plaintext highlighter-rouge"
+                >VARCHAR</code
+              > column. So MySQL converted both <code
+                class="language-plaintext highlighter-rouge">true</code
+              > and <code class="language-plaintext highlighter-rouge"
+                >2025-04-19</code
+              > to strings, and <code
+                class="language-plaintext highlighter-rouge">true</code
+              > is converted to string value <code
+                class="language-plaintext highlighter-rouge">1</code
+              > because MySQL doesn’t actually have boolean data types, and instead
+              boolean values are stored as integers <code
+                class="language-plaintext highlighter-rouge">1</code
+              > or <code class="language-plaintext highlighter-rouge">0</code>,
+              which in this query MySQL also converts to a string. So you can
+              see how this can be confusing! Make sure that the data types of
+              the columns in <code class="language-plaintext highlighter-rouge"
+                >UNION</code
+              > match to avoid unexpected results like this.
+            </p>
+
+            <h2 id="further-reading">Further reading</h2>
+
+            <ul>
+              <li>
+                <a href="/learn/sql/working-with-sql/sql-joins"
+                  >Combining tables with SQL joins</a>
+              </li>
+              <li>
+                <a href="/learn/sql/working-with-sql/syntax-reference"
+                  >SQL syntax reference</a>
+              </li>
+            </ul>
+
+            <div id="was-this-helpful-widget">
+              <div id="page-feedback">
+                <h6>Was this helpful?</h6>
+                <button id="page-feedback-vote-up" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  Yes
+                </button>
+                <button id="page-feedback-vote-down" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="rotate-180 me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  No
+                </button>
+              </div>
+
+              <div id="page-comment" class="flex flex-wrap full hide">
+                <p id="page-feedback-question"></p>
+
+                <form id="page-comment-form" class="flex full">
+                  <textarea
+                    id="feedback-comment-text"
+                    name="comment"
+                    placeholder="Type here…"></textarea>
+
+                  <button
+                    id="page-comment-submit"
+                    class="Button flex align-center"
+                  >
+                    Send
+                  </button>
+                </form>
+              </div>
+
+              <div id="page-feedback-message" class="fs-18 hide">
+                <h6 class="page-feedback-title">Thanks for your feedback!</h6>
+              </div>
+            </div>
+
+            <iframe
+              src="../../../subscribe-to-ai-newsletter-bottom-of-article.html"
+              id="subscribe-to-ai-newsletter-bottom-of-article"
+              class="newsletter-subscribe"
+              onload="javascript:(function(o){
+          o.style.height=o.contentWindow.document.getElementById('newsletter-ajax-form-container-below-article').offsetHeight+'px';
+
+          const resizeObserver = new ResizeObserver(function(entries) {
+              const $firstEntry = entries[0];
+              if ($firstEntry && $firstEntry.borderBoxSize && $firstEntry.borderBoxSize[0]) {
+                  const $form = $firstEntry.borderBoxSize[0];
+                  if ($form) {
+                      o.style.height = $form.blockSize + 'px';
+                  }
+              }
+          });
+          resizeObserver.observe(o.contentWindow.document.getElementById('newsletter-ajax-form-container-below-article'));
+      }(this));"
+            ></iframe>
+
+            <div class="learn__article__nav__container one-nav">
+              <a
+                href="/learn/sql/working-with-sql/sql-join-types"
+                class="learn__article__nav previous"
+              >
+                <div class="learn__article__nav__icon">
+                  <svg
+                    width="12"
+                    height="10"
+                    viewBox="0 0 12 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M11.334 5.19544C11.334 5.66052 10.957 6.03754 10.4919 6.03754L3.68762 6.03754L6.37184 8.47774C6.71597 8.79059 6.74134 9.32318 6.42849 9.66731C6.11564 10.0114 5.58305 10.0368 5.23892 9.72396L0.942961 5.81854C0.77256 5.66363 0.673035 5.44569 0.667557 5.21547C0.662078 4.98524 0.751125 4.76282 0.913965 4.59998L5.20992 0.30402C5.53878 -0.0248429 6.07198 -0.0248428 6.40084 0.30402C6.7297 0.632882 6.7297 1.16607 6.40084 1.49494L3.54244 4.35333L10.4919 4.35333C10.957 4.35333 11.334 4.73035 11.334 5.19544Z"
+                      fill="#5A6072"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h5>Previous</h5>
+                  <h4>SQL join types</h4>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="learn__right-sidebar">
+            <div id="sub-navigation-content"></div>
+            <div id="right-hand-newsletter-subscribe-widget" class="">
+              <div class="right-hand-newsletter-subscribe-form-container">
+                <h6>Weekly tips for analysts</h6>
+                <h5>
+                  Get actionable insights<br />on AI and data directly to your
+                  inbox
+                </h5>
+
+                <iframe
+                  src="../../../subscribe-to-ai-newsletter-righthandside.html"
+                  id="subscribe-to-ai-newsletter-righthandside"
+                  onload="javascript:(function(o){
+          o.style.height=o.contentWindow.document.getElementById('feedback-widget-newsletter-ajax-form-container').offsetHeight+'px';
+
+          const resizeObserver = new ResizeObserver(function(entries) {
+            const $firstEntry = entries[0];
+            if ($firstEntry && $firstEntry.borderBoxSize && $firstEntry.borderBoxSize[0]) {
+              const $form = $firstEntry.borderBoxSize[0];
+              if ($form) {
+                o.style.height = $form.blockSize + 'px';
+              }
+            }
+
+            if (window.resizeLearnRightSidebar) {
+              window.resizeLearnRightSidebar();
+            }
+          });
+          resizeObserver.observe(o.contentWindow.document.getElementById('feedback-widget-newsletter-ajax-form-container'));
+        }(this));"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

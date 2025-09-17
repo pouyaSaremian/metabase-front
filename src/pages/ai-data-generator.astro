@@ -1,23 +1,146 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /ai-data-generator
-// Priority: 0.80
-// Last Modified: 2025-09-16T20:03:12+00:00
+import Base from "../layouts/Base.astro";
+const title = "AI Data Generator";
+const description =
+  "Metabase is the easy, open-source way for everyone to ask questions and learn from data.";
+const seo = {
+  title: "AI Data Generator",
+  description:
+    "Metabase is the easy, open-source way for everyone to ask questions and learn from data.",
+  canonical: "/ai-data-generator",
+  og: {
+    title: "AI Data Generator",
+    description:
+      "Metabase is the easy, open-source way for everyone to ask questions and learn from data.",
+    url: "https://www.metabase.com/ai-data-generator",
+    type: "article",
+    site_name:
+      "Metabase | Open source Business Intelligence and Embedded Analytics",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "AI Data Generator",
+    description:
+      "Metabase open source business intelligence and embedded analytics. Create and share dashboards. Dig deeper into your data with no-code tools for data visualization.",
+    card: "summary",
+    image: "https://www.metabase.com/images/twitter/default-share.png",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Ai Data Generator</title>
-</head>
-<body>
-    <h1>Ai Data Generator</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/ai-data-generator</code></p>
-    <p>Priority: 0.80</p>
-    <p>Last Modified: 2025-09-16T20:03:12+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div class="no-overflow">
+    <div class="bootstrap">
+      <div class="container ai-data-generator">
+        <h1>Open source AI Data Generator</h1>
+        <p>
+          Choose the specific data parameters you want using the dropdowns, then
+          click ‘Preview Data’ to see a sample schema and 10 rows of generated
+          data. If it looks good, you can export a full dataset as CSV, SQL, or
+          launch Metabase to explore it.
+        </p>
+
+        <a
+          class="btn Btn btn-primary"
+          href="https://github.com/metabase/dataset-generator"
+          target="_blank">Check out source code</a
+        >
+
+        <iframe src="https://dataset-generator-ten.vercel.app/"></iframe>
+
+        <h4 class="faq-headline">Frequently asked questions</h4>
+
+        <div class="faq">
+          <div class="faq-question">
+            <div>Why use our AI Data Generator?</div>
+            <img alt="Chevron Blue" src="/images/chevron_blue.svg" width="14" />
+          </div>
+          <div class="faq-answer">
+            <div>
+              <p>
+                Because “demo data” shouldn’t be a blocker! Our AI data
+                generator turns a few dropdowns into believable, business-ready
+                datasets in minutes. Pick an industry, preview a schema, and
+                export… now product demos, tests, and dashboards feel real
+                without touching real data.
+              </p>
+            </div>
+          </div>
+          <div class="faq-question">
+            <div>How does schema generation work?</div>
+            <img alt="Chevron Blue" src="/images/chevron_blue.svg" width="14" />
+          </div>
+          <div class="faq-answer">
+            <div>
+              <p>
+                The AI data generator uses a two-stage process to create
+                realistic business data. First, it leverages large language
+                models to generate detailed data specifications based on your
+                business type and parameters. Then, it uses these specifications
+                to create unlimited amounts of realistic data locally.
+              </p>
+            </div>
+          </div>
+          <div class="faq-question">
+            <div>What is the stack behind the tool?</div>
+            <img alt="Chevron Blue" src="/images/chevron_blue.svg" width="14" />
+          </div>
+          <div class="faq-answer">
+            <div>
+              <p>
+                Next.js, Tailwind CSS + ShadCN UI, Open AI, Faker, LiteLLM (only
+                available locally), and Metabase (dockerized, launched on demand
+                locally).
+              </p>
+            </div>
+          </div>
+          <div class="faq-question">
+            <div>Is the tool open source? Where is the repo?</div>
+            <img alt="Chevron Blue" src="/images/chevron_blue.svg" width="14" />
+          </div>
+          <div class="faq-answer">
+            <div>
+              <p>
+                Absolutely, this project is fully open source and yours to
+                shape. You can check out the
+                <a
+                  href="https://github.com/metabase/dataset-generator"
+                  target="_blank"
+                  rel="noopener noreferrer">repo here</a
+                >. Star it, fork it, or open a PR ✌️
+              </p>
+            </div>
+          </div>
+          <div class="faq-question">
+            <div>Can I analyze the data directly in Metabase?</div>
+            <img alt="Chevron Blue" src="/images/chevron_blue.svg" width="14" />
+          </div>
+          <div class="faq-answer">
+            <div>
+              <p>
+                You bet! On the web, click
+                <a href="https://store.metabase.com/checkout?plan=starter"
+                  >"try Metabase Cloud for free</a
+                >
+                Once Metabase is ready, click "Open Metabase" to explore your data.
+                In Metabase, use the
+                <a href="/docs/latest/exploration-and-organization/uploads"
+                  >"Upload Data" feature</a
+                >
+                to analyze your CSV files or
+                <a href="/docs/latest/databases/connecting"
+                  >connect to your database</a
+                >. If you are running the app locally, "Start Metabase" to spin
+                up Metabase in Docker and follow the same steps to load the
+                data. When done, click "Stop Metabase" to shut down and clean up
+                Docker containers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>

@@ -1,23 +1,2571 @@
 ---
-// Auto-generated from sitemap.xml
-// URL: /learn/metabase-basics/administration/administration-and-operation/metabase-at-scale
-// Priority: 0.64
-// Last Modified: 2025-09-16T20:03:11+00:00
+import Base from "../../../../../layouts/Base.astro";
+const title = "Metabase at scale | Metabase Learn";
+const description =
+  "Best practices for scaling Metabase to support more people and databases.";
+const seo = {
+  title: "Metabase at scale | Metabase Learn",
+  description:
+    "Best practices for scaling Metabase to support more people and databases.",
+  canonical:
+    "/learn/metabase-basics/administration/administration-and-operation/metabase-at-scale",
+  og: {
+    title: "Metabase at scale | Metabase Learn",
+    description:
+      "Best practices for scaling Metabase to support more people and databases.",
+    image: "https://www.metabase.com/images/learn/default-learn-og.png",
+    url: "https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/metabase-at-scale",
+    type: "article",
+    site_name:
+      "Metabase | Business Intelligence, Dashboards, and Data Visualization",
+  },
+  twitter: {
+    site: "@metabase",
+    title: "Metabase at scale | Metabase Learn",
+    description:
+      "Best practices for scaling Metabase to support more people and databases.",
+    card: "summary_large_image",
+    image: "https://www.metabase.com/images/learn/default-learn-og.png",
+    creator: "The Metabase Team",
+  },
+};
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Astro" />
-    <title>Learn Metabase Basics Administration Administration And Operation Metabase At Scale</title>
-</head>
-<body>
-    <h1>Learn Metabase Basics Administration Administration And Operation Metabase At Scale</h1>
-    <p>This page was auto-generated from sitemap.xml</p>
-    <p>URL: <code>/learn/metabase-basics/administration/administration-and-operation/metabase-at-scale</code></p>
-    <p>Priority: 0.64</p>
-    <p>Last Modified: 2025-09-16T20:03:11+00:00</p>
-</body>
-</html>
+<Base {title} {description} {seo}>
+  <div>
+    <div class="bootstrap">
+      <div class="learn blog-post MB-Page">
+        <div id="main-navigation-content" class="learn-left-sidebar scrollable">
+          <div class="docs-learn-toggler">
+            <div class="hover-highlight"></div>
+            <a href="/docs/latest/">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.25 5.75C19.25 5.19772 18.8023 4.75 18.25 4.75H14C12.8954 4.75 12 5.64543 12 6.75V19.25L12.8284 18.4216C13.5786 17.6714 14.596 17.25 15.6569 17.25H18.25C18.8023 17.25 19.25 16.8023 19.25 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M4.75 5.75C4.75 5.19772 5.19772 4.75 5.75 4.75H10C11.1046 4.75 12 5.64543 12 6.75V19.25L11.1716 18.4216C10.4214 17.6714 9.40401 17.25 8.34315 17.25H5.75C5.19772 17.25 4.75 16.8023 4.75 16.25V5.75Z"
+                  stroke="#8D93A5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Docs</span>
+            </a>
+
+            <a href="/learn/" class="active">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 14.0929L20 9.42144L12 4.75L4 9.42144L12 14.0929ZM12 14.0929L17.4756 10.8957C18.196 12.8186 18.4005 14.4134 18.0667 16.45C15.8121 16.68 13.6864 17.6604 12 19.25C10.3138 17.6606 8.18852 16.6802 5.93422 16.45C5.60018 14.4134 5.80465 12.8185 6.52533 10.8957L12 14.0929Z"
+                  stroke="#509EE3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M12.5 9.5C12.5 9.7761 12.2761 10 12 10C11.7239 10 11.5 9.7761 11.5 9.5C11.5 9.2239 11.7239 9 12 9C12.2761 9 12.5 9.2239 12.5 9.5Z"
+                  stroke="#509EE3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+
+              <span>Learn</span>
+            </a>
+          </div>
+
+          <h5>Courses</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/metabase-basics/getting-started/index-2" class="">
+                Getting started
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/learn/metabase-basics/overview/concepts" class="">
+                    Metabase concepts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/find-data"
+                    class=""
+                  >
+                    Find data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/ask-a-question"
+                    class=""
+                  >
+                    Ask a question
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/create-dashboards"
+                    class=""
+                  >
+                    Create a dashboard
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/explore-data"
+                    class=""
+                  >
+                    Explore dashboards
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/filter"
+                    class=""
+                  >
+                    Filter and limit data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/summarize"
+                    class=""
+                  >
+                    Summarize data
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/custom-columns"
+                    class=""
+                  >
+                    Add custom columns
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/dashboard-filters"
+                    class=""
+                  >
+                    Use dashboard filters
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/getting-started/models"
+                    class=""
+                  >
+                    Build models
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Metabase Basics</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/metabase-basics/overview/" class="">
+                Metabase overview
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/overview/tour-of-metabase"
+                    class=""
+                  >
+                    A tour of Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/learn/metabase-basics/overview/next-steps" class="">
+                    Advanced Metabase features for data analysts
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/learn/metabase-basics/overview/beyond-bi" class="">
+                    Beyond BI: other problems you can solve with Metabase
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/metabase-basics/querying-and-dashboards/"
+                class=""
+              >
+                Querying and dashboards
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/questions"
+                    class=""
+                  >
+                    Asking questions
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/drill-through"
+                        class=""
+                      >
+                        Create interactive charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/custom-expressions"
+                        class=""
+                      >
+                        Custom expressions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/joins-in-metabase"
+                        class=""
+                      >
+                        Joins in Metabase
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/cross-db-joins"
+                        class=""
+                      >
+                        Combining data from different databases
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/multi-aggregation"
+                        class=""
+                      >
+                        Multi-level aggregation
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/searching-tables"
+                        class=""
+                      >
+                        Searching in tables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/questions/formatting"
+                        class=""
+                      >
+                        Cleaning and formatting text
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/visualization"
+                    class=""
+                  >
+                    Visualizing data
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/chart-guide"
+                        class=""
+                      >
+                        Which chart should you use?
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/line-charts"
+                        class=""
+                      >
+                        Guide to line charts
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/bar-charts"
+                        class=""
+                      >
+                        Master the bar chart
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/visualization/histograms"
+                        class=""
+                      >
+                        Histograms
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/dashboards"
+                    class=""
+                  >
+                    Building dashboards
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/bi-dashboard-best-practices"
+                        class=""
+                      >
+                        BI dashboard best practices
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/linking-filters"
+                        class=""
+                      >
+                        Linking filters in dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/custom-destinations"
+                        class=""
+                      >
+                        Custom click destinations on dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/cross-filtering"
+                        class=""
+                      >
+                        Cross-filtering: using a chart to update a dashboard
+                        filter
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/markdown"
+                        class=""
+                      >
+                        Markdown in dashboards
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/dashboards/build-a-record-lookup-tool"
+                        class=""
+                      >
+                        Build a record lookup tool with Metabase
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/"
+                    class=""
+                  >
+                    SQL in Metabase
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/sql-variables"
+                        class=""
+                      >
+                        Create filters using SQL variables
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/field-filters"
+                        class=""
+                      >
+                        Field filters for SQL questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/snippets"
+                        class=""
+                      >
+                        Snippets: reuse and share code
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/organizing-sql"
+                        class=""
+                      >
+                        Snippets vs. Saved Questions vs. Views
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/filters"
+                        class=""
+                      >
+                        Adding filters to dashboards with SQL questions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/sql-tricks-ordering-charts"
+                        class=""
+                      >
+                        SQL trick: ordering bars in a chart
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/time-series"
+                    class=""
+                  >
+                    Time series analysis
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/time-series/start"
+                        class=""
+                      >
+                        Overview of time series analysis
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/time-series/time-series-comparisons"
+                        class=""
+                      >
+                        Period-over-period comparisons for time series
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/querying-and-dashboards/time-series/compare-times"
+                        class=""
+                      >
+                        Best practices for visualizing time series
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/data-browser"
+                    class=""
+                  >
+                    Data reference
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/actions-crud"
+                    class=""
+                  >
+                    Build a basic CRUD app with actions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/querying-and-dashboards/mongodb"
+                    class=""
+                  >
+                    Using Metabase with MongoDB
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="expanded">
+              <a href="/learn/metabase-basics/administration/" class="">
+                Administration
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="expanded">
+                  <a
+                    href="/learn/metabase-basics/administration/administration-and-operation/"
+                    class=""
+                  >
+                    Administration and operation
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/guide"
+                        class=""
+                      >
+                        Admin overview
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-and-your-db"
+                        class=""
+                      >
+                        How Metabase works with your database
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-in-production"
+                        class=""
+                      >
+                        How to run Metabase in production
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/managing-people"
+                        class=""
+                      >
+                        Managing people in Metabase
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/guide-to-sharing-data"
+                        class=""
+                      >
+                        Guide to sharing data
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/same-page"
+                        class=""
+                      >
+                        Keeping your analytics organized
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/multi-env"
+                        class=""
+                      >
+                        Multiple environments
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/serialization"
+                        class=""
+                      >
+                        Serialization: preloading dashboards in a new Metabase
+                        instance
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/git-based-workflow"
+                        class=""
+                      >
+                        Setting up a git-based workflow
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster"
+                        class=""
+                      >
+                        Making dashboards faster
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-at-scale"
+                        class="selected"
+                      >
+                        Metabase at scale
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/data-engineering"
+                        class=""
+                      >
+                        Metabase for data engineers
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/administration-and-operation/metabase-api"
+                        class=""
+                      >
+                        Working with the Metabase API
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/administration/permissions/"
+                    class=""
+                  >
+                    Permissions
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/strategy"
+                        class=""
+                      >
+                        Permissions strategies
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/data-permissions"
+                        class=""
+                      >
+                        Guide to data permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/collection-permissions"
+                        class=""
+                      >
+                        Working with collection permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/row-permissions"
+                        class=""
+                      >
+                        Row-level permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/column-permissions"
+                        class=""
+                      >
+                        Column-level permissions
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/row-and-column-security-use-cases"
+                        class=""
+                      >
+                        Restricting the data that people can see in Metabase
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/keep-tabs-on-your-data"
+                        class=""
+                      >
+                        How to keep tabs on your data
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/metabase-basics/administration/permissions/ldap-auth-access-control"
+                        class=""
+                      >
+                        Using LDAP for authentication and access control
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/learn/metabase-basics/embedding" class="">
+                Embedding
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/learn/metabase-basics/embedding/overview" class="">
+                    Strategies for delivering customer-facing analytics
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/embedding/charts-and-dashboards"
+                    class=""
+                  >
+                    Publishing data visualizations to the web
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/embedding/external-sharing"
+                    class=""
+                  >
+                    A Metabase mystery
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/metabase-basics/embedding/multi-tenant-self-service-analytics"
+                    class=""
+                  >
+                    Multi-tenant self-service analytics
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Grow your data skills</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/sql/" class="">
+                Learn SQL
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a href="/learn/sql/getting-started/" class="">
+                    Get started with SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/sql/getting-started/introduction"
+                        class=""
+                      >
+                        Introduction
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/getting-started/querying-tables"
+                        class=""
+                      >
+                        SQL querying tables
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/learn/sql/filtering/" class="">
+                    SQL filtering
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/learn/sql/filtering/by-text" class="">
+                        SQL filtering by text
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/learn/sql/filtering/by-date" class="">
+                        SQL filtering by date
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/learn/sql/combining-tables/" class="">
+                    Combining tables with SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/learn/sql/working-with-sql/sql-joins" class="">
+                        Combining tables with joins
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/sql-join-types"
+                        class=""
+                      >
+                        SQL join types
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/learn/sql/combining-tables/sql-union" class="">
+                        Combining tables with SQL UNION
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/learn/sql/working-with-sql/" class="">
+                    Working with SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/sql-best-practices"
+                        class=""
+                      >
+                        Best practices for writing SQL queries
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/learn/sql/working-with-sql/sql-cte" class="">
+                        Common Table Expressions (CTEs) in SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/dates-in-sql"
+                        class=""
+                      >
+                        Working with dates in SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/ltv-with-metabase"
+                        class=""
+                      >
+                        How to calculate customer lifetime value (LTV) with SQL
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/working-with-sql/syntax-reference"
+                        class=""
+                      >
+                        SQL syntax reference
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="">
+                  <a href="/learn/sql/debugging-sql/" class="">
+                    Debugging SQL
+
+                    <div>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="chevron"
+                      >
+                        <path
+                          opacity="0.9"
+                          d="M3 8.96338L16 21.9634L29 8.96338"
+                          stroke="#509ee3"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a href="/learn/sql/debugging-sql/sql-syntax" class="">
+                        Debugging SQL syntax errors
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/learn/sql/debugging-sql/sql-logic" class="">
+                        Debugging SQL query logic
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/debugging-sql/sql-logic-duplicated-data"
+                        class=""
+                      >
+                        Debugging duplicated data in SQL query results
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="/learn/sql/debugging-sql/sql-logic-missing-data"
+                        class=""
+                      >
+                        Debugging missing data in SQL query results
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/grow-your-data-skills/data-fundamentals/"
+                class=""
+              >
+                Database fundamentals
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/database-basics"
+                    class=""
+                  >
+                    A short overview of databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/data-types-overview"
+                    class=""
+                  >
+                    Data types and metadata
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/table-relationships"
+                    class=""
+                  >
+                    Database table relationships
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/dimensions-and-measures"
+                    class=""
+                  >
+                    Measures and dimensions
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/fact-table"
+                    class=""
+                  >
+                    Fact and dimension tables
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/normalization"
+                    class=""
+                  >
+                    Data normalization
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/view"
+                    class=""
+                  >
+                    What is a database view?
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/sql-performance-tuning"
+                    class=""
+                  >
+                    Query performance tuning
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-fundamentals/data-cube"
+                    class=""
+                  >
+                    Data cubes
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/learn/grow-your-data-skills/data-landscape/" class="">
+                Data landscape
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/data-landscape"
+                    class=""
+                  >
+                    A guide to the data landscape
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/types-of-databases"
+                    class=""
+                  >
+                    Types of databases
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/data-mart-data-warehouse-data-lake"
+                    class=""
+                  >
+                    Data warehouse vs data lake vs data mart
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/which-data-warehouse"
+                    class=""
+                  >
+                    Which data warehouse should you use?
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-landscape/etl-landscape"
+                    class=""
+                  >
+                    ETLs, ELTs, and Reverse ETLs
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a href="/learn/grow-your-data-skills/analytics/" class="">
+                Strategies for analytics
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/editing-dashboards"
+                    class=""
+                  >
+                    Why you should regularly edit your dashboards
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/information-budget"
+                    class=""
+                  >
+                    Managing your information budget
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/avoiding-data-jargon"
+                    class=""
+                  >
+                    Don't use "data" as a crutch for lazy thinking
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/data-model-mistakes"
+                    class=""
+                  >
+                    Common data model mistakes made by startups
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/analytics-mistakes"
+                    class=""
+                  >
+                    Ten common analytics mistakes startups make
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/embedding-mistakes"
+                    class=""
+                  >
+                    The five stages of embedding grief
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/analytics/push-and-pull"
+                    class=""
+                  >
+                    The push and pull of analytics
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/grow-your-data-skills/data-visualization/"
+                class=""
+              >
+                Data visualization
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/data-visualization/cumulative-charts"
+                    class=""
+                  >
+                    Cumulative charts to track values over time
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/grow-your-data-skills/business-analysis-methods/"
+                class=""
+              >
+                Business analysis methods
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/grow-your-data-skills/business-analysis-methods/how-to-do-funnel-analysis"
+                    class=""
+                  >
+                    How to do funnel analysis
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5>Cheat sheets</h5>
+
+          <ul>
+            <li class="">
+              <a href="/learn/cheat-sheets/which-chart-to-use" class="">
+                Which chart to use?
+              </a>
+            </li>
+
+            <li class="">
+              <a
+                href="/learn/cheat-sheets/how-to-choose-the-right-map-visualization"
+                class=""
+              >
+                Which map to use?
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/learn/cheat-sheets/sql-cheat-sheet" class="">
+                SQL cheat sheet
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/learn/cheat-sheets/transition-guides/" class="">
+                Transition from other BI tools
+
+                <div>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="chevron"
+                  >
+                    <path
+                      opacity="0.9"
+                      d="M3 8.96338L16 21.9634L29 8.96338"
+                      stroke="#509ee3"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <ul>
+                <li class="">
+                  <a
+                    href="/learn/cheat-sheets/transition-guides/powerbi-to-metabase"
+                    class=""
+                  >
+                    Power BI to Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/cheat-sheets/transition-guides/tableau-to-metabase"
+                    class=""
+                  >
+                    Tableau to Metabase
+                  </a>
+                </li>
+
+                <li class="">
+                  <a
+                    href="/learn/cheat-sheets/transition-guides/looker-to-metabase"
+                    class=""
+                  >
+                    Looker to Metabase
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <article class="learn__post learn__article">
+          <div class="top-bar">
+            <div>
+              <div class="learn-breadcrumb-trail"></div>
+            </div>
+
+            <div></div>
+          </div>
+
+          <div class="learn__post__content">
+            <p>
+              Metabase is scalable, battle-hardened software used by tens of
+              thousands of companies to deliver high quality, self-service
+              analytics. It supports high availability via horizontal scaling,
+              and it’s efficient out of the box: a single core machine with 4
+              Gbyte of RAM can scale Metabase to hundreds of users.
+            </p>
+
+            <p>
+              <img
+                src="/learn/images/scaling-metabase/metabase-setup-diagram.png"
+                alt="A single Metabase instance connected to multiple databases, as well as to its application database, which stores questions, dashboards, and other data specific to Metabase. You can easily add more Metabase instances as you grow."
+              />
+            </p>
+
+            <p>
+              This article provides high-level guidance and best practices on
+              how to keep Metabase running smoothly in production as the numbers
+              of users and data sources increase. Each data system is different,
+              so we can only discuss scaling strategies at a high level, but you
+              should be able to translate these strategies to your particular
+              environment and usage.
+            </p>
+
+            <h2 id="factors-that-impact-metabase-performance-and-availability">
+              Factors that impact Metabase performance and availability
+            </h2>
+
+            <p>
+              Metabase scales well both vertically and horizontally, but it is
+              only one component of your data warehouse, and the overall
+              performance of your system will depend on the composition of your
+              system and your usage patterns. Major factors that impact your
+              experience using Metabase include:
+            </p>
+
+            <ul>
+              <li>The number of databases connected to Metabase.</li>
+              <li>The number of tables in each database.</li>
+              <li>The efficiency of your data warehouse.</li>
+              <li>The number of questions in your dashboards.</li>
+            </ul>
+
+            <p>
+              For example, it won’t matter how many instances of Metabase you
+              run if a question needs to run a query that your database(s) takes
+              30 minutes to complete: that’s just going to take 30 minutes. The
+              solution is to re-evaluate your need for that data (do you really
+              need all that info every time?) or to find ways to improve the
+              performance of your database, such as reorganizing, indexing, or
+              caching your data.
+            </p>
+
+            <p>
+              The number of databases and tables can also affect client
+              performance, but only in large-scale situations where you’re
+              managing hundreds of databases and/or thousands of tables, as the
+              metadata itself can be a lot to query. To help keep performance
+              smooth even at this scale, you can <a
+                href="#sync-with-your-databases-only-when-you-need-to"
+                >manage when Metabase syncs its metadata</a
+              > with your connected databases.
+            </p>
+
+            <p>
+              Now let’s make sure your Metabase application is well-tuned to
+              scale.
+            </p>
+
+            <h2 id="vertical-scaling">Vertical scaling</h2>
+
+            <p>
+              Vertical scaling is the brute force approach. Give Metabase more
+              cores and memory, and it will have more resources available to do
+              its work. If you are experiencing performance issues related to
+              the application itself (i.e., unrelated to the breadth and
+              magnitude of your databases), running Metabase on a more powerful
+              machine can improve performance.
+            </p>
+
+            <h3
+              id="for-every-20-concurrent-users-figure-roughly-need-1-cpu-core-and-1gb-of-ram"
+            >
+              For every 20 concurrent users, figure roughly need 1 CPU core and
+              1GB of RAM
+            </h3>
+
+            <p>
+              Metabase is already efficient out of the box. To start, a
+              single-core machine with 2 gigabytes of RAM should be more than
+              enough for solo users or small teams.
+            </p>
+
+            <p>
+              When to add more memory and cores: If you see that your server is
+              consistently using more than 80% of its current resources (memory
+              or compute).
+            </p>
+
+            <p>
+              The Metabase application database should respond in less than one
+              second for any operation (not counting the response time for the
+              data warehouse your Metabase is connected to).
+            </p>
+
+            <p>
+              Machines with 4-8 Gigabytes should handle hundreds of users, and
+              you can bump the number of cores and gigabytes of memory if
+              needed.
+            </p>
+
+            <p>
+              While adding more cores and memory can be effective, you’re
+              generally better off using horizontal scaling to support more
+              users. The reason is because there are database connectivity
+              limits built into each Metabase instance to prevent the instance
+              from overwhelming your data warehouse with requests. You can <a
+                href="#increase-the-maximum-number-of-connections-to-each-database"
+                >increase the number of connections</a
+              > available for your instance, but we still recommend multiple instances.
+            </p>
+
+            <h2 id="horizontal-scaling-preferred">
+              Horizontal scaling (preferred)
+            </h2>
+
+            <p>
+              Instead of increasing the size of the server running Metabase,
+              horizontal scaling involves spinning up more servers, each running
+              Metabase, which you connect to the same application database. This
+              way you can run multiple instances of Metabase in combination with
+              a load balancer to direct traffic to the instances. Metabase is
+              set up for horizontal scaling out of the box, so you don’t need
+              any special configuration to run multiple instances of Metabase.
+              When a Metabase server connects to an existing application
+              database, it will recognize itself as a part of a cluster.
+            </p>
+
+            <p>
+              The primary use case for horizontal scaling is to improve
+              reliability (a.k.a. “high availability”), but horizontal scaling
+              can also improve multi-user performance. When the load is
+              balanced, a high-traffic, CPU-bound Metabase instance will perform
+              better (faster) when some of its traffic is directed to other
+              instances, as the CPU load will be distributed across multiple
+              machines.
+            </p>
+
+            <p>
+              Metabase ships with a local <a
+                href="https://www.h2database.com/html/main.html">H2 database</a
+              > to store your application data (all of your questions, dashboards,
+              logs, and other Metabase data), but when running in production you
+              should upgrade to a relational database like <a
+                href="https://www.postgresql.org/">PostgreSQL</a
+              > running on a separate server. In fact, when scaling horizontally,
+              you must use a relational database that runs on a separate server to
+              store your application data. That way, all instances of Metabase can
+              share a common database. We recommend an external database on a separate
+              server for all production instances, even if you only ever run one
+              instance of Metabase, so an external database is not an added cost
+              for horizontal scaling.
+            </p>
+
+            <p>
+              Metabase uses the external <a
+                href="/glossary/application-database">application database</a
+              > to store user session data, so people don’t have to worry about losing
+              saved work if one or all Metabase instances go down, and administrators
+              don’t have to deal with configuring sticky sessions to ensure people
+              are connected to the right Metabase instance. The load balancer will
+              route people to an available instance so they can keep right on working.
+            </p>
+
+            <h3 id="taking-advantage-of-time-based-horizontal-scaling">
+              Taking advantage of time-based horizontal scaling
+            </h3>
+
+            <p>
+              Some customers adjust the number of Metabase instances based on
+              the time of day. For example, some companies will spin up multiple
+              instances of Metabase in the morning to handle a burst of traffic
+              when people log in and run their morning dashboards, then spin
+              down those instances in the afternoon (or at night, or on the
+              weekends) to save money on cloud spend.
+            </p>
+
+            <p>
+              For environments like <a href="https://kubernetes.io/"
+                >Kubernetes</a
+              > or <a href="https://cloud.google.com/">Google Cloud Platform</a
+              >, you’ll need to refer to each system’s respective documentation
+              to set up similar autoscaling rules.
+            </p>
+
+            <h3 id="straightforward-load-balancing">
+              Straightforward load balancing
+            </h3>
+
+            <p>
+              Load balancers direct traffic to multiple Metabase instances to
+              ensure that each request gets the fastest response. If one
+              instance of Metabase goes down temporarily, the load balancer will
+              route requests to another available instance.
+            </p>
+
+            <p>
+              Setting up a load balancer with Metabase is simple. Metabase’s <a
+                href="/docs/latest/api">API</a
+              > exposes a health check endpoint, <code
+                class="language-plaintext highlighter-rouge">/api/health</code
+              >, that load balancers can call to determine whether a Metabase
+              instance is up and responding to requests. If the instance is
+              healthy, the endpoint will return an HTTP status code <code
+                class="language-plaintext highlighter-rouge">200 OK</code
+              >. Otherwise, the load balancer will know to route the request to
+              another instance.
+            </p>
+
+            <h2 id="data-warehouse-tuning">Data warehouse tuning</h2>
+
+            <p>
+              Architecting a data warehouse is beyond the scope of this article,
+              but you should know that your queries in Metabase will only be as
+              fast as your databases can return data. If you have questions that
+              ask for a lot of data that takes your database a long time to
+              retrieve, those query times will impact your experience,
+              regardless of how fast Metabase is.
+            </p>
+
+            <p>
+              Here are some ways you can improve data warehouse performance:
+            </p>
+
+            <ul>
+              <li>
+                <strong
+                  >Structure your data in a way that anticipates the questions
+                  people will ask.</strong
+                > Identify your usage patterns and store your data in a way that
+                make its easy to return results for questions common in your organization.
+                Compose ETLs to create new tables that bring together frequently
+                queried data from multiple sources.
+              </li>
+              <li>
+                <strong>Tune your databases.</strong> Read up on the documentation
+                for your databases to learn how to improve their performance via
+                indexing, caching, and other optimizations.
+              </li>
+              <li>
+                <strong>Filter your data</strong>. Encourage people to filter
+                data when asking questions. They should also take advantage of
+                Metabase’s data exploration tools (including record previews) so
+                they only query data relevant to the question they’re trying to
+                answer.
+              </li>
+              <li>
+                <strong
+                  >Decide whether to use a database or a data warehouse.</strong
+                > Folks often get started with Metabase using a transactional database
+                like <a href="https://www.mysql.com/">MySQL</a> or <a
+                  href="https://www.postgresql.org/">PostgreSQL</a
+                >. While these databases scale quite well, they often aren’t
+                optimized for the type of analytical queries that Metabase will
+                use. Operations like <code
+                  class="language-plaintext highlighter-rouge">sum</code
+                > or <code class="language-plaintext highlighter-rouge"
+                  >max</code
+                > can slow down once you reach a certain scale. As analytics adoption
+                grows, you may find the need to explore dedicated data warehouses
+                like <a href="https://aws.amazon.com/redshift/"
+                  >Amazon Redshift</a
+                >, <a href="https://cloud.google.com/bigquery"
+                  >Google BigQuery</a
+                >, or <a href="https://www.snowflake.com/">Snowflake</a>.
+              </li>
+            </ul>
+
+            <h2 id="metabase-application-best-practices">
+              Metabase application best practices
+            </h2>
+
+            <p>
+              Here are some strategies to get the most out of your Metabase
+              application:
+            </p>
+
+            <ul>
+              <li>
+                <a href="#only-ask-for-the-data-you-need"
+                  >Only ask for the data you need</a
+                >.
+              </li>
+              <li>
+                <a
+                  href="#use-a-managed-relational-database-to-store-your-metabase-application-data"
+                  >Use a managed relational database to store your Metabase
+                  application data</a
+                >.
+              </li>
+              <li><a href="#cache-your-queries">Cache your queries</a>.</li>
+              <li><a href="#look-for-bottlenecks">Look for bottlenecks</a>.</li>
+              <li>
+                <a
+                  href="#increase-the-maximum-number-of-connections-to-the-app-db"
+                  >Increase the maximum number of connections to the app db</a
+                >.
+              </li>
+              <li>
+                <a
+                  href="#increase-the-maximum-number-of-connections-to-each-database"
+                  >Increase the maximum number of connection to each database</a
+                >.
+              </li>
+              <li>
+                <a href="#sync-with-your-databases-only-when-you-need-to"
+                  >Sync with your databases only when you need to</a
+                >.
+              </li>
+              <li>
+                <a href="#upgrade-to-the-latest-version-of-metabase"
+                  >Upgrade to the latest version of Metabase</a
+                >.
+              </li>
+              <li>
+                <a href="#keep-your-browser-up-to-date"
+                  >Keep your browser up to date</a
+                >.
+              </li>
+            </ul>
+
+            <h3 id="only-ask-for-the-data-you-need">
+              Only ask for the data you need
+            </h3>
+
+            <p>
+              If people are running a lot of queries that return a lot of
+              records, it won’t matter that Metabase is fast: the users will get
+              their data only as fast as your data warehouse can return the
+              requested records. And sometimes people go overboard with
+              dashboards: when a dashboard with (for example) 50 questions
+              loads, it sends 50 simultaneous requests asking for data.
+              Depending on the size of that database, it can be quite some time
+              before those records return.
+            </p>
+
+            <p>
+              <img
+                src="/learn/images/scaling-metabase/example-dashboard.png"
+                alt="Example dashboard with filter widgets using data from the Sample Database included with Metabase."
+              />
+            </p>
+
+            <p>
+              But that’s not the whole story. Metabase doesn’t slow down simply
+              because you put more questions in your dashboard. If your
+              questions don’t pull a lot of data, or your data warehouse can
+              return results in under a second, 50 questions will load quickly.
+            </p>
+
+            <p>
+              In general, however, encourage people to keep their dashboards
+              focused. Dashboards are meant to tell a story about your data, and
+              you can tell a good story with just a handful of questions (or
+              even a single question). Take advantage of Metabase’s data
+              exploration tools to learn about your data (such as the ability to
+              preview records in tables) so you can dial in on only the records
+              you need to answer your questions.
+            </p>
+
+            <p>
+              So make sure each question is necessary to complete the dashboard,
+              and be especially mindful when querying data across time or space,
+              as you can filter out a lot of unnecessary data by restricting
+              your question to a shorter timespan or a smaller area.
+            </p>
+
+            <p>
+              <img
+                src="/learn/images/scaling-metabase/example-question-with-map.png"
+                alt="Example question using a pin map to visualize latitude and longitude. Geospatial data can add up quickly, slowing query times, so it"
+              />
+            </p>
+
+            <h3
+              id="use-a-managed-relational-database-to-store-your-metabase-application-data"
+            >
+              Use a managed relational database to store your Metabase
+              application data
+            </h3>
+
+            <p>
+              The application database stores all of your questions, dashboards,
+              collections, permissions, and other data related to the Metabase
+              application. You can use an relational database (like PostgreSQL
+              or MySQL) to manage your application database, but we recommend a
+              managed solution like <a href="https://aws.amazon.com/rds/"
+                >AWS RDS</a
+              >. RDS will automate backups and make it easy for you to adjust
+              storage and compute as you scale, giving you one less thing to
+              worry about.
+            </p>
+
+            <h3 id="cache-your-queries">Cache your queries</h3>
+
+            <p>
+              You can <a href="/docs/latest/configuring-metabase/caching"
+                >configure caching</a
+              > to store the results of recently asked questions so that they don’t
+              need to be recalculated. Metabase will show people the timestamp for
+              the results, and they can manually refresh the results of the question
+              if they want to rerun the query. Caching is suitable for results that
+              do not update frequently.
+            </p>
+
+            <p>
+              <img
+                src="/learn/images/scaling-metabase/caching-ui.png"
+                alt="Enable caching to store question results"
+              />
+            </p>
+
+            <h3 id="look-for-bottlenecks">Look for bottlenecks</h3>
+
+            <p>
+              <a href="/pricing/">Pro and Enterprise plans</a> offer <a
+                href="/docs/latest/usage-and-performance-tools/usage-analytics"
+                >Usage Analytics</a
+              > for you to monitor the usage and performance of your application.
+              You can, for example, see how many questions are being asked, by whom,
+              and how long the questions took to run, which can help identify any
+              bottlenecks that need attention.
+            </p>
+
+            <p>
+              <img
+                src="/learn/images/scaling-metabase/metabase-analytics.png"
+                alt="Usage analytics"
+              />
+            </p>
+
+            <h3 id="increase-the-maximum-number-of-connections-to-the-app-db">
+              Increase the maximum number of connections to the app db
+            </h3>
+
+            <p>
+              The default number of connections to the Metabase application
+              database is specified by the <a
+                href="/docs/latest/configuring-metabase/environment-variables#mb_application_db_max_connection_pool_size"
+                ><code class="language-plaintext highlighter-rouge"
+                  >MB_APPLICATION_DB_MAX_CONNECTION_POOL_SIZE</code
+                ></a
+              > environment variable, which is currently set to 15 by default. If
+              your usage regularly consumes all of those connections, you can improve
+              performance by increasing the maximum number of connections. Alternatively,
+              you can increase the number of connections via horizontal scaling (e.g.,
+              if you add an additional Metabase instance, you effectively add an
+              additional 15 connections to the application database).
+            </p>
+
+            <p>
+              You can check the number of connections by <a
+                href="/docs/latest/troubleshooting-guide/">viewing the logs</a
+              >, and checking for lines like <code
+                class="language-plaintext highlighter-rouge"
+                >... App DB connections: 12/15</code
+              >. In that example, Metabase is using 12 out of the 15 available
+              application database connections.
+            </p>
+
+            <h3
+              id="increase-the-maximum-number-of-connections-to-each-database"
+            >
+              Increase the maximum number of connections to each database
+            </h3>
+
+            <p>
+              Similarly, the default maximum number of connections for a single
+              Metabase instance to each database is 15. That’s 15 for each
+              database, so if you’ve connected Metabase to two databases, you’ll
+              have a maximum of 30 connections.
+            </p>
+
+            <p>
+              You can increase the maximum number of connections to each
+              database by changing the <a
+                href="/docs/latest/configuring-metabase/environment-variables#mb_jdbc_data_warehouse_max_connection_pool_size"
+                ><code class="language-plaintext highlighter-rouge"
+                  >MB_JDBC_DATA_WAREHOUSE_MAX_CONNECTION_POOL_SIZE</code
+                ></a
+              > environment variable. As above with the application database connections,
+              you can also increase the number of connections via horizontal scaling.
+              Each additional Metabase instance would increase the maximum number
+              of connections by 15 (or by whatever maximum you’ve set). To learn
+              more, see our <a
+                href="/docs/latest/configuring-metabase/environment-variables"
+                >documentation on environment variables</a
+              >.
+            </p>
+
+            <h3 id="sync-with-your-databases-only-when-you-need-to">
+              Sync with your databases only when you need to
+            </h3>
+
+            <p>
+              By default, Metabase performs a lightweight sync every hour. The
+              sync does not copy any of your data. Metabase merely checks to
+              make sure the list of tables, columns, and rows it maintains in
+              its application database is up to date with the tables, columns,
+              and rows in your databases.
+            </p>
+
+            <p>
+              You can <a
+                href="/docs/latest/databases/sync-scan#choose-when-syncs-and-scans-happen"
+                >set the timing and frequency of these synchronizations</a
+              >. For large databases, you might consider limiting the number of
+              times Metabase performs the sync, and restricting those
+              synchronizations to off-peak hours, especially if you aren’t
+              frequently adding new tables to your database.
+            </p>
+
+            <p>
+              <img
+                src="/learn/images/scaling-metabase/sync-settings.png"
+                alt="You can change when Metabase syncs with your databases, which can improve performance when you"
+              />
+            </p>
+
+            <h3 id="upgrade-to-the-latest-version-of-metabase">
+              Upgrade to the latest version of Metabase
+            </h3>
+
+            <p>
+              If you haven’t already, we recommend you <a
+                href="/docs/latest/installation-and-operation/upgrading-metabase"
+                >upgrade to the latest Metabase version</a
+              > to get the most recent performance improvements.
+            </p>
+
+            <h3 id="serve-metabase-via-https-over-http2">
+              Serve Metabase via HTTPS over HTTP/2
+            </h3>
+
+            <p>
+              Serving your Metabase instance via HTTPS over HTTP/2 can increase
+              performance, since browsers on HTTP/1.1 can limit connections to
+              approximately 6 concurrent connections per domain, whereas HTTP/2
+              is multiplexed on a single connection. More available connections
+              won’t fix a slow database, or an overloaded Metabase instance that
+              has run out of threads, but you’ll at least know that your browser
+              isn’t throttling your connections.
+            </p>
+
+            <h3 id="keep-your-browser-up-to-date">
+              Keep your browser up to date
+            </h3>
+
+            <p>
+              Metabase is a web application, and can benefit from the latest and
+              greatest versions of browsers like <a
+                href="https://www.mozilla.org/en-US/firefox/">Firefox</a
+              >, <a href="https://www.google.com/chrome/">Chrome</a>, <a
+                href="https://www.microsoft.com/en-us/edge">Edge</a
+              >, and <a href="https://www.apple.com/safari/">Safari</a>.
+            </p>
+
+            <h2 id="supported-deployments">Supported deployments</h2>
+
+            <p>
+              There are many ways to set up Metabase; some of our favorites
+              include:
+            </p>
+
+            <ul>
+              <li>
+                AWS Elastic Beanstalk: Check out our <a
+                  href="/docs/latest/installation-and-operation/running-metabase-on-elastic-beanstalk"
+                  >guide to setting up Metabase on Elastic Beanstalk</a
+                >. We use Elastic Beanstalk to host our internal Metabase
+                application.
+              </li>
+              <li>
+                Docker: See <a
+                  href="/docs/latest/installation-and-operation/running-metabase-on-docker"
+                  >running Metabase on Docker</a
+                >.
+              </li>
+            </ul>
+
+            <p>
+              <a href="https://cloud.google.com/">Google Cloud Platform</a>, <a
+                href="https://azure.microsoft.com/en-us/">Microsoft Azure</a
+              >, <a href="https://www.digitalocean.com/">Digital Ocean</a>, and
+              other cloud providers offer other great alternatives for hosting
+              your Metabase application.
+            </p>
+
+            <h2 id="hosted-metabase">Hosted Metabase</h2>
+
+            <p>
+              If you don’t want to deal with the care and feeding of a Metabase
+              application, Metabase offers a <a href="/cloud/"
+                >hosted solution</a
+              >. You still have to ensure your data sources are performant, but
+              you no longer have to manage running the Metabase application.
+            </p>
+
+            <h2 id="getting-help">Getting help</h2>
+
+            <p>
+              If you still have questions, chances are someone’s already had the
+              same question. Check out the <a
+                href="https://discourse.metabase.com/"
+                >Metabase discussion forum</a
+              > and search for your issue. If you can’t find a solution, submit a
+              question of your own.
+            </p>
+
+            <div id="was-this-helpful-widget">
+              <div id="page-feedback">
+                <h6>Was this helpful?</h6>
+                <button id="page-feedback-vote-up" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  Yes
+                </button>
+                <button id="page-feedback-vote-down" class="vote-button Button">
+                  <svg
+                    id=""
+                    class="rotate-180 me-1"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.6667 7.33333H14.6367C14.9207 7.33334 15.2001 7.40595 15.4482 7.54427C15.6963 7.68259 15.9049 7.88202 16.0543 8.12364C16.2036 8.36525 16.2888 8.64104 16.3016 8.9248C16.3144 9.20857 16.2545 9.4909 16.1275 9.745L13.2108 15.5783C13.0724 15.8554 12.8595 16.0884 12.596 16.2512C12.3325 16.414 12.0289 16.5001 11.7192 16.5H8.37167C8.23583 16.5 8.1 16.4833 7.9675 16.45L4.83333 15.6667M10.6667 7.33333V3.16667C10.6667 2.72464 10.4911 2.30072 10.1785 1.98816C9.86595 1.67559 9.44203 1.5 9 1.5H8.92083C8.50417 1.5 8.16667 1.8375 8.16667 2.25417C8.16667 2.84917 7.99083 3.43083 7.66 3.92583L4.83333 8.16667V15.6667M10.6667 7.33333H9M4.83333 15.6667H3.16667C2.72464 15.6667 2.30072 15.4911 1.98816 15.1785C1.67559 14.866 1.5 14.442 1.5 14V9C1.5 8.55797 1.67559 8.13405 1.98816 7.82149C2.30072 7.50893 2.72464 7.33333 3.16667 7.33333H5.25"
+                      stroke="#509ee3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+
+                  No
+                </button>
+              </div>
+
+              <div id="page-comment" class="flex flex-wrap full hide">
+                <p id="page-feedback-question"></p>
+
+                <form id="page-comment-form" class="flex full">
+                  <textarea
+                    id="feedback-comment-text"
+                    name="comment"
+                    placeholder="Type here…"></textarea>
+
+                  <button
+                    id="page-comment-submit"
+                    class="Button flex align-center"
+                  >
+                    Send
+                  </button>
+                </form>
+              </div>
+
+              <div id="page-feedback-message" class="fs-18 hide">
+                <h6 class="page-feedback-title">Thanks for your feedback!</h6>
+              </div>
+            </div>
+
+            <iframe
+              src="../../../../subscribe-to-ai-newsletter-bottom-of-article.html"
+              id="subscribe-to-ai-newsletter-bottom-of-article"
+              class="newsletter-subscribe"
+              onload="javascript:(function(o){
+          o.style.height=o.contentWindow.document.getElementById('newsletter-ajax-form-container-below-article').offsetHeight+'px';
+
+          const resizeObserver = new ResizeObserver(function(entries) {
+              const $firstEntry = entries[0];
+              if ($firstEntry && $firstEntry.borderBoxSize && $firstEntry.borderBoxSize[0]) {
+                  const $form = $firstEntry.borderBoxSize[0];
+                  if ($form) {
+                      o.style.height = $form.blockSize + 'px';
+                  }
+              }
+          });
+          resizeObserver.observe(o.contentWindow.document.getElementById('newsletter-ajax-form-container-below-article'));
+      }(this));"
+            ></iframe>
+
+            <div class="learn__article__nav__container">
+              <a
+                href="/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster"
+                class="learn__article__nav previous"
+              >
+                <div class="learn__article__nav__icon">
+                  <svg
+                    width="12"
+                    height="10"
+                    viewBox="0 0 12 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M11.334 5.19544C11.334 5.66052 10.957 6.03754 10.4919 6.03754L3.68762 6.03754L6.37184 8.47774C6.71597 8.79059 6.74134 9.32318 6.42849 9.66731C6.11564 10.0114 5.58305 10.0368 5.23892 9.72396L0.942961 5.81854C0.77256 5.66363 0.673035 5.44569 0.667557 5.21547C0.662078 4.98524 0.751125 4.76282 0.913965 4.59998L5.20992 0.30402C5.53878 -0.0248429 6.07198 -0.0248428 6.40084 0.30402C6.7297 0.632882 6.7297 1.16607 6.40084 1.49494L3.54244 4.35333L10.4919 4.35333C10.957 4.35333 11.334 4.73035 11.334 5.19544Z"
+                      fill="#5A6072"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h5>Previous</h5>
+                  <h4>Making dashboards faster</h4>
+                </div>
+              </a>
+
+              <a
+                href="/learn/metabase-basics/administration/administration-and-operation/data-engineering"
+                class="learn__article__nav next"
+              >
+                <div>
+                  <h5>Next</h5>
+                  <h4>Metabase for data engineers</h4>
+                </div>
+                <div class="learn__article__nav__icon">
+                  <svg
+                    width="12"
+                    height="10"
+                    viewBox="0 0 12 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M0.666992 4.80871C0.666992 4.34363 1.04402 3.96661 1.5091 3.96661L8.31336 3.96661L5.62913 1.52641C5.285 1.21356 5.25964 0.680971 5.57249 0.336838C5.88534 -0.00729488 6.41792 -0.032656 6.76206 0.280192L11.058 4.18561C11.2284 4.34052 11.3279 4.55846 11.3334 4.78868C11.3389 5.01891 11.2499 5.24133 11.087 5.40417L6.79105 9.70013C6.46219 10.029 5.929 10.029 5.60014 9.70013C5.27128 9.37127 5.27128 8.83808 5.60014 8.50921L8.45853 5.65082L1.5091 5.65082C1.04402 5.65082 0.666992 5.2738 0.666992 4.80871Z"
+                      fill="#5A6072"></path>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="learn__right-sidebar">
+            <div id="sub-navigation-content"></div>
+            <div id="right-hand-newsletter-subscribe-widget" class="">
+              <div class="right-hand-newsletter-subscribe-form-container">
+                <h6>Weekly tips for analysts</h6>
+                <h5>
+                  Get actionable insights<br />on AI and data directly to your
+                  inbox
+                </h5>
+
+                <iframe
+                  src="../../../../subscribe-to-ai-newsletter-righthandside.html"
+                  id="subscribe-to-ai-newsletter-righthandside"
+                  onload="javascript:(function(o){
+          o.style.height=o.contentWindow.document.getElementById('feedback-widget-newsletter-ajax-form-container').offsetHeight+'px';
+
+          const resizeObserver = new ResizeObserver(function(entries) {
+            const $firstEntry = entries[0];
+            if ($firstEntry && $firstEntry.borderBoxSize && $firstEntry.borderBoxSize[0]) {
+              const $form = $firstEntry.borderBoxSize[0];
+              if ($form) {
+                o.style.height = $form.blockSize + 'px';
+              }
+            }
+
+            if (window.resizeLearnRightSidebar) {
+              window.resizeLearnRightSidebar();
+            }
+          });
+          resizeObserver.observe(o.contentWindow.document.getElementById('feedback-widget-newsletter-ajax-form-container'));
+        }(this));"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="bootstrap"></div>
+</Base>
