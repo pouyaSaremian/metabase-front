@@ -30,22 +30,6 @@ const VideoPlayer: React.FC = () => {
   return (
     <>
       {/* Play Button */}
-      <Button
-        onClick={handlePlayDemo}
-        onKeyDown={handleKeyDown}
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-metabase-primary border-4 border-metabase-primary-lighter rounded-full w-20 h-20 flex items-center justify-center hover:scale-110 transition-transform duration-200 focus:outline-none focus:ring-4 focus:ring-metabase-primary"
-        aria-label="پخش ویدیو دمو"
-      >
-        <svg
-          width="33"
-          height="33"
-          viewBox="0 0 10 12"
-          fill="white"
-          className="mr-1"
-        >
-          <path d="M9.0625 5.02572C9.8125 5.45873 9.8125 6.54127 9.0625 6.97428L2.3125 10.8714C1.5625 11.3044 0.625001 10.7631 0.625001 9.89711L0.625002 2.10289C0.625002 1.23686 1.5625 0.695594 2.3125 1.12861L9.0625 5.02572Z"></path>
-        </svg>
-      </Button>
 
       {/* Video */}
       <div className="max-w-4xl mx-auto">

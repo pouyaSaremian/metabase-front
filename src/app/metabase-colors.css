@@ -18,6 +18,12 @@
   --color-metabase-bg-light: #f9fbfe;
   --color-metabase-bg-neutral: #f9fafb;
   --color-metabase-bg-neutral-98: #fafbfe;
+  --color-metabase-bg-blue-95: #eef6fc;
+  --color-metabase-bg-blue-25: #12436e;
+  --color-metabase-bg-blue-15: #103c62;
+  --color-metabase-blue-60: #509ee3;
+  --color-metabase-blue-75: #8fc1ed;
+  --color-metabase-blue-85: #c2daf0;
 
   /* Metabase Border Colors */
   --color-metabase-border-light: #e8e8e8;
@@ -52,6 +58,12 @@
   --metabase-bg-light: #f9fbfe;
   --metabase-bg-neutral: #f9fafb;
   --metabase-bg-neutral-98: #fafbfe;
+  --metabase-bg-blue-95: #eef6fc;
+  --metabase-bg-blue-25: #12436e;
+  --metabase-bg-blue-15: #103c62;
+  --metabase-blue-60: #509ee3;
+  --metabase-blue-75: #8fc1ed;
+  --metabase-blue-85: #c2daf0;
   --metabase-border-light: #e8e8e8;
   --metabase-border-medium: #d1d1d1;
   --metabase-border-dark: #aab7c3;
@@ -119,6 +131,34 @@
 
   .bg-metabase-neutral-98 {
     background-color: var(--metabase-bg-neutral-98);
+  }
+
+  .bg-metabase-blue-95 {
+    background-color: var(--metabase-bg-blue-95);
+  }
+
+  .bg-metabase-blue-25 {
+    background-color: var(--metabase-bg-blue-25);
+  }
+
+  .bg-metabase-blue-15 {
+    background-color: var(--metabase-bg-blue-15);
+  }
+
+  .bg-metabase-blue-60 {
+    background-color: var(--metabase-blue-60);
+  }
+
+  .text-metabase-blue-75 {
+    color: var(--metabase-blue-75);
+  }
+
+  .text-metabase-blue-85 {
+    color: var(--metabase-blue-85);
+  }
+
+  .text-metabase-white {
+    color: var(--metabase-text-white);
   }
 
   .border-metabase-primary {

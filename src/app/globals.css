@@ -52,3 +52,76 @@ html {
 .dropdown-menu {
   transform-origin: top center;
 }
+
+/* Screen reader only - visually hidden but accessible to assistive technologies */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+.animate-marquee-slower {
+  animation: marquee 60s linear infinite;
+  display: flex;
+  width: fit-content;
+}
+
+.animate-marquee {
+  animation: marquee 90s linear infinite;
+  display: flex;
+  width: fit-content;
+}
+
+.animate-marquee-faster {
+  animation: marquee 80s linear infinite;
+  display: flex;
+  width: fit-content;
+}
+
+html[dir="rtl"] .animate-marquee-slower,
+html[dir="rtl"] .animate-marquee,
+html[dir="rtl"] .animate-marquee-faster {
+  animation: marquee-rtl 60s linear infinite;
+}
+
+.animate-marquee-slower:hover,
+.animate-marquee:hover,
+.animate-marquee-faster:hover {
+  animation-play-state: paused;
+}
+
+/* Data Sources Gradient */
+.datasources-gradient {
+  position: relative;
+}
+
+/* Hero Background Image Wrapper - Narrower than container */
+#stats-dashboard-background-img-wrapper {
+  width: 85% !important;
+  max-width: 1000px !important;
+}

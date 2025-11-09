@@ -36,68 +36,45 @@ const Footer: React.FC = () => {
   const translations = {
     newsletter: {
       title: "عضویت در خبرنامه",
-      description: "با آخرین به‌روزرسانی‌ها و اخبار Metabase در ارتباط باشید. هرگز اسپم ارسال نمی‌کنیم.",
+      description:
+        "با آخرین به‌روزرسانی‌ها و اخبار Metabase در ارتباط باشید. هرگز اسپم ارسال نمی‌کنیم.",
       emailPlaceholder: "آدرس ایمیل",
       submit: "ثبت نام",
     },
     sections: {
-      product: "محصول",
-      pricing: "قیمت‌گذاری",
       useCases: "موارد استفاده",
-      metabasePlans: "پلن‌های Metabase",
-      features: "ویژگی‌ها",
-      company: "شرکت",
+
+      metabasePlans: "پلن‌های متابیس",
+      features: "امکانات متابیس",
       support: "پشتیبانی",
       resources: "منابع",
     },
     links: {
-      watchDemo: "تماشای دمو",
-      dataSources: "منابع داده",
-      security: "امنیت",
-      cloud: "ابر",
-      roadmap: "نقشه راه",
-      whatsNew: "تازه‌ها",
-      plans: "پلن‌ها",
-      openSource: "متن باز",
-      selfServiceBI: "هوش تجاری خودسرویس",
-      embeddedAnalytics: "تجزیه و تحلیل تعبیه شده",
-      starterAndOSS: "Starter و متن باز",
-      pro: "Pro",
-      enterprise: "Enterprise",
-      queryBuilder: "Query Builder",
-      drillThrough: "Drill Through",
-      collections: "Collections",
-      usageAnalytics: "Usage analytics",
-      analyticsDashboards: "Analytics dashboards",
-      sqlEditor: "SQL editor",
-      dataSegregation: "Data segregation",
-      models: "Models",
-      permissions: "Permissions",
-      csvUpload: "CSV upload",
-      embeddedAnalyticsSDK: "Embedded analytics SDK",
-      whiteLabelAnalytics: "White label analytics",
-      metabotAI: "Metabot AI",
-      jobs: "فرصت‌های شغلی",
-      privacyPolicies: "سیاست‌های حریم خصوصی",
-      termsOfService: "شرایط استفاده",
-      license: "مجوز",
-      brandGuidelines: "راهنمای برند",
+      selfServiceBI: "هوش تجاری خودخدمت",
+      embeddedAnalytics: "تجزیه و تحلیل تعبیه‌شده",
+      pricing: "قیمت‌گذاری",
+      queryBuilder: "سازنده پرس‌وجو",
+      drillThrough: "حفاری داده",
+      collections: "مجموعه‌ها",
+      usageAnalytics: "تحلیل استفاده",
+      analyticsDashboards: "داشبوردهای تحلیلی",
+      sqlEditor: "ویرایشگر SQL",
+      dataSegregation: "جداسازی داده",
+      models: "مدل‌ها",
+      permissions: "مجوزها",
+      csvUpload: "آپلود CSV",
+      embeddedAnalyticsSDK: "SDK تجزیه و تحلیل تعبیه‌شده",
+      whiteLabelAnalytics: "تحلیل white-label",
       documentation: "مستندات",
       help: "راهنما",
       professionalServices: "خدمات حرفه‌ای",
-      onboarding: "Onboarding",
-      status: "وضعیت",
-      github: "GitHub",
-      caseStudies: "مطالعات موردی",
-      blog: "بلاگ",
-      learn: "یادگیری",
-      communityStories: "داستان‌های جامعه",
-      glossary: "واژه‌نامه داده و هوش تجاری",
-      partners: "شرکا",
-      choosingMetabase: "انتخاب Metabase",
+      onboarding: "راه‌اندازی",
+      blog: "وبلاگ",
+      learn: "آموزش",
+      choosingMetabase: "انتخاب متابیس",
       moreResources: "منابع بیشتر",
     },
-    copyright: "© Metabase 2025",
+    copyright: "© متابیس ۲۰۲۵",
   };
 
   interface ColumnSection {
@@ -105,28 +82,6 @@ const Footer: React.FC = () => {
   }
 
   const footerColumns: ColumnSection[] = [
-    {
-      sections: [
-        {
-          title: translations.sections.product,
-          links: [
-            { href: "/demo", label: translations.links.watchDemo },
-            { href: "/data-sources/", label: translations.links.dataSources },
-            { href: "/security", label: translations.links.security },
-            { href: "/cloud/", label: translations.links.cloud },
-            { href: "/roadmap", label: translations.links.roadmap },
-            { href: "/releases", label: translations.links.whatsNew },
-          ],
-        },
-        {
-          title: translations.sections.pricing,
-          links: [
-            { href: "/pricing/", label: translations.links.plans },
-            { href: "/start/oss/", label: translations.links.openSource },
-          ],
-        },
-      ],
-    },
     {
       sections: [
         {
@@ -144,11 +99,7 @@ const Footer: React.FC = () => {
         },
         {
           title: translations.sections.metabasePlans,
-          links: [
-            { href: "/product/starter", label: translations.links.starterAndOSS },
-            { href: "/product/pro", label: translations.links.pro },
-            { href: "/product/enterprise", label: translations.links.enterprise },
-          ],
+          links: [{ href: "/start/oss/", label: translations.links.pricing }],
         },
       ],
     },
@@ -157,9 +108,18 @@ const Footer: React.FC = () => {
         {
           title: translations.sections.features,
           links: [
-            { href: "/features/query-builder", label: translations.links.queryBuilder },
-            { href: "/features/drill-through", label: translations.links.drillThrough },
-            { href: "/features/collections", label: translations.links.collections },
+            {
+              href: "/features/query-builder",
+              label: translations.links.queryBuilder,
+            },
+            {
+              href: "/features/drill-through",
+              label: translations.links.drillThrough,
+            },
+            {
+              href: "/features/collections",
+              label: translations.links.collections,
+            },
             {
               href: "/features/usage-analytics",
               label: translations.links.usageAnalytics,
@@ -168,14 +128,23 @@ const Footer: React.FC = () => {
               href: "/features/analytics-dashboards",
               label: translations.links.analyticsDashboards,
             },
-            { href: "/features/sql-editor", label: translations.links.sqlEditor },
+            {
+              href: "/features/sql-editor",
+              label: translations.links.sqlEditor,
+            },
             {
               href: "/features/data-segregation",
               label: translations.links.dataSegregation,
             },
             { href: "/features/models", label: translations.links.models },
-            { href: "/features/permissions", label: translations.links.permissions },
-            { href: "/product/csv-uploads", label: translations.links.csvUpload },
+            {
+              href: "/features/permissions",
+              label: translations.links.permissions,
+            },
+            {
+              href: "/product/csv-uploads",
+              label: translations.links.csvUpload,
+            },
             {
               href: "/product/embedded-analytics-sdk",
               label: translations.links.embeddedAnalyticsSDK,
@@ -184,34 +153,12 @@ const Footer: React.FC = () => {
               href: "/features/white-label-analytics",
               label: translations.links.whiteLabelAnalytics,
             },
-            {
-              href: "/features/metabot-ai",
-              label: translations.links.metabotAI,
-              badge: "Beta",
-            },
           ],
         },
       ],
     },
     {
       sections: [
-        {
-          title: translations.sections.company,
-          links: [
-            { href: "/jobs", label: translations.links.jobs, badge: "ما استخدام می‌کنیم!" },
-            {
-              href: "/privacy-policies",
-              label: translations.links.privacyPolicies,
-            },
-            { href: "/terms", label: translations.links.termsOfService },
-            { href: "/license/", label: translations.links.license },
-            {
-              href: "https://drive.google.com/drive/folders/1PbjChaDs_IROrrDz4n6eqmtcDITdVBf-?usp=sharing",
-              label: translations.links.brandGuidelines,
-              external: true,
-            },
-          ],
-        },
         {
           title: translations.sections.support,
           links: [
@@ -225,16 +172,6 @@ const Footer: React.FC = () => {
               href: "/product/onboarding-professional-service",
               label: translations.links.onboarding,
             },
-            {
-              href: "https://status.metabase.com/",
-              label: translations.links.status,
-              external: true,
-            },
-            {
-              href: "https://github.com/metabase/metabase",
-              label: translations.links.github,
-              external: true,
-            },
           ],
         },
       ],
@@ -247,12 +184,6 @@ const Footer: React.FC = () => {
             { href: "/case-studies", label: translations.links.caseStudies },
             { href: "/blog", label: translations.links.blog },
             { href: "/learn/", label: translations.links.learn },
-            {
-              href: "/community",
-              label: translations.links.communityStories,
-            },
-            { href: "/glossary/", label: translations.links.glossary },
-            { href: "/partners/", label: translations.links.partners },
           ],
         },
       ],
@@ -262,64 +193,64 @@ const Footer: React.FC = () => {
   const choosingMetabaseLinks: FooterLink[] = [
     {
       href: "/lp/business-intelligence-demo",
-      label: "Business Intelligence",
+      label: "هوش تجاری",
     },
     {
       href: "/lp/bi-for-startups-demo",
-      label: "Business Intelligence for Startups",
+      label: "هوش تجاری برای استارتاپ‌ها",
     },
     {
       href: "/lp/embedded-analytics-demo",
-      label: "Embedded Analytics",
+      label: "تجزیه و تحلیل تعبیه‌شده",
     },
-    { href: "/lp/metabase-vs-tableau", label: "Metabase vs. Tableau" },
-    { href: "/lp/metabase-vs-looker", label: "Metabase vs. Looker" },
+    { href: "/lp/metabase-vs-tableau", label: "متابیس در مقابل Tableau" },
+    { href: "/lp/metabase-vs-looker", label: "متابیس در مقابل Looker" },
     {
       href: "/lp/metabase-vs-looker-studio",
-      label: "Metabase vs. Looker Studio",
+      label: "متابیس در مقابل Looker Studio",
     },
-    { href: "/lp/metabase-vs-power-bi", label: "Metabase vs. PowerBI" },
-    { href: "/lp/metabase-vs-superset", label: "Metabase vs. Superset" },
+    { href: "/lp/metabase-vs-power-bi", label: "متابیس در مقابل PowerBI" },
+    { href: "/lp/metabase-vs-superset", label: "متابیس در مقابل Superset" },
   ];
 
   const moreResourcesLinks: FooterLink[] = [
     {
       href: "/ai-data-generator",
-      label: "Open source AI data generator",
+      label: "تولیدکننده داده هوش مصنوعی متن‌باز",
     },
-    { href: "/dashboards/", label: "Example Dashboards" },
+    { href: "/dashboards/", label: "داشبوردهای نمونه" },
     {
       href: "/learn/sql/working-with-sql/sql-best-practices",
-      label: "SQL Best Practices",
+      label: "بهترین روش‌های SQL",
     },
     {
       href: "/learn/cheat-sheets/which-chart-to-use",
-      label: "Which chart to use? A cheat sheet",
+      label: "از کدام نمودار استفاده کنیم؟ راهنمای سریع",
     },
     {
       href: "/blog/what-is-embedded-analytics",
-      label: "What is embedded analytics?",
+      label: "تجزیه و تحلیل تعبیه‌شده چیست؟",
     },
-    { href: "/learn/sql/", label: "Learn SQL" },
+    { href: "/learn/sql/", label: "یادگیری SQL" },
     {
       href: "/learn/sql/working-with-sql/sql-join-types",
-      label: "Types of SQL Joins",
+      label: "انواع اتصالات SQL",
     },
     {
       href: "/blog/6-most-common-type-of-data-bias-in-data-analysis",
-      label: "Data Bias Examples",
+      label: "نمونه‌های سوگیری داده",
     },
     {
       href: "/dashboards/marketing-teams",
-      label: "Dashboard for Marketing Teams",
+      label: "داشبورد برای تیم‌های بازاریابی",
     },
     {
       href: "/dashboards/sales-teams",
-      label: "Dashboards for Sales Teams",
+      label: "داشبورد برای تیم‌های فروش",
     },
     {
       href: "/dashboards/engineering-teams",
-      label: "Dashboards for Engineering Teams",
+      label: "داشبورد برای تیم‌های مهندسی",
     },
   ];
 
@@ -387,7 +318,7 @@ const Footer: React.FC = () => {
         {/* Footer Links */}
         <div className="flex flex-wrap gap-[10px] max-md:gap-0 w-full">
           {footerColumns.map((column, columnIndex) => {
-            const isResourcesColumn = columnIndex === 4;
+            const isResourcesColumn = columnIndex === 3;
             return (
               <div
                 key={columnIndex}
@@ -416,7 +347,7 @@ const Footer: React.FC = () => {
                     ))}
                   </React.Fragment>
                 ))}
-                
+
                 {/* Expandable sections for Resources column */}
                 {isResourcesColumn && (
                   <>
@@ -426,7 +357,9 @@ const Footer: React.FC = () => {
                       onClick={() => handleResourceToggle("choosing")}
                       className="flex items-center text-[#8d93a5] font-normal leading-[1.6em] mb-4 hover:text-[#509ee3] transition-colors duration-200 cursor-pointer w-full text-right"
                     >
-                      <span className="ml-1">{translations.links.choosingMetabase}</span>
+                      <span className="ml-1">
+                        {translations.links.choosingMetabase}
+                      </span>
                       <svg
                         className={`more-resources-chevron transition-transform duration-200 flex-shrink-0 ${
                           expandedResources.choosing ? "rotate-180" : ""
@@ -469,7 +402,9 @@ const Footer: React.FC = () => {
                       onClick={() => handleResourceToggle("more")}
                       className="flex items-center text-[#8d93a5] font-normal leading-[1.6em] mb-4 hover:text-[#509ee3] transition-colors duration-200 cursor-pointer w-full text-right"
                     >
-                      <span className="ml-1">{translations.links.moreResources}</span>
+                      <span className="ml-1">
+                        {translations.links.moreResources}
+                      </span>
                       <svg
                         className={`more-resources-chevron transition-transform duration-200 flex-shrink-0 ${
                           expandedResources.more ? "rotate-180" : ""
@@ -662,4 +597,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-

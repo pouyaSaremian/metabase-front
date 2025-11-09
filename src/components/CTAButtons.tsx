@@ -9,10 +9,10 @@ const CTAButtons: React.FC = () => {
         size="lg"
         href="https://store.metabase.com/checkout"
       >
-        رایگان Metabase Cloud را امتحان کنید
+        متابیس لایو{" "}
       </Button>
       <Button variant="outline" size="lg" href="/start/oss/">
-        استقرار Metabase منبع باز
+        پلن ها{" "}
       </Button>
     </div>
   );
