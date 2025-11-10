@@ -325,7 +325,7 @@ const Footer: React.FC = () => {
               >
                 {column.sections.map((section, sectionIndex) => (
                   <React.Fragment key={sectionIndex}>
-                    <h6 className="text-metabase-text-secondary text-base font-black my-4">
+                    <h6 className="text-metabase-text-secondary text-base font-black my-2">
                       {section.title}
                     </h6>
                     {section.links.map((link, linkIndex) => (
@@ -334,7 +334,7 @@ const Footer: React.FC = () => {
                         href={link.href}
                         target={link.external ? "_blank" : undefined}
                         rel={link.external ? "noopener noreferrer" : undefined}
-                        className="flex items-center text-metabase-text-light font-normal leading-[1.6em] mb-4 last:mb-0 hover:text-metabase-primary transition-colors duration-200"
+                        className="flex items-center text-metabase-text-light font-normal leading-[1.6em] mb-2 text-sm last:mb-0 hover:text-metabase-primary transition-colors duration-200"
                       >
                         {link.label}
                         {link.badge && (
