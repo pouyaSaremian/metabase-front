@@ -49,7 +49,7 @@ const VideoPlayer: React.FC = () => {
               href="https://videojs.com/html5-video-support/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 underline"
+              className="text-metabase-primary-dark underline"
             >
               از HTML5 video پشتیبانی کند
             </a>

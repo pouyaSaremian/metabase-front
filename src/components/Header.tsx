@@ -98,10 +98,10 @@ const Header: React.FC = () => {
               <Image
                 src="/embed.svg"
                 alt="Embed"
-                width={24}
-                height={24}
+                width={44}
+                height={44}
                 className="absolute transition-all duration-400 group-hover:left-0 group-hover:rotate-0"
-                style={{ left: "40px", transform: "rotate(-15deg)" }}
+                style={{ left: "40px", transform: "rotate(0)" }}
               />
             </div>
           ),
@@ -316,7 +316,7 @@ const Header: React.FC = () => {
         },
         {
           href: "/features/usage-analytics",
-          title: "تحلیل کاربری",
+          title: "تحلیل عملکرد",
           icon: (
             <svg
               width="24"
@@ -370,8 +370,8 @@ const Header: React.FC = () => {
         },
         {
           href: "/features/metabot-ai",
-          title: "متابات هوش مصنوعی",
-          badge: "بتا",
+          title: "متابات",
+          badge: "بزودی",
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -380,14 +380,14 @@ const Header: React.FC = () => {
               fill="none"
             >
               <path
-                stroke="#8D93A5"
+                stroke="#509EE3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="1.5"
                 d="M17.25 4.75H6.75a2 2 0 0 0-2 2v10.5a2 2 0 0 0 2 2h10.5a2 2 0 0 0 2-2V6.75a2 2 0 0 0-2-2Z"
               />
               <path
-                stroke="#8D93A5"
+                stroke="#509EE3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="1.5"
@@ -396,11 +396,11 @@ const Header: React.FC = () => {
               <circle cx="9.625" cy="9.774" r=".75" fill="#8D93A5" />
               <circle cx="14.375" cy="9.774" r=".75" fill="#8D93A5" />
               <path
-                stroke="#8D93A5"
+                stroke="#509EE3"
                 d="M13.266 11.152a1.266 1.266 0 1 1-2.532 0"
               />
               <path
-                stroke="#8D93A5"
+                stroke="#509EE3"
                 strokeLinecap="round"
                 strokeWidth="1.5"
                 d="M14.709 17.079h2.002"
@@ -421,7 +421,7 @@ const Header: React.FC = () => {
               fill="none"
             >
               <path
-                stroke="#8D93A5"
+                stroke="#509EE3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="1.5"
@@ -441,7 +441,7 @@ const Header: React.FC = () => {
               fill="none"
             >
               <path
-                stroke="#8D93A5"
+                stroke="#509EE3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="1.5"
@@ -461,7 +461,7 @@ const Header: React.FC = () => {
               fill="none"
             >
               <path
-                stroke="#8D93A5"
+                stroke="#509EE3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="1.5"
@@ -589,7 +589,7 @@ const Header: React.FC = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                stroke="#8D93A5"
+                stroke="#509EE3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="1.5"
@@ -936,9 +936,9 @@ const Header: React.FC = () => {
                   href={link.href}
                   className="flex-1 flex gap-3 min-w-[268px] p-3 border border-blue-100 rounded-lg hover:bg-blue-50 hover:border-blue-200 hover:shadow-sm transition-all group"
                 >
-                  <div className="flex-shrink-0">{link.icon}</div>
+                  <div className="shrink-0">{link.icon}</div>
                   <div>
-                    <h6 className="text-gray-700 text-sm font-bold mb-0 group-hover:text-blue-600 transition-colors">
+                    <h6 className="text-gray-700 text-sm font-bold mb-0 group-hover:text-metabase-primary-dark transition-colors">
                       {link.title}
                     </h6>
                     <p className="text-gray-500 text-sm m-0">
@@ -956,7 +956,7 @@ const Header: React.FC = () => {
                   <Link
                     key={index}
                     href={link.href}
-                    className="flex-1 flex items-center justify-center gap-2 p-3 border border-blue-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 hover:shadow-sm transition-all text-sm text-gray-600 hover:text-blue-600"
+                    className="flex-1 flex items-center justify-center gap-2 p-3 border border-blue-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 hover:shadow-sm transition-all text-sm text-gray-600 hover:text-metabase-primary-dark"
                   >
                     {link.icon}
                     {link.title}
@@ -991,9 +991,9 @@ const Header: React.FC = () => {
                   href={link.href}
                   className="flex-1 flex gap-3 min-w-[268px] p-3 border border-blue-100 rounded-lg hover:bg-blue-50 hover:border-blue-200 hover:shadow-sm transition-all group"
                 >
-                  <div className="flex-shrink-0">{link.icon}</div>
+                  <div className="shrink-0">{link.icon}</div>
                   <div>
-                    <h6 className="text-gray-700 text-sm font-bold mb-0 group-hover:text-blue-600 transition-colors">
+                    <h6 className="text-gray-700 text-sm font-bold mb-0 group-hover:text-metabase-primary-dark transition-colors">
                       {link.title}
                     </h6>
                     <p className="text-gray-500 text-sm m-0">
@@ -1106,9 +1106,9 @@ const Header: React.FC = () => {
                       href={link.href}
                       className="group flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
                     >
-                      <div className="flex-shrink-0">{link.icon}</div>
+                      <div className="shrink-0">{link.icon}</div>
                       <div>
-                        <p className="text-sm font-medium text-gray-900 mb-1 group-hover:text-blue-500 transition-colors">
+                        <p className="text-sm font-medium text-gray-900 mb-1 group-hover:textmetabase-text-primary transition-colors">
                           {link.title}
                         </p>
                         <p className="text-xs text-gray-600">
@@ -1149,7 +1149,7 @@ const Header: React.FC = () => {
                     <Link
                       key={index}
                       href={link.href}
-                      className="block text-sm text-gray-700 hover:text-blue-500 transition-colors py-1"
+                      className="block text-sm text-gray-700 hover:textmetabase-text-primary transition-colors py-1"
                     >
                       {link.title}
                     </Link>
@@ -1185,9 +1185,9 @@ const Header: React.FC = () => {
                     href={link.href}
                     className="flex items-start gap-4 group hover:bg-gray-50 p-4 rounded-lg transition-colors mb-2 last:mb-0"
                   >
-                    <div className="flex-shrink-0 mt-1">{link.icon}</div>
+                    <div className="shrink-0 mt-1">{link.icon}</div>
                     <div>
-                      <h6 className="text-base font-semibold text-gray-900 mb-1 group-hover:text-blue-500 transition-colors">
+                      <h6 className="text-base font-semibold text-gray-900 mb-1 group-hover:textmetabase-text-primary transition-colors">
                         {link.title}
                       </h6>
                       <p className="text-sm text-gray-600">
@@ -1210,7 +1210,7 @@ const Header: React.FC = () => {
                     className="block group"
                   >
                     <div className="relative w-full h-24 mb-3 rounded-lg overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100"></div>
+                      <div className="absolute inset-0 bg-linear-to-r from-blue-100 to-purple-100"></div>
                       <div className="absolute inset-0 flex items-center justify-center">
                         <svg
                           width="32"
@@ -1236,7 +1236,7 @@ const Header: React.FC = () => {
                         </svg>
                       </div>
                     </div>
-                    <h6 className="text-sm font-semibold text-gray-900 mb-2 group-hover:text-blue-500 transition-colors">
+                    <h6 className="text-sm font-semibold text-gray-900 mb-2 group-hover:textmetabase-text-primary transition-colors">
                       داستان پشت تولیدکننده مجموعه داده هوش مصنوعی ما
                     </h6>
                   </Link>
@@ -1263,7 +1263,7 @@ const Header: React.FC = () => {
                     },
                   ].map((post, index) => (
                     <Link key={index} href={post.href} className="block group">
-                      <h6 className="text-sm font-medium text-gray-900 group-hover:text-blue-500 transition-colors">
+                      <h6 className="text-sm font-medium text-gray-900 group-hover:textmetabase-text-primary transition-colors">
                         {post.title}
                       </h6>
                     </Link>
@@ -1303,24 +1303,22 @@ const Header: React.FC = () => {
                   <Link
                     key={linkIndex}
                     href={link.href}
-                    className="flex items-start gap-3 group hover:bg-gray-50 p-2 mb-3 rounded-lg transition-colors w-full"
+                    className="flex items-start  gap-3 group hover:bg-gray-50 p-2 mb-3 rounded-lg transition-colors w-full"
                   >
-                    <div className="flex-shrink-0 mt-1">{link.icon}</div>
-                    <div>
-                      <h6 className="text-gray-700 text-sm font-bold mb-1 group-hover:text-blue-500 transition-colors">
-                        {link.title}
-                        {link.badge && (
-                          <span className="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-600 rounded-full">
-                            {link.badge}
-                          </span>
-                        )}
-                      </h6>
-                      {link.description && (
-                        <p className="text-gray-500 text-sm">
-                          {link.description}
-                        </p>
+                    <div className="shrink-0 ">{link.icon}</div>
+                    <h6 className="text-gray-500 text-sm group-hover:text-metabase-primary transition-colors">
+                      {link.title}{" "}
+                      {link.badge && (
+                        <span className="px-2 text-xs bg-blue-100 text-metabase-primary-dark rounded-full font-light">
+                          {link.badge}
+                        </span>
                       )}
-                    </div>
+                    </h6>
+                    {link.description && (
+                      <p className="text-gray-500 text-sm">
+                        {link.description}
+                      </p>
+                    )}
                   </Link>
                 ))}
               </div>
@@ -1333,7 +1331,7 @@ const Header: React.FC = () => {
                 <Link
                   key={index}
                   href={link.href}
-                  className="flex-1 flex items-center justify-center gap-2 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 hover:shadow-sm transition-all text-sm text-gray-600 hover:text-blue-600"
+                  className="flex-1 flex items-center justify-center gap-2 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 hover:shadow-sm transition-all text-sm text-gray-600 hover:text-metabase-primary-dark"
                 >
                   {link.icon}
                   {link.title}
@@ -1349,7 +1347,7 @@ const Header: React.FC = () => {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-[1001] bg-white shadow-[0_1px_1px_rgba(0,0,0,0.05)]"
+      className="sticky top-0 z-1001 bg-white shadow-[0_1px_1px_rgba(0,0,0,0.05)]"
     >
       <div className="container mx-auto px-5 py-4">
         <div className="flex items-center h-full">
@@ -1393,8 +1391,12 @@ const Header: React.FC = () => {
               <button
                 className={`
                   flex items-center gap-2 px-3 py-2 h-10 text-sm font-medium text-gray-700 
-                  hover:text-blue-500 transition-colors z-10 relative
-                  ${openDropdown === "product" ? "text-blue-500" : ""}
+                  hover:textmetabase-text-primary transition-colors z-10 relative
+                  ${
+                    openDropdown === "product"
+                      ? "textmetabase-text-primary"
+                      : ""
+                  }
                 `}
                 onClick={() => handleDropdownToggle("product")}
                 onKeyDown={(e) => handleKeyDown(e, "product")}
@@ -1421,8 +1423,12 @@ const Header: React.FC = () => {
               <button
                 className={`
                   flex items-center gap-2 px-3 py-2 h-10 text-sm font-medium text-gray-700 
-                  hover:text-blue-500 transition-colors z-10 relative
-                  ${openDropdown === "features" ? "text-blue-500" : ""}
+                  hover:textmetabase-text-primary transition-colors z-10 relative
+                  ${
+                    openDropdown === "features"
+                      ? "textmetabase-text-primary"
+                      : ""
+                  }
                 `}
                 onClick={() => handleDropdownToggle("features")}
                 onKeyDown={(e) => handleKeyDown(e, "features")}
@@ -1449,8 +1455,8 @@ const Header: React.FC = () => {
               <button
                 className={`
                   flex items-center gap-2 px-3 py-2 h-10 text-sm font-medium text-gray-700 
-                  hover:text-blue-500 transition-colors z-10 relative
-                  ${openDropdown === "docs" ? "text-blue-500" : ""}
+                  hover:textmetabase-text-primary transition-colors z-10 relative
+                  ${openDropdown === "docs" ? "textmetabase-text-primary" : ""}
                 `}
                 onClick={() => handleDropdownToggle("docs")}
                 onKeyDown={(e) => handleKeyDown(e, "docs")}
@@ -1474,8 +1480,12 @@ const Header: React.FC = () => {
               <button
                 className={`
                   flex items-center gap-2 px-3 py-2 h-10 text-sm font-medium text-gray-700 
-                  hover:text-blue-500 transition-colors z-10 relative
-                  ${openDropdown === "resources" ? "text-blue-500" : ""}
+                  hover:textmetabase-text-primary transition-colors z-10 relative
+                  ${
+                    openDropdown === "resources"
+                      ? "textmetabase-text-primary"
+                      : ""
+                  }
                 `}
                 onClick={() => handleDropdownToggle("resources")}
                 onKeyDown={(e) => handleKeyDown(e, "resources")}
@@ -1500,7 +1510,7 @@ const Header: React.FC = () => {
             {/* Pricing Link */}
             <div className="flex flex-col">
               <button
-                className="px-3 py-2 h-10 text-sm font-medium text-gray-700 hover:text-blue-500 transition-colors z-10 relative"
+                className="px-3 py-2 h-10 text-sm font-medium text-gray-700 hover:textmetabase-text-primary transition-colors z-10 relative"
                 onMouseEnter={handleMouseEnter}
                 onClick={() => (window.location.href = "/pricing/")}
               >
@@ -1513,7 +1523,7 @@ const Header: React.FC = () => {
           <div className="hidden lg:flex items-center justify-end gap-2 lg:w-1/4">
             <Link
               href="/cloud/login"
-              className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-500 transition-colors"
+              className="px-3 py-2 text-sm font-medium text-gray-700 hover:textmetabase-text-primary transition-colors"
             >
               {navItems.login}
             </Link>
@@ -1622,7 +1632,7 @@ const Header: React.FC = () => {
                   href={link.href}
                   className="flex items-start gap-4 p-4 hover:bg-gray-50 rounded-lg"
                 >
-                  <div className="flex-shrink-0 mt-1">{link.icon}</div>
+                  <div className="shrink-0 mt-1">{link.icon}</div>
                   <div>
                     <h6 className="font-semibold text-gray-800 mb-1">
                       {link.title}
@@ -1666,12 +1676,12 @@ const Header: React.FC = () => {
                   href={link.href}
                   className="flex items-start gap-4 p-4 hover:bg-gray-50 rounded-lg"
                 >
-                  <div className="flex-shrink-0 mt-1">{link.icon}</div>
+                  <div className="shrink-0 mt-1">{link.icon}</div>
                   <div>
                     <h6 className="font-semibold text-gray-800 mb-1">
                       {link.title}
                       {link.badge && (
-                        <span className="mr-2 px-2 py-1 text-xs bg-blue-100 text-blue-600 rounded-full">
+                        <span className="mr-2 px-2 py-1 text-xs bg-blue-100 text-metabase-primary-dark rounded-full">
                           {link.badge}
                         </span>
                       )}
@@ -1710,7 +1720,7 @@ const Header: React.FC = () => {
                   href={link.href}
                   className="flex items-start gap-4 p-4 hover:bg-gray-50 rounded-lg"
                 >
-                  <div className="flex-shrink-0 mt-1">{link.icon}</div>
+                  <div className="shrink-0 mt-1">{link.icon}</div>
                   <div>
                     <h6 className="font-semibold text-gray-800 mb-1">
                       {link.title}
@@ -1754,7 +1764,7 @@ const Header: React.FC = () => {
                   href={link.href}
                   className="flex items-start gap-4 p-4 hover:bg-gray-50 rounded-lg"
                 >
-                  <div className="flex-shrink-0 mt-1">{link.icon}</div>
+                  <div className="shrink-0 mt-1">{link.icon}</div>
                   <div>
                     <h6 className="font-semibold text-gray-800 mb-1">
                       {link.title}
