@@ -181,7 +181,6 @@ const Footer: React.FC = () => {
         {
           title: translations.sections.resources,
           links: [
-            { href: "/case-studies", label: translations.links.caseStudies },
             { href: "/blog", label: translations.links.blog },
             { href: "/learn/", label: translations.links.learn },
           ],
@@ -255,7 +254,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-white relative z-[6] overflow-x-hidden">
+    <footer className="bg-white relative z-6 overflow-x-hidden">
       <div className="mx-auto max-w-[1280px] w-full pt-20 px-4 sm:px-6 lg:px-8">
         {/* Newsletter Form */}
         <form
@@ -267,10 +266,10 @@ const Footer: React.FC = () => {
           id="mc-embedded-subscribe-form"
         >
           <div>
-            <h5 className="text-[#5a6072] text-lg font-bold leading-[26px] text-right mb-2">
+            <h5 className="text-metabase-text-secondary text-lg font-bold leading-[26px] text-right mb-2">
               {translations.newsletter.title}
             </h5>
-            <p className="text-[#5a6072] font-normal text-right">
+            <p className="text-metabase-text-secondary font-normal text-right">
               {translations.newsletter.description}
             </p>
           </div>
@@ -281,25 +280,25 @@ const Footer: React.FC = () => {
                 name="EMAIL"
                 id="mce-EMAIL"
                 placeholder={translations.newsletter.emailPlaceholder}
-                className="flex-grow min-w-0 px-4 py-[0.834em] text-[#8d93a5] border border-[#ddd] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#509ee3] focus:border-[#509ee3] placeholder:text-[#8d93a5] w-full lg:w-[360px]"
+                className="grow min-w-0 px-4 py-[0.834em] text-metabase-text-light border border-metabase-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-metabase-primary focus:border-metabase-primary placeholder:text-metabase-text-light w-full lg:w-[360px]"
                 required
               />
               <button
                 type="submit"
                 name="subscribe"
                 id="mc-embedded-subscribe"
-                className="bg-[#5ea4e3] hover:bg-[#2d86d4] text-white px-4 py-[0.834em] rounded-lg font-bold text-sm transition-colors duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:border-[#2d86d4]"
+                className="bg-metabase-primary-light hover:bg-metabase-primary-darker text-white px-4 py-[0.834em] rounded-lg font-bold text-sm transition-colors duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:border-metabase-primary-darker"
               >
                 {translations.newsletter.submit}
               </button>
             </div>
             <div className="clear mt-2" id="mce-responses">
               <div
-                className="response text-[#5a6072] text-sm mt-2 text-right hidden"
+                className="response text-metabase-text-secondary text-sm mt-2 text-right hidden"
                 id="mce-error-response"
               ></div>
               <div
-                className="response text-[#5a6072] text-sm mt-2 text-right hidden"
+                className="response text-metabase-text-secondary text-sm mt-2 text-right hidden"
                 id="mce-success-response"
               ></div>
             </div>
@@ -326,7 +325,7 @@ const Footer: React.FC = () => {
               >
                 {column.sections.map((section, sectionIndex) => (
                   <React.Fragment key={sectionIndex}>
-                    <h6 className="text-[#5a6072] text-base font-black my-4">
+                    <h6 className="text-metabase-text-secondary text-base font-black my-4">
                       {section.title}
                     </h6>
                     {section.links.map((link, linkIndex) => (
@@ -335,11 +334,11 @@ const Footer: React.FC = () => {
                         href={link.href}
                         target={link.external ? "_blank" : undefined}
                         rel={link.external ? "noopener noreferrer" : undefined}
-                        className="flex items-center text-[#8d93a5] font-normal leading-[1.6em] mb-4 last:mb-0 hover:text-[#509ee3] transition-colors duration-200"
+                        className="flex items-center text-metabase-text-light font-normal leading-[1.6em] mb-4 last:mb-0 hover:text-metabase-primary transition-colors duration-200"
                       >
                         {link.label}
                         {link.badge && (
-                          <span className="flex items-center bg-[#e4ecfb] text-[#509ee3] text-xs font-bold h-5 mr-1 px-1 rounded transition-colors duration-200 hover:bg-[#c2daf0] hover:text-[#1c6bb0]">
+                          <span className="flex items-center bg-[#e4ecfb] text-[#509ee3] text-xs font-bold h-5 mr-1 px-1 rounded transition-colors duration-200 hover:bg-metabase-blue-85 hover:text-metabase-primary-darker">
                             {link.badge}
                           </span>
                         )}
@@ -355,13 +354,13 @@ const Footer: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => handleResourceToggle("choosing")}
-                      className="flex items-center text-[#8d93a5] font-normal leading-[1.6em] mb-4 hover:text-[#509ee3] transition-colors duration-200 cursor-pointer w-full text-right"
+                      className="flex items-center text-metabase-text-light font-normal leading-[1.6em] mb-4 hover:text-metabase-primary transition-colors duration-200 cursor-pointer w-full text-right"
                     >
                       <span className="ml-1">
                         {translations.links.choosingMetabase}
                       </span>
                       <svg
-                        className={`more-resources-chevron transition-transform duration-200 flex-shrink-0 ${
+                        className={`more-resources-chevron transition-transform duration-200 shrink-0 ${
                           expandedResources.choosing ? "rotate-180" : ""
                         }`}
                         fill="none"
@@ -389,7 +388,7 @@ const Footer: React.FC = () => {
                         <Link
                           key={linkIndex}
                           href={link.href}
-                          className="flex items-center text-[#8d93a5] font-normal leading-[1.6em] mb-4 last:mb-0 hover:text-[#509ee3] transition-colors duration-200 pr-4"
+                          className="flex items-center text-metabase-text-light font-normal leading-[1.6em] mb-4 last:mb-0 hover:text-[#509ee3] transition-colors duration-200 pr-4"
                         >
                           {link.label}
                         </Link>
@@ -400,13 +399,13 @@ const Footer: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => handleResourceToggle("more")}
-                      className="flex items-center text-[#8d93a5] font-normal leading-[1.6em] mb-4 hover:text-[#509ee3] transition-colors duration-200 cursor-pointer w-full text-right"
+                      className="flex items-center text-metabase-text-light font-normal leading-[1.6em] mb-4 hover:text-[#509ee3] transition-colors duration-200 cursor-pointer w-full text-right"
                     >
                       <span className="ml-1">
                         {translations.links.moreResources}
                       </span>
                       <svg
-                        className={`more-resources-chevron transition-transform duration-200 flex-shrink-0 ${
+                        className={`more-resources-chevron transition-transform duration-200 shrink-0 ${
                           expandedResources.more ? "rotate-180" : ""
                         }`}
                         fill="none"
@@ -434,7 +433,7 @@ const Footer: React.FC = () => {
                         <Link
                           key={linkIndex}
                           href={link.href}
-                          className="flex items-center text-[#8d93a5] font-normal leading-[1.6em] mb-4 last:mb-0 hover:text-[#509ee3] transition-colors duration-200 pr-4"
+                          className="flex items-center text-metabase-text-light font-normal leading-[1.6em] mb-4 last:mb-0 hover:text-[#509ee3] transition-colors duration-200 pr-4"
                         >
                           {link.label}
                         </Link>
@@ -449,10 +448,10 @@ const Footer: React.FC = () => {
 
         {/* Footer Logo and Social Links */}
         <div className="flex items-center justify-between mt-10 mb-[50px]">
-          <div className="flex items-center gap-3 text-[#8d93a5]">
+          <div className="flex items-center gap-3 text-metabase-text-light">
             <Link
               href="/"
-              className="flex items-center text-[#8d93a5] transition-colors hover:text-[#5a6072]"
+              className="flex items-center text-metabase-text-light transition-colors hover:text-metabase-text-secondary"
             >
               <div
                 className="w-8 h-8 bg-no-repeat bg-contain"
@@ -469,7 +468,7 @@ const Footer: React.FC = () => {
               href="https://www.youtube.com/channel/UCvg53nhM-xPUiFGqDJDhjaw"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:[&_path]:fill-[#5a6072]"
+              className="transition-colors hover:[&_path]:fill-metabase-text-secondary"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -497,7 +496,7 @@ const Footer: React.FC = () => {
               href="https://www.github.com/metabase"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:[&_path]:fill-[#5a6072]"
+              className="transition-colors hover:[&_path]:fill-metabase-text-secondary"
             >
               <svg
                 id=""
@@ -517,7 +516,7 @@ const Footer: React.FC = () => {
               href="https://www.twitter.com/metabase"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:[&_path]:fill-[#5a6072]"
+              className="transition-colors hover:[&_path]:fill-metabase-text-secondary"
             >
               <svg
                 width="24"
@@ -544,7 +543,7 @@ const Footer: React.FC = () => {
               href="https://www.linkedin.com/company/metabase"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:[&_path]:fill-[#5a6072]"
+              className="transition-colors hover:[&_path]:fill-metabase-text-secondary"
             >
               <svg
                 id=""
