@@ -3,7 +3,7 @@
 import React from "react";
 import Accordion, { AccordionItem } from "./common/Accordion";
 
-const faqItems: AccordionItem[] = [
+const defaultFaqItems: AccordionItem[] = [
   {
     question: "عملکرد متابیس هنگام جاسازی (Embedded) در اپلیکیشن ما چگونه است؟",
     answer: (
@@ -48,32 +48,69 @@ const faqItems: AccordionItem[] = [
   },
 ];
 
-const FAQSection: React.FC = () => {
+interface FAQSectionProps {
+  items?: AccordionItem[];
+  title?: string;
+  description?: string;
+  className?: string;
+}
+
+const FAQSection: React.FC<FAQSectionProps> = ({
+  items = defaultFaqItems,
+  title = "سوالات پرتکرار برای توسعه‌دهندگان",
+  description = "برای اطلاعات بیشتر درباره نحوه کار و راه‌اندازی سریع، به مستندات مراجعه کنید یا راهنمای شروع سریع را ببینید.",
+  className = "",
+}) => {
+  // Extract text from React elements for FAQ structured data
+  const extractTextFromReactElement = (element: React.ReactNode): string => {
+    if (typeof element === "string") return element;
+    if (typeof element === "number") return String(element);
+    if (!element || typeof element !== "object") return "";
+    if (Array.isArray(element)) {
+      return element.map(extractTextFromReactElement).join(" ");
+    }
+    if (
+      "props" in element &&
+      element.props &&
+      typeof element.props === "object" &&
+      "children" in element.props
+    ) {
+      return extractTextFromReactElement(
+        element.props.children as React.ReactNode
+      );
+    }
+    return "";
+  };
+
   // JSON-LD for FAQPage
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://metabase.com";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqItems.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: typeof item.answer === "string" ? item.answer : undefined,
-      },
-    })),
+    mainEntity: items.map((item) => {
+      const answerText = extractTextFromReactElement(item.answer);
+      return {
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text:
+            answerText || (typeof item.answer === "string" ? item.answer : ""),
+        },
+      };
+    }),
   };
 
   return (
-    <section className="m-0 mt-12 md:mt-24 p-0 select-none">
+    <section className={`m-0 mt-12 md:mt-24 p-0 select-none ${className}`}>
       <h4 className="text-center text-[30px] font-bold leading-[36px] mb-8">
-        سوالات پرتکرار برای توسعه‌دهندگان
+        {title}
       </h4>
       <p className="mb-6 text-center text-[18px] leading-[26px]">
-        برای اطلاعات بیشتر درباره نحوه کار و راه‌اندازی سریع، به مستندات مراجعه
-        کنید یا راهنمای شروع سریع را ببینید.
+        {description}
       </p>
       <div className="mx-auto w-full max-w-[652px] bg-white border border-[#E4ECFB] rounded-[12px] px-6 py-6 md:px-6 md:py-6">
-        <Accordion items={faqItems} className="" />
+        <Accordion items={items} className="" />
       </div>
       <script
         type="application/ld+json"
