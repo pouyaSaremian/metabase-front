@@ -105,3 +105,4 @@ const BusinessIntelligenceFooter: React.FC = () => {
 };
 
 export default BusinessIntelligenceFooter;
+
