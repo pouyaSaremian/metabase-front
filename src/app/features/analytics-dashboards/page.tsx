@@ -297,18 +297,18 @@ export default function AnalyticsDashboardsPage() {
               className={`${containerClass} flex flex-col gap-12 lg:flex-row`}
             >
               <div className="flex-1 space-y-6 text-right">
-                <div className="flex items-center justify-end gap-3 text-metabase-primary">
+                <div className="flex items-center justify-start gap-3 text-metabase-primary">
                   <Image
                     src="/images/icons/badges/dashboard.svg"
                     alt="نماد داشبورد"
-                    width={40}
-                    height={40}
+                    width={80}
+                    height={80}
                   />
-                  <span className="text-sm font-bold text-metabase-primary-dark">
+                  <span className="text-base font-bold text-metabase-primary">
                     داشبوردهای تحلیلی
                   </span>
                 </div>
-                <h1 className="text-3xl font-black leading-snug text-gray-900 sm:text-4xl lg:text-5xl">
+                <h1 className="text-2xl font-black leading-snug text-gray-900 sm:text-3xl lg:text-4xl">
                   داشبوردهای تحلیلی که واقعاً دوست دارید استفاده کنید
                 </h1>
                 <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
@@ -316,7 +316,7 @@ export default function AnalyticsDashboardsPage() {
                   تعاملی به عمق داده فرو بروید و همهٔ تیم‌ها را با یک نگاه به
                   پاسخ برسانید.
                 </p>
-                <div className="flex flex-wrap justify-end gap-4">
+                <div className="flex flex-wrap justify-start gap-4">
                   {heroButtons.map((button) => (
                     <Link
                       key={button.label}
@@ -348,7 +348,7 @@ export default function AnalyticsDashboardsPage() {
             </div>
           </section>
 
-          <section className="py-16">
+          <section className="py-16 bg-metabase-bg-neutral-98">
             <div className={`${containerClass} text-center`}>
               <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
                 فیلتر، X-ray، اشتراک‌گذاری و امکانات بیشتر
@@ -364,16 +364,16 @@ export default function AnalyticsDashboardsPage() {
               {featureCards.map((feature) => (
                 <div
                   key={feature.title}
-                  className="rounded-3xl border border-blue-100 bg-white p-6 text-right shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                  className="rounded-3xl bg-white p-6 text-right shadow"
                 >
                   <Image
                     src={feature.icon}
                     alt={`آیکن ${feature.title}`}
-                    width={48}
-                    height={48}
-                    className="mb-4 h-12 w-12"
+                    width={30}
+                    height={30}
+                    className="mb-4 h-6 w-6"
                   />
-                  <h3 className="text-lg font-bold text-gray-900">
+                  <h3 className="text-lg font-bold text-gray-600">
                     {feature.title}
                   </h3>
                   <div className="mt-3">{feature.content}</div>
@@ -391,7 +391,7 @@ export default function AnalyticsDashboardsPage() {
                 href="https://www.metabase.com/docs/latest/dashboards/start"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 inline-flex items-center justify-center gap-2 text-base font-bold text-metabase-primary hover:underline"
+                className="mt-4 inline-flex items-center justify-center gap-2 text-base font-bold text-metabase-primary hover:underline "
               >
                 مستندات را بخوانید
                 <Image
@@ -413,9 +413,9 @@ export default function AnalyticsDashboardsPage() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={card.ariaLabel}
-                  className="flex flex-col rounded-3xl border border-blue-100 bg-white p-6 text-right shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                  className="flex flex-col rounded-xl border border-blue-100 bg-white p-6 text-right shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <span className="inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-metabase-primary">
+                  <span className="inline-block rounded-md bg-blue-50 w-fit border-metabase-blue-60 border px-3 py-1 text-xs font-bold text-metabase-primary">
                     {card.tag}
                   </span>
                   <h3 className="mt-4 text-xl font-bold text-gray-900">
@@ -426,8 +426,8 @@ export default function AnalyticsDashboardsPage() {
             </div>
           </section>
 
-          <section className="py-16">
-            <div className={`${containerClass} rounded-3xl bg-blue-50 p-8`}>
+          <section className="py-16 bg-metabase-bg-neutral-98">
+            <div className={`${containerClass} rounded-3xl p-8 bg-white`}>
               <h3 className="text-center text-2xl font-extrabold text-gray-900">
                 چگونه در متابیس یک داشبورد تحلیلی بسازیم؟
               </h3>
@@ -435,46 +435,15 @@ export default function AnalyticsDashboardsPage() {
                 {creationSteps.map((step) => (
                   <div
                     key={step.number}
-                    className="flex items-start gap-4 rounded-2xl bg-white p-5 shadow-sm"
+                    className="flex items-start gap-4 rounded-2xl p-5"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-metabase-primary text-lg font-bold text-white">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-metabase-primary-lighter/30 text-lg font-bold text-metabase-primary border border-metabase-primary">
                       {step.number}
                     </div>
                     <p className="flex-1 text-base leading-relaxed text-gray-700">
                       {step.title}
                     </p>
                   </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <section className="pb-20">
-            <div
-              className={`${containerClass} rounded-3xl bg-metabase-primary-dark px-6 py-12 text-center text-white`}
-            >
-              <h3 className="text-2xl font-extrabold sm:text-3xl">
-                متابیس را ۱۴ روز رایگان امتحان کنید
-              </h3>
-              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-blue-50">
-                هرچه تیم شما بیشتر از متابیس استفاده کند، ارزش بیشتری خلق
-                می‌شود. نسخهٔ ابری پرو و اینترپرایز بهترین تجربه را برای تحلیل
-                تعاملی و Embedding فراهم می‌کنند.
-              </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-4">
-                {heroButtons.map((button) => (
-                  <Link
-                    key={`cta-${button.label}`}
-                    href={button.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={button.ariaLabel}
-                    className={`rounded-2xl px-6 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-metabase-primary-dark ${
-                      buttonStyles[button.variant]
-                    }`}
-                  >
-                    {button.label}
-                  </Link>
                 ))}
               </div>
             </div>
