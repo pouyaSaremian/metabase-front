@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Github, Star } from "lucide-react";
@@ -12,25 +11,7 @@ interface GetStartedSectionProps {
 const GetStartedSection: React.FC<GetStartedSectionProps> = ({
   className = "",
 }) => {
-  const [githubStars, setGithubStars] = useState<string>("");
-
-  useEffect(() => {
-    const fetchGitHubStars = async () => {
-      try {
-        const response = await fetch(
-          "https://api.github.com/repos/metabase/metabase"
-        );
-        const data = await response.json();
-        const stars = Math.ceil(data.stargazers_count / 100) / 10;
-        setGithubStars(`${stars}k`);
-      } catch (error) {
-        console.error("Failed to load GitHub data:", error);
-        setGithubStars("50k+");
-      }
-    };
-
-    fetchGitHubStars();
-  }, []);
+  const githubStars = "50k+";
 
   // Data sources for marquee - matching the original structure
   const dataSourcesRow1 = [
