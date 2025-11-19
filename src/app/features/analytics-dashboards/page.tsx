@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import StepsSection from "@/components/StepsSection";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -278,6 +279,11 @@ const breadcrumbData = {
   ],
 };
 
+const dashboardSteps = creationSteps.map((step) => ({
+  number: step.number,
+  content: step.title,
+}));
+
 export default function AnalyticsDashboardsPage() {
   return (
     <>
@@ -426,28 +432,16 @@ export default function AnalyticsDashboardsPage() {
             </div>
           </section>
 
-          <section className="py-16 bg-metabase-bg-neutral-98">
-            <div className={`${containerClass} rounded-3xl p-8 bg-white`}>
-              <h3 className="text-center text-2xl font-extrabold text-gray-900">
-                چگونه در متابیس یک داشبورد تحلیلی بسازیم؟
-              </h3>
-              <div className="mt-10 grid gap-6 md:grid-cols-2">
-                {creationSteps.map((step) => (
-                  <div
-                    key={step.number}
-                    className="flex items-start gap-4 rounded-2xl p-5"
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-metabase-primary-lighter/30 text-lg font-bold text-metabase-primary border border-metabase-primary">
-                      {step.number}
-                    </div>
-                    <p className="flex-1 text-base leading-relaxed text-gray-700">
-                      {step.title}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <StepsSection
+            title="چگونه در متابیس یک داشبورد تحلیلی بسازیم؟"
+            steps={dashboardSteps}
+            sectionClassName="py-16 bg-metabase-bg-neutral-98"
+            containerClassName={`${containerClass} rounded-3xl p-8 bg-white text-center`}
+            listClassName="mt-10 grid gap-6 md:grid-cols-2"
+            cardClassName="flex items-start gap-4 rounded-2xl p-5 text-right"
+            numberClassName="flex h-10 w-10 items-center justify-center rounded-full bg-metabase-primary-lighter/30 text-lg font-bold text-metabase-primary border border-metabase-primary"
+            textClassName="flex-1 text-base leading-relaxed text-gray-700"
+          />
         </main>
         <Footer />
       </div>

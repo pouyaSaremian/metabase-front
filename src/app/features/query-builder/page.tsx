@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import StepsSection from "@/components/StepsSection";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -286,6 +287,11 @@ const breadcrumbData = {
 
 const containerClass = "mx-auto max-w-6xl px-4 sm:px-6 lg:px-8";
 
+const queryBuilderSteps = steps.map((step) => ({
+  number: step.number,
+  content: step.content,
+}));
+
 export default function QueryBuilderPage() {
   return (
     <>
@@ -434,30 +440,17 @@ export default function QueryBuilderPage() {
             </div>
           </section>
 
-          <section className="py-16 bg-metabase-bg-neutral-98">
-            <div
-              className={`${containerClass} rounded-3xl bg-white p-8 text-center`}
-            >
-              <h3 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
-                چگونه با سازندهٔ پرسش سؤال بپرسیم؟
-              </h3>
-              <div className="mt-10 grid gap-6 md:grid-cols-2">
-                {steps.map((step) => (
-                  <div
-                    key={step.number}
-                    className="flex items-start gap-4 rounded-2xl p-5 text-right"
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-metabase-primary bg-metabase-primary-lighter/30 text-lg font-bold text-metabase-primary">
-                      {step.number}
-                    </div>
-                    <p className="flex-1 text-base leading-relaxed text-gray-700">
-                      {step.content}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <StepsSection
+            title="چگونه با سازندهٔ پرسش سؤال بپرسیم؟"
+            steps={queryBuilderSteps}
+            sectionClassName="py-16 bg-metabase-bg-neutral-98"
+            containerClassName={`${containerClass} rounded-3xl bg-white p-8 text-center`}
+            listClassName="mt-10 grid gap-6 md:grid-cols-2"
+            cardClassName="flex items-start gap-4 rounded-2xl p-5 text-right"
+            numberClassName="flex h-10 w-10 items-center justify-center rounded-full border border-metabase-primary bg-metabase-primary-lighter/30 text-lg font-bold text-metabase-primary"
+            textClassName="flex-1 text-base leading-relaxed text-gray-700"
+            titleTag="h3"
+          />
         </main>
         <Footer />
       </div>
