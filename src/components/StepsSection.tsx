@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 interface StepItem {
   number?: string;
-  content: string;
+  content: ReactNode;
 }
 
 type HeadingLevel = "h2" | "h3";
@@ -48,7 +50,7 @@ export default function StepsSection({
         </TitleTag>
         <div className={listClassName}>
           {steps.map((step, index) => (
-            <div key={`${step.content}-${index}`} className={cardClassName}>
+            <div key={`step-${index}`} className={cardClassName}>
               <div className={numberClassName}>
                 {step.number ?? `${index + 1}`}
               </div>
