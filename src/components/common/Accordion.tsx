@@ -60,7 +60,7 @@ const Accordion: React.FC<AccordionProps> = ({
             <button
               id={buttonId}
               type="button"
-              className={`flex w-full justify-between gap-5 text-right text-[#22242B] font-bold cursor-pointer focus:outline-none transition-colors duration-200 ${paddingClasses} ${lastPadding}`}
+              className={`flex w-full justify-between gap-5 text-right text-metabase-text-primary font-bold cursor-pointer focus:outline-none transition-colors duration-200 ${paddingClasses} ${lastPadding}`}
               aria-controls={answerId}
               aria-expanded={isOpen}
               onClick={() => handleToggle(index)}

@@ -125,3 +125,227 @@ html[dir="rtl"] .animate-marquee-faster {
   width: 85% !important;
   max-width: 1000px !important;
 }
+
+/* Docs Sidebar Styles - Matching original HTML structure */
+.learn-left-sidebar {
+  border-right: 1px solid #f1f2f4;
+  box-shadow: 4px 2px 4px 0 rgba(16, 24, 40, 0.05);
+  height: 100vh;
+  max-height: calc(100vh - 84px);
+  overflow-y: auto;
+  padding-right: 10px;
+  padding-top: 10px;
+  position: sticky;
+  top: 87px;
+  width: 100%;
+}
+
+html[dir="rtl"] .learn-left-sidebar {
+  border-left: 1px solid #f1f2f4;
+  border-right: none;
+  box-shadow: -4px 2px 4px 0 rgba(16, 24, 40, 0.05);
+  padding-left: 10px;
+  padding-right: 0;
+}
+
+.learn-left-sidebar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.learn-left-sidebar ul li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 4px;
+}
+
+.learn-left-sidebar ul li::before {
+  content: none;
+}
+
+.learn-left-sidebar ul a {
+  border-radius: 8px;
+  color: #5a6072;
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 4px 38px 5px 8px;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%;
+}
+
+html[dir="rtl"] .learn-left-sidebar ul a {
+  padding: 4px 8px 5px 38px;
+}
+
+.learn-left-sidebar ul a:hover {
+  background-color: #eef6fc;
+  color: #509ee3;
+}
+
+.learn-left-sidebar ul a.selected {
+  background-color: #eef6fc;
+  color: #509ee3;
+  font-weight: 700;
+}
+
+.learn-left-sidebar ul a > div {
+  align-items: center;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  pointer-events: none;
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+}
+
+html[dir="rtl"] .learn-left-sidebar ul a > div {
+  right: auto;
+  left: 2px;
+}
+
+.learn-left-sidebar ul a > div svg {
+  display: block;
+  height: 12px;
+  transform: rotate(-90deg);
+  transition: transform 0.3s ease-in-out;
+  width: 20px;
+}
+
+html[dir="rtl"] .learn-left-sidebar ul a > div svg {
+  transform: rotate(90deg);
+}
+
+.learn-left-sidebar ul li.expanded > a > div svg {
+  transform: rotate(0);
+}
+
+html[dir="rtl"] .learn-left-sidebar ul li.expanded > a > div svg {
+  transform: rotate(0);
+}
+
+.learn-left-sidebar ul a > div svg path {
+  stroke: #c6c9d2;
+  transition: stroke 0.3s ease-in-out;
+}
+
+.learn-left-sidebar ul a.selected svg path,
+.learn-left-sidebar ul a:hover > div > svg > path {
+  stroke: #509ee3;
+}
+
+.learn-left-sidebar ul li ul {
+  display: none;
+}
+
+.learn-left-sidebar ul li.expanded > ul {
+  display: block;
+}
+
+.learn-left-sidebar ul li ul li {
+  border-left: 1px solid #e4ecfb;
+  padding-left: 10px;
+}
+
+html[dir="rtl"] .learn-left-sidebar ul li ul li {
+  border-left: none;
+  border-right: 1px solid #e4ecfb;
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+.learn-left-sidebar ul li ul li ul li {
+  margin-left: 10px;
+}
+
+html[dir="rtl"] .learn-left-sidebar ul li ul li ul li {
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+.learn-left-sidebar h5 {
+  color: #8d93a5;
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  margin-bottom: 4px;
+  padding: 4px 8px 5px;
+  position: relative;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+/* Hoverable Toggler Styles */
+.hoverable-toggler {
+  border: 1px solid #e4ecfb;
+  border-radius: 8px;
+  display: flex;
+  gap: 4px;
+  margin: 0 0 32px;
+  padding: 4px;
+  position: relative;
+}
+
+.hoverable-toggler a {
+  align-items: center;
+  border-radius: 4px;
+  color: #c6c9d2 !important;
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  gap: 8px;
+  padding: 4px 8px;
+  transition: background-color 0.3s ease, color 0.3s ease !important;
+  width: 50%;
+  z-index: 1;
+}
+
+.hoverable-toggler a:hover {
+  color: #8d93a5 !important;
+}
+
+.hoverable-toggler a.active {
+  background-color: #eef6fc;
+  color: #509ee3 !important;
+}
+
+.hoverable-toggler a span {
+  position: relative;
+  top: -2px;
+}
+
+.hoverable-toggler a svg path {
+  stroke: #c6c9d2;
+  transition: stroke 0.3s ease;
+}
+
+.hoverable-toggler a.active svg path {
+  stroke: #509ee3;
+}
+
+.hoverable-toggler .hover-highlight {
+  border-radius: 4px;
+  height: calc(100% - 8px);
+  left: 4px;
+  position: absolute;
+  width: calc(50% - 8px);
+  z-index: 0;
+}
+
+html[dir="rtl"] .hoverable-toggler .hover-highlight {
+  left: auto;
+  right: 4px;
+}
+
+@media screen and (max-width: 992px) {
+  .learn-left-sidebar {
+    display: none;
+  }
+}

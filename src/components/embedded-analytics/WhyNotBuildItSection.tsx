@@ -10,12 +10,12 @@ const WhyNotBuildItSection: React.FC = () => {
         </h2>
 
         {/* First Card - Cons (DIY and Other Solutions) */}
-        <div className="w-full max-w-[800px] bg-[#fafbfe] border border-[#e4ecfb] rounded-xl p-6 mb-8 shadow-[0_1px_3px_0_rgba(16,24,40,0.1),0_1px_2px_0_rgba(16,24,40,0.06)]">
-          <h5 className="text-[#5a6072] text-base font-bold leading-6 mb-4">
+        <div className="w-full max-w-[800px] bg-metabase-bg-neutral-98 border border-[#e4ecfb] rounded-xl p-6 mb-8 shadow-[0_1px_3px_0_rgba(16,24,40,0.1),0_1px_2px_0_rgba(16,24,40,0.06)]">
+          <h5 className="text-metabase-text-secondary text-base font-bold leading-6 mb-4">
             DIY و کتابخانه‌های نمودار:
           </h5>
           <ul className="text-right space-y-5 mb-6">
-            <li className="text-[#5a6072] text-base leading-6 pl-6 relative list-none">
+            <li className="text-metabase-text-secondary text-base leading-6 pl-6 relative list-none">
               <span
                 className="absolute w-8 h-8 rounded-full bg-[#e4ecfb] -left-2 top-[-4px] flex items-center justify-center"
                 style={{
@@ -32,7 +32,7 @@ const WhyNotBuildItSection: React.FC = () => {
               . به مجوزها، انواع تجسم جدید، فیلترهای دلخواه، مرتب‌سازی، دکمه‌های
               صادرات فکر کنید (پس، آیا هنوز بیدار هستید؟)
             </li>
-            <li className="text-[#5a6072] text-base leading-6 pl-6 relative list-none">
+            <li className="text-metabase-text-secondary text-base leading-6 pl-6 relative list-none">
               <span
                 className="absolute w-8 h-8 rounded-full bg-[#e4ecfb] -left-2 top-[-4px] flex items-center justify-center"
                 style={{
@@ -47,7 +47,7 @@ const WhyNotBuildItSection: React.FC = () => {
               </strong>{" "}
               برای نگهداری، رفع اشکال، امنیت و مقیاس‌پذیری.
             </li>
-            <li className="text-[#5a6072] text-base leading-6 pl-6 relative list-none mb-5">
+            <li className="text-metabase-text-secondary text-base leading-6 pl-6 relative list-none mb-5">
               <span
                 className="absolute w-8 h-8 rounded-full bg-[#e4ecfb] -left-2 top-[-4px] flex items-center justify-center"
                 style={{
@@ -66,11 +66,11 @@ const WhyNotBuildItSection: React.FC = () => {
 
           <hr className="bg-[#e4ecfb] opacity-100 w-full my-0 mb-[30px] border-0 h-px" />
 
-          <h5 className="text-[#5a6072] text-base font-bold leading-6 mb-4">
+          <h5 className="text-metabase-text-secondary text-base font-bold leading-6 mb-4">
             سایر راه‌حل‌های تجزیه و تحلیل تعبیه شده:
           </h5>
           <ul className="text-right space-y-5">
-            <li className="text-[#5a6072] text-base leading-6 pl-6 relative list-none">
+            <li className="text-metabase-text-secondary text-base leading-6 pl-6 relative list-none">
               <span
                 className="absolute w-8 h-8 rounded-full bg-[#e4ecfb] -left-2 top-[-4px] flex items-center justify-center"
                 style={{
@@ -85,7 +85,7 @@ const WhyNotBuildItSection: React.FC = () => {
               </strong>{" "}
               برای کاربران تا بتوانند به تنهایی گزارش اجرا کنند.
             </li>
-            <li className="text-[#5a6072] text-base leading-6 pl-6 relative list-none mb-5">
+            <li className="text-metabase-text-secondary text-base leading-6 pl-6 relative list-none mb-5">
               <span
                 className="absolute w-8 h-8 rounded-full bg-[#e4ecfb] -left-2 top-[-4px] flex items-center justify-center"
                 style={{
@@ -104,11 +104,11 @@ const WhyNotBuildItSection: React.FC = () => {
 
         {/* Second Card - Pros (Metabase) */}
         <div className="w-full max-w-[800px] bg-white border border-[#e4ecfb] rounded-xl p-6 shadow-[0_20px_24px_-4px_rgba(16,24,40,0.08),0_8px_8px_-4px_rgba(16,24,40,0.03)]">
-          <h5 className="text-[#5a6072] text-base font-bold leading-6 mb-4">
+          <h5 className="text-metabase-text-secondary text-base font-bold leading-6 mb-4">
             Metabase:
           </h5>
           <ul className="text-right space-y-5">
-            <li className="text-[#5a6072] text-base leading-6 pl-6 relative list-none">
+            <li className="text-metabase-text-secondary text-base leading-6 pl-6 relative list-none">
               <span
                 className="absolute w-8 h-8 rounded-full bg-[#f7f9f1] -left-2 top-[-4px] flex items-center justify-center"
                 style={{
@@ -124,7 +124,7 @@ const WhyNotBuildItSection: React.FC = () => {
               </strong>{" "}
               — در چند ساعت شروع کنید
             </li>
-            <li className="text-[#5a6072] text-base leading-6 pl-6 relative list-none">
+            <li className="text-metabase-text-secondary text-base leading-6 pl-6 relative list-none">
               <span
                 className="absolute w-8 h-8 rounded-full bg-[#f7f9f1] -left-2 top-[-4px] flex items-center justify-center"
                 style={{
@@ -140,7 +140,7 @@ const WhyNotBuildItSection: React.FC = () => {
               </strong>{" "}
               — با قیمت‌گذاری شفاف، بدون وابستگی به فروشنده
             </li>
-            <li className="text-[#5a6072] text-base leading-6 pl-6 relative list-none">
+            <li className="text-metabase-text-secondary text-base leading-6 pl-6 relative list-none">
               <span
                 className="absolute w-8 h-8 rounded-full bg-[#f7f9f1] -left-2 top-[-4px] flex items-center justify-center"
                 style={{
@@ -156,7 +156,7 @@ const WhyNotBuildItSection: React.FC = () => {
               </strong>{" "}
               — مجوزهای دقیق و چند مستأجره
             </li>
-            <li className="text-[#5a6072] text-base leading-6 pl-6 relative list-none mb-5">
+            <li className="text-metabase-text-secondary text-base leading-6 pl-6 relative list-none mb-5">
               <span
                 className="absolute w-8 h-8 rounded-full bg-[#f7f9f1] -left-2 top-[-4px] flex items-center justify-center"
                 style={{
