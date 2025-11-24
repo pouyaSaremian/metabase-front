@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import FeaturesSection from "@/components/FeaturesSection";
-import BenefitsSection from "@/components/BenefitsSection";
+import BusinessIntelligenceSection from "@/components/BusinessIntelligenceSection";
+import EmbeddingCtaSection from "@/components/EmbeddingCtaSection";
 import GetStartedSection from "@/components/GetStartedSection";
 import ReadyToGetStartedSection from "@/components/ReadyToGetStartedSection";
 import FAQSection from "@/components/FAQSection";
@@ -15,6 +16,8 @@ export default function Home() {
         <Hero />
         <GetStartedSection />
         <FeaturesSection />
+        <BusinessIntelligenceSection />
+        <EmbeddingCtaSection />
         <FAQSection />
         <ReadyToGetStartedSection />
       </main>

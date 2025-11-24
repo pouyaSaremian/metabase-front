@@ -2,6 +2,7 @@ import React from "react";
 import VideoPlayer from "./VideoPlayer";
 import CTAButtons from "./CTAButtons";
 import ArrowSection from "./ArrowSection";
+import Image from "next/image";
 
 interface HeroProps {
   className?: string;
@@ -17,16 +18,10 @@ const Hero: React.FC<HeroProps> = ({ className = "" }) => {
       {/* Main Hero Section */}
       <div className="container mx-auto px-4 pt-4 lg:pt-13">
         <div className="flex flex-col items-center text-center">
-          {/* Main Title with SEO */}
-          <h1
-            className="text-3xl lg:text-4xl xl:text-5xl font-black text-shadow-metabase-gray mb-6 leading-tight"
-            itemProp="name"
-          ></h1>
-
           {/* Subtitle */}
-          <h2 className="text-base lg:text-xl xl:text-2xl font-bold text-metabase-text-light mb-2 leading-relaxed">
+          <h1 className="text-base lg:text-xl xl:text-2xl font-bold text-metabase-text-light mb-2 leading-relaxed">
             <span className="flex items-center justify-center gap-3 text-gray-600 text-6xl py-4 font-medium">
-              <img
+              <Image
                 src="/images/metabase-icon.svg"
                 alt="Metabase Icon"
                 width={70}
@@ -38,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ className = "" }) => {
             همگانی سازی{" "}
             <span className="text-metabase-primary-dark">هوش تجاری</span> در
             سازمان شما
-          </h2>
+          </h1>
 
           {/* Description Badge with Enhanced Design */}
           <div className="inline-flex items-center justify-center px-4 py-2 mb-12 rounded-xl  bg-metabase-primary-lighter/30">
@@ -61,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ className = "" }) => {
                   itemProp="description"
                 >
                   <strong className="text-metabase-primary-dark font-bold">
-                    متابیس (Metabase)
+                    متابیس
                   </strong>{" "}
                   یک{" "}
                   <strong className="text-metabase-text-light font-bold">
@@ -102,7 +97,7 @@ const Hero: React.FC<HeroProps> = ({ className = "" }) => {
               itemScope
               itemType="https://schema.org/Organization"
             >
-              <span itemProp="name">Metabase</span>
+              <span itemProp="name">متابیس</span>
               <span itemProp="description">
                 پلتفرم هوش تجاری متن‌باز با پشتیبانی کامل از زبان فارسی
               </span>
@@ -140,12 +135,13 @@ const Hero: React.FC<HeroProps> = ({ className = "" }) => {
             maxWidth: "1000px",
           }}
         >
-          <img
+          <Image
             id="stats-dashboard-background-img"
             src="/images/illustration-2.svg"
-            alt="Bridge"
+            alt="متابیس فارسی"
             className="w-full -mt-[50px] h-auto"
-            style={{ width: "100%" }}
+            width={1000}
+            height={1000}
           />
           <div
             id="stats-dashboard-background-img-gradient"

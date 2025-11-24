@@ -1,8 +1,6 @@
-"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Star } from "lucide-react";
 
 interface GetStartedSectionProps {
   className?: string;
@@ -11,7 +9,6 @@ interface GetStartedSectionProps {
 const GetStartedSection: React.FC<GetStartedSectionProps> = ({
   className = "",
 }) => {
-  const githubStars = "50k+";
 
   // Data sources for marquee - matching the original structure
   const dataSourcesRow1 = [
@@ -50,7 +47,7 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
       className={`bg-metabase-bg-light py-12 lg:py-16 select-none w-full ${className}`}
       aria-labelledby="get-started-section-title"
     >
-      <div className="w-full">
+      <div className="w-full max-w-6xl mx-auto">
         <div className="text-center mb-12 px-4">
           <h2
             id="get-started-section-title"
@@ -64,8 +61,8 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
               {/* Card 1: Deployment Options */}
-              <article className="bg-metabase-blue-95 rounded-lg overflow-hidden flex flex-col">
-                <header className="p-2 text-center">
+              <article className="bg-metabase-blue-95 rounded-lg overflow-hidden flex flex-col h-96">
+                <header className="p-2 text-center h-1/2">
                   <div
                     className="flex justify-center items-center min-h-[176px] bg-center bg-no-repeat"
                     style={{
@@ -123,7 +120,7 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
               </article>
 
               {/* Card 2: Data Sources Marquee */}
-              <article className="bg-metabase-blue-95 rounded-lg overflow-hidden flex flex-col">
+              <article className="bg-metabase-blue-95 rounded-lg overflow-hidden flex flex-col h-96">
                 <header className="py-6 text-center relative overflow-hidden datasources-gradient">
                   {/* Gradient Overlays */}
                   <div className="absolute inset-0 pointer-events-none z-10">
@@ -245,7 +242,7 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
               </article>
 
               {/* Card 3: GitHub Open Source */}
-              <article className="bg-metabase-blue-95 rounded-lg overflow-hidden flex flex-col">
+              <article className="bg-metabase-blue-95 rounded-lg overflow-hidden flex flex-col h-96">
                 <header className="p-2 text-center">
                   <div
                     className="flex justify-center items-center min-h-[176px] bg-center bg-no-repeat relative"
@@ -254,21 +251,17 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
                       backgroundPosition: "center bottom",
                     }}
                   >
-                    <Link
-                      href="https://github.com/metabase/metabase"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="absolute top-[36%] inline-flex items-center gap-2 bg-metabase-blue-60 text-white rounded-3xl px-5 py-3 hover:scale-110 transition-all duration-200"
-                    >
-                      <Github className="w-4 h-4" />
-                      <span className="text-sm font-bold text-metabase-blue-75">
-                        |
+                    <div className="absolute top-[36%] inline-flex items-center gap-2 bg-white shadow-md text-metabase-primary border border-dashed border-metabase-primary rounded-2xl px-2 py-1 hover:scale-110 transition-all duration-200">
+                      <Image
+                        src={"./iran-map.svg"}
+                        alt="Iran"
+                        width={40}
+                        height={40}
+                      />
+                      <span className="text-base font-bold">
+                       زبان فارسی
                       </span>
-                      <span className="text-sm font-bold github-stars">
-                        {githubStars || "50k+"}
-                      </span>
-                      <Star className="w-3 h-3 fill-white" />
-                    </Link>
+                    </div>
                   </div>
                 </header>
                 <div className="p-6">
