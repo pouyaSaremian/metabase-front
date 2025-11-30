@@ -256,64 +256,6 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-white relative z-6 overflow-x-hidden">
       <div className="mx-auto max-w-[1280px] w-full pt-20 px-4 sm:px-6 lg:px-8">
-        {/* Newsletter Form */}
-        <form
-          action="//metabase.us10.list-manage.com/subscribe/post?u=869fec0e4689e8fd1db91e795&id=b9664113a8"
-          method="post"
-          name="mc-embedded-subscribe-form"
-          target="_blank"
-          className="border-b border-[#f1f2f4] flex flex-col lg:flex-row lg:justify-between mb-[34px] pb-9"
-          id="mc-embedded-subscribe-form"
-        >
-          <div>
-            <h5 className="text-metabase-text-secondary text-lg font-bold leading-[26px] text-right mb-2">
-              {translations.newsletter.title}
-            </h5>
-            <p className="text-metabase-text-secondary font-normal text-right">
-              {translations.newsletter.description}
-            </p>
-          </div>
-          <div className="mt-2 lg:mt-0">
-            <div className="flex gap-3 h-[50px]">
-              <input
-                type="email"
-                name="EMAIL"
-                id="mce-EMAIL"
-                placeholder={translations.newsletter.emailPlaceholder}
-                className="grow min-w-0 px-4 py-[0.834em] text-metabase-text-light border border-metabase-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-metabase-primary focus:border-metabase-primary placeholder:text-metabase-text-light w-full lg:w-[360px]"
-                required
-              />
-              <button
-                type="submit"
-                name="subscribe"
-                id="mc-embedded-subscribe"
-                className="bg-metabase-primary-light hover:bg-metabase-primary-darker text-white px-4 py-[0.834em] rounded-lg font-bold text-sm transition-colors duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:border-metabase-primary-darker"
-              >
-                {translations.newsletter.submit}
-              </button>
-            </div>
-            <div className="clear mt-2" id="mce-responses">
-              <div
-                className="response text-metabase-text-secondary text-sm mt-2 text-right hidden"
-                id="mce-error-response"
-              ></div>
-              <div
-                className="response text-metabase-text-secondary text-sm mt-2 text-right hidden"
-                id="mce-success-response"
-              ></div>
-            </div>
-          </div>
-          {/* Bot protection field */}
-          <div className="absolute left-[-5000px]">
-            <input
-              type="text"
-              name="b_869fec0e4689e8fd1db91e795_b9664113a8"
-              tabIndex={-1}
-              defaultValue=""
-            />
-          </div>
-        </form>
-
         {/* Footer Links */}
         <div className="flex flex-wrap gap-[10px] max-md:gap-0 w-full">
           {footerColumns.map((column, columnIndex) => {

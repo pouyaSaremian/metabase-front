@@ -36,23 +36,14 @@ const tabsContent: TabContent[] = [
     id: "query-without-code",
     mobileTitle: "داده‌کاوی بدون نوشتن حتی یک خط کد",
     buttonLabel: "تحلیل بدون کدنویسی",
-    highlight: "پرس‌وجو به زبان طبیعی با متابوت",
+    highlight: "داده کاوی بدون نوشتن حتی یک خط کد",
     description: (
       <>
-        هر کسی در سازمان می‌تواند داده‌ها را جست‌وجو کند، نتایج را مصورسازی
-        کند و به پاسخ برسد. با{" "}
-        <a
-          className={inlineLinkClass}
-          href="https://www.metabase.com/features/metabot-ai"
-          target="_blank"
-          rel="noreferrer"
-        >
-          متابوت AI
-        </a>{" "}
-        پرسش را به زبان طبیعی مطرح کنید، روی نمودارها کلیک کنید تا دلیل تغییر
-        را بیابید یا با{" "}
+        هر کسی در سازمان می‌تواند داده‌ها را جست‌وجو کند، نتایج را مصورسازی کند
+        و به پاسخ برسد. با <b>استفاده از داشبورد های تعاملی</b> پرسش را به زبان
+        طبیعی مطرح کنید، روی نمودارها کلیک کنید تا دلیل تغییر را بیابید یا با{" "}
         <Link className={inlineLinkClass} href="/features/query-builder">
-          سازنده پرس‌وجوی بصری
+          قابلیت drag and drop
         </Link>{" "}
         یک کوئری بدون کدنویسی بسازید.
       </>
@@ -62,7 +53,7 @@ const tabsContent: TabContent[] = [
         همه اعضای تیم می‌توانند داده‌ها را مرور کنند، نتایج را به تصویر بکشند و
         سؤال‌های خود را پاسخ دهند.{" "}
         <Link className={inlineLinkClass} href="/features/query-builder">
-          سازنده پرس‌وجوی بصری
+          با قابلیت drag and drop{" "}
         </Link>{" "}
         متابیس همه چیز را بدون نیاز به دانش SQL فراهم می‌کند.
       </>
@@ -77,8 +68,8 @@ const tabsContent: TabContent[] = [
   },
   {
     id: "custom-insights",
-    mobileTitle: "از گزارش‌های عمومی تا بینش‌های اختصاصی",
-    buttonLabel: "بینش‌های سفارشی برای هر تیم",
+    mobileTitle: "از گزارش‌های عمومی تا تحلیل های اختصاصی",
+    buttonLabel: "به داشبورد های تعاملی سفارشی برای هر تیم",
     highlight: "گزارش‌های اشتراکی و داشبوردهای تعاملی",
     description: (
       <>
@@ -154,7 +145,11 @@ const BusinessIntelligenceSection: React.FC = () => {
 
   useEffect(() => {
     const node = sectionRef.current;
-    if (!node || typeof window === "undefined" || typeof IntersectionObserver === "undefined") {
+    if (
+      !node ||
+      typeof window === "undefined" ||
+      typeof IntersectionObserver === "undefined"
+    ) {
       setIsInView(true);
       return;
     }
@@ -201,11 +196,9 @@ const BusinessIntelligenceSection: React.FC = () => {
     }
 
     video.currentTime = 0;
-    video
-      .play()
-      .catch(() => {
-        /* autoplay can fail silently */
-      });
+    video.play().catch(() => {
+      /* autoplay can fail silently */
+    });
   }, [activeIndex, isInView, prefersReducedMotion]);
 
   useEffect(
@@ -252,25 +245,22 @@ const BusinessIntelligenceSection: React.FC = () => {
             id={headingId}
             className="mt-4 text-2xl leading-snug font-black text-metabase-text-dark md:text-4xl"
           >
-            هوش تجاری‌ای که کل تیم واقعاً از آن استفاده می‌کند
+            هوش تجاری که کل تیم واقعاً از آن استفاده می‌کند
           </h2>
           <p
             id={descriptionId}
             className="mx-auto mt-4 max-w-3xl text-sm md:text-base text-metabase-text-light leading-7"
           >
-            اگر عبارت «تحلیل سلف‌سرویس» شما را به یاد داشبوردهای بلااستفاده و
-            کوئری‌های شکسته می‌اندازد، این بخش برای شماست. متابیس تجربه‌ای
-            متفاوت و واقعاً قابل استفاده ارائه می‌دهد.
+            اگر عبارت <b>تحلیل‌ داده بدون وابستگی به تیم فنی</b> شما را یاد
+            کوئری‌های خراب می‌اندازد، این بخش برای شماست. متابیس تجربه‌ای متفاوت
+            و واقعاً قابل استفاده ارائه می‌دهد.
           </p>
         </div>
 
         {/* موبایل */}
         <div className="mt-12 space-y-10 md:hidden">
           {tabsContent.map((tab) => (
-            <article
-              key={tab.id}
-              className="space-y-4"
-            >
+            <article key={tab.id} className="space-y-4">
               <p className="text-sm font-bold text-metabase-text-dark">
                 {tab.mobileTitle}
               </p>
@@ -381,4 +371,3 @@ const BusinessIntelligenceSection: React.FC = () => {
 };
 
 export default BusinessIntelligenceSection;
-

@@ -9,7 +9,7 @@ import type { ReactNode } from "react";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.metabase.com";
 
 export const metadata: Metadata = {
-  title: "داشبوردهای تحلیلی Metabase | ساخت بینش تعاملی",
+  title: "داشبوردهای تحلیلی Metabase | ساخت داشبورد تعاملی",
   description:
     "داشبوردهای تعاملی متابیس به تیم شما اجازه می‌دهد نمودارها، فیلترها و اقدامات را کنار هم بچیند، روی داده‌ها زوم کند و نتایج را به اشتراک بگذارد.",
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "X-ray",
   ],
   openGraph: {
-    title: "داشبوردهای تحلیلی Metabase | ساخت بینش تعاملی",
+    title: "داشبوردهای تحلیلی Metabase | ساخت داشبورد تعاملی",
     description:
       "با متابیس داشبوردهایی بسازید که همه دوست دارند: فیلتر، Drill-through، اشتراک‌گذاری و اقدامات برای تیم‌های داده‌محور.",
     type: "website",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "داشبوردهای تحلیلی Metabase | ساخت بینش تعاملی",
+    title: "داشبوردهای تحلیلی Metabase | ساخت داشبورد تعاملی",
     description:
       "متابیس ساخت، اشتراک و کشف داده را برای تمام تیم‌ها ساده می‌کند. با فیلترهای قدرتمند، اقدامات و سرعت بالا آشنا شوید.",
     images: [`${baseUrl}/images/features/dashboard-overview.gif`],
@@ -315,12 +315,12 @@ export default function AnalyticsDashboardsPage() {
                   </span>
                 </div>
                 <h1 className="text-2xl font-black leading-snug text-gray-900 sm:text-3xl lg:text-4xl">
-                  داشبوردهای تحلیلی که واقعاً دوست دارید استفاده کنید
+                  داشبوردهای تحلیلی که مشتاق استفاده از آنها خواهید بود
                 </h1>
                 <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
-                  نمودارها و پرسش‌ها را روی داشبوردهای زنده بچینید، با ابزارهای
-                  تعاملی به عمق داده فرو بروید و همهٔ تیم‌ها را با یک نگاه به
-                  پاسخ برسانید.
+                  نمودارها و پرسش‌ها را در داشبوردهای زنده با ابزارهای تعاملی
+                  ترکیب کنید تا همه ی افراد به داده های مورد نیاز خود دسترسی
+                  پیدا کنند.
                 </p>
                 <div className="flex flex-wrap justify-start gap-4">
                   {heroButtons.map((button) => (
@@ -357,11 +357,11 @@ export default function AnalyticsDashboardsPage() {
           <section className="py-16 bg-metabase-bg-neutral-98">
             <div className={`${containerClass} text-center`}>
               <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
-                فیلتر، X-ray، اشتراک‌گذاری و امکانات بیشتر
+                فیلتر، کالبدشکافی داده، اشتراک‌گذاری و سایر امکانات{" "}
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600 sm:text-lg">
-                تنها با چند کلیک، دادهٔ خام را به داستانی قابل فهم تبدیل کنید و
-                اجازه دهید همهٔ اعضای تیم، پاسخ موردنیازشان را شخصاً کشف کنند.
+                امکان کشف و تحلیل عمیق‌تر داده‌ها را به شکلی آسان و کاربرپسند
+                تنها با چند کلیک فراهم نمایید.
               </p>
             </div>
             <div

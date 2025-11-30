@@ -6,19 +6,19 @@ import { ChevronLeft } from "lucide-react";
 
 const bulletPoints = [
   {
-    title: "بار مهندسی به‌مراتب کمتر از ساخت گزارش‌گیری داخلی",
+    title: "هزینه‌های مهندسی بسیار پایین‌تر از ساخت سیستم گزارش‌ دهی داخلی ",
     description:
-      "دسترسی‌ها، ویرایش داشبوردها و اصلاح گزارش‌ها را به تیم داده یا همکاران غیر فنی بسپارید تا بدون درگیر کردن تیم توسعه پیش بروند.",
+      "توانمندسازی تیم‌ های تحلیل داده ( و همچنین دیگر تیم های غیر فنی) برای مدیریت سطوح دسترسی، به‌روزرسانی داشبوردها و اصلاح گزارش‌ها بدون نیاز به مداخله تیم توسعه نرم افزار",
   },
   {
-    title: "مقیاس‌پذیر هم‌زمان با رشد محصول شما",
+    title: "مقیاس‌پذیر با نیازهای شما",
     description:
-      "از نمودارهای ساده شروع کنید، داشبوردهای تعاملی را تعبیه کنید یا در صورت نیاز به سراغ SDK بروید تا هر سطحی از سفارشی‌سازی را پوشش دهید.",
+      "از نمودارهای ابتدایی شروع کنید، در مرحله بعد داشبوردهای کامل را مستقر سازید، و با بالغ‌تر شدن نیازهای سازمان از SDK متابیس برای راه‌کارهای حرفه‌ای بهره‌برداری کنید.",
   },
   {
-    title: "سازگار با هویت بصری و تجربه کاربری محصول",
+    title: "شخصی‌سازی متابیس برای همخوانی با محصول شما",
     description:
-      "با برندسازی کامل، استایل پویا و کنترل‌های تعاملی (از مشاهده صرف تا اکتشاف داده) تجربه‌ای همسو با محصول ارائه دهید.",
+      " سفارشی سازی نرم افزار، طراحی پویا و کنترل‌های تعاملی از حالت نمایش ساده تا کاوش کامل در داده‌ها مطابق با نیاز های سازمان شما",
   },
 ];
 
@@ -97,12 +97,20 @@ const EmbeddingCtaSection: React.FC = () => {
           <article className="w-full  bg-metabase-bg-neutral-99 p-8 lg:w-1/2">
             <GridIcon />
             <h2 className="mt-5 text-2xl font-black leading-snug text-metabase-text-dark">
-              آنالیتیکس در سطح تولید را بدون دردسر وارد محصول خود کنید
+              قابلیت‌های تحلیل‌ در مقیاس سازمانی را بدون هیچ پیچیدگی به اپلیکیشن
+              خود اضافه کنید
             </h2>
             <p className="mt-4 text-sm leading-7 text-metabase-text-light">
-              داشبوردها، مصورسازی‌ها یا حتی تجربه کامل تحلیل سلف‌سرویس را در SaaS
-              خود تعبیه کنید. بین iframe برای پیاده‌سازی سریع یا React SDK برای
-              کنترل کامل انتخاب کنید.
+              داشبوردها، مصورسازی‌ها و امکان تحلیل داده بدون وابستگی به تیم فنی
+              را در اپلیکیشن SaaS خود جایگذاری کنید. برای سرعت از iframe و برای
+              شخصی‌سازی و کنترل بیشتر از{" "}
+              <Link
+                href="/product/embedded-analytics"
+                className="text-metabase-primary font-semibold hover:text-metabase-primary-darker transition-colors underline-offset-2 hover:underline"
+              >
+                React SDK
+              </Link>{" "}
+              استفاده نمایید.
             </p>
             <ul className="mt-6 list-disc space-y-4 pr-5 text-sm leading-7 text-metabase-text-dark">
               {bulletPoints.map((point) => (
@@ -110,7 +118,7 @@ const EmbeddingCtaSection: React.FC = () => {
                   <span className="font-semibold text-metabase-text-dark">
                     {point.title}
                   </span>{" "}
-                  <span className="text-metabase-text-light">
+                  <span className="text-metabase-text-light block">
                     {point.description}
                   </span>
                 </li>
@@ -118,7 +126,7 @@ const EmbeddingCtaSection: React.FC = () => {
             </ul>
             <Link
               href="/product/embedded-analytics"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-metabase-primary-dark underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-metabase-primary-dark/30 rounded-sm"
+              className="mt-6 flex items-center gap-2 text-sm font-bold justify-end text-metabase-primary-dark underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 mr-auto focus-visible:ring-metabase-primary-dark/30 rounded-sm"
             >
               درباره تعبیه متابیس در محصول بیشتر بدانید
               <ChevronLeft
@@ -158,4 +166,3 @@ const EmbeddingCtaSection: React.FC = () => {
 };
 
 export default EmbeddingCtaSection;
-

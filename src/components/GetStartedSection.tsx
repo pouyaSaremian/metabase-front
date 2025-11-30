@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,7 +8,6 @@ interface GetStartedSectionProps {
 const GetStartedSection: React.FC<GetStartedSectionProps> = ({
   className = "",
 }) => {
-
   // Data sources for marquee - matching the original structure
   const dataSourcesRow1 = [
     { name: "Amazon Athena", image: "/aws-athena.png" },
@@ -53,7 +51,7 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
             id="get-started-section-title"
             className="text-2xl lg:text-3xl xl:text-4xl font-bold text-metabase-primary-dark mb-4 select-none"
           >
-            در کمترین زمان شروع کنید
+            شروع سریع با <strong>نرم افزار هوش تجاری</strong> متابیس
           </h2>
         </div>
 
@@ -61,7 +59,7 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
               {/* Card 1: Deployment Options */}
-              <article className="bg-metabase-blue-95 rounded-lg overflow-hidden flex flex-col h-96">
+              <article className="bg-metabase-blue-95 rounded-lg overflow-hidden flex flex-col">
                 <header className="p-2 text-center h-1/2">
                   <div
                     className="flex justify-center items-center min-h-[176px] bg-center bg-no-repeat"
@@ -110,17 +108,19 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
                 </header>
                 <div className="p-6">
                   <p className="text-base text-metabase-text-secondary leading-relaxed mb-0 select-none text-justify">
-                    متابیس در سه فرمت مختلف قابل اجراست: فایل JAR برای سرورهای
-                    داخلی، تصویر Docker برای محیط‌های کانتینری و نسخه ابری برای
-                    استقرار در کلاد. این انعطاف‌پذیری به شما امکان می‌دهد پلتفرم
-                    را متناسب با زیرساخت و نیازهای سازمان خود انتخاب و deploy
-                    کنید.
+                    <strong>پلتفرم تحلیل داده</strong> متابیس در سه فرمت مختلف
+                    قابل اجراست: <strong>فایل JAR</strong> برای سرورهای داخلی،{" "}
+                    <strong>تصویر Docker</strong> برای محیط‌های کانتینری و{" "}
+                    <strong>نسخه ابری</strong> برای استقرار در کلاد. این
+                    انعطاف‌پذیری به شما امکان می‌دهد{" "}
+                    <strong>نرم افزار هوش تجاری</strong> را متناسب با زیرساخت و
+                    نیازهای سازمان خود انتخاب و deploy کنید.
                   </p>
                 </div>
               </article>
 
               {/* Card 2: Data Sources Marquee */}
-              <article className="bg-metabase-blue-95 rounded-lg overflow-hidden flex flex-col h-96">
+              <article className="bg-metabase-blue-95 rounded-lg overflow-hidden flex flex-col">
                 <header className="py-6 text-center relative overflow-hidden datasources-gradient">
                   {/* Gradient Overlays */}
                   <div className="absolute inset-0 pointer-events-none z-10">
@@ -232,17 +232,20 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
                 </header>
                 <div className="p-6">
                   <p className="text-base text-metabase-text-secondary leading-relaxed mb-0 select-none text-justify">
-                    متابیس را به منبع داده‌ی خود متصل کرده و شروع کنید. متابیس
-                    راه حلی برای بصری‌سازی برای پایگاه داده شماست، که برای تطبیق
-                    با دیتابیس استارتاپ تا انبارهای داده عظیم طراحی شده
-                    است.بلافاصله و بدون نیاز به استخراج داده، داده های خود را
-                    تجزیه و تحلیل کنید.
+                    متابیس را به <strong>منبع داده</strong> خود متصل کرده و شروع
+                    کنید. این <strong>پلتفرم تحلیل داده</strong> راه‌حلی برای{" "}
+                    <strong>بصری‌سازی داده</strong> و{" "}
+                    <strong>گزارش‌سازی</strong> است که برای تطبیق با{" "}
+                    <strong>پایگاه داده</strong> استارتاپ تا{" "}
+                    <strong>انبارهای داده</strong> عظیم طراحی شده است. بلافاصله
+                    و بدون نیاز به استخراج داده،{" "}
+                    <strong>داده‌های خود را تجزیه و تحلیل</strong> کنید.
                   </p>
                 </div>
               </article>
 
               {/* Card 3: GitHub Open Source */}
-              <article className="bg-metabase-blue-95 rounded-lg overflow-hidden flex flex-col h-96">
+              <article className="bg-metabase-blue-95 rounded-lg flex flex-col">
                 <header className="p-2 text-center">
                   <div
                     className="flex justify-center items-center min-h-[176px] bg-center bg-no-repeat relative"
@@ -258,32 +261,35 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
                         width={40}
                         height={40}
                       />
-                      <span className="text-base font-bold">
-                       زبان فارسی
-                      </span>
+                      <span className="text-base font-bold">زبان فارسی</span>
                     </div>
                   </div>
                 </header>
                 <div className="p-6">
                   <p className="text-base text-metabase-text-secondary leading-relaxed mb-0 select-none">
-                    همیشه{" "}
+                    متابیس با{" "}
                     <Link
                       href="https://github.com/metabase/metabase"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-metabase-primary font-bold hover:text-metabase-primary-darker transition-colors"
                     >
-                      متن باز
-                    </Link>
-                    ، شفاف و ساخته شده برای مقیاس‌پذیری با شما.{" "}
+                      پشتیبانی کامل از زبان فارسی
+                    </Link>{" "}
+                    و <strong>محیط راست‌به‌چپ (RTL)</strong> طراحی شده است.
+                    تمامی <strong>رابط کاربری فارسی</strong> و مستندات به فارسی
+                    ترجمه شده‌اند تا تجربه‌ای بومی برای{" "}
+                    <strong>کاربران فارسی‌زبان</strong> فراهم شود. این{" "}
                     <Link
                       href="/pricing"
                       className="text-metabase-primary font-bold hover:text-metabase-primary-darker transition-colors"
                     >
-                      قیمت‌گذاری مناسب برای استارتاپ‌ها
-                    </Link>
-                    ، با سطوح Pro و Enterprise برای ویژگی‌های پیشرفته، پشتیبانی
-                    و انطباق (SOC2, GDPR, CCPA, HIPAA و بیشتر).
+                      نرم افزار هوش تجاری فارسی
+                    </Link>{" "}
+                    با <strong>پشتیبانی کامل RTL</strong>، امکان استفاده آسان از
+                    تمامی قابلیت‌های <strong>تحلیل داده</strong> و{" "}
+                    <strong>گزارش‌سازی</strong> را برای تیم‌های فارسی‌زبان فراهم
+                    می‌کند.
                   </p>
                 </div>
               </article>

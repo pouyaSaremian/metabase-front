@@ -68,7 +68,7 @@ const Hero: React.FC<HeroProps> = ({ className = "" }) => {
                   </strong>{" "}
                   ایجاد کرده است. این پلتفرم با ارائه{" "}
                   <strong className="text-metabase-text-light font-bold">
-                    لایه‌ای انتزاعی قدرتمند
+                    داشبورد تحلیلی قدرتمند
                   </strong>{" "}
                   بر روی داده‌ های کلان، امکان{" "}
                   <strong className="text-metabase-primary-dark font-bold">
