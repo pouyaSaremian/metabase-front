@@ -84,7 +84,7 @@ const Accordion: React.FC<AccordionProps> = ({
                 gridTemplateRows: isOpen ? "1fr" : "0fr",
               }}
             >
-              <div className="overflow-hidden text-[1rem] leading-6">
+              <div className="overflow-hidden text-base leading-6 text-justify">
                 {item.answer}
               </div>
             </div>
