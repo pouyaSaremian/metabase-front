@@ -19,12 +19,13 @@ interface StepsSectionProps {
   titleTag?: HeadingLevel;
 }
 
-const defaultSectionClass = "py-16 bg-metabase-bg-neutral-98";
+const defaultSectionClass =
+  "py-16 bg-metabase-bg-neutral-98 max-w-xl bg-red-500";
 const defaultContainerClass =
   "mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 rounded-3xl bg-white p-8 text-center";
 const defaultListClass = "mt-10 grid gap-6 md:grid-cols-2";
 const defaultCardClass =
-  "flex items-start gap-4 rounded-2xl border border-blue-100 bg-metabase-bg-neutral-98 p-5 text-right";
+  "flex items-start gap-4 rounded-2xl border border-blue-100 bg-metabase-bg-neutral-98 p-5 text-right w-full";
 const defaultNumberClass =
   "flex h-10 w-10 items-center justify-center rounded-full bg-metabase-primary text-base font-bold text-white";
 const defaultTextClass = "flex-1 text-base leading-relaxed text-gray-700";

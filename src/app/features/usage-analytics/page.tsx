@@ -113,7 +113,7 @@ const containerClass = "mx-auto max-w-6xl px-4 sm:px-6 lg:px-8";
 
 const heroButtons = [
   {
-    label: "شروع رایگان Metabase",
+    label: "دمو متابیس",
     href: "https://store.metabase.com/checkout",
     variant: "primary" as const,
     ariaLabel: "شروع استفاده رایگان از متابیس",

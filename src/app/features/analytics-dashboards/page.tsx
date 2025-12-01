@@ -1,6 +1,8 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import FAQSection from "@/components/FAQSection";
 import StepsSection from "@/components/StepsSection";
+import type { AccordionItem } from "@/components/common/Accordion";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -74,9 +76,8 @@ const featureCards: FeatureCard[] = [
     icon: "/images/icons/filter.svg",
     content: (
       <p className="text-sm leading-relaxed text-gray-600">
-        ویجت‌های فیلتر را برای محدوده‌های تاریخ، دسته‌بندی‌ها یا موقعیت
-        جغرافیایی اضافه کنید و به تمام کاربران اجازه دهید پاسخ خود را شخصی‌سازی
-        کنند.{" "}
+        از ویجت‌های فیلتر استفاده کنید تا نتایج را بر اساس بازه زمانی،
+        دسته‌بندی، موقعیت جغرافیایی و سایر فیلدها به سرعت به‌روزرسانی نمایید.{" "}
         <Link
           href="https://www.metabase.com/docs/latest/dashboards/filters"
           target="_blank"
@@ -188,7 +189,7 @@ const creationSteps: StepItem[] = [
   {
     number: "۳",
     title:
-      "یک داشبورد موجود را برگزینید یا گزینه «ساخت داشبورد جدید» را بزنید تا بوم خالی ایجاد شود.",
+      "یک داشبورد موجود را انتخاب نمایید یا گزینه «ساخت داشبورد جدید» را بزنید تا بوم خالی ایجاد شود.",
   },
   {
     number: "۴",
@@ -204,10 +205,10 @@ const creationSteps: StepItem[] = [
 
 const heroButtons = [
   {
-    label: "شروع رایگان Metabase",
+    label: "دمو متابیس",
     href: "https://store.metabase.com/checkout",
     variant: "primary" as const,
-    ariaLabel: "شروع رایگان Metabase",
+    ariaLabel: "دمو متابیس",
   },
   {
     label: "گفتگو با تیم ما",
@@ -284,6 +285,88 @@ const dashboardSteps = creationSteps.map((step) => ({
   content: step.title,
 }));
 
+const faqItems: AccordionItem[] = [
+  {
+    question:
+      "داشبوردها چگونه مسیر تصمیم‌گیری مبتنی بر داده را برای تیم‌ها هموار می‌کنند؟",
+    answer: (
+      <p>
+        داشبوردها به تیم‌ها کمک می‌کنند تا تصمیم‌گیری مبتنی بر داده داشته باشند؛
+        چرا که شاخص‌های کلیدی عملکرد (KPI) و متریک‌های حیاتی را در یک مکان واحد
+        گرد هم می‌آورند و به شما امکان می‌دهند روندها و تغییرات را در یک نگاه
+        مشاهده کنید. یک داشبورد اصولی و مناسب، به سرعت نقاط قوت، ضعف و حوزه‌های
+        نیازمند توجه یا واکاوی بیشتر را مشخص می‌کند.
+      </p>
+    ),
+  },
+  {
+    question:
+      "بهترین روش برای اشتراک‌گذاری داشبورد با هم‌تیمی‌های غیر فنی چیست؟",
+    answer: (
+      <p>
+        بهینه‌ترین راه برای اشتراک‌گذاری داشبورد با اعضای تیم غیرمتخصص، ارائه آن
+        در بسترهای کاری روزمره آن‌هاست. می‌توانید اشتراک ایمیلی یا Slack تنظیم
+        کنید، لینک مستقیم ارسال نمایید، داشبورد را به فرمت PDF خروجی بگیرید یا
+        آن را در اینترانت یا نرم‌افزار خود جایگذاری کنید. این گزینه‌ها دسترسی به
+        تحلیل‌ها را بدون نیاز به لاگین در متابِیس ممکن می‌سازند.
+      </p>
+    ),
+  },
+  {
+    question:
+      "آیا می‌توانم گزارش‌هایی بسازم که فقط نمودار نشان ندهند و یک فلو ی داده‌ای تعریف کنند؟",
+    answer: (
+      <p>
+        آری. ویژگی «مستندات» متابیس این قابلیت را فراهم می‌سازد که نمودارها و
+        ویژوال‌ها را همراه با تفسیرهای نوشتاری ارائه دهید تا روایت کامل‌تری از
+        داده‌های خود ارائه دهید. این فرمت به شما در توضیح روندها، افزودن کنتکست
+        تحلیلی، توصیف گام‌های آنالیز و تسهیل درک و بهره‌برداری تیم از کشف‌ها کمک
+        میکند.
+      </p>
+    ),
+  },
+  {
+    question: "تفاوت بین داشبورد و یک گزارش تحلیلی چیست؟",
+    answer: (
+      <p>
+        یک داشبورد، نمای زنده‌ای از شاخص‌های کلیدی عملکرد (KPI) و متریک‌های شما
+        را در یک مکان واحد ارائه می‌دهد و امکان رصد سریع تغییرات و کاوش داده‌ها
+        با فیلترها و قابلیت Drill-through را فراهم می‌کند. یک گزارش داده، مانند
+        یک سند (Document) در متابیس، یک تحلیل در لحظه مشخص است که همراه با
+        روایت، توضیحات و بینش‌های عمیق‌تر ارائه می‌شود. داشبوردها نشان می‌دهند
+        چه اتفاقی در حال رخ دادن است؛ گزارش‌ها چرایی آن را توضیح می‌دهند.
+      </p>
+    ),
+  },
+  {
+    question:
+      "چطور برای تیم تحلیل سلف‌سرویس (Self-service Analytics) راه‌اندازی کنم؟",
+    answer: (
+      <p>
+        کار را با ایجاد داشبوردهایی آغاز کنید که سوالات متداول و متریک‌های مهم
+        را برجسته می‌سازند. متابیس دارای قابلیت‌های توکار Drill-through و فیلتر
+        است، بنابراین اعضای تیم می‌توانند بدون نیاز به تنظیمات اضافی، داده‌ها را
+        کاوش کنند. همان‌طور که افراد با ساختار داده‌های شما آشنا می‌شوند،
+        می‌توانند از Metabot یا Query Builder استفاده کنند تا سوالات خود را مطرح
+        کنند و داشبوردها و مستنداتی ایجاد نمایند که با دیگران به اشتراک بگذارند.
+      </p>
+    ),
+  },
+  {
+    question:
+      "چطور می‌توانم اشتراک‌گذاری داشبوردها و گزارش‌ها را در متابیس خودکار کنم؟",
+    answer: (
+      <p>
+        می‌توانید برای داشبوردها، اشتراک‌های زمان‌بندی‌شده ایمیلی یا Slack روی
+        دوره‌های دلخواه تنظیم کنید. داشبوردها به صورت زنده به‌روزرسانی می‌شوند و
+        برای بررسی منظم طراحی شده‌اند. گزارش‌ها و Documentها بیشتر تحلیل‌های
+        نقطه‌ای هستند، اما همچنان می‌توانید آن‌ها را با خروجی PDF، لینک عمومی یا
+        جاسازی در محصول یا وب‌سایت خود به اشتراک بگذارید.
+      </p>
+    ),
+  },
+];
+
 export default function AnalyticsDashboardsPage() {
   return (
     <>
@@ -314,11 +397,13 @@ export default function AnalyticsDashboardsPage() {
                     داشبوردهای تحلیلی
                   </span>
                 </div>
-                <h1 className="text-2xl font-black leading-snug text-gray-900 sm:text-3xl lg:text-4xl">
-                  داشبوردهای تحلیلی که مشتاق استفاده از آنها خواهید بود
+                <h1 className="text-xl font-black leading-snug text-gray-900 sm:text-3xl lg:text-3xl text-justify">
+                  داشبوردهای تحلیلی که کاربردی هستند. دسترسی سریع به داده‌ های
+                  قابل تفسیر. اطلاعاتی که کل تیم شما قابلیت اجرایی کردن آن‌ها را
+                  دارد.{" "}
                 </h1>
                 <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
-                  نمودارها و پرسش‌ها را در داشبوردهای زنده با ابزارهای تعاملی
+                  نمودارها و پرسش‌ها را در داشبوردهای تعاملی با ابزارهای مختلف
                   ترکیب کنید تا همه ی افراد به داده های مورد نیاز خود دسترسی
                   پیدا کنند.
                 </p>
@@ -357,7 +442,8 @@ export default function AnalyticsDashboardsPage() {
           <section className="py-16 bg-metabase-bg-neutral-98">
             <div className={`${containerClass} text-center`}>
               <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
-                فیلتر، کالبدشکافی داده، اشتراک‌گذاری و سایر امکانات{" "}
+                تعاملی، مشارکت‌محور و طراحی شده برای متخصصان داده و کاربران
+                غیرفنی
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600 sm:text-lg">
                 امکان کشف و تحلیل عمیق‌تر داده‌ها را به شکلی آسان و کاربرپسند
@@ -388,7 +474,7 @@ export default function AnalyticsDashboardsPage() {
             </div>
           </section>
 
-          <section className="bg-metabase-bg-neutral-98 py-16">
+          {/* <section className="bg-metabase-bg-neutral-98 py-16">
             <div className={`${containerClass} text-center`}>
               <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
                 در ساخت داشبوردهای تحلیلی بهتر شوید
@@ -430,18 +516,27 @@ export default function AnalyticsDashboardsPage() {
                 </Link>
               ))}
             </div>
-          </section>
+          </section> */}
 
           <StepsSection
             title="چگونه در متابیس یک داشبورد تحلیلی بسازیم؟"
             steps={dashboardSteps}
-            sectionClassName="py-16 bg-metabase-bg-neutral-98"
+            sectionClassName="py-16 bg-metabase-bg-neutral-98 max-w-2xl mx-auto"
             containerClassName={`${containerClass} rounded-3xl p-8 bg-white text-center`}
-            listClassName="mt-10 grid gap-6 md:grid-cols-2"
-            cardClassName="flex items-start gap-4 rounded-2xl p-5 text-right"
+            listClassName="mt-10 grid gap-6 md:grid-cols-1"
+            cardClassName="flex items-center gap-4 rounded-2xl p-5 text-right"
             numberClassName="flex h-10 w-10 items-center justify-center rounded-full bg-metabase-primary-lighter/30 text-lg font-bold text-metabase-primary border border-metabase-primary"
-            textClassName="flex-1 text-base leading-relaxed text-gray-700"
+            textClassName="flex-1 text-base text-justify leading-relaxed text-gray-700"
           />
+          <section className="bg-metabase-bg-neutral-98 pb-16">
+            <div className={containerClass}>
+              <FAQSection
+                items={faqItems}
+                title="سوالات پرتکرار درباره داشبوردهای تحلیلی در متابیس"
+                className="mt-0"
+              />
+            </div>
+          </section>
         </main>
         <Footer />
       </div>
