@@ -382,7 +382,7 @@ export default function BIForStartupsDemoPage() {
         }}
       />
       <div>
-        <BIForStartupsHero />
+        {/* <BIForStartupsHero /> */}
         <BIForStartupsThreeCards />
         <CustomerLogosSection />
         <FeatureSection
@@ -535,7 +535,6 @@ export default function BIForStartupsDemoPage() {
         />
         <ReviewsCarouselSection />
         <FAQSection items={faqItems} title="سوالات پرتکرار" description="" />
-        <TryMetabaseFooter />
       </div>
     </>
   );
