@@ -116,7 +116,7 @@ const heroButtons = [
     label: "شروع سریع متابیس",
     href: "https://store.metabase.com/checkout",
     variant: "primary" as const,
-    ariaLabel: "شروع رایگان متابیس برای استفاده از ویرایشگر SQL",
+    ariaLabel: "دمو متابیس برای استفاده از ویرایشگر SQL",
   },
   {
     label: "گفتگو با تیم ما",

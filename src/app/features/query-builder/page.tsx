@@ -86,10 +86,10 @@ interface StepItem {
 
 const heroButtons: HeroButton[] = [
   {
-    label: "شروع رایگان متابیس",
+    label: "دمو متابیس",
     href: "https://store.metabase.com/checkout",
     variant: "primary",
-    ariaLabel: "شروع رایگان متابیس",
+    ariaLabel: "دمو متابیس",
   },
   {
     label: "گفتگو با یک کارشناس",
@@ -108,23 +108,22 @@ const buttonStyles: Record<HeroButton["variant"], string> = {
 
 const featureCards: FeatureCard[] = [
   {
-    title: "فیلترها و خلاصه‌سازی‌ها",
+    title: "فیلترگذاری و خلاصه‌سازی",
     icon: "/images/icons/filter.svg",
     description: (
       <p className="text-sm leading-relaxed text-gray-600">
-        با انتخاب گزینه‌ها از منوهای کشویی، داده را محدود یا گروه‌بندی کنید و
-        پاسخ دقیق‌تری بگیرید. راهنماهای متابیس به شما کمک می‌کند بهترین فیلترها
-        را بسازید.
+        از طریق منوی کشویی، با انتخاب پارامترهای دلخواه، داده‌ها را فیلتر و
+        دسته‌بندی نمایید.
       </p>
     ),
   },
   {
-    title: "اتصال جداول",
+    title: "پیوند داده‌ها",
     icon: "/images/icons/join.svg",
     description: (
       <p className="text-sm leading-relaxed text-gray-600">
-        داده‌های پراکنده در مدل‌ها یا جداول مختلف را به هم وصل کنید و تصویر
-        کامل‌تری از عملکرد کسب‌وکار ببینید.
+        از قابلیت پیوند داده (Joins) برای کاوش درباره اطلاعاتی که در چندین مدل
+        یا جدول توزیع شده‌اند استفاده کنید.
       </p>
     ),
   },
@@ -133,18 +132,18 @@ const featureCards: FeatureCard[] = [
     icon: "/images/icons/formula.svg",
     description: (
       <p className="text-sm leading-relaxed text-gray-600">
-        از عبارات مشابه فرمول‌های صفحات گسترده استفاده کنید تا معیارهای اختصاصی
-        خود مثل CountIf یا درصد رشد را بسازید.
+        عبارت‌های شخصی‌سازی شده (مانند فرمول‌های موجود در اسپردشیت‌ها، مانند
+        فرمول CountIf) به شما امکان می‌دهند از پرسش‌های ساده فراتر روید.
       </p>
     ),
   },
   {
-    title: "تجمیع چندسطحی",
+    title: "گردآوری لایه‌ای داده",
     icon: "/images/icons/multi-level.svg",
     description: (
       <p className="text-sm leading-relaxed text-gray-600">
-        فیلترها و خلاصه‌سازی‌ها را مرحله‌به‌مرحله روی هم قرار دهید تا تحلیل
-        پیچیده‌تری بدون نوشتن SQL بسازید.
+        با به‌کارگیری گردآوری لایه‌ای داده، می‌توانید به ترتیب و با دقت بالاتر،
+        لایه‌های بیشتری از پالایش و خلاصه‌سازی را اضافه نمایید.
       </p>
     ),
   },
@@ -323,12 +322,13 @@ export default function QueryBuilderPage() {
                   </span>
                 </div>
                 <h1 className="text-2xl font-black leading-snug text-gray-900 sm:text-3xl lg:text-4xl">
-                  با سازندهٔ پرسش در چند کلیک جواب بگیرید
+                  با ابزار سازنده‌ی کوئری تنها در چند کلیک به پاسخ خود برسید{" "}
                 </h1>
                 <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
-                  حتی هم‌تیمی‌هایی که تجربهٔ داده‌ای ندارند می‌توانند با چند
-                  انتخاب ساده، فیلتر بزنند، خلاصه‌سازی کنند و به پاسخ برسند. هیچ
-                  خط SQL لازم نیست.
+                  سازنده‌ی کوئری به هر کسی - حتی هم‌تیمی‌های کم‌تجربه‌تر شما در
+                  حوزه داده - این امکان را می‌دهد که تنها با کلیک، استفاده از
+                  پیشنهادها و انتخاب از منوها، سوالات خود را بسازد. بدون نیاز به
+                  تخصص داده یا دانش SQL.
                 </p>
                 <div className="flex flex-wrap justify-start gap-4">
                   {heroButtons.map((button) => (
@@ -378,9 +378,8 @@ export default function QueryBuilderPage() {
                 تحلیل برای همهٔ اعضای تیم
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600 sm:text-lg">
-                سازندهٔ پرسش به افراد غیر فنی کمک می‌کند با انتخاب‌های ساده،
-                داده را فیلتر کنند، جداول را ترکیب کنند و جواب را همان‌جا
-                ببینند.
+                یک ابزار بصری و کلیک‌محور برای دسترسی مستقل به داده، مناسب برای
+                افراد نا آشنا با SQL (و یک راه‌کار تسریع‌کننده برای افراد مسلط)
               </p>
             </div>
             <div
@@ -407,7 +406,7 @@ export default function QueryBuilderPage() {
             </div>
           </section>
 
-          <section className="bg-metabase-bg-neutral-98 py-16">
+          {/* <section className="bg-metabase-bg-neutral-98 py-16">
             <div className={`${containerClass} text-center`}>
               <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
                 منابع بیشتر برای پرسیدن سؤال در متابیس
@@ -438,15 +437,15 @@ export default function QueryBuilderPage() {
                 </Link>
               ))}
             </div>
-          </section>
+          </section> */}
 
           <StepsSection
             title="چگونه با سازندهٔ پرسش سؤال بپرسیم؟"
             steps={queryBuilderSteps}
-            sectionClassName="py-16 bg-metabase-bg-neutral-98"
+            sectionClassName="py-16 bg-metabase-bg-neutral-98 max-w-2xl mx-auto"
             containerClassName={`${containerClass} rounded-3xl bg-white p-8 text-center`}
-            listClassName="mt-10 grid gap-6 md:grid-cols-2"
-            cardClassName="flex items-start gap-4 rounded-2xl p-5 text-right"
+            listClassName="mt-10 grid gap-6 md:grid-cols-1"
+            cardClassName="flex items-center gap-4 rounded-2xl p-5 text-right"
             numberClassName="flex h-10 w-10 items-center justify-center rounded-full border border-metabase-primary bg-metabase-primary-lighter/30 text-lg font-bold text-metabase-primary"
             textClassName="flex-1 text-base leading-relaxed text-gray-700"
             titleTag="h3"

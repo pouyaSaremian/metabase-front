@@ -63,7 +63,7 @@ const tabsContent: TabContent[] = [
       poster: "/images/home/query-builder.png",
       mp4: "/images/home/query-builder.mp4",
       webm: "/images/home/query-builder.webm",
-      alt: "دموی سازنده پرس‌وجوی متابیس",
+      alt: "دموی سازنده‌ی کوئریی متابیس",
     },
   },
   {

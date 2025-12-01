@@ -83,10 +83,10 @@ interface LearningCard {
 
 const heroButtons: HeroButton[] = [
   {
-    label: "شروع رایگان متابیس",
+    label: "دمو متابیس",
     href: "https://store.metabase.com/checkout",
     variant: "primary",
-    ariaLabel: "شروع رایگان متابیس",
+    ariaLabel: "دمو متابیس",
   },
   {
     label: "گفتگو با تیم ما",

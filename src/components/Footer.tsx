@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
       selfServiceBI: "هوش تجاری خودخدمت",
       embeddedAnalytics: "تجزیه و تحلیل تعبیه‌شده",
       pricing: "قیمت‌گذاری",
-      queryBuilder: "سازنده پرس‌وجو",
+      queryBuilder: "سازنده‌ی کوئری",
       drillThrough: "حفاری داده",
       collections: "مجموعه‌ها",
       usageAnalytics: "تحلیل استفاده",
