@@ -14,36 +14,58 @@ export const DocsTOC: React.FC<DocsTOCProps> = ({ items, className }) => {
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-20% 0% -35% 0%",
-        threshold: 0,
-      }
-    );
+    if (items.length === 0) {
+      return;
+    }
 
-    items.forEach((item) => {
-      const element = document.getElementById(item.id);
-      if (element) {
-        observer.observe(element);
+    const headerOffset = 120; // approximate combined height of header/top padding
+
+    const handleScroll = () => {
+      let firstVisibleId = items[0]?.id ?? "";
+
+      for (const item of items) {
+        const element = document.getElementById(item.id);
+        if (!element) continue;
+
+        const rect = element.getBoundingClientRect();
+
+        // Mimic original behavior: first heading below the top (with offset)
+        if (rect.top >= headerOffset) {
+          firstVisibleId = item.id;
+          break;
+        }
       }
-    });
+
+      setActiveId(firstVisibleId);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      items.forEach((item) => {
-        const element = document.getElementById(item.id);
-        if (element) {
-          observer.unobserve(element);
-        }
-      });
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [items]);
+
+  const handleItemClick =
+    (item: TOCItem) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      const element = document.getElementById(item.id);
+      if (!element) {
+        return;
+      }
+
+      const headerOffset = 120;
+      const targetY =
+        window.scrollY + element.getBoundingClientRect().top - headerOffset;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: "smooth",
+      });
+
+      setActiveId(item.id);
+    };
 
   if (items.length === 0) return null;
 
@@ -74,6 +96,7 @@ export const DocsTOC: React.FC<DocsTOCProps> = ({ items, className }) => {
             <Link
               key={item.id}
               href={item.href}
+              onClick={handleItemClick(item)}
               className={cn(
                 "block text-sm mb-4 pl-5 relative",
                 "text-metabase-text-light hover:text-metabase-text-secondary",

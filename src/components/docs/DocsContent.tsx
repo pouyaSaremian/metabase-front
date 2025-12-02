@@ -13,19 +13,34 @@ export const DocsContent: React.FC<DocsContentProps> = ({
   return (
     <div
       className={cn(
-        "prose prose-lg max-w-none",
-        "prose-headings:font-bold prose-headings:text-gray-900",
-        "prose-p:text-gray-700 prose-p:leading-relaxed",
-        "prose-a:text-[#509ee3] prose-a:no-underline hover:prose-a:underline",
-        "prose-code:text-[#509ee3] prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded",
-        "prose-pre:bg-gray-900 prose-pre:text-gray-100",
-        "prose-strong:text-gray-900 prose-strong:font-semibold",
-        "prose-ul:text-gray-700 prose-ol:text-gray-700",
-        "prose-li:my-2",
-        "prose-img:rounded-lg prose-img:shadow-md",
-        "prose-blockquote:border-r-4 prose-blockquote:border-[#509ee3] prose-blockquote:pr-4 prose-blockquote:bg-gray-50",
-        "rtl:prose-blockquote:border-l-4 rtl:prose-blockquote:border-r-0 rtl:prose-blockquote:pl-4 rtl:prose-blockquote:pr-0",
-        "text-start",
+        "learn__post__content",
+        "w-full",
+        // Typography - matching original CSS
+        "[&_p]:text-[18px] [&_p]:leading-[30px] [&_p]:text-[#4c5773] [&_p]:mb-3.5 [&_p]:mt-2",
+        "[&_li]:text-[18px] [&_li]:leading-[30px] [&_li]:text-[#4c5773]",
+        "[&_h1]:text-[32px] [&_h1]:font-bold [&_h1]:mt-8 [&_h1]:mb-4 [&_h1]:text-gray-900",
+        "[&_h2]:text-[24px] [&_h2]:font-bold [&_h2]:mt-16 [&_h2]:mb-6 [&_h2]:text-gray-900 [&_h2]:w-full",
+        "[&_h2:first-of-type]:border-b [&_h2:first-of-type]:border-[#c6c9d2] [&_h2:first-of-type]:pb-4",
+        "[&_h3]:text-[20px] [&_h3]:font-bold [&_h3]:mt-8 [&_h3]:mb-4 [&_h3]:text-gray-900",
+        "[&_h4]:text-[18px] [&_h4]:font-bold [&_h4]:mt-8 [&_h4]:mb-4 [&_h4]:text-gray-900",
+        // Links - no underline, darker color on hover
+        "[&_a]:text-[#509ee3] [&_a]:font-bold [&_a]:no-underline [&_a]:inline-block",
+        "hover:[&_a]:text-[#1c6bb0]",
+        // Code
+        "[&_code]:text-[#509ee3] [&_code]:bg-gray-100 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-base",
+        "[&_pre]:bg-gray-900 [&_pre]:text-gray-100 [&_pre]:p-4 [&_pre]:rounded",
+        // Images
+        "[&_img]:rounded-lg [&_img]:shadow-md [&_img]:max-w-full",
+        // Lists
+        "[&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-4",
+        "[&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:my-4",
+        "[&_li]:mb-2",
+        // Blockquotes
+        "[&_blockquote]:border-r-4 [&_blockquote]:border-[#509ee3] [&_blockquote]:pr-4 [&_blockquote]:bg-gray-50 [&_blockquote]:my-4",
+        "rtl:[&_blockquote]:border-l-4 rtl:[&_blockquote]:border-r-0 rtl:[&_blockquote]:pl-4 rtl:[&_blockquote]:pr-0",
+        // RTL adjustments
+        "rtl:[&_ul]:pr-6 rtl:[&_ul]:pl-0",
+        "rtl:[&_ol]:pr-6 rtl:[&_ol]:pl-0",
         className
       )}
     >

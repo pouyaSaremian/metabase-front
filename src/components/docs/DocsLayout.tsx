@@ -1,15 +1,23 @@
 import type { ReactNode } from "react";
 import type { DocsLayoutProps } from "@/types/docs";
 import { DocsSidebar } from "./DocsSidebar";
+import { AsideMenu } from "@/components/common/AsideMenu";
 import { DocsTOC } from "./DocsTOC";
 import { cn } from "@/lib/utils";
+import type { AsideMenuSection } from "@/components/common/AsideMenu";
+
+interface ExtendedDocsLayoutProps extends Omit<DocsLayoutProps, "sidebarData"> {
+  sidebarData?: DocsLayoutProps["sidebarData"];
+  sidebarSections?: AsideMenuSection[];
+}
 
 export const DocsLayout = ({
   children,
   version = "latest",
   sidebarData,
+  sidebarSections,
   tocItems,
-}: DocsLayoutProps): ReactNode => {
+}: ExtendedDocsLayoutProps): ReactNode => {
   const hasTOC = tocItems && tocItems.length > 0;
 
   return (
@@ -40,18 +48,33 @@ export const DocsLayout = ({
           "max-lg:shadow-[-400px_0_0_#fafbfe,400px_0_0_#fafbfe] max-lg:grid-cols-1"
         )}
       >
-        <DocsSidebar data={sidebarData} version={version} className="" />
+        {sidebarSections ? (
+          <AsideMenu
+            sections={sidebarSections}
+            toggler={{
+              docs: {
+                label: "مستندات",
+                href: "/docs/latest",
+              },
+              learn: {
+                label: "یادگیری",
+                href: "/learn",
+              },
+            }}
+            className=""
+          />
+        ) : sidebarData ? (
+          <DocsSidebar data={sidebarData} version={version} className="" />
+        ) : null}
         <article
           className={cn(
+            "learn__post learn__article",
             "bg-metabase-bg-neutral-98",
             "shadow-[1000px_0_0_#fafbfe]",
-            "py-16 pl-[72px] pr-0",
-            "relative w-full",
-            "rtl:pl-0 rtl:pr-[72px]",
-            "max-lg:px-5"
+            "relative w-full"
           )}
         >
-          <div className="w-full">{children}</div>
+          {children}
         </article>
         {hasTOC && tocItems ? <DocsTOC items={tocItems} /> : null}
       </div>

@@ -138,6 +138,30 @@ html[dir="rtl"] .animate-marquee-faster {
   position: sticky;
   top: 87px;
   width: 100%;
+  min-width: 226px;
+  max-width: 226px;
+  /* Minimal scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* Webkit scrollbar styling (Chrome, Safari, Edge) */
+.learn-left-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.learn-left-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.learn-left-sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.learn-left-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 html[dir="rtl"] .learn-left-sidebar {
@@ -344,8 +368,110 @@ html[dir="rtl"] .hoverable-toggler .hover-highlight {
   right: 4px;
 }
 
-@media screen and (max-width: 992px) {
-  .learn-left-sidebar {
-    display: none;
+/* Mobile hiding - Tailwind handles this with hidden lg:block */
+/* Only hide if explicitly marked as mobile-only */
+@media screen and (max-width: 991px) {
+  .learn-left-sidebar.mobile-only {
+    display: none !important;
   }
+}
+
+/* Docs Article Styles - Matching original HTML structure */
+.learn__post.learn__article {
+  margin-bottom: 0;
+  padding-top: 56px;
+}
+
+@media (max-width: 1399.98px) {
+  .learn__post.learn__article {
+    padding-left: 72px;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .learn__post.learn__article {
+    padding-left: 0;
+    overflow: hidden;
+  }
+}
+
+.learn__post__content {
+  min-width: 0;
+  padding-right: 72px;
+  z-index: 2;
+}
+
+@media (max-width: 1199.98px) {
+  .learn__post__content {
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .learn__post__content {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .learn__post__content {
+    padding-right: 20px;
+  }
+}
+
+/* RTL adjustments for article */
+html[dir="rtl"] .learn__post.learn__article {
+  padding-right: 72px;
+  padding-left: 0;
+}
+
+@media (max-width: 1399.98px) {
+  html[dir="rtl"] .learn__post.learn__article {
+    padding-right: 72px;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 991.98px) {
+  html[dir="rtl"] .learn__post.learn__article {
+    padding-right: 0;
+  }
+}
+
+html[dir="rtl"] .learn__post__content {
+  padding-left: 72px;
+  padding-right: 0;
+}
+
+@media (max-width: 1199.98px) {
+  html[dir="rtl"] .learn__post__content {
+    padding-left: 40px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  html[dir="rtl"] .learn__post__content {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  html[dir="rtl"] .learn__post__content {
+    padding-left: 20px;
+  }
+}
+
+/* Link styles - matching original HTML */
+.learn__post a,
+.learn__post__content a {
+  color: #509ee3;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.learn__post a:hover,
+.learn__post__content a:hover {
+  color: #1c6bb0;
 }

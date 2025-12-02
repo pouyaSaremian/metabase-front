@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { DocsLayout } from "@/components/docs/DocsLayout";
-import { docsNavigationData } from "@/data/docsNavigation";
+import { docsLatestNavigationSections } from "@/data/docsLatestNavigation";
 import type { TOCItem } from "@/types/docs";
 
 interface LatestDocsLayoutProps {
@@ -15,53 +15,35 @@ export default async function LatestDocsLayout({
   // In a real implementation, you'd parse the markdown/HTML content
   const tocItems: TOCItem[] = [
     {
-      id: "getting-started",
-      title: "شروع کار",
+      id: "first-steps",
+      title: "اولین قدم‌ها",
       level: 2,
-      href: "#getting-started",
+      href: "#first-steps",
     },
     {
-      id: "main-categories",
-      title: "دسته‌بندی‌های اصلی",
+      id: "documentation-topics",
+      title: "موضوعات مستندات",
       level: 2,
-      href: "#main-categories",
+      href: "#documentation-topics",
     },
     {
-      id: "analytics",
-      title: "تحلیل و بررسی",
-      level: 3,
-      href: "#analytics",
+      id: "getting-help",
+      title: "دریافت کمک",
+      level: 2,
+      href: "#getting-help",
     },
     {
-      id: "data-modeling",
-      title: "مدل‌سازی داده",
-      level: 3,
-      href: "#data-modeling",
-    },
-    {
-      id: "databases",
-      title: "پایگاه‌های داده",
-      level: 3,
-      href: "#databases",
-    },
-    {
-      id: "permissions",
-      title: "مجوزها",
-      level: 3,
-      href: "#permissions",
-    },
-    {
-      id: "embedding",
-      title: "جاسازی",
-      level: 3,
-      href: "#embedding",
+      id: "more-resources",
+      title: "منابع بیشتر",
+      level: 2,
+      href: "#more-resources",
     },
   ];
 
   return (
     <DocsLayout
       version="latest"
-      sidebarData={docsNavigationData}
+      sidebarSections={docsLatestNavigationSections}
       tocItems={tocItems}
     >
       {children}
