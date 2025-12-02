@@ -307,7 +307,7 @@
 
 ## ۱۷. عیب‌یابی (`troubleshooting-guide/`)
 
-- [ ] پوشهٔ `troubleshooting-guide/`
+- [x] پوشهٔ `troubleshooting-guide/`
   - [x] `index.md`
   - [x] `bigquery-drive.md`
   - [x] `bugs.md`
@@ -316,32 +316,32 @@
   - [x] `cant-send-email.md`
   - [x] `cant-view-or-edit.md`
   - [x] `create-har-file.md`
-  - [ ] `data-permissions.md`
-  - [ ] `db-connection.md`
-  - [ ] `db-performance.md`
-  - [ ] `diagnostic-info.md`
-  - [ ] `docker.md`
-  - [ ] `error-message.md`
-  - [ ] `filters.md`
-  - [ ] `known-issues.md`
-  - [ ] `ldap.md`
-  - [ ] `linked-filters.md`
-  - [ ] `loading-from-h2.md`
-  - [ ] `models.md`
-  - [ ] `my-dashboard-is-slow.md`
-  - [ ] `notifications.md`
-  - [ ] `permissions.md`
-  - [ ] `proxies.md`
-  - [ ] `requesting-new-features.md`
-  - [ ] `row-and-column-security.md`
-  - [ ] `running.md`
-  - [ ] `saml.md`
-  - [ ] `server-logs.md`
-  - [ ] `sql.md`
-  - [ ] `sync-fingerprint-scan.md`
-  - [ ] `timeout.md`
-  - [ ] `timezones.md`
-  - [ ] `visualization.md`
+  - [x] `data-permissions.md`
+  - [x] `db-connection.md`
+  - [x] `db-performance.md`
+  - [x] `diagnostic-info.md`
+  - [x] `docker.md`
+  - [x] `error-message.md`
+  - [x] `filters.md`
+  - [x] `known-issues.md`
+  - [x] `ldap.md`
+  - [x] `linked-filters.md`
+  - [x] `loading-from-h2.md`
+  - [x] `models.md`
+  - [x] `my-dashboard-is-slow.md`
+  - [x] `notifications.md`
+  - [x] `permissions.md`
+  - [x] `proxies.md`
+  - [x] `requesting-new-features.md`
+  - [x] `row-and-column-security.md`
+  - [x] `running.md`
+  - [x] `saml.md`
+  - [x] `server-logs.md`
+  - [x] `sql.md`
+  - [x] `sync-fingerprint-scan.md`
+  - [x] `timeout.md`
+  - [x] `timezones.md`
+  - [x] `visualization.md`
 
 ## ۱۸. راهنمای توسعه‌دهندگان (`developers-guide/`)
 
