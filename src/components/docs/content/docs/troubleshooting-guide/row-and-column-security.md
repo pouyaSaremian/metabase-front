@@ -1,168 +1,168 @@
 ---
-title: Troubleshooting row and column security access
+title: عیب‌یابی دسترسی امنیت ردیف و ستون
 redirect_from:
   - /docs/latest/troubleshooting-guide/sandboxing
 ---
 
-# Troubleshooting row and column security
+# عیب‌یابی امنیت ردیف و ستون
 
-[Row and column security](../permissions/row-and-column-security.md) gives some people access to only a subset of the data. To implement row and column security, Metabase runs a query that filters rows and/or selects a subset of columns from a table based on [the person's permissions][permissions]; the person's query then runs on the initial query's result (i.e., it runs on the secured data).
+[امنیت ردیف و ستون](../permissions/row-and-column-security.md) به برخی افراد دسترسی به فقط یک زیرمجموعه از داده می‌دهد. برای پیاده‌سازی امنیت ردیف و ستون، متابیس یک کوئری اجرا می‌کند که ردیف‌ها را فیلتر می‌کند و/یا یک زیرمجموعه از ستون‌ها را از یک جدول بر اساس [مجوزهای شخص][permissions] انتخاب می‌کند؛ کوئری شخص سپس روی نتیجه کوئری اولیه اجرا می‌شود (یعنی، روی داده امن‌شده اجرا می‌شود).
 
-These articles will help you understand how row and column security works:
+این مقاله‌ها به شما کمک می‌کند درک کنید امنیت ردیف و ستون چگونه کار می‌کند:
 
-- [Row-level permissions][row-permissions].
-- [Column security: limiting access to columns][column-permissions].
+- [مجوزهای سطح ردیف][row-permissions].
+- [امنیت ستون: محدود کردن دسترسی به ستون‌ها][column-permissions].
 
-If you have a different data access issue, see [related problems](#do-you-have-a-different-problem).
+اگر مشکل دسترسی داده متفاوتی دارید، به [مشکلات مرتبط](#do-you-have-a-different-problem) مراجعه کنید.
 
-## People can't see **rows** in a table they _should_ be able to see
+## افراد نمی‌توانند **ردیف‌ها** را در جدولی که _باید_ بتوانند ببینند ببینند
 
-### Is Metabase filtering rows by a user attribute?
+### آیا متابیس ردیف‌ها را بر اساس یک ویژگی کاربر فیلتر می‌کند؟
 
-**Root cause:** Row security is using a user attribute to filter rows.
+**علت اصلی:** امنیت ردیف از یک ویژگی کاربر برای فیلتر کردن ردیف‌ها استفاده می‌کند.
 
-**Steps to take:**
+**مراحل انجام:**
 
-This is expected behavior: using a user attribute to filter rows is how row security works. But if you _don't_ want Metabase to filter those rows, you'll need to either:
+این رفتار مورد انتظار است: استفاده از یک ویژگی کاربر برای فیلتر کردن ردیف‌ها نحوهٔ کار امنیت ردیف است. اما اگر _نمی‌خواهید_ متابیس آن ردیف‌ها را فیلتر کند، باید یکی از این کارها را انجام دهید:
 
-- Remove the row security (which would grant full access to all rows to everyone with access to that table). Go to **Admin** > **Permissions**, and change the access level for the table.
-- Add the person to a group (or create a group) with different permissions to the table. Check out [Guide to data permissions][data-permissions].
+- امنیت ردیف را حذف کنید (که دسترسی کامل به همه ردیف‌ها را به همه با دسترسی به آن جدول اعطا می‌کند). به **Admin** > **Permissions** بروید، و سطح دسترسی را برای جدول تغییر دهید.
+- شخص را به یک گروه (یا ایجاد یک گروه) با مجوزهای متفاوت به جدول اضافه کنید. [راهنمای مجوزهای داده][data-permissions] را بررسی کنید.
 
-## People can see **rows** they're _not_ supposed to see
+## افراد می‌توانند **ردیف‌ها** را که _نباید_ ببینند ببینند
 
-There are several reasons people could be seeing rows that they're not supposed to see.
+چندین دلیل وجود دارد که افراد می‌توانند ردیف‌هایی را که نباید ببینند ببینند.
 
-### Are those people also in groups with permission to view the entire table?
+### آیا آن افراد همچنین در گروه‌هایی با مجوز برای مشاهده کل جدول هستند؟
 
-**Root cause:** People are in groups with permissions to view the table, and therefore can see all rows, not just the secured rows.
+**علت اصلی:** افراد در گروه‌هایی با مجوز برای مشاهده جدول هستند، و بنابراین می‌توانند همه ردیف‌ها را ببینند، نه فقط ردیف‌های امن‌شده.
 
-**Steps to take:**
+**مراحل انجام:**
 
-For the person in question, check to see which groups they belong to. Do any of the groups have access to the table you're trying to secure? If so, remove them from that group. Remember that everyone is a member of the "All users" group; which is why we recommend you revoke permissions from the all users group, and create new groups to selectively apply permissions to your data sources.
+برای شخص مورد نظر، بررسی کنید که به کدام گروه‌ها تعلق دارند. آیا هر یک از گروه‌ها به جدولی که سعی می‌کنید امن کنید دسترسی دارند؟ اگر بله، آن‌ها را از آن گروه حذف کنید. به خاطر داشته باشید که همه عضو گروه "All users" هستند؛ به همین دلیل توصیه می‌کنیم مجوزها را از گروه all users لغو کنید، و گروه‌های جدید ایجاد کنید تا مجوزها را به‌صورت انتخابی به منابع داده خود اعمال کنید.
 
-### Is the question available via Static embedding or Public Sharing?
+### آیا سؤال از طریق Static embedding یا Public Sharing در دسترس است؟
 
-**Root cause**: The question is public. [Public questions][public-sharing], even those that use [Static embedding][static-embedding], can't be secured. If someone views the question without logging into Metabase, Metabase lacks user attributes or group information for filtering the data, so it will show all results.
+**علت اصلی**: سؤال عمومی است. [سؤال‌های عمومی][public-sharing]، حتی آن‌هایی که از [Static embedding][static-embedding] استفاده می‌کنند، نمی‌توانند امن شوند. اگر کسی سؤال را بدون ورود به متابیس مشاهده کند، متابیس فاقد ویژگی‌های کاربر یا اطلاعات گروه برای فیلتر کردن داده است، بنابراین همه نتایج را نشان می‌دهد.
 
-**Steps to take**:
+**مراحل انجام**:
 
-You should _avoid_ public sharing when you are securing data. See [public sharing][public-sharing].
+باید از public sharing _اجتناب کنید_ وقتی داده را امن می‌کنید. به [public sharing][public-sharing] مراجعه کنید.
 
-### Is the question written in SQL?
+### آیا سؤال در SQL نوشته شده است؟
 
-**Root cause**. You can't apply row and column security to people with SQL access. They have as much access to the database as the user account used to connect Metabase to the database. Even if you hide tables in Metabase, someone with SQL access to a database would still be able to query those tables. Which is also to say you can't apply row and column security to SQL questions. Row and column security exclusively applies to questions composed in the query builder.
+**علت اصلی**. نمی‌توانید امنیت ردیف و ستون را به افراد با دسترسی SQL اعمال کنید. آن‌ها به همان اندازه دسترسی به پایگاه داده دارند که حساب کاربری استفاده‌شده برای اتصال متابیس به پایگاه داده دارد. حتی اگر جداول را در متابیس مخفی کنید، کسی با دسترسی SQL به یک پایگاه داده همچنان قادر خواهد بود آن جداول را کوئری کند. که همچنین به این معنی است که نمی‌توانید امنیت ردیف و ستون را به سؤال‌های SQL اعمال کنید. امنیت ردیف و ستون به‌طور انحصاری برای سؤال‌های composed شده در query builder اعمال می‌شود.
 
-**Steps to take**
+**مراحل انجام**
 
-- Don't try to apply row and column security to a question written in SQL, because you can't.
+- سعی نکنید امنیت ردیف و ستون را به یک سؤال نوشته شده در SQL اعمال کنید، چون نمی‌توانید.
 
-- If you want to secure rows or columns, avoid adding the person to a group with SQL access to that table (or any other more permissive access to that table, for that matter).
+- اگر می‌خواهید ردیف‌ها یا ستون‌ها را امن کنید، از اضافه کردن شخص به یک گروه با دسترسی SQL به آن جدول (یا هر دسترسی مجازتر دیگری به آن جدول، برای این موضوع) اجتناب کنید.
 
-- If you want to give them SQL access, but still limit what the person can see, you'll need to set up permissions in your database, and connect that database via the user account with that restricted access. You can connect the same database to Metabase multiple times, each with different levels of access, and expose different connections to different groups.
+- اگر می‌خواهید به آن‌ها دسترسی SQL بدهید، اما همچنان آنچه شخص می‌تواند ببیند را محدود کنید، باید مجوزها را در پایگاه داده خود تنظیم کنید، و آن پایگاه داده را از طریق حساب کاربری با آن دسترسی محدود متصل کنید. می‌توانید همان پایگاه داده را چندین بار به متابیس متصل کنید، هر کدام با سطوح متفاوت دسترسی، و اتصالات متفاوت را به گروه‌های متفاوت expose کنید.
 
-### Is the question retrieving data from a non-SQL data source?
+### آیا سؤال داده را از یک منبع داده non-SQL بازیابی می‌کند؟
 
-**Root cause:** Row and column security do not support non-SQL databases.
+**علت اصلی:** امنیت ردیف و ستون از پایگاه‌داده‌های non-SQL پشتیبانی نمی‌کند.
 
-**Steps to take:**
+**مراحل انجام:**
 
-There is not much you can do here: if you need to apply row and column security, [you can't use these databases][unsupported-databases].
+کار زیادی نمی‌توانید اینجا انجام دهید: اگر نیاز به اعمال امنیت ردیف و ستون دارید، [نمی‌توانید از این پایگاه‌داده‌ها استفاده کنید][unsupported-databases].
 
-### If using Single Sign-on (SSO), are user attributes correct?
+### اگر از Single Sign-on (SSO) استفاده می‌کنید، آیا ویژگی‌های کاربر صحیح هستند؟
 
-**Root cause**: If people are logging in with SSO, but the expected attributes aren't being saved and made available, row and column security policies will deny access.
+**علت اصلی**: اگر افراد با SSO وارد می‌شوند، اما ویژگی‌های مورد انتظار ذخیره و در دسترس نمی‌شوند، policyهای امنیت ردیف و ستون دسترسی را رد می‌کنند.
 
-**Steps to take**:
+**مراحل انجام**:
 
-Our docs on [Authenticating with SAML][authenticating-with-saml] and [Authenticating with JWT][jwt-auth] explain how to use your identity provider to pass user attributes to Metabase, which (the user attributes) can be used to apply row and column security.
+مستندات ما دربارهٔ [احراز هویت با SAML][authenticating-with-saml] و [احراز هویت با JWT][jwt-auth] توضیح می‌دهند چگونه از ارائه‌دهنده هویت خود برای ارسال ویژگی‌های کاربر به متابیس استفاده کنید، که (ویژگی‌های کاربر) می‌توانند برای اعمال امنیت ردیف و ستون استفاده شوند.
 
-## People can see **columns** they're _not_ supposed to see
+## افراد می‌توانند **ستون‌ها** را که _نباید_ ببینند ببینند
 
-### Did the administrator forget to set up row and column security?
+### آیا ادمین فراموش کرده است امنیت ردیف و ستون را تنظیم کند؟
 
-**Root cause:** The administrator didn't restrict access to the underlying table when setting up row and column security.
+**علت اصلی:** ادمین هنگام تنظیم امنیت ردیف و ستون دسترسی به جدول زیربنایی را محدود نکرده است.
 
-**Steps to take**:
+**مراحل انجام**:
 
-1. Go into **Admin Panel** > **Permissions** for the table in question.
-2. Check that the row and columns security is set up, and that the question used to create a custom view of the table excludes the columns you don't want people to see.
+1. به **پنل Admin** > **Permissions** برای جدول مورد نظر بروید.
+2. بررسی کنید که امنیت ردیف و ستون تنظیم شده است، و سؤالی که برای ایجاد یک view سفارشی از جدول استفاده می‌شود ستون‌هایی که نمی‌خواهید افراد ببینند را مستثنی می‌کند.
 
-### Does the question used to set up row and column security include the columns?
+### آیا سؤال استفاده‌شده برای تنظیم امنیت ردیف و ستون شامل ستون‌ها است؟
 
-**Root cause:** The question used to create apply row and column security includes the columns they're not supposed to see.
+**علت اصلی:** سؤال استفاده‌شده برای اعمال امنیت ردیف و ستون شامل ستون‌هایی است که نباید ببینند.
 
-**Steps to take**:
+**مراحل انجام**:
 
-Make sure that you're using a SQL question to apply row and column security, and that you're not including columns you should be excluding.
+مطمئن شوید که از یک سؤال SQL برای اعمال امنیت ردیف و ستون استفاده می‌کنید، و ستون‌هایی که باید مستثنی کنید را شامل نمی‌کنید.
 
-If you build a question using the query builder (i.e., use a simple or custom question), you may unintentionally pull in additional columns. You can check exactly which columns are included by viewing the question in the Notebook Editor and clicking on the **View the SQL** button. But again: if you use SQL questions to apply row and column security, this problem goes away.
+اگر یک سؤال با استفاده از query builder می‌سازید (یعنی، از یک سؤال ساده یا سفارشی استفاده می‌کنید)، ممکن است به‌طور ناخواسته ستون‌های اضافی را pull کنید. می‌توانید دقیقاً کدام ستون‌ها شامل می‌شوند را با مشاهده سؤال در Notebook Editor و کلیک روی دکمه **View the SQL** بررسی کنید. اما دوباره: اگر از سؤال‌های SQL برای اعمال امنیت ردیف و ستون استفاده می‌کنید، این مشکل از بین می‌رود.
 
-## Is the person in _another_ group with a different permission level for the table?
+## آیا شخص در _گروه دیگری_ با سطح مجوز متفاوت برای جدول است؟
 
-**Root cause:** You've applied row and column security to the table with the question, but the person is also in an group with a higher level of access to the table. If a person is in multiple groups, they'll get the most permissive access to a data source across all of their groups.
+**علت اصلی:** امنیت ردیف و ستون را به جدول با سؤال اعمال کرده‌اید، اما شخص همچنین در یک گروه با سطح دسترسی بالاتر به جدول است. اگر یک شخص در چندین گروه است، مجازترین دسترسی به یک منبع داده را در همه گروه‌های خود دریافت می‌کند.
 
-**Steps to take**:
+**مراحل انجام**:
 
-Remove the person from all groups with higher level access to the secured table. If they need some permissions from those other groups, you'll need to create a new group with a new set of permissions that only has row and column security applied to the table.
+شخص را از همه گروه‌هایی با سطح دسترسی بالاتر به جدول امن‌شده حذف کنید. اگر به برخی مجوزها از آن گروه‌های دیگر نیاز دارند، باید یک گروه جدید با مجموعه جدیدی از مجوزها که فقط امنیت ردیف و ستون را به جدول اعمال می‌کند ایجاد کنید.
 
-## People can't see **columns** they _should_ be able to see
+## افراد نمی‌توانند **ستون‌ها** را که _باید_ بتوانند ببینند ببینند
 
-### Does their group have row and column security applied to the table?
+### آیا گروه آن‌ها امنیت ردیف و ستون اعمال شده به جدول دارد؟
 
-**Root cause:** They only have access to a table with row and columns security applied, where only some columns are shown.
+**علت اصلی:** آن‌ها فقط دسترسی به جدولی با امنیت ردیف و ستون اعمال شده دارند، جایی که فقط برخی ستون‌ها نشان داده می‌شوند.
 
-**Steps to take**:
+**مراحل انجام**:
 
-Add these people to a group (or create a new group) that has permissions to view the table.
+این افراد را به یک گروه (یا ایجاد یک گروه جدید) که مجوز برای مشاهده جدول دارد اضافه کنید.
 
-### Has an administrator hidden fields in the table?
+### آیا یک ادمین فیلدها را در جدول مخفی کرده است؟
 
-**Root cause:**: An administrator has hidden fields in the table.
+**علت اصلی:**: یک ادمین فیلدها را در جدول مخفی کرده است.
 
-**Steps to take:**
+**مراحل انجام:**
 
-Go to **Admin** > **Table Metadata** and find the table. Check to make sure that the fields you want to make visible are not hidden.
+به **Admin** > **Table Metadata** بروید و جدول را پیدا کنید. بررسی کنید که فیلدهایی که می‌خواهید قابل مشاهده باشند مخفی نیستند.
 
-### Is a field remapped to display info from a restricted table?
+### آیا یک فیلد remap شده است تا اطلاعات از یک جدول محدود شده نمایش دهد؟
 
-**Root cause:** If a table which the person _does_ have row and column security has a field that uses remapping to display information from another table which the person lacks access to, they won't be able to see the table. For example, if you have remapped an ID field to display a product's name instead, but the person lacks access to the product table, they won't be able to see the column.
+**علت اصلی:** اگر جدولی که شخص _دارد_ امنیت ردیف و ستون دارد فیلدی دارد که از remapping برای نمایش اطلاعات از جدول دیگری که شخص به آن دسترسی ندارد استفاده می‌کند، نمی‌توانند جدول را ببینند. به‌عنوان مثال، اگر یک فیلد ID را remap کرده‌اید تا نام یک محصول را به جای آن نمایش دهد، اما شخص به جدول محصول دسترسی ندارد، نمی‌توانند ستون را ببینند.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Go to **Admin Panel** > **Table Metadata** for the fields in question.
-2. If the value is remapped from a restricted table, change it so that Metabase will use the original value from the table. See [Metadata editing][data-model] for more information.
+1. به **پنل Admin** > **Table Metadata** برای فیلدهای مورد نظر بروید.
+2. اگر مقدار از یک جدول محدود شده remap شده است، آن را تغییر دهید تا متابیس از مقدار اصلی از جدول استفاده کند. برای اطلاعات بیشتر به [ویرایش Metadata][data-model] مراجعه کنید.
 
-### Is the question available via static embedding?
+### آیا سؤال از طریق static embedding در دسترس است؟
 
-**Root cause**: [Static embedding][static-embedding] will show all results by default. While it's possible to control filtering with [locked parameters][locked-parameters], static embedding depends only on the token generated by the including page, not whether someone is logged into Metabase.
+**علت اصلی**: [Static embedding][static-embedding] به‌طور پیش‌فرض همه نتایج را نشان می‌دهد. در حالی که ممکن است فیلتر کردن با [پارامترهای قفل شده][locked-parameters] کنترل شود، static embedding فقط به token تولید شده توسط صفحه شامل کننده بستگی دارد، نه اینکه آیا کسی به متابیس وارد شده است.
 
-**Steps to take**:
+**مراحل انجام**:
 
-Since someone must log in so that Metabase can apply row security for that person, avoid using static embedding when you want to restrict row or column access to a table.
+از آنجایی که کسی باید وارد شود تا متابیس بتواند امنیت ردیف را برای آن شخص اعمال کند، از استفاده از static embedding وقتی می‌خواهید دسترسی ردیف یا ستون به یک جدول را محدود کنید اجتناب کنید.
 
-## People can't see data they're supposed to be able to see
+## افراد نمی‌توانند داده‌ای که باید بتوانند ببینند را ببینند
 
-Someone is supposed to be able to view some of the values in a table in their queries, but are denied access or get an empty set of results where there should be data.
+کسی باید بتواند برخی از مقادیر در یک جدول را در کوئری‌های خود مشاهده کند، اما دسترسی رد می‌شود یا یک مجموعه خالی از نتایج دریافت می‌کند جایی که باید داده باشد.
 
-**Root cause**: The administrator restricted access to the table. If the restrictions are too tight by mistake (e.g., "no access"), then people might not be able to see any data at all.
+**علت اصلی**: ادمین دسترسی به جدول را محدود کرده است. اگر محدودیت‌ها به‌اشتباه خیلی سخت هستند (مثلاً، "no access")، پس افراد ممکن است اصلاً نتوانند هیچ داده‌ای را ببینند.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Check the access level for the groups by going to **Admin Panel** and viewing **Permissions** for the table in question.
-2. If the person isn't in a group with access to that table, add them to a group that does, or create a new group with access to that table and add them to that new group.
+1. سطح دسترسی را برای گروه‌ها با رفتن به **پنل Admin** و مشاهده **Permissions** برای جدول مورد نظر بررسی کنید.
+2. اگر شخص در یک گروه با دسترسی به آن جدول نیست، آن‌ها را به یک گروه که دارد اضافه کنید، یا یک گروه جدید با دسترسی به آن جدول ایجاد کنید و آن‌ها را به آن گروه جدید اضافه کنید.
 
-## Is the person who can't see the secured data in multiple groups?
+## آیا شخصی که نمی‌تواند داده امن‌شده را ببیند در چندین گروه است؟
 
-**Root cause:** We only allow one application of row and column security per table: if someone is a member of two or more groups with different permissions, every rule for figuring out whether access should be allowed or not is confusing. We therefore only allow one rule.
+**علت اصلی:** ما فقط یک اعمال امنیت ردیف و ستون برای هر جدول اجازه می‌دهیم: اگر کسی عضو دو یا چند گروه با مجوزهای متفاوت است، هر قانون برای فهمیدن اینکه آیا دسترسی باید مجاز باشد یا نه گیج‌کننده است. بنابراین ما فقط یک قانون اجازه می‌دهیم.
 
-**Steps to take:**
+**مراحل انجام:**
 
-The administrator can [create a new group][groups] to capture precisely who's allowed access to what.
+ادمین می‌تواند [یک گروه جدید][groups] ایجاد کند تا دقیقاً مشخص کند چه کسی مجاز به دسترسی به چه چیزی است.
 
-## Do you have a different problem?
+## آیا مشکل متفاوتی دارید؟
 
-- [I have a different permissions issue][troubleshooting-permissions].
-- [I can't see my tables][cant-see-tables].
+- [مشکل مجوز متفاوتی دارم][troubleshooting-permissions].
+- [نمی‌توانم جداول خود را ببینم][cant-see-tables].
 
 [authenticating-with-saml]: ../people-and-groups/authenticating-with-saml.md
 [cant-see-tables]: cant-see-tables.md

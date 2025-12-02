@@ -1,73 +1,73 @@
 ---
-title: SAML with Microsoft Entra ID
+title: SAML با Microsoft Entra ID
 
 redirect_from:
   - /docs/latest/enterprise-guide/authenticating-with-saml-azure-ad
 ---
 
-# SAML with Microsoft Entra ID
+# SAML با Microsoft Entra ID
 
 {% include plans-blockquote.html feature="SAML authentication" %}
 
-## Enable SAML in Metabase
+## فعال کردن SAML در متابیس
 
-First, follow our guide to [enable SAML authentication](authenticating-with-saml.md).
+ابتدا، راهنمای ما برای [فعال کردن احراز هویت SAML](authenticating-with-saml.md) را دنبال کنید.
 
-## Add an Enterprise Application in Microsoft Entra ID
+## اضافه کردن یک Enterprise Application در Microsoft Entra ID
 
-Go to Microsoft Entra admin center and click on **Enterprise Applications** under Applications from the side bar. Once there, click on **+ New Application** in the bar on the top of the page.
+به مرکز ادمین Microsoft Entra بروید و روی **Enterprise Applications** زیر Applications از نوار کناری کلیک کنید. وقتی آنجا بودید، روی **+ New Application** در نوار بالای صفحه کلیک کنید.
 
-![AZEnterpriseApp](images/saml-azure-ad-enterprise-app.png)
+![اپلیکیشن Enterprise Azure](images/saml-azure-ad-enterprise-app.png)
 
-In the new page click on **+ Create your own application** and a bar will open in the right side of the page. Enter "Metabase" as the name of the application, select `Integrate any other application you don't find in the gallery (Non-gallery)` as the option and click the **Create** button on the bottom of the bar.
+در صفحه جدید روی **+ Create your own application** کلیک کنید و یک نوار در سمت راست صفحه باز می‌شود. "Metabase" را به‌عنوان نام اپلیکیشن وارد کنید، `Integrate any other application you don't find in the gallery (Non-gallery)` را به‌عنوان گزینه انتخاب کنید و روی دکمه **Create** در پایین نوار کلیک کنید.
 
-![AZMetabaseApp](images/saml-azure-ad-create.png)
+![ایجاد اپلیکیشن Metabase Azure](images/saml-azure-ad-create.png)
 
-On the application page, under **Manage**, select **Single Sign-on**, then click on the "SAML" button.
+در صفحه اپلیکیشن، زیر **Manage**، **Single Sign-on** را انتخاب کنید، سپس روی دکمه "SAML" کلیک کنید.
 
-![AZAppSAML](images/saml-azure-app-saml.png)
+![SAML اپلیکیشن Azure](images/saml-azure-app-saml.png)
 
-When the "Set up Single Sign-On with SAML" page appears, you'll see an option for "Basic SAML configuration". Click on the **Edit** button to enter the required info.
+وقتی صفحه "Set up Single Sign-On with SAML" ظاهر می‌شود، یک گزینه برای "Basic SAML configuration" می‌بینید. روی دکمه **Edit** کلیک کنید تا اطلاعات الزامی را وارد کنید.
 
-![AZAzureStep1](images/saml-azure-step-1.png)
+![مرحله 1 Azure](images/saml-azure-step-1.png)
 
-Fill out the following fields as follows and click "Save":
+فیلدهای زیر را به شرح زیر پر کنید و روی "Save" کلیک کنید:
 
 - **Identifier (Entity ID)**: `Metabase`
-- **Reply URL (Assertion Consumer Service URL)**: go to your Metabase instance in Settings -> Admin-> Authentication -> SAML and insert the value that your Metabase instance reports in the "Configure your identity provider (IdP)" box.
+- **Reply URL (Assertion Consumer Service URL)**: به instance متابیس خود در Settings -> Admin-> Authentication -> SAML بروید و مقداری که instance متابیس شما در جعبه "Configure your identity provider (IdP)" گزارش می‌دهد را وارد کنید.
 
-Click on "Save" and then note the following 2 items on step 4:
+روی "Save" کلیک کنید و سپس دو مورد زیر را در مرحله 4 یادداشت کنید:
 
-- "Login URL": this is the value you need to enter in "SAML identity provider URL" in Metabase on the next step
-- "Microsoft Entra Identifier": this is the value you need to enter in "SAML identity provider issuer" in Metabase on the next step
+- "Login URL": این مقداری است که باید در "SAML identity provider URL" در متابیس در مرحله بعد وارد کنید
+- "Microsoft Entra Identifier": این مقداری است که باید در "SAML identity provider issuer" در متابیس در مرحله بعد وارد کنید
 
-Download the "Federation Metadata XML" file, which will have the certificate you'll need in the next step.
+فایل "Federation Metadata XML" را دانلود کنید، که گواهی مورد نیاز در مرحله بعد را خواهد داشت.
 
-To finish the Microsoft Entra side of the configuration, click on the **Users and groups** button on the Manage tab and add the users or groups that should have access to Metabase.
+برای تکمیل سمت Microsoft Entra پیکربندی، روی دکمه **Users and groups** در تب Manage کلیک کنید و کاربران یا گروه‌هایی که باید به متابیس دسترسی داشته باشند را اضافه کنید.
 
-## Configure the Enterprise Application with Metabase SSO information
+## پیکربندی Enterprise Application با اطلاعات SSO متابیس
 
-Log in to Metabase as an administrator and go to **Admin** -> **Settings** -> **Authentication** -> **SAML**.
+به‌عنوان یک ادمین به متابیس وارد شوید و به **Admin** -> **Settings** -> **Authentication** -> **SAML** بروید.
 
-Under "Tell Metabase about your identity provider", enter the following:
+زیر "Tell Metabase about your identity provider"، موارد زیر را وارد کنید:
 
-- **SAML Identity Provider URL**: the "Login URL" you got on Step 4 on the Microsoft Entra ID SAML SSO configuration
-- **SAML Identity Provider Certificate**: open the "Federation Metadata XML" with a text editor, copy and paste the super long string under the `<X509Certificate>` tag in the "App Federation Metadata Url". Make sure you copy and paste the whole string; if you miss any character, the integration won't work
+- **SAML Identity Provider URL**: "Login URL" که در مرحله 4 در پیکربندی SAML SSO Microsoft Entra ID دریافت کردید
+- **SAML Identity Provider Certificate**: فایل "Federation Metadata XML" را با یک ویرایشگر متن باز کنید، رشته بسیار طولانی زیر تگ `<X509Certificate>` در "App Federation Metadata Url" را کپی و paste کنید. مطمئن شوید که کل رشته را کپی و paste می‌کنید؛ اگر هر کاراکتری را از دست بدهید، ادغام کار نمی‌کند
 - **SAML Application Name**: "Metabase"
-- **SAML Identity Provider Issuer**: the "Microsoft Entra Identifier" URL you got from the Microsoft Entra ID SAML SSO configuration.
+- **SAML Identity Provider Issuer**: URL "Microsoft Entra Identifier" که از پیکربندی SAML SSO Microsoft Entra ID دریافت کردید.
 
-Click on **Save and Enable** below, and you should now be able to log in via Microsoft Entra ID.
+روی **Save and Enable** در زیر کلیک کنید، و حالا باید بتوانید از طریق Microsoft Entra ID وارد شوید.
 
-## Send group membership to Metabase for group mapping
+## ارسال عضویت گروه به متابیس برای نگاشت گروه
 
-If you want to send the user group membership to Metabase, then you need to add a group claim on step 2, "Set up Single Sign-On with SAML" on Azure:
+اگر می‌خواهید عضویت گروه کاربر را به متابیس ارسال کنید، باید یک claim گروه در مرحله 2، "Set up Single Sign-On with SAML" در Azure اضافه کنید:
 
-1. To the right of "Attributes & Claims", click on "Edit."
-2. Click "Add a group claim."
-   3 On the menu that appears for "Which groups associated with the user should be returned in the claim?", select "All groups."
-3. Click on Save.
-4. Then add the group mapping on the Metabase SAML configuration.
+1. در سمت راست "Attributes & Claims"، روی "Edit" کلیک کنید.
+2. روی "Add a group claim" کلیک کنید.
+   3 در منویی که برای "Which groups associated with the user should be returned in the claim?" ظاهر می‌شود، "All groups" را انتخاب کنید.
+3. روی Save کلیک کنید.
+4. سپس نگاشت گروه را در پیکربندی SAML متابیس اضافه کنید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [User provisioning](./user-provisioning.md)
+- [Provisioning کاربر](./user-provisioning.md)

@@ -1,32 +1,32 @@
 ---
-title: Custom actions
+title: اکشن‌های سفارشی
 ---
 
-# Custom actions
+# اکشن‌های سفارشی
 
-Write SQL to update records in your databases.
+SQL بنویسید تا رکوردها را در پایگاه‌داده‌هایتان به‌روزرسانی کنید.
 
-![Custom action](./images/custom-action.png)
+![اکشن سفارشی](./images/custom-action.png)
 
-## Creating a custom action
+## ایجاد یک اکشن سفارشی
 
-> You must be in a group with Native query editing access to create an action.
+> باید در گروهی با دسترسی ویرایش کوئری Native باشید تا یک اکشن ایجاد کنید.
 
-1. First, [create a model](../data-modeling/models.md).
-2. Visit the model and click on the **info** button.
-3. Click the **Actions** tab.
+1. ابتدا، یک [مدل](../data-modeling/models.md) ایجاد کنید.
+2. به مدل بروید و روی دکمهٔ **info** کلیک کنید.
+3. روی تب **Actions** کلیک کنید.
 
-In the action editor, you can write your own code to create an action, like writing an action that would only update a subset of the columns in a table. See [Example actions](#example-custom-actions).
+در ویرایشگر اکشن، می‌توانید کد خودتان را برای ایجاد یک اکشن بنویسید، مثل نوشتن یک اکشن که فقط یک زیرمجموعه از ستون‌ها در یک جدول را به‌روزرسانی می‌کند. به [مثال اکشن‌ها](#example-custom-actions) مراجعه کنید.
 
-## Field types for action variables
+## انواع فیلد برای متغیرهای اکشن
 
-For each {% raw %}{{ variable }}{% endraw %} that you set in an action, you'll need to set the field type.
+برای هر {% raw %}{{ variable }}{% endraw %} که در یک اکشن تنظیم می‌کنید، باید نوع فیلد را تنظیم کنید.
 
-Each of these variable field types present different options. Click on the gear icon to change options.
+هر یک از این انواع فیلد متغیر گزینه‌های مختلفی ارائه می‌دهند. روی آیکون gear کلیک کنید تا گزینه‌ها را تغییر دهید.
 
-If you don't require a variable, you can optionally specify a default value for Metabase to use in cases where people don't fill out the field. In the SQL code, remember to enclose any optional variables and commas in brackets, like `{% raw %}[[, column = {{ optional_variable }}]] {% endraw %}`.
+اگر متغیری را الزامی نمی‌کنید، می‌توانید به‌صورت اختیاری یک مقدار پیش‌فرض برای متابیس مشخص کنید تا در مواردی که افراد فیلد را پر نمی‌کنند استفاده کند. در کد SQL، به خاطر داشته باشید که هر متغیر اختیاری و کاما را در براکت‌ها قرار دهید، مثل `{% raw %}[[, column = {{ optional_variable }}]] {% endraw %}`.
 
-You can include placeholder text for all fields in the action form.
+می‌توانید متن placeholder برای همهٔ فیلدها در فرم اکشن قرار دهید.
 
 **Text**
 
@@ -46,37 +46,37 @@ You can include placeholder text for all fields in the action form.
 - Date
 - Date + Time
 
-For both **Dropdown** and **Inline select**, you can specify a list of options to present on the form, with each option on its own line.
+برای هر دو **Dropdown** و **Inline select**، می‌توانید لیستی از گزینه‌ها برای نمایش در فرم مشخص کنید، با هر گزینه در خط خودش.
 
-![Dropdown select](./images/dropdown.png)
+![انتخاب Dropdown](./images/dropdown.png)
 
-## Appearance
+## ظاهر
 
-The appearance tab in the action editor modal will display a preview of the variable's form element. In the image below, we've clicked on the variable's **gear** and set the variable to use a text > dropdown list. The appearance section gives a preview for what the form element would look like:
+تب appearance در مودال ویرایشگر اکشن یک پیش‌نمایش از عنصر فرم متغیر را نمایش می‌دهد. در تصویر زیر، روی **gear** متغیر کلیک کرده‌ایم و متغیر را برای استفاده از text > dropdown list تنظیم کرده‌ایم. بخش appearance یک پیش‌نمایش از آنچه عنصر فرم به نظر می‌رسد ارائه می‌دهد:
 
-![Appearance gives a preview of the form element](./images/appearance.png)
+![ظاهر یک پیش‌نمایش از عنصر فرم ارائه می‌دهد](./images/appearance.png)
 
-## Action settings
+## تنظیمات اکشن
 
-From the model detail page, click on the **three dot menu** (...) next to the action. Once in the action editor, click on the **gear** icon to bring up the action settings.
+از صفحهٔ جزئیات مدل، روی **منوی سه نقطه** (...) کنار اکشن کلیک کنید. وقتی در ویرایشگر اکشن هستید، روی آیکون **gear** کلیک کنید تا تنظیمات اکشن باز شود.
 
-### Make public
+### عمومی کردن
 
-Creates a publicly shareable link to the action form. Anyone with access to that link can fill out the form and run the action. Useful for creating surveys.
+یک لینک قابل‌اشتراک‌گذاری عمومی به فرم اکشن ایجاد می‌کند. هر کسی که به آن لینک دسترسی دارد می‌تواند فرم را پر کند و اکشن را اجرا کند. برای ایجاد نظرسنجی‌ها مفید است.
 
-![Public action form](./images/public-form.png)
+![فرم اکشن عمومی](./images/public-form.png)
 
-### Set a success message
+### تنظیم یک پیام موفقیت
 
-Here you can edit the success message, which is the message Metabase will display in the toast that pops up after Metabase hears back from the database that everything went smoothly.
+اینجا می‌توانید پیام موفقیت را ویرایش کنید، که پیامی است که متابیس در toast که بعد از اینکه متابیس از پایگاه داده شنید که همه چیز به خوبی پیش رفت نمایش می‌دهد.
 
-If something goes wrong, Metabase will display the error message it received from the database.
+اگر مشکلی پیش بیاید، متابیس پیام خطایی که از پایگاه داده دریافت کرد را نمایش می‌دهد.
 
-## Example custom actions
+## مثال اکشن‌های سفارشی
 
-### Example `UPDATE` action
+### مثال اکشن `UPDATE`
 
-You could write an action that would update the `plan` column for a record in the `invoices` table in the Sample Database:
+می‌توانید یک اکشن بنویسید که ستون `plan` را برای یک رکورد در جدول `invoices` در Sample Database به‌روزرسانی می‌کند:
 
 ```sql
 {% raw %}
@@ -88,15 +88,15 @@ WHERE
 {% endraw %}
 ```
 
-The above code will create a form that prompts people to input updated values for the (required) `plan` field and optionally the `payment` field for a given record specified by `ID`.
+کد بالا یک فرم ایجاد می‌کند که از افراد می‌خواهد مقادیر به‌روزرسانی‌شده برای فیلد (الزامی) `plan` و به‌صورت اختیاری فیلد `payment` برای یک رکورد مشخص‌شده توسط `ID` وارد کنند.
 
-The code in brackets `[[ ]]` makes the statement optional: the bracket-enclosed statement will only run if someone inserts a value in the payment field. Note the comma that separates the statements is _inside_ the brackets.
+کد در براکت‌ها `[[ ]]` عبارت را اختیاری می‌کند: عبارت محصورشده در براکت فقط در صورتی اجرا می‌شود که کسی یک مقدار در فیلد payment وارد کند. توجه داشته باشید که کامایی که عبارات را جدا می‌کند _داخل_ براکت‌ها است.
 
-![Example action form](./images/form.png)
+![فرم اکشن مثال](./images/form.png)
 
-### Example `INSERT` action
+### مثال اکشن `INSERT`
 
-Insert statements are pretty straightforward:
+عبارت‌های Insert نسبتاً ساده هستند:
 
 ```sql
 {% raw %}
@@ -117,9 +117,9 @@ VALUES (
 {% endraw %}
 ```
 
-### Casting field values in actions
+### Cast کردن مقادیر فیلد در اکشن‌ها
 
-If you get a type error when you submit a form, you may need to `CAST` the data type in the query so it matches the data type of the target field in the database. Here we're casting a value to a `boolean`:
+اگر هنگام ارسال یک فرم خطای نوع دریافت کردید، ممکن است نیاز داشته باشید نوع داده را در کوئری `CAST` کنید تا با نوع دادهٔ فیلد هدف در پایگاه داده مطابقت داشته باشد. اینجا یک مقدار را به `boolean` cast می‌کنیم:
 
 ```sql
 {% raw %}
@@ -129,9 +129,9 @@ WHERE id = {{id}};
 {% endraw %}
 ```
 
-### Referencing saved questions in actions
+### ارجاع به سؤال‌های ذخیره‌شده در اکشن‌ها
 
-You can also reference saved questions in actions. Here we're taking the results of a `SELECT` statement on a saved question ("Potential customers") and inserting the results into a `people_to_write` table.
+همچنین می‌توانید به سؤال‌های ذخیره‌شده در اکشن‌ها ارجاع دهید. اینجا نتایج یک عبارت `SELECT` روی یک سؤال ذخیره‌شده ("Potential customers") را می‌گیریم و نتایج را در جدول `people_to_write` درج می‌کنیم.
 
 ```sql
 {% raw %}
@@ -151,8 +151,8 @@ FROM prospects;
 {% endraw %}
 ```
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Introduction to actions](./introduction.md)
-- [Basic actions](./basic.md)
-- [Actions in dashboards](../dashboards/actions.md)
+- [مقدمه‌ای بر اکشن‌ها](./introduction.md)
+- [اکشن‌های پایه](./basic.md)
+- [اکشن‌ها در داشبوردها](../dashboards/actions.md)

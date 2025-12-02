@@ -1,83 +1,83 @@
 ---
-title: Troubleshooting database performance
+title: عیب‌یابی عملکرد پایگاه داده
 ---
 
-# Troubleshooting database performance
+# عیب‌یابی عملکرد پایگاه داده
 
-This guide deals with databases or data warehouses that are [connected to Metabase](../databases/connecting.md) as data sources.
+این راهنما با پایگاه‌داده‌ها یا data warehouseهایی که [به متابیس متصل شده‌اند](../databases/connecting.md) به‌عنوان منابع داده سروکار دارد.
 
-To fix problems with your Metabase [application database](../installation-and-operation/configuring-application-database.md), check out these troubleshooting guides:
+برای رفع مشکلات با [پایگاه داده اپلیکیشن](../installation-and-operation/configuring-application-database.md) متابیس، این راهنماهای عیب‌یابی را بررسی کنید:
 
-- [Running Metabase](./running.md).
-- [Running Metabase on Docker](./docker.md).
-- [Using or migrating from an H2 application database](./loading-from-h2.md).
+- [اجرای متابیس](./running.md).
+- [اجرای متابیس روی Docker](./docker.md).
+- [استفاده یا مهاجرت از یک پایگاه داده اپلیکیشن H2](./loading-from-h2.md).
 
-## Identifying bottlenecks
+## شناسایی گلوگاه‌ها
 
-1. Optional: use Metabase's [Usage analytics](../usage-and-performance-tools/usage-analytics.md) to look at your Metabase usage stats.\*
-2. Go to your database's server logs and check whether:
-   - Your tables are growing in size,
-   - More people are using Metabase to access your database,
-   - People are accessing your database more often, or
-   - A script or application (other than Metabase) is accessing the database frequently.
-3. If specific tables are being queried a lot, try [Optimizing your table schemas](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster#organize-data-to-anticipate-common-questions).
-4. Run a question from Metabase, then [run the same query](../questions/query-builder/editor.md#viewing-the-native-query-that-powers-your-question) directly against your database.
-   - If the queries take about the same time, your data or usage might be outgrowing your database. You can give your database more resources, or consider [upgrading your hardware](https://www.metabase.com/learn/grow-your-data-skills/data-landscape/which-data-warehouse).
-   - If the query in Metabase takes longer than a direct query against your database, you might need to adjust the deployment of your Metabase app. Check out some options in [Metabase at scale](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/metabase-at-scale).
-5. If a script or third-party application is hitting your database with a lot of queries at a time:
-   - Stop your script or application, and [clear any queued queries](#clearing-queued-queries).
-   - Recommended: add a timeout to your script, schedule the script or application to run during off-hours, or replicate your database (and point your tools there instead).
+1. اختیاری: از [تحلیل استفاده](../usage-and-performance-tools/usage-analytics.md) متابیس برای نگاه کردن به آمار استفاده متابیس خود استفاده کنید.\*
+2. به لاگ‌های سرور پایگاه داده خود بروید و بررسی کنید که آیا:
+   - جداول شما در حال بزرگ شدن هستند،
+   - افراد بیشتری از متابیس برای دسترسی به پایگاه داده شما استفاده می‌کنند،
+   - افراد بیشتر به پایگاه داده شما دسترسی پیدا می‌کنند، یا
+   - یک اسکریپت یا اپلیکیشن (غیر از متابیس) به‌طور مکرر به پایگاه داده دسترسی پیدا می‌کند.
+3. اگر جداول خاصی زیاد کوئری می‌شوند، سعی کنید [بهینه‌سازی schemaهای جدول خود](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster#organize-data-to-anticipate-common-questions) را انجام دهید.
+4. یک سؤال از متابیس اجرا کنید، سپس [همان کوئری](../questions/query-builder/editor.md#viewing-the-native-query-that-powers-your-question) را مستقیماً علیه پایگاه داده خود اجرا کنید.
+   - اگر کوئری‌ها تقریباً همان زمان را می‌گیرند، داده یا استفاده شما ممکن است از پایگاه داده شما فراتر رفته باشد. می‌توانید به پایگاه داده خود منابع بیشتری بدهید، یا [ارتقای سخت‌افزار خود](https://www.metabase.com/learn/grow-your-data-skills/data-landscape/which-data-warehouse) را در نظر بگیرید.
+   - اگر کوئری در متابیس بیشتر از یک کوئری مستقیم علیه پایگاه داده شما طول می‌کشد، ممکن است نیاز به تنظیم deployment اپلیکیشن متابیس خود داشته باشید. برخی گزینه‌ها را در [متابیس در مقیاس](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/metabase-at-scale) بررسی کنید.
+5. اگر یک اسکریپت یا اپلیکیشن شخص ثالث پایگاه داده شما را با تعداد زیادی کوئری در یک زمان تحت تأثیر قرار می‌دهد:
+   - اسکریپت یا اپلیکیشن خود را متوقف کنید، و [هر کوئری صف‌بندی شده را پاک کنید](#clearing-queued-queries).
+   - توصیه می‌شود: یک timeout به اسکریپت خود اضافه کنید، اسکریپت یا اپلیکیشن را برای اجرا در ساعات غیرکاری برنامه‌ریزی کنید، یا پایگاه داده خود را replicate کنید (و ابزارهای خود را به آنجا اشاره دهید).
 
-\* Available on Pro and Enterprise plans.
+\* در پلن‌های Pro و Enterprise در دسترس است.
 
-## Resetting a database connection
+## بازنشانی یک اتصال پایگاه داده
 
-1. Go to **Settings** > **Admin settings** > **Databases** > your database.
-2. Click **Save changes** (without making changes) to reset Metabase's connections to your database.
-3. Alternatively: kill the connection(s) directly from your database.
+1. به **Settings** > **Admin settings** > **Databases** > پایگاه داده خود بروید.
+2. روی **Save changes** کلیک کنید (بدون ایجاد تغییرات) تا اتصال‌های متابیس به پایگاه داده خود را بازنشانی کنید.
+3. به‌عنوان جایگزین: اتصال(ها) را مستقیماً از پایگاه داده خود kill کنید.
 
-**Explanation**
+**توضیح**
 
-"Turn it off, and on again" by disconnecting and reconnecting your database---an easy sanity check that can save you a lot of time.
+"آن را خاموش و دوباره روشن کنید" با قطع و اتصال مجدد پایگاه داده خود---یک بررسی ساده که می‌تواند زمان زیادی را برای شما صرفه‌جویی کند.
 
-In general, Metabase will try to close hanging connections to your database after 10 minutes, and then again after 20 minutes. But if your database doesn't respond, you may need to close the connection to Metabase from the database side.
+به‌طور کلی، متابیس سعی می‌کند اتصال‌های آویزان به پایگاه داده شما را بعد از 10 دقیقه ببندد، و سپس دوباره بعد از 20 دقیقه. اما اگر پایگاه داده شما پاسخ نمی‌دهد، ممکن است نیاز به بستن اتصال به متابیس از سمت پایگاه داده داشته باشید.
 
-## Clearing queued queries
+## پاک کردن کوئری‌های صف‌بندی شده
 
-1. Stop the process (e.g., a script, or a dashboard with [too many cards](./my-dashboard-is-slow.md#dashboard-has-over-10-cards) that's launching a lot of queries at once.
-2. Go to your database server and stop all queries (from Metabase) that are in progress.
-3. Optional: Increase the [number of connections to your database](../configuring-metabase/environment-variables.md#mb_jdbc_data_warehouse_max_connection_pool_size).
+1. فرآیند را متوقف کنید (مثلاً یک اسکریپت، یا یک داشبورد با [بیش از 10 کارت](./my-dashboard-is-slow.md#dashboard-has-over-10-cards) که تعداد زیادی کوئری را به‌طور همزمان راه‌اندازی می‌کند.
+2. به سرور پایگاه داده خود بروید و همه کوئری‌های (از متابیس) که در حال انجام هستند را متوقف کنید.
+3. اختیاری: [تعداد اتصالات به پایگاه داده خود](../configuring-metabase/environment-variables.md#mb_jdbc_data_warehouse_max_connection_pool_size) را افزایش دهید.
 
-**Explanation**
+**توضیح**
 
-If someone or something creates 100 queries at the same time, this stampede of queries will take up all of the available connections between Metabase and your database, preventing any new queries from running. If other people continue running questions and dashboards while the first 100 queries are still in progress, the queue will grow at a faster rate than your database can keep up with.
+اگر کسی یا چیزی 100 کوئری را به‌طور همزمان ایجاد کند، این هجوم کوئری‌ها همه اتصالات موجود بین متابیس و پایگاه داده شما را اشغال می‌کند، از اجرای هر کوئری جدید جلوگیری می‌کند. اگر افراد دیگر در حالی که 100 کوئری اول هنوز در حال انجام هستند به اجرای سؤال‌ها و داشبوردها ادامه دهند، صف با سرعتی بیشتر از آنچه پایگاه داده شما می‌تواند با آن همگام شود رشد می‌کند.
 
-## Managing resource-intensive queries
+## مدیریت کوئری‌های resource-intensive
 
-1. [Reschedule or disable Metabase syncs and scans](../databases/sync-scan.md).
+1. [برنامه‌ریزی مجدد یا غیرفعال کردن syncها و scanهای متابیس](../databases/sync-scan.md).
 
-**Explanation**
+**توضیح**
 
-By default, Metabase makes regular sync and scan queries against your database to keep your tables up to date, get fresh values for filter dropdowns, and make helpful suggestions. If you've got a large database, you can choose to trigger these queries manually instead of on a schedule.
+به‌طور پیش‌فرض، متابیس کوئری‌های sync و scan منظم علیه پایگاه داده شما انجام می‌دهد تا جداول شما را به‌روز نگه دارد، مقادیر تازه برای dropdownهای فیلتر دریافت کند، و پیشنهادات مفید ارائه دهد. اگر یک پایگاه داده بزرگ دارید، می‌توانید انتخاب کنید که این کوئری‌ها را به‌صورت دستی به جای برنامه‌ریزی شده trigger کنید.
 
-## Questions that use number, date, or timestamp columns
+## سؤال‌هایی که از ستون‌های عدد، تاریخ، یا timestamp استفاده می‌کنند
 
-1. Update your database schema so that the columns are typed correctly.
-2. [Sync the updated columns](../databases/sync-scan.md#manually-syncing-tables-and-columns) to bring the changes into Metabase.
+1. schema پایگاه داده خود را به‌روزرسانی کنید تا ستون‌ها به‌درستی تایپ شده باشند.
+2. [ستون‌های به‌روزرسانی شده را همگام‌سازی کنید](../databases/sync-scan.md#manually-syncing-tables-and-columns) تا تغییرات را به متابیس بیاورید.
 
-**Explanation**
+**توضیح**
 
-If a question uses data stored as the wrong [data type](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview) in your database (most common with number, date, or timestamp values stored as strings), Metabase will generate a query that asks your database to convert the values on the fly. Typing your columns correctly at the schema level will help your database avoid that extra step to return results faster in Metabase.
+اگر یک سؤال از داده ذخیره‌شده به‌عنوان [نوع داده](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview) اشتباه در پایگاه داده شما استفاده می‌کند (رایج‌ترین با مقادیر عدد، تاریخ، یا timestamp ذخیره‌شده به‌عنوان رشته)، متابیس یک کوئری تولید می‌کند که از پایگاه داده شما می‌خواهد مقادیر را به‌صورت on-the-fly تبدیل کند. تایپ کردن ستون‌های خود به‌درستی در سطح schema به پایگاه داده شما کمک می‌کند از آن مرحله اضافی اجتناب کند تا نتایج را سریع‌تر در متابیس برگرداند.
 
-## Related problems
+## مشکلات مرتبط
 
-- [My connection or query is timing out](./timeout.md).
-- [I can't connect to a database](./db-connection.md).
-- [My dashboard is slow or failing to load](./my-dashboard-is-slow.md).
+- [اتصال یا کوئری من timeout می‌شود](./timeout.md).
+- [نمی‌توانم به یک پایگاه داده متصل شوم](./db-connection.md).
+- [داشبورد من کند است یا بارگذاری نمی‌شود](./my-dashboard-is-slow.md).
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.

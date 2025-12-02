@@ -1,41 +1,41 @@
 ---
-title: Permissions overview
+title: نمای کلی مجوزها
 redirect_from:
   - /docs/latest/permissions
 ---
 
-# Permissions overview
+# نمای کلی مجوزها
 
-Metabase has a simple, but powerful permissions system.
+متابیس یک سیستم مجوز ساده اما قدرتمند دارد.
 
-## [Permissions introduction](./introduction.md)
+## [مقدمه‌ای بر مجوزها](./introduction.md)
 
-Get a lay of the permissions land.
+دریافت یک نمای کلی از سرزمین مجوزها.
 
-## [Data permissions](./data.md)
+## [مجوزهای داده](./data.md)
 
-Restricting group access to databases, schemas, and tables.
+محدود کردن دسترسی گروه به پایگاه‌داده‌ها، schemaها، و جداول.
 
-## [Collection permissions](./collections.md)
+## [مجوزهای کلکسیون](./collections.md)
 
-Granting group access to collections of questions, dashboards, models, and sub-collections.
+اعطای دسترسی گروه به کلکسیون‌های سؤال‌ها، داشبوردها، مدل‌ها، و زیرکلکسیون‌ها.
 
-## [Application permissions](./application.md)
+## [مجوزهای اپلیکیشن](./application.md)
 
-Granting group access to different Metabase features.
+اعطای دسترسی گروه به ویژگی‌های مختلف متابیس.
 
-## [Row and column security](./row-and-column-security.md)
+## [امنیت ردیف و ستون](./row-and-column-security.md)
 
-Setting up row and column security to restrict access to rows and columns in tables.
+تنظیم امنیت ردیف و ستون برای محدود کردن دسترسی به ردیف‌ها و ستون‌ها در جداول.
 
-## [Snippet folder permissions](./snippets.md)
+## [مجوزهای پوشه snippet](./snippets.md)
 
-Organize snippets into folders that require permissions to view.
+سازمان‌دهی snippetها در پوشه‌هایی که نیاز به مجوز برای مشاهده دارند.
 
-## [Notification permissions](./notifications.md)
+## [مجوزهای اعلان](./notifications.md)
 
-Notes on how permissions interact with dashboard subscriptions and alerts.
+یادداشت‌هایی دربارهٔ نحوهٔ تعامل مجوزها با اشتراک‌های داشبورد و هشدارها.
 
-## [Configuring permissions for embedding](./embedding.md)
+## [پیکربندی مجوزها برای جاسازی](./embedding.md)
 
-The permissions tooling available for different embedding setups.
+ابزارهای مجوز در دسترس برای تنظیمات جاسازی مختلف.

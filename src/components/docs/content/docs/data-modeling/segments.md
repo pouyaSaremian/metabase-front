@@ -1,48 +1,48 @@
 ---
-title: "Segments"
+title: "سگمنت‌ها"
 ---
 
-# Segments
+# سگمنت‌ها
 
-Metabase allows admins to create segments so people can quickly and easily reference them in the query builder.
+متابیس به ادمین‌ها امکان می‌دهد سگمنت‌ها را ایجاد کنند تا افراد بتوانند به سرعت و به راحتی به آن‌ها در query builder ارجاع دهند.
 
-To manage segments:
+برای مدیریت سگمنت‌ها:
 
-1. Click the **gear** icon in the upper right.
-2. Select **Admin setting**.
-3. Go to the **Table Metadata** tab.
-4. Click **Segments** at the bottom left.
+1. روی **آیکون gear** در گوشهٔ بالا سمت راست کلیک کنید.
+2. **Admin setting** را انتخاب کنید.
+3. به تب **Table Metadata** بروید.
+4. روی **Segments** در پایین سمت چپ کلیک کنید.
 
-## Creating a Segment
+## ایجاد یک سگمنت
 
-A segment is just a special named filter or set of filters. You can create these to make sure that there is an official definition of a subset of customers, users, or products that everyone on your team can refer to consistently. For example, you might create a segment called “Active Users” that contains all the filters that are needed to correctly select active users.
+یک سگمنت فقط یک فیلتر یا مجموعه فیلترهای نام‌گذاری‌شدهٔ خاص است. می‌توانید این‌ها را ایجاد کنید تا مطمئن شوید که یک تعریف رسمی از یک زیرمجموعه از مشتریان، کاربران، یا محصولات وجود دارد که همه در تیم شما می‌توانند به‌طور یکسان به آن ارجاع دهند. به‌عنوان مثال، ممکن است یک سگمنت به نام "Active Users" ایجاد کنید که شامل همهٔ فیلترهای موردنیاز برای انتخاب صحیح کاربران فعال است.
 
-To start, select the **Segments** tab, followed by the **New segment** button on the right side of the screen. Choose the appropriate table and filters for your new segment and add a title and description. When you’re done, this segment will be accessible from the filter list in the query builder when viewing this table (the segment will not be automatically applied to the table).
+برای شروع، تب **Segments** را انتخاب کنید، سپس دکمهٔ **New segment** در سمت راست صفحه. جدول و فیلترهای مناسب را برای سگمنت جدید خود انتخاب کنید و یک عنوان و توضیحات اضافه کنید. وقتی تمام شد، این سگمنت از لیست فیلتر در query builder هنگام مشاهدهٔ این جدول قابل دسترسی خواهد بود (سگمنت به‌طور خودکار به جدول اعمال نمی‌شود).
 
-![Add a segment](images/AddSegment.png)
+![اضافه کردن یک سگمنت](images/AddSegment.png)
 
-Now you’ll be looking at the segment builder, which is a limited version of the query builder, with only the option to add filters. Add your filter(s) as you would in the query builder, and then give your segment a name and a description (these will be visible in the query builder filter dropdown after you’ve saved). If you want to test out your segment in the query builder before you save it, just click the Preview button, which will open a new query builder window with your segment applied.
+حالا در حال مشاهدهٔ builder سگمنت هستید، که یک نسخهٔ محدود از query builder است، با فقط گزینهٔ اضافه کردن فیلترها. فیلتر(های) خود را همانطور که در query builder اضافه می‌کنید اضافه کنید، سپس به سگمنت خود یک نام و یک توضیحات بدهید (این‌ها در منوی dropdown فیلتر query builder بعد از ذخیره قابل مشاهده خواهند بود). اگر می‌خواهید سگمنت خود را در query builder قبل از ذخیره تست کنید، فقط روی دکمهٔ Preview کلیک کنید، که یک پنجرهٔ query builder جدید با سگمنت اعمال‌شده باز می‌کند.
 
-![Creating a segment](images/CreateSegment.png)
+![ایجاد یک سگمنت](images/CreateSegment.png)
 
-Once you’re done, click **Save changes**. Now your new segment will appear in the segments list of your table.
+وقتی تمام شد، روی **Save changes** کلیک کنید. حالا سگمنت جدید شما در لیست سگمنت‌های جدول شما ظاهر می‌شود.
 
-![Finished segment](images/FinishedSegment.png)
+![سگمنت تمام‌شده](images/FinishedSegment.png)
 
-If you exit the Admin Panel and try asking a new question, then click on the button to add a filter, you’ll see your segment at the top of the list.
+اگر از پنل Admin خارج شوید و سعی کنید یک سؤال جدید بپرسید، سپس روی دکمه برای اضافه کردن یک فیلتر کلیک کنید، سگمنت خود را در بالای لیست می‌بینید.
 
-![Segment in dropdown](images/Segment.png)
+![سگمنت در dropdown](images/Segment.png)
 
-## Editing and retiring segments
+## ویرایش و بازنشسته کردن سگمنت‌ها
 
-You can edit and retire segments from the Table Metadata screen in the Admin Panel. Select the table with the segment you’re looking for, and click the ellipsis (…) icon to the right of that segment.
+می‌توانید سگمنت‌ها را از صفحهٔ Table Metadata در پنل Admin ویرایش و بازنشسته کنید. جدول با سگمنت موردنظر را انتخاب کنید و روی آیکون سه نقطه (…) در سمت راست آن سگمنت کلیک کنید.
 
-![Segment Actions](images/SegmentActions.png)
+![اقدامات سگمنت](images/SegmentActions.png)
 
-When editing a segment, you’ll be required to leave a note about why you’re changing it, just so everyone can understand why things are different. If any user is the creator of a saved question or dashboard that utilized the segment you’ve edited, they’ll receive an email letting them know that things have changed, along with the explanation that you write in this box.
+هنگام ویرایش یک سگمنت، باید یک یادداشت دربارهٔ اینکه چرا آن را تغییر می‌دهید بگذارید، فقط تا همه بتوانند بفهمند چرا چیزها متفاوت شده‌اند. اگر هر کاربری خالق یک سؤال یا داشبورد ذخیره‌شده است که از سگمنت ویرایش‌شدهٔ شما استفاده کرده است، یک ایمیل دریافت می‌کند که به آن‌ها اطلاع می‌دهد چیزها تغییر کرده‌اند، همراه با توضیحی که در این جعبه می‌نویسید.
 
-![Edit message](images/EditMessage.png)
+![پیام ویرایش](images/EditMessage.png)
 
-Retiring a segment will make it no longer selectable from the query builder. However, **it won’t break existing saved questions that depend on that segment**.
+بازنشسته کردن یک سگمنت آن را دیگر قابل انتخاب از query builder نمی‌کند. با این حال، **سؤال‌های ذخیره‌شده موجود که به آن سگمنت وابسته هستند را نمی‌شکند**.
 
-Lastly, you can also view the revision history for each segment from the actions list.
+در نهایت، همچنین می‌توانید تاریخچهٔ بازبینی را برای هر سگمنت از لیست اقدامات مشاهده کنید.

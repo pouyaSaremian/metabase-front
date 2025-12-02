@@ -1,96 +1,96 @@
 ---
-title: Troubleshooting memory and JVM issues
+title: عیب‌یابی مشکلات حافظه و JVM
 ---
 
-# Troubleshooting memory and JVM issues
+# عیب‌یابی مشکلات حافظه و JVM
 
-Metabase runs on the Java Virtual Machine (JVM), and depending on how it's configured, it may use the server's filesystem to store some information. Problems with either the JVM or the filesystem can therefore prevent Metabase from running.
+متابیس روی Java Virtual Machine (JVM) اجرا می‌شود، و بسته به نحوهٔ پیکربندی آن، ممکن است از filesystem سرور برای ذخیره برخی اطلاعات استفاده کند. مشکلات با JVM یا filesystem بنابراین می‌توانند از اجرای متابیس جلوگیری کنند.
 
-## Java version
+## نسخه Java
 
-Metabase should be run on Java version 21 (older versions are unsupported).
+متابیس باید روی نسخه Java 21 اجرا شود (نسخه‌های قدیمی‌تر پشتیبانی نمی‌شوند).
 
-When searching for versions of Java, always use the latest minor version of the major version you're choosing. E.g., when choosing between Java 21.0.1 and Java 21.0.4, choose the latest version (in this case, 21.0.4).
+هنگام جستجو برای نسخه‌های Java، همیشه از آخرین نسخه minor از نسخه major که انتخاب می‌کنید استفاده کنید. مثلاً، هنگام انتخاب بین Java 21.0.1 و Java 21.0.4، آخرین نسخه را انتخاب کنید (در این مورد، 21.0.4).
 
-We recommend running only one version of Java on a single server, because running more than one version of Java on a single server can cause application problems. If you need to run multiple applications that each require a different java version, consider using containers (as containers were meant to solve this problem). Otherwise, just make sure that you can run all your applications with a single Java version.
+توصیه می‌کنیم فقط یک نسخه Java روی یک سرور واحد اجرا کنید، چون اجرای بیش از یک نسخه Java روی یک سرور واحد می‌تواند مشکلات اپلیکیشن ایجاد کند. اگر نیاز به اجرای چندین اپلیکیشن دارید که هر کدام نیاز به نسخه java متفاوتی دارند، استفاده از containerها را در نظر بگیرید (چون containerها برای حل این مشکل طراحی شده‌اند). در غیر این صورت، فقط مطمئن شوید که می‌توانید همه اپلیکیشن‌های خود را با یک نسخه Java واحد اجرا کنید.
 
-## Metabase's memory usage
+## استفاده از حافظه متابیس
 
-Metabase ships as a JAR file that runs on the Java Virtual Machine (JVM).
+متابیس به‌عنوان یک فایل JAR که روی Java Virtual Machine (JVM) اجرا می‌شود ship می‌شود.
 
-It's important to distinguish _Metabase's_ memory usage from the _JVM's_ memory usage.
+مهم است که استفاده از حافظه _متابیس_ را از استفاده از حافظه _JVM_ متمایز کنیم.
 
-The JVM will consume a constant amount of memory. By default, the JVM will use about one fourth of a machine's RAM (though you can [change how much RAM you want the JVM to use](#allocating-more-memory-to-the-jvm)).
+JVM مقدار ثابتی از حافظه را مصرف می‌کند. به‌طور پیش‌فرض، JVM حدود یک چهارم RAM ماشین را استفاده می‌کند (اگرچه می‌توانید [مقدار RAM که می‌خواهید JVM استفاده کند را تغییر دهید](#allocating-more-memory-to-the-jvm)).
 
-JVM applications (like Metabase) will consume and release the RAM allocated to the JVM. The JVM, however, won't release unused RAM to the machine; the JVM's memory use will be constant.
+اپلیکیشن‌های JVM (مثل متابیس) RAM اختصاص داده شده به JVM را مصرف و آزاد می‌کنند. با این حال، JVM RAM استفاده نشده را به ماشین آزاد نمی‌کند؛ استفاده از حافظه JVM ثابت خواهد بود.
 
-So on a machine with 8 GB of RAM, by default the JVM will use 2 GB of RAM. Metabase will use some or all of these 2 GBs of JVM-allocated RAM, depending on Metabase's activity. But from the machine's perspective, the JVM will always be using that allocated 2GB of RAM, even when Metabase is only using a fraction of that allocated RAM.
+پس روی یک ماشین با 8 GB RAM، به‌طور پیش‌فرض JVM 2 GB RAM را استفاده می‌کند. متابیس برخی یا همه این 2 GB RAM اختصاص داده شده به JVM را استفاده می‌کند، بسته به فعالیت متابیس. اما از دیدگاه ماشین، JVM همیشه آن 2GB RAM اختصاص داده شده را استفاده می‌کند، حتی وقتی متابیس فقط کسری از آن RAM اختصاص داده شده را استفاده می‌کند.
 
-## Diagnosing memory issues
+## تشخیص مشکلات حافظه
 
-Given the above explanation of how the JVM handles memory, if you're having performance issues with Metabase that you don't think are due to your data warehouse, you'll want to check for these red flags:
+با توجه به توضیح بالا از نحوهٔ مدیریت حافظه توسط JVM، اگر مشکلات عملکردی با متابیس دارید که فکر نمی‌کنید به دلیل data warehouse شما باشد، می‌خواهید این پرچم‌های قرمز را بررسی کنید:
 
-## Metabase crashes due to Java heap space `OutOfMemoryError`
+## متابیس به دلیل Java heap space `OutOfMemoryError` crash می‌کند
 
-The JVM can normally figure out how much RAM is available on the system and automatically set a sensible upper bound for heap memory usage. On certain shared hosting environments, however, this doesn't always work as desired. The usual symptom of this is an error message like:
+JVM معمولاً می‌تواند بفهمد چقدر RAM در سیستم در دسترس است و به‌طور خودکار یک حد بالای منطقی برای استفاده از heap memory تنظیم کند. در برخی محیط‌های میزبانی مشترک، با این حال، این همیشه طبق میل کار نمی‌کند. علامت معمول این یک پیام خطا مثل این است:
 
 ```
 java.lang.OutOfMemoryError: Java heap space
 ```
 
-If you're seeing this "Out of memory" (OOM) error, you'll need to [allocate more memory to the JVM](#allocating-more-memory-to-the-jvm).
+اگر این خطای "Out of memory" (OOM) را می‌بینید، باید [حافظه بیشتری به JVM اختصاص دهید](#allocating-more-memory-to-the-jvm).
 
-### When viewing memory usage over time as a line chart, you see a sawtooth pattern
+### وقتی استفاده از حافظه را در طول زمان به‌عنوان یک نمودار خطی مشاهده می‌کنید، یک الگوی sawtooth می‌بینید
 
-You can use tools to view how Metabase uses the memory available to it over time. Check out:
+می‌توانید از ابزارها برای مشاهده نحوهٔ استفاده متابیس از حافظه در دسترس خود در طول زمان استفاده کنید. بررسی کنید:
 
-- [Observability with Prometheus](../installation-and-operation/observability-with-prometheus.md)
-- [Monitoring your Metabase](../installation-and-operation/monitoring-metabase.md)
+- [Observability با Prometheus](../installation-and-operation/observability-with-prometheus.md)
+- [مانیتورینگ متابیس شما](../installation-and-operation/monitoring-metabase.md)
 
-The specific Prometheus metric you need to check is jvm_memory_bytes_used{area="heap"}
+متریک Prometheus خاصی که باید بررسی کنید jvm_memory_bytes_used{area="heap"} است
 
-A red flag to look out for: the sawtooth pattern. Metabase will quickly consume a lot of memory, which will trigger garbage collection, which frees up memory, which Metabase quickly consumes again. This up-down-up-down pattern of memory usage is the signature of frequent garbage collection cycles. The garbage collection will tie up CPU cycles, which can slow down your application.
+یک پرچم قرمز برای مراقبت: الگوی sawtooth. متابیس به سرعت مقدار زیادی حافظه مصرف می‌کند، که garbage collection را trigger می‌کند، که حافظه را آزاد می‌کند، که متابیس دوباره به سرعت مصرف می‌کند. این الگوی بالا-پایین-بالا-پایین استفاده از حافظه امضای چرخه‌های مکرر garbage collection است. garbage collection چرخه‌های CPU را مسدود می‌کند، که می‌تواند اپلیکیشن شما را کند کند.
 
-If you're seeing this, you'll need to [increase the amount of memory allocated to the JVM](#allocating-more-memory-to-the-jvm).
+اگر این را می‌بینید، باید [مقدار حافظه اختصاص داده شده به JVM را افزایش دهید](#allocating-more-memory-to-the-jvm).
 
-## Allocating more memory to the JVM
+## اختصاص حافظه بیشتر به JVM
 
-You can set a JVM option to allocate more memory to the JVM's heap. For example, your Java runtime might use the `-X` flag to do this:
+می‌توانید یک گزینه JVM تنظیم کنید تا حافظه بیشتری به heap JVM اختصاص دهد. به‌عنوان مثال، runtime Java شما ممکن است از flag `-X` برای انجام این کار استفاده کند:
 
 ```sh
 java -Xmx2g -jar metabase.jar
 ```
 
-Adjust the memory allocation upward until Metabase seems happy, but make sure to keep the number lower than the total amount of RAM available on your machine, because Metabase won't be the only process running. Leaving 1 to 2 GB of RAM for other processes on the machine is generally enough, so you might set `-Xmx` to `1g` on a machine with 2 GB of RAM, `2g` on one with 4 GB of RAM, and so on. You may need to experiment with this settings to find one that makes Metabase and everything else play nicely together (and this experimentation may require upgrading to a machine with more memory).
+تخصیص حافظه را بالا تنظیم کنید تا متابیس راضی به نظر برسد، اما مطمئن شوید که عدد را کمتر از کل مقدار RAM در دسترس روی ماشین خود نگه دارید، چون متابیس تنها فرآیند در حال اجرا نخواهد بود. باقی گذاشتن 1 تا 2 GB RAM برای فرآیندهای دیگر روی ماشین به‌طور کلی کافی است، بنابراین ممکن است `-Xmx` را روی `1g` روی یک ماشین با 2 GB RAM، `2g` روی یکی با 4 GB RAM، و غیره تنظیم کنید. ممکن است نیاز به آزمایش با این تنظیمات داشته باشید تا یکی پیدا کنید که متابیس و همه چیز دیگر را به خوبی با هم کار می‌کند (و این آزمایش ممکن است نیاز به ارتقا به یک ماشین با حافظه بیشتر داشته باشد).
 
-You can also use the environment variable `JAVA_OPTS` to set JVM args instead of passing them directly to `java`. This is particularly useful when running the Docker image:
+همچنین می‌توانید از متغیر محیطی `JAVA_OPTS` برای تنظیم args JVM به جای ارسال مستقیم آن‌ها به `java` استفاده کنید. این به‌طور خاص هنگام اجرای Docker image مفید است:
 
 ```sh
 docker run -d -p 3000:3000 -e "JAVA_OPTS=-Xmx2g" metabase/metabase
 ```
 
-## Diagnosing memory issues causing OutOfMemoryErrors
+## تشخیص مشکلات حافظه که باعث OutOfMemoryErrors می‌شوند
 
-If the Metabase instance starts and runs for a significant amount of time before running out of memory, there might be a specific event, such as a large query, triggering the `OutOfMemoryError`. One way to diagnose where the memory is being used is to enable heap dumps when an `OutOfMemoryError` is triggered. To enable this, you need to add two flags to the `java` invocation:
+اگر instance متابیس راه‌اندازی می‌شود و برای مدت زمان قابل توجهی قبل از تمام شدن حافظه اجرا می‌شود، ممکن است یک رویداد خاص، مثل یک کوئری بزرگ، `OutOfMemoryError` را trigger کند. یک راه برای تشخیص اینکه حافظه کجا استفاده می‌شود فعال کردن heap dumpها وقتی یک `OutOfMemoryError` trigger می‌شود است. برای فعال کردن این، باید دو flag به invocation `java` اضافه کنید:
 
 ```
 java -Xmx2g -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/path/to/a/directory -jar metabase-jar
 ```
 
-The `-XX:HeapDumpPath` flag specifies where to put the dump---the current directory is the default. When an `OutOfMemoryError` occurs, the JVM will dump an `hprof` file to the directory specified. These `hprof` files can be large (the size of the `-Xmx` argument) so make sure your disk has enough space. These `hprof` files can be read with many different tools, such as `jhat` (which is included with the JDK) or the [Eclipse Memory Analyzer Tool][eclipse-memory-analyzer].
+flag `-XX:HeapDumpPath` مشخص می‌کند dump کجا قرار گیرد---دایرکتوری فعلی پیش‌فرض است. وقتی یک `OutOfMemoryError` اتفاق می‌افتد، JVM یک فایل `hprof` را به دایرکتوری مشخص شده dump می‌کند. این فایل‌های `hprof` می‌توانند بزرگ باشند (اندازه argument `-Xmx`) بنابراین مطمئن شوید دیسک شما فضای کافی دارد. این فایل‌های `hprof` می‌توانند با ابزارهای مختلفی، مثل `jhat` (که با JDK شامل می‌شود) یا [Eclipse Memory Analyzer Tool][eclipse-memory-analyzer] خوانده شوند.
 
-## Metabase cannot read or write from a file or folder (IOError)
+## متابیس نمی‌تواند از یک فایل یا پوشه بخواند یا بنویسد (IOError)
 
-If you see an error regarding file permissions, like Metabase being unable to read a SQLite database or a custom GeoJSON map file, check out the section "Metabase can't read to/from a file or directory" in our [Docker troubleshooting guide](./docker.md).
+اگر خطایی دربارهٔ مجوزهای فایل می‌بینید، مثل اینکه متابیس نمی‌تواند یک پایگاه داده SQLite یا یک فایل نقشه GeoJSON سفارشی را بخواند، بخش "Metabase can't read to/from a file or directory" را در [راهنمای عیب‌یابی Docker](./docker.md) بررسی کنید.
 
-## WARNING: sun.reflect.Reflection.getCallerClass is not supported
+## WARNING: sun.reflect.Reflection.getCallerClass پشتیبانی نمی‌شود
 
-Don't worry about it.
+نگران آن نباشید.
 
 ```
 WARNING: sun.reflect.Reflection.getCallerClass is not supported. This will impact performance.
 ```
 
-If you see the above error, ignore it. Your Metabase is perfectly healthy and performing as it should.
+اگر خطای بالا را می‌بینید، آن را نادیده بگیرید. متابیس شما کاملاً سالم است و طبق انتظار عمل می‌کند.
 
 [eclipse-memory-analyzer]: https://www.eclipse.org/mat/

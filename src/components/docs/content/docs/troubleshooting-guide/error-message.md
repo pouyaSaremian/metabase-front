@@ -1,31 +1,31 @@
 ---
-title: Troubleshooting error messages
+title: عیب‌یابی پیام‌های خطا
 ---
 
-# Troubleshooting error messages
+# عیب‌یابی پیام‌های خطا
 
-An error message can help you find the right troubleshooting guide. The exact wording depends on your database and Metabase version, so try to look for the closest match.
+یک پیام خطا می‌تواند به شما کمک کند راهنمای عیب‌یابی صحیح را پیدا کنید. کلمات دقیق به پایگاه داده و نسخه متابیس شما بستگی دارد، بنابراین سعی کنید نزدیک‌ترین تطبیق را جستجو کنید.
 
-## SQL editor
+## ویرایشگر SQL
 
-See if your error details contain any of:
+ببینید آیا جزئیات خطای شما شامل هر یک از این‌ها است:
 
-- [Table or column "not found" or "not recognized"](https://www.metabase.com/learn/sql/debugging-sql/sql-syntax#column-or-table-name-is-not-found-or-not-recognized).
-- [Function does not exist](https://www.metabase.com/learn/sql/debugging-sql/sql-syntax#sql-function-does-not-exist).
-- [Permission denied](./data-permissions.md#getting-a-permission-denied-error-message).
+- [جدول یا ستون "not found" یا "not recognized"](https://www.metabase.com/learn/sql/debugging-sql/sql-syntax#column-or-table-name-is-not-found-or-not-recognized).
+- [تابع وجود ندارد](https://www.metabase.com/learn/sql/debugging-sql/sql-syntax#sql-function-does-not-exist).
+- [مجوز رد شد](./data-permissions.md#getting-a-permission-denied-error-message).
 
-For example, this SQL error tells you that the function `DATEFROMPARTS` does not work on a BigQuery database:
+به‌عنوان مثال، این خطای SQL به شما می‌گوید که تابع `DATEFROMPARTS` روی یک پایگاه داده BigQuery کار نمی‌کند:
 
-![Sample SQL error message](./images/sample-error-sql.png)
+![پیام خطای SQL نمونه](./images/sample-error-sql.png)
 
-## Questions and dashboards
+## سؤال‌ها و داشبوردها
 
-- [Your question took too long](./timeout.md).
-- [Still waiting...](./my-dashboard-is-slow.md).
+- [سؤال شما خیلی طول کشید](./timeout.md).
+- [هنوز در حال انتظار...](./my-dashboard-is-slow.md).
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can't find your error on this page:
+اگر نمی‌توانید خطای خود را در این صفحه پیدا کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.

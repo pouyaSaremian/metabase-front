@@ -1,27 +1,27 @@
 ---
-title: Actions overview
+title: نمای کلی اکشن‌ها
 redirect_from:
   - /docs/latest/actions
 ---
 
-# Actions overview
+# نمای کلی اکشن‌ها
 
-![An action updating a plan on a dashboard](./images/dashboard-action.gif)
+![یک اکشن که یک پلن را در یک داشبورد به‌روزرسانی می‌کند](./images/dashboard-action.gif)
 
-Actions let you write parameterized SQL that can then be attached to buttons, clicks, or even added on the page as form elements.
+اکشن‌ها به شما امکان می‌دهند SQL پارامتری‌شده بنویسید که سپس می‌تواند به دکمه‌ها، کلیک‌ها، یا حتی به‌عنوان عناصر فرم در صفحه اضافه شود.
 
-## [Introduction to actions ](./introduction.md)
+## [مقدمه‌ای بر اکشن‌ها](./introduction.md)
 
-Use actions to update your data based on user input or values on the page.
+از اکشن‌ها برای به‌روزرسانی داده‌هایتان بر اساس ورودی کاربر یا مقادیر در صفحه استفاده کنید.
 
-## [Basic actions](./basic.md)
+## [اکشن‌های پایه](./basic.md)
 
-Metabase will create basic actions that auto-track a model's schema.
+متابیس اکشن‌های پایه‌ای ایجاد می‌کند که به‌طور خودکار schema یک مدل را ردیابی می‌کنند.
 
-## [Custom actions](./custom.md)
+## [اکشن‌های سفارشی](./custom.md)
 
-Write SQL to create new actions.
+SQL بنویسید تا اکشن‌های جدید ایجاد کنید.
 
-## [Actions on dashboards](../dashboards/actions.md)
+## [اکشن‌ها در داشبوردها](../dashboards/actions.md)
 
-Add actions on dashboards as buttons that you can pass filter values to.
+اکشن‌ها را در داشبوردها به‌عنوان دکمه‌هایی اضافه کنید که می‌توانید مقادیر فیلتر را به آن‌ها ارسال کنید.

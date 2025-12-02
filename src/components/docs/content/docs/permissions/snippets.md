@@ -1,91 +1,91 @@
 ---
-title: Snippet folder permissions
+title: مجوزهای پوشه snippet
 redirect_from:
   - /docs/latest/enterprise-guide/sql-snippets
 ---
 
-# Snippet folder permissions
+# مجوزهای پوشه snippet
 
 {% include plans-blockquote.html feature="Snippet controls" %}
 
-This article covers **Snippet folders**, which allow you to organize and set permissions on [Snippets](../questions/native-editor/snippets.md).
+این مقاله **پوشه‌های Snippet** را پوشش می‌دهد، که به شما امکان می‌دهند [Snippetها](../questions/native-editor/snippets.md) را سازمان‌دهی و مجوزها را روی آن‌ها تنظیم کنید.
 
-Folder permissions should not be considered a security feature, but instead a feature that helps organize and standardize snippets. Although folders are distinct and separate from Collections, they both serve an organizational function: Collections gather and permission dashboards and questions; folders gather and permission snippets. For more info, see the [discussion on permissions below](#permissions).
+مجوزهای پوشه نباید به‌عنوان یک ویژگی امنیتی در نظر گرفته شوند، بلکه به‌عنوان ویژگی‌ای که به سازمان‌دهی و استانداردسازی snippetها کمک می‌کند. اگرچه پوشه‌ها متمایز و جدا از کلکسیون‌ها هستند، هر دو یک عملکرد سازمانی دارند: کلکسیون‌ها داشبوردها و سؤال‌ها را جمع و مجوز می‌دهند؛ پوشه‌ها snippetها را جمع و مجوز می‌دهند. برای اطلاعات بیشتر، به [بحث دربارهٔ مجوزها در زیر](#permissions) مراجعه کنید.
 
-## Folders
+## پوشه‌ها
 
-Folders work similarly to a file system. You can add snippets to folders, and put folders inside of other folders. You can nest as many folders as your Metabase instance can handle or the laws of physics allow (whichever yields first).
+پوشه‌ها شبیه یک سیستم فایل کار می‌کنند. می‌توانید snippetها را به پوشه‌ها اضافه کنید، و پوشه‌ها را درون پوشه‌های دیگر قرار دهید. می‌توانید به اندازه‌ای که instance متابیس شما می‌تواند مدیریت کند یا قوانین فیزیک اجازه می‌دهد (هر کدام زودتر باشد) پوشه‌ها را تو در تو کنید.
 
-The **Top folder** is the snippet sidebar's default folder. It is the root folder that contains all folders and snippets.
+**پوشه Top** پوشه پیش‌فرض نوار کناری snippet است. این پوشه ریشه است که شامل همه پوشه‌ها و snippetها می‌شود.
 
-### Creating a new Snippet folder
+### ایجاد یک پوشه Snippet جدید
 
-You can create a Snippet folder from the **Snippets** menu in the [SQL editor](../questions/native-editor/writing-sql.md).
+می‌توانید یک پوشه Snippet از منوی **Snippets** در [ویرایشگر SQL](../questions/native-editor/writing-sql.md) ایجاد کنید.
 
-![Create new snippet folder](./images/snippet-folder.png)
+![ایجاد پوشه snippet جدید](./images/snippet-folder.png)
 
-1. Click on the **Snippets** menu icon (the snippet icon looks like a block of text or code with three uneven horizontal lines).
-2. Click on the **+** icon and select **New folder**.
-3. Give your folder a name, and optionally **Add a description** and/or place the folder in an existing folder (the **Folder this should be in** option).
+1. روی آیکون منوی **Snippets** کلیک کنید (آیکون snippet شبیه یک بلوک متن یا کد با سه خط افقی ناهموار است).
+2. روی آیکون **+** کلیک کنید و **New folder** را انتخاب کنید.
+3. به پوشه خود یک نام بدهید، و به‌صورت اختیاری **Add a description** و/یا پوشه را در یک پوشه موجود قرار دهید (گزینه **Folder this should be in**).
 
-![Create new folder modal](./images/create-new-folder-modal.png)
+![مودال ایجاد پوشه جدید](./images/create-new-folder-modal.png)
 
-### Creating a new Snippet
+### ایجاد یک Snippet جدید
 
-On [some plans](https://www.metabase.com/pricing/), when creating a Snippet, you'll also see an additional option to add that snippet to an existing folder (the **Folder this should be in** option).
+در [برخی پلن‌ها](https://www.metabase.com/pricing/)، هنگام ایجاد یک Snippet، همچنین یک گزینه اضافی برای اضافه کردن آن snippet به یک پوشه موجود (گزینه **Folder this should be in**) می‌بینید.
 
-![Add a snippet enterprise modal](./images/enterprise-add-snippet.png)
+![مودال اضافه کردن snippet enterprise](./images/enterprise-add-snippet.png)
 
-The default location is the **Top folder**, which is the root folder for all snippets and folders. You can add a snippet to a folder at any time (or relocate a snippet to another folder, provided you have Edit permission to both folders).
+موقعیت پیش‌فرض **پوشه Top** است، که پوشه ریشه برای همه snippetها و پوشه‌ها است. می‌توانید یک snippet را در هر زمان به یک پوشه اضافه کنید (یا یک snippet را به پوشه دیگری منتقل کنید، به شرطی که مجوز Edit به هر دو پوشه داشته باشید).
 
-Note that snippet names must be unique; folders do not affect this requirement.
+توجه داشته باشید که نام‌های snippet باید منحصر به فرد باشند؛ پوشه‌ها این الزام را تحت تأثیر قرار نمی‌دهند.
 
-## Permissions
+## مجوزها
 
-Administrators (and only administrators) can set snippet visibility and editability by placing snippets in **folders**, then granting groups one of three permission levels with respect to those folders. If you're familiar with [collection permissions](./collections.md#setting-permissions-for-collections), the functionality is similar. For more on how collection and folder permissions work together, see [how folder permissions work](#how-folder-permissions-work) below.
+ادمین‌ها (و فقط ادمین‌ها) می‌توانند قابلیت مشاهده و ویرایش snippetها را با قرار دادن snippetها در **پوشه‌ها**، سپس اعطای یکی از سه سطح مجوز به گروه‌ها با توجه به آن پوشه‌ها تنظیم کنند. اگر با [مجوزهای کلکسیون](./collections.md#setting-permissions-for-collections) آشنا هستید، عملکرد مشابه است. برای اطلاعات بیشتر دربارهٔ نحوهٔ کار مجوزهای کلکسیون و پوشه با هم، به [نحوهٔ کار مجوزهای پوشه](#how-folder-permissions-work) در زیر مراجعه کنید.
 
-### Changing permissions on a folder
+### تغییر مجوزها روی یک پوشه
 
-Administrators can set the permissions on a folder by clicking on the ellipsis (**...**) next to a folder, and selecting **Change permissions**.
+ادمین‌ها می‌توانند مجوزها را روی یک پوشه با کلیک روی سه نقطه (**...**) کنار یک پوشه، و انتخاب **Change permissions** تنظیم کنند.
 
-You can additionally change the currently selected folder by mousing over to the top of the Snippets sidebar, clicking on the ellipsis (**...**) to the left of the **+**, and selecting **Change permissions**. When at the **Top folder**, selecting the **...** at the top of the sidebar will give Administrators the option to set permissions for all snippets, folders, and sub-folders.
+همچنین می‌توانید پوشه در حال انتخاب را با hover کردن روی بالای نوار کناری Snippets، کلیک روی سه نقطه (**...**) در سمت چپ **+**، و انتخاب **Change permissions** تغییر دهید. وقتی در **پوشه Top** هستید، انتخاب **...** در بالای نوار کناری به ادمین‌ها گزینه تنظیم مجوزها برای همه snippetها، پوشه‌ها، و زیرپوشه‌ها را می‌دهد.
 
-When changing permissions on a folder that has sub-folders, you have an option to extend those permissions to that folder's sub-folders by toggling the **Also change sub-folders** setting.
+هنگام تغییر مجوزها روی یک پوشه که زیرپوشه دارد، یک گزینه برای گسترش آن مجوزها به زیرپوشه‌های آن پوشه با toggle کردن تنظیم **Also change sub-folders** دارید.
 
-### Options for folder permissions
+### گزینه‌ها برای مجوزهای پوشه
 
-![Change permissions](./images/change-permissions.png)
+![تغییر مجوزها](./images/change-permissions.png)
 
-There are three options for changing snippet folder permissions:
+سه گزینه برای تغییر مجوزهای پوشه snippet وجود دارد:
 
-- **Edit access (green checkmark icon)**. The default setting. When a folder is created, all users (who have SQL editor permissions for at least one database) can view, edit, and archive or unarchive the folder's snippets.
-- **View access (yellow eye icon)**. Users in groups with view access can view snippets in the folder, but not edit or archive/unarchive them. They can, of course, copy snippet code and create new snippets, with no effect on the existing snippets.
-- **Revoke access (red X icon)**. Users in groups with neither edit nor view permissions to a snippet folder will not see that folder's snippets in the sidebar, nor will any snippets in that folder appear in typeahead suggestions for those users. Note that if people have access to a question with a snippet they don't have permission to, they will still be able to get results from that question. See the discussion below on [how folder permissions work](#how-folder-permissions-work).
+- **دسترسی Edit (آیکون تیک سبز)**. تنظیم پیش‌فرض. وقتی یک پوشه ایجاد می‌شود، همه کاربران (که مجوزهای ویرایشگر SQL برای حداقل یک پایگاه داده دارند) می‌توانند snippetهای پوشه را مشاهده، ویرایش، و آرشیو یا unarchive کنند.
+- **دسترسی View (آیکون چشم زرد)**. کاربران در گروه‌هایی با دسترسی view می‌توانند snippetهای پوشه را مشاهده کنند، اما نمی‌توانند آن‌ها را ویرایش یا آرشیو/unarchive کنند. آن‌ها می‌توانند، البته، کد snippet را کپی کنند و snippetهای جدید ایجاد کنند، بدون تأثیر روی snippetهای موجود.
+- **Revoke access (آیکون X قرمز)**. کاربران در گروه‌هایی با نه دسترسی edit و نه view به یک پوشه snippet آن snippetهای پوشه را در نوار کناری نمی‌بینند، و هیچ snippet در آن پوشه در پیشنهادات typeahead برای آن کاربران ظاهر نمی‌شود. توجه داشته باشید که اگر افراد دسترسی به یک سؤال با snippet که مجوز آن را ندارند داشته باشند، همچنان قادر خواهند بود نتایج از آن سؤال را دریافت کنند. به بحث در زیر دربارهٔ [نحوهٔ کار مجوزهای پوشه](#how-folder-permissions-work) مراجعه کنید.
 
-### Archiving does not affect permissions
+### آرشیو کردن مجوزها را تحت تأثیر قرار نمی‌دهد
 
-Archiving or unarchiving snippets does not affect a snippet's permissions. If, for example, only one group, say the Accounting group, has edit permissions on a folder, only people in the Accounting group (and admins) would be able to archive and unarchive snippets in that folder, as archiving and unarchiving is considered editing the snippet.
+آرشیو یا unarchive کردن snippetها مجوزهای snippet را تحت تأثیر قرار نمی‌دهد. به‌عنوان مثال، اگر فقط یک گروه، مثلاً گروه Accounting، مجوزهای edit روی یک پوشه داشته باشد، فقط افراد در گروه Accounting (و ادمین‌ها) قادر خواهند بود snippetهای آن پوشه را آرشیو و unarchive کنند، چون آرشیو و unarchive کردن ویرایش snippet در نظر گرفته می‌شود.
 
-### How folder permissions work
+### نحوهٔ کار مجوزهای پوشه
 
-As with collection permissions, folder permissions are additive, meaning that the more permissive access overrules less permissive access. See [Setting permissions](./start.md) for a more detailed discussion.
+مثل مجوزهای کلکسیون، مجوزهای پوشه افزودنی هستند، به این معنی که دسترسی مجازتر دسترسی کمتر مجاز را override می‌کند. به [تنظیم مجوزها](./start.md) برای بحث دقیق‌تر مراجعه کنید.
 
-But snippet folder permissions require some more effort to unpack, as permissions for snippet folders must work in conjunction with permissions for data and collections.
+اما مجوزهای پوشه snippet نیاز به تلاش بیشتری برای باز کردن دارند، چون مجوزها برای پوشه‌های snippet باید در ارتباط با مجوزها برای داده و کلکسیون‌ها کار کنند.
 
-Here's the basic rule: data is more sensitive than code, so permissions that apply to data will take precedence over permissions that apply to code. Let's work through an example to illustrate how this works in practice.
+در اینجا قانون پایه است: داده حساس‌تر از کد است، بنابراین مجوزهایی که روی داده اعمال می‌شوند بر مجوزهایی که روی کد اعمال می‌شوند اولویت دارند. بیایید با یک مثال کار کنیم تا نشان دهیم این در عمل چگونه کار می‌کند.
 
-#### Permissions example
+#### مثال مجوزها
 
-Consider the following scenario (and here's a sentence that merits slow reading): a group could have permission to a Collection that contains a question that uses a snippet housed in a folder that the group does _not_ have permissions to. To rephrase: people in that group have permissions to run questions in a collection, but they do not have permission to a folder containing a snippet used in one of the collection's questions. How will Metabase resolve permissions in this case?
+سناریوی زیر را در نظر بگیرید (و اینجا جمله‌ای است که ارزش خواندن آهسته را دارد): یک گروه می‌تواند مجوز به یک کلکسیون داشته باشد که شامل یک سؤال است که از snippet نگهداری شده در پوشه‌ای استفاده می‌کند که گروه مجوز به آن ندارد. برای بازنویسی: افراد در آن گروه مجوز اجرای سؤال‌ها در یک کلکسیون را دارند، اما مجوز به پوشه‌ای حاوی snippet استفاده‌شده در یکی از سؤال‌های کلکسیون را ندارند. متابیس چگونه مجوزها را در این مورد حل می‌کند؟
 
-In three parts:
+در سه بخش:
 
-1. **People in that group can run the question and get results**. They have permission to see that data (the question results), so they should be able to see that data. The group's permission to the collection takes precedence over permissions to the folder (the snippet code).
-2. **The snippet would not show up in the Snippet sidebar**. However, just because people in that group can run the question without issue, they still don't have permission to the snippet's folder, so they wouldn't be able to see or edit that snippet (or the snippet's folder) in the Snippet sidebar.
-3. **People with SQL query access can still run the snippet if they know its name, regardless if they have permissions to the snippet's folder**. They wouldn't be able to view or edit the snippet, but they could include it in a query if they knew its name, e.g, `{% raw %}{{snippet: Example snippet I don't have permissions to but can still use }}{% endraw %}`.
+1. **افراد در آن گروه می‌توانند سؤال را اجرا کنند و نتایج را دریافت کنند**. آن‌ها مجوز دیدن آن داده (نتایج سؤال) را دارند، بنابراین باید بتوانند آن داده را ببینند. مجوز گروه به کلکسیون بر مجوزها به پوشه (کد snippet) اولویت دارد.
+2. **snippet در نوار کناری Snippet نمایش داده نمی‌شود**. با این حال، فقط به این دلیل که افراد در آن گروه می‌توانند سؤال را بدون مشکل اجرا کنند، آن‌ها همچنان مجوز به پوشه snippet را ندارند، بنابراین نمی‌توانند آن snippet (یا پوشه snippet) را در نوار کناری Snippet مشاهده یا ویرایش کنند.
+3. **افراد با دسترسی کوئری SQL همچنان می‌توانند snippet را اجرا کنند اگر نام آن را بدانند، صرف نظر از اینکه مجوز به پوشه snippet را دارند یا نه**. آن‌ها نمی‌توانند snippet را مشاهده یا ویرایش کنند، اما می‌توانند آن را در یک کوئری شامل کنند اگر نام آن را می‌دانستند، مثلاً `{% raw %}{{snippet: Example snippet I don't have permissions to but can still use }}{% endraw %}`.
 
-Because of how snippet folder permissions work, we recommend that you consider snippet folder permissions as an additional tool for snippet organization, not as method of preventing access to the SQL code those snippets contain. Use folder permissions to keep the snippet sidebar tidy by exposing teams to folders relevant to their analytical domain, and restrict editing permissions to key snippets in your organization to keep important SQL code accurate and safe from bugs introduced by unvetted edits.
+به دلیل نحوهٔ کار مجوزهای پوشه snippet، توصیه می‌کنیم که مجوزهای پوشه snippet را به‌عنوان یک ابزار اضافی برای سازمان‌دهی snippet در نظر بگیرید، نه به‌عنوان روشی برای جلوگیری از دسترسی به کد SQL که آن snippetها حاوی آن هستند. از مجوزهای پوشه برای مرتب نگه داشتن نوار کناری snippet با در معرض دید قرار دادن تیم‌ها به پوشه‌های مرتبط با حوزه تحلیلی آن‌ها استفاده کنید، و مجوزهای ویرایش را برای snippetهای کلیدی در سازمان خود محدود کنید تا کد SQL مهم دقیق و ایمن از باگ‌های معرفی‌شده توسط ویرایش‌های بررسی‌نشده نگه دارید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Snippets](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/snippets).
+- [Snippetها](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/snippets).

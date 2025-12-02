@@ -1,51 +1,51 @@
 ---
-title: Permissions introduction
+title: مقدمه‌ای بر مجوزها
 redirect_from:
   - /docs/latest/administration-guide/05-setting-permissions
 ---
 
-# Permissions introduction
+# مقدمه‌ای بر مجوزها
 
-There are always going to be sensitive bits of information in your data, and thankfully Metabase provides a rich set of tools to ensure that people on your team only see the data they're supposed to.
+همیشه اطلاعات حساسی در داده‌های شما وجود خواهد داشت، و خوشبختانه متابیس مجموعه‌ای غنی از ابزارها برای اطمینان از اینکه افراد در تیم شما فقط داده‌ای را می‌بینند که باید ببینند ارائه می‌دهد.
 
-If instead you're wondering about what data Metabase the company can see, check out our page on [data privacy and security](https://www.metabase.com/security).
+اگر در عوض می‌خواهید بدانید که شرکت متابیس چه داده‌ای می‌تواند ببیند، به صفحهٔ ما دربارهٔ [حریم خصوصی و امنیت داده](https://www.metabase.com/security) مراجعه کنید.
 
-## Key points regarding permissions
+## نکات کلیدی دربارهٔ مجوزها
 
-- Permissions are granted to [groups](../people-and-groups/managing.md#groups), not people. Though you can define user attributes to apply permissions person to person.
-- People can be in more than one group.
-- If a person is in multiple groups, they will have the _most permissive_ access granted to them across all of their groups. For example, if a person is in three groups, and any one of those groups has Curate access to a collection, then that person will have curate access to that collection.
-- By default, everyone is in the All users group, so be sure to block that group's access before granting permissions to other groups. Thankfully, Metabase will warn you if the All users group has more permissive permissions than the group you're restricting.
+- مجوزها به [گروه‌ها](../people-and-groups/managing.md#groups) اعطا می‌شوند، نه افراد. اگرچه می‌توانید ویژگی‌های کاربر را برای اعمال مجوزها از شخص به شخص تعریف کنید.
+- افراد می‌توانند در بیش از یک گروه باشند.
+- اگر یک شخص در چندین گروه باشد، _دسترسی‌های مجازترین_ اعطا شده به آن‌ها در همهٔ گروه‌هایشان را خواهد داشت. به‌عنوان مثال، اگر یک شخص در سه گروه باشد، و هر یک از آن گروه‌ها دسترسی Curate به یک کلکسیون داشته باشد، آن شخص دسترسی curate به آن کلکسیون را خواهد داشت.
+- به‌طور پیش‌فرض، همه در گروه All users هستند، بنابراین مطمئن شوید که دسترسی آن گروه را قبل از اعطای مجوزها به گروه‌های دیگر مسدود کنید. خوشبختانه، متابیس به شما هشدار می‌دهد اگر گروه All users مجوزهای مجازتر از گروهی که در حال محدود کردن هستید داشته باشد.
 
-## What you can set permissions on
+## آنچه می‌توانید مجوزها را روی آن تنظیم کنید
 
-- [Data permissions](./data.md) - Control access to databases, schemas, and tables, including:
-  - [View data](./data.md#view-data-permissions)
-  - [Create queries](./data.md#create-queries-permissions)
-  - [Download results](./data.md#download-results-permissions)
-  - [Manage database](./data.md#manage-database-permissions)
-- [Collection permissions][collections] - Control access to questions, dashboards, models, metrics, events, and timelines
-- [Application permissions](application.md) - Control access to admin features (Pro and Enterprise plans only):
-  - [Settings tab in Admin panel](application.md#settings-access)
-  - [Monitoring tools and troubleshooting](application.md#monitoring-access)
-  - [Dashboard subscriptions and alerts](application.md#subscriptions-and-alerts)
-- [Snippet folder permissions][snippet-folders] - Control access to SQL snippet folders (available on plans with snippet folders)
+- [مجوزهای داده](./data.md) - کنترل دسترسی به پایگاه‌داده‌ها، schemaها، و جداول، شامل:
+  - [مشاهده داده](./data.md#view-data-permissions)
+  - [ایجاد کوئری‌ها](./data.md#create-queries-permissions)
+  - [دانلود نتایج](./data.md#download-results-permissions)
+  - [مدیریت پایگاه داده](./data.md#manage-database-permissions)
+- [مجوزهای کلکسیون][collections] - کنترل دسترسی به سؤال‌ها، داشبوردها، مدل‌ها، متریک‌ها، رویدادها، و timelineها
+- [مجوزهای اپلیکیشن](application.md) - کنترل دسترسی به ویژگی‌های ادمین (فقط پلن‌های Pro و Enterprise):
+  - [تب Settings در پنل Admin](application.md#settings-access)
+  - [ابزارهای نظارت و عیب‌یابی](application.md#monitoring-access)
+  - [اشتراک‌های داشبورد و هشدارها](application.md#subscriptions-and-alerts)
+- [مجوزهای پوشه snippet][snippet-folders] - کنترل دسترسی به پوشه‌های snippet SQL (در دسترس در پلن‌هایی با پوشه‌های snippet)
 
-## Tools for managing multi-tenant setups
+## ابزارها برای مدیریت تنظیمات چند‌مستأجری
 
-At a high-level, Metabase provides several approaches to managing permissions for different multi-tenant setups, depending on how you've segregated your data.
+در سطح بالا، متابیس چندین رویکرد برای مدیریت مجوزها برای تنظیمات چند‌مستأجری مختلف ارائه می‌دهد، بسته به اینکه چگونه داده‌هایتان را جدا کرده‌اید.
 
-### Your customers share a single database
+### مشتریان شما یک پایگاه داده واحد را به‌اشتراک می‌گذارند
 
-The [row and column security](./row-and-column-security.md) permission setting lets you restrict rows and columns based on who's logged in.
+تنظیم مجوز [امنیت ردیف و ستون](./row-and-column-security.md) به شما امکان می‌دهد ردیف‌ها و ستون‌ها را بر اساس اینکه چه کسی وارد شده است محدود کنید.
 
-### Each customer has their own database
+### هر مشتری پایگاه داده خودش را دارد
 
-With [Database routing](./database-routing.md), you can build a question once, and have Metabase send a query to a different database depending on the customer.
+با [مسیریابی پایگاه داده](./database-routing.md)، می‌توانید یک سؤال یک بار بسازید، و متابیس یک کوئری را به یک پایگاه داده متفاوت بسته به مشتری ارسال کند.
 
-### You'd prefer to manage permissions via the database itself
+### ترجیح می‌دهید مجوزها را از طریق خود پایگاه داده مدیریت کنید
 
-With [Connection impersonation](./impersonation.md), you can manage permissions with roles you define in your database.
+با [جعل هویت اتصال](./impersonation.md)، می‌توانید مجوزها را با نقش‌هایی که در پایگاه داده خود تعریف می‌کنید مدیریت کنید.
 
 [collections]: ../exploration-and-organization/collections.md
 [dashboard-subscriptions]: ../dashboards/subscriptions.md

@@ -158,44 +158,44 @@
 
 ## ۵. داشبوردها (`dashboards/`)
 
-- [ ] پوشهٔ `dashboards/`
-  - [ ] `start.md`
-  - [ ] `introduction.md`
-  - [ ] `filters.md`
-  - [ ] `interactive.md`
-  - [ ] `linked-filters.md`
-  - [ ] `multiple-series.md`
-  - [ ] `actions.md`
-  - [ ] `subscriptions.md`
+- [x] پوشهٔ `dashboards/`
+  - [x] `start.md`
+  - [x] `introduction.md`
+  - [x] `filters.md`
+  - [x] `interactive.md`
+  - [x] `linked-filters.md`
+  - [x] `multiple-series.md`
+  - [x] `actions.md`
+  - [x] `subscriptions.md`
 
 ## ۶. مستندات متنی (`documents/`)
 
-- [ ] پوشهٔ `documents/`
-  - [ ] `start.md`
-  - [ ] `introduction.md`
+- [x] پوشهٔ `documents/`
+  - [x] `start.md`
+  - [x] `introduction.md`
 
 ## ۷. مدل‌سازی داده (`data-modeling/`)
 
-- [ ] پوشهٔ `data-modeling/`
-  - [ ] `start.md`
-  - [ ] `models.md`
-  - [ ] `model-persistence.md`
-  - [ ] `metrics.md`
-  - [ ] `editable-tables.md`
-  - [ ] `formatting.md`
-  - [ ] `json-unfolding.md`
-  - [ ] `legacy-metrics.md`
-  - [ ] `metadata-editing.md`
-  - [ ] `segments.md`
-  - [ ] `semantic-types.md`
+- [x] پوشهٔ `data-modeling/`
+  - [x] `start.md`
+  - [x] `models.md`
+  - [x] `model-persistence.md`
+  - [x] `metrics.md`
+  - [x] `editable-tables.md`
+  - [x] `formatting.md`
+  - [x] `json-unfolding.md`
+  - [x] `legacy-metrics.md`
+  - [x] `metadata-editing.md`
+  - [x] `segments.md`
+  - [x] `semantic-types.md`
 
 ## ۸. اکشن‌ها (`actions/`)
 
-- [ ] پوشهٔ `actions/`
-  - [ ] `start.md`
-  - [ ] `introduction.md`
-  - [ ] `basic.md`
-  - [ ] `custom.md`
+- [x] پوشهٔ `actions/`
+  - [x] `start.md`
+  - [x] `introduction.md`
+  - [x] `basic.md`
+  - [x] `custom.md`
 
 ## ۹. هوش مصنوعی (`ai/`)
 
@@ -221,40 +221,40 @@
 
 ## ۱۱. افراد و گروه‌ها (`people-and-groups/`)
 
-- [ ] پوشهٔ `people-and-groups/`
-  - [ ] `start.md`
-  - [ ] `account-settings.md`
-  - [ ] `api-keys.md`
-  - [ ] `authenticating-with-jwt.md`
-  - [ ] `authenticating-with-saml.md`
-  - [ ] `changing-password-complexity.md`
-  - [ ] `changing-session-expiration.md`
-  - [ ] `google-sign-in.md`
-  - [ ] `ldap.md`
-  - [ ] `managing.md`
-  - [ ] `saml-auth0.md`
-  - [ ] `saml-azure.md`
-  - [ ] `saml-google.md`
-  - [ ] `saml-keycloak.md`
-  - [ ] `saml-okta.md`
-  - [ ] `user-provisioning.md`
+- [x] پوشهٔ `people-and-groups/`
+  - [x] `start.md`
+  - [x] `account-settings.md`
+  - [x] `api-keys.md`
+  - [x] `authenticating-with-jwt.md`
+  - [x] `authenticating-with-saml.md`
+  - [x] `changing-password-complexity.md`
+  - [x] `changing-session-expiration.md`
+  - [x] `google-sign-in.md`
+  - [x] `ldap.md`
+  - [x] `managing.md`
+  - [x] `saml-auth0.md`
+  - [x] `saml-azure.md`
+  - [x] `saml-google.md`
+  - [x] `saml-keycloak.md`
+  - [x] `saml-okta.md`
+  - [x] `user-provisioning.md`
 
 ## ۱۲. سطح دسترسی (`permissions/`)
 
-- [ ] پوشهٔ `permissions/`
-  - [ ] `start.md`
-  - [ ] `introduction.md`
+- [x] پوشهٔ `permissions/`
+  - [x] `start.md`
+  - [x] `introduction.md`
   - [x] `data.md`
   - [x] `collections.md`
   - [x] `application.md`
-  - [ ] `database-routing.md`
-  - [ ] `embedding.md`
-  - [ ] `impersonation.md`
-  - [ ] `no-self-service-deprecation.md`
-  - [ ] `notifications.md`
-  - [ ] `row-and-column-security-examples.md`
-  - [ ] `row-and-column-security.md`
-  - [ ] `snippets.md`
+  - [x] `database-routing.md`
+  - [x] `embedding.md`
+  - [x] `impersonation.md`
+  - [x] `no-self-service-deprecation.md`
+  - [x] `notifications.md`
+  - [x] `row-and-column-security-examples.md`
+  - [x] `row-and-column-security.md`
+  - [x] `snippets.md`
 
 ## ۱۳. درون‌گذاری (`embedding/`)
 
@@ -299,22 +299,7 @@
 
 ## ۱۵. متابیس کلود (`cloud/`)
 
-- [ ] پوشهٔ `cloud/`
-  - [x] `start.md`
-  - [ ] `accounts-and-billing.md`
-  - [ ] `change-region.md`
-  - [ ] `cloud-vs-self-hosting.md`
-  - [ ] `custom-domain.md`
-  - [ ] `google-sheets.md`
-  - [ ] `how-billing-works.md`
-  - [ ] `ip-addresses-to-whitelist.md`
-  - [ ] `limitations.md`
-  - [ ] `storage.md`
-  - [ ] زیرپوشهٔ `migrate/`
-    - [ ] `cloud-to-self-hosted.md`
-    - [ ] `guide-pre-50.md`
-    - [ ] `guide.md`
-    - [ ] `heroku.md`
+~~این بخش نادیده گرفته شده است.~~
 
 ## ۱۶. API (`api.html` + مرجع‌های مرتبط)
 
@@ -323,14 +308,14 @@
 ## ۱۷. عیب‌یابی (`troubleshooting-guide/`)
 
 - [ ] پوشهٔ `troubleshooting-guide/`
-  - [ ] `index.md`
-  - [ ] `bigquery-drive.md`
-  - [ ] `bugs.md`
-  - [ ] `cant-log-in.md`
-  - [ ] `cant-see-tables.md`
-  - [ ] `cant-send-email.md`
-  - [ ] `cant-view-or-edit.md`
-  - [ ] `create-har-file.md`
+  - [x] `index.md`
+  - [x] `bigquery-drive.md`
+  - [x] `bugs.md`
+  - [x] `cant-log-in.md`
+  - [x] `cant-see-tables.md`
+  - [x] `cant-send-email.md`
+  - [x] `cant-view-or-edit.md`
+  - [x] `create-har-file.md`
   - [ ] `data-permissions.md`
   - [ ] `db-connection.md`
   - [ ] `db-performance.md`

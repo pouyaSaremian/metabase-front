@@ -1,16 +1,16 @@
 ---
-title: Legacy metrics
+title: متریک‌های قدیمی
 ---
 
-# Legacy metrics
+# متریک‌های قدیمی
 
-Metabase upgraded [metrics](./metrics.md) starting in version 51.
+متابیس [متریک‌ها](./metrics.md) را از نسخه 51 به‌روزرسانی کرد.
 
-If you're upgrading from Metabase 50 or earlier, all of your existing metrics will be migrated to the new metrics, which you can find in the Migrated Metrics V1 collection with curate access only for admins. You can leave the metrics there, or move them into different collections.
+اگر از متابیس 50 یا قدیمی‌تر به‌روزرسانی می‌کنید، همهٔ متریک‌های موجود شما به متریک‌های جدید migrate می‌شوند، که می‌توانید در کلکسیون Migrated Metrics V1 با دسترسی curate فقط برای ادمین‌ها پیدا کنید. می‌توانید متریک‌ها را آنجا بگذارید، یا آن‌ها را به کلکسیون‌های مختلف منتقل کنید.
 
-## What's new with metrics
+## چه چیز جدیدی در متریک‌ها وجود دارد
 
-- Anyone can create a new metric.
-- Metrics can be stored (and pinned) to collections.
-- If you have curate access to the collection, you can edit a metric in that collection.
-- You can explore metrics in your Metabase in the data browser.
+- هر کسی می‌تواند یک متریک جدید ایجاد کند.
+- متریک‌ها می‌توانند در کلکسیون‌ها ذخیره (و pin) شوند.
+- اگر دسترسی curate به کلکسیون دارید، می‌توانید یک متریک در آن کلکسیون را ویرایش کنید.
+- می‌توانید متریک‌ها را در متابیس خود در مرورگر داده کاوش کنید.

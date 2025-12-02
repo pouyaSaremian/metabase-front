@@ -1,100 +1,100 @@
 ---
-title: SAML with Keycloak
+title: SAML با Keycloak
 redirect_from:
   - /docs/latest/enterprise-guide/saml-keycloak
 ---
 
-# SAML with Keycloak
+# SAML با Keycloak
 
-Keycloak is an open source platform that can be used as a user directory to save user data while acting as the IdP for single sign-on.
+Keycloak یک پلتفرم open source است که می‌تواند به‌عنوان یک دایرکتوری کاربر برای ذخیره داده‌های کاربر استفاده شود در حالی که به‌عنوان IdP برای single sign-on عمل می‌کند.
 
-1. [Set up SAML in Keycloak](#working-in-the-keycloak-console) (the identity provider).
-2. [Set up SAML in Metabase](./authenticating-with-saml.md#enabling-saml-authentication-in-metabase) (the service provider).
+1. [تنظیم SAML در Keycloak](#working-in-the-keycloak-console) (ارائه‌دهنده هویت).
+2. [تنظیم SAML در متابیس](./authenticating-with-saml.md#enabling-saml-authentication-in-metabase) (ارائه‌دهنده سرویس).
 
-For more information, check out our guide for [authenticating with SAML](./authenticating-with-saml.md).
+برای اطلاعات بیشتر، راهنمای ما برای [احراز هویت با SAML](./authenticating-with-saml.md) را بررسی کنید.
 
-## Working in the Keycloak console
+## کار در کنسول Keycloak
 
-1. Go to the Keycloak admin console and sign in as an administrator.
-2. Create a user from **Manage** > **Users**. You'll need to populate the fields with an email, first name, and last name.
-3. Once you've created at least one user, navigation tabs will appear at the top of the **Users** page. Go to **Credentials** to set password for your user.
-   - Turn off the **Temporary** toggle.
-   - Click **Set Password** to save your changes.
-4. Create a new SSO client from **Manage** > **Clients** > **Create**
+1. به کنسول ادمین Keycloak بروید و به‌عنوان یک ادمین وارد شوید.
+2. یک کاربر از **Manage** > **Users** ایجاد کنید. باید فیلدها را با یک ایمیل، نام، و نام خانوادگی پر کنید.
+3. بعد از اینکه حداقل یک کاربر ایجاد کردید، تب‌های ناوبری در بالای صفحه **Users** ظاهر می‌شوند. به **Credentials** بروید تا رمز عبور کاربر خود را تنظیم کنید.
+   - toggle **Temporary** را خاموش کنید.
+   - روی **Set Password** کلیک کنید تا تغییرات خود را ذخیره کنید.
+4. یک کلاینت SSO جدید از **Manage** > **Clients** > **Create** ایجاد کنید
 
-   - **Client ID**: Enter `metabase` in lowercase.
-   - **Client type**: Select `SAML` from the dropdown.
-   - Click **Next**.
-   - **Valid Redirect URIs**: The URL where you are hosting your Metabase instance followed by a slash (/) and an asterisk (_). For example, if you are hosting Metabase locally at `http://localhost:3000`, the URL would be `http://localhost:3000/_`.
-   - **Home URL**: In your Metabase, go to **Admin settings** > **Authentication** > **SAML**. You'll find your Home URL in the field **URL the IdP should redirect back to**.
-   - Click **Save**.
+   - **Client ID**: `metabase` را با حروف کوچک وارد کنید.
+   - **Client type**: `SAML` را از منوی dropdown انتخاب کنید.
+   - روی **Next** کلیک کنید.
+   - **Valid Redirect URIs**: URL جایی که instance متابیس خود را میزبانی می‌کنید به دنبال یک اسلش (/) و یک ستاره (_). به‌عنوان مثال، اگر متابیس را به صورت محلی در `http://localhost:3000` میزبانی می‌کنید، URL `http://localhost:3000/_` خواهد بود.
+   - **Home URL**: در متابیس خود، به **Admin settings** > **Authentication** > **SAML** بروید. Home URL خود را در فیلد **URL the IdP should redirect back to** پیدا می‌کنید.
+   - روی **Save** کلیک کنید.
 
-5. (Optional, but recommended on test environments) Disable key signing for SSO client. See [settings for signing SSO requests](./authenticating-with-saml.md#settings-for-signing-sso-requests-optional).
+5. (اختیاری، اما توصیه می‌شود در محیط‌های تست) امضای کلید را برای کلاینت SSO غیرفعال کنید. به [تنظیمات برای امضای درخواست‌های SSO](./authenticating-with-saml.md#settings-for-signing-sso-requests-optional) مراجعه کنید.
 
-   - Click **Keys** tab.
-   - **Client signature required:** Off.
+   - روی تب **Keys** کلیک کنید.
+   - **Client signature required:** خاموش.
 
-6. Map user attributes from Metabase to SSO client.
-   - Click **Client scopes** tab.
-   - Click `metabase-dedicated`.
-   - Click **Add predefined mappers**.
-   - [Map attributes from users in Keycloak to Metabase](#mapping-attributes-from-users-in-keycloak-to-metabase).
-7. Configure the service provider (Metabase) from **Configure** > **Realm Settings**.
-   - From **Endpoints**, select “SAML 2.0 Identity Provider Metadata”.
-   - An XML file will open in a new tab.
-   - Keep this for reference, we will use it in the next section to configure Metabase.
+6. ویژگی‌های کاربر را از متابیس به کلاینت SSO نگاشت کنید.
+   - روی تب **Client scopes** کلیک کنید.
+   - روی `metabase-dedicated` کلیک کنید.
+   - روی **Add predefined mappers** کلیک کنید.
+   - [ویژگی‌ها را از کاربران در Keycloak به متابیس نگاشت کنید](#mapping-attributes-from-users-in-keycloak-to-metabase).
+7. ارائه‌دهنده سرویس (متابیس) را از **Configure** > **Realm Settings** پیکربندی کنید.
+   - از **Endpoints**، "SAML 2.0 Identity Provider Metadata" را انتخاب کنید.
+   - یک فایل XML در یک تب جدید باز می‌شود.
+   - این را برای مرجع نگه دارید، در بخش بعدی برای پیکربندی متابیس از آن استفاده می‌کنیم.
 
-## Mapping fields from Keycloak to Metabase
+## نگاشت فیلدها از Keycloak به متابیس
 
-1. Go to your Metabase **Admin settings** > **Authentication** > **SAML**.
-2. From the XML file from Step 7 above:
-   - **SAML Identity Provider URL**: Insert the URL that appears right after the following string: `Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location=`
-   - **SAML Identity Provider Issuer**: Insert the URL that appears right after `entityID=`.
-   - **SAML Identity Provider Certificate**: Input the long string that appears after the `<X509Certificate>` tag. Take care when inserting this string: if any letters or special characters are added or off, the setup won't work.
+1. به **Admin settings** > **Authentication** > **SAML** متابیس خود بروید.
+2. از فایل XML از مرحله 7 بالا:
+   - **SAML Identity Provider URL**: URL که بلافاصله بعد از رشته زیر ظاهر می‌شود را وارد کنید: `Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location=`
+   - **SAML Identity Provider Issuer**: URL که بلافاصله بعد از `entityID=` ظاهر می‌شود را وارد کنید.
+   - **SAML Identity Provider Certificate**: رشته طولانی که بعد از تگ `<X509Certificate>` ظاهر می‌شود را وارد کنید. هنگام وارد کردن این رشته دقت کنید: اگر هر حرف یا کاراکتر خاصی اضافه یا حذف شود، تنظیم کار نمی‌کند.
    - **SAML Application Name**: `metabase`
-3. Click **Save Changes**.
-4. Check that **SAML Authentication** is toggled **ON** at the top of the page.
+3. روی **Save Changes** کلیک کنید.
+4. بررسی کنید که **SAML Authentication** در بالای صفحه toggle **ON** است.
 
-## Mapping attributes from users in Keycloak to Metabase
+## نگاشت ویژگی‌ها از کاربران در Keycloak به متابیس
 
-Keycloak can import four user attributes by default: name, surname, email and role.
+Keycloak می‌تواند به‌طور پیش‌فرض چهار ویژگی کاربر را import کند: name، surname، email و role.
 
-Let's say we want email, name, and surname to be passed between the client (Metabase) and the authentication server (Keycloak).
+بیایید بگوییم می‌خواهیم email، name، و surname بین کلاینت (متابیس) و سرور احراز هویت (Keycloak) ارسال شوند.
 
-1. Select “X500 email”, “X500 givenName” and “X500 surname” from the checkboxes that are on the right side of the console.
-2. Click **Add Selected**.
-3. Click **Edit** beside each attribute and make the following changes:
-   - **SAML Attribute Name**: the name that Metabase expects to receive.
-   - **SAML Attribute NameFormat**: select “Basic” from the dropdown menu.
+1. "X500 email"، "X500 givenName" و "X500 surname" را از checkboxهایی که در سمت راست کنسول هستند انتخاب کنید.
+2. روی **Add Selected** کلیک کنید.
+3. روی **Edit** کنار هر ویژگی کلیک کنید و تغییرات زیر را انجام دهید:
+   - **SAML Attribute Name**: نامی که متابیس انتظار دارد دریافت کند.
+   - **SAML Attribute NameFormat**: "Basic" را از منوی dropdown انتخاب کنید.
 
-You can edit the attribute values from your Metabase **Admin settings** > **Authentication** > **SAML** > **Attributes**.
+می‌توانید مقادیر ویژگی را از **Admin settings** > **Authentication** > **SAML** > **Attributes** متابیس خود ویرایش کنید.
 
-## Configure group mappings between Keycloak and Metabase
+## پیکربندی نگاشت‌های گروه بین Keycloak و متابیس
 
-You can configure Metabase to automatically assign people to Metabase groups based on their Keycloak groups.
+می‌توانید متابیس را پیکربندی کنید تا به‌طور خودکار افراد را بر اساس گروه‌های Keycloak آن‌ها به گروه‌های متابیس اختصاص دهد.
 
-### Set up group mapping in Keycloak
+### تنظیم نگاشت گروه در Keycloak
 
-In your Keycloak client:
+در کلاینت Keycloak خود:
 
-1. Click on **Client Scopes** tab
-2. Click on the **metabase-dedicated** client scope that has been created already.
-3. Click on **Add Mapper > "By Configuration**.
-4. Select **Group list**.
-5. Change the name of the attribute to `member_of`.
-6. Deselect the option to use the "Full group path" (so it's easier to configure in Metabase later).
-7. Click on **Save**.
+1. روی تب **Client Scopes** کلیک کنید
+2. روی client scope **metabase-dedicated** که از قبل ایجاد شده است کلیک کنید.
+3. روی **Add Mapper > "By Configuration** کلیک کنید.
+4. **Group list** را انتخاب کنید.
+5. نام ویژگی را به `member_of` تغییر دهید.
+6. گزینه استفاده از "Full group path" را deselect کنید (تا بعداً در متابیس راحت‌تر پیکربندی شود).
+7. روی **Save** کلیک کنید.
 
-### Set up group mapping in Metabase
+### تنظیم نگاشت گروه در متابیس
 
-1. In Admin settings, go to **Authentication > SAML**.
-2. In SAML settings, toggle on **Synchronize Group Memberships**
-3. For each of the Keycloak groups, set up a new mapping to a Metabase group.
+1. در تنظیمات Admin، به **Authentication > SAML** بروید.
+2. در تنظیمات SAML، **Synchronize Group Memberships** را toggle کنید
+3. برای هر یک از گروه‌های Keycloak، یک نگاشت جدید به یک گروه متابیس تنظیم کنید.
 
-   Currently, Keycloak groups will show up in Metabase with the slash character ("/") prepended to the group name. So, for example, a group named `sales` in Keycloak show up in Metabase as `/sales`.
+   در حال حاضر، گروه‌های Keycloak در متابیس با کاراکتر اسلش ("/") قبل از نام گروه نمایش داده می‌شوند. بنابراین، به‌عنوان مثال، یک گروه به نام `sales` در Keycloak در متابیس به‌عنوان `/sales` نمایش داده می‌شود.
 
-4. In **Group attribute name**, enter `member_of` (the name for the attribute with the group list in your Keycloack configuration).
+4. در **Group attribute name**، `member_of` را وارد کنید (نام ویژگی با لیست گروه در پیکربندی Keycloack شما).
 
-## Troubleshooting SAML issues
+## عیب‌یابی مشکلات SAML
 
-For common issues, go to [Troubleshooting SAML](../troubleshooting-guide/saml.md).
+برای مشکلات رایج، به [عیب‌یابی SAML](../troubleshooting-guide/saml.md) بروید.

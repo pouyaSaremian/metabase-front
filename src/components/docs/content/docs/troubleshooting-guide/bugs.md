@@ -1,21 +1,21 @@
 ---
-title: Reporting a bug
+title: گزارش یک باگ
 ---
 
-# Reporting a bug
+# گزارش یک باگ
 
-If you come across something that looks like a bug, please start by searching our [GitHub issues][metabase-issues] to see if it has already been reported. If it has, please let us know you're experiencing the same issue by reacting with a thumbs up emoji or adding a comment to provide additional information.
+اگر با چیزی مواجه شدید که شبیه یک باگ به نظر می‌رسد، لطفاً با جستجوی [issues GitHub][metabase-issues] ما شروع کنید تا ببینید آیا قبلاً گزارش شده است. اگر گزارش شده است، لطفاً با یک emoji thumbs up یا اضافه کردن یک کامنت برای ارائه اطلاعات اضافی به ما اطلاع دهید که همان مشکل را تجربه می‌کنید.
 
-If the bug has not yet been reported, go ahead and [open a bug report][metabase-file-bug]. The following information will help us reproduce your issue:
+اگر باگ هنوز گزارش نشده است، ادامه دهید و [یک گزارش باگ باز کنید][metabase-file-bug]. اطلاعات زیر به ما کمک می‌کند مشکل شما را بازتولید کنیم:
 
-1. Metabase server logs
-2. Javascript console logs
-3. Whether it can be reproduced on the sample database
-4. Your Metabase version
-5. Where Metabase is running (Docker image, Linux/Ubuntu, etc.)
-6. Which database you are using
-7. What browser version you are using
-8. Screenshots (if relevant)
+1. لاگ‌های سرور متابیس
+2. لاگ‌های کنسول JavaScript
+3. آیا می‌تواند در پایگاه داده نمونه بازتولید شود
+4. نسخه متابیس شما
+5. جایی که متابیس در حال اجرا است (Docker image، Linux/Ubuntu، و غیره)
+6. کدام پایگاه داده استفاده می‌کنید
+7. کدام نسخه مرورگر استفاده می‌کنید
+8. اسکرین‌شات‌ها (در صورت مرتبط بودن)
 
 [metabase-file-bug]: https://github.com/metabase/metabase/issues/new/choose
 [metabase-issues]: ./known-issues.md#how-to-find-a-known-bug

@@ -1,71 +1,71 @@
 ---
-title: Troubleshooting SAML authentication setup
+title: عیب‌یابی تنظیم احراز هویت SAML
 ---
 
-# Troubleshooting SAML authentication setup
+# عیب‌یابی تنظیم احراز هویت SAML
 
 {% include plans-blockquote.html feature="SAML authentication" %}
 
-Some common problems when setting up SAML.
+برخی مشکلات رایج هنگام تنظیم SAML.
 
-## Does your app support SAML?
+## آیا اپلیکیشن شما از SAML پشتیبانی می‌کند؟
 
-Verify that the application you created in your IdP supports SAML. Sometimes other options are presented during the app creation process.
+تأیید کنید که اپلیکیشنی که در IdP خود ایجاد کرده‌اید از SAML پشتیبانی می‌کند. گاهی اوقات گزینه‌های دیگر در طول فرآیند ایجاد اپلیکیشن ارائه می‌شوند.
 
-## Is the issuer or Entity ID correct?
+## آیا issuer یا Entity ID صحیح است؟
 
-After filling out the authentication form with your identity provider, you're taken back to Metabase but it throws an error. To see the error, go to **Admin settings** > **Tools** > **Logs**. You'll see an error that says something like **Incorrect response <issuer\>**.
+بعد از پر کردن فرم احراز هویت با ارائه‌دهنده هویت خود، به متابیس برگردانده می‌شوید اما خطا می‌دهد. برای دیدن خطا، به **Admin settings** > **Tools** > **Logs** بروید. خطایی می‌بینید که چیزی مثل **Incorrect response <issuer\>** می‌گوید.
 
-**Root cause**: Your issuer or Entity ID is incorrect.
+**علت اصلی**: issuer یا Entity ID شما اشتباه است.
 
-**Steps to take**:
+**مراحل انجام**:
 
-1. You should have received an XML file of metadata from your identity provider. Open that metadata file, and look for the correct issuer or Entity ID. This ID is a unique identifier for the identity provider. Depending on your provider, the issuer or Entity ID usually looks something like this:
+1. باید یک فایل XML از metadata از ارائه‌دهنده هویت خود دریافت کرده باشید. آن فایل metadata را باز کنید، و به دنبال issuer یا Entity ID صحیح بگردید. این ID یک شناسه منحصر به فرد برای ارائه‌دهنده هویت است. بسته به ارائه‌دهنده شما، issuer یا Entity ID معمولاً چیزی شبیه این است:
    ```
    https://www.example.com/141xkex604w0Q5PN724v
    ```
-2. Copy the issuer or Entity ID from the XML file.
-3. Go to Metabase and select **Admin settings** > **Settings** > **Authentication** > **SAML**. Enter the issuer or Entity ID into the **SAML Identity Provider Issuer** field.
+2. issuer یا Entity ID را از فایل XML کپی کنید.
+3. به متابیس بروید و **Admin settings** > **Settings** > **Authentication** > **SAML** را انتخاب کنید. issuer یا Entity ID را در فیلد **SAML Identity Provider Issuer** وارد کنید.
 
-## Is the SAML identity provider certificate value correct?
+## آیا مقدار گواهی ارائه‌دهنده هویت SAML صحیح است؟
 
-After filling out the authentication form with your identity provider, you go back to Metabase but it throws an error. Go to **Admin settings** > **Tools** > **Logs**. You'll see an error that says something like **Invalid assertion error <issuer\>**.
+بعد از پر کردن فرم احراز هویت با ارائه‌دهنده هویت خود، به متابیس برمی‌گردید اما خطا می‌دهد. به **Admin settings** > **Tools** > **Logs** بروید. خطایی می‌بینید که چیزی مثل **Invalid assertion error <issuer\>** می‌گوید.
 
-**Root cause**: The certificate value you entered is incorrect.
+**علت اصلی**: مقدار گواهی که وارد کرده‌اید اشتباه است.
 
-**Steps to take**:
+**مراحل انجام**:
 
-1. Go to Metabase and select **Admin settings** > **Settings** > **Authentication** > **SAML**. Check that the certificate that you entered into the **SAML Identity Provider Certificate** field matches the certificate in the XML file you got from your identity provider.
+1. به متابیس بروید و **Admin settings** > **Settings** > **Authentication** > **SAML** را انتخاب کنید. بررسی کنید که گواهی که در فیلد **SAML Identity Provider Certificate** وارد کرده‌اید با گواهی در فایل XML که از ارائه‌دهنده هویت خود دریافت کردید تطبیق دارد.
 
-   - Depending on your provider, you might need to download the XML file, open it in a text editor, then copy and paste the certificate's contents into the **SAML Identity Provider Certificate** field in Metabase.
+   - بسته به ارائه‌دهنده شما، ممکن است نیاز به دانلود فایل XML، باز کردن آن در یک ویرایشگر متن، سپس کپی و paste کردن محتوای گواهی در فیلد **SAML Identity Provider Certificate** در متابیس داشته باشید.
 
-   - Note that your certificate text may include header and footer comments that look like `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`. These comments should be included when pasting your certificate text into Metabase.
+   - توجه داشته باشید که متن گواهی شما ممکن است شامل کامنت‌های header و footer باشد که شبیه `-----BEGIN CERTIFICATE-----` و `-----END CERTIFICATE-----` هستند. این کامنت‌ها باید هنگام paste کردن متن گواهی در متابیس شامل شوند.
 
-## Is the SSO URL correct?
+## آیا URL SSO صحیح است؟
 
-Verify that the Single Sign On URL (or equivalent) that you enter on your SAML provider’s website has `/auth/sso` appended to it. For instance, if you want your users to end up at `https://metabase.mycompany.com`, the full URL should be `https://metabase.mycompany.com/auth/sso`.
+تأیید کنید که Single Sign On URL (یا معادل) که در وب‌سایت ارائه‌دهنده SAML خود وارد می‌کنید `/auth/sso` به آن اضافه شده است. به‌عنوان مثال، اگر می‌خواهید کاربران شما در `https://metabase.mycompany.com` به پایان برسند، URL کامل باید `https://metabase.mycompany.com/auth/sso` باشد.
 
-## Searching for private key and found a null
+## جستجو برای private key و پیدا کردن null
 
-This error will only occur if you're using **Signed SSO requests**. That is, in Metabase, you've filled out the fields in the configuration section in **Admin settings** > **Settings** > **Authentication** > **SAML** > **Signed SSO requests**. Those fields are:
+این خطا فقط اگر از **Signed SSO requests** استفاده می‌کنید اتفاق می‌افتد. یعنی، در متابیس، فیلدها را در بخش پیکربندی در **Admin settings** > **Settings** > **Authentication** > **SAML** > **Signed SSO requests** پر کرده‌اید. آن فیلدها:
 
-- **SAML Keystore Path**: the absolute path to the Keystore file to use for signing SAML requests.
-- **SAML Keystore Password**: the password for opening the keystore.
-- **SAML Keystore Alias**: the alias for the key that Metabase should use for signing SAML requests.
+- **SAML Keystore Path**: مسیر مطلق به فایل Keystore برای استفاده برای امضای درخواست‌های SAML.
+- **SAML Keystore Password**: رمز عبور برای باز کردن keystore.
+- **SAML Keystore Alias**: alias برای کلیدی که متابیس باید برای امضای درخواست‌های SAML استفاده کند.
 
-**Root cause**: The certificate in the keystore file lacks a private key.
+**علت اصلی**: گواهی در فایل keystore فاقد یک private key است.
 
-**Steps to take**:
+**مراحل انجام**:
 
-1. Add a certificate with a private key to your keystore.
+1. یک گواهی با یک private key به keystore خود اضافه کنید.
 
-## Checking if SAML is working correctly
+## بررسی اینکه آیا SAML به‌درستی کار می‌کند
 
-Go to your Metabase login page. If SAML is working correctly, you should see [a single button to sign in](https://www.metabase.com/glossary/sso) with your identity provider (IdP). Once you're authenticated, you should be automatically redirected to the Metabase home page.
+به صفحه ورود متابیس خود بروید. اگر SAML به‌درستی کار می‌کند، باید [یک دکمه واحد برای ورود](https://www.metabase.com/glossary/sso) با ارائه‌دهنده هویت (IdP) خود ببینید. بعد از اینکه احراز هویت شدید، باید به‌طور خودکار به صفحه اصلی متابیس redirect شوید.
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.

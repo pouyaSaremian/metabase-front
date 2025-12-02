@@ -1,34 +1,34 @@
 ---
-title: Basic actions
+title: اکشن‌های پایه
 ---
 
-# Basic actions
+# اکشن‌های پایه
 
-Basic actions are "implicit" [actions](./introduction.md) that do things that people typically want to do when interacting with a database: Create, Update, Delete. Basic actions auto-track the schema of the source table backing the model. By auto-track the schema, we mean that Metabase will create action forms for people to fill out that include all of the fields from the primary source table that underlies that model.
+اکشن‌های پایه [اکشن‌های](./introduction.md) "ضمنی" هستند که کارهایی را انجام می‌دهند که افراد معمولاً هنگام تعامل با یک پایگاه داده می‌خواهند انجام دهند: Create، Update، Delete. اکشن‌های پایه به‌طور خودکار schema جدول منبع پشتیبان مدل را ردیابی می‌کنند. با ردیابی خودکار schema، منظورمان این است که متابیس فرم‌های اکشنی برای افراد ایجاد می‌کند تا پر کنند که شامل همهٔ فیلدهای جدول منبع اصلی که زیربنای آن مدل است می‌شود.
 
-If you only want to give people the option to update a subset of columns, or update columns in multiple tables, you can write a [custom action](./custom.md).
+اگر فقط می‌خواهید به افراد گزینهٔ به‌روزرسانی یک زیرمجموعه از ستون‌ها، یا به‌روزرسانی ستون‌ها در چندین جدول را بدهید، می‌توانید یک [اکشن سفارشی](./custom.md) بنویسید.
 
-## Creating basic actions
+## ایجاد اکشن‌های پایه
 
-Once actions are enabled, you can create basic actions on a new or existing [model](../data-modeling/models.md) that only wraps a single database table.
+بعد از اینکه اکشن‌ها فعال شدند، می‌توانید اکشن‌های پایه را روی یک [مدل](../data-modeling/models.md) جدید یا موجود که فقط یک جدول پایگاه داده را می‌پوشاند ایجاد کنید.
 
-1. Select a model and click on the **info** button, then click on **Model detail**.
-2. On the model detail page, click on the **Actions** tab.
-3. Click on the **...** next to the **New Action** and select **Create basic actions**.
+1. یک مدل انتخاب کنید و روی دکمهٔ **info** کلیک کنید، سپس روی **Model detail** کلیک کنید.
+2. در صفحهٔ جزئیات مدل، روی تب **Actions** کلیک کنید.
+3. روی **...** کنار **New Action** کلیک کنید و **Create basic actions** را انتخاب کنید.
 
-### Basic action limitations
+### محدودیت‌های اکشن پایه
 
-Basic actions are only available for "basic" models:
+اکشن‌های پایه فقط برای مدل‌های "پایه" در دسترس هستند:
 
-- Models built using the graphical query builder. Basic actions are unavailable for models created with native queries (SQL).
-- The model must "wrap" a single raw table in a database. The query should simply select that table in the data step of the notebook editor, and nothing more: no joins, no custom columns, no filters or summarization, no sorting.
-- The underlying table can only have one primary (entity) key.
+- مدل‌های ساخته‌شده با استفاده از query builder گرافیکی. اکشن‌های پایه برای مدل‌های ایجادشده با کوئری‌های native (SQL) در دسترس نیستند.
+- مدل باید یک جدول خام واحد در یک پایگاه داده را "بپوشاند". کوئری باید به سادگی آن جدول را در مرحلهٔ دادهٔ ویرایشگر notebook انتخاب کند، و نه بیشتر: بدون join، بدون ستون‌های سفارشی، بدون فیلتر یا خلاصه‌سازی، بدون مرتب‌سازی.
+- جدول زیربنایی فقط می‌تواند یک کلید اصلی (entity) داشته باشد.
 
-## Basic action types
+## انواع اکشن پایه
 
-![Basic actions](./images/basic-actions.png)
+![اکشن‌های پایه](./images/basic-actions.png)
 
-Basic actions include:
+اکشن‌های پایه شامل موارد زیر هستند:
 
 - [Update](#update)
 - [Delete](#delete)
@@ -36,38 +36,38 @@ Basic actions include:
 
 ### Update
 
-The update action will present people with a form with editable fields for each column in the primary source table.
+اکشن به‌روزرسانی یک فرم با فیلدهای قابل ویرایش برای هر ستون در جدول منبع اصلی به افراد ارائه می‌دهد.
 
-When setting up an Update action on a dashboard, you must pass an entity key (like an ID) to the action from a dashboard filter. For other values, you can either prompt the person to fill in a value for each field, or have a field automatically filled in via parameters (such as values set in dashboard filters).
+هنگام تنظیم یک اکشن Update در یک داشبورد، باید یک کلید entity (مثل یک ID) را از یک فیلتر داشبورد به اکشن ارسال کنید. برای مقادیر دیگر، می‌توانید یا از شخص بخواهید که برای هر فیلد یک مقدار وارد کند، یا یک فیلد را به‌طور خودکار از طریق پارامترها (مثل مقادیر تنظیم‌شده در فیلترهای داشبورد) پر کنید.
 
 ### Delete
 
-The Delete action will create a form that prompts people for an entity key, and will delete the record (row) corresponding to that ID in the underlying table that backs the model.
+اکشن Delete یک فرم ایجاد می‌کند که از افراد برای یک کلید entity درخواست می‌کند و رکورد (ردیف) متناظر با آن ID در جدول زیربنایی که مدل را پشتیبانی می‌کند حذف می‌کند.
 
 ### Create
 
-The Create action is the `INSERT INTO` action. The Create action will present a form with editable fields for each column in the primary source table backing the model. Once filled out, the action will insert the record into the primary table that underlies the model.
+اکشن Create همان اکشن `INSERT INTO` است. اکشن Create یک فرم با فیلدهای قابل ویرایش برای هر ستون در جدول منبع اصلی پشتیبان مدل ارائه می‌دهد. بعد از پر شدن، اکشن رکورد را در جدول اصلی که زیربنای مدل است درج می‌کند.
 
-## Basic actions on dashboards
+## اکشن‌های پایه در داشبوردها
 
-When setting up actions on a dashboard, you can either prompt the person to fill in a value for each field, or have a field automatically filled in via parameters (such as values set in dashboard filters).
+هنگام تنظیم اکشن‌ها در یک داشبورد، می‌توانید یا از شخص بخواهید که برای هر فیلد یک مقدار وارد کند، یا یک فیلد را به‌طور خودکار از طریق پارامترها (مثل مقادیر تنظیم‌شده در فیلترهای داشبورد) پر کنید.
 
-The Update basic action requires you to pass a value for the entity key.
+اکشن Update پایه نیاز دارد که یک مقدار برای کلید entity ارسال کنید.
 
-See [Actions in dashboards](../dashboards/actions.md).
+به [اکشن‌ها در داشبوردها](../dashboards/actions.md) مراجعه کنید.
 
-## Archiving basic actions
+## آرشیو کردن اکشن‌های پایه
 
-Because basic actions are made of magic, you cannot archive them. You can just toggle them on or off. From the model detail page, next to the **New action** button, click on the **...** menu and click **Disable basic actions**.
+چون اکشن‌های پایه از جادو ساخته شده‌اند، نمی‌توانید آن‌ها را آرشیو کنید. فقط می‌توانید آن‌ها را روشن یا خاموش کنید. از صفحهٔ جزئیات مدل، کنار دکمهٔ **New action**، روی منوی **...** کلیک کنید و **Disable basic actions** را کلیک کنید.
 
-## Basic actions from object detail view
+## اکشن‌های پایه از نمای جزئیات object
 
-If you have basic actions enabled for a model, you can click on an individual record to view its object detail. From that object detail model, you can click on the ellipses (**...**) and select update or delete to modify that specific record.
+اگر اکشن‌های پایه را برای یک مدل فعال کرده‌اید، می‌توانید روی یک رکورد جداگانه کلیک کنید تا جزئیات object آن را مشاهده کنید. از آن مدل جزئیات object، می‌توانید روی سه نقطه (**...**) کلیک کنید و update یا delete را انتخاب کنید تا آن رکورد خاص را تغییر دهید.
 
-![Update record from object detail view](./images/update-record.png)
+![به‌روزرسانی رکورد از نمای جزئیات object](./images/update-record.png)
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Introduction to actions](./introduction.md)
-- [Custom actions](./custom.md)
-- [Actions in dashboards](../dashboards/actions.md)
+- [مقدمه‌ای بر اکشن‌ها](./introduction.md)
+- [اکشن‌های سفارشی](./custom.md)
+- [اکشن‌ها در داشبوردها](../dashboards/actions.md)

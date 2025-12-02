@@ -1,64 +1,64 @@
 ---
-title: User provisioning with SCIM
+title: Provisioning کاربر با SCIM
 ---
 
-# User provisioning with SCIM
+# Provisioning کاربر با SCIM
 
 {% include plans-blockquote.html feature="User provisioning with SCIM" %}
 
-Metabase supports user provisioning via the System for Cross-domain Identity Management (SCIM) protocol. In addition to Single Sign-on (SSO), you can set up user provisioning in Metabase with SCIM to:
+متابیس از provisioning کاربر از طریق پروتکل System for Cross-domain Identity Management (SCIM) پشتیبانی می‌کند. علاوه بر Single Sign-on (SSO)، می‌توانید provisioning کاربر را در متابیس با SCIM تنظیم کنید تا:
 
-- **Decouple authentication from provisioning**. Even though anyone could authenticate with SSO, you may only want some people to be able to create an account in Metabase.
-- **Support deprovisioning user accounts**. If you deactivate someone from your SSO, SCIM can let Metabase know to deactivate their Metabase account as well.
+- **احراز هویت را از provisioning جدا کنید**. حتی اگر هر کسی می‌توانست با SSO احراز هویت کند، ممکن است فقط بخواهید برخی افراد بتوانند یک حساب در متابیس ایجاد کنند.
+- **از deprovisioning حساب‌های کاربری پشتیبانی کنید**. اگر کسی را از SSO خود غیرفعال کنید، SCIM می‌تواند به متابیس اطلاع دهد که حساب متابیس آن‌ها را نیز غیرفعال کند.
 
-> For now, Metabase officially supports SCIM for [Okta](https://help.okta.com/en-us/content/topics/apps/apps_app_integration_wizard_scim.htm?cshid=ext_Apps_App_Integration_Wizard-scim) and [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/configure-automatic-user-provisioning-portal). Other SCIM providers may work, but we haven't tested them. If you're having issues with another identity provider, please [reach out to us](https://www.metabase.com/help-premium).
+> فعلاً، متابیس به‌طور رسمی از SCIM برای [Okta](https://help.okta.com/en-us/content/topics/apps/apps_app_integration_wizard_scim.htm?cshid=ext_Apps_App_Integration_Wizard-scim) و [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/configure-automatic-user-provisioning-portal) پشتیبانی می‌کند. ارائه‌دهندگان SCIM دیگر ممکن است کار کنند، اما آن‌ها را تست نکرده‌ایم. اگر با ارائه‌دهنده هویت دیگری مشکل دارید، لطفاً [با ما تماس بگیرید](https://www.metabase.com/help-premium).
 
-## Setting up user provisioning
+## تنظیم provisioning کاربر
 
-![Setting up user provisioning with SCIM in Metabase](./images/user-provisioning.png)
+![تنظیم provisioning کاربر با SCIM در متابیس](./images/user-provisioning.png)
 
-To set up user provisioning. Click on the settings **Gear** icon in the upper right and navigate to **Admin settings** > **Settings**> **Authentication**.
+برای تنظیم provisioning کاربر. روی **آیکون Gear** تنظیمات در گوشهٔ بالا سمت راست کلیک کنید و به **Admin settings** > **Settings**> **Authentication** بروید.
 
-Click on the **User provisioning** tab.
+روی تب **User provisioning** کلیک کنید.
 
-## User provisioning via SCIM
+## Provisioning کاربر از طریق SCIM
 
-To set up user provisioning with SCIM, hit the toggle to enable it. Metabase will tell you the SCIM endpoint URL and SCIM token to share with your identity provider.
+برای تنظیم provisioning کاربر با SCIM، toggle را بزنید تا آن را فعال کنید. متابیس URL endpoint SCIM و token SCIM را برای به‌اشتراک‌گذاری با ارائه‌دهنده هویت شما به شما می‌گوید.
 
-> SAML user provisioning is always disabled when SCIM is enabled.
+> Provisioning کاربر SAML همیشه وقتی SCIM فعال است غیرفعال می‌شود.
 
-## SCIM endpoint URL
+## URL endpoint SCIM
 
-The SCIM endpoint is `/api/ee/scim/v2`. So your URL will looks something like:
+endpoint SCIM `/api/ee/scim/v2` است. بنابراین URL شما چیزی شبیه این خواهد بود:
 
 ```
 https://metabase.example.com/api/ee/scim/v2
 ```
 
-Replacing the hostname with your Metabase's hostname.
+با جایگزین کردن hostname با hostname متابیس خود.
 
-Share this endpoint URL with your identity provider.
+این URL endpoint را با ارائه‌دهنده هویت خود به‌اشتراک بگذارید.
 
-## SCIM token
+## Token SCIM
 
-Copy the token and save the token somewhere safe. For security, Metabase can't show you the token again. You can, however, regenerate the token, but you'll need to let your identity provider know about the new token.
+token را کپی کنید و token را در جایی امن ذخیره کنید. برای امنیت، متابیس نمی‌تواند token را دوباره به شما نشان دهد. با این حال، می‌توانید token را دوباره تولید کنید، اما باید به ارائه‌دهنده هویت خود دربارهٔ token جدید اطلاع دهید.
 
-## SCIM with Okta
+## SCIM با Okta
 
-Once you've enabled SCIM in Metabase and gotten your SCIM endpoint URL and SCIM token, follow the docs for [Setting up SCIM in Okta](https://help.okta.com/en-us/content/topics/apps/apps_app_integration_wizard_scim.htm?cshid=ext_Apps_App_Integration_Wizard-scim).
+بعد از اینکه SCIM را در متابیس فعال کردید و URL endpoint SCIM و token SCIM خود را دریافت کردید، مستندات [تنظیم SCIM در Okta](https://help.okta.com/en-us/content/topics/apps/apps_app_integration_wizard_scim.htm?cshid=ext_Apps_App_Integration_Wizard-scim) را دنبال کنید.
 
-With Okta, Metabase supports user and group provisioning; groups are created and populated in Metabase.
+با Okta، متابیس از provisioning کاربر و گروه پشتیبانی می‌کند؛ گروه‌ها در متابیس ایجاد و پر می‌شوند.
 
-NOTE: the authentication mode you need to set is "HTTP Header"
+نکته: حالت احراز هویتی که باید تنظیم کنید "HTTP Header" است
 
-## SCIM with Microsoft Entra ID
+## SCIM با Microsoft Entra ID
 
-Once you've enabled SCIM in Metabase and gotten your SCIM endpoint URL and SCIM token, follow the docs for [Setting up SCIM in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/configure-automatic-user-provisioning-portal).
+بعد از اینکه SCIM را در متابیس فعال کردید و URL endpoint SCIM و token SCIM خود را دریافت کردید، مستندات [تنظیم SCIM در Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/configure-automatic-user-provisioning-portal) را دنبال کنید.
 
-With Microsoft Entra ID, Metabase only supports user provisioning (groups aren't created or populated).
+با Microsoft Entra ID، متابیس فقط از provisioning کاربر پشتیبانی می‌کند (گروه‌ها ایجاد یا پر نمی‌شوند).
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Authenticating with SAML](./authenticating-with-saml.md)
-- [SAML with Okta](./saml-okta.md)
-- [SAML with Microsoft Entra ID](./saml-azure.md)
+- [احراز هویت با SAML](./authenticating-with-saml.md)
+- [SAML با Okta](./saml-okta.md)
+- [SAML با Microsoft Entra ID](./saml-azure.md)

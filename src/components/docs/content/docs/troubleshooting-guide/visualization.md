@@ -1,48 +1,48 @@
 ---
-title: Troubleshooting question and dashboard visualizations
+title: عیب‌یابی تجسم‌های سؤال و داشبورد
 ---
 
-# Troubleshooting question and dashboard visualizations
+# عیب‌یابی تجسم‌های سؤال و داشبورد
 
-To start, check if your current browser settings are compatible with Metabase:
+برای شروع، بررسی کنید که آیا تنظیمات مرورگر فعلی شما با متابیس سازگار است:
 
-1. Clear your browser cache, and refresh your page.
-2. Disable all extensions and plugins. Load the page again.
-3. Give it one last shot---try opening your page in a private/incognito session, or a different browser.
+1. cache مرورگر خود را پاک کنید، و صفحه خود را refresh کنید.
+2. همه extensionها و pluginها را غیرفعال کنید. صفحه را دوباره بارگذاری کنید.
+3. یک تلاش آخر بدهید---سعی کنید صفحه خود را در یک نشست private/incognito، یا یک مرورگر متفاوت باز کنید.
 
-## Formatting dashboard cards
+## قالب‌بندی کارت‌های داشبورد
 
-1. Make sure that you're making and saving changes from the [card's settings](../dashboards/introduction.md#changing-a-cards-visualization-settings) (_not_ the original question's settings).
-2. [Reset your card's visualization settings](../dashboards/introduction.md#resetting-a-cards-visualization-settings).
+1. مطمئن شوید که تغییرات را از [تنظیمات کارت](../dashboards/introduction.md#changing-a-cards-visualization-settings) ایجاد و ذخیره می‌کنید (_نه_ تنظیمات سؤال اصلی).
+2. [تنظیمات تجسم کارت خود را reset کنید](../dashboards/introduction.md#resetting-a-cards-visualization-settings).
 
-**Explanation**
+**توضیح**
 
-The visualization settings on a card are independent of the settings on the original question. When you first create a question, your selected visualization type is saved along with the query. When you add that question to a dashboard, the dashboard will display the same visualization as the original question by default. You can override the original visualization type by using the [card's visualization settings](../dashboards/introduction.md#changing-a-cards-visualization-settings).
+تنظیمات تجسم روی یک کارت مستقل از تنظیمات روی سؤال اصلی است. وقتی برای اولین بار یک سؤال ایجاد می‌کنید، نوع تجسم انتخاب شده شما همراه با کوئری ذخیره می‌شود. وقتی آن سؤال را به یک داشبورد اضافه می‌کنید، داشبورد به‌طور پیش‌فرض همان تجسم را به‌عنوان سؤال اصلی نمایش می‌دهد. می‌توانید نوع تجسم اصلی را با استفاده از [تنظیمات تجسم کارت](../dashboards/introduction.md#changing-a-cards-visualization-settings) override کنید.
 
-## Visualizing SQL questions
+## تجسم سؤال‌های SQL
 
-Go to your SQL question and [change the visualization type](../questions/visualizations/visualizing-results.md) to a table. Then, check if any of the following situations apply to the raw query results:
+به سؤال SQL خود بروید و [نوع تجسم](../questions/visualizations/visualizing-results.md) را به یک جدول تغییر دهید. سپس، بررسی کنید که آیا هر یک از موقعیت‌های زیر برای نتایج کوئری خام اعمال می‌شود:
 
-- [Aggregations (counts, sums, etc.) are wrong](https://www.metabase.com/learn/sql/debugging-sql/sql-logic#aggregated-results-counts-sums-etc-are-wrong).
-- [Results have duplicated rows](https://www.metabase.com/learn/sql/debugging-sql/sql-logic-duplicated-data).
-- [Results are missing rows](https://www.metabase.com/learn/sql/debugging-sql/sql-logic-missing-data).
+- [Aggregationها (countها، sumها، و غیره) اشتباه هستند](https://www.metabase.com/learn/sql/debugging-sql/sql-logic#aggregated-results-counts-sums-etc-are-wrong).
+- [نتایج ردیف‌های تکراری دارند](https://www.metabase.com/learn/sql/debugging-sql/sql-logic-duplicated-data).
+- [نتایج ردیف‌های گم شده دارند](https://www.metabase.com/learn/sql/debugging-sql/sql-logic-missing-data).
 
-**Explanation**
+**توضیح**
 
-If your question or dashboard card is powered by a handwritten [SQL query](../questions/native-editor/writing-sql.md) rather than the [query builder](../questions/query-builder/editor.md), your visualization is going to be more sensitive to changes in the underlying data (for example, renamed fields, or the sudden appearance of a wild null value). To learn more, read about [Common reasons for unexpected query results](https://www.metabase.com/learn/sql/debugging-sql/sql-logic#common-reasons-for-unexpected-query-results).
+اگر سؤال یا کارت داشبورد شما با یک [کوئری SQL دست‌نویس](../questions/native-editor/writing-sql.md) به جای [query builder](../questions/query-builder/editor.md) قدرت می‌گیرد، تجسم شما به تغییرات در داده زیربنایی حساس‌تر خواهد بود (مثلاً، فیلدهای تغییر نام داده شده، یا ظاهر ناگهانی یک مقدار null وحشی). برای یادگیری بیشتر، دربارهٔ [دلایل رایج برای نتایج کوئری غیرمنتظره](https://www.metabase.com/learn/sql/debugging-sql/sql-logic#common-reasons-for-unexpected-query-results) بخوانید.
 
-If you're having problems with things like SQL syntax errors or [SQL variables](https://www.metabase.com/glossary/variable#example-variable-in-metabase), see [Troubleshooting SQL questions](./sql.md) for more help.
+اگر با چیزهایی مثل خطاهای syntax SQL یا [متغیرهای SQL](https://www.metabase.com/glossary/variable#example-variable-in-metabase) مشکل دارید، برای کمک بیشتر به [عیب‌یابی سؤال‌های SQL](./sql.md) مراجعه کنید.
 
-## Related problems
+## مشکلات مرتبط
 
-- [My dates and times are wrong](./timezones.md).
-- [My dashboard is slow or failing to load](./my-dashboard-is-slow.md).
-- [I can't view or edit my question or dashboard](./cant-view-or-edit.md).
-- [I can't see my tables](./cant-see-tables.md).
+- [تاریخ‌ها و زمان‌های من اشتباه هستند](./timezones.md).
+- [داشبورد من کند است یا بارگذاری نمی‌شود](./my-dashboard-is-slow.md).
+- [نمی‌توانم سؤال یا داشبورد خود را مشاهده یا ویرایش کنم](./cant-view-or-edit.md).
+- [نمی‌توانم جداول خود را ببینم](./cant-see-tables.md).
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.

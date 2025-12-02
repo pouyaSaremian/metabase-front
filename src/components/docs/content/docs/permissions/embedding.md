@@ -1,19 +1,19 @@
 ---
-title: Configuring permissions for embedding
-summary: Learn about which permissions tooling you should use depending on whether your customer data is in one database or split across multiple databases.
+title: پیکربندی مجوزها برای جاسازی
+summary: یاد بگیرید که از کدام ابزار مجوز باید استفاده کنید بسته به اینکه آیا داده مشتری شما در یک پایگاه داده است یا در چندین پایگاه داده تقسیم شده است.
 ---
 
-# Configuring permissions for embedding
+# پیکربندی مجوزها برای جاسازی
 
-You can use a single Metabase to manage permissions for all of your customers. Which Metabase permissions tool you use depends on how you store your customer data.
+می‌توانید از یک متابیس واحد برای مدیریت مجوزها برای همه مشتریان خود استفاده کنید. کدام ابزار مجوز متابیس استفاده می‌کنید بستگی به نحوهٔ ذخیره داده مشتری شما دارد.
 
-- [One database for all customers (commingled setups)](#one-database-for-all-customers-commingled-setups)
-- [One database per customer](#one-database-per-customer)
-- [One schema per customer](#multiple-schemas-one-schema-per-customer)
+- [یک پایگاه داده برای همه مشتریان (تنظیمات ترکیبی)](#one-database-for-all-customers-commingled-setups)
+- [یک پایگاه داده برای هر مشتری](#one-database-per-customer)
+- [یک schema برای هر مشتری](#multiple-schemas-one-schema-per-customer)
 
-## One database for all customers (commingled setups)
+## یک پایگاه داده برای همه مشتریان (تنظیمات ترکیبی)
 
-If all your customer data is in the same schema and on the same tables (often referred to as "data commingling"):
+اگر همه داده مشتری شما در همان schema و روی همان جداول است (اغلب "ترکیب داده" نامیده می‌شود):
 
 | Tenant_ID | Column 1 | Column 2 |
 | --------- | -------- | -------- |
@@ -21,14 +21,14 @@ If all your customer data is in the same schema and on the same tables (often re
 | B         | ...      | ...      |
 | C         | ...      | ...      |
 
-You could use:
+می‌توانید از موارد زیر استفاده کنید:
 
-- [Row and column security](./row-and-column-security.md) to restrict rows and columns.
-- [Connection impersonation](./impersonation.md) to mimic roles set by your database. Impersonation is a good choice if you want to grant native SQL access to your data.
+- [امنیت ردیف و ستون](./row-and-column-security.md) برای محدود کردن ردیف‌ها و ستون‌ها.
+- [جعل هویت اتصال](./impersonation.md) برای تقلید نقش‌های تنظیم‌شده توسط پایگاه داده شما. جعل هویت انتخاب خوبی است اگر می‌خواهید دسترسی native SQL به داده‌هایتان اعطا کنید.
 
-### Restricting rows based on tenant ID
+### محدود کردن ردیف‌ها بر اساس Tenant ID
 
-Let's say you have a table called **Data** that looks like this:
+فرض کنید یک جدول به نام **Data** دارید که به این شکل است:
 
 | Tenant_ID | Metrics | Insights |
 | --------- | ------- | -------- |
@@ -36,19 +36,19 @@ Let's say you have a table called **Data** that looks like this:
 | B         | ...     | ...      |
 | C         | ...     | ...      |
 
-To display a filtered version of **Data** to different tenants based on a `Tenant_ID`, you can apply [row and column security](./row-and-column-security.md).
+برای نمایش یک نسخه فیلترشده از **Data** به مستأجران مختلف بر اساس `Tenant_ID`، می‌توانید [امنیت ردیف و ستون](./row-and-column-security.md) را اعمال کنید.
 
-That means Tenant A will see the rows where `Tenant_ID = A`, and Tenant B will see the rows where `Tenant_ID = B`.
+یعنی Tenant A ردیف‌هایی را می‌بیند که `Tenant_ID = A`، و Tenant B ردیف‌هایی را می‌بیند که `Tenant_ID = B`.
 
-Here's how the basic row-level security will work:
+در اینجا نحوهٔ کار امنیت سطح ردیف پایه است:
 
-1. **Create a group**, for example "Restricted Tenants", and add people's Metabase accounts to that group.
-2. **Add a user attribute**. For each person's account, [add a user attribute](../people-and-groups/managing.md#adding-a-user-attribute) like `Tenant_ID`, with the user attribute value set to "A", "B", or "C".
-3. **Add row-level security** to the table for that group. See [row and column security](./row-and-column-security.md)
+1. **یک گروه ایجاد کنید**، مثلاً "Restricted Tenants"، و حساب‌های متابیس افراد را به آن گروه اضافه کنید.
+2. **یک ویژگی کاربر اضافه کنید**. برای حساب هر شخص، [یک ویژگی کاربر اضافه کنید](../people-and-groups/managing.md#adding-a-user-attribute) مثل `Tenant_ID`، با مقدار ویژگی کاربر تنظیم‌شده به "A"، "B"، یا "C".
+3. **امنیت سطح ردیف** را به جدول برای آن گروه اضافه کنید. به [امنیت ردیف و ستون](./row-and-column-security.md) مراجعه کنید
 
-### Restricting columns based on tenancy
+### محدود کردن ستون‌ها بر اساس مستأجری
 
-Let's say your **Insights** column is a premium feature, and Tenant B is the only customer paying to see these **Insights**.
+فرض کنید ستون **Insights** شما یک ویژگی premium است، و Tenant B تنها مشتری است که برای دیدن این **Insights** پرداخت می‌کند.
 
 | Tenant ID | Metrics | Insights                          |
 | --------- | ------- | --------------------------------- |
@@ -56,12 +56,12 @@ Let's say your **Insights** column is a premium feature, and Tenant B is the onl
 | B         | ...     | ...                               |
 | C         | ...     | {% include svg-icons/cross.svg %} |
 
-To keep A and C from viewing the `Insights` column, you can add [column-level security](./row-and-column-security.md) to restrict both the rows and columns they see when they view the table.
+برای جلوگیری از مشاهده ستون `Insights` توسط A و C، می‌توانید [امنیت سطح ستون](./row-and-column-security.md) را اضافه کنید تا هم ردیف‌ها و هم ستون‌هایی که هنگام مشاهده جدول می‌بینند را محدود کنید.
 
-1. **Create a group** called "Metrics-Only Tenants".
-2. **Add Tenants A and C to the group**. When restricting data, make sure that each Metabase account only belongs to a single group.
-3. [Add a user attribute](../people-and-groups/managing.md#adding-a-user-attribute) like `Tenant_ID`, with the user attribute value set to "A" or "C".
-4. Next, you'll create a SQL question using the **Data** table like this:
+1. **یک گروه ایجاد کنید** به نام "Metrics-Only Tenants".
+2. **Tenants A و C را به گروه اضافه کنید**. هنگام محدود کردن داده، مطمئن شوید که هر حساب متابیس فقط به یک گروه تعلق دارد.
+3. [یک ویژگی کاربر اضافه کنید](../people-and-groups/managing.md#adding-a-user-attribute) مثل `Tenant_ID`، با مقدار ویژگی کاربر تنظیم‌شده به "A" یا "C".
+4. بعد، یک سؤال SQL با استفاده از جدول **Data** مثل این ایجاد می‌کنید:
 
    ```sql
    SELECT Tenant_ID, Metrics
@@ -69,30 +69,30 @@ To keep A and C from viewing the `Insights` column, you can add [column-level se
    WHERE Tenant_ID = {%raw%} {{ tenant_user_attribute }} {%endraw%}
    ```
 
-5. Save the SQL question as "Customer Metrics".
-6. [Add row and column security](./row-and-column-security.md#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table) using the "Metrics-Only Tenants" group and "Customer Metrics" SQL question.
+5. سؤال SQL را به‌عنوان "Customer Metrics" ذخیره کنید.
+6. [امنیت ردیف و ستون اضافه کنید](./row-and-column-security.md#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table) با استفاده از گروه "Metrics-Only Tenants" و سؤال SQL "Customer Metrics".
 
-When, for example, Tenant A logs in, they'll only see the `Tenant_ID` and `Metrics` columns, and only the rows where `Tenant_ID = A`.
+وقتی، به‌عنوان مثال، Tenant A وارد می‌شود، فقط ستون‌های `Tenant_ID` و `Metrics` را می‌بیند، و فقط ردیف‌هایی که `Tenant_ID = A`.
 
-### Impersonation lets you manage access with database roles
+### جعل هویت به شما امکان مدیریت دسترسی با نقش‌های پایگاه داده را می‌دهد
 
-Impersonation lets you map user attributes to database roles, which lets you do row-level security based on the database privileges you give each role.
+جعل هویت به شما امکان می‌دهد ویژگی‌های کاربر را به نقش‌های پایگاه داده نگاشت کنید، که به شما امکان می‌دهد امنیت سطح ردیف را بر اساس مجوزهایی که به هر نقش می‌دهید انجام دهید.
 
-Check out this [article on impersonation](https://www.metabase.com/learn/metabase-basics/administration/permissions/impersonation).
+این [مقاله دربارهٔ جعل هویت](https://www.metabase.com/learn/metabase-basics/administration/permissions/impersonation) را بررسی کنید.
 
-## One database per customer
+## یک پایگاه داده برای هر مشتری
 
-If each of your customers has their own database, you can use [database routing](./database-routing.md) to swap out the data source for queries. With DB routing, you just need to build a dashboard once, and Metabase will switch the database it queries depending on who's logged in.
+اگر هر یک از مشتریان شما پایگاه داده خودش را دارد، می‌توانید از [مسیریابی پایگاه داده](./database-routing.md) برای تعویض منبع داده برای کوئری‌ها استفاده کنید. با مسیریابی DB، فقط نیاز دارید یک داشبورد یک بار بسازید، و متابیس پایگاه داده را که کوئری می‌کند بسته به اینکه چه کسی وارد شده است تغییر می‌دهد.
 
-For database routing to work, however, the schemas in each database must be identical.
+با این حال، برای اینکه مسیریابی پایگاه داده کار کند، schemaها در هر پایگاه داده باید یکسان باشند.
 
-For more fine-grained control over what individuals can see, even within the same tenants, you can also use the other tools Metabase provides, like [row and column security](./row-and-column-security.md) and [connection impersonation](./impersonation.md), in combination with database routing.
+برای کنترل دقیق‌تر بر آنچه افراد می‌توانند ببینند، حتی درون همان مستأجران، همچنین می‌توانید از ابزارهای دیگر متابیس، مثل [امنیت ردیف و ستون](./row-and-column-security.md) و [جعل هویت اتصال](./impersonation.md)، در ترکیب با مسیریابی پایگاه داده استفاده کنید.
 
-## Multiple schemas (one schema per customer)
+## چندین schema (یک schema برای هر مشتری)
 
-If your customer data is stored in separate tables in the same schema or different schemas within one database, like this:
+اگر داده مشتری شما در جداول جداگانه در همان schema یا schemaهای مختلف درون یک پایگاه داده ذخیره شده است، مثل این:
 
-**Tenant A's schema**
+**Schema Tenant A**
 
 | Tenant A | Column 1 | Column 2 |
 | -------- | -------- | -------- |
@@ -100,7 +100,7 @@ If your customer data is stored in separate tables in the same schema or differe
 | Row 2    | ...      | ...      |
 | Row 3    | ...      | ...      |
 
-**Tenant B's schema**
+**Schema Tenant B**
 
 | Tenant B | Column 1 | Column 2 |
 | -------- | -------- | -------- |
@@ -108,43 +108,43 @@ If your customer data is stored in separate tables in the same schema or differe
 | Row 2    | ...      | ...      |
 | Row 3    | ...      | ...      |
 
-You could:
+می‌توانید:
 
-- [Grant self-service or view-only access to a schema](#granting-customers-self-service-or-view-only-access-to-their-schema).
-- [Grant native SQL access to a schema](#granting-customers-native-sql-access-to-their-schema).
+- [اعطای دسترسی self-service یا فقط مشاهده به schema](#granting-customers-self-service-or-view-only-access-to-their-schema).
+- [اعطای دسترسی native SQL به schema](#granting-customers-native-sql-access-to-their-schema).
 
-Unlike commingled data, one-schema-per-customer data is incompatible with row and column security, because it works at the table level, not the schema level.
+برخلاف داده ترکیبی، داده یک-schema-برای-هر-مشتری با امنیت ردیف و ستون ناسازگار است، چون در سطح جدول کار می‌کند، نه سطح schema.
 
-### Granting customers self-service or view-only access to their schema
+### اعطای دسترسی self-service یا فقط مشاهده به schema مشتریان
 
-Say you have a single database with ten different tables, each corresponding to a different customer (company). You want each customer to only access their own table.
+فرض کنید یک پایگاه داده واحد با ده جدول مختلف دارید، هر یک مربوط به یک مشتری متفاوت (شرکت). می‌خواهید هر مشتری فقط به جدول خودش دسترسی داشته باشد.
 
-1. **Create a group** for your first customer in **Admin settings** > **People**. If you need different permission levels within a company (some employees can ask questions, others can only view), create multiple groups like **Company A (Self-service)** and **Company A (View only)**.
+1. **یک گروه برای اولین مشتری خود ایجاد کنید** در **Admin settings** > **People**. اگر نیاز به سطوح مجوز متفاوت درون یک شرکت دارید (برخی کارمندان می‌توانند سؤال بپرسند، دیگران فقط می‌توانند مشاهده کنند)، چندین گروه مثل **Company A (Self-service)** و **Company A (View only)** ایجاد کنید.
 
-2. **Grant table access** by going to **Permissions** > **Data** > **Databases** and granting your new group access to the customer's table. If you want customers to create questions and dashboards within their table, set **Create query** permissions to **Query builder**.
+2. **دسترسی جدول را اعطا کنید** با رفتن به **Permissions** > **Data** > **Databases** و اعطای دسترسی گروه جدید به جدول مشتری. اگر می‌خواهید مشتریان سؤال‌ها و داشبوردها را درون جدول خود ایجاد کنند، مجوزهای **Create query** را به **Query builder** تنظیم کنید.
 
-   For employees who should only view data and create collections to house those specific questions and dashboards, see [collection permissions](./collections.md).
+   برای کارمندانی که باید فقط داده را مشاهده کنند و کلکسیون‌هایی برای نگهداری آن سؤال‌ها و داشبوردهای خاص ایجاد کنند، به [مجوزهای کلکسیون](./collections.md) مراجعه کنید.
 
-   Avoid granting native SQL editor access — it lets people query tables they shouldn't see.
+   از اعطای دسترسی ویرایشگر SQL native خودداری کنید — این به افراد امکان می‌دهد جداولی را که نباید ببینند کوئری کنند.
 
-   If you scope each group's permissions to a single table, Metabase will hide any new tables you add to the database.
+   اگر مجوزهای هر گروه را به یک جدول واحد محدود کنید، متابیس هر جدول جدیدی که به پایگاه داده اضافه می‌کنید را مخفی می‌کند.
 
-3. **Invite your first user** and add them to the appropriate group. If you're using [SSO](../people-and-groups/google-sign-in.md), you can skip this step.
+3. **اولین کاربر خود را دعوت کنید** و آن‌ها را به گروه مناسب اضافه کنید. اگر از [SSO](../people-and-groups/google-sign-in.md) استفاده می‌کنید، می‌توانید این مرحله را رد کنید.
 
-4. **Repeat the process** for each customer by following steps 1–3.
+4. **فرآیند را برای هر مشتری تکرار کنید** با دنبال کردن مراحل 1–3.
 
-### Granting customers native SQL access to their schema
+### اعطای دسترسی native SQL به schema مشتریان
 
-If you need native SQL queries:
+اگر نیاز به کوئری‌های native SQL دارید:
 
-1. **Create a database-level user account** for your first customer (in your database, not in Metabase). This database user should only have access to their specific tables or schema. For PostgreSQL for example, you could add a user via psql and only grant them permissions to their tables.
+1. **یک حساب کاربر سطح پایگاه داده** برای اولین مشتری خود ایجاد کنید (در پایگاه داده خود، نه در متابیس). این کاربر پایگاه داده باید فقط به جداول یا schema خاص خود دسترسی داشته باشد. برای PostgreSQL مثلاً، می‌توانید یک کاربر از طریق psql اضافه کنید و فقط مجوزهای جداول آن‌ها را اعطا کنید.
 
-2. **Connect Metabase to your database** using the database user account you just created. See [databases](../databases/connecting.md).
+2. **متابیس را به پایگاه داده خود متصل کنید** با استفاده از حساب کاربر پایگاه داده که تازه ایجاد کردید. به [پایگاه‌داده‌ها](../databases/connecting.md) مراجعه کنید.
 
-3. **Create a new group** in Metabase and grant it access to the new database connection. Since the database user role controls what's visible, you can grant the group **Can view** access to the database and **Query builder and native** access. See [groups](../people-and-groups/managing.md#groups).
+3. **یک گروه جدید در متابیس ایجاد کنید** و دسترسی به اتصال پایگاه داده جدید را اعطا کنید. چون نقش کاربر پایگاه داده کنترل می‌کند چه چیزی قابل مشاهده است، می‌توانید به گروه دسترسی **Can view** به پایگاه داده و دسترسی **Query builder and native** اعطا کنید. به [گروه‌ها](../people-and-groups/managing.md#groups) مراجعه کنید.
 
-   Group members will see all tables that the database user can access. To hide tables later, you'll need to change permissions in the database itself, not Metabase.
+   اعضای گروه همه جداولی را می‌بینند که کاربر پایگاه داده می‌تواند به آن‌ها دسترسی داشته باشد. برای مخفی کردن جداول بعداً، باید مجوزها را در خود پایگاه داده تغییر دهید، نه متابیس.
 
-4. **Invite your first user** and add them to the appropriate group. If you're using [SSO](../people-and-groups/google-sign-in.md), you can skip this step.
+4. **اولین کاربر خود را دعوت کنید** و آن‌ها را به گروه مناسب اضافه کنید. اگر از [SSO](../people-and-groups/google-sign-in.md) استفاده می‌کنید، می‌توانید این مرحله را رد کنید.
 
-5. **Repeat the process** for each customer by following steps 1-4. You'll end up with as many database connections as customers.
+5. **فرآیند را برای هر مشتری تکرار کنید** با دنبال کردن مراحل 1-4. در نهایت به تعداد مشتریان اتصال پایگاه داده خواهید داشت.

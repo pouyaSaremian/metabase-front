@@ -1,98 +1,98 @@
 ---
-title: I can't see my tables
+title: نمی‌توانم جداول خود را ببینم
 ---
 
-# I can't see my tables
+# نمی‌توانم جداول خود را ببینم
 
-You've connected Metabase to a database, but:
+متابیس را به یک پایگاه داده متصل کرده‌اید، اما:
 
-- you don't see the tables in the [Table Metadata](../data-modeling/metadata-editing.md) section of the Admin Panel,
-- the tables don't appear in the [Data Browser](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/data-browser),
-- the tables don't show up as possible data sources when you create a query using the Query Builder, or
-- you can no longer see tables that you used to be able to see.
+- جداول را در بخش [Table Metadata](../data-modeling/metadata-editing.md) از پنل Admin نمی‌بینید،
+- جداول در [Data Browser](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/data-browser) ظاهر نمی‌شوند،
+- جداول به‌عنوان منابع داده ممکن هنگام ایجاد یک کوئری با استفاده از Query Builder نمایش داده نمی‌شوند، یا
+- دیگر نمی‌توانید جداولی را که قبلاً می‌توانستید ببینید ببینید.
 
-## Check for browser issues
+## بررسی مشکلات مرورگر
 
-1. Clear your browser cache.
-2. Check if a browser extension or plugin is interfering with Metabase:
-   - Disable all extensions and plugins,
-   - Open Metabase in an incognito browser session, or
-   - Open Metabase in a different browser.
+1. cache مرورگر خود را پاک کنید.
+2. بررسی کنید که آیا یک extension یا plugin مرورگر با متابیس تداخل دارد:
+   - همه extensionها و pluginها را غیرفعال کنید،
+   - متابیس را در یک نشست مرورگر ناشناس باز کنید، یا
+   - متابیس را در یک مرورگر متفاوت باز کنید.
 
-**Explanation**
+**توضیح**
 
-Sometimes your browser will show an old cached list of tables. Browser extensions can also prevent pages from loading correctly.
+گاهی اوقات مرورگر شما یک لیست cache شده قدیمی از جداول را نمایش می‌دهد. extensionهای مرورگر همچنین می‌توانند از بارگذاری صحیح صفحات جلوگیری کنند.
 
-## Test the database connection
+## تست اتصال پایگاه داده
 
-1. Go to the Metabase [SQL editor](../questions/native-editor/writing-sql.md).
-2. Test the connection to your database by running:
+1. به [ویرایشگر SQL](../questions/native-editor/writing-sql.md) متابیس بروید.
+2. اتصال به پایگاه داده خود را با اجرای این تست کنید:
    ```sql
    SELECT 1
    ```
 
-If you get an error, see [Troubleshooting database connections](./db-connection.md).
+اگر خطایی دریافت کردید، به [عیب‌یابی اتصالات پایگاه داده](./db-connection.md) مراجعه کنید.
 
-**Explanation**
+**توضیح**
 
-Something may have changed on the database side (if you were previously connected). For example, you may have connected to a test database while doing an evaluation but are now in a production environment.
+ممکن است چیزی در سمت پایگاه داده تغییر کرده باشد (اگر قبلاً متصل بودید). به‌عنوان مثال، ممکن است در حین انجام یک ارزیابی به یک پایگاه داده تست متصل شده باشید اما حالا در یک محیط production هستید.
 
-## Check table access
+## بررسی دسترسی جدول
 
-To make sure that your table is queryable by Metabase:
+برای اطمینان از اینکه جدول شما توسط متابیس قابل کوئری است:
 
-1. Go to the Metabase [SQL editor](../questions/native-editor/writing-sql.md).
-2. Look for your table:
+1. به [ویرایشگر SQL](../questions/native-editor/writing-sql.md) متابیس بروید.
+2. به دنبال جدول خود بگردید:
    ```sql
    SELECT *
    FROM your_table
    ```
 
-If there's a problem with your table name or database permissions, you'll get an error message like:
+اگر مشکلی با نام جدول یا مجوزهای پایگاه داده وجود داشته باشد، یک پیام خطا مثل این دریافت می‌کنید:
 
-- [Table not found](https://www.metabase.com/learn/sql/debugging-sql/sql-syntax#column-or-table-name-is-not-found-or-not-recognized)
-- [Permission denied](./data-permissions.md#getting-a-permission-denied-error-message)
+- [جدول پیدا نشد](https://www.metabase.com/learn/sql/debugging-sql/sql-syntax#column-or-table-name-is-not-found-or-not-recognized)
+- [مجوز رد شد](./data-permissions.md#getting-a-permission-denied-error-message)
 
-For less common errors, try searching or asking the [Metabase community](https://discourse.metabase.com/).
+برای خطاهای کمتر رایج، سعی کنید در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
 
-**Explanation**
+**توضیح**
 
-Something might have changed on database side: your table could've been renamed or dropped, or the permissions revoked.
+ممکن است چیزی در سمت پایگاه داده تغییر کرده باشد: جدول شما ممکن است تغییر نام داده شده یا حذف شده باشد، یا مجوزها لغو شده باشند.
 
-## Metabase permissions
+## مجوزهای متابیس
 
-If there are only a few people who can't view tables, see [A user group has the wrong access to a table or schema](./data-permissions.md#a-user-group-has-the-wrong-access-to-a-table-or-schema).
+اگر فقط چند نفر هستند که نمی‌توانند جداول را مشاهده کنند، به [یک گروه کاربری دسترسی اشتباه به یک جدول یا schema دارد](./data-permissions.md#a-user-group-has-the-wrong-access-to-a-table-or-schema) مراجعه کنید.
 
-**Explanation**
+**توضیح**
 
-Metabase uses a group-based permission model: people belong to groups, and admins can set permissions to hide tables from groups.
+متابیس از یک مدل مجوز مبتنی بر گروه استفاده می‌کند: افراد به گروه‌ها تعلق دارند، و ادمین‌ها می‌توانند مجوزها را برای مخفی کردن جداول از گروه‌ها تنظیم کنند.
 
-## Check if the table is hidden
+## بررسی اینکه آیا جدول مخفی است
 
-1. Go to **Admin > Table Metadata** and choose the database where your table is.
-2. Check that **Visibility** of your table is not set to **Hidden**.
+1. به **Admin > Table Metadata** بروید و پایگاه داده‌ای که جدول شما در آن است را انتخاب کنید.
+2. بررسی کنید که **Visibility** جدول شما روی **Hidden** تنظیم نشده است.
 
-**Explanation**
+**توضیح**
 
-If an Admin sets the table visibility to **Hidden**, you will be able to use SQL to query the table but will not be able to see it in **Browse** > **Databases** or as a data source in the Query Builder.
+اگر یک ادمین visibility جدول را روی **Hidden** تنظیم کند، می‌توانید از SQL برای کوئری کردن جدول استفاده کنید اما نمی‌توانید آن را در **Browse** > **Databases** یا به‌عنوان یک منبع داده در Query Builder ببینید.
 
 ## MongoDB
 
-MongoDB lets you "successfully connect" to any collection name, even if the collection doesn't exist. If you don't see a MongoDB collection in Metabase, make sure that:
+MongoDB به شما امکان می‌دهد به "هر نام collection" "با موفقیت متصل شوید"، حتی اگر collection وجود نداشته باشد. اگر یک collection MongoDB را در متابیس نمی‌بینید، مطمئن شوید که:
 
-- you have the correct collection name, and
-- the collection is non-empty.
+- نام collection صحیح را دارید، و
+- collection خالی نیست.
 
-## Related topics
+## موضوعات مرتبط
 
-- [Table visibility](../data-modeling/metadata-editing.md#table-visibility).
-- [Row and column security isn't working](./row-and-column-security.md)
-- [I can't view or edit a question or dashboard](./cant-view-or-edit.md).
-- [My visualizations are wrong](./visualization.md).
+- [Visibility جدول](../data-modeling/metadata-editing.md#table-visibility).
+- [امنیت ردیف و ستون کار نمی‌کند](./row-and-column-security.md)
+- [نمی‌توانم یک سؤال یا داشبورد را مشاهده یا ویرایش کنم](./cant-view-or-edit.md).
+- [تجسم‌های من اشتباه هستند](./visualization.md).
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.

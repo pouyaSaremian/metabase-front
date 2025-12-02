@@ -1,90 +1,90 @@
 ---
-title: Troubleshooting Metabase on Docker
+title: عیب‌یابی متابیس روی Docker
 ---
 
-# Troubleshooting Metabase on Docker
+# عیب‌یابی متابیس روی Docker
 
-Docker simplifies many aspects of running Metabase, but there are some pitfalls to keep in mind. If you have trouble with Metabase under Docker, try going through the troubleshooting process below, then look below for details about the specific issue you've found.
+Docker بسیاری از جنبه‌های اجرای متابیس را ساده می‌کند، اما برخی مشکلات وجود دارد که باید در نظر داشته باشید. اگر با متابیس تحت Docker مشکل دارید، سعی کنید فرآیند عیب‌یابی زیر را انجام دهید، سپس برای جزئیات دربارهٔ مشکل خاصی که پیدا کرده‌اید به زیر نگاه کنید.
 
-1. Is the container running?
-2. Is the server running inside the container?
-3. Is Metabase using the correct application database?
-4. Can you connect to the Docker host on the Metabase port?
-5. Can you connect to the container from the Docker host?
-6. Can you connect to the server from within the container?
+1. آیا container در حال اجرا است؟
+2. آیا سرور درون container در حال اجرا است؟
+3. آیا متابیس از پایگاه داده اپلیکیشن صحیح استفاده می‌کند؟
+4. آیا می‌توانید به Docker host روی port متابیس متصل شوید؟
+5. آیا می‌توانید از Docker host به container متصل شوید؟
+6. آیا می‌توانید از درون container به سرور متصل شوید؟
 
-You may find these commands useful along the way. To get to the shell in the Metabase container:
+ممکن است این دستورات در طول مسیر مفید باشند. برای رسیدن به shell در container متابیس:
 
 ```
 docker exec -ti CONTAINER_NAME bash
 ```
 
-And to get the logs for the Metabase container:
+و برای دریافت لاگ‌ها برای container متابیس:
 
 ```
 docker logs -f CONTAINER_NAME
 ```
 
-## Metabase container exits without starting the server
+## Container متابیس بدون راه‌اندازی سرور خارج می‌شود
 
-**How to detect this:** Run `docker ps` to see if the Metabase container is currently running. If it is, move on to the next step.
+**نحوهٔ تشخیص این:** `docker ps` را اجرا کنید تا ببینید آیا container متابیس در حال حاضر در حال اجرا است. اگر هست، به مرحله بعد بروید.
 
-If `docker ps` does not show the running container, then list the stopped containers by running:
+اگر `docker ps` container در حال اجرا را نشان نمی‌دهد، سپس containerهای متوقف شده را با اجرای این فهرست کنید:
 
 ```
 docker ps -a | grep metabase/metabase
 ```
 
-Look for the container that exited most recently and make a note of the container ID. Look at that container's logs with:
+به دنبال containerی که اخیراً خارج شده است بگردید و ID container را یادداشت کنید. لاگ‌های آن container را با این ببینید:
 
 ```
 Docker logs CONTAINER_ID
 ```
 
-## Metabase container is running but the server is not
+## Container متابیس در حال اجرا است اما سرور نیست
 
-**How to detect this:** Run `docker ps` to make sure the container is running. The server should be logging to the Docker container logs. Check this by running:
+**نحوهٔ تشخیص این:** `docker ps` را اجرا کنید تا مطمئن شوید container در حال اجرا است. سرور باید به لاگ‌های Docker container لاگ می‌کند. این را با اجرای این بررسی کنید:
 
 ```
 docker logs CONTAINER_NAME
 ```
 
-You should see a line like this at the beginning:
+باید یک خط مثل این در ابتدا ببینید:
 
 ```
 05-10 18:11:32 INFO metabase.util :: Loading Metabase...
 ```
 
-Further down, you should eventually see a line like:
+پایین‌تر، باید در نهایت یک خط مثل این ببینید:
 
 ```
 05-10 18:12:30 INFO metabase.core :: Metabase Initialization COMPLETE
 ```
 
-If you see the lines below:
+اگر خطوط زیر را می‌بینید:
 
 ```
 05-15 19:07:11 INFO metabase.core :: Metabase Shutting Down ...
 05-15 19:07:11 INFO metabase.core :: Metabase Shutdown COMPLETE
 ```
 
-then Metabase has shut itself down.
+پس متابیس خودش را خاموش کرده است.
 
-**How to fix this:** Check the Docker container logs for errors about connecting to the application database. Watch the logs to see if Metabase is still being started; the command:
+**نحوهٔ رفع این:** لاگ‌های Docker container را برای خطاهای مربوط به اتصال به پایگاه داده اپلیکیشن بررسی کنید. لاگ‌ها را تماشا کنید تا ببینید آیا متابیس هنوز در حال راه‌اندازی است؛ دستور:
 
 ```
 Docker logs -f CONTAINER_ID
 ```
 
-will let you see the logs as they are printed.
+به شما امکان می‌دهد لاگ‌ها را همانطور که چاپ می‌شوند ببینید.
 
-If the container is being terminated before it finished starting, the problem could be a health check timeout in the orchestration service used to start the container, such as Docker Cloud.
+اگر container قبل از اینکه راه‌اندازی تمام شود خاتمه می‌یابد، مشکل می‌تواند یک health check timeout در سرویس orchestration استفاده‌شده برای راه‌اندازی container باشد، مثل Docker Cloud.
 
-If the container is _not_ being terminated from the outside, but is failing to start anyway, this problem is probably not specific to Docker. If you're using a Metabase-supplied image, please [open a GitHub issue](https://github.com/metabase/metabase/issues/new/choose).
+اگر container از خارج خاتمه نمی‌یابد، اما به هر حال راه‌اندازی نمی‌شود، این مشکل احتمالاً خاص Docker نیست. اگر از یک image ارائه‌شده توسط متابیس استفاده می‌کنید، لطفاً [یک issue GitHub باز کنید](https://github.com/metabase/metabase/issues/new/choose).
 
-## Not connecting to a remote application database
+## عدم اتصال به یک پایگاه داده اپلیکیشن remote
 
-**How to detect this:** If this is a new Metabase instance, then the database you specified via the environment variables will be empty. If this is an existing Metabase instance with incorrect environment parameters, the server will create a new H2 embedded database to use for application data and you’ll see lines similar to these in the log:
+**نحوهٔ تشخیص این:** اگر این یک instance متابیس جدید است، پس پایگاه داده‌ای که از طریق متغیرهای محیطی مشخص کرده‌اید خالی خواهد بود. اگر این یک instance متابیس موجود با پارامترهای محیطی اشتباه است، سرور یک پایگاه داده H2 embedded جدید برای استفاده برای داده اپلیکیشن ایجاد می‌کند و خطوط مشابه این‌ها را در لاگ می‌بینید:
 
 ```
 05-10 18:11:40 INFO metabase.core :: Setting up and migrating Metabase DB. Please sit tight, this may take a minute...
@@ -93,64 +93,64 @@ If the container is _not_ being terminated from the outside, but is failing to s
 05-10 18:11:40 INFO metabase.db :: Verify Database Connection ...  ✅
 ```
 
-**How to fix this:** Check that you are passing environments to Docker correctly. You can list the environment variables for a container with this command:
+**نحوهٔ رفع این:** بررسی کنید که environmentها را به Docker به‌درستی ارسال می‌کنید. می‌توانید متغیرهای محیطی برای یک container را با این دستور فهرست کنید:
 
 ```
 docker inspect some-postgres -f '{% raw %}{{ .Config.Env }}{% endraw %}'
 ```
 
-## The Metabase server isn't able to connect to a MySQL or PostgreSQL database
+## سرور متابیس نمی‌تواند به یک پایگاه داده MySQL یا PostgreSQL متصل شود
 
-**How to detect this:** The logs for the Docker container return an error message after the "Verifying Database Connection" line.
+**نحوهٔ تشخیص این:** لاگ‌ها برای Docker container یک پیام خطا بعد از خط "Verifying Database Connection" برمی‌گردانند.
 
-**How to fix this:** Try to connect using the `mysql` or `psql` command with the connection string parameters you are passing in [via the environment variables][configuring-application-database]. If you can't connect to the database, the problem is due to either the credentials or connectivity. To verify that the credentials are correct, log in with those credentials from another machine and then try to make the same connection from the host running the Docker container.
+**نحوهٔ رفع این:** سعی کنید با استفاده از دستور `mysql` یا `psql` با پارامترهای connection string که [از طریق متغیرهای محیطی][configuring-application-database] ارسال می‌کنید متصل شوید. اگر نمی‌توانید به پایگاه داده متصل شوید، مشکل به دلیل اعتبارنامه‌ها یا connectivity است. برای تأیید اینکه اعتبارنامه‌ها صحیح هستند، با آن اعتبارنامه‌ها از یک ماشین دیگر وارد شوید و سپس سعی کنید همان اتصال را از host اجراکننده Docker container برقرار کنید.
 
-One easy way to run this is to use Docker to start a container that has the appropriate client for your database. For Postgres this would look like:
+یک راه آسان برای اجرای این استفاده از Docker برای راه‌اندازی یک container است که کلاینت مناسب برای پایگاه داده شما را دارد. برای Postgres این شبیه این خواهد بود:
 
 ```
 docker run --name postgres-client --rm -ti --entrypoint /bin/bash postgres
 ```
 
-From within that container, try connecting to the database host using the client command in the container such as `psql`. If you are able to connect from another container on the same host, then try making that connection from within the Metabase Docker container itself:
+از درون آن container، سعی کنید با استفاده از دستور کلاینت در container مثل `psql` به database host متصل شوید. اگر می‌توانید از container دیگری روی همان host متصل شوید، سپس سعی کنید آن اتصال را از درون container Docker متابیس خود برقرار کنید:
 
 ```
 docker exec -ti container-name bash
 ```
 
-You can also try to connect to the database host using the `nc` command and check if the connection can be opened:
+همچنین می‌توانید سعی کنید با استفاده از دستور `nc` به database host متصل شوید و بررسی کنید که آیا اتصال می‌تواند باز شود:
 
 ```
 nc -v your-db-host 5432
 ```
 
-These steps will help you determine whether this the problem is with the network or with authentication.
+این مراحل به شما کمک می‌کند تعیین کنید که آیا مشکل با شبکه یا احراز هویت است.
 
-## The Metabase application database is not being persisted
+## پایگاه داده اپلیکیشن متابیس persist نمی‌شود
 
-**How to detect this:** This is occurring if you are getting the Setup screen every time you start the application. The most common cause is not giving the Docker container a persistent filesystem mount to put the application database in.
+**نحوهٔ تشخیص این:** این اتفاق می‌افتد اگر هر بار که اپلیکیشن را راه‌اندازی می‌کنید صفحه Setup را دریافت می‌کنید. رایج‌ترین علت این است که به Docker container یک mount filesystem پایدار برای قرار دادن پایگاه داده اپلیکیشن نمی‌دهید.
 
-**How to fix this:** Make sure you are giving the container a [persistent volume][persistent-volume].
+**نحوهٔ رفع این:** مطمئن شوید که به container یک [volume پایدار][persistent-volume] می‌دهید.
 
-## The internal port isn't being remapped correctly
+## port داخلی به‌درستی remap نمی‌شود
 
-**How to detect this:** Run `docker ps` and look at the port mapping, then run `curl http://localhost:port-number-here/api/health`. This should return a JSON response that looks like:
+**نحوهٔ تشخیص این:** `docker ps` را اجرا کنید و به port mapping نگاه کنید، سپس `curl http://localhost:port-number-here/api/health` را اجرا کنید. این باید یک پاسخ JSON که شبیه این است برگرداند:
 
 ```
 {"status":"ok"}
 ```
 
-**How to fix this:** Make sure to include `-p 3000:3000` or similar port remapping in the `docker run` command you use to start the Metabase container image.
+**نحوهٔ رفع این:** مطمئن شوید که `-p 3000:3000` یا port remapping مشابه را در دستور `docker run` که برای راه‌اندازی container image متابیس استفاده می‌کنید شامل کنید.
 
-## Metabase can't write or read to/from a file or directory
+## متابیس نمی‌تواند به/از یک فایل یا دایرکتوری بنویسد یا بخواند
 
-**How to detect this:** A message in the logs will clearly indicate an IOError or "Permission denied" from Java, or errors from SQLite containing `org.sqlite.core.NativeDB._open_utf8`.
+**نحوهٔ تشخیص این:** یک پیام در لاگ‌ها به‌وضوح یک IOError یا "Permission denied" از Java، یا خطاها از SQLite شامل `org.sqlite.core.NativeDB._open_utf8` را نشان می‌دهد.
 
-**How to fix this:** Ensure that the user who is running Metabase has permission to read and write to the file or directory:
+**نحوهٔ رفع این:** اطمینان حاصل کنید که کاربری که متابیس را اجرا می‌کند مجوز خواندن و نوشتن به فایل یا دایرکتوری را دارد:
 
-- If you are running Metabase as a JAR file in your local machine or server, check the user who is running the Java process.
-- If you're running Metabase from the Docker container, make sure you're using the `/metabase.db` directory.
+- اگر متابیس را به‌عنوان یک فایل JAR در ماشین یا سرور محلی خود اجرا می‌کنید، کاربری که فرآیند Java را اجرا می‌کند را بررسی کنید.
+- اگر متابیس را از container Docker اجرا می‌کنید، مطمئن شوید که از دایرکتوری `/metabase.db` استفاده می‌کنید.
 
-If you're running Metabase from the JAR in any Unix-like operating system, you can see which user is running Metabase by opening a terminal and typing `ps -uA | grep metabase`.
+اگر متابیس را از JAR در هر سیستم عامل Unix-like اجرا می‌کنید، می‌توانید ببینید کدام کاربر متابیس را اجرا می‌کند با باز کردن یک terminal و تایپ کردن `ps -uA | grep metabase`.
 
 [configuring-application-database]: ../installation-and-operation/configuring-application-database.md
 [persistent-volume]: ../installation-and-operation/running-metabase-on-docker.md#mounting-a-mapped-file-storage-volume

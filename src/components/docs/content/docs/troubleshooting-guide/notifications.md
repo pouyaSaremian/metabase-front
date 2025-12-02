@@ -1,20 +1,20 @@
 ---
-title: Troubleshooting notifications
+title: عیب‌یابی اعلان‌ها
 ---
 
-# Troubleshooting notifications
+# عیب‌یابی اعلان‌ها
 
-Metabase is failing to send notifications like alerts or dashboard subscriptions.
+متابیس در ارسال اعلان‌هایی مثل هشدارها یا اشتراک‌های داشبورد شکست می‌خورد.
 
-**Root cause:**
+**علت اصلی:**
 
-When long running queries get stuck in the queue, they can block all other queries from running.
+وقتی کوئری‌های طولانی‌مدت در صف گیر می‌کنند، می‌توانند همه کوئری‌های دیگر را از اجرا مسدود کنند.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Increase the notification thread pool size with the [`MB_NOTIFICATION_THREAD_POOL_SIZE`](../configuring-metabase/environment-variables.md#mb_notification_thread_pool_size) environment variable and reboot the server.
+1. اندازه thread pool اعلان را با متغیر محیطی [`MB_NOTIFICATION_THREAD_POOL_SIZE`](../configuring-metabase/environment-variables.md#mb_notification_thread_pool_size) افزایش دهید و سرور را راه‌اندازی مجدد کنید.
 
-For example, you can set the thread pool size to `10` by setting the environment variable:
+به‌عنوان مثال، می‌توانید اندازه thread pool را به `10` با تنظیم متغیر محیطی تنظیم کنید:
 `MB_NOTIFICATION_THREAD_POOL_SIZE=10`.
 
-Note: remember that Metabase won't pick up old failed tasks so you will see the effect of this change in the next notification period.
+نکته: به خاطر داشته باشید که متابیس taskهای شکست خورده قدیمی را pick up نمی‌کند بنابراین تأثیر این تغییر را در دوره اعلان بعدی خواهید دید.

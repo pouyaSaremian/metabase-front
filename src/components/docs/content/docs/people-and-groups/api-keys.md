@@ -1,79 +1,79 @@
 ---
-title: API keys
+title: کلیدهای API
 ---
 
-# API keys
+# کلیدهای API
 
-Metabase can create API keys to authenticate programmatic requests to the API. To set the permissions for an API key, you can assign the key to a [group](./managing.md#groups).
+متابیس می‌تواند کلیدهای API ایجاد کند تا درخواست‌های برنامه‌نویسی به API را احراز هویت کند. برای تنظیم مجوزها برای یک کلید API، می‌توانید کلید را به یک [گروه](./managing.md#groups) اختصاص دهید.
 
-## Fair warning about Metabase's API
+## هشدار منصفانه دربارهٔ API متابیس
 
-We don't version the [Metabase API](../api.html). We rarely change API endpoints, and almost never remove them, but if you write code that relies on the API, there's a chance you might have to update your code in the future.
+ما [API متابیس](../api.html) را version نمی‌کنیم. به ندرت endpointهای API را تغییر می‌دهیم، و تقریباً هرگز آن‌ها را حذف نمی‌کنیم، اما اگر کدی بنویسید که به API وابسته است، احتمال دارد که در آینده نیاز به به‌روزرسانی کد خود داشته باشید.
 
-That said, there are times when it's nice to work with the API, like when managing permissions with a large number of people and groups, or bulk archiving, or content creation. So we added the ability to create API keys to authenticate your programmatic requests.
+با این حال، زمان‌هایی وجود دارد که کار با API خوب است، مثل هنگام مدیریت مجوزها با تعداد زیادی افراد و گروه، یا آرشیو دسته‌ای، یا ایجاد محتوا. بنابراین قابلیت ایجاد کلیدهای API برای احراز هویت درخواست‌های برنامه‌نویسی شما را اضافه کردیم.
 
-## Create an API key
+## ایجاد یک کلید API
 
-To create an API key:
+برای ایجاد یک کلید API:
 
-1. Click on the **gear** icon in the upper right.
-2. Select **Admin settings**.
-3. Go to the **Settings** tab.
-4. Click on the **Authentication** tab on the left menu.
-5. Scroll to **API Keys** and click **Manage**.
-6. Click the **Create API Key** button.
-7. Enter a **Key name**. You can have multiple API keys, so give it a name that will help you remember what you're using the key for.
-8. Select a **[Group](./managing.md#groups)**. The key will have the same permissions granted to that group.
-9. Click **Create**.
-10. Copy the generated API key and save it somewhere safe. Metabase won't be able to show you the key again. If you lose the key, you'll need to regenerate a new key.
+1. روی **آیکون gear** در گوشهٔ بالا سمت راست کلیک کنید.
+2. **Admin settings** را انتخاب کنید.
+3. به تب **Settings** بروید.
+4. روی تب **Authentication** در منوی چپ کلیک کنید.
+5. به **API Keys** اسکرول کنید و روی **Manage** کلیک کنید.
+6. روی دکمهٔ **Create API Key** کلیک کنید.
+7. یک **نام کلید** وارد کنید. می‌توانید چندین کلید API داشته باشید، بنابراین نامی بدهید که به شما کمک کند به خاطر بیاورید از کلید برای چه استفاده می‌کنید.
+8. یک **[گروه](./managing.md#groups)** انتخاب کنید. کلید همان مجوزهای اعطا شده به آن گروه را خواهد داشت.
+9. روی **Create** کلیک کنید.
+10. کلید API تولید شده را کپی کنید و در جایی امن ذخیره کنید. متابیس نمی‌تواند کلید را دوباره به شما نشان دهد. اگر کلید را گم کنید، باید یک کلید جدید تولید کنید.
 
-### Creating API keys from the config file
+### ایجاد کلیدهای API از فایل config
 
-If you're on a [Pro or Enterprise self-hosted plan](https://www.metabase.com/pricing/), you can [create API keys via the configuration file](../configuring-metabase/config-file.md#api-keys).
+اگر در یک [پلن self-hosted Pro یا Enterprise](https://www.metabase.com/pricing/) هستید، می‌توانید [کلیدهای API را از طریق فایل پیکربندی](../configuring-metabase/config-file.md#api-keys) ایجاد کنید.
 
-## Managing API Keys
+## مدیریت کلیدهای API
 
-To view and manage existing API keys:
+برای مشاهده و مدیریت کلیدهای API موجود:
 
-1. Click on the **gear** icon in the upper right.
-2. Select **Admin settings**.
-3. Go to the **Settings** tab.
-4. Click on the **Authentication** tab on the left menu.
-5. Scroll to **API Keys** and click **Manage**.
+1. روی **آیکون gear** در گوشهٔ بالا سمت راست کلیک کنید.
+2. **Admin settings** را انتخاب کنید.
+3. به تب **Settings** بروید.
+4. روی تب **Authentication** در منوی چپ کلیک کنید.
+5. به **API Keys** اسکرول کنید و روی **Manage** کلیک کنید.
 
-### Editing API keys
+### ویرایش کلیدهای API
 
-To edit an API key, scroll to the key you want to edit and click on the **pencil** icon. Metabase will pop up an **Edit API Key** modal where you can edit:
+برای ویرایش یک کلید API، به کلیدی که می‌خواهید ویرایش کنید اسکرول کنید و روی **آیکون pencil** کلیک کنید. متابیس یک مودال **Edit API Key** باز می‌کند که می‌توانید در آن ویرایش کنید:
 
-- The key's name
-- Which group the key belongs to.
-- Change (regenerate) the key. Metabase will replace the existing API key with a new key. You won't be able to recover the old key.
+- نام کلید
+- کدام گروه کلید به آن تعلق دارد.
+- تغییر (تولید مجدد) کلید. متابیس کلید API موجود را با یک کلید جدید جایگزین می‌کند. نمی‌توانید کلید قدیمی را بازیابی کنید.
 
-### Deleting API keys
+### حذف کلیدهای API
 
-You won't be able to recover a deleted API key. You'll have to create a new key.
+نمی‌توانید یک کلید API حذف‌شده را بازیابی کنید. باید یک کلید جدید ایجاد کنید.
 
-To delete an API Key:
+برای حذف یک کلید API:
 
-1. Click on the **gear** icon in the upper right.
-2. Select **Admin settings**.
-3. Go to the **Settings** tab.
-4. Click on the **Authentication** tab on the left menu.
-5. Scroll to **API Keys** and click **Manage**.
-6. Select the key you want to delete and click the **trash** icon.
-7. Metabase will pop up a **Delete API Key** modal. Click the **Delete API Key** button.
+1. روی **آیکون gear** در گوشهٔ بالا سمت راست کلیک کنید.
+2. **Admin settings** را انتخاب کنید.
+3. به تب **Settings** بروید.
+4. روی تب **Authentication** در منوی چپ کلیک کنید.
+5. به **API Keys** اسکرول کنید و روی **Manage** کلیک کنید.
+6. کلیدی که می‌خواهید حذف کنید را انتخاب کنید و روی **آیکون trash** کلیک کنید.
+7. متابیس یک مودال **Delete API Key** باز می‌کند. روی دکمهٔ **Delete API Key** کلیک کنید.
 
-### Metabase will transfer API keys associated with a group that gets deleted to the All users group
+### متابیس کلیدهای API مرتبط با گروهی که حذف می‌شود را به گروه All users منتقل می‌کند
 
-If you have API keys assigned to a group, but then someone deletes that group, the API keys will still work, but Metabase will reassign those keys to the All users group. If you want to change their group, you'll need to edit the keys manually.
+اگر کلیدهای API اختصاص داده شده به یک گروه دارید، اما سپس کسی آن گروه را حذف می‌کند، کلیدهای API همچنان کار می‌کنند، اما متابیس آن کلیدها را به گروه All users دوباره اختصاص می‌دهد. اگر می‌خواهید گروه آن‌ها را تغییر دهید، باید کلیدها را به صورت دستی ویرایش کنید.
 
-## Example `GET` requests
+## مثال درخواست‌های `GET`
 
-Here are some example `GET` requests that return the groups in your Metabase. These examples assume you're running Metabase locally on the default port: 3000.
+در اینجا برخی مثال‌های درخواست `GET` آورده شده است که گروه‌ها را در متابیس شما برمی‌گرداند. این مثال‌ها فرض می‌کنند که متابیس را به صورت محلی روی پورت پیش‌فرض اجرا می‌کنید: 3000.
 
-### `curl` example
+### مثال `curl`
 
-Replace `YOUR_API_KEY` with the API key you generated above.
+`YOUR_API_KEY` را با کلید API که در بالا تولید کردید جایگزین کنید.
 
 ```sh
 curl \
@@ -81,19 +81,19 @@ curl \
 -X GET 'http://localhost:3000/api/permissions/group'
 ```
 
-### JavaScript example
+### مثال JavaScript
 
-Assuming you've set your key as an environment variable like so:
+فرض کنید کلید خود را به‌عنوان یک متغیر محیطی مثل این تنظیم کرده‌اید:
 
 ```sh
 export METABASE_API_KEY="YOUR_API_KEY"
 ```
 
-Here's a basic `GET` request using `fetch` to get the list of groups. You can copy the code, save it as file (e.g., as `api-test.js`), and run the code with `node api-test.js`.
+در اینجا یک درخواست `GET` پایه با استفاده از `fetch` برای دریافت لیست گروه‌ها آورده شده است. می‌توانید کد را کپی کنید، به‌عنوان فایل ذخیره کنید (مثلاً به‌عنوان `api-test.js`)، و کد را با `node api-test.js` اجرا کنید.
 
 ```js
-// Assuming you've set the key in process with
-// `export METABASE_API_KEY="YOUR_KEY_HERE"`
+// فرض کنید کلید را در process با
+// `export METABASE_API_KEY="YOUR_KEY_HERE"` تنظیم کرده‌اید
 const API_KEY = process.env.METABASE_API_KEY;
 
 const init = {
@@ -113,7 +113,7 @@ async function getGroups() {
 getGroups().then((groups) => console.log("Groups in your Metabase:", groups));
 ```
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Metabase API reference](../api.html).
-- [Working with the Metabase API](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/metabase-api).
+- [مرجع API متابیس](../api.html).
+- [کار با API متابیس](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/metabase-api).

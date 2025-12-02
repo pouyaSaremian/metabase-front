@@ -1,62 +1,62 @@
 ---
-title: Troubleshooting models
+title: عیب‌یابی مدل‌ها
 ---
 
-# Troubleshooting models
+# عیب‌یابی مدل‌ها
 
-What kind of problem are you having with your [model][model-docs]?
+چه نوع مشکلی با [مدل][model-docs] خود دارید؟
 
-## Can't create a model
+## نمی‌توانم یک مدل ایجاد کنم
 
-If you don't see [the model button][model-button-image] (three squares):
+اگر [دکمه مدل][model-button-image] (سه مربع) را نمی‌بینید:
 
-1. Check if you're using a Metabase version that's 0.42.0 or greater by going to the top right of the screen and clicking on the **gear** icon > **About Metabase**.
-2. Clear your browser cache.
-3. Ask your Metabase admin to clear the proxy cache (if you're using one).
+1. بررسی کنید که آیا از نسخه متابیس 0.42.0 یا بالاتر استفاده می‌کنید با رفتن به گوشهٔ بالا سمت راست صفحه و کلیک روی **آیکون gear** > **About Metabase**.
+2. cache مرورگر خود را پاک کنید.
+3. از ادمین متابیس خود بخواهید proxy cache را پاک کند (اگر از یکی استفاده می‌کنید).
 
-## Can't edit or save changes to a model
+## نمی‌توانم تغییرات یک مدل را ویرایش یا ذخیره کنم
 
-If your changes to a model's metadata or underlying question aren't showing up:
+اگر تغییرات شما به metadata یک مدل یا سؤال زیربنایی نمایش داده نمی‌شوند:
 
-1. Refresh your browser to confirm you're not viewing cached results.
-2. Search for [known model issues][known-issues-models] using the label `Querying/Models`. For more information, go to [How to find a known bug or limitation][known-issues].
+1. مرورگر خود را refresh کنید تا تأیید کنید که نتایج cache شده را مشاهده نمی‌کنید.
+2. برای [مشکلات مدل شناخته شده][known-issues-models] با استفاده از label `Querying/Models` جستجو کنید. برای اطلاعات بیشتر، به [نحوهٔ پیدا کردن یک باگ یا محدودیت شناخته شده][known-issues] بروید.
 
-## Model performance is poor
+## عملکرد مدل ضعیف است
 
-1. Use model persistence.
+1. از persistence مدل استفاده کنید.
 
-   - Metabase can [write back to your data warehouse][model-persistence]. If you enable model persistence, Metabase will read a pre-computed and materialized version of the model directly from the database instead of running the query from scratch. Please consider this option is only available in some supported data warehouses.
+   - متابیس می‌تواند [به data warehouse شما write back کند][model-persistence]. اگر persistence مدل را فعال کنید، متابیس یک نسخه pre-computed و materialized از مدل را مستقیماً از پایگاه داده به جای اجرای کوئری از ابتدا می‌خواند. لطفاً در نظر بگیرید که این گزینه فقط در برخی data warehouseهای پشتیبانی شده در دسترس است.
 
-2. Optimize the underlying saved question or SQL query.
+2. سؤال ذخیره‌شده زیربنایی یا کوئری SQL را بهینه کنید.
 
-   - [Ask for less data][limit-data-learn].
-   - For models that use SQL questions, [look for bottlenecks using SQL EXPLAIN][sql-explain-learn].
+   - [داده کمتری درخواست کنید][limit-data-learn].
+   - برای مدل‌هایی که از سؤال‌های SQL استفاده می‌کنند، [به دنبال گلوگاه‌ها با استفاده از SQL EXPLAIN][sql-explain-learn] بگردید.
 
-3. Optimize your database schemas.
+3. schemaهای پایگاه داده خود را بهینه کنید.
 
-   - [Aggregate data ahead of time with summary tables][summary-tables-learn].
-   - [Index frequently queried columns][indexes-learn].
-   - [Denormalize your data][denormalize-data-learn].
-   - [Materialize views][materialize-views-learn].
-   - [Pull data out of JSON and slot its keys into columns][flatten-json-learn].
+   - [داده را از قبل با جداول خلاصه aggregate کنید][summary-tables-learn].
+   - [ستون‌های کوئری شده مکرر را index کنید][indexes-learn].
+   - [داده خود را denormalize کنید][denormalize-data-learn].
+   - [viewها را materialize کنید][materialize-views-learn].
+   - [داده را از JSON بیرون بکشید و کلیدهای آن را در ستون‌ها قرار دهید][flatten-json-learn].
 
-4. Optimize your data warehouse(s) or database(s).
+4. data warehouse(ها) یا پایگاه‌داده(های) خود را بهینه کنید.
 
-   - [Replicate your database][replicate-database-learn].
-   - [Consider a database optimized for analytics][analytics-database-learn].
+   - [پایگاه داده خود را replicate کنید][replicate-database-learn].
+   - [یک پایگاه داده بهینه شده برای analytics را در نظر بگیرید][analytics-database-learn].
 
-**Explanation**
+**توضیح**
 
-Models are a type of saved question, so they will only perform as fast as the original question or SQL query.
+مدل‌ها نوعی سؤال ذخیره‌شده هستند، بنابراین فقط به همان سرعت سؤال اصلی یا کوئری SQL عمل می‌کنند.
 
-If you want to improve the performance of a model, you can make optimizations at the query, schema, or database level (depending on your data permissions, technical expertise, and willingness to tinker).
+اگر می‌خواهید عملکرد یک مدل را بهبود بخشید، می‌توانید بهینه‌سازی‌ها را در سطح کوئری، schema، یا پایگاه داده انجام دهید (بسته به مجوزهای داده، تخصص فنی، و تمایل به دستکاری).
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community][discourse].
-- Search for [known model issues][known-issues-models] using the label `Querying/Models`. For more information, go to [How to find a known bug or limitation][known-issues].
+- در [انجمن متابیس][discourse] جستجو کنید یا بپرسید.
+- برای [مشکلات مدل شناخته شده][known-issues-models] با استفاده از label `Querying/Models` جستجو کنید. برای اطلاعات بیشتر، به [نحوهٔ پیدا کردن یک باگ یا محدودیت شناخته شده][known-issues] بروید.
 
 [analytics-database-learn]: https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster#consider-a-database-optimized-for-analytics
 [denormalize-data-learn]: https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster#denormalize-data

@@ -1,33 +1,34 @@
 ---
-title: Dashboards overview
+title: نمای کلی داشبوردها
 redirect_from:
   - /docs/latest/dashboards
 ---
 
-# Dashboards overview
+<!-- markdownlint-disable-next-line MD025 -->
+# نمای کلی داشبوردها
 
-![Example dashboard](./images/dashboard.png)
+![مثال داشبورد](./images/dashboard.png)
 
-## [Introduction to dashboards](./introduction.md)
+## [مقدمه‌ای بر داشبوردها](./introduction.md)
 
-Learn how to arrange tables, charts, and text cards on a dashboard.
+یاد بگیرید چگونه جداول، نمودارها و کارت‌های متنی را در یک داشبورد مرتب کنید.
 
-## [Dashboard filters](./filters.md)
+## [فیلترهای داشبورد](./filters.md)
 
-Add filters to dashboards to update tables and charts.
+فیلترها را به داشبوردها اضافه کنید تا جداول و نمودارها به‌روزرسانی شوند.
 
-## [Interactive dashboards](./interactive.md)
+## [داشبوردهای تعاملی](./interactive.md)
 
-Customize what happens when people click on a chart in your dashboard.
+سفارشی کنید که وقتی افراد روی یک نمودار در داشبورد شما کلیک می‌کنند چه اتفاقی بیفتد.
 
-## [Charts with multiple series](./multiple-series.md)
+## [نمودارها با چند سری](./multiple-series.md)
 
-Combine multiple questions on a single chart.
+چند سؤال را در یک نمودار ترکیب کنید.
 
-## [Dashboard subscriptions](./subscriptions.md)
+## [اشتراک‌های داشبورد](./subscriptions.md)
 
-Set up a dashboard to email or Slack its results on a schedule.
+یک داشبورد را طوری تنظیم کنید که نتایجش را طبق زمان‌بندی از طریق ایمیل یا Slack ارسال کند.
 
-## [Actions on dashboards](./actions.md)
+## [اکشن‌ها در داشبوردها](./actions.md)
 
-Add action buttons to dashboards.
+دکمه‌های اکشن را به داشبوردها اضافه کنید.

@@ -1,42 +1,41 @@
 ---
-title: Passwords
+title: رمزهای عبور
 redirect_from:
   - /docs/latest/operations-guide/changing-password-complexity
 ---
 
-# Passwords
+# رمزهای عبور
 
-Metabase can allow authentication via email and password.
+متابیس می‌تواند احراز هویت از طریق ایمیل و رمز عبور را اجازه دهد.
 
-## Password complexity
+## پیچیدگی رمز عبور
 
-Metabase offers a couple controls for administrators who prefer to increase the password requirements on their user accounts.
+متابیس چند کنترل برای ادمین‌هایی که ترجیح می‌دهند الزامات رمز عبور را روی حساب‌های کاربری خود افزایش دهند ارائه می‌دهد.
 
     export MB_PASSWORD_COMPLEXITY=strong
     export MB_PASSWORD_LENGTH=10
 
-The settings above can be used independently, so it's fine to use only one or the other. By default Metabase use complexity = `normal` and a password length of 6. The following options are available for complexity choice:
+تنظیمات بالا می‌توانند به‌صورت مستقل استفاده شوند، بنابراین استفاده از فقط یکی یا دیگری خوب است. به‌طور پیش‌فرض متابیس از complexity = `normal` و طول رمز عبور 6 استفاده می‌کند. گزینه‌های زیر برای انتخاب complexity در دسترس هستند:
 
-- `weak` = no character constraints
-- `normal` = at least 1 digit
-- `strong` = minimum 8 characters w/ 2 lowercase, 2 uppercase, 1 digit, and 1 special character
+- `weak` = بدون محدودیت کاراکتر
+- `normal` = حداقل 1 رقم
+- `strong` = حداقل 8 کاراکتر با 2 حرف کوچک، 2 حرف بزرگ، 1 رقم، و 1 کاراکتر خاص
 
-By default, Metabase also prevents users from setting passwords that are in a list of common passwords (like `qwerty123` and
-`passw0rd`). Changing the complexity requirement to `weak` disables this behavior.
+به‌طور پیش‌فرض، متابیس همچنین از تنظیم رمزهای عبور توسط کاربران که در لیست رمزهای عبور رایج هستند (مثل `qwerty123` و `passw0rd`) جلوگیری می‌کند. تغییر الزام complexity به `weak` این رفتار را غیرفعال می‌کند.
 
-## Metabase Cloud passwords
+## رمزهای عبور Metabase Cloud
 
-If your instance is hosted on Metabase Cloud, passwords must:
+اگر instance شما در Metabase Cloud میزبانی می‌شود، رمزهای عبور باید:
 
-- Be at least 12 characters long
-- Contain at least: 
-  - 2 lowercase letters
-  - 2 uppercase letters
-  - 1 digit
-  - 1 special character (!,$,%, etc.)
+- حداقل 12 کاراکتر طول داشته باشند
+- شامل حداقل موارد زیر باشند: 
+  - 2 حرف کوچک
+  - 2 حرف بزرگ
+  - 1 رقم
+  - 1 کاراکتر خاص (!،$،%، و غیره)
 
-## Disabling password logins
+## غیرفعال کردن ورود با رمز عبور
 
 {% include plans-blockquote.html feature="Disabling password logins" %}
 
-On Pro and Enterprise plans, you can require people to log in with SSO by disabling password authentication from **Admin settings** > **Authentication**.
+در پلن‌های Pro و Enterprise، می‌توانید با غیرفعال کردن احراز هویت رمز عبور از **Admin settings** > **Authentication** از افراد بخواهید با SSO وارد شوند.

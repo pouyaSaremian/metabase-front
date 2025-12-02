@@ -1,171 +1,171 @@
 ---
-title: "Models"
+title: "مدل‌ها"
 redirect_from:
   - /docs/latest/users-guide/models
 ---
 
-# Models
+# مدل‌ها
 
-Models are a fundamental building block in Metabase. Models curate data from another table or tables from the same database to anticipate the kinds of questions people will ask of the data. You can think of them as derived tables, or a special kind of saved question meant to be used as the starting point for new questions. You can base a model on a SQL or query builder question, which means you can include custom, calculated columns in your model.
+مدل‌ها یک بلوک سازندهٔ اساسی در متابیس هستند. مدل‌ها داده را از جدول یا جداول دیگر از همان پایگاه داده گردآوری می‌کنند تا انواع سؤال‌هایی که افراد از داده می‌پرسند را پیش‌بینی کنند. می‌توانید آن‌ها را به‌عنوان جداول مشتق‌شده، یا نوع خاصی از سؤال ذخیره‌شده در نظر بگیرید که قرار است به‌عنوان نقطهٔ شروع برای سؤال‌های جدید استفاده شود. می‌توانید یک مدل را بر اساس یک سؤال SQL یا query builder بنا کنید، که به این معنی است که می‌توانید ستون‌های محاسبه‌شدهٔ سفارشی در مدل خود قرار دهید.
 
-Models:
+مدل‌ها:
 
-- Let you update column descriptions and customize metadata to create great starting points for exploration.
-- Show up higher in search results and get highlighted when other users start new questions to promote reuse.
-- Live in collections to keep them separate from messy database schemas.
-- Can [surface individual records in search results](#surface-individual-records-in-search-by-matching-against-this-column).
-- Can be [persisted for faster loading](./model-persistence.md).
+- به شما امکان می‌دهند توضیحات ستون را به‌روزرسانی کنید و ابرداده را سفارشی کنید تا نقاط شروع عالی برای اکتشاف ایجاد کنید.
+- در نتایج جستجو بالاتر ظاهر می‌شوند و وقتی کاربران دیگر سؤال‌های جدید شروع می‌کنند برجسته می‌شوند تا استفاده مجدد را ترویج دهند.
+- در کلکسیون‌ها زندگی می‌کنند تا از schemaهای پایگاه دادهٔ شلوغ جدا نگه داشته شوند.
+- می‌توانند [رکوردهای جداگانه را در نتایج جستجو نمایش دهند](#surface-individual-records-in-search-by-matching-against-this-column).
+- می‌توانند [برای بارگذاری سریع‌تر پایدار شوند](./model-persistence.md).
 
-For more on why and how to use models, check out our [Learn article on models][learn-models].
+برای اطلاعات بیشتر دربارهٔ چرا و چگونه از مدل‌ها استفاده کنیم، به [مقالهٔ Learn ما دربارهٔ مدل‌ها][learn-models] مراجعه کنید.
 
-## How to use models
+## نحوهٔ استفاده از مدل‌ها
 
-You can use models to:
+می‌توانید از مدل‌ها برای موارد زیر استفاده کنید:
 
-- Create, uh, models, with model here meaning an intuitive description of some concept in your business that you codify as a set of columns. An example model could be a "customer", which is a table that pulls together customer information from multiple tables and adds computed columns, like adding a lifetime value (LTV) column. This model represents the [measures and dimensions][measures-dimensions] that you think are relevant to your understanding of your customers.
-- Let people explore the results of SQL queries with the query builder (provided you [set the column types](#column-type)).
-- Create summary tables that pull in or aggregate data from multiple tables.
-- Clean up tables with unnecessary columns and rows filtered out.
+- ایجاد، اوه، مدل‌ها، با مدل در اینجا به معنای یک توصیف شهودی از یک مفهوم در کسب‌وکار شما که آن را به‌عنوان مجموعه‌ای از ستون‌ها کدگذاری می‌کنید. یک مدل مثال می‌تواند یک "مشتری" باشد، که یک جدول است که اطلاعات مشتری را از چندین جدول جمع می‌کند و ستون‌های محاسبه‌شده اضافه می‌کند، مثل اضافه کردن یک ستون lifetime value (LTV). این مدل [مقیاس‌ها و ابعاد][measures-dimensions] را نشان می‌دهد که فکر می‌کنید برای درک شما از مشتریان‌تان مرتبط هستند.
+- به افراد امکان دهید نتایج کوئری‌های SQL را با query builder کاوش کنند (به شرطی که [انواع ستون را تنظیم کنید](#column-type)).
+- جداول خلاصه ایجاد کنید که داده را از چندین جدول می‌کشند یا تجمیع می‌کنند.
+- جداول را با ستون‌ها و ردیف‌های غیرضروری فیلترشده تمیز کنید.
 
-The idea with models is to give other people a good "starting point table" that makes it easier to answer any questions they have about the subject being modeled.
+ایده با مدل‌ها این است که به افراد دیگر یک "جدول نقطهٔ شروع" خوب بدهید که پاسخ دادن به هر سؤالی که دربارهٔ موضوع مدل‌سازی‌شده دارند را آسان‌تر می‌کند.
 
-## Create a model
+## ایجاد یک مدل
 
-First, search for models that already exist. If you can't find one that meets your needs, you can create a model:
+ابتدا، برای مدل‌هایی که از قبل وجود دارند جستجو کنید. اگر نمی‌توانید یکی را پیدا کنید که نیازهایتان را برآورده کند، می‌توانید یک مدل ایجاد کنید:
 
-- [from scratch](#create-a-model-from-scratch), or
-- [from a saved question](#create-a-model-from-a-saved-question).
+- [از صفر](#create-a-model-from-scratch)، یا
+- [از یک سؤال ذخیره‌شده](#create-a-model-from-a-saved-question).
 
-Models you create are automatically [pinned to the current collection](../exploration-and-organization/collections.md#pinned-items).
+مدل‌هایی که ایجاد می‌کنید به‌طور خودکار [به کلکسیون فعلی pin می‌شوند](../exploration-and-organization/collections.md#pinned-items).
 
-### Create a model from scratch
+### ایجاد یک مدل از صفر
 
-- Navigate to the Models tab in the sidebar. You might have to open it using the button in the top left, then scroll down to the section labeled **Data**, and pick **Models**. Then click on the **+** button in the top right.
-- Or open the [command palette](https://www.metabase.com/docs/latest/exploration-and-organization/exploration#command-palette) and type "model." Then click on the **New model** action.
+- به تب Models در نوار کناری بروید. ممکن است نیاز داشته باشید آن را با استفاده از دکمه در گوشهٔ بالا سمت چپ باز کنید، سپس به پایین به بخش برچسب‌خورده **Data** اسکرول کنید و **Models** را انتخاب کنید. سپس روی دکمهٔ **+** در گوشهٔ بالا سمت راست کلیک کنید.
+- یا [command palette](https://www.metabase.com/docs/latest/exploration-and-organization/exploration#command-palette) را باز کنید و "model." را تایپ کنید. سپس روی عمل **New model** کلیک کنید.
 
-Now choose either the query builder or a native query (if you want to use SQL). The advantage of using the query builder is that Metabase will be able to fill out some of the metadata for you; if you use SQL, you'll have to fill out that metadata manually.
+حالا یا query builder یا یک کوئری native (اگر می‌خواهید از SQL استفاده کنید) را انتخاب کنید. مزیت استفاده از query builder این است که متابیس قادر خواهد بود برخی از ابرداده را برای شما پر کند؛ اگر از SQL استفاده می‌کنید، باید آن ابرداده را به صورت دستی پر کنید.
 
-Next, select your data, create your query, and save it.
+بعد، داده‌هایتان را انتخاب کنید، کوئری‌تان را ایجاد کنید و آن را ذخیره کنید.
 
-Models you create are automatically [pinned to the current collection](../exploration-and-organization/collections.md#pinned-items).
+مدل‌هایی که ایجاد می‌کنید به‌طور خودکار [به کلکسیون فعلی pin می‌شوند](../exploration-and-organization/collections.md#pinned-items).
 
-### Create a model from a saved question
+### ایجاد یک مدل از یک سؤال ذخیره‌شده
 
-1. [Ask a question][question] using either the query builder or the SQL editor, or select an existing saved question that you want to convert to a model.
-2. Save the question.
-3. Click on the **...** > **Turn this into a model**.
+1. با استفاده از query builder یا ویرایشگر SQL [یک سؤال بپرسید][question]، یا یک سؤال ذخیره‌شدهٔ موجود را که می‌خواهید به یک مدل تبدیل کنید انتخاب کنید.
+2. سؤال را ذخیره کنید.
+3. روی **...** > **Turn this into a model** کلیک کنید.
 
-![Turn a saved question into a model](./images/turn-into-a-model.png)
+![تبدیل یک سؤال ذخیره‌شده به یک مدل](./images/turn-into-a-model.png)
 
-## Model details
+## جزئیات مدل
 
-To view a model's details, visit the model and click on the **info** button in the upper right. Here you'll see several tabs:
+برای مشاهدهٔ جزئیات یک مدل، به مدل بروید و روی دکمهٔ **info** در گوشهٔ بالا سمت راست کلیک کنید. اینجا چندین تب می‌بینید:
 
-- **Overview**: Includes the description, Creator and Last Editor, and the list of fields included in the model. As well as the model's [Entity ID](../installation-and-operation/serialization.md#metabase-uses-entity-ids-to-identify-and-reference-metabase-items).
-- **History**: Lists changes to the model, and by whom.
-- **Relationships**: Lists which questions use the model, and which tables the model is linked to.
-- **Actions**: Lists actions created based on the model.
-- **Insights**: Info about the [model's usage](../usage-and-performance-tools/usage-analytics.md). Only visible to admins on a [Pro or Enterprise plan](https://www.metabase.com/pricing/).
+- **Overview**: شامل توضیحات، Creator و Last Editor، و لیست فیلدهای موجود در مدل. و همچنین [Entity ID مدل](../installation-and-operation/serialization.md#metabase-uses-entity-ids-to-identify-and-reference-metabase-items).
+- **History**: تغییرات مدل و توسط چه کسی را فهرست می‌کند.
+- **Relationships**: فهرست می‌کند که کدام سؤال‌ها از مدل استفاده می‌کنند و مدل به کدام جداول لینک شده است.
+- **Actions**: اکشن‌های ایجادشده بر اساس مدل را فهرست می‌کند.
+- **Insights**: اطلاعات دربارهٔ [استفاده از مدل](../usage-and-performance-tools/usage-analytics.md). فقط برای ادمین‌ها در [پلن Pro یا Enterprise](https://www.metabase.com/pricing/) قابل مشاهده است.
 
-## Add metadata to columns in a model
+## اضافه کردن ابرداده به ستون‌ها در یک مدل
 
-Metadata is the secret sauce of models. When you write a SQL query, Metabase can display the results, but it can't "know" what kind of data it's returning (like it can with questions built using the query builder). What this means in practice is that people won't be able explore the results with the query builder, because Metabase doesn't understand what the results are. With models, however, you can tell Metabase what kind of data is in each returned column so that Metabase can still do its query magic. Metadata will also make filtering nicer by showing the correct filter widget, and it will help Metabase to pick the right visualization for the results.
+ابرداده راز موفقیت مدل‌ها است. وقتی یک کوئری SQL می‌نویسید، متابیس می‌تواند نتایج را نمایش دهد، اما نمی‌تواند "بداند" چه نوع داده‌ای برمی‌گرداند (مثل آنچه با سؤال‌های ساخته‌شده با query builder می‌تواند). آنچه این در عمل به معنای آن است که افراد نمی‌توانند نتایج را با query builder کاوش کنند، چون متابیس نمی‌فهمد نتایج چیست. با این حال، با مدل‌ها، می‌توانید به متابیس بگویید چه نوع داده‌ای در هر ستون برگشتی است تا متابیس همچنان بتواند جادوی کوئری خود را انجام دهد. ابرداده همچنین فیلتر کردن را بهتر می‌کند با نمایش ویجت فیلتر صحیح، و به متابیس کمک می‌کند تا ویژوالیزیشن درست را برای نتایج انتخاب کند.
 
-If you only set one kind of metadata, set the **Column type** to let Metabase know what kind of data it's working with.
+اگر فقط یک نوع ابرداده تنظیم می‌کنید، **Column type** را تنظیم کنید تا متابیس بداند با چه نوع داده‌ای کار می‌کند.
 
-### Display name
+### نام نمایشی
 
-What people will see as the column's name.
+آنچه افراد به‌عنوان نام ستون می‌بینند.
 
-### Description
+### توضیحات
 
-A place to write helpful context for the column.
+جایی برای نوشتن بافت مفید برای ستون.
 
-### Database column this maps to
+### ستون پایگاه داده که این به آن نگاشت می‌شود
 
-For models based on SQL queries, you can tell Metabase if the column has the same type as an existing database column.
+برای مدل‌های مبتنی بر کوئری‌های SQL، می‌توانید به متابیس بگویید که آیا ستون همان نوع یک ستون پایگاه دادهٔ موجود را دارد.
 
-### Column type
+### نوع ستون
 
-You can set the [column type][column-type]. The default is "No special type".
+می‌توانید [نوع ستون][column-type] را تنظیم کنید. پیش‌فرض "No special type" است.
 
-If your model is based on a SQL query and you want people to be able to explore the results with the query builder, you'll need to set the [column type](./semantic-types.md) for each column in your model.
+اگر مدل شما مبتنی بر یک کوئری SQL است و می‌خواهید افراد بتوانند نتایج را با query builder کاوش کنند، باید [نوع ستون](./semantic-types.md) را برای هر ستون در مدل خود تنظیم کنید.
 
-### This column should appear in...
+### این ستون باید در... ظاهر شود
 
-You can specify whether a column should appear in the table view, or just in a detail view (when you click on the entity/primary key for the row).
+می‌توانید مشخص کنید که آیا یک ستون باید در نمای جدول ظاهر شود، یا فقط در نمای جزئیات (وقتی روی entity/primary key برای ردیف کلیک می‌کنید).
 
 - Table and detail views
 - Detail views only
 
-### Display as
+### نمایش به‌صورت
 
 - Text
-- Link (it's a URL people should be able to click on)
+- Link (این یک URL است که افراد باید بتوانند روی آن کلیک کنند)
 
-### Surface individual records in search by matching against this column
+### نمایش رکوردهای جداگانه در جستجو با تطبیق با این ستون
 
-For string fields in records with integer entity keys, Metabase will give you the option make the values in that field show up when people search your Metabase. Essentially, Metabase will index these values and make them available to Metabase's search engine. This option is handy when people often want to jump straight to an individual record in your model.
+برای فیلدهای رشته در رکوردها با کلیدهای entity عدد صحیح، متابیس به شما گزینه می‌دهد که مقادیر در آن فیلد را وقتی افراد متابیس شما را جستجو می‌کنند نمایش دهد. اساساً، متابیس این مقادیر را ایندکس می‌کند و آن‌ها را برای موتور جستجوی متابیس در دسترس قرار می‌دهد. این گزینه وقتی مفید است که افراد اغلب می‌خواهند مستقیماً به یک رکورد جداگانه در مدل شما بپرند.
 
-For example, if you have a model with accounts, you could turn on this option for a column listing the account's name or email so that people can quickly search for specific accounts in the model from anywhere in your Metabase. When people click on a record in the search results, Metabase will jump straight to the model and the object detail for that record.
+به‌عنوان مثال، اگر یک مدل با حساب‌ها دارید، می‌توانید این گزینه را برای یک ستون که نام یا ایمیل حساب را فهرست می‌کند روشن کنید تا افراد بتوانند به سرعت برای حساب‌های خاص در مدل از هر جای متابیس شما جستجو کنند. وقتی افراد روی یک رکورد در نتایج جستجو کلیک می‌کنند، متابیس مستقیماً به مدل و جزئیات object برای آن رکورد می‌پرد.
 
-There are some limitations to this indexing:
+برخی محدودیت‌ها برای این ایندکس‌گذاری وجود دارد:
 
-- The indexed field must be a text/string type.
-- The record containing the field must have an integer entity key.
-- To keep your search speedy, Metabase will only index 5000 unique values from that field, so this option isn't the best choice to turn on for tables with a ton of records.
+- فیلد ایندکس‌شده باید یک نوع متن/رشته باشد.
+- رکورد حاوی فیلد باید یک کلید entity عدد صحیح داشته باشد.
+- برای سریع نگه داشتن جستجوی شما، متابیس فقط 5000 مقدار منحصر به فرد از آن فیلد را ایندکس می‌کند، بنابراین این گزینه انتخاب بهتری برای روشن کردن برای جداول با تعداد زیادی رکورد نیست.
 
-## Edit a model's query
+## ویرایش کوئری یک مدل
 
-You can edit a model's query by clicking on the down arrow next to the model's name and clicking on **Edit query definition**. When you're doing editing, be sure to save your changes. Unlike questions, which prompt you to save as a new question, any changes here will overwrite the existing model. If you want to create a new model from an existing model, select **Duplicate this model** from the model sidebar (the icon of two overlapping squares).
+می‌توانید کوئری یک مدل را با کلیک روی فلش پایین کنار نام مدل و کلیک روی **Edit query definition** ویرایش کنید. وقتی ویرایش می‌کنید، مطمئن شوید که تغییراتتان را ذخیره می‌کنید. برخلاف سؤال‌ها، که از شما می‌خواهند به‌عنوان یک سؤال جدید ذخیره کنید، هر تغییری اینجا مدل موجود را overwrite می‌کند. اگر می‌خواهید یک مدل جدید از یک مدل موجود ایجاد کنید، **Duplicate this model** را از نوار کناری مدل (آیکون دو مربع همپوشانی) انتخاب کنید.
 
-## Model list view
+## نمای لیست مدل
 
-![Viewing a model as a list](./images/model-list.png)
+![مشاهدهٔ یک مدل به‌صورت لیست](./images/model-list.png)
 
-List view helps you explore records one by one instead of sorting through big tables. You can customize the layout to highlight the most important fields.
+نمای لیست به شما کمک می‌کند رکوردها را یکی یکی کاوش کنید به جای مرتب‌سازی از طریق جداول بزرگ. می‌توانید چیدمان را سفارشی کنید تا مهم‌ترین فیلدها را برجسته کنید.
 
 
-To view a model as a list:
+برای مشاهدهٔ یک مدل به‌صورت لیست:
 
-1. Visit the model.
-2. Click the three-dot menu.
-3. Select **Edit metadata**.
-4. Navigate to the **Settings** tab.
-5. Under "What should the default view of this data be?", toggle to **List**.
+1. به مدل بروید.
+2. روی منوی سه نقطه کلیک کنید.
+3. **Edit metadata** را انتخاب کنید.
+4. به تب **Settings** بروید.
+5. زیر "What should the default view of this data be?"، به **List** toggle کنید.
 
-![Model list edit](./images/model-list-edit.png)
+![ویرایش لیست مدل](./images/model-list-edit.png)
 
-### Customize model list view
+### سفارشی کردن نمای لیست مدل
 
-![Customize list layout](./images/customize-list.png)
+![سفارشی کردن چیدمان لیست](./images/customize-list.png)
 
-You can customize how the data appears by clicking **Customize the List layout**.
+می‌توانید نحوهٔ ظاهر داده را با کلیک **Customize the List layout** سفارشی کنید.
 
-Each item in the list has:
+هر آیتم در لیست شامل موارد زیر است:
 
-- **An entity icon.** If the record has an image link, it shows the image, which you can hide anytime.
-- **A left column** showing the title or primary identifier.
-- **A right column** for up to 5 additional columns.
+- **یک آیکون entity.** اگر رکورد یک لینک تصویر دارد، تصویر را نشان می‌دهد، که می‌توانید هر زمان مخفی کنید.
+- **یک ستون چپ** که عنوان یا شناسهٔ اصلی را نشان می‌دهد.
+- **یک ستون راست** برای تا 5 ستون اضافی.
 
-You can:
+می‌توانید:
 
-- **Search for columns** using the "Find a column..." search box.
-- **Drag columns** from the available list into either the left column or right columns areas.
-- **Reorder columns** by dragging them within their respective areas.
-- **Remove columns** by clicking on the X on the column.
+- **برای ستون‌ها جستجو کنید** با استفاده از جعبه جستجوی "Find a column...".
+- **ستون‌ها را بکشید** از لیست در دسترس به منطقهٔ ستون چپ یا ستون‌های راست.
+- **ستون‌ها را مرتب‌سازی مجدد کنید** با کشیدن آن‌ها درون مناطق مربوطه‌شان.
+- **ستون‌ها را حذف کنید** با کلیک روی X روی ستون.
 
-You can see a preview on the bottom with sample data from your model.
+می‌توانید یک پیش‌نمایش در پایین با دادهٔ نمونه از مدل خود ببینید.
 
-Click **Done** to save your changes.
+روی **Done** کلیک کنید تا تغییراتتان را ذخیره کنید.
 
-## Start a question from a model
+## شروع یک سؤال از یک مدل
 
-See [asking questions][question].
+به [پرسیدن سؤال‌ها][question] مراجعه کنید.
 
-## [Refer to a model in the SQL query editor](../questions/native-editor/referencing-saved-questions-in-queries.md)
+## [ارجاع به یک مدل در ویرایشگر کوئری SQL](../questions/native-editor/referencing-saved-questions-in-queries.md)
 
-You can refer to a model in a SQL query just like you can refer to a saved question:
+می‌توانید به یک مدل در یک کوئری SQL ارجاع دهید دقیقاً مثل اینکه می‌توانید به یک سؤال ذخیره‌شده ارجاع دهید:
 
 ```sql
 {% raw %}
@@ -173,7 +173,7 @@ SELECT * FROM {{#1-customer-model}}
 {% endraw %}
 ```
 
-Or as a [common table expression (CTE)][cte]:
+یا به‌عنوان یک [عبارت جدول مشترک (CTE)][cte]:
 
 ```sql
 {% raw %}
@@ -183,34 +183,34 @@ FROM model;
 {% endraw %}
 ```
 
-Simply typing `{% raw %}{{#}} {% endraw %}` will allow you to search for models (for example, you could type in `{% raw %}{{#customer}}{% endraw %}` to search models, questions, and tables with the word "customer" in the title.
+به سادگی تایپ کردن `{% raw %}{{#}} {% endraw %}` به شما امکان می‌دهد برای مدل‌ها جستجو کنید (به‌عنوان مثال، می‌توانید `{% raw %}{{#customer}}{% endraw %}` را تایپ کنید تا مدل‌ها، سؤال‌ها و جداول با کلمه "customer" در عنوان را جستجو کنید.
 
-You can also use the data reference sidebar to browse the models available. To open the data reference sidebar, click on the **book** icon.
+همچنین می‌توانید از نوار کناری مرجع داده برای مرور مدل‌های در دسترس استفاده کنید. برای باز کردن نوار کناری مرجع داده، روی آیکون **book** کلیک کنید.
 
-## Model version history
+## تاریخچهٔ نسخهٔ مدل
 
-For [questions](../questions/start.md), [dashboards](../dashboards/start.md), and models, Metabase keeps a version history for the previous fifteen versions of that item. You can view changes and revert to previous versions.
+برای [سؤال‌ها](../questions/start.md)، [داشبوردها](../dashboards/start.md)، و مدل‌ها، متابیس یک تاریخچهٔ نسخه برای پانزده نسخهٔ قبلی آن آیتم نگه می‌دارد. می‌توانید تغییرات را مشاهده کنید و به نسخه‌های قبلی برگردید.
 
-See [History](../exploration-and-organization/history.md).
+به [تاریخچه](../exploration-and-organization/history.md) مراجعه کنید.
 
-## Delete a model
+## حذف یک مدل
 
-You can move outdated or unneeded models to trash, or delete them permanently. Deleting a model will affect questions that use it as a data source.
+می‌توانید مدل‌های منسوخ یا غیرضروری را به سطل زباله منتقل کنید، یا آن‌ها را به‌طور دائمی حذف کنید. حذف یک مدل روی سؤال‌هایی که از آن به‌عنوان منبع داده استفاده می‌کنند تأثیر می‌گذارد.
 
-See [Deleting and restoring items](../exploration-and-organization/delete-and-restore.md).
+به [حذف و بازیابی آیتم‌ها](../exploration-and-organization/delete-and-restore.md) مراجعه کنید.
 
-## Verifying a model
+## تأیید یک مدل
 
-See [content verification](../exploration-and-organization/content-verification.md).
+به [تأیید محتوا](../exploration-and-organization/content-verification.md) مراجعه کنید.
 
-## Model persistence
+## پایداری مدل
 
-See [Model persistence](./model-persistence.md)
+به [پایداری مدل](./model-persistence.md) مراجعه کنید
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Models in Metabase][learn-models]
-- [Troubleshooting models][troubleshooting-models].
+- [مدل‌ها در متابیس][learn-models]
+- [عیب‌یابی مدل‌ها][troubleshooting-models].
 
 [column-type]: ./semantic-types.md
 [cte]: https://www.metabase.com/learn/sql/working-with-sql/sql-cte

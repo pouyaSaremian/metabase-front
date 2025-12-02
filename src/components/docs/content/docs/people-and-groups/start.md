@@ -1,49 +1,49 @@
 ---
-title: "People overview"
+title: "نمای کلی افراد"
 redirect_from:
   - /docs/latest/administration-guide/sso
   - /docs/latest/people-and-groups
 ---
 
-# People overview
+# نمای کلی افراد
 
-User accounts, groups, and authentication. For permissions, see [Permissions overview](../permissions/start.md).
+حساب‌های کاربری، گروه‌ها، و احراز هویت. برای مجوزها، به [نمای کلی مجوزها](../permissions/start.md) مراجعه کنید.
 
-## [Editing your account settings](./account-settings.md)
+## [ویرایش تنظیمات حساب شما](./account-settings.md)
 
-Edit your profile and password, and view your login history.
+پروفایل و رمز عبور خود را ویرایش کنید، و تاریخچه ورود خود را مشاهده کنید.
 
-## [Managing people and groups](./managing.md)
+## [مدیریت افراد و گروه‌ها](./managing.md)
 
-Admin controls for setting up user accounts and organizing them into groups.
+کنترل‌های ادمین برای تنظیم حساب‌های کاربری و سازمان‌دهی آن‌ها در گروه‌ها.
 
-## [Changing password complexity](./changing-password-complexity.md)
+## [تغییر پیچیدگی رمز عبور](./changing-password-complexity.md)
 
-Make people use longer and more complex passwords.
+افراد را مجبور کنید از رمزهای عبور طولانی‌تر و پیچیده‌تر استفاده کنند.
 
-## [Changing session expiration](./changing-session-expiration.md)
+## [تغییر انقضای نشست](./changing-session-expiration.md)
 
-Tell Metabase how long it should wait before asking people to log in again.
+به متابیس بگویید چقدر باید صبر کند قبل از اینکه از افراد بخواهد دوباره وارد شوند.
 
-## Authentication
+## احراز هویت
 
-Metabase offers several options for authentication.
+متابیس چندین گزینه برای احراز هویت ارائه می‌دهد.
 
-> If you need to set up 2-step or multi-factor authentication (2FA or MFA) for your Metabase, consider using one of the SSO options below.
+> اگر نیاز به تنظیم احراز هویت 2 مرحله‌ای یا چند عاملی (2FA یا MFA) برای متابیس خود دارید، در نظر بگیرید از یکی از گزینه‌های SSO زیر استفاده کنید.
 
-### SSO for Metabase Open Source and Starter plans
+### SSO برای پلن‌های Metabase Open Source و Starter
 
-- [Google Sign-in](./google-sign-in.md)
+- [ورود با Google](./google-sign-in.md)
 - [LDAP](./ldap.md)
 
-### SSO for Metabase Pro and Enterprise plans
+### SSO برای پلن‌های Metabase Pro و Enterprise
 
-With [Pro and Enterprise plans](https://www.metabase.com/pricing/), you have more options to help orchestrate lots of people and groups.
+با [پلن‌های Pro و Enterprise](https://www.metabase.com/pricing/)، گزینه‌های بیشتری برای کمک به هماهنگی افراد و گروه‌های زیاد دارید.
 
 - [JWT][jwt]
-- LDAP advanced features
-  - [Group membership filter](./ldap.md#ldap-group-membership-filter)
-  - [Syncing user attributes](./ldap.md#syncing-user-attributes-with-ldap)
+- ویژگی‌های پیشرفته LDAP
+  - [فیلتر عضویت گروه](./ldap.md#ldap-group-membership-filter)
+  - [همگام‌سازی ویژگی‌های کاربر](./ldap.md#syncing-user-attributes-with-ldap)
 - [SAML][saml]
   - [Auth0][saml-auth0]
   - [Microsoft Entra ID][azure-ad]
@@ -51,13 +51,13 @@ With [Pro and Enterprise plans](https://www.metabase.com/pricing/), you have mor
   - [Keycloak][saml-keycloak]
   - [Okta][saml-okta]
 
-## [API keys](./api-keys.md)
+## [کلیدهای API](./api-keys.md)
 
-Create keys to authenticate API calls.
+کلیدها ایجاد کنید تا درخواست‌های API را احراز هویت کنید.
 
-## [User provisioning](./user-provisioning.md)
+## [Provisioning کاربر](./user-provisioning.md)
 
-Metabase supports user provisioning via the SCIM protocol.
+متابیس از provisioning کاربر از طریق پروتکل SCIM پشتیبانی می‌کند.
 
 [azure-ad]: ./saml-azure.md
 [google-sign-in]: ./google-and-ldap.md#enabling-google-sign-in

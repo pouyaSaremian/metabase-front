@@ -1,37 +1,37 @@
 ---
-title: How to request new features
+title: نحوهٔ درخواست ویژگی‌های جدید
 ---
 
-# How to request new features
+# نحوهٔ درخواست ویژگی‌های جدید
 
-1. Check out the [issues in the github repo][github-issues] to make sure someone hasn't already requested the feature.
-2. If someone has already requested the feature, click on the thumbs emoji to vote for the issue.
-3. If you can add more context about the feature, add a comment that describes your use case or any nuances important to the feature that the description of the issue doesn't already cover. Avoid comments like "Any updates?"
-4. If your feature idea isn't listed, create a [new feature request issue][feature-request].
+1. [issues در مخزن github][github-issues] را بررسی کنید تا مطمئن شوید کسی قبلاً ویژگی را درخواست نکرده است.
+2. اگر کسی قبلاً ویژگی را درخواست کرده است، روی emoji thumbs کلیک کنید تا برای issue رای دهید.
+3. اگر می‌توانید context بیشتری دربارهٔ ویژگی اضافه کنید، یک کامنت اضافه کنید که use case شما یا هر nuance مهم به ویژگی که توضیح issue از قبل پوشش نمی‌دهد را توصیف می‌کند. از کامنت‌هایی مثل "Any updates?" اجتناب کنید.
+4. اگر ایده ویژگی شما فهرست نشده است، یک [issue درخواست ویژگی جدید][feature-request] ایجاد کنید.
 
-## Feature description prompts
+## promptهای توضیح ویژگی
 
-Follow these prompts when creating your issue.
+این promptها را هنگام ایجاد issue خود دنبال کنید.
 
-**Is your feature request related to a problem? Please describe.**
+**آیا درخواست ویژگی شما مرتبط با یک مشکل است؟ لطفاً توضیح دهید.**
 
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+یک توضیح واضح و مختصر از اینکه مشکل چیست. مثال: همیشه ناامید می‌شوم وقتی [...]
 
-**Describe the solution you'd like**
+**راه‌حل مورد نظر خود را توضیح دهید**
 
-A clear and concise description of what you want to happen.
+یک توضیح واضح و مختصر از اینکه می‌خواهید چه اتفاقی بیفتد.
 
-**Describe alternatives you've considered**
+**جایگزین‌هایی که در نظر گرفته‌اید را توضیح دهید**
 
-A clear and concise description of any alternative solutions or features you've considered.
+یک توضیح واضح و مختصر از هر راه‌حل یا ویژگی جایگزینی که در نظر گرفته‌اید.
 
-**How important is this feature to you?**
+**این ویژگی چقدر برای شما مهم است؟**
 
-Note: the more honest and specific you are here the more we will take you seriously.
+نکته: هرچه صادق‌تر و خاص‌تر باشید، بیشتر شما را جدی می‌گیریم.
 
-**Additional context**
+**Context اضافی**
 
-Add any other context or screenshots about the feature request here.
+هر context یا اسکرین‌شات دیگری دربارهٔ درخواست ویژگی اینجا اضافه کنید.
 
 [github-issues]: ./known-issues.md#how-to-find-a-known-product-limitation
 [feature-request]: https://github.com/metabase/metabase/issues/new?assignees=&labels=.Needs+Triage%2C+Type%3ANew+Feature&template=feature_request.md

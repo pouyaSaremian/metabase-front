@@ -1,34 +1,34 @@
 ---
-title: Can't save questions or dashboards, or getting a blank page
+title: نمی‌توانم سؤال‌ها یا داشبوردها را ذخیره کنم، یا یک صفحه خالی دریافت می‌کنم
 ---
 
-# Can't save questions or dashboards, or getting a blank page
+# نمی‌توانم سؤال‌ها یا داشبوردها را ذخیره کنم، یا یک صفحه خالی دریافت می‌کنم
 
-If attempting to save a question or dashboard sometimes fails, or Metabase only loads a blank page, the problem might be the use of a proxy. A proxy could include other functions like a web application firewall (WAF), content optimization, or cache. Examples of proxies that are known to cause issues with Metabase include:
+اگر تلاش برای ذخیره یک سؤال یا داشبورد گاهی اوقات شکست می‌خورد، یا متابیس فقط یک صفحه خالی بارگذاری می‌کند، مشکل ممکن است استفاده از یک proxy باشد. یک proxy می‌تواند شامل عملکردهای دیگر مثل یک web application firewall (WAF)، بهینه‌سازی محتوا، یا cache باشد. مثال‌هایی از proxyهایی که شناخته شده است با متابیس مشکل ایجاد می‌کنند شامل:
 
-- Cloudflare's Rocket Loader and WAF
-- Azure's WAF
-- PageSpeed module for Apache
-- Some anti-virus browser extensions or add-ons
+- Rocket Loader و WAF Cloudflare
+- WAF Azure
+- ماژول PageSpeed برای Apache
+- برخی extensionها یا add-onهای ضد ویروس مرورگر
 
-## Saving questions or dashboards fails
+## ذخیره سؤال‌ها یا داشبوردها شکست می‌خورد
 
-If saving questions or dashboards fails and the save button displays "Save Failed," or if you get the error, "Sorry you do not have permission to see that," the problem might be with a WAF like Cloudflare or Azure.
+اگر ذخیره سؤال‌ها یا داشبوردها شکست می‌خورد و دکمه save "Save Failed" را نمایش می‌دهد، یا اگر خطای "Sorry you do not have permission to see that" را دریافت می‌کنید، مشکل ممکن است با یک WAF مثل Cloudflare یا Azure باشد.
 
-- When the save fails, check the Console tab of your browser's Developer Tools for any errors.
-- You should also check the Network tab in the Developer Tools in your browser to view the network request. It will usually fail with error code 403, indicating the error is coming from the WAF and not Metabase.
+- وقتی save شکست می‌خورد، تب Console از Developer Tools مرورگر خود را برای هر خطایی بررسی کنید.
+- همچنین باید تب Network در Developer Tools در مرورگر خود را برای مشاهده درخواست شبکه بررسی کنید. معمولاً با کد خطای 403 شکست می‌خورد، که نشان می‌دهد خطا از WAF است نه متابیس.
 
-Clicking on the request will show more information, and looking at the headers will usually indicate where it originated from.
+کلیک روی درخواست اطلاعات بیشتری نشان می‌دهد، و نگاه کردن به headerها معمولاً نشان می‌دهد از کجا منشأ گرفته است.
 
-Some WAFs have dynamic protection, which means that the problem might only occur after an upgrade of Metabase, and might go away after a few days.
+برخی WAFها محافظت پویا دارند، که به این معنی است که مشکل ممکن است فقط بعد از یک ارتقای متابیس اتفاق بیفتد، و ممکن است بعد از چند روز از بین برود.
 
-The solution is to disable the WAF for Metabase. Some services will show which rules were triggered, so it might be enough to disable those rules.
+راه‌حل غیرفعال کردن WAF برای متابیس است. برخی سرویس‌ها نشان می‌دهند کدام قوانین trigger شده‌اند، بنابراین ممکن است کافی باشد آن قوانین را غیرفعال کنید.
 
-## Seeing a blank page instead of the Metabase interface
+## مشاهده یک صفحه خالی به جای رابط متابیس
 
-If Metabase displays a blank page instead of its interface, the problem is usually with content optimization like PageSpeed or Cloudflare's Rocket Loader.
+اگر متابیس یک صفحه خالی به جای رابط خود نمایش می‌دهد، مشکل معمولاً با بهینه‌سازی محتوا مثل PageSpeed یا Rocket Loader Cloudflare است.
 
-- Check the Console tab of your browser's Developer Tools for any errors involving Content Security Policy (CSP).
-- See if Metabase has been able to deliver the HTML code by right clicking on the blank page and selecting "View page source." It might look like gibberish, but it should say `<title>Metabase</title>` near line 25.
+- تب Console از Developer Tools مرورگر خود را برای هر خطایی که شامل Content Security Policy (CSP) است بررسی کنید.
+- ببینید آیا متابیس قادر به تحویل کد HTML بوده است با راست‌کلیک روی صفحه خالی و انتخاب "View page source." ممکن است شبیه gibberish به نظر برسد، اما باید `<title>Metabase</title>` نزدیک خط 25 بگوید.
 
-The solution is to disable content optimization for Metabase.
+راه‌حل غیرفعال کردن بهینه‌سازی محتوا برای متابیس است.

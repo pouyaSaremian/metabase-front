@@ -1,45 +1,45 @@
 ---
-title: How to find a known bug or limitation
+title: نحوهٔ پیدا کردن یک باگ یا محدودیت شناخته شده
 ---
 
-# How to find a known bug or limitation
+# نحوهٔ پیدا کردن یک باگ یا محدودیت شناخته شده
 
-If you can't find or solve your problem using the [troubleshooting guides](./index.md), you may be running into an issue that we're still working on.
+اگر نمی‌توانید مشکل خود را با استفاده از [راهنماهای عیب‌یابی](./index.md) پیدا یا حل کنید، ممکن است با مشکلی مواجه شده باشید که هنوز روی آن کار می‌کنیم.
 
-## How to find a known bug
+## نحوهٔ پیدا کردن یک باگ شناخته شده
 
-If your work in Metabase is crashing, missing, or not being saved, you might have found a bug.
+اگر کار شما در متابیس crash می‌کند، گم می‌شود، یا ذخیره نمی‌شود، ممکن است یک باگ پیدا کرده باشید.
 
-1. Go to the [Metabase GitHub issues page](https://github.com/metabase/metabase/issues).
+1. به [صفحه issues GitHub متابیس](https://github.com/metabase/metabase/issues) بروید.
 
-2. Click on the **Label** dropdown and select `Type: Bug`.
+2. روی منوی dropdown **Label** کلیک کنید و `Type: Bug` را انتخاب کنید.
 
-   > If you're encountering problems after your Metabase version was recently upgraded, you can add the label `.Regression`.
+   > اگر بعد از اینکه نسخه متابیس شما اخیراً ارتقا یافت با مشکلاتی مواجه می‌شوید، می‌توانید label `.Regression` را اضافه کنید.
 
-3. Choose least one value in the **Label** dropdown that matches the feature you're having trouble with.
+3. حداقل یک مقدار در منوی dropdown **Label** انتخاب کنید که با ویژگی‌ای که با آن مشکل دارید تطبیق دارد.
 
-   > Add additional keywords to the search bar above the list of results. Hit Enter/Return to run the search.
+   > کلمات کلیدی اضافی را به نوار جستجو بالای لیست نتایج اضافه کنید. Enter/Return را بزنید تا جستجو اجرا شود.
 
-   > Click **Sort** and select the thumbs up emoji (👍) to view the most commonly encountered bugs.
+   > روی **Sort** کلیک کنید و emoji thumbs up (👍) را انتخاب کنید تا رایج‌ترین باگ‌های مواجه شده را مشاهده کنید.
 
-4. If you find an existing bug that matches your problem, add a thumbs up emoji to help the team prioritize it.
+4. اگر یک باگ موجود که با مشکل شما تطبیق دارد پیدا کردید، یک emoji thumbs up اضافه کنید تا به تیم کمک کند آن را اولویت‌بندی کند.
 
-5. If you can't find your problem, and you're sure that it's not a [product limitation](#how-to-find-a-known-product-limitation), you can [create a new bug report](./bugs.md).
+5. اگر نمی‌توانید مشکل خود را پیدا کنید، و مطمئن هستید که یک [محدودیت محصول](#how-to-find-a-known-product-limitation) نیست، می‌توانید [یک گزارش باگ جدید ایجاد کنید](./bugs.md).
 
-## How to find a known product limitation
+## نحوهٔ پیدا کردن یک محدودیت محصول شناخته شده
 
-If the functionality you're looking for simply doesn't exist (i.e., it hasn't suddenly gone missing), you might be running into a product limitation.
+اگر عملکردی که به دنبال آن هستید به سادگی وجود ندارد (یعنی، ناگهان گم نشده است)، ممکن است با یک محدودیت محصول مواجه شده باشید.
 
-1. Go to the [Metabase GitHub issues page](https://github.com/metabase/metabase/issues).
+1. به [صفحه issues GitHub متابیس](https://github.com/metabase/metabase/issues) بروید.
 
-2. Click on the **Label** dropdown and select `Type: New Feature`.
+2. روی منوی dropdown **Label** کلیک کنید و `Type: New Feature` را انتخاب کنید.
 
-3. Choose at least one value in the **Label** dropdown that matches the feature you're looking for.
+3. حداقل یک مقدار در منوی dropdown **Label** انتخاب کنید که با ویژگی‌ای که به دنبال آن هستید تطبیق دارد.
 
-   > Add additional keywords to the search bar above the list of results. Hit Enter/Return to run the search.
+   > کلمات کلیدی اضافی را به نوار جستجو بالای لیست نتایج اضافه کنید. Enter/Return را بزنید تا جستجو اجرا شود.
 
-   > Click **Sort** and select the thumbs up emoji (👍) to view the most requested features.
+   > روی **Sort** کلیک کنید و emoji thumbs up (👍) را انتخاب کنید تا درخواست‌شده‌ترین ویژگی‌ها را مشاهده کنید.
 
-4. If you find a feature request that matches what you want to do, add a thumbs up emoji to help the team prioritize it.
+4. اگر یک درخواست ویژگی که با آنچه می‌خواهید انجام دهید تطبیق دارد پیدا کردید، یک emoji thumbs up اضافه کنید تا به تیم کمک کند آن را اولویت‌بندی کند.
 
-5. If a feature request doesn't exist, and your issue isn't [caused by a known bug](#how-to-find-a-known-bug), you can [submit a new feature request](./requesting-new-features.md).
+5. اگر یک درخواست ویژگی وجود ندارد، و مشکل شما [ناشی از یک باگ شناخته شده](#how-to-find-a-known-bug) نیست، می‌توانید [یک درخواست ویژگی جدید ارسال کنید](./requesting-new-features.md).

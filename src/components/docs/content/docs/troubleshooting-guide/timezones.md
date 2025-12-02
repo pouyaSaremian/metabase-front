@@ -1,84 +1,84 @@
 ---
-title: The dates and times in my questions and charts are wrong
+title: تاریخ‌ها و زمان‌ها در سؤال‌ها و نمودارهای من اشتباه هستند
 ---
 
-# The dates and times in my questions and charts are wrong
+# تاریخ‌ها و زمان‌ها در سؤال‌ها و نمودارهای من اشتباه هستند
 
-You are doing calculations with dates and times, or displaying them in charts, but:
+شما محاسبات با تاریخ‌ها و زمان‌ها انجام می‌دهید، یا آن‌ها را در نمودارها نمایش می‌دهید، اما:
 
-- the values appear to be wrong, or
-- summary values are wrong.
+- مقادیر به نظر اشتباه می‌رسند، یا
+- مقادیر خلاصه اشتباه هستند.
 
-## Is the problem due to time zones?
+## آیا مشکل به دلیل time zoneها است؟
 
-**Root cause:** Dates and times are stored using different time zones, but some or all of those time zones aren't taken into account when doing calculations (i.e., the problem is inconsistent data).
+**علت اصلی:** تاریخ‌ها و زمان‌ها با استفاده از time zoneهای متفاوت ذخیره می‌شوند، اما برخی یا همه آن time zoneها هنگام انجام محاسبات در نظر گرفته نمی‌شوند (یعنی، مشکل داده ناسازگار است).
 
-**Steps to take:**
+**مراحل انجام:**
 
-To fix this problem you'll need answers to these questions:
+برای رفع این مشکل به پاسخ این سؤال‌ها نیاز دارید:
 
-1. What is the correct time zone of the data you think is being displayed improperly (i.e., what's the right answer)?
-2. Is there an explicit time zone setting on every timestamp, or are some or all timestamps being stored without a time zone? For example, `Dec 1, 2019 00:00:00Z00` includes the time zone (shown after the `Z`), but `Dec 1, 2019` doesn't.
-3. What time zone is the database server using?
-4. What time zone is Metabase using?
+1. time zone صحیح داده‌ای که فکر می‌کنید به‌اشتباه نمایش داده می‌شود چیست (یعنی، پاسخ صحیح چیست)؟
+2. آیا یک تنظیم time zone صریح روی هر timestamp وجود دارد، یا برخی یا همه timestampها بدون time zone ذخیره می‌شوند؟ به‌عنوان مثال، `Dec 1, 2019 00:00:00Z00` شامل time zone است (نشان داده شده بعد از `Z`)، اما `Dec 1, 2019` ندارد.
+3. سرور پایگاه داده از چه time zone استفاده می‌کند؟
+4. متابیس از چه time zone استفاده می‌کند؟
 
-Once you have these answers, look for cases like these:
+بعد از اینکه این پاسخ‌ها را دارید، به دنبال مواردی مثل این بگردید:
 
-1. Your question or chart is comparing or sorting values with inconsistent or missing time zones. For example, if a flight's departure and arrival times are reported in local time, it can appear to arrive before it has left.
-2. Your question is aggregating timestamps with different time zones: for example, the "daily" totals for your website's traffic include more than 24 hours worth of data because you are using the local dates from East Asia, Europe, and the Americas.
+1. سؤال یا نمودار شما مقادیر با time zoneهای ناسازگار یا گم شده را مقایسه یا مرتب می‌کند. به‌عنوان مثال، اگر زمان‌های departure و arrival یک پرواز در زمان محلی گزارش شده‌اند، می‌تواند به نظر برسد که قبل از اینکه ترک کرده باشد می‌رسد.
+2. سؤال شما timestampها با time zoneهای متفاوت را aggregate می‌کند: به‌عنوان مثال، مجموع "روزانه" برای ترافیک وب‌سایت شما شامل بیش از 24 ساعت داده است چون از تاریخ‌های محلی از شرق آسیا، اروپا، و آمریکا استفاده می‌کنید.
 
-Once you think you have identified a problem, drill down to understand exactly what time zone conversion is causing the underlying problem. For example, suppose you're looking at a time series with daily values; if your error is happening with weekly totals, you can:
+بعد از اینکه فکر می‌کنید یک مشکل را شناسایی کرده‌اید، drill down کنید تا دقیقاً بفهمید کدام تبدیل time zone باعث مشکل زیربنایی می‌شود. به‌عنوان مثال، فرض کنید به یک time series با مقادیر روزانه نگاه می‌کنید؛ اگر خطای شما با مجموع هفتگی اتفاق می‌افتد، می‌توانید:
 
-1. Pick a specific day where you know the number is incorrect.
-2. Click on the data point in a chart, or a cell in a result table, and select "See these X."
-3. Open this question in two other tabs in your browser. Change the date filters so that one tab has the rows in the underlying table from the _previous_ day, and the other table has the rows in the underlying table from the _next_ day.
-4. Check that the date field being used to group the result in the underlying display is correct. If it is different from what you have stored in the database, or what you have in another tool, then the timestamp is being transformed incorrectly across the board. This often happens when you use a date or time lacking an explicit time zone.
-5. If the underlying timestamps are correct (which they should if they have explicit time zones), the individual times are probably being grouped into days in a different time zone than the one you want.
-6. To find out which time zone they are being transformed to, tweak the times on the date filters on the question you are looking at by moving the start time and start date backwards by an hour until you either get the correct number or you have gone back by 12 hours. (If any of your time zones include India, Newfoundland, or another jurisdiction with a half-step time zone, you may need to do this in half-hour increments.)
-7. If that doesn't work, try moving the start and end times forward by an hour until you either get the correct number of you've gone forward by 12 hours.
-8. If by this point you have the correct value, it means your time zone was converted by the number of hours forward or backwards you manually set the filter. If that's the case, check whether the offset you've come up with matches either the time zone of the data warehouse or the timezone of Metabase itself.
+1. یک روز خاص انتخاب کنید که می‌دانید عدد اشتباه است.
+2. روی نقطه داده در یک نمودار کلیک کنید، یا یک سلول در یک جدول نتیجه، و "See these X." را انتخاب کنید.
+3. این سؤال را در دو تب دیگر در مرورگر خود باز کنید. فیلترهای تاریخ را تغییر دهید تا یک تب ردیف‌ها در جدول زیربنایی از روز _قبلی_ داشته باشد، و جدول دیگر ردیف‌ها در جدول زیربنایی از روز _بعدی_ داشته باشد.
+4. بررسی کنید که فیلد تاریخ استفاده شده برای گروه‌بندی نتیجه در نمایش زیربنایی صحیح است. اگر با آنچه در پایگاه داده ذخیره کرده‌اید متفاوت است، یا آنچه در ابزار دیگری دارید، پس timestamp به‌طور کلی به‌اشتباه transform می‌شود. این اغلب وقتی اتفاق می‌افتد که از یک تاریخ یا زمان فاقد time zone صریح استفاده می‌کنید.
+5. اگر timestampهای زیربنایی صحیح هستند (که باید باشند اگر time zone صریح دارند)، زمان‌های فردی احتمالاً در یک time zone متفاوت از آنچه می‌خواهید به روزها گروه‌بندی می‌شوند.
+6. برای فهمیدن اینکه به کدام time zone transform می‌شوند، زمان‌ها را روی فیلترهای تاریخ سؤالی که به آن نگاه می‌کنید با حرکت دادن زمان شروع و تاریخ شروع به عقب به‌صورت ساعتی تنظیم کنید تا زمانی که یا عدد صحیح را دریافت کنید یا 12 ساعت به عقب رفته باشید. (اگر هر یک از time zoneهای شما شامل هند، نیوفاندلند، یا حوزه قضایی دیگری با time zone نیم‌قدم است، ممکن است نیاز داشته باشید این را در افزایش‌های نیم ساعته انجام دهید.)
+7. اگر این کار نمی‌کند، سعی کنید زمان‌های شروع و پایان را به جلو به‌صورت ساعتی حرکت دهید تا زمانی که یا عدد صحیح را دریافت کنید یا 12 ساعت به جلو رفته باشید.
+8. اگر در این مرحله مقدار صحیح را دارید، به این معنی است که time zone شما با تعداد ساعاتی که به صورت دستی فیلتر را به جلو یا عقب تنظیم کردید تبدیل شده است. اگر این مورد است، بررسی کنید که آیا offset که به آن رسیده‌اید با time zone data warehouse یا timezone خود متابیس تطبیق دارد.
 
-## Is the Report Time Zone set incorrectly?
+## آیا Report Time Zone به‌اشتباه تنظیم شده است؟
 
-**Root cause:** Wrong numbers in questions or charts can be caused by a mis-match in the time zone being used by Metabase and the time zone being used by the data warehouse.
+**علت اصلی:** اعداد اشتباه در سؤال‌ها یا نمودارها می‌توانند توسط یک mis-match در time zone استفاده شده توسط متابیس و time zone استفاده شده توسط data warehouse ایجاد شوند.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Check the [report timezone setting](../configuring-metabase/localization.md#report-timezone) from **Admin settings** > **Settings** > **Localization**.
-2. If you're using a database that doesn't support the report timezone setting, ensure that Metabase's time zone matches that of the database. Metabase's time zone is the Java Virtual Machine's time zone, typically set via a `-Duser.timezone<..>` parameter or the `JAVA_TIMEZONE` environment variable; exactly how it is set will depend on how you launch Metabase. Note that Metabase's time zone doesn't impact any databases that use a Report Time Zone.
+1. تنظیم [report timezone](../configuring-metabase/localization.md#report-timezone) را از **Admin settings** > **Settings** > **Localization** بررسی کنید.
+2. اگر از پایگاه داده‌ای استفاده می‌کنید که از تنظیم report timezone پشتیبانی نمی‌کند، مطمئن شوید که time zone متابیس با آن پایگاه داده تطبیق دارد. time zone متابیس time zone Java Virtual Machine است، معمولاً از طریق یک پارامتر `-Duser.timezone<..>` یا متغیر محیطی `JAVA_TIMEZONE` تنظیم می‌شود؛ دقیقاً نحوهٔ تنظیم آن به نحوهٔ راه‌اندازی متابیس بستگی دارد. توجه داشته باشید که time zone متابیس روی هیچ پایگاه داده‌ای که از Report Time Zone استفاده می‌کند تأثیر نمی‌گذارد.
 
-## Are SQL queries not respecting the Reporting Time Zone setting?
+## آیا کوئری‌های SQL تنظیم Reporting Time Zone را رعایت نمی‌کنند؟
 
-**Root cause:** Database settings. Metabase sets a session time zone, but some databases ignore it.
+**علت اصلی:** تنظیمات پایگاه داده. متابیس یک session time zone تنظیم می‌کند، اما برخی پایگاه‌داده‌ها آن را نادیده می‌گیرند.
 
-**Steps to take:**
+**مراحل انجام:**
 
-Contact your database administrator to allow setting the session time zone.
+با ادمین پایگاه داده خود تماس بگیرید تا تنظیم session time zone را اجازه دهد.
 
-Alternatively, you can also set a reporting time zone explicitly in your SQL query.
+به‌عنوان جایگزین، همچنین می‌توانید یک reporting time zone را به‌طور صریح در کوئری SQL خود تنظیم کنید.
 
-For example, you can write something like this with PostgreSQL:
+به‌عنوان مثال، می‌توانید چیزی مثل این با PostgreSQL بنویسید:
 
 ```sql
 SELECT column::TIMESTAMP AT TIME ZONE 'EST' AS column_est
 ```
 
-This statement casts the column to a `timestamp` data type first, then converts the `timestamp` into a `timestamptz` data type, with time zone 'EST'.
+این statement ابتدا ستون را به یک نوع داده `timestamp` cast می‌کند، سپس `timestamp` را به یک نوع داده `timestamptz`، با time zone 'EST' تبدیل می‌کند.
 
-## Are dates without an explicit time zone being converted to another day?
+## آیا تاریخ‌های بدون time zone صریح به روز دیگری تبدیل می‌شوند؟
 
-**Root cause:** You are grouping by a date (rather than by a time) that lacks a time zone.
+**علت اصلی:** شما بر اساس یک تاریخ (به جای یک زمان) که فاقد time zone است گروه‌بندی می‌کنید.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Look at every time field your question uses in the [Data Model Reference](../exploration-and-organization/data-model-reference.md) and see if any of them are simply a "Date" field.
-2. If so, make sure the server time zone reflects the reporting time zone, because when a query is run on Metabase, the server applies the configured time zone to that date.
+1. به هر فیلد زمانی که سؤال شما استفاده می‌کند در [مرجع مدل داده](../exploration-and-organization/data-model-reference.md) نگاه کنید و ببینید آیا هر یک از آن‌ها به سادگی یک فیلد "Date" هستند.
+2. اگر بله، مطمئن شوید که server time zone time zone گزارش‌دهی را منعکس می‌کند، چون وقتی یک کوئری روی متابیس اجرا می‌شود، سرور time zone پیکربندی شده را به آن تاریخ اعمال می‌کند.
 
-## Are you mixing explicit and implicit time zones?
+## آیا time zoneهای صریح و ضمنی را مخلوط می‌کنید؟
 
-**Root cause:** You're comparing or doing arithmetic on two dates where one has an explicit time zone and one doesn't.
+**علت اصلی:** شما دو تاریخ را که یکی time zone صریح دارد و دیگری ندارد مقایسه می‌کنید یا روی آن‌ها محاسبات انجام می‌دهید.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. This typically happens with a question that uses multiple fields: for example, you're filtering on one timestamp and grouping by another. Check the time zones of each of the dates or times you are using in your question.
-2. You'll need to explicitly set the time zone for any value that lacks an explicit time zone. This will need to be done either in a SQL query or by transforming the data in your database to ensure both timestamps have time zones.
+1. این معمولاً با یک سؤال که از چندین فیلد استفاده می‌کند اتفاق می‌افتد: به‌عنوان مثال، روی یک timestamp فیلتر می‌کنید و بر اساس دیگری گروه‌بندی می‌کنید. time zoneهای هر یک از تاریخ‌ها یا زمان‌هایی که در سؤال خود استفاده می‌کنید را بررسی کنید.
+2. باید time zone را به‌طور صریح برای هر مقداری که فاقد time zone صریح است تنظیم کنید. این باید یا در یک کوئری SQL یا با transform کردن داده در پایگاه داده خود انجام شود تا اطمینان حاصل شود که هر دو timestamp time zone دارند.

@@ -1,50 +1,50 @@
 ---
-title: SAML with Auth0
+title: SAML با Auth0
 redirect_from:
   - /docs/latest/enterprise-guide/saml-auth0
 ---
 
-# SAML with Auth0
+# SAML با Auth0
 
 {% include plans-blockquote.html feature="SAML authentication" %}
 
-1. [Configure SAML in Auth0](#working-in-the-auth0-console) (the identity provider).
-2. [Configure SAML in Metabase](./authenticating-with-saml.md#enabling-saml-authentication-in-metabase) (the service provider).
+1. [پیکربندی SAML در Auth0](#working-in-the-auth0-console) (ارائه‌دهنده هویت).
+2. [پیکربندی SAML در متابیس](./authenticating-with-saml.md#enabling-saml-authentication-in-metabase) (ارائه‌دهنده سرویس).
 
-For more information, check out our guide for [authenticating with SAML](./authenticating-with-saml.md).
+برای اطلاعات بیشتر، راهنمای ما برای [احراز هویت با SAML](./authenticating-with-saml.md) را بررسی کنید.
 
-## Working in the Auth0 console
+## کار در کنسول Auth0
 
-### Create an application
+### ایجاد یک اپلیکیشن
 
-After you log in to your Auth0 account, navigate to **Applications** and select **Create Application**.
+بعد از اینکه به حساب Auth0 خود وارد شدید، به **Applications** بروید و **Create Application** را انتخاب کنید.
 
-![Auth0 Applications Page](images/auth0createapp.png)
+![صفحه Applications Auth0](images/auth0createapp.png)
 
-Enter “Metabase” as the application name with type “Regular Web Applications”.
+"Metabase" را به‌عنوان نام اپلیکیشن با نوع "Regular Web Applications" وارد کنید.
 
-![Auth0 Application Selection](images/auth0regularapp.png)
+![انتخاب اپلیکیشن Auth0](images/auth0regularapp.png)
 
-Now go to Settings tab inside Auth0's Metabase App and fill in the following values:
+حالا به تب Settings درون اپلیکیشن Metabase Auth0 بروید و مقادیر زیر را پر کنید:
 
-- Application Login URI: the URL of your Metabase instance.
-- Allowed Callback URLs: the URL that's below **Configure your identity provider (IdP)** in SAML settings inside Metabase (it ends with `/auth/sso`).
+- Application Login URI: URL instance متابیس شما.
+- Allowed Callback URLs: URL که زیر **Configure your identity provider (IdP)** در تنظیمات SAML درون متابیس است (به `/auth/sso` ختم می‌شود).
 
-![Auth0 SAML Settings Page](images/auth0callbackurl.png)
+![صفحه تنظیمات SAML Auth0](images/auth0callbackurl.png)
 
-Scroll to the bottom of the page and click **Save Changes**.
+به پایین صفحه اسکرول کنید و روی **Save Changes** کلیک کنید.
 
-### Enable SAML in Auth0
+### فعال کردن SAML در Auth0
 
-Next, we need to activate the SAML2 Web App Addon. Scroll back to the top of the settings page and select **Addons** from the navigation menu.
+بعد، باید Addon SAML2 Web App را فعال کنیم. به بالای صفحه تنظیمات اسکرول کنید و **Addons** را از منوی ناوبری انتخاب کنید.
 
-In the **Addons** section, select the **SAML 2 Web App** to load the settings popup.
+در بخش **Addons**، **SAML 2 Web App** را انتخاب کنید تا popup تنظیمات بارگذاری شود.
 
-![Auth0 Application Addons](images/auth0saml2addon.png)
+![Addons اپلیکیشن Auth0](images/auth0saml2addon.png)
 
-### Mapping fields from users in Auth0 to Metabase
+### نگاشت فیلدها از کاربران در Auth0 به متابیس
 
-On the top of the **Settings** section on this page, you need to re-enter the value you included in **Allowed Callback URLs** in the field named **Application Callback URL**. Copy and paste the following JSON file in the settings box so that Auth0 can send the correct mappings to Metabase when a user logs in:
+در بالای بخش **Settings** در این صفحه، باید مقدار واردشده در **Allowed Callback URLs** را دوباره در فیلد به نام **Application Callback URL** وارد کنید. فایل JSON زیر را در جعبه تنظیمات کپی و paste کنید تا Auth0 بتواند نگاشت‌های صحیح را هنگام ورود یک کاربر به متابیس ارسال کند:
 
 ```
 {
@@ -57,26 +57,26 @@ On the top of the **Settings** section on this page, you need to re-enter the va
 }
 ```
 
-If you need to set additional user properties, you can always return to this step to add additional fields to the mappings object.
+اگر نیاز به تنظیم ویژگی‌های کاربر اضافی دارید، همیشه می‌توانید به این مرحله برگردید تا فیلدهای اضافی را به object نگاشت‌ها اضافه کنید.
 
-![Auth0 SAML Mappings](images/auth0samlmappings.png)
+![نگاشت‌های SAML Auth0](images/auth0samlmappings.png)
 
-## Configuring Metabase
+## پیکربندی متابیس
 
-Next, in the Auth0 Addon: SAML2 Web App popup, click on the **Usage** tab and then configure in Metabase (column on the left) the values that this tab provides (column on the right).
+بعد، در popup Addon Auth0: SAML2 Web App، روی تب **Usage** کلیک کنید و سپس در متابیس (ستون سمت چپ) مقادیری که این تب ارائه می‌دهد (ستون سمت راست) را پیکربندی کنید.
 
-![Auth0 SAML usage](images/auth0samlusage.png)
+![استفاده از SAML Auth0](images/auth0samlusage.png)
 
-| Metabase                           | Auth0                                                                                      |
+| متابیس                           | Auth0                                                                                      |
 | ---------------------------------- | ------------------------------------------------------------------------------------------ |
 | SAML Identity Provider URL         | Identity Provider Login URL                                                                |
 | SAML Identity Provider Issuer      | Issuer                                                                                     |
-| SAML Identity Provider Certificate | Open the Identity Provider Metadata link and copy the string under the X509Certificate tag |
+| SAML Identity Provider Certificate | لینک Identity Provider Metadata را باز کنید و رشته زیر تگ X509Certificate را کپی کنید |
 
-The "SAML Application Name" value can be left as the default (Metabase).
+مقدار "SAML Application Name" می‌تواند به‌عنوان پیش‌فرض (Metabase) باقی بماند.
 
-Save your settings, then [enable SAML](authenticating-with-saml.md) in Metabase, and you should be good to go!
+تنظیمات خود را ذخیره کنید، سپس [SAML را فعال کنید](authenticating-with-saml.md) در متابیس، و باید آماده باشید!
 
-## Troubleshooting SAML issues
+## عیب‌یابی مشکلات SAML
 
-- [SAML troubleshooting page](../troubleshooting-guide/saml.md).
+- [صفحه عیب‌یابی SAML](../troubleshooting-guide/saml.md).

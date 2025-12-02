@@ -1,50 +1,50 @@
 ---
-title: "Data types and semantic types"
+title: "انواع داده و انواع معنایی"
 redirect_from:
   - /docs/latest/users-guide/field-types
   - /docs/latest/data-modeling/field-types
-summary: "Metabase uses both data and semantic types to understand how to format and visualize your data."
+summary: "متابیس از هر دو نوع داده و معنایی استفاده می‌کند تا بفهمد چگونه داده‌هایتان را فرمت و ویژوالیزه کند."
 ---
 
-# Data types and semantic types
+# انواع داده و انواع معنایی
 
-Metabase distinguishes between two types of column metadata: data types and field types.
+متابیس بین دو نوع ابردادهٔ ستون تمایز قائل می‌شود: انواع داده و انواع فیلد.
 
-- [**Data types**](#data-types) are the underlying column type as defined in your database, like `Date` or `Text`. Metabase reads the data types during the [database sync process](../databases/sync-scan.md).
-- [**Semantic types**](#semantic-types), also called **field types**, are labels that describe how the data should be interpreted. For example, if you have a column with a data type of `Text` that you use to store emails, you can add a semantic type of `Email` to let people (and Metabase) know what kind of text the column stores.
+- [**انواع داده**](#data-types) نوع ستون زیربنایی همانطور که در پایگاه داده شما تعریف شده است هستند، مثل `Date` یا `Text`. متابیس انواع داده را در طول [فرآیند همگام‌سازی پایگاه داده](../databases/sync-scan.md) می‌خواند.
+- [**انواع معنایی**](#semantic-types)، که همچنین **انواع فیلد** نامیده می‌شوند، برچسب‌هایی هستند که نحوهٔ تفسیر داده را توصیف می‌کنند. به‌عنوان مثال، اگر یک ستون با نوع دادهٔ `Text` دارید که برای ذخیرهٔ ایمیل‌ها استفاده می‌کنید، می‌توانید یک نوع معنایی `Email` اضافه کنید تا به افراد (و متابیس) بگویید چه نوع متنی ستون ذخیره می‌کند.
 
-Data and semantic types determine how Metabase formats the data, which charts are available, how the filters work, and other functionality.
+انواع داده و معنایی نحوهٔ فرمت داده توسط متابیس، کدام نمودارها در دسترس هستند، نحوهٔ کار فیلترها، و عملکردهای دیگر را تعیین می‌کنند.
 
-## Data types
+## انواع داده
 
-Data types are the underlying column types as defined in your database. Metabase reads the data types during the [database sync process](../databases/sync-scan.md). Because Metabase connects to many different databases, it uses its own type hierarchy under the hood, so that it can, for example, handle date fields in databases as different as PostgreSQL and MongoDB.
+انواع داده انواع ستون زیربنایی همانطور که در پایگاه داده تعریف شده‌اند هستند. متابیس انواع داده را در طول [فرآیند همگام‌سازی پایگاه داده](../databases/sync-scan.md) می‌خواند. چون متابیس به بسیاری از پایگاه‌داده‌های مختلف متصل می‌شود، از سلسله‌مراتب نوع خودش در زیر استفاده می‌کند، تا بتواند، به‌عنوان مثال، فیلدهای تاریخ را در پایگاه‌داده‌هایی به متفاوت PostgreSQL و MongoDB مدیریت کند.
 
-The main data types in Metabase:
+انواع داده اصلی در متابیس:
 
-| Data Type  | Example database types                      |
+| نوع داده    | انواع پایگاه داده مثال                      |
 | ---------- | ------------------------------------------- |
-| Numeric    | `INTEGER`, `FLOAT`                          |
-| Temporal   | `DATE`, `TIMESTAMP`                         |
-| Text       | `VARCHAR`, `TEXT`                           |
-| Text-like  | MongoDB `BSONID`, Postgres `Enum`           |
+| Numeric    | `INTEGER`، `FLOAT`                          |
+| Temporal   | `DATE`، `TIMESTAMP`                         |
+| Text       | `VARCHAR`، `TEXT`                           |
+| Text-like  | MongoDB `BSONID`، Postgres `Enum`           |
 | Boolean    | Boolean                                     |
-| Collection | `JSON`, BigQuery `RECORD`, MongoDB `Object` |
+| Collection | `JSON`، BigQuery `RECORD`، MongoDB `Object` |
 
-Metabase currently doesn't support array types. On columns containing arrays, you'll only be able to filter by **Is empty** or **Is not empty**.
+متابیس در حال حاضر از انواع آرایه پشتیبانی نمی‌کند. روی ستون‌های حاوی آرایه‌ها، فقط می‌توانید با **Is empty** یا **Is not empty** فیلتر کنید.
 
-For some fields, you can tell Metabase to [cast the field to a different data type](#editing-data-and-semantic-types) (for example, changing a text type to a date type).
+برای برخی فیلدها، می‌توانید به متابیس بگویید که [فیلد را به یک نوع دادهٔ متفاوت cast کند](#editing-data-and-semantic-types) (مثلاً تغییر یک نوع متن به یک نوع تاریخ).
 
-## Semantic types
+## انواع معنایی
 
-You can think of semantic types as adding meaning and context to a field to communicate its purpose and enable [additional functionality](#what-data-and-semantic-types-enable). Available semantic types depend on the underlying data types.
+می‌توانید انواع معنایی را به‌عنوان اضافه کردن معنا و بافت به یک فیلد برای ارتباط هدف آن و فعال کردن [عملکرد اضافی](#what-data-and-semantic-types-enable) در نظر بگیرید. انواع معنایی در دسترس بستگی به انواع داده زیربنایی دارد.
 
-### Semantic types for any field
+### انواع معنایی برای هر فیلد
 
-- **Entity key.** Used to indicate that the field uniquely identifies each row. Could be a Product ID, serial number, etc.
+- **Entity key.** برای نشان دادن اینکه فیلد هر ردیف را به‌طور منحصر به فرد شناسایی می‌کند استفاده می‌شود. می‌تواند یک Product ID، شماره سریال، و غیره باشد.
 
-- **Foreign key.** Used to refer to an Entity key of another table to connect data from different tables that are related. For example, in a Products table, you might have a Customer ID field that points to a Customers table, where Customer ID is the Entity key. If you want to use [linked filters on dashboards](../dashboards/linked-filters.md), you must set up foreign key relationships.
+- **Foreign key.** برای ارجاع به یک Entity key جدول دیگر برای اتصال داده از جداول مختلف که مرتبط هستند استفاده می‌شود. به‌عنوان مثال، در یک جدول Products، ممکن است یک فیلد Customer ID داشته باشید که به یک جدول Customers اشاره می‌کند، جایی که Customer ID کلید Entity است. اگر می‌خواهید از [فیلترهای متصل در داشبوردها](../dashboards/linked-filters.md) استفاده کنید، باید روابط foreign key را تنظیم کنید.
 
-### Semantic types for numeric fields
+### انواع معنایی برای فیلدهای عددی
 
 - Quantity
 - Score
@@ -58,7 +58,7 @@ You can think of semantic types as adding meaning and context to a field to comm
   - Longitude
 - Category
 
-### Semantic types for temporal fields
+### انواع معنایی برای فیلدهای زمانی
 
 - Creation date
 - Creation time
@@ -68,7 +68,7 @@ You can think of semantic types as adding meaning and context to a field to comm
 - Joined timestamp
 - Birthday
 
-### Semantic types for text fields
+### انواع معنایی برای فیلدهای متنی
 
 - Entity name
 - Email
@@ -87,100 +87,100 @@ You can think of semantic types as adding meaning and context to a field to comm
   - Country
   - ZipCode
 
-### Semantic types for collection fields
+### انواع معنایی برای فیلدهای Collection
 
 - Field containing JSON.
 
-  See [Working with JSON](./json-unfolding.md).
+  به [کار با JSON](./json-unfolding.md) مراجعه کنید.
 
-## Editing data and semantic types
+## ویرایش انواع داده و معنایی
 
-Admins, and people with [permission to manage table metadata](../permissions/data.md#manage-table-metadata-permissions), can cast data types and edit semantic types in the Admin settings' Table Metadata tab.
+ادمین‌ها، و افرادی با [مجوز مدیریت ابردادهٔ جدول](../permissions/data.md#manage-table-metadata-permissions)، می‌توانند انواع داده را cast کنند و انواع معنایی را در تب Table Metadata تنظیمات Admin ویرایش کنند.
 
-### Cast data types
+### Cast انواع داده
 
-Data types can't be edited in Metabase directly, but you can cast certain [data types to different types](./metadata-editing.md#cast-to-a-specific-data-type) so that, for example, Metabase will interpret a text data type as a date type.
+انواع داده را نمی‌توان مستقیماً در متابیس ویرایش کرد، اما می‌توانید انواع دادهٔ خاص را [به انواع متفاوت cast کنید](./metadata-editing.md#cast-to-a-specific-data-type) تا، به‌عنوان مثال، متابیس یک نوع دادهٔ متن را به‌عنوان یک نوع تاریخ تفسیر کند.
 
-Changes made in Table Metadata apply across your entire Metabase. However, if you build a query in the query builder, you can use type casting custom expressions like [`date()`](../questions/query-builder/expressions-list.md#date) or [`integer()`](../questions/query-builder/expressions-list.md#integer) to cast a string to a different type just in your query.
+تغییرات ایجادشده در Table Metadata در سراسر متابیس شما اعمال می‌شوند. با این حال، اگر یک کوئری در query builder می‌سازید، می‌توانید از عبارات سفارشی cast نوع مثل [`date()`](../questions/query-builder/expressions-list.md#date) یا [`integer()`](../questions/query-builder/expressions-list.md#integer) برای cast کردن یک رشته به یک نوع متفاوت فقط در کوئری خود استفاده کنید.
 
-### Semantic types don't change the data types
+### انواع معنایی انواع داده را تغییر نمی‌دهند
 
-You can pick a semantic type compatible with the underlying data type in [table metadata settings](./metadata-editing.md#semantic-type).
+می‌توانید یک نوع معنایی سازگار با نوع داده زیربنایی را در [تنظیمات ابردادهٔ جدول](./metadata-editing.md#semantic-type) انتخاب کنید.
 
-Semantic types only add meaning; they should not be used for type casting. For example, if you set a text field's semantic type to "Quantity", Metabase will still treat the field as a text field. Instead, apply semantic types to tell Metabase how to format or visualize the field (like telling Metabase that a numeric value represents a percentage).
+انواع معنایی فقط معنا اضافه می‌کنند؛ نباید برای cast نوع استفاده شوند. به‌عنوان مثال، اگر نوع معنایی یک فیلد متن را به "Quantity" تنظیم کنید، متابیس همچنان فیلد را به‌عنوان یک فیلد متن در نظر می‌گیرد. در عوض، انواع معنایی را اعمال کنید تا به متابیس بگویید چگونه فیلد را فرمت یا ویژوالیزه کند (مثل گفتن به متابیس که یک مقدار عددی یک درصد را نشان می‌دهد).
 
-## What data and semantic types enable
+## آنچه انواع داده و معنایی فعال می‌کنند
 
-### Display format
+### فرمت نمایش
 
-Some semantic types change the way the data in the field is displayed.
+برخی انواع معنایی نحوهٔ نمایش داده در فیلد را تغییر می‌دهند.
 
-Formatting settings from Table Metadata settings will be applied across your Metabase, but people can change them for individual charts.
+تنظیمات قالب‌بندی از تنظیمات Table Metadata در سراسر متابیس شما اعمال می‌شوند، اما افراد می‌توانند آن‌ها را برای نمودارهای جداگانه تغییر دهند.
 
-| Semantic type          | Format                                                                                                                                                                                                                                                                   |
+| نوع معنایی          | فرمت                                                                                                                                                                                                                                                                   |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Percentage             | Displayed as percentage, for example 0.75 will be displayed as 75%                                                                                                                                                                                                       |
-| Currency               | On charts and in detail view, the values are prepended by the currency symbol, e.g., `$134.65`. By default in the table view, the currency symbol is only displayed in the header, but you can change the metadata formatting settings to show the symbol for every row. |
-| Latitude/Longitude     | Displayed as coordinates, e.g., `0.00000000° N`                                                                                                                                                                                                                          |
-| Email                  | Display as a `mailto` link                                                                                                                                                                                                                                               |
-| URL                    | Can format as a clickable link                                                                                                                                                                                                                                           |
-| Image URL              | Can display as an image. See [table format settings](../questions/visualizations/table.md#display-as)                                                                                                                                                                    |
-| Avatar URL             | Can display as avatar circle image. See [table format settings](../questions/visualizations/table.md#display-as)                                                                                                                                                         |
-| Field containing JSON  | In detail view, display as prettified JSON                                                                                                                                                                                                                               |
-| Entity and Foreign key | Highlighted in table view                                                                                                                                                                                                                                                |
+| Percentage             | به‌صورت درصد نمایش داده می‌شود، مثلاً 0.75 به‌صورت 75% نمایش داده می‌شود                                                                                                                                                                                                       |
+| Currency               | در نمودارها و در نمای جزئیات، مقادیر با نماد ارز prefix می‌شوند، مثلاً `$134.65`. به‌طور پیش‌فرض در نمای جدول، نماد ارز فقط در هدر نمایش داده می‌شود، اما می‌توانید تنظیمات قالب‌بندی ابرداده را تغییر دهید تا نماد را برای هر ردیف نمایش دهد. |
+| Latitude/Longitude     | به‌صورت مختصات نمایش داده می‌شود، مثلاً `0.00000000° N`                                                                                                                                                                                                                          |
+| Email                  | به‌صورت یک لینک `mailto` نمایش دهید                                                                                                                                                                                                                                               |
+| URL                    | می‌تواند به‌صورت یک لینک قابل کلیک فرمت شود                                                                                                                                                                                                                                           |
+| Image URL              | می‌تواند به‌صورت تصویر نمایش داده شود. به [تنظیمات فرمت جدول](../questions/visualizations/table.md#display-as) مراجعه کنید                                                                                                                                                                    |
+| Avatar URL             | می‌تواند به‌صورت تصویر دایره‌ای avatar نمایش داده شود. به [تنظیمات فرمت جدول](../questions/visualizations/table.md#display-as) مراجعه کنید                                                                                                                                                         |
+| Field containing JSON  | در نمای جزئیات، به‌صورت JSON prettified نمایش دهید                                                                                                                                                                                                                               |
+| Entity and Foreign key | در نمای جدول برجسته می‌شوند                                                                                                                                                                                                                                                |
 
-### Visualizations
+### ویژوالیزیشن‌ها
 
-When you create a question in the query builder, Metabase will automatically choose the most suitable chart for you based on the data types and the semantic types of the field in the "Group by" step (you can change the chart type later).
+وقتی یک سؤال در query builder ایجاد می‌کنید، متابیس به‌طور خودکار مناسب‌ترین نمودار را برای شما بر اساس انواع داده و انواع معنایی فیلد در مرحله "Group by" انتخاب می‌کند (می‌توانید نوع نمودار را بعداً تغییر دهید).
 
-| Group by data type   | Automatic chart |
+| Group by نوع داده   | نمودار خودکار |
 | -------------------- | --------------- |
-| Text/Category        | Bar chart       |
-| Temporal             | Line chart      |
-| Numeric - binned     | Bar chart       |
-| Numeric - not binned | Table           |
-| Boolean              | Bar chart       |
-| No aggregation       | Table           |
+| Text/Category        | نمودار ستونی       |
+| Temporal             | نمودار خطی      |
+| Numeric - binned     | نمودار ستونی       |
+| Numeric - not binned | جدول           |
+| Boolean              | نمودار ستونی       |
+| No aggregation       | جدول           |
 
-Additionally, if you use location semantic types:
+علاوه بر این، اگر از انواع معنایی مکان استفاده می‌کنید:
 
-| Group by semantic type          | Functionality            |
+| Group by نوع معنایی          | عملکرد            |
 | ------------------------------- | ------------------------ |
-| Latitude/Longitude - binned     | Grid map                 |
-| Latitude/longitude - not binned | Pin map                  |
-| Country                         | World region map         |
-| State                           | United States region map |
+| Latitude/Longitude - binned     | نقشه شبکه                 |
+| Latitude/longitude - not binned | نقشه پین                  |
+| Country                         | نقشه منطقه جهان         |
+| State                           | نقشه منطقه ایالات متحده |
 
-### Extract values from columns
+### استخراج مقادیر از ستون‌ها
 
-For some fields, you can quickly extract values from columns using [shortcuts in table view](../questions/visualizations/table.md#extract-domain-subdomain-host-or-path) or in the [custom expression editor](../questions/query-builder/expressions.md) in the query builder:
+برای برخی فیلدها، می‌توانید به سرعت مقادیر را از ستون‌ها با استفاده از [میانبرها در نمای جدول](../questions/visualizations/table.md#extract-domain-subdomain-host-or-path) یا در [ویرایشگر عبارت سفارشی](../questions/query-builder/expressions.md) در query builder استخراج کنید:
 
-| Group by data type  | Extract                                 |
+| Group by نوع داده  | استخراج                                 |
 | ------------------- | --------------------------------------- |
-| URL semantic types  | Extract host, domain, subdomain, path   |
-| Email semantic type | Extract host, domain                    |
-| Temporal data types | Extract date parts like month, day, etc |
+| URL انواع معنایی  | استخراج host، domain، subdomain، path   |
+| Email نوع معنایی | استخراج host، domain                    |
+| Temporal انواع داده | استخراج قسمت‌های تاریخ مثل ماه، روز، و غیره |
 
-### X-rays
+### X-rayها
 
-When you [X-ray](../exploration-and-organization/x-rays.md) a table, model, or entity, Metabase considers both the data type and the field type to display different charts that summarize that data.
+وقتی یک جدول، مدل، یا entity را [X-ray](../exploration-and-organization/x-rays.md) می‌کنید، متابیس هم نوع داده و هم نوع فیلد را در نظر می‌گیرد تا نمودارهای مختلفی که آن داده را خلاصه می‌کنند نمایش دهد.
 
-### Field Filters
+### فیلترهای فیلد
 
-Knowing what field types are and how they work is helpful when using [field filters](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/field-filters), as you can only create field filters for [certain field types](../questions/native-editor/field-filters.md#when-to-use-a-field-filter-variable-vs-a-basic-variable).
+دانستن اینکه انواع فیلد چیستند و چگونه کار می‌کنند هنگام استفاده از [فیلترهای فیلد](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/field-filters) مفید است، چون فقط می‌توانید فیلترهای فیلد را برای [انواع فیلد خاص](../questions/native-editor/field-filters.md#when-to-use-a-field-filter-variable-vs-a-basic-variable) ایجاد کنید.
 
-### JSON unfolding
+### باز کردن JSON
 
-See [Working with JSON](./json-unfolding.md).
+به [کار با JSON](./json-unfolding.md) مراجعه کنید.
 
-## Set semantic types in models to enable people to explore results with the query builder
+## تنظیم انواع معنایی در مدل‌ها برای فعال کردن کاوش نتایج با query builder
 
-You can set field types for [models](./models.md), which helps Metabase understand how to work with data in models built using SQL. If you set each column type in a SQL model, people will be able to explore that model using the query builder and drill-through menus.
+می‌توانید انواع فیلد را برای [مدل‌ها](./models.md) تنظیم کنید، که به متابیس کمک می‌کند بفهمد چگونه با داده در مدل‌های ساخته‌شده با SQL کار کند. اگر هر نوع ستون را در یک مدل SQL تنظیم کنید، افراد قادر خواهند بود آن مدل را با استفاده از query builder و منوهای drill-through کاوش کنند.
 
-With records that include integer entity keys, you can also configure text fields in models to [surface individual records in search](./models.md#surface-individual-records-in-search-by-matching-against-this-column).
+با رکوردهایی که شامل کلیدهای entity عدد صحیح هستند، همچنین می‌توانید فیلدهای متنی در مدل‌ها را پیکربندی کنید تا [رکوردهای جداگانه را در جستجو نمایش دهند](./models.md#surface-individual-records-in-search-by-matching-against-this-column).
 
-## Further Reading
+## مطالعهٔ بیشتر
 
-- [Exploring data with Metabase's data browser](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/data-browser).
-- [The Table Metadata page: editing metadata](./metadata-editing.md).
-- [Field Filters: create smart filter widgets for SQL questions](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/field-filters).
+- [کاوش داده با مرورگر داده متابیس](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/data-browser).
+- [صفحهٔ Table Metadata: ویرایش ابرداده](./metadata-editing.md).
+- [فیلترهای فیلد: ایجاد ویجت‌های فیلتر هوشمند برای سؤال‌های SQL](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/field-filters).

@@ -1,73 +1,73 @@
 ---
-title: Model persistence
+title: پایداری مدل
 ---
 
-# Model persistence
+# پایداری مدل
 
-> Currently available for PostgreSQL, MySQL, and Redshift.
+> در حال حاضر برای PostgreSQL، MySQL، و Redshift در دسترس است.
 
-Metabase can persist the results of your models so that your models (and the questions based on those models) load faster.
+متابیس می‌تواند نتایج مدل‌های شما را پایدار کند تا مدل‌های شما (و سؤال‌های مبتنی بر آن مدل‌ها) سریع‌تر بارگذاری شوند.
 
-Metabase will store model results in tables in a bespoke schema in your data warehouse (not the Metabase application database). When people ask questions based on your models, Metabase will use the tables with the stored results instead of re-running the model's query.
+متابیس نتایج مدل را در جداول در یک schema سفارشی در انبار دادهٔ شما (نه پایگاه دادهٔ اپلیکیشن متابیس) ذخیره می‌کند. وقتی افراد سؤال‌هایی بر اساس مدل‌های شما می‌پرسند، متابیس از جداول با نتایج ذخیره‌شده استفاده می‌کند به جای اجرای مجدد کوئری مدل.
 
-> Model persistence doesn't work with [row and column security](../permissions/row-and-column-security.md) or [impersonation](../permissions/impersonation.md).
+> پایداری مدل با [امنیت ردیف و ستون](../permissions/row-and-column-security.md) یا [جعل هویت](../permissions/impersonation.md) کار نمی‌کند.
 
-## Turn on model persistence in Metabase
+## روشن کردن پایداری مدل در متابیس
 
-To persist models for faster loading, you'll need to turn on model persistence for:
+برای پایدار کردن مدل‌ها برای بارگذاری سریع‌تر، باید پایداری مدل را برای موارد زیر روشن کنید:
 
-1. [Your Metabase](#turn-on-model-persistence-for-your-metabase)
-2. [Individual databases](#turn-on-model-persistence-for-each-database)
-3. [(Optional) individual models](#turn-on-model-persistence-for-individual-models)
+1. [متابیس شما](#turn-on-model-persistence-for-your-metabase)
+2. [پایگاه‌داده‌های جداگانه](#turn-on-model-persistence-for-each-database)
+3. [(اختیاری) مدل‌های جداگانه](#turn-on-model-persistence-for-individual-models)
 
-### Turn on model persistence for your Metabase
+### روشن کردن پایداری مدل برای متابیس شما
 
-To turn on model persistence for your Metabase, go to **Admin settings** > **Performance** > **Model persistence**.
+برای روشن کردن پایداری مدل برای متابیس شما، به **Admin settings** > **Performance** > **Model persistence** بروید.
 
-You can set models to refresh based on one of the default frequencies (every 1 hour, 2 hours, etc.), or select the **Custom** option to use [cron syntax](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) to specify your own update frequency.
+می‌توانید مدل‌ها را طوری تنظیم کنید که بر اساس یکی از فرکانس‌های پیش‌فرض (هر 1 ساعت، 2 ساعت، و غیره) به‌روزرسانی شوند، یا گزینهٔ **Custom** را انتخاب کنید تا از [syntax cron](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) برای مشخص کردن فرکانس به‌روزرسانی خود استفاده کنید.
 
-The cron scheduler uses the [Report Timezone](../configuring-metabase/localization.md#report-timezone) if selected. Otherwise the scheduler will use the System Timezone (which defaults to GMT in [Metabase Cloud](https://www.metabase.com/cloud/)).
+زمان‌بند cron از [Report Timezone](../configuring-metabase/localization.md#report-timezone) استفاده می‌کند اگر انتخاب شده باشد. در غیر این صورت زمان‌بند از System Timezone استفاده می‌کند (که به‌طور پیش‌فرض GMT در [Metabase Cloud](https://www.metabase.com/cloud/) است).
 
-We recommend scheduling your models to refresh on a frequency that makes sense with how often your source tables update with new data.
+توصیه می‌کنیم مدل‌هایتان را طوری زمان‌بندی کنید که با فرکانسی که جداول منبع شما با دادهٔ جدید به‌روزرسانی می‌شوند منطقی باشد به‌روزرسانی شوند.
 
-If someone [changes the query definition of a model](./models.md#edit-a-models-query), any question based on that model will re-run the model's query until the next scheduled model refresh.
+اگر کسی [تعریف کوئری یک مدل را تغییر دهد](./models.md#edit-a-models-query)، هر سؤالی بر اساس آن مدل کوئری مدل را دوباره اجرا می‌کند تا به‌روزرسانی برنامه‌ریزی‌شدهٔ بعدی مدل.
 
-## Turn on model persistence for each database
+## روشن کردن پایداری مدل برای هر پایگاه داده
 
-Once you've turned on model persistence for your Metabase, you'll need to set it up for each specific database, as Metabase will need to create a schema in your data warehouse to store the persisted models.
+بعد از اینکه پایداری مدل را برای متابیس خود روشن کردید، باید آن را برای هر پایگاه دادهٔ خاص تنظیم کنید، چون متابیس نیاز دارد یک schema در انبار دادهٔ شما ایجاد کند تا مدل‌های پایدارشده را ذخیره کند.
 
-1. Go to **Admin settings** > **Databases** > [your database] > **Turn model persistence on**. If the credentials you've given Metabase to connect to your database are permissive, Metabase should do all the work for you: Metabase will check if the schema already exists, or otherwise attempt to create it. If the connection's credentials _lack_ the necessary permissions to create the schema in your database, you'll need to create the schema in the database yourself.
+1. به **Admin settings** > **Databases** > [پایگاه داده شما] > **Turn model persistence on** بروید. اگر اعتبارنامه‌هایی که به متابیس داده‌اید برای اتصال به پایگاه داده شما مجاز هستند، متابیس باید تمام کار را برای شما انجام دهد: متابیس بررسی می‌کند که آیا schema از قبل وجود دارد، یا در غیر این صورت سعی می‌کند آن را ایجاد کند. اگر اعتبارنامه‌های اتصال _فاقد_ مجوزهای لازم برای ایجاد schema در پایگاه داده شما هستند، باید خودتان schema را در پایگاه داده ایجاد کنید.
 
-2. To manually create the schema in your data warehouse, click on the **info icon** to get the schema name.
+2. برای ایجاد دستی schema در انبار داده خود، روی **آیکون info** کلیک کنید تا نام schema را دریافت کنید.
 
-3. Create the schema in your database---make sure you use the exact schema name from step 1. For example, if you're running PostgreSQL as your data warehouse, you'd create the schema by running `CREATE SCHEMA IF NOT EXISTS schema_name`, with `schema_name` being whatever Metabase showed you in the info icon.
+3. schema را در پایگاه داده خود ایجاد کنید---مطمئن شوید که از نام schema دقیق از مرحله 1 استفاده می‌کنید. به‌عنوان مثال، اگر PostgreSQL را به‌عنوان انبار داده خود اجرا می‌کنید، schema را با اجرای `CREATE SCHEMA IF NOT EXISTS schema_name` ایجاد می‌کنید، با `schema_name` هر چیزی که متابیس در آیکون info به شما نشان داد.
 
-4. Ensure that the credentials Metabase uses to connect to your data warehouse can manage and write to that schema.
+4. مطمئن شوید که اعتبارنامه‌هایی که متابیس برای اتصال به انبار داده شما استفاده می‌کند می‌توانند آن schema را مدیریت کنند و به آن بنویسند.
 
-## Turn on model persistence for individual models
+## روشن کردن پایداری مدل برای مدل‌های جداگانه
 
 {% include plans-blockquote.html feature="Individual model persistence" %}
 
-You can also toggle persistence on or off for individual models. When viewing a model, click on the **...** in the upper right and select **Edit settings**. Toggle **Persist model data** on (you'll need [Curate access](../permissions/collections.md#curate-access) to the model's collection to do this).
+همچنین می‌توانید پایداری را برای مدل‌های جداگانه روشن یا خاموش کنید. هنگام مشاهدهٔ یک مدل، روی **...** در گوشهٔ بالا سمت راست کلیک کنید و **Edit settings** را انتخاب کنید. **Persist model data** را toggle کنید (برای انجام این کار نیاز به [دسترسی Curate](../permissions/collections.md#curate-access) به کلکسیون مدل دارید).
 
-Toggling persistence for individual models is useful for models with data that updates at different frequencies than the schedule you set for other models in that database, or for models that are used more or less than other models in that database.
+Toggle کردن پایداری برای مدل‌های جداگانه برای مدل‌هایی با داده که با فرکانس متفاوت از برنامه‌ای که برای مدل‌های دیگر در آن پایگاه داده تنظیم کرده‌اید به‌روزرسانی می‌شوند، یا برای مدل‌هایی که بیشتر یا کمتر از مدل‌های دیگر در آن پایگاه داده استفاده می‌شوند مفید است.
 
-## Refreshing a model's persisted results
+## به‌روزرسانی نتایج پایدارشدهٔ یک مدل
 
-To refresh a model's results, go to the model and click on the three-dot menu (**...**) and select **Edit settings**. In the info sidebar that opens, you'll see a note about when Metabase last refreshed the model's results, and an icon to refresh the results.
+برای به‌روزرسانی نتایج یک مدل، به مدل بروید و روی منوی سه نقطه (**...**) کلیک کنید و **Edit settings** را انتخاب کنید. در نوار کناری info که باز می‌شود، یادداشتی دربارهٔ زمانی که متابیس آخرین بار نتایج مدل را به‌روزرسانی کرد می‌بینید، و یک آیکون برای به‌روزرسانی نتایج.
 
-## View model persistence logs
+## مشاهدهٔ لاگ‌های پایداری مدل
 
-You can view the logs for model persistence by clicking on the **gear** icon in the upper right and selecting **Admin settings** > **Tools** > **Model caching logs**. See [Admin tools](../usage-and-performance-tools/tools.md).
+می‌توانید لاگ‌های پایداری مدل را با کلیک روی **آیکون gear** در گوشهٔ بالا سمت راست و انتخاب **Admin settings** > **Tools** > **Model caching logs** مشاهده کنید. به [ابزارهای ادمین](../usage-and-performance-tools/tools.md) مراجعه کنید.
 
-## Difference between persisted models and caching
+## تفاوت بین مدل‌های پایدارشده و کش
 
-Persisted models differ from [cached results](../configuring-metabase/caching.md):
+مدل‌های پایدارشده با [نتایج کش‌شده](../configuring-metabase/caching.md) متفاوت هستند:
 
-- **Models are persisted in your data warehouse; cached results are stored in the application database**. Metabase stores cached results in its application database. Metabase persists models in your connected data warehouse as tables.
-- **Metabase refreshes model results and invalidates cached results**. Metabase will refresh results of models according to the schedule you set. That is, Metabase will re-run the model's query and store the results in your data warehouse. For cached results of saved questions and dashboards, Metabase won't run the queries automatically; it will cache results when people view the question or dashboard, and invalidate the cached results according to the caching policy you set.
+- **مدل‌ها در انبار داده شما پایدار می‌شوند؛ نتایج کش‌شده در پایگاه داده اپلیکیشن ذخیره می‌شوند**. متابیس نتایج کش‌شده را در پایگاه داده اپلیکیشن خود ذخیره می‌کند. متابیس مدل‌ها را در انبار داده متصل شما به‌عنوان جداول پایدار می‌کند.
+- **متابیس نتایج مدل را به‌روزرسانی می‌کند و نتایج کش‌شده را باطل می‌کند**. متابیس نتایج مدل‌ها را طبق برنامه‌ای که تنظیم می‌کنید به‌روزرسانی می‌کند. یعنی متابیس کوئری مدل را دوباره اجرا می‌کند و نتایج را در انبار داده شما ذخیره می‌کند. برای نتایج کش‌شدهٔ سؤال‌ها و داشبوردهای ذخیره‌شده، متابیس کوئری‌ها را به‌طور خودکار اجرا نمی‌کند؛ وقتی افراد سؤال یا داشبورد را مشاهده می‌کنند نتایج را کش می‌کند، و نتایج کش‌شده را طبق سیاست کش‌ای که تنظیم می‌کنید باطل می‌کند.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Models](./models.md)
-- [Caching policies](../configuring-metabase/caching.md)
+- [مدل‌ها](./models.md)
+- [سیاست‌های کش](../configuring-metabase/caching.md)

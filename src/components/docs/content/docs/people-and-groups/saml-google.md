@@ -1,71 +1,71 @@
 ---
-title: SAML with Google
+title: SAML با Google
 redirect_from:
   - /docs/latest/enterprise-guide/saml-google
 ---
 
-# SAML with Google
+# SAML با Google
 
 {% include plans-blockquote.html feature="Google SAML authentication" %}
 
-1. Set up a [custom SAML app](https://support.google.com/a/answer/6087519) in your [Google admin console](https://admin.google.com).
-2. As you follow Google's instructions, you'll need to:
+1. یک [اپلیکیشن SAML سفارشی](https://support.google.com/a/answer/6087519) در [کنسول ادمین Google](https://admin.google.com) تنظیم کنید.
+2. همانطور که دستورالعمل‌های Google را دنبال می‌کنید، باید:
 
-- [Save information about Google for Metabase](#saving-google-idp-info-for-metabase).
-- [Provide Google info to Metabase](#filling-out-the-metabase-saml-form).
-- [Provide Metabase info to Google ](#filling-out-service-provider-details).
-- [Set up attribute mappings in Google](#setting-up-attribute-mappings).
+- [اطلاعات دربارهٔ Google را برای متابیس ذخیره کنید](#saving-google-idp-info-for-metabase).
+- [اطلاعات Google را به متابیس ارائه دهید](#filling-out-the-metabase-saml-form).
+- [اطلاعات متابیس را به Google ارائه دهید](#filling-out-service-provider-details).
+- [نگاشت‌های ویژگی را در Google تنظیم کنید](#setting-up-attribute-mappings).
 
-See [authenticating with SAML](./authenticating-with-saml.md) for general SAML info.
+به [احراز هویت با SAML](./authenticating-with-saml.md) برای اطلاعات عمومی SAML مراجعه کنید.
 
-## Saving Google IdP info for Metabase
+## ذخیره اطلاعات IdP Google برای متابیس
 
-On the **Google Identity Provider details** page:
+در صفحه **Google Identity Provider details**:
 
-1. Download the **IdP metadata**.
-2. Copy the **SSO URL**.
-3. Download the **certificate**.
+1. **IdP metadata** را دانلود کنید.
+2. **SSO URL** را کپی کنید.
+3. **certificate** را دانلود کنید.
 
-## Filling out the Metabase SAML form
+## پر کردن فرم SAML متابیس
 
-1. From your Google **IdP metadata**, locate the **issuer**.
-   - The **issuer** looks like this: `https://accounts.google.com/o/saml2/`.
-2. Go to your Metabase SAML form (**Admin settings** > **Authentication** > **SAML**).
-3. Put the **issuer** in the Metabase **SAML Identity Provider Issuer** field.
-4. Put the **SSO URL** in the Metabase **SAML Identity Provider URL** field.
-5. Paste the **certificate** in the Metabase **SAML Identity Provider Certificate** field.
+1. از **IdP metadata** Google خود، **issuer** را پیدا کنید.
+   - **issuer** شبیه این است: `https://accounts.google.com/o/saml2/`.
+2. به فرم SAML متابیس خود بروید (**Admin settings** > **Authentication** > **SAML**).
+3. **issuer** را در فیلد **SAML Identity Provider Issuer** متابیس قرار دهید.
+4. **SSO URL** را در فیلد **SAML Identity Provider URL** متابیس قرار دهید.
+5. **certificate** را در فیلد **SAML Identity Provider Certificate** متابیس paste کنید.
 
-- Make sure to include any header and footer comments (like `---BEGIN CERTIFICATE---`).
+- مطمئن شوید که هر کامنت header و footer (مثل `---BEGIN CERTIFICATE---`) را شامل می‌شود.
 
-## Filling out service provider details
+## پر کردن جزئیات ارائه‌دهنده سرویس
 
-On the **Service provider details** page:
+در صفحه **Service provider details**:
 
-1. Put the Metabase **URL the IdP should redirect to** in the Google **ACS URL** field.
-2. Put the Metabase **SAML Application Name** in the Google **Entity ID** field.
-   - The **SAML Application Name** can be anything you like (e.g., "yourcompany-metabase").
-3. **Start URL** and **Signed response** are optional fields.
+1. **URL the IdP should redirect to** متابیس را در فیلد **ACS URL** Google قرار دهید.
+2. **SAML Application Name** متابیس را در فیلد **Entity ID** Google قرار دهید.
+   - **SAML Application Name** می‌تواند هر چیزی که دوست دارید باشد (مثلاً "yourcompany-metabase").
+3. **Start URL** و **Signed response** فیلدهای اختیاری هستند.
 
-## Setting up attribute mappings
+## تنظیم نگاشت‌های ویژگی
 
-On the **Attribute mappings** page, you'll need to add "First name", "Last name", and "Email" as attributes, so that Google can pass them to Metabase during authentication.
+در صفحه **Attribute mappings**، باید "First name"، "Last name"، و "Email" را به‌عنوان ویژگی‌ها اضافه کنید، تا Google بتواند آن‌ها را هنگام احراز هویت به متابیس ارسال کند.
 
-For example, to add the attribute "First name":
+به‌عنوان مثال، برای اضافه کردن ویژگی "First name":
 
-1. Click **Add another mapping**.
-2. Under **Google Directory attributes**, choose **Basic information** > **First name** as the attribute field name.
-3. Go to your Metabase SAML form, and look for **SAML attributes** > **User's first name attribute**.
-   - The attribute looks like this: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
-4. Paste the **User's first name attribute** under your Google **App attributes**.
-5. Repeat steps 1-3 for the attributes "Last name" and "Email".
+1. روی **Add another mapping** کلیک کنید.
+2. زیر **Google Directory attributes**، **Basic information** > **First name** را به‌عنوان نام فیلد ویژگی انتخاب کنید.
+3. به فرم SAML متابیس خود بروید، و به دنبال **SAML attributes** > **User's first name attribute** بگردید.
+   - ویژگی شبیه این است: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+4. **User's first name attribute** را زیر **App attributes** Google خود paste کنید.
+5. مراحل 1-3 را برای ویژگی‌های "Last name" و "Email" تکرار کنید.
 
-## Setting up synchronize group membership
+## تنظیم همگام‌سازی عضویت گروه
 
-1. In Google Admin, you can EITHER:
-   - Set up a multi-value [custom user attribute](https://support.google.com/a/answer/6208725?hl=en#zippy=%2Cadd-a-new-custom-attribute) for your users. Recommended if you manage multiple SAML app permissions in Google or if you lack existing Google Groups that align with your desired Metabase groups.
-   - [Map to existing Google Groups](https://support.google.com/a/answer/11143403?hl=en).
-2. Follow the instructions for [Configuring the group schema](./authenticating-with-saml.md#configuring-the-group-schema-in-metabase) using the `App attribute` that you used in Google as the Group attribute name in Metabase.
+1. در Google Admin، می‌توانید یکی از این‌ها را انجام دهید:
+   - یک [ویژگی کاربر سفارشی چند مقداری](https://support.google.com/a/answer/6208725?hl=en#zippy=%2Cadd-a-new-custom-attribute) برای کاربران خود تنظیم کنید. توصیه می‌شود اگر چندین مجوز اپلیکیشن SAML را در Google مدیریت می‌کنید یا اگر Google Groups موجودی که با گروه‌های متابیس مورد نظر شما هم‌راستا هستند ندارید.
+   - [نگاشت به Google Groups موجود](https://support.google.com/a/answer/11143403?hl=en).
+2. دستورالعمل‌های [پیکربندی schema گروه](./authenticating-with-saml.md#configuring-the-group-schema-in-metabase) را با استفاده از `App attribute` که در Google استفاده کردید به‌عنوان نام ویژگی گروه در متابیس دنبال کنید.
 
-## Troubleshooting SAML issues
+## عیب‌یابی مشکلات SAML
 
-- [Troubleshooting SAML](../troubleshooting-guide/saml.md).
+- [عیب‌یابی SAML](../troubleshooting-guide/saml.md).

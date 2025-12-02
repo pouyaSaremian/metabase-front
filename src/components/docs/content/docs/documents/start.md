@@ -1,11 +1,11 @@
 ---
-title: "Documents overview"
+title: نمای کلی مستندات
 ---
 
-# Documents overview
+# نمای کلی مستندات
 
-Documents help you tell stories with data.
+مستندات به شما کمک می‌کنند با داده داستان بگویید.
 
-## [Create documents](./introduction.md)
+## [ایجاد مستندات](./introduction.md)
 
-Documents combine text and charts for short- or long-form analysis. Add charts from questions and models, and format text with Markdown.
+مستندات متن و نمودارها را برای تحلیل کوتاه یا بلند ترکیب می‌کنند. نمودارها را از سؤال‌ها و مدل‌ها اضافه کنید و متن را با Markdown فرمت کنید.

@@ -1,41 +1,41 @@
 ---
-title: "Data modeling overview"
+title: "نمای کلی مدل‌سازی داده"
 redirect_from:
   - /docs/latest/data-modeling
 ---
 
-# Data modeling overview
+# نمای کلی مدل‌سازی داده
 
-Metabase provides tools for organizing your data and making it easier for people to understand.
+متابیس ابزارهایی برای سازمان‌دهی داده‌هایتان و آسان‌تر کردن درک آن‌ها برای افراد ارائه می‌دهد.
 
-## [Models](./models.md)
+## [مدل‌ها](./models.md)
 
-Models curate data from another table or tables from the same database to anticipate the kinds of questions people will ask of the data. You can think of them as derived tables, or a special kind of saved question meant to be used as the starting point for new questions.
+مدل‌ها داده را از جدول یا جداول دیگر از همان پایگاه داده گردآوری می‌کنند تا انواع سؤال‌هایی که افراد از داده می‌پرسند را پیش‌بینی کنند. می‌توانید آن‌ها را به‌عنوان جداول مشتق‌شده، یا نوع خاصی از سؤال ذخیره‌شده در نظر بگیرید که قرار است به‌عنوان نقطهٔ شروع برای سؤال‌های جدید استفاده شود.
 
-## [Model persistence](./model-persistence.md)
+## [پایداری مدل](./model-persistence.md)
 
-Persist model results for faster loading times.
+نتایج مدل را برای زمان‌های بارگذاری سریع‌تر پایدار کنید.
 
-## [Metrics](./metrics.md)
+## [متریک‌ها](./metrics.md)
 
-Create metrics to define the official way to calculate important numbers for your team.
+متریک‌ها ایجاد کنید تا روش رسمی محاسبهٔ اعداد مهم برای تیمتان را تعریف کنید.
 
-## [Table metadata admin settings](./metadata-editing.md)
+## [تنظیمات ادمین ابردادهٔ جدول](./metadata-editing.md)
 
-Guide people to the right data by adding display names, hiding outdated tables, configuring filter types, and more.
+افراد را به دادهٔ درست راهنمایی کنید با اضافه کردن نام‌های نمایشی، مخفی کردن جداول منسوخ، پیکربندی انواع فیلتر، و بیشتر.
 
-## [Field types](./semantic-types.md)
+## [انواع فیلد](./semantic-types.md)
 
-Field types dictate how Metabase displays its data, as well as the column’s special functionality, if any.
+انواع فیلد نحوهٔ نمایش داده توسط متابیس را تعیین می‌کنند، و همچنین عملکرد خاص ستون، در صورت وجود.
 
-## [Setting default formatting for your data](./formatting.md)
+## [تنظیم فرمت پیش‌فرض برای داده‌هایتان](./formatting.md)
 
-Define formatting and display defaults for numbers, currencies, datetimes, and more.
+فرمت و پیش‌فرض‌های نمایش را برای اعداد، ارزها، datetimeها، و بیشتر تعریف کنید.
 
-## [Working with JSON](./json-unfolding.md)
+## [کار با JSON](./json-unfolding.md)
 
-Metabase can unfold JSON columns into their component fields, which you can then filter on using the query builder.
+متابیس می‌تواند ستون‌های JSON را به فیلدهای سازنده‌شان باز کند، که سپس می‌توانید با استفاده از query builder روی آن‌ها فیلتر کنید.
 
-## [Segments](./segments.md)
+## [سگمنت‌ها](./segments.md)
 
-Admins can define segments to create official filters for your data.
+ادمین‌ها می‌توانند سگمنت‌ها را برای ایجاد فیلترهای رسمی برای داده‌هایتان تعریف کنند.

@@ -1,32 +1,32 @@
 ---
-title: Troubleshooting connection timeouts
+title: عیب‌یابی timeoutهای اتصال
 ---
 
-# Troubleshooting connection timeouts
+# عیب‌یابی timeoutهای اتصال
 
-If your queries are hanging or timing out, the problem could be coming from your:
+اگر کوئری‌های شما hang می‌کنند یا timeout می‌شوند، مشکل ممکن است از این‌ها ناشی شود:
 
-- [Database connection](./db-connection.md)
+- [اتصال پایگاه داده](./db-connection.md)
 - Load balancer
-- Reverse proxy server (e.g., Nginx)
+- Reverse proxy server (مثلاً، Nginx)
 - Jetty
-- Cloud service
+- سرویس Cloud
 
-## Resources for common deployments
+## منابع برای deploymentهای رایج
 
-Fixes for timeout problems will depend on your specific setup. These resources may help:
+رفع مشکلات timeout به setup خاص شما بستگی دارد. این منابع ممکن است کمک کنند:
 
-- [Jetty connectors][configuring-jetty]
-- [EC2 Troubleshooting][ec2-troubleshooting]
-- [Elastic Load Balancing Connection Timeout Management][elb-timeout]
+- [اتصالات Jetty][configuring-jetty]
+- [عیب‌یابی EC2][ec2-troubleshooting]
+- [مدیریت Connection Timeout Elastic Load Balancing][elb-timeout]
 - [App Engine: Dealing with DeadlineExceededErrors][app-engine-timeout]
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community][discourse].
-- Search for [known bugs or limitations][known-issues].
+- در [انجمن متابیس][discourse] جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده][known-issues] جستجو کنید.
 
 [app-engine-timeout]: https://cloud.google.com/appengine/articles/deadlineexceedederrors
 [configuring-jetty]: https://jetty.org/docs/jetty/12/operations-guide/protocols/index.html

@@ -1,40 +1,40 @@
 ---
-title: SAML-based authentication
+title: احراز هویت مبتنی بر SAML
 redirect_from:
   - /docs/latest/enterprise-guide/authenticating-with-saml
 ---
 
-# SAML-based authentication
+# احراز هویت مبتنی بر SAML
 
 {% include plans-blockquote.html feature="SAML authentication" %}
 
-Integrating your SSO with Metabase allows you to:
+ادغام SSO شما با متابیس به شما امکان می‌دهد:
 
-- Provision a Metabase account when someone logs in to Metabase.
-- Automatically pass user attributes from your SSO to Metabase to power [row and column security](../permissions/row-and-column-security.md).
-- Let people access Metabase without re-authenticating.
+- یک حساب متابیس را وقتی کسی به متابیس وارد می‌شود provision کنید.
+- به‌طور خودکار ویژگی‌های کاربر را از SSO خود به متابیس ارسال کنید تا [امنیت ردیف و ستون](../permissions/row-and-column-security.md) را فعال کند.
+- به افراد امکان دسترسی به متابیس بدون احراز هویت مجدد بدهید.
 
-## Confirm the password for your Metabase admin account
+## تأیید رمز عبور برای حساب ادمین متابیس شما
 
-Before setting up SAML, make sure you know the password for your Metabase admin account. If you encounter any issues during the setup process, you can login via the "Admin backup login" option on the sign-in screen.
+قبل از تنظیم SAML، مطمئن شوید که رمز عبور حساب ادمین متابیس خود را می‌دانید. اگر در طول فرآیند تنظیم مشکلی مواجه شدید، می‌توانید از طریق گزینه "Admin backup login" در صفحه ورود وارد شوید.
 
-## Setting up SAML with your IdP in Metabase
+## تنظیم SAML با IdP خود در متابیس
 
-Once you've [confirmed the password to your Metabase admin account](#confirm-the-password-for-your-metabase-admin-account), head over to the **Settings** section of the Admin Panel, then click on the **Authentication** tab. Click the **Set up** button in the SAML section of the Authentication page, and you'll see this form:
+بعد از اینکه [رمز عبور حساب ادمین متابیس خود را تأیید کردید](#confirm-the-password-for-your-metabase-admin-account)، به بخش **Settings** از پنل Admin بروید، سپس روی تب **Authentication** کلیک کنید. روی دکمه **Set up** در بخش SAML از صفحه Authentication کلیک کنید، و این فرم را می‌بینید:
 
-![SAML form](images/saml-form.png)
+![فرم SAML](images/saml-form.png)
 
-The form includes three sections:
+فرم شامل سه بخش است:
 
-1. [Metabase info that you'll have to input into your identity provider (IdP)](#generic-saml-configuration).
-2. [IdP info that you'll need to tell Metabase about](#enabling-saml-authentication-in-metabase).
-3. [Signing SSO requests (optional)](#settings-for-signing-sso-requests-optional).
+1. [اطلاعات متابیس که باید در ارائه‌دهنده هویت (IdP) خود وارد کنید](#generic-saml-configuration).
+2. [اطلاعات IdP که باید به متابیس بگویید](#enabling-saml-authentication-in-metabase).
+3. [امضای درخواست‌های SSO (اختیاری)](#settings-for-signing-sso-requests-optional).
 
-## SAML guides
+## راهنماهای SAML
 
-First you'll need to make sure things are configured correctly with your IdP. Each IdP handles SAML setup differently.
+ابتدا باید مطمئن شوید که همه چیز با IdP خود به‌درستی پیکربندی شده است. هر IdP تنظیم SAML را متفاوت مدیریت می‌کند.
 
-We've written up some guides for the most common providers:
+ما برخی راهنماها برای رایج‌ترین ارائه‌دهندگان نوشته‌ایم:
 
 - [Auth0](saml-auth0.md)
 - [Microsoft Entra ID](saml-azure.md)
@@ -42,178 +42,178 @@ We've written up some guides for the most common providers:
 - [Keycloak](saml-keycloak.md)
 - [Okta](saml-okta.md)
 
-If you don't see your IdP listed here:
+اگر IdP خود را اینجا نمی‌بینید:
 
-- Refer to your IdP's reference docs on configuring SAML. You'll be looking for something like this [OneLogin SAML guide](https://onelogin.service-now.com/support?id=kb_article&sys_id=83f71bc3db1e9f0024c780c74b961970).
-- Using the information found on the Metabase SAML form, fill out your IdP's SAML form.
-- For more information, see the next section on [Generic SAML configuration](#generic-saml-configuration).
+- به مستندات مرجع IdP خود دربارهٔ پیکربندی SAML مراجعه کنید. به دنبال چیزی مثل این [راهنمای SAML OneLogin](https://onelogin.service-now.com/support?id=kb_article&sys_id=83f71bc3db1e9f0024c780c74b961970) می‌گردید.
+- با استفاده از اطلاعات یافت‌شده در فرم SAML متابیس، فرم SAML IdP خود را پر کنید.
+- برای اطلاعات بیشتر، به بخش بعدی دربارهٔ [پیکربندی SAML عمومی](#generic-saml-configuration) مراجعه کنید.
 
-## User provisioning
+## Provisioning کاربر
 
-By default, Metabase will create accounts for people who don't yet have a Metabase account but who are able to log in via SAML SSO.
+به‌طور پیش‌فرض، متابیس حساب‌هایی برای افرادی که هنوز حساب متابیس ندارند اما قادر به ورود از طریق SAML SSO هستند ایجاد می‌کند.
 
-If you've set up [User provisioning with SCIM](./user-provisioning.md), you'll want to turn this setting off so that Metabase doesn't automatically create a new account for anyone who authenticates successfully, as you may want to use SCIM to determine who can and can't create an account in Metabase.
+اگر [Provisioning کاربر با SCIM](./user-provisioning.md) را تنظیم کرده‌اید، می‌خواهید این تنظیم را خاموش کنید تا متابیس به‌طور خودکار یک حساب جدید برای هر کسی که با موفقیت احراز هویت می‌کند ایجاد نکند، چون ممکن است بخواهید از SCIM برای تعیین اینکه چه کسی می‌تواند و نمی‌تواند یک حساب در متابیس ایجاد کند استفاده کنید.
 
-## Generic SAML configuration
+## پیکربندی SAML عمومی
 
-The top portion of the SAML form in Metabase has the information you'll need to fill out your IdP's SAML form, with buttons to make copying the information easy.
+بخش بالای فرم SAML در متابیس اطلاعاتی دارد که باید فرم SAML IdP خود را پر کنید، با دکمه‌هایی برای آسان کردن کپی اطلاعات.
 
-The names of the fields in the Metabase SAML form won't always match the names used by your IdP. We've provided a description of each field below to help you map information from one place to another.
+نام‌های فیلدها در فرم SAML متابیس همیشه با نام‌های استفاده‌شده توسط IdP شما تطبیق ندارند. ما یک توضیح از هر فیلد در زیر ارائه داده‌ایم تا به شما کمک کند اطلاعات را از یک مکان به مکان دیگر نگاشت کنید.
 
-### URL the IdP should redirect back to
+### URL که IdP باید به آن redirect کند
 
-The redirect URL is the web address that people will be sent to after signing in with your IdP. To redirect people to your Metabase, your redirect URL should be your Metabase [Site URL](../configuring-metabase/settings.md#site-url), with `/auth/sso` at the end.
+URL redirect آدرس وب است که افراد بعد از ورود با IdP شما به آن ارسال می‌شوند. برای redirect افراد به متابیس شما، URL redirect شما باید [Site URL](../configuring-metabase/settings.md#site-url) متابیس شما باشد، با `/auth/sso` در انتها.
 
-For example, if your Metabase Site URL is `https://metabase.yourcompany.com`, you'll use
+به‌عنوان مثال، اگر Site URL متابیس شما `https://metabase.yourcompany.com` است، استفاده می‌کنید
 
 ```
 https://metabase.yourcompany.com/auth/sso
 ```
 
-as the redirect URL in your IdP's SAML form.
+به‌عنوان URL redirect در فرم SAML IdP خود.
 
-Different IdPs use different names for the redirect URL. Here are some common examples:
+IdPهای مختلف از نام‌های متفاوتی برای URL redirect استفاده می‌کنند. در اینجا برخی مثال‌های رایج:
 
-| Provider               | Name                     |
+| ارائه‌دهنده               | نام                     |
 | ---------------------- | ------------------------ |
 | [Auth0](saml-auth0.md) | Application Callback URL |
 | [Okta](saml-okta.md)   | Single Sign On URL       |
 | OneLogin               | ACS (Consumer) URL       |
 
-### User attributes
+### ویژگی‌های کاربر
 
-Metabase will automatically log in people who've been authenticated by your SAML identity provider. To do so, the first assertion returned in the identity provider's SAML response _must_ contain attributes for each person's first name, last name, and email.
+متابیس به‌طور خودکار افرادی که توسط ارائه‌دهنده هویت SAML شما احراز هویت شده‌اند را وارد می‌کند. برای انجام این کار، اولین assertion برگشتی در پاسخ SAML ارائه‌دهنده هویت _باید_ شامل ویژگی‌هایی برای نام، نام خانوادگی، و ایمیل هر شخص باشد.
 
-Most IdPs already include these assertions by default, but some (such as [Okta](./saml-okta.md)) must be configured to include them.
+بیشتر IdPها از قبل این assertionها را به‌طور پیش‌فرض شامل می‌شوند، اما برخی (مثل [Okta](./saml-okta.md)) باید پیکربندی شوند تا آن‌ها را شامل شوند.
 
-Generally you'll need to paste these user attributes (first name, last name, and email) into fields labelled "Name", "Attributes" or "Parameters".
+به‌طور کلی باید این ویژگی‌های کاربر (نام، نام خانوادگی، و ایمیل) را در فیلدهای برچسب‌خورده "Name"، "Attributes" یا "Parameters" paste کنید.
 
-> If you allow people to edit their email addresses: make sure to update the corresponding account emails in Metabase. Keeping email addresses in sync will protect people from losing access to their accounts.
+> اگر به افراد امکان ویرایش آدرس‌های ایمیل خود را می‌دهید: مطمئن شوید که ایمیل‌های حساب متناظر در متابیس را به‌روزرسانی کنید. نگه داشتن آدرس‌های ایمیل همگام‌شده از از دست دادن دسترسی افراد به حساب‌هایشان محافظت می‌کند.
 
-### Settings for signing SSO requests (optional)
+### تنظیمات برای امضای درخواست‌های SSO (اختیاری)
 
-These are additional settings you can fill in to sign SSO requests to ensure they don’t get tampered with.
+این تنظیمات اضافی هستند که می‌توانید پر کنید تا درخواست‌های SSO را امضا کنید تا اطمینان حاصل کنید که دستکاری نمی‌شوند.
 
-## Enabling SAML authentication in Metabase
+## فعال کردن احراز هویت SAML در متابیس
 
-Metabase will now need to know some things about your IdP. Here's a breakdown of each of the settings:
+متابیس حالا نیاز دارد برخی چیزها دربارهٔ IdP شما بداند. در اینجا تجزیه هر یک از تنظیمات:
 
-### SAML identity provider URL
+### URL ارائه‌دهنده هویت SAML
 
-Metabase will redirect login requests to the Identity Provider URL, where people will go to log in with SSO.
+متابیس درخواست‌های ورود را به URL ارائه‌دهنده هویت redirect می‌کند، جایی که افراد برای ورود با SSO می‌روند.
 
-Different IdPs use different names for the Identity Provider URL. Here are some common examples:
+IdPهای مختلف از نام‌های متفاوتی برای URL ارائه‌دهنده هویت استفاده می‌کنند. در اینجا برخی مثال‌های رایج:
 
-| Provider               | Name                                 |
+| ارائه‌دهنده               | نام                                 |
 | ---------------------- | ------------------------------------ |
 | [Auth0](saml-auth0.md) | Identity Provider Login URL          |
 | [Okta](saml-okta.md)   | Identity Provider Single-Sign On URL |
 | OneLogin               | SAML 2.0 Endpoint (HTTP)             |
 
-### SAML identity provider issuer
+### Issuer ارائه‌دهنده هویت SAML
 
-The SAML identity provider issuer is a unique identifier for the IdP. You might also see "Issuer" referred to as "Entity ID". Assertions from the IdP will contain this information, and Metabase will verify that the issuer matches the value you set.
+Issuer ارائه‌دهنده هویت SAML یک شناسه منحصر به فرد برای IdP است. همچنین ممکن است "Issuer" را به‌عنوان "Entity ID" ببینید. Assertionها از IdP این اطلاعات را شامل می‌شوند، و متابیس تأیید می‌کند که issuer با مقداری که تنظیم می‌کنید تطبیق دارد.
 
-We recommend that you set this value to make your SAML configuration more secure.
+توصیه می‌کنیم که این مقدار را تنظیم کنید تا پیکربندی SAML خود را امن‌تر کنید.
 
-| Provider               | Name                        |
+| ارائه‌دهنده               | نام                        |
 | ---------------------- | --------------------------- |
 | [Auth0](saml-auth0.md) | Identity Provider Login URL |
 | [Okta](saml-okta.md)   | Identity Provider Issuer    |
 | OneLogin               | Issuer URL                  |
 
-### SAML identity provider certificate
+### گواهی ارائه‌دهنده هویت SAML
 
-The SAML identity provider certificate is an encoded certificate that Metabase will use when connecting to the IdP URI. The certificate will look like a big blob of text that you'll want to copy and paste carefully — the spacing is important!
+گواهی ارائه‌دهنده هویت SAML یک گواهی encoded است که متابیس هنگام اتصال به URI IdP استفاده می‌کند. گواهی شبیه یک blob بزرگ متن خواهد بود که می‌خواهید با دقت کپی و paste کنید — فاصله‌گذاری مهم است!
 
-Your IdP might have you download this certificate as a file (usually `.cer` or `.pem`), which you'll then need to open up in a text editor to copy the contents to then paste into the box in Metabase.
+IdP شما ممکن است از شما بخواهد این گواهی را به‌عنوان یک فایل (معمولاً `.cer` یا `.pem`) دانلود کنید، که سپس باید در یک ویرایشگر متن باز کنید تا محتوا را کپی کنید و سپس در جعبه در متابیس paste کنید.
 
-Note that your certificate text may include header and footer comments that look like `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`. These comments should be included when pasting your certificate text into Metabase.
+توجه داشته باشید که متن گواهی شما ممکن است شامل کامنت‌های header و footer باشد که شبیه `-----BEGIN CERTIFICATE-----` و `-----END CERTIFICATE-----` هستند. این کامنت‌ها باید هنگام paste کردن متن گواهی در متابیس شامل شوند.
 
-| Provider               | Name                |
+| ارائه‌دهنده               | نام                |
 | ---------------------- | ------------------- |
 | [Auth0](saml-auth0.md) | Signing Certificate |
 | [Okta](saml-okta.md)   | X.509 Certificate   |
 | OneLogin               | X.509 Certificate   |
 
-### Settings for signing SSO requests (optional)
+### تنظیمات برای امضای درخواست‌های SSO (اختیاری)
 
-To sign request so that they can't be tampered with, you'll need to provide additional settings.
+برای امضای درخواست‌ها تا نتوانند دستکاری شوند، باید تنظیمات اضافی ارائه دهید.
 
-If your IdP encrypts SAML responses, you'll need to ensure this section is filled out.
+اگر IdP شما پاسخ‌های SAML را رمزگذاری می‌کند، باید مطمئن شوید که این بخش پر شده است.
 
-> If you change any of these settings, either during initial setup or after editing an existing value, you will need to restart Metabase due to the way the keystore file is read.
+> اگر هر یک از این تنظیمات را تغییر دهید، چه در طول تنظیم اولیه یا بعد از ویرایش یک مقدار موجود، باید به دلیل نحوه خواندن فایل keystore متابیس را راه‌اندازی مجدد کنید.
 
-- **SAML keystore path:** the absolute path to the keystore file to use for signing SAML requests.
-- **SAML keystore password:** the magic spell that will open the keystore.
-- **SAML keystore alias:** the alias for the key that Metabase should use for signing SAML requests.
+- **SAML keystore path:** مسیر مطلق به فایل keystore برای استفاده برای امضای درخواست‌های SAML.
+- **SAML keystore password:** طلسم جادویی که keystore را باز می‌کند.
+- **SAML keystore alias:** alias برای کلیدی که متابیس باید برای امضای درخواست‌های SAML استفاده کند.
 
-## SAML Single logout (SLO)
+## Single logout (SLO) SAML
 
-Metabase supports single logout (SLO) for SAML.
+متابیس از single logout (SLO) برای SAML پشتیبانی می‌کند.
 
-The endpoint for SLO: `/auth/sso/handle_slo`
+endpoint برای SLO: `/auth/sso/handle_slo`
 
-So if your Metabase is served at `metabase.example.com` the logout service POST binding URL would be:
+پس اگر متابیس شما در `metabase.example.com` سرو می‌شود URL سرویس logout POST binding این خواهد بود:
 
 ```
 https://metabase.example.com/auth/sso/handle_slo
 ```
 
-### Enable SAML SLO
+### فعال کردن SAML SLO
 
-SLO isn’t configurable from the Metabase interface. To enable it, you’ll need to set the following options using environment variables or your Metabase configuration file:
+SLO از رابط متابیس قابل پیکربندی نیست. برای فعال کردن آن، باید گزینه‌های زیر را با استفاده از متغیرهای محیطی یا فایل پیکربندی متابیس تنظیم کنید:
 
-- [`MB_SAML_SLO_ENABLED`](../configuring-metabase/environment-variables.md#mb_saml_slo_enabled) to `true`;
-- [`MB_SAML_IDENTITY_PROVIDER_URI`](../configuring-metabase/environment-variables.md#mb_saml_identity_provider_uri) to your IdP’s SLO endpoint;
-- [`MB_SESSION_COOKIE_SAMESITE`](../configuring-metabase/environment-variables.md#mb_session_cookie_samesite) to `none`.
+- [`MB_SAML_SLO_ENABLED`](../configuring-metabase/environment-variables.md#mb_saml_slo_enabled) به `true`؛
+- [`MB_SAML_IDENTITY_PROVIDER_URI`](../configuring-metabase/environment-variables.md#mb_saml_identity_provider_uri) به endpoint SLO IdP شما؛
+- [`MB_SESSION_COOKIE_SAMESITE`](../configuring-metabase/environment-variables.md#mb_session_cookie_samesite) به `none`.
 
-For the `MB_SESSION_COOKIE_SAMESITE` setting to work with `none`, Metabase must be served over HTTPS. Browsers like Chrome will block cookies in cross-site requests if SSL is not enabled. Without HTTPS, logout requests from your IdP (such as Okta) won’t include the session cookie, which means Metabase won’t be able to end the session properly.
+برای اینکه تنظیم `MB_SESSION_COOKIE_SAMESITE` با `none` کار کند، متابیس باید از طریق HTTPS سرو شود. مرورگرهایی مثل Chrome کوکی‌ها را در درخواست‌های cross-site مسدود می‌کنند اگر SSL فعال نباشد. بدون HTTPS، درخواست‌های logout از IdP شما (مثل Okta) کوکی نشست را شامل نمی‌شوند، که به این معنی است که متابیس نمی‌تواند نشست را به‌درستی پایان دهد.
 
-## Synchronizing group membership with your IdP
+## همگام‌سازی عضویت گروه با IdP شما
 
-This setting allows you to assign users to Metabase groups based on an attribute of your users in your IdP. This setting may not correlate to group functionality provided by your IdP; you may need to create a separate user attribute to set people's Metabase groups, like `metabaseGroups`.
+این تنظیم به شما امکان می‌دهد کاربران را به گروه‌های متابیس بر اساس یک ویژگی از کاربران شما در IdP اختصاص دهید. این تنظیم ممکن است با عملکرد گروه ارائه‌شده توسط IdP شما همبستگی نداشته باشد؛ ممکن است نیاز به ایجاد یک ویژگی کاربر جداگانه برای تنظیم گروه‌های متابیس افراد داشته باشید، مثل `metabaseGroups`.
 
-First, you will need to create a SAML user attribute that you will use to indicate which Metabase groups the person should be a part of. This created user attribute can be a XML string or a list of XML strings. Different IdPs have different ways of handling this, but you will likely need to edit your user profiles or find a way to map a user's groups to a list of Metabase group names.
+ابتدا، باید یک ویژگی کاربر SAML ایجاد کنید که از آن برای نشان دادن اینکه شخص باید بخشی از کدام گروه‌های متابیس باشد استفاده می‌کنید. این ویژگی کاربر ایجادشده می‌تواند یک رشته XML یا لیستی از رشته‌های XML باشد. IdPهای مختلف روش‌های متفاوتی برای مدیریت این دارند، اما احتمالاً نیاز به ویرایش پروفایل‌های کاربر یا پیدا کردن راهی برای نگاشت گروه‌های کاربر به لیستی از نام‌های گروه متابیس دارید.
 
-## Configuring the group schema in Metabase
+## پیکربندی schema گروه در متابیس
 
-Once you've gotten everything set up in your SAML provider, you'll need to configure the group schema in Metabase.
+بعد از اینکه همه چیز را در ارائه‌دهنده SAML خود تنظیم کردید، باید schema گروه را در متابیس پیکربندی کنید.
 
-1. Turn on the **Synchronize group memberships** setting.
-2. Click **Edit mappings**.
-3. Click **Create a mapping**.
-4. Enter in the name of one of the groups you entered as your `metabaseGroups` attribute values, then click the **Add** button.
-5. Click the dropdown that appears under the `Groups` heading to select the Metabase group(s) that users with this particular `metabaseGroups` value should be added to.
-6. Click **Save**.
-7. After that, type in the name of the user attribute you added in your SAML provider. In this case, we told Okta that the `metabaseGroups` attribute should be named `MetabaseGroupName`, so that's what we'll enter in the Group Attribute Name field in Metabase.
+1. تنظیم **Synchronize group memberships** را روشن کنید.
+2. روی **Edit mappings** کلیک کنید.
+3. روی **Create a mapping** کلیک کنید.
+4. نام یکی از گروه‌هایی که به‌عنوان مقادیر ویژگی `metabaseGroups` وارد کردید را وارد کنید، سپس روی دکمه **Add** کلیک کنید.
+5. روی منوی dropdown که زیر عنوان `Groups` ظاهر می‌شود کلیک کنید تا گروه(های) متابیس که کاربران با این مقدار خاص `metabaseGroups` باید به آن اضافه شوند را انتخاب کنید.
+6. روی **Save** کلیک کنید.
+7. بعد از آن، نام ویژگی کاربری که در ارائه‌دهنده SAML خود اضافه کردید را تایپ کنید. در این مورد، به Okta گفتیم که ویژگی `metabaseGroups` باید `MetabaseGroupName` نامیده شود، بنابراین این چیزی است که در فیلد Group Attribute Name در متابیس وارد می‌کنیم.
 
-![Group schema](images/saml-okta-groups.png)
+![Schema گروه](images/saml-okta-groups.png)
 
-## Creating Metabase accounts with SSO
+## ایجاد حساب‌های متابیس با SSO
 
-> Paid plans [charge for each additional account](../cloud/how-billing-works.md#what-counts-as-a-user-account).
+> پلن‌های پولی [برای هر حساب اضافی شارژ می‌کنند](../cloud/how-billing-works.md#what-counts-as-a-user-account).
 
-A new SSO login will automatically create a new Metabase account.
+یک ورود SSO جدید به‌طور خودکار یک حساب متابیس جدید ایجاد می‌کند.
 
-Metabase accounts created with an external identity provider login don't have passwords. People who sign up for Metabase using an IdP must continue to use the IdP to log into Metabase.
+حساب‌های متابیس ایجادشده با ورود ارائه‌دهنده هویت خارجی رمز عبور ندارند. افرادی که با استفاده از یک IdP برای متابیس ثبت‌نام می‌کنند باید همچنان از IdP برای ورود به متابیس استفاده کنند.
 
-## Disabling password logins
+## غیرفعال کردن ورود با رمز عبور
 
-> **Avoid locking yourself out of your Metabase!** Turning off password logins applies to all Metabase accounts, _including your Metabase admin account_. Before turning off password logins, make sure you can log in to your admin account using SSO.
+> **از قفل شدن خارج از متابیس خود جلوگیری کنید!** خاموش کردن ورود با رمز عبور برای همه حساب‌های متابیس اعمال می‌شود، _از جمله حساب ادمین متابیس شما_. قبل از خاموش کردن ورود با رمز عبور، مطمئن شوید که می‌توانید با استفاده از SSO به حساب ادمین خود وارد شوید.
 
-To _require_ people to log in with SSO, disable password authentication from **Admin settings** > **Authentication**. Turn off the **Enable Password Authentication** toggle.
+برای اینکه از افراد _بخواهید_ با SSO وارد شوند، احراز هویت رمز عبور را از **Admin settings** > **Authentication** غیرفعال کنید. toggle **Enable Password Authentication** را خاموش کنید.
 
-![Password disable](images/password-disable.png)
+![غیرفعال کردن رمز عبور](images/password-disable.png)
 
-## New account notification emails
+## ایمیل‌های اعلان حساب جدید
 
-When people log in to Metabase for the first time via SSO, Metabase will automatically create an account for them, which will trigger an email notification to Metabase administrators. If you don't want these notifications to be sent, go to **Admin settings > Authentication > User provisioning**, and toggle off **"Notify admins of new users provisioned from SSO"**
+وقتی افراد برای اولین بار از طریق SSO به متابیس وارد می‌شوند، متابیس به‌طور خودکار یک حساب برای آن‌ها ایجاد می‌کند، که یک ایمیل اعلان به ادمین‌های متابیس ارسال می‌کند. اگر نمی‌خواهید این اعلان‌ها ارسال شوند، به **Admin settings > Authentication > User provisioning** بروید، و toggle **"Notify admins of new users provisioned from SSO"** را خاموش کنید
 
-## Example code using SAML
+## کد مثال با استفاده از SAML
 
-You can find example code that uses SAML authentication in the [SSO examples repository](https://github.com/metabase/sso-examples).
+می‌توانید کد مثال که از احراز هویت SAML استفاده می‌کند را در [مخزن مثال‌های SSO](https://github.com/metabase/sso-examples) پیدا کنید.
 
-## Troubleshooting SAML issues
+## عیب‌یابی مشکلات SAML
 
-- [Troubleshooting SAML](../troubleshooting-guide/saml.md).
+- [عیب‌یابی SAML](../troubleshooting-guide/saml.md).

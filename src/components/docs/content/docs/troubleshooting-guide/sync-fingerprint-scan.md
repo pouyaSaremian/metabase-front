@@ -1,26 +1,26 @@
 ---
-title: Troubleshooting syncs, scans, and fingerprinting
+title: عیب‌یابی syncها، scanها، و fingerprinting
 ---
 
-# Troubleshooting syncs, scans, and fingerprinting
+# عیب‌یابی syncها، scanها، و fingerprinting
 
-First, check if your data is outdated because of browser caching:
+ابتدا، بررسی کنید که آیا داده شما به‌روز نیست به دلیل cache کردن مرورگر:
 
-1. Clear your browser cache.
-2. Refresh your Metabase page.
-3. Open your Metabase page in an incognito window.
+1. cache مرورگر خود را پاک کنید.
+2. صفحه متابیس خود را refresh کنید.
+3. صفحه متابیس خود را در یک پنجره ناشناس باز کنید.
 
-Once you've confirmed that you're looking at a non-cached view of your tables and columns, tag your database admin for help with troubleshooting:
+بعد از اینکه تأیید کردید که به یک view غیرcache شده از جداول و ستون‌های خود نگاه می‌کنید، ادمین پایگاه داده خود را برای کمک با عیب‌یابی tag کنید:
 
-- **Syncs**, if your tables or columns are missing, or your column data types are wrong.
-- **Scans**, if your column _values_ are missing or wrong (for example, in your filter dropdown menus).
-- **Fingerprinting**, if you've triggered a manual scan, but the changes aren't taking effect.
+- **Syncها**، اگر جداول یا ستون‌های شما گم شده‌اند، یا انواع داده ستون اشتباه هستند.
+- **Scanها**، اگر _مقادیر_ ستون شما گم شده یا اشتباه هستند (مثلاً، در منوهای dropdown فیلتر شما).
+- **Fingerprinting**، اگر یک scan دستی trigger کرده‌اید، اما تغییرات اعمال نمی‌شوند.
 
-## Syncing
+## همگام‌سازی
 
-1. If you are self-hosting Metabase, make sure your [Metabase instance](../installation-and-operation/upgrading-metabase.md) and any [community database drivers](../developers-guide/community-drivers.md) are up to date.
-2. Go to **Admin** > **Tools** > **Logs** to check the status of the sync.
-3. Run a query against your database from the Metabase SQL editor to check for database connection or database privilege errors that aren't listed in the logs:
+1. اگر متابیس را self-host می‌کنید، مطمئن شوید [instance متابیس](../installation-and-operation/upgrading-metabase.md) و هر [درایور پایگاه داده community](../developers-guide/community-drivers.md) به‌روز هستند.
+2. به **Admin** > **Tools** > **Logs** بروید تا وضعیت sync را بررسی کنید.
+3. یک کوئری علیه پایگاه داده خود از ویرایشگر SQL متابیس اجرا کنید تا خطاهای اتصال پایگاه داده یا امتیاز پایگاه داده که در لاگ‌ها فهرست نشده‌اند را بررسی کنید:
 
    ```sql
    SELECT
@@ -30,15 +30,15 @@ Once you've confirmed that you're looking at a non-cached view of your tables an
    LIMIT 1
    ```
 
-4. [Manually re-sync](../databases/sync-scan.md#manually-syncing-tables-and-columns) the table or view if needed.
+4. در صورت نیاز، جدول یا view را [دوباره همگام‌سازی دستی کنید](../databases/sync-scan.md#manually-syncing-tables-and-columns).
 
-### Special cases
+### موارد خاص
 
-If you've just set up a new database in Metabase, the initial sync query needs some time to kick off. If the sync hasn't started at all, try [Troubleshooting database connections](./db-connection.md).
+اگر تازه یک پایگاه داده جدید در متابیس تنظیم کرده‌اید، کوئری sync اولیه نیاز به زمان دارد تا شروع شود. اگر sync اصلاً شروع نشده است، [عیب‌یابی اتصالات پایگاه داده](./db-connection.md) را امتحان کنید.
 
-**Explanation**
+**توضیح**
 
-A sync query should show up like this in your database's query execution table (using the [privileges](../databases/users-roles-privileges.md) for the database user in the database connection details):
+یک کوئری sync باید مثل این در جدول اجرای کوئری پایگاه داده شما نمایش داده شود (با استفاده از [امتیازات](../databases/users-roles-privileges.md) برای کاربر پایگاه داده در جزئیات اتصال پایگاه داده):
 
 ```sql
 SELECT
@@ -50,40 +50,40 @@ WHERE
 LIMIT 0
 ```
 
-To run the sync query, Metabase must:
+برای اجرای کوئری sync، متابیس باید:
 
-- successfully connect to your database, and
-- be [granted privileges](../databases/users-roles-privileges.md) to query that database.
+- با موفقیت به پایگاه داده شما متصل شود، و
+- [امتیازات](../databases/users-roles-privileges.md) برای کوئری کردن آن پایگاه داده اعطا شود.
 
-If the [connection is failing](./db-connection.md) or the database privileges are wrong, the sync query won't be able to run. If Metabase can't sync with your database after you first set it up, then the initial scan and fingerprinting queries won't run either.
+اگر [اتصال شکست می‌خورد](./db-connection.md) یا امتیازات پایگاه داده اشتباه هستند، کوئری sync نمی‌تواند اجرا شود. اگر متابیس نمی‌تواند با پایگاه داده شما همگام‌سازی کند بعد از اینکه برای اولین بار آن را تنظیم کردید، سپس کوئری‌های scan و fingerprinting اولیه نیز اجرا نمی‌شوند.
 
-## Unfolding JSON columns with Object records
+## باز کردن ستون‌های JSON با رکوردهای Object
 
-1. Go to **Admin** > **Databases** > **your database** > **Show advanced options**.
-2. Click **Disable "JSON unfolding"**
-3. Click **Save changes**.
-4. Click **Sync database schema**.
+1. به **Admin** > **Databases** > **پایگاه داده شما** > **Show advanced options** بروید.
+2. روی **Disable "JSON unfolding"** کلیک کنید
+3. روی **Save changes** کلیک کنید.
+4. روی **Sync database schema** کلیک کنید.
 
-**Explanation**
+**توضیح**
 
-Metabase will try to unfold JSON and JSONB records during the sync process, which can take up a decent chunk of query execution time. If you have a lot of JSON records, try disabling the automatic unfolding option to pull the sync out of slow-motion. Remember that you can follow the status of the sync from **Admin** > **Tools** > **Logs**.
+متابیس سعی می‌کند رکوردهای JSON و JSONB را در طول فرآیند sync باز کند، که می‌تواند بخش قابل توجهی از زمان اجرای کوئری را اشغال کند. اگر تعداد زیادی رکورد JSON دارید، سعی کنید گزینه باز کردن خودکار را غیرفعال کنید تا sync را از slow-motion بیرون بکشید. به خاطر داشته باشید که می‌توانید وضعیت sync را از **Admin** > **Tools** > **Logs** دنبال کنید.
 
-## Scanning
+## اسکن کردن
 
-1. Go to **Admin** > **Table Metadata**.
-2. Select the database and table.
-3. Go to the column you want to update, and click the **gear** icon.
-4. Click **Discard cached field values**.
-5. Click **Re-scan this field**.
-6. Go to **Admin** > **Tools** > **Logs** to follow the status of the scan and debug errors from there.
+1. به **Admin** > **Table Metadata** بروید.
+2. پایگاه داده و جدول را انتخاب کنید.
+3. به ستونی که می‌خواهید به‌روزرسانی کنید بروید، و روی **آیکون gear** کلیک کنید.
+4. روی **Discard cached field values** کلیک کنید.
+5. روی **Re-scan this field** کلیک کنید.
+6. به **Admin** > **Tools** > **Logs** بروید تا وضعیت scan را دنبال کنید و خطاها را از آنجا debug کنید.
 
-### Special cases
+### موارد خاص
 
-If you're waiting for the initial scan to run after connecting a database, make sure the initial sync has completed first (remember you can check the status from **Admin** > **Tools** > **Logs**).
+اگر منتظر اجرای scan اولیه هستید بعد از اتصال یک پایگاه داده، مطمئن شوید که sync اولیه ابتدا تکمیل شده است (به خاطر داشته باشید می‌توانید وضعیت را از **Admin** > **Tools** > **Logs** بررسی کنید).
 
-**Explanation**
+**توضیح**
 
-Scan queries are run against your database to sample column values from the first 1,000 rows in a table or view:
+کوئری‌های scan علیه پایگاه داده شما برای نمونه‌گیری مقادیر ستون از اولین 1,000 ردیف در یک جدول یا view اجرا می‌شوند:
 
 ```sql
 SELECT
@@ -97,35 +97,35 @@ ORDER BY
 LIMIT 1000
 ```
 
-A failed scan is caused by a failed scan query---you can look at the logs to debug the query similar to other queries you'd run directly against your database.
+یک scan شکست خورده توسط یک کوئری scan شکست خورده ایجاد می‌شود---می‌توانید به لاگ‌ها نگاه کنید تا کوئری را مشابه کوئری‌های دیگری که مستقیماً علیه پایگاه داده خود اجرا می‌کنید debug کنید.
 
-Note that when you [change a search box filter to a dropdown filter](../data-modeling/metadata-editing.md#changing-a-search-box-filter-to-a-dropdown-filter) from the Table Metadata, you'll trigger a scan query for that field. If you have a dropdown filter that isn't picking up all the values in a field, remember that Metabase only samples the first 1,000 unique values per field, and stores a maximum of 100 kilobytes of text. If you've got more than 1,000 unique values in a column, or a lot of text-heavy data (like long URLs or survey responses), you can:
+توجه داشته باشید که وقتی [یک فیلتر جعبه جستجو را به یک فیلتر dropdown تغییر می‌دهید](../data-modeling/metadata-editing.md#changing-a-search-box-filter-to-a-dropdown-filter) از Table Metadata، یک کوئری scan برای آن فیلد trigger می‌کنید. اگر یک فیلتر dropdown دارید که همه مقادیر در یک فیلد را pick up نمی‌کند، به خاطر داشته باشید که متابیس فقط اولین 1,000 مقدار منحصر به فرد در هر فیلد را نمونه‌گیری می‌کند، و حداکثر 100 کیلوبایت متن را ذخیره می‌کند. اگر بیش از 1,000 مقدار منحصر به فرد در یک ستون دارید، یا داده‌های text-heavy زیادی (مثل URLهای طولانی یا پاسخ‌های نظرسنجی)، می‌توانید:
 
-- Use a search box filter for that field.
-- Clean up the data further in your [ETL or ELT](https://www.metabase.com/learn/grow-your-data-skills/data-landscape/etl-landscape) process.
+- از یک فیلتر جعبه جستجو برای آن فیلد استفاده کنید.
+- داده را بیشتر در فرآیند [ETL یا ELT](https://www.metabase.com/learn/grow-your-data-skills/data-landscape/etl-landscape) خود پاک کنید.
 
 ## Fingerprinting
 
-To manually re-trigger a fingerprinting query for a given column:
+برای trigger دستی مجدد یک کوئری fingerprinting برای یک ستون مشخص:
 
-1. Go to **Admin** > **Databases** > **your database** > **Show advanced options**.
-2. Toggle ON **Periodically refingerprint tables** and click **Save changes**.
-3. Go to **Admin** > **Table Metadata**.
-4. Select your database and table.
-5. Change the visibility of the table to "Hidden".
-6. Change the visibility back to "Queryable".
-7. Wait 10 seconds.
-8. Go to your column and change the **Type** from "Entity Key" to "No semantic type", and back to "Entity Key".
+1. به **Admin** > **Databases** > **پایگاه داده شما** > **Show advanced options** بروید.
+2. **Periodically refingerprint tables** را toggle ON کنید و روی **Save changes** کلیک کنید.
+3. به **Admin** > **Table Metadata** بروید.
+4. پایگاه داده و جدول خود را انتخاب کنید.
+5. visibility جدول را به "Hidden" تغییر دهید.
+6. visibility را دوباره به "Queryable" تغییر دهید.
+7. 10 ثانیه صبر کنید.
+8. به ستون خود بروید و **Type** را از "Entity Key" به "No semantic type" تغییر دهید، و دوباره به "Entity Key".
 
-### Special cases
+### موارد خاص
 
-If you're waiting for the initial fingerprinting query to run after connecting a database, make sure the initial sync has completed first (remember you can check the status from **Admin** > **Tools** > **Logs**).
+اگر منتظر اجرای کوئری fingerprinting اولیه هستید بعد از اتصال یک پایگاه داده، مطمئن شوید که sync اولیه ابتدا تکمیل شده است (به خاطر داشته باشید می‌توانید وضعیت را از **Admin** > **Tools** > **Logs** بررسی کنید).
 
-If you're using MongoDB, Metabase fingerprints the first 10,000 documents per collection. If you're not seeing all of your fields, it's because those fields might not exist in those first 10,000 documents. For more info, see our [MongoDB reference doc](../databases/connections/mongodb.md#i-added-fields-to-my-database-but-dont-see-them-in-metabase).
+اگر از MongoDB استفاده می‌کنید، متابیس اولین 10,000 سند در هر collection را fingerprint می‌کند. اگر همه فیلدهای خود را نمی‌بینید، به این دلیل است که آن فیلدها ممکن است در آن اولین 10,000 سند وجود نداشته باشند. برای اطلاعات بیشتر، به [مستند مرجع MongoDB](../databases/connections/mongodb.md#i-added-fields-to-my-database-but-dont-see-them-in-metabase) ما مراجعه کنید.
 
-**Explanation**
+**توضیح**
 
-The initial fingerprinting query looks at the first 10,000 rows from a given table or view in your database:
+کوئری fingerprinting اولیه به اولین 10,000 ردیف از یک جدول یا view مشخص در پایگاه داده شما نگاه می‌کند:
 
 ```sql
 SELECT
@@ -135,38 +135,38 @@ FROM
 LIMIT 10000
 ```
 
-If the first 10,000 rows aren't representative of the data in a table (for example, if you've got sparse data with a lot of blanks or nulls), you could see issues such as:
+اگر اولین 10,000 ردیف نماینده داده در یک جدول نیستند (مثلاً، اگر داده sparse با تعداد زیادی خالی یا null دارید)، می‌توانید مشکلاتی مثل این ببینید:
 
-- Incorrect [filter types](../questions/query-builder/filters.md#filter-types), such as a category when you want a calendar.
-- Histogram visualizations that don't work (since Metabase needs a min and max value to generate the bins).
+- [انواع فیلتر](../questions/query-builder/filters.md#filter-types) اشتباه، مثل یک category وقتی یک تقویم می‌خواهید.
+- تجسم‌های histogram که کار نمی‌کنند (چون متابیس نیاز به یک مقدار min و max برای تولید binها دارد).
 
-Metabase doesn't have a built-in option to trigger manual fingerprinting queries. You can "reset" a field's settings using the steps above to try and force a fingerprinting query, but it's not guaranteed to work on all versions of Metabase.
+متابیس یک گزینه built-in برای trigger کردن کوئری‌های fingerprinting دستی ندارد. می‌توانید تنظیمات یک فیلد را با استفاده از مراحل بالا "reset" کنید تا سعی کنید یک کوئری fingerprinting را force کنید، اما تضمین نمی‌شود که روی همه نسخه‌های متابیس کار کند.
 
-## Syncing or scanning is taking a long time
+## همگام‌سازی یا اسکن کردن زمان زیادی می‌گیرد
 
-To speed up **syncs**:
+برای سرعت بخشیدن به **syncها**:
 
-- Restrict the privileges used to connect to the database so that Metabase only syncs a limited subset of schemas or tables.
-- [Reduce the frequency of sync queries](../databases/sync-scan.md#database-syncing).
+- امتیازات استفاده شده برای اتصال به پایگاه داده را محدود کنید تا متابیس فقط یک زیرمجموعه محدود از schemaها یا جداول را همگام‌سازی کند.
+- [فرکانس کوئری‌های sync را کاهش دهید](../databases/sync-scan.md#database-syncing).
 
-To speed up **scans**:
+برای سرعت بخشیدن به **scanها**:
 
-- [Reduce the frequency of scans, or disable scans entirely](../databases/sync-scan.md#scanning-for-filter-values).
-- Reduce the number of columns being scanned by going to **Admin** > **Table Metadata** and setting **Filtering on this field** to **Search box** or **Plain input box**.
+- [فرکانس scanها را کاهش دهید، یا scanها را کاملاً غیرفعال کنید](../databases/sync-scan.md#scanning-for-filter-values).
+- تعداد ستون‌های scan شده را با رفتن به **Admin** > **Table Metadata** و تنظیم **Filtering on this field** روی **Search box** یا **Plain input box** کاهش دهید.
 
-**Explanation**
+**توضیح**
 
-Syncs and scans are ultimately just two kinds of queries that are run against your database, so the speed of execution is limited by the number of queries that are run, the frequency of execution, the size of your data, and the amount of resources you've allocated to your database. Metabase gives you options to adjust the number and frequency of sync and scan queries, since unfortunately, we can't imbue your database with more power... (yet?)
+Syncها و scanها در نهایت فقط دو نوع کوئری هستند که علیه پایگاه داده شما اجرا می‌شوند، بنابراین سرعت اجرا توسط تعداد کوئری‌هایی که اجرا می‌شوند، فرکانس اجرا، اندازه داده شما، و مقدار منابعی که به پایگاه داده خود اختصاص داده‌اید محدود می‌شود. متابیس گزینه‌هایی برای تنظیم تعداد و فرکانس کوئری‌های sync و scan به شما می‌دهد، چون متأسفانه، نمی‌توانیم پایگاه داده شما را با قدرت بیشتر imbue کنیم... (هنوز؟)
 
-## Related topics
+## موضوعات مرتبط
 
-- [Troubleshooting database connections](./db-connection.md).
-- [Troubleshooting filters](./filters.md).
-- [How syncs and scans work](../databases/sync-scan.md#how-database-syncs-work).
+- [عیب‌یابی اتصالات پایگاه داده](./db-connection.md).
+- [عیب‌یابی فیلترها](./filters.md).
+- [نحوهٔ کار syncها و scanها](../databases/sync-scan.md#how-database-syncs-work).
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can't solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.

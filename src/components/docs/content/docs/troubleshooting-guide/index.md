@@ -1,85 +1,85 @@
 ---
-title: Troubleshooting guides
+title: راهنماهای عیب‌یابی
 ---
 
-# Troubleshooting guides
+# راهنماهای عیب‌یابی
 
-Problems, their causes, how to detect them, and how to fix them.
+مشکلات، علل آن‌ها، نحوهٔ تشخیص آن‌ها، و نحوهٔ رفع آن‌ها.
 
-## Getting diagnostic info
+## دریافت اطلاعات تشخیصی
 
-- [Download diagnostic info](./diagnostic-info.md)
-- [Create a HAR file](./create-har-file.md)
+- [دانلود اطلاعات تشخیصی](./diagnostic-info.md)
+- [ایجاد یک فایل HAR](./create-har-file.md)
 
-## Installation
+## نصب
 
-- [Running the Metabase JAR][running].
-- [Running Metabase on Docker][docker].
-- [Using or migrating from an H2 application database][appdb].
+- [اجرای JAR متابیس][running].
+- [اجرای متابیس روی Docker][docker].
+- [استفاده یا مهاجرت از یک پایگاه داده اپلیکیشن H2][appdb].
 
-## Authentication
+## احراز هویت
 
-- [People can't log in to Metabase][login].
+- [افراد نمی‌توانند به متابیس وارد شوند][login].
 - [LDAP][ldap].
 - [SAML][saml].
 
-## Permissions
+## مجوزها
 
-- [My permissions aren't working][permissions].
-- [Row and column security isn't working][row-and-column].
+- [مجوزهای من کار نمی‌کنند][permissions].
+- [امنیت ردیف و ستون کار نمی‌کند][row-and-column].
 
-## Databases
+## پایگاه‌داده‌ها
 
-- [I can't connect to a database][db-connection].
-- [I can't see my tables][cant-see-tables].
-- [The data in Metabase doesn't match my database][sync-fingerprint-scan].
-- [My database is slow][db-performance].
-- [My connection or query is timing out][timeout].
+- [نمی‌توانم به یک پایگاه داده متصل شوم][db-connection].
+- [نمی‌توانم جداول خود را ببینم][cant-see-tables].
+- [داده در متابیس با پایگاه داده من تطبیق ندارد][sync-fingerprint-scan].
+- [پایگاه داده من کند است][db-performance].
+- [اتصال یا کوئری من timeout می‌شود][timeout].
 
-## Questions and dashboards
+## سؤال‌ها و داشبوردها
 
-- [I can't save my question or dashboard][proxies].
-- [I can't view or edit my question or dashboard][view-edit].
-- [My visualizations are wrong][visualization].
-- [My dashboard is slow or failing to load][slow-dashboard].
-- [My SQL question doesn't work][sql].
-- [The dates and times in my questions and charts are wrong][incorrect-times].
-- [My filters don't work][filters].
-- [My linked filters don't work][linked-filters].
+- [نمی‌توانم سؤال یا داشبورد خود را ذخیره کنم][proxies].
+- [نمی‌توانم سؤال یا داشبورد خود را مشاهده یا ویرایش کنم][view-edit].
+- [تجسم‌های من اشتباه هستند][visualization].
+- [داشبورد من کند است یا بارگذاری نمی‌شود][slow-dashboard].
+- [سؤال SQL من کار نمی‌کند][sql].
+- [تاریخ‌ها و زمان‌ها در سؤال‌ها و نمودارهای من اشتباه هستند][incorrect-times].
+- [فیلترهای من کار نمی‌کنند][filters].
+- [فیلترهای مرتبط من کار نمی‌کنند][linked-filters].
 
-## Models
+## مدل‌ها
 
-- [My model doesn't work][models].
+- [مدل من کار نمی‌کند][models].
 
-## Email and alerts
+## ایمیل و هشدارها
 
-- [Metabase isn't sending email][not-sending-email].
-- [Troubleshooting notifications](./notifications.md).
+- [متابیس ایمیل ارسال نمی‌کند][not-sending-email].
+- [عیب‌یابی اعلان‌ها](./notifications.md).
 
-## Error messages
+## پیام‌های خطا
 
-- [I'm getting an error message][error-message].
+- [یک پیام خطا دریافت می‌کنم][error-message].
 
-## Think you found a bug?
+## فکر می‌کنید یک باگ پیدا کرده‌اید؟
 
-- [How to find known bugs or limitations][known-issues].
-- [Filing a bug report][bugs].
+- [نحوهٔ پیدا کردن باگ‌ها یا محدودیت‌های شناخته شده][known-issues].
+- [ثبت گزارش باگ][bugs].
 
-## Feature requests
+## درخواست ویژگی
 
-See [Requesting new features][feature-request].
+به [درخواست ویژگی‌های جدید][feature-request] مراجعه کنید.
 
-## Metabase tutorials
+## آموزش‌های متابیس
 
-For tutorials that walk you through how to use Metabase features, check out [Learn Metabase][learn].
+برای آموزش‌هایی که شما را از طریق نحوهٔ استفاده از ویژگی‌های متابیس راهنمایی می‌کنند، [Learn Metabase][learn] را بررسی کنید.
 
-## Metabase forum
+## انجمن متابیس
 
-To see if someone else has run into a similar issue, check out [our forum on Discourse][forum].
+برای دیدن اینکه آیا شخص دیگری با مشکل مشابهی مواجه شده است، [انجمن ما در Discourse][forum] را بررسی کنید.
 
-## Upgrading Metabase
+## ارتقای متابیس
 
-Metabase adds new features and squashes bugs with each release. [Upgrading to the latest and greatest][upgrade] may resolve your issue. If you're using [Metabase Cloud][cloud], we'll handle the upgrades for you. To see what's new, check out the [release notes][releases].
+متابیس ویژگی‌های جدید اضافه می‌کند و باگ‌ها را با هر انتشار رفع می‌کند. [ارتقا به آخرین و بهترین نسخه][upgrade] ممکن است مشکل شما را حل کند. اگر از [Metabase Cloud][cloud] استفاده می‌کنید، ما ارتقاها را برای شما مدیریت می‌کنیم. برای دیدن آنچه جدید است، [یادداشت‌های انتشار][releases] را بررسی کنید.
 
 [appdb]: ./loading-from-h2.md
 [bugs]: ./bugs.md

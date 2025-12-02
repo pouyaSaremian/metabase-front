@@ -1,85 +1,85 @@
 ---
-title: Editable tables 
-summary: Admins can create, update, and delete data in tables right in Metabase.
+title: جداول قابل ویرایش
+summary: ادمین‌ها می‌توانند داده را در جداول مستقیماً در متابیس ایجاد، به‌روزرسانی و حذف کنند.
 ---
 
-# Editable tables
+# جداول قابل ویرایش
 
 {% include plans-blockquote.html feature="Editable table data"  %}
 
-Admins can enable editable table data in Metabase.
+ادمین‌ها می‌توانند دادهٔ جدول قابل ویرایش را در متابیس فعال کنند.
 
-![Edit table](./images/edit-table.png)
+![ویرایش جدول](./images/edit-table.png)
 
-## Setting up editable tables
+## تنظیم جداول قابل ویرایش
 
-_Currently, editable table data is only available for PostgreSQL and MySQL._
+_فعلاً، دادهٔ جدول قابل ویرایش فقط برای PostgreSQL و MySQL در دسترس است._
 
-To set up table editing, admins can:
+برای تنظیم ویرایش جدول، ادمین‌ها می‌توانند:
 
-1. Click the **gear** icon in the top right.
-2. Select **Admin settings**.
-3. Click **Databases**.
-4. Select your database.
-5. Toggle on **Editable table data**.
+1. روی **آیکون gear** در گوشهٔ بالا سمت راست کلیک کنند.
+2. **Admin settings** را انتخاب کنند.
+3. روی **Databases** کلیک کنند.
+4. پایگاه داده خود را انتخاب کنند.
+5. **Editable table data** را toggle کنند.
 
-For this to work, Metabase's connection to your database must support writing back to its tables. See [privileges to enable actions and editable table data](../databases/users-roles-privileges.md#privileges-to-enable-actions-and-editable-table-data).
+برای اینکه این کار کند، اتصال متابیس به پایگاه داده شما باید از نوشتن به جداولش پشتیبانی کند. به [مجوزها برای فعال‌سازی اکشن‌ها و دادهٔ جدول قابل ویرایش](../databases/users-roles-privileges.md#privileges-to-enable-actions-and-editable-table-data) مراجعه کنید.
 
-## Update or delete records in a table
+## به‌روزرسانی یا حذف رکوردها در یک جدول
 
-To update or delete records in a table:
+برای به‌روزرسانی یا حذف رکوردها در یک جدول:
 
-1. Open the left sidebar.
-2. In the Data section, click **Databases**.
-3. Hover over the table you want to edit and click the **Pencil** icon.
-4. Edit rows in the table just like you would in a spreadsheet.
+1. نوار کناری چپ را باز کنید.
+2. در بخش Data، روی **Databases** کلیک کنید.
+3. روی جدولی که می‌خواهید ویرایش کنید hover کنید و روی **آیکون Pencil** کلیک کنید.
+4. ردیف‌ها را در جدول دقیقاً مثل یک صفحه‌گسترده ویرایش کنید.
 
-Depending on the data in the column, Metabase may show a list of values to choose from. If you need to add an option to that list, simply type out the option and add it (you may need to refresh the browser for the new option to show up in the list).
+بسته به داده در ستون، متابیس ممکن است لیستی از مقادیر برای انتخاب نمایش دهد. اگر نیاز به اضافه کردن یک گزینه به آن لیست دارید، به سادگی گزینه را تایپ کنید و آن را اضافه کنید (ممکن است نیاز به رفرش کردن مرورگر داشته باشید تا گزینه جدید در لیست ظاهر شود).
 
-![Add option](./images/add-option.png)
+![اضافه کردن گزینه](./images/add-option.png)
 
-To remove an option from the list of values, you'll need to change any records with that value to a different value.
+برای حذف یک گزینه از لیست مقادیر، باید هر رکوردی با آن مقدار را به یک مقدار متفاوت تغییر دهید.
 
-## Create a new record
+## ایجاد یک رکورد جدید
 
-![Create new record](./images/create-new-record.png)
+![ایجاد رکورد جدید](./images/create-new-record.png)
 
-You can add a row to a table by clicking **+ New record** in the top right of the table. Fill out the fields. Metabase will respect field constraints, so if a field is required, Metabase will prevent you from saving the record until you fill in the required field.
+می‌توانید یک ردیف به یک جدول با کلیک **+ New record** در گوشهٔ بالا سمت راست جدول اضافه کنید. فیلدها را پر کنید. متابیس محدودیت‌های فیلد را رعایت می‌کند، بنابراین اگر یک فیلد الزامی است، متابیس از ذخیرهٔ رکورد تا زمانی که فیلد الزامی را پر نکنید جلوگیری می‌کند.
 
-## Delete a record
+## حذف یک رکورد
 
-To delete a record, check the box next to the record you want to delete and click **Delete**. Deletion is permanent. Metabase will prompt you to confirm the deletion.
+برای حذف یک رکورد، جعبه کنار رکوردی که می‌خواهید حذف کنید را تیک بزنید و روی **Delete** کلیک کنید. حذف دائمی است. متابیس از شما می‌خواهد حذف را تأیید کنید.
 
-You can also select multiple rows and delete them all at once (nervous sweating).
+همچنین می‌توانید چندین ردیف را انتخاب کنید و همه را یکجا حذف کنید (عرق عصبی).
 
-If you try to delete a row that has foreign key references from other tables, your database may prevent the deletion to maintain referential integrity. You'll see an error message like "Other rows refer to this row so it cannot be deleted." To delete these rows, you'll either need to remove the referencing rows first, or change the foreign key constraints in your database.
+اگر سعی کنید یک ردیف را که ارجاعات foreign key از جداول دیگر دارد حذف کنید، پایگاه داده شما ممکن است از حذف جلوگیری کند تا یکپارچگی ارجاعی را حفظ کند. یک پیام خطا مثل "Other rows refer to this row so it cannot be deleted." می‌بینید. برای حذف این ردیف‌ها، باید یا ابتدا ردیف‌های ارجاع‌دهنده را حذف کنید، یا محدودیت‌های foreign key را در پایگاه داده خود تغییر دهید.
 
-## Metabase enforces type constraints
+## متابیس محدودیت‌های نوع را اعمال می‌کند
 
-- You can't edit sequential primary keys.
-- If you try to add a value of a different type (like changing the number 13579 to the string "Wizard"), Metabase won't allow it.
+- نمی‌توانید کلیدهای اصلی ترتیبی را ویرایش کنید.
+- اگر سعی کنید یک مقدار از نوع متفاوت اضافه کنید (مثل تغییر عدد 13579 به رشته "Wizard")، متابیس اجازه نمی‌دهد.
 
-## Editable table data vs. actions
+## دادهٔ جدول قابل ویرایش در مقابل اکشن‌ها
 
-Metabase offers two ways to modify data in your database: **editable table data** and [actions](../actions/introduction.md).
+متابیس دو راه برای تغییر داده در پایگاه داده شما ارائه می‌دهد: **دادهٔ جدول قابل ویرایش** و [اکشن‌ها](../actions/introduction.md).
 
-###  When to use editable table data
+### چه زمانی از دادهٔ جدول قابل ویرایش استفاده کنیم
 
-Use editable table data to:
+از دادهٔ جدول قابل ویرایش برای موارد زیر استفاده کنید:
 
-- Do data maintenance or cleanup.
-- Modify many records at once.
-- Get direct access to all table data.
-- Do one-off data corrections.
+- انجام نگهداری یا تمیزکاری داده.
+- تغییر چندین رکورد به‌طور همزمان.
+- دسترسی مستقیم به همهٔ دادهٔ جدول.
+- انجام اصلاحات یک‌بارهٔ داده.
 
-You need to be an admin to edit tables directly.
+برای ویرایش مستقیم جداول باید ادمین باشید.
 
-### When to use actions
+### چه زمانی از اکشن‌ها استفاده کنیم
 
-Use actions to:
+از اکشن‌ها برای موارد زیر استفاده کنید:
 
-- Create custom forms.
-- Give non-admins the ability to modify data.
-- Add a button to a dashboard to trigger a form or query.
+- ایجاد فرم‌های سفارشی.
+- دادن توانایی تغییر داده به غیرادمین‌ها.
+- اضافه کردن یک دکمه به یک داشبورد برای راه‌اندازی یک فرم یا کوئری.
 
-See [actions](../actions/introduction.md).
+به [اکشن‌ها](../actions/introduction.md) مراجعه کنید.

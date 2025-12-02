@@ -1,36 +1,36 @@
 ---
-title: Troubleshooting SQL questions
+title: عیب‌یابی سؤال‌های SQL
 ---
 
-# Troubleshooting SQL questions
+# عیب‌یابی سؤال‌های SQL
 
-## Incorrect results
+## نتایج اشتباه
 
-- [Aggregations (counts, sums, etc.) are wrong](https://www.metabase.com/learn/sql/debugging-sql/sql-logic#aggregated-results-counts-sums-etc-are-wrong).
-- [Results have duplicated rows](https://www.metabase.com/learn/sql/debugging-sql/sql-logic-duplicated-data).
-- [Results are missing rows](https://www.metabase.com/learn/sql/debugging-sql/sql-logic-missing-data).
-- [Dates and times are wrong](./timezones.md).
-- [Data isn't up to date](./sync-fingerprint-scan.md).
+- [Aggregationها (countها، sumها، و غیره) اشتباه هستند](https://www.metabase.com/learn/sql/debugging-sql/sql-logic#aggregated-results-counts-sums-etc-are-wrong).
+- [نتایج ردیف‌های تکراری دارند](https://www.metabase.com/learn/sql/debugging-sql/sql-logic-duplicated-data).
+- [نتایج ردیف‌های گم شده دارند](https://www.metabase.com/learn/sql/debugging-sql/sql-logic-missing-data).
+- [تاریخ‌ها و زمان‌ها اشتباه هستند](./timezones.md).
+- [داده به‌روز نیست](./sync-fingerprint-scan.md).
 
-## SQL variables and field filters
+## متغیرهای SQL و فیلترهای فیلد
 
-- [Filter widget doesn't display a dropdown menu of values](../data-modeling/metadata-editing.md#changing-a-search-box-filter-to-a-dropdown-filter).
-- [SQL query contains table aliases](../questions/native-editor/field-filters.md#specifying-the-table-and-field-alias).
-- [SQL syntax error: missing `FROM` clause](../questions/native-editor/field-filters.md#field-filters-must-be-connected-to-database-fields-included-in-the-query).
-- [I don't know the SQL variable type](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/sql-variables)
+- [Widget فیلتر یک منوی dropdown از مقادیر نمایش نمی‌دهد](../data-modeling/metadata-editing.md#changing-a-search-box-filter-to-a-dropdown-filter).
+- [کوئری SQL شامل aliasهای جدول است](../questions/native-editor/field-filters.md#specifying-the-table-and-field-alias).
+- [خطای syntax SQL: بند `FROM` گم شده](../questions/native-editor/field-filters.md#field-filters-must-be-connected-to-database-fields-included-in-the-query).
+- [نوع متغیر SQL را نمی‌دانم](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/sql-variables)
 
-## SQL syntax errors
+## خطاهای syntax SQL
 
-For some common error messages, see [error messages](./error-message.md).
+برای برخی پیام‌های خطای رایج، به [پیام‌های خطا](./error-message.md) مراجعه کنید.
 
-## Working with JSON in SQL
+## کار با JSON در SQL
 
-Using the `?` operator for working with JSON in SQL may cause queries to fail. On PostgreSQL, you can use `??` instead.
+استفاده از عملگر `?` برای کار با JSON در SQL ممکن است باعث شکست کوئری‌ها شود. در PostgreSQL، می‌توانید به جای آن از `??` استفاده کنید.
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
-- Hire a [Metabase Expert](https://www.metabase.com/partners/){:target="\_blank"}.
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.
+- یک [Metabase Expert](https://www.metabase.com/partners/){:target="\_blank"} استخدام کنید.

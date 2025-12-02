@@ -1,77 +1,76 @@
 ---
-title: Working with JSON
-summary: Learn how to unfold JSON columns into separate fields that you can filter on in the query builder.
+title: کار با JSON
+summary: یاد بگیرید چگونه ستون‌های JSON را به فیلدهای جداگانه باز کنید که می‌توانید در query builder روی آن‌ها فیلتر کنید.
 ---
 
-# Working with JSON
+# کار با JSON
 
-## Filtering JSON
+## فیلتر کردن JSON
 
-In the [query builder](../questions/query-builder/editor.md), Metabase can't parse JSON in columns, so you can only filter by "Is empty" or "Not empty".
+در [query builder](../questions/query-builder/editor.md)، متابیس نمی‌تواند JSON در ستون‌ها را parse کند، بنابراین فقط می‌توانید با "Is empty" یا "Not empty" فیلتر کنید.
 
-## JSON unfolding
+## باز کردن JSON
 
-With [some databases](#databases-that-support-json-unfolding), Metabase can unfold JSON columns into their component fields, which you can then filter on using the query builder.
+با [برخی پایگاه‌داده‌ها](#databases-that-support-json-unfolding)، متابیس می‌تواند ستون‌های JSON را به فیلدهای سازنده‌شان باز کند، که سپس می‌توانید با استفاده از query builder روی آن‌ها فیلتر کنید.
 
-Here is a table with a column that contains JSON.
+در اینجا یک جدول با یک ستون که حاوی JSON است وجود دارد.
 
-![A table with a JSON column](./images/table-with-json-column.png)
+![یک جدول با یک ستون JSON](./images/table-with-json-column.png)
 
-Metabase can unfold that JSON column so that each key in the JSON object gets its own column in the table. Here are the unfolded fields of the table with the JSON column pictured above:
+متابیس می‌تواند آن ستون JSON را باز کند تا هر کلید در object JSON ستون خودش را در جدول داشته باشد. در اینجا فیلدهای بازشدهٔ جدول با ستون JSON تصویرشده در بالا آورده شده است:
 
-![Unfolded fields](./images/unfolded-fields.png)
+![فیلدهای بازشده](./images/unfolded-fields.png)
 
-And here are the values as seen in the table:
+و در اینجا مقادیر همانطور که در جدول دیده می‌شوند:
 
-![Unfolded values](./images/unfolded-values.png)
+![مقادیر بازشده](./images/unfolded-values.png)
 
-This unfolding allows you to filter for values found in the original JSON object.
+این باز کردن به شما امکان می‌دهد برای مقادیر یافت‌شده در object JSON اصلی فیلتر کنید.
 
-Metabase will prefix the unfolded column names with the name of the original column that contained the JSON. You can change the column names in **Admin settings** > [Table metadata](metadata-editing.md), or by creating a [model](./models.md) and editing the column metadata.
+متابیس نام‌های ستون بازشده را با نام ستون اصلی که حاوی JSON بود prefix می‌کند. می‌توانید نام‌های ستون را در **Admin settings** > [Table metadata](metadata-editing.md) تغییر دهید، یا با ایجاد یک [مدل](./models.md) و ویرایش ابردادهٔ ستون.
 
-## Toggling JSON unfolding for a database
+## Toggle کردن باز کردن JSON برای یک پایگاه داده
 
-If you notice a hit to performance from this JSON unfolding, we recommend turning it off.
+اگر متوجه کاهش عملکرد از این باز کردن JSON شدید، توصیه می‌کنیم آن را خاموش کنید.
 
-To turn off JSON unfolding for a database:
+برای خاموش کردن باز کردن JSON برای یک پایگاه داده:
 
-1. Click on the **Gear** in the upper right.
-2. Select **Admin settings**
-3. Visit the **Databases** tab.
-4. Select the relevant database.
-5. Click **Show advanced options**.
-6. Toggle **Allow unfolding of JSON columns**.
-7. Scroll down and click the **Save changes** button.
-8. Click **Sync database schema**.
-9. Click **Re-scan field values**.
+1. روی **Gear** در گوشهٔ بالا سمت راست کلیک کنید.
+2. **Admin settings** را انتخاب کنید
+3. به تب **Databases** بروید.
+4. پایگاه داده مرتبط را انتخاب کنید.
+5. روی **Show advanced options** کلیک کنید.
+6. **Allow unfolding of JSON columns** را toggle کنید.
+7. به پایین اسکرول کنید و روی دکمهٔ **Save changes** کلیک کنید.
+8. روی **Sync database schema** کلیک کنید.
+9. روی **Re-scan field values** کلیک کنید.
 
-## Toggling JSON unfolding for a specific column
+## Toggle کردن باز کردن JSON برای یک ستون خاص
 
-If performance degrades, or you'd rather keep the JSON contained in the original column, you can turn off unfolding for individual fields in their settings.
+اگر عملکرد کاهش می‌یابد، یا ترجیح می‌دهید JSON را در ستون اصلی نگه دارید، می‌توانید باز کردن را برای فیلدهای جداگانه در تنظیماتشان خاموش کنید.
 
-1. Click on the **Gear** in the upper right.
-2. Select **Admin settings**.
-3. Visit the **Table metadata** tab.
-4. Select the database that contains the field you want to update.
-5. Select the table that contains the field.
-6. Select the field containing the original JSON
-7. In the **Behavior** section, locate the **Unfold JSON** option and select **Yes** or **No**. If the column was unfolded, Metabase will have hidden this JSON columnn from view, so if you want the JSON column to be visible again, you'll need to change the column's visibility to **Everywhere**.
-8. Scroll to the top and click the **Filter values** button and select **Re-scan this field**.
+1. روی **Gear** در گوشهٔ بالا سمت راست کلیک کنید.
+2. **Admin settings** را انتخاب کنید.
+3. به تب **Table metadata** بروید.
+4. پایگاه داده‌ای که حاوی فیلد موردنظر برای به‌روزرسانی است را انتخاب کنید.
+5. جدولی که حاوی فیلد است را انتخاب کنید.
+6. فیلد حاوی JSON اصلی را انتخاب کنید
+7. در بخش **Behavior**، گزینهٔ **Unfold JSON** را پیدا کنید و **Yes** یا **No** را انتخاب کنید. اگر ستون باز شده بود، متابیس این ستون JSON را از نمای مخفی کرده است، بنابراین اگر می‌خواهید ستون JSON دوباره قابل مشاهده باشد، باید قابلیت مشاهدهٔ ستون را به **Everywhere** تغییر دهید.
+8. به بالا اسکرول کنید و روی دکمهٔ **Filter values** کلیک کنید و **Re-scan this field** را انتخاب کنید.
 
-![Unfolded JSON setting](./images/unfold-json-setting.png)
+![تنظیم JSON بازشده](./images/unfold-json-setting.png)
 
-## For JSON unfolding to work, the column's data type must be JSON
+## برای اینکه باز کردن JSON کار کند، نوع دادهٔ ستون باید JSON باشد
 
-For example, if you upload a CSV with JSON in it, you might need to update the data/type in the database. Note that you can't edit the data type via Metabase; you can only change its field type. So even if the field type in Metabase is `Field containing JSON`, if the data/type isn't `JSON`, Metabase won't give you the option to unfold the column. You'll need to change the column type in the database itself.
+به‌عنوان مثال، اگر یک CSV با JSON در آن آپلود می‌کنید، ممکن است نیاز به به‌روزرسانی داده/نوع در پایگاه داده داشته باشید. توجه داشته باشید که نمی‌توانید نوع داده را از طریق متابیس ویرایش کنید؛ فقط می‌توانید نوع فیلد آن را تغییر دهید. بنابراین حتی اگر نوع فیلد در متابیس `Field containing JSON` باشد، اگر داده/نوع `JSON` نباشد، متابیس گزینهٔ باز کردن ستون را به شما نمی‌دهد. باید نوع ستون را در خود پایگاه داده تغییر دهید.
 
-## Databases that support JSON unfolding
+## پایگاه‌داده‌هایی که از باز کردن JSON پشتیبانی می‌کنند
 
-- [BigQuery](../databases/connections/postgresql.md): automatically enabled, applies to `STRUCT` types only.
+- [BigQuery](../databases/connections/postgresql.md): به‌طور خودکار فعال است، فقط برای انواع `STRUCT` اعمال می‌شود.
   
-  If your data is stored in the [STRUCT data type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#struct_type) in BigQuery, you can query the table's nested fields. This is enabled by default. However, Metabase won't unfold JSON stored in BigQuery as the `JSON` type. This is because in BigQuery, nested fields are _part of the table definition itself_, so when Metabase syncs with your BigQuery database, it'll be able to get metadata about any of your tables, including tables with nested fields. Querying nested fields, however, doesn't extend to arrays (REPEATED (STRUCT)) in BigQuery.
+  اگر داده شما در [نوع داده STRUCT](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#struct_type) در BigQuery ذخیره شده است، می‌توانید فیلدهای تو در توی جدول را کوئری کنید. این به‌طور پیش‌فرض فعال است. با این حال، متابیس JSON ذخیره‌شده در BigQuery را به‌عنوان نوع `JSON` باز نمی‌کند. این به این دلیل است که در BigQuery، فیلدهای تو در تو _بخشی از تعریف خود جدول هستند_، بنابراین وقتی متابیس با پایگاه داده BigQuery شما همگام می‌شود، قادر خواهد بود ابرداده دربارهٔ هر یک از جداول شما، از جمله جداول با فیلدهای تو در تو را دریافت کند. با این حال، کوئری کردن فیلدهای تو در تو به آرایه‌ها (REPEATED (STRUCT)) در BigQuery گسترش نمی‌یابد.
   
 - [Druid (JDBC)](../databases/connections/druid.md)
-- [MongoDB](../databases/connections/mysql.md): automatically enabled for all nested fields.
+- [MongoDB](../databases/connections/mysql.md): به‌طور خودکار برای همهٔ فیلدهای تو در تو فعال است.
 - [MySQL](../databases/connections/mysql.md)
 - [PostgreSQL](../databases/connections/postgresql.md)
-

@@ -1,42 +1,42 @@
 ---
-title: People can't log in to Metabase
+title: افراد نمی‌توانند به متابیس وارد شوند
 ---
 
-# People can't log in to Metabase
+# افراد نمی‌توانند به متابیس وارد شوند
 
-## Reset password
+## بازنشانی رمز عبور
 
-To reset a password for your Metabase instance, see:
+برای بازنشانی رمز عبور برای instance متابیس خود، به موارد زیر مراجعه کنید:
 
-- [Reset a user's password](../people-and-groups/managing.md#resetting-someones-password).
-- [Reset admin password](../people-and-groups/managing.md#resetting-the-admin-password).
+- [بازنشانی رمز عبور یک کاربر](../people-and-groups/managing.md#resetting-someones-password).
+- [بازنشانی رمز عبور ادمین](../people-and-groups/managing.md#resetting-the-admin-password).
 
-To reset password for your Metabase Store account, [contact support](https://www.metabase.com/help-premium).
+برای بازنشانی رمز عبور برای حساب Metabase Store خود، [با پشتیبانی تماس بگیرید](https://www.metabase.com/help-premium).
 
-## No access to Metabase login page
+## عدم دسترسی به صفحه ورود متابیس
 
-If you're not a Metabase admin, you'll have to tag them for help here.
+اگر یک ادمین متابیس نیستید، باید آن‌ها را برای کمک اینجا tag کنید.
 
-1. Check that you have the correct [site URL](../configuring-metabase/settings.md) from **Settings** > **Admin settings** > **General**.
-2. Check if the [account is deactivated](../people-and-groups/managing.md#deactivating-an-account).
+1. بررسی کنید که [site URL](../configuring-metabase/settings.md) صحیح را از **Settings** > **Admin settings** > **General** دارید.
+2. بررسی کنید که آیا [حساب غیرفعال شده است](../people-and-groups/managing.md#deactivating-an-account).
 
-## No access to Metabase Cloud account
+## عدم دسترسی به حساب Metabase Cloud
 
-The admin password for `store.metabase.com` (where you can find payment and subscription info) is not necessarily the same as the password for your Metabase instance (where you log in to look at data).
+رمز عبور ادمین برای `store.metabase.com` (جایی که می‌توانید اطلاعات پرداخت و اشتراک را پیدا کنید) لزوماً همان رمز عبور برای instance متابیس شما نیست (جایی که برای مشاهده داده وارد می‌شوید).
 
-If you've forgotten your Metabase Cloud admin password, you can [contact support](https://www.metabase.com/help-premium) to reset the password.
+اگر رمز عبور ادمین Metabase Cloud خود را فراموش کرده‌اید، می‌توانید [با پشتیبانی تماس بگیرید](https://www.metabase.com/help-premium) تا رمز عبور را بازنشانی کند.
 
-## Related topics
+## موضوعات مرتبط
 
-- [Troubleshooting SAML](./saml.md).
-- [Troubleshooting LDAP](./ldap.md).
-- [Resetting someone's password](../people-and-groups/managing.md#resetting-someones-password).
-- [Resetting the admin password](../people-and-groups/managing.md#resetting-the-admin-password).
-- [Deleting an account that's set up incorrectly](../people-and-groups/managing.md#deleting-an-account).
+- [عیب‌یابی SAML](./saml.md).
+- [عیب‌یابی LDAP](./ldap.md).
+- [بازنشانی رمز عبور کسی](../people-and-groups/managing.md#resetting-someones-password).
+- [بازنشانی رمز عبور ادمین](../people-and-groups/managing.md#resetting-the-admin-password).
+- [حذف یک حساب که به‌اشتباه تنظیم شده است](../people-and-groups/managing.md#deleting-an-account).
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.

@@ -1,111 +1,111 @@
 ---
-title: People and groups
+title: افراد و گروه‌ها
 redirect_from:
   - /docs/latest/administration-guide/04-managing-users
 ---
 
-# People and groups
+# افراد و گروه‌ها
 
-People can have [accounts](#creating-an-account) in Metabase, and those accounts can be members of [groups](#groups). These groups are used to define [permissions](../permissions/introduction.md). People can be in multiple groups.
+افراد می‌توانند [حساب‌هایی](#creating-an-account) در متابیس داشته باشند، و آن حساب‌ها می‌توانند اعضای [گروه‌ها](#groups) باشند. این گروه‌ها برای تعریف [مجوزها](../permissions/introduction.md) استفاده می‌شوند. افراد می‌توانند در چندین گروه باشند.
 
-> This page covers accounts people use to log in to _your_ Metabase(s). These accounts are distinct from [Metabase _store_ accounts](https://store.metabase.com), which are used to manage paid Metabase plans.
+> این صفحه حساب‌هایی را پوشش می‌دهد که افراد برای ورود به _متابیس شما_ استفاده می‌کنند. این حساب‌ها متمایز از [حساب‌های _store_ متابیس](https://store.metabase.com) هستند، که برای مدیریت پلن‌های متابیس پولی استفاده می‌شوند.
 
-## Managing people and groups
+## مدیریت افراد و گروه‌ها
 
-To start managing people and groups:
+برای شروع مدیریت افراد و گروه‌ها:
 
-Hit Cmd/Ctrl + K to bring up the command palette and search for "People". Click on the **People** settings result.
+Cmd/Ctrl + K را بزنید تا command palette باز شود و برای "People" جستجو کنید. روی نتیجهٔ تنظیمات **People** کلیک کنید.
 
-Or
+یا
 
-Click on the **gear** icon > **Admin settings** > **People**. You'll see a list of all the people in your organization.
+روی **آیکون gear** > **Admin settings** > **People** کلیک کنید. لیستی از همه افراد در سازمان خود را می‌بینید.
 
-![Admin menu](images/AdminBar.png)
+![منوی ادمین](images/AdminBar.png)
 
-## Creating an account
+## ایجاد یک حساب
 
-Admins can add people to their Metabase. To add a new person manually, click on the gear icon and select **Admin settings**. Under the **People** tab, click **Invite someone** in the upper right corner. You’ll be prompted to enter their email, and optionally their first and last names–only the email is required.
+ادمین‌ها می‌توانند افراد را به متابیس خود اضافه کنند. برای اضافه کردن یک شخص جدید به صورت دستی، روی آیکون gear کلیک کنید و **Admin settings** را انتخاب کنید. زیر تب **People**، روی **Invite someone** در گوشهٔ بالا سمت راست کلیک کنید. از شما خواسته می‌شود ایمیل آن‌ها را وارد کنید، و به‌صورت اختیاری نام و نام خانوادگی آن‌ها — فقط ایمیل الزامی است.
 
-Click **Create** to activate an account. An account becomes active once you click **Create**, even if the person never signs into the account. The account remains active until you [deactivate the account](#deactivating-an-account). If you're on a Pro or Enterprise Metabase plan, all active accounts will count toward your user account total. If one person has more than one account, each account will count toward the total (see [how billing works](../cloud/how-billing-works.md)).
+روی **Create** کلیک کنید تا یک حساب فعال شود. یک حساب وقتی فعال می‌شود که روی **Create** کلیک می‌کنید، حتی اگر شخص هرگز به حساب وارد نشود. حساب تا زمانی که [حساب را غیرفعال کنید](#deactivating-an-account) فعال می‌ماند. اگر در یک پلن Metabase Pro یا Enterprise هستید، همه حساب‌های فعال به سمت کل حساب‌های کاربری شما شمارش می‌شوند. اگر یک شخص بیش از یک حساب دارد، هر حساب به سمت کل شمارش می‌شود (به [نحوهٔ کار billing](../cloud/how-billing-works.md) مراجعه کنید).
 
-If you’ve already [configured Metabase to use email](../configuring-metabase/email.md), Metabase will send the person an email inviting them to log into Metabase. If you haven't yet setup email for your Metabase, Metabase will give you a temporary password that you’ll have to manually send to the person.
+اگر قبلاً [متابیس را برای استفاده از ایمیل پیکربندی کرده‌اید](../configuring-metabase/email.md)، متابیس یک ایمیل برای شخص ارسال می‌کند که از آن‌ها دعوت می‌کند به متابیس وارد شوند. اگر هنوز ایمیل را برای متابیس خود تنظیم نکرده‌اید، متابیس یک رمز عبور موقت به شما می‌دهد که باید به صورت دستی برای شخص ارسال کنید.
 
-To create accounts with SSO, check out [authentication options](./start.md#authentication).
+برای ایجاد حساب‌ها با SSO، به [گزینه‌های احراز هویت](./start.md#authentication) مراجعه کنید.
 
-## Editing an account
+## ویرایش یک حساب
 
-You can edit someone's name and email address by clicking the three dots icon and choosing **Edit user**.
+می‌توانید نام و آدرس ایمیل کسی را با کلیک روی آیکون سه نقطه و انتخاب **Edit user** ویرایش کنید.
 
-> Be careful: changing an account's email address _will change the address the person will use to log in to Metabase_.
+> مراقب باشید: تغییر آدرس ایمیل یک حساب _آدرس مورد استفاده شخص برای ورود به متابیس را تغییر می‌دهد_.
 
-## Adding a user attribute
+## اضافه کردن یک ویژگی کاربر
 
 {% include plans-blockquote.html feature="User attributes" %}
 
-To add a user attribute manually:
+برای اضافه کردن یک ویژگی کاربر به صورت دستی:
 
-1. Go to **Admin settings** > **People**.
-2. Find the person's account and click the **three dot** (...) menu.
-3. Click **Edit user**.
-4. Click **+ Add an attribute**.
-5. Add the name of the user attribute under "Key". For example, "Department".
-6. Add the value that applies to the specific person. For example, "Engineering".
-7. Optional: [create a group](#creating-a-group) to organize people who will get row and column security.
-8. Add the person to the group.
+1. به **Admin settings** > **People** بروید.
+2. حساب شخص را پیدا کنید و روی منوی **سه نقطه** (...) کلیک کنید.
+3. روی **Edit user** کلیک کنید.
+4. روی **+ Add an attribute** کلیک کنید.
+5. نام ویژگی کاربر را زیر "Key" اضافه کنید. به‌عنوان مثال، "Department".
+6. مقداری که برای شخص خاص اعمال می‌شود را اضافه کنید. به‌عنوان مثال، "Engineering".
+7. اختیاری: [یک گروه ایجاد کنید](#creating-a-group) برای سازمان‌دهی افرادی که امنیت ردیف و ستون دریافت می‌کنند.
+8. شخص را به گروه اضافه کنید.
 
-You can also sync user attributes from your identity provider [via SSO](./start.md#authentication).
+همچنین می‌توانید ویژگی‌های کاربر را از ارائه‌دهنده هویت خود [از طریق SSO](./start.md#authentication) همگام‌سازی کنید.
 
-User attributes are required for [row and column security](../permissions/row-and-column-security.md) permissions.
+ویژگی‌های کاربر برای مجوزهای [امنیت ردیف و ستون](../permissions/row-and-column-security.md) الزامی هستند.
 
-You can also employ user attributes to specify what database role Metabase should use when that person queries a database. Check out [impersonation access](../permissions/data.md#impersonated-view-data-permission).
+همچنین می‌توانید از ویژگی‌های کاربر برای مشخص کردن اینکه متابیس باید از چه نقش پایگاه داده استفاده کند وقتی آن شخص یک پایگاه داده را کوئری می‌کند استفاده کنید. به [دسترسی جعل هویت](../permissions/data.md#impersonated-view-data-permission) مراجعه کنید.
 
-## Deactivating an account
+## غیرفعال کردن یک حساب
 
-To deactivate someone's account, click on the three dots icon on the right of a person’s row and select **Deactivate** from the dropdown. Deactivating an account will mark it as inactive and prevent the user from logging in - but it _won’t_ delete that person's saved questions or dashboards.
+برای غیرفعال کردن حساب کسی، روی آیکون سه نقطه در سمت راست ردیف شخص کلیک کنید و **Deactivate** را از منوی dropdown انتخاب کنید. غیرفعال کردن یک حساب آن را به‌عنوان غیرفعال علامت‌گذاری می‌کند و از ورود کاربر جلوگیری می‌کند — اما _حذف نمی‌کند_ سؤال‌ها یا داشبوردهای ذخیره‌شده آن شخص.
 
-If you're using SSO, you should deactivate the account in Metabase as well as your IdP (that is, deactivation doesn't get applied from Metabase to your IdP, and vice versa).
+اگر از SSO استفاده می‌کنید، باید حساب را در متابیس و همچنین IdP خود غیرفعال کنید (یعنی غیرفعال‌سازی از متابیس به IdP شما اعمال نمی‌شود، و برعکس).
 
-![Remove a user](images/RemoveUser.png)
+![حذف یک کاربر](images/RemoveUser.png)
 
-To reactivate a deactivated account, click the **Deactivated** radio button at the top of the people list to see the list of deactivated accounts. Click on the icon on the far right to reactivate that account, allowing them to log in to Metabase again.
+برای فعال‌سازی مجدد یک حساب غیرفعال‌شده، روی دکمه رادیویی **Deactivated** در بالای لیست افراد کلیک کنید تا لیست حساب‌های غیرفعال‌شده را ببینید. روی آیکون در سمت راست دور کلیک کنید تا آن حساب را فعال کنید، که به آن‌ها امکان می‌دهد دوباره به متابیس وارد شوند.
 
-## Deleting an account
+## حذف یک حساب
 
-Metabase doesn't explicitly support account deletion. Instead, Metabase deactivates accounts so people can't log in to them, while it preserves any questions, models, dashboards, and other items created by those accounts.
+متابیس به صراحت از حذف حساب پشتیبانی نمی‌کند. در عوض، متابیس حساب‌ها را غیرفعال می‌کند تا افراد نتوانند به آن‌ها وارد شوند، در حالی که هر سؤال، مدل، داشبورد، و آیتم‌های دیگر ایجادشده توسط آن حساب‌ها را حفظ می‌کند.
 
-If you want to delete an account because the account information was set up incorrectly, you can deactivate the old account and create a new one instead.
+اگر می‌خواهید یک حساب را حذف کنید چون اطلاعات حساب به‌اشتباه تنظیم شده است، می‌توانید حساب قدیمی را غیرفعال کنید و به جای آن یک حساب جدید ایجاد کنید.
 
-1. Change the name and email associated with the old account.
-2. [Deactivate](#deactivating-an-account) the old account.
-3. [Create a new account](#creating-an-account) with the person's correct information.
+1. نام و ایمیل مرتبط با حساب قدیمی را تغییر دهید.
+2. حساب قدیمی را [غیرفعال کنید](#deactivating-an-account).
+3. یک [حساب جدید ایجاد کنید](#creating-an-account) با اطلاعات صحیح شخص.
 
-## Checking someone's auth method
+## بررسی روش auth کسی
 
-Search for a person and look for an icon beside their name.
+برای یک شخص جستجو کنید و به دنبال یک آیکون کنار نام آن‌ها بگردید.
 
-- If they log in using Google credentials, Metabase displays a Google icon.
-- If they log in using an email address and password stored in Metabase, no icon is shown.
+- اگر با اعتبارنامه‌های Google وارد می‌شوند، متابیس یک آیکون Google نمایش می‌دهد.
+- اگر با یک آدرس ایمیل و رمز عبور ذخیره‌شده در متابیس وارد می‌شوند، هیچ آیکونی نمایش داده نمی‌شود.
 
-Note that the type of user is set when the account is first created: if you create a user in Metabase, but that person then logs in via Google or some other form of SSO, the latter's icon will _not_ show up next to their name.
+توجه داشته باشید که نوع کاربر وقتی تنظیم می‌شود که حساب برای اولین بار ایجاد می‌شود: اگر یک کاربر در متابیس ایجاد می‌کنید، اما آن شخص سپس از طریق Google یا نوع دیگری از SSO وارد می‌شود، آیکون دومی _کنار نام آن‌ها نمایش داده نمی‌شود_.
 
-## Resetting someone’s password
+## بازنشانی رمز عبور کسی
 
-If you've already [configured your email settings](../configuring-metabase/email.md), people can reset their passwords using the "forgot password" link on the login screen. If you haven't yet configured your email settings, they will see a message telling them to ask an admin to reset their password for them.
+اگر قبلاً [تنظیمات ایمیل خود را پیکربندی کرده‌اید](../configuring-metabase/email.md)، افراد می‌توانند رمزهای عبور خود را با استفاده از لینک "forgot password" در صفحه ورود بازنشانی کنند. اگر هنوز تنظیمات ایمیل خود را پیکربندی نکرده‌اید، پیامی می‌بینند که به آن‌ها می‌گوید از یک ادمین بخواهند رمز عبور آن‌ها را بازنشانی کند.
 
-To reset a password for someone, just click the three dots icon next to their account and choose **Reset Password**. If you haven’t [configured your email settings](../configuring-metabase/email.md) yet, you’ll be given a temporary password that you’ll have to share with that person. Otherwise, they’ll receive a password reset email.
+برای بازنشانی رمز عبور کسی، فقط روی آیکون سه نقطه کنار حساب آن‌ها کلیک کنید و **Reset Password** را انتخاب کنید. اگر هنوز [تنظیمات ایمیل خود را پیکربندی نکرده‌اید](../configuring-metabase/email.md)، یک رمز عبور موقت به شما داده می‌شود که باید با آن شخص به‌اشتراک بگذارید. در غیر این صورت، آن‌ها یک ایمیل بازنشانی رمز عبور دریافت می‌کنند.
 
-## Resetting the admin password
+## بازنشانی رمز عبور ادمین
 
-If you're using Metabase Cloud, [contact support](https://www.metabase.com/help-premium) to reset your admin password.
+اگر از Metabase Cloud استفاده می‌کنید، برای بازنشانی رمز عبور ادمین خود [با پشتیبانی تماس بگیرید](https://www.metabase.com/help-premium).
 
-If you're a Metabase admin and have access to the server console, you can get Metabase to send you a password reset token:
+اگر یک ادمین متابیس هستید و به کنسول سرور دسترسی دارید، می‌توانید متابیس را وادار کنید یک token بازنشانی رمز عبور برای شما ارسال کند:
 
-1.  Stop the running Metabase application.
-2.  Restart Metabase with `reset-password email@example.com`, where "email@example.com" is the email associated with the admin account:
+1.  اپلیکیشن متابیس در حال اجرا را متوقف کنید.
+2.  متابیس را با `reset-password email@example.com` راه‌اندازی مجدد کنید، جایی که "email@example.com" ایمیل مرتبط با حساب ادمین است:
     ```
     java --add-opens java.base/java.nio=ALL-UNNAMED -jar metabase.jar reset-password email@example.com
     ```
-3.  Metabase will print out a random token like this:
+3.  متابیس یک token تصادفی مثل این چاپ می‌کند:
 
     ```
     ...
@@ -114,113 +114,113 @@ If you're a Metabase admin and have access to the server console, you can get Me
     OK [[[1_7db2b600-d538-4aeb-b4f7-0cf5b1970d89]]]
     ```
 
-4.  Start Metabase normally again (_without_ the `reset-password` option).
-5.  Navigate to it in your browser using the path `/auth/reset_password/:token`, where ":token" is the token that was generated from the step above. The full URL should look something like this:
+4.  متابیس را دوباره به صورت عادی راه‌اندازی کنید (_بدون_ گزینه `reset-password`).
+5.  در مرورگر خود با استفاده از مسیر `/auth/reset_password/:token` به آن بروید، جایی که ":token" token تولید شده از مرحله بالا است. URL کامل باید چیزی شبیه این باشد:
     ```
     https://metabase.example.com/auth/reset_password/1_7db2b600-d538-4aeb-b4f7-0cf5b1970d89
     ```
-6.  You should now see a page where you can input a new password for the admin account.
+6.  حالا باید صفحه‌ای ببینید که می‌توانید یک رمز عبور جدید برای حساب ادمین وارد کنید.
 
-## Unsubscribe from all subscriptions and alerts
+## Unsubscribe از همه اشتراک‌ها و هشدارها
 
-This action will delete any dashboard subscriptions or alerts the person has created, and remove them as a recipient from any other subscriptions or alerts.
+این عمل هر اشتراک داشبورد یا هشداری که شخص ایجاد کرده است را حذف می‌کند، و آن‌ها را به‌عنوان گیرنده از هر اشتراک یا هشدار دیگری حذف می‌کند.
 
-This action doesn't affect email distribution lists that are managed outside of Metabase.
+این عمل روی لیست‌های توزیع ایمیل که خارج از متابیس مدیریت می‌شوند تأثیر نمی‌گذارد.
 
-## Default user accounts
+## حساب‌های کاربری پیش‌فرض
 
-Metabase includes default user accounts to handle various tasks. We're documenting these accounts here so you know they're legitimate accounts and not someone trying to spy on your Metabase. Some things to know about them:
+متابیس شامل حساب‌های کاربری پیش‌فرض برای مدیریت کارهای مختلف است. ما این حساب‌ها را اینجا مستند می‌کنیم تا بدانید آن‌ها حساب‌های قانونی هستند و نه کسی که سعی می‌کند روی متابیس شما جاسوسی کند. برخی چیزها برای دانستن دربارهٔ آن‌ها:
 
-- Customers are not charged for these accounts.
-- No one can log in to these user accounts.
-- Metabase excludes these user accounts from the **Admin settings** > **People** tab.
+- مشتریان برای این حساب‌ها شارژ نمی‌شوند.
+- هیچ کسی نمی‌تواند به این حساب‌های کاربری وارد شود.
+- متابیس این حساب‌های کاربری را از تب **Admin settings** > **People** مستثنی می‌کند.
 
-### Anonymous user account
+### حساب کاربری ناشناس
 
 - ID: 0
-- First name: External
-- Last name: User
-- Email: null
+- نام: External
+- نام خانوادگی: User
+- ایمیل: null
 
-Metabase uses this anonymous user account to identify anonymous views, for example views of a [public question or dashboard](../embedding/public-links.md). This account is a virtual user: the account doesn't exist in the application database. You'll see this account show up in [usage analytics](../usage-and-performance-tools/usage-analytics.md).
+متابیس از این حساب کاربری ناشناس برای شناسایی viewهای ناشناس استفاده می‌کند، به‌عنوان مثال viewهای یک [سؤال یا داشبورد عمومی](../embedding/public-links.md). این حساب یک کاربر مجازی است: حساب در پایگاه داده اپلیکیشن وجود ندارد. این حساب را در [تحلیل استفاده](../usage-and-performance-tools/usage-analytics.md) می‌بینید.
 
-### Metabase internal account
+### حساب داخلی متابیس
 
 - ID: 13371338
-- First name: Internal
-- Last name: Metabase
-- Email: internal@metabase.com
+- نام: Internal
+- نام خانوادگی: Metabase
+- ایمیل: internal@metabase.com
 
-Metabase uses this account to load content into Metabase (like the [Usage analytics](../usage-and-performance-tools/usage-analytics.md) collection). You may see this `internal@metabase.com` account in the logs.
+متابیس از این حساب برای بارگذاری محتوا در متابیس استفاده می‌کند (مثل کلکسیون [تحلیل استفاده](../usage-and-performance-tools/usage-analytics.md)). ممکن است این حساب `internal@metabase.com` را در لاگ‌ها ببینید.
 
-## Groups
+## گروه‌ها
 
-To determine [who has access to what](../permissions/start.md), you’ll need to
+برای تعیین [چه کسی به چه چیزی دسترسی دارد](../permissions/start.md)، باید
 
-- Create one or more groups.
-- Choose which level of access that group has to different databases, collections, and so on.
-- Then add people to those groups.
-- (Optional) promote people to [group managers](#group-managers).
+- یک یا چند گروه ایجاد کنید.
+- انتخاب کنید که آن گروه چه سطح دسترسی به پایگاه‌داده‌ها، کلکسیون‌ها، و غیره دارد.
+- سپس افراد را به آن گروه‌ها اضافه کنید.
+- (اختیاری) افراد را به [مدیران گروه](#group-managers) ارتقا دهید.
 
-To view and manage your groups, go to the **Admin Panel** > **People** tab, and then click on **Groups** from the side menu.
+برای مشاهده و مدیریت گروه‌های خود، به **Admin Panel** > تب **People** بروید، و سپس روی **Groups** از منوی کناری کلیک کنید.
 
-![Groups](images/groups.png)
+![گروه‌ها](images/groups.png)
 
-### Special default groups
+### گروه‌های پیش‌فرض خاص
 
-Every Metabase has two default groups: Administrators and All Users. These are special groups that can’t be removed.
+هر متابیس دو گروه پیش‌فرض دارد: Administrators و All Users. این گروه‌های خاصی هستند که نمی‌توان آن‌ها را حذف کرد.
 
-#### Administrators
+#### ادمین‌ها
 
-To make someone an admin of Metabase, you just need to add them to the Administrators group. Metabase admins can log into the Admin Panel and make changes there, and they always have unrestricted access to all data that you have in your Metabase instance. So be careful who you add to the Administrator group!
+برای اینکه کسی را یک ادمین متابیس کنید، فقط باید آن‌ها را به گروه Administrators اضافه کنید. ادمین‌های متابیس می‌توانند به Admin Panel وارد شوند و تغییرات را آنجا انجام دهند، و همیشه دسترسی بدون محدودیت به همه داده‌ای که در instance متابیس خود دارید دارند. بنابراین مراقب باشید که چه کسی را به گروه Administrator اضافه می‌کنید!
 
-#### All users
+#### همه کاربران
 
-The **All Users** group is another special one. Every Metabase user is always a member of this group, though they can also be a member of as many other groups as you want. We recommend using the All Users group as a way to set default access levels for new Metabase users. If you have [Google single sign-on](./google-sign-in.md) enabled, new users who join that way will be automatically added to the All Users group.
+گروه **All Users** یکی دیگر از گروه‌های خاص است. هر کاربر متابیس همیشه یک عضو این گروه است، اگرچه می‌توانند همچنین عضو هر تعداد گروه دیگری که می‌خواهید باشند. توصیه می‌کنیم از گروه All Users به‌عنوان راهی برای تنظیم سطوح دسترسی پیش‌فرض برای کاربران جدید متابیس استفاده کنید. اگر [ورود واحد Google](./google-sign-in.md) فعال باشد، کاربران جدیدی که از آن طریق می‌پیوندند به‌طور خودکار به گروه All Users اضافه می‌شوند.
 
-It's important that your All Users group should never have _greater_ access for an item than a group for which you're trying to restrict access — otherwise the more permissive setting will win out. See [Setting permissions](../permissions/start.md).
+مهم است که گروه All Users شما هرگز دسترسی _بیشتری_ برای یک آیتم از گروهی که سعی می‌کنید دسترسی را محدود کنید نداشته باشد — در غیر این صورت تنظیم مجازتر برنده می‌شود. به [تنظیم مجوزها](../permissions/start.md) مراجعه کنید.
 
-## Creating a group
+## ایجاد یک گروه
 
-Go to **Admin settings** > **People** > **Groups**, and click the **Add a group** button.
+به **Admin settings** > **People** > **Groups** بروید، و روی دکمهٔ **Add a group** کلیک کنید.
 
-We recommend creating groups that correspond to the teams your company or organization has, such as Human Resources, Engineering, Finance, and so on. By default, newly created groups don’t have access to anything.
+توصیه می‌کنیم گروه‌هایی ایجاد کنید که با تیم‌های شرکت یا سازمان شما مطابقت دارند، مثل Human Resources، Engineering، Finance، و غیره. به‌طور پیش‌فرض، گروه‌های تازه ایجادشده به هیچ چیزی دسترسی ندارند.
 
-To remove a group, click the X icon to the right of a group in the list to remove it (remember, you can’t remove the special default groups).
+برای حذف یک گروه، روی آیکون X در سمت راست یک گروه در لیست کلیک کنید تا آن را حذف کنید (به خاطر داشته باشید، نمی‌توانید گروه‌های پیش‌فرض خاص را حذف کنید).
 
-## Adding people to groups
+## اضافه کردن افراد به گروه‌ها
 
-To add people to that group, click into a group and then click **Add members**.
+برای اضافه کردن افراد به آن گروه، روی یک گروه کلیک کنید و سپس روی **Add members** کلیک کنید.
 
-To remove someone from that group, click on the **X** to the right of the group member.
+برای حذف کسی از آن گروه، روی **X** در سمت راست عضو گروه کلیک کنید.
 
-You can also add or remove people from groups from the **People** list using the dropdown in the **Groups** column.
+همچنین می‌توانید افراد را از لیست **People** با استفاده از منوی dropdown در ستون **Groups** به گروه‌ها اضافه یا حذف کنید.
 
-## Group managers
+## مدیران گروه
 
 {% include plans-blockquote.html feature="Group managers" %}
 
-**Group managers** can manage other people within their group.
+**مدیران گروه** می‌توانند افراد دیگر درون گروه خود را مدیریت کنند.
 
-Group managers can:
+مدیران گروه می‌توانند:
 
-- Add or remove people from their group (that is, people who already have accounts in your Metabase).
-- View all people in the **Admin settings** > **People** tab.
-- Promote other people to group manager, or demote them from group manager to member.
-- Rename their group.
+- افراد را به گروه خود اضافه یا حذف کنند (یعنی افرادی که قبلاً حساب‌هایی در متابیس شما دارند).
+- همه افراد را در تب **Admin settings** > **People** مشاهده کنند.
+- افراد دیگر را به مدیر گروه ارتقا دهند، یا آن‌ها را از مدیر گروه به عضو تنزل دهند.
+- نام گروه خود را تغییر دهند.
 
-Group managers are not admins, so their powers are limited. They cannot create new groups or invite new people to your Metabase.
+مدیران گروه ادمین نیستند، بنابراین قدرت آن‌ها محدود است. آن‌ها نمی‌توانند گروه‌های جدید ایجاد کنند یا افراد جدید را به متابیس شما دعوت کنند.
 
-## Promoting/demoting group managers
+## ارتقا/تنزل مدیران گروه
 
-To promote someone to become a group manager:
+برای ارتقای کسی به مدیر گروه:
 
-1. At the top right of the screen, click the **gear** icon > **Admin settings** > **People** > **Groups**.
-2. Select the group you want the person to manage. If the person isn't already in the group, you'll need to add that person to the group.
-3. Find the person you want to promote, hover over their member type, and click the up arrow to promote them to group manager. If you want to demote them, click on the down arrow.
+1. در گوشهٔ بالا سمت راست صفحه، روی **آیکون gear** > **Admin settings** > **People** > **Groups** کلیک کنید.
+2. گروهی که می‌خواهید شخص مدیریت کند را انتخاب کنید. اگر شخص قبلاً در گروه نیست، باید آن شخص را به گروه اضافه کنید.
+3. شخصی که می‌خواهید ارتقا دهید را پیدا کنید، روی نوع عضو آن‌ها hover کنید، و روی فلش بالا کلیک کنید تا آن‌ها را به مدیر گروه ارتقا دهید. اگر می‌خواهید آن‌ها را تنزل دهید، روی فلش پایین کلیک کنید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Configure Single Sign-On (SSO)](./start.md#authentication).
-- [Permissions strategies](https://www.metabase.com/learn/metabase-basics/administration/permissions/strategy).
-- [Embedding permissions](../permissions/embedding.md).
+- [پیکربندی Single Sign-On (SSO)](./start.md#authentication).
+- [استراتژی‌های مجوز](https://www.metabase.com/learn/metabase-basics/administration/permissions/strategy).
+- [مجوزهای جاسازی](../permissions/embedding.md).

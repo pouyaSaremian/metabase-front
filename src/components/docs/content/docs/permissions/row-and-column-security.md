@@ -1,186 +1,186 @@
 ---
-title: Row and column security
-summary: Control what data different groups can see by filtering rows and columns based on user attributes. Useful for multi-tenant analytics.
+title: امنیت ردیف و ستون
+summary: کنترل اینکه چه داده‌ای گروه‌های مختلف می‌توانند ببینند با فیلتر کردن ردیف‌ها و ستون‌ها بر اساس ویژگی‌های کاربر. مفید برای تحلیل چند‌مستأجری.
 redirect_from:
   - /docs/latest/enterprise-guide/data-sandboxes
   - /docs/latest/permissions/data-sandboxes
 ---
 
-# Row and column security
+# امنیت ردیف و ستون
 
 {% include plans-blockquote.html feature="Row and column security" %}
 
-Row and column security lets you give granular permissions for different groups of people. You can change what data a group [can view](./data.md#can-view-data-permission), as well as what data a group [can query](./data.md#create-queries-permissions) with the query builder.
+امنیت ردیف و ستون به شما امکان می‌دهد مجوزهای دقیق برای گروه‌های مختلف افراد اعطا کنید. می‌توانید داده‌ای که یک گروه [می‌تواند مشاهده کند](./data.md#can-view-data-permission)، و همچنین داده‌ای که یک گروه [می‌تواند کوئری کند](./data.md#create-queries-permissions) با query builder را تغییر دهید.
 
-You can use row and column security to set up [self-service analytics](https://www.metabase.com/learn/metabase-basics/embedding/multi-tenant-self-service-analytics), so that each of your customers can only view the rows that match their customer ID. For example, if you have an Accounts table with information about your customers, you can add permissions to the table so that each customer only sees the data relevant to them.
+می‌توانید از امنیت ردیف و ستون برای تنظیم [تحلیل self-service](https://www.metabase.com/learn/metabase-basics/embedding/multi-tenant-self-service-analytics) استفاده کنید، تا هر یک از مشتریان شما فقط بتوانند ردیف‌هایی را که با customer ID آن‌ها تطبیق دارد مشاهده کنند. به‌عنوان مثال، اگر یک جدول Accounts با اطلاعات دربارهٔ مشتریان خود دارید، می‌توانید مجوزها را به جدول اضافه کنید تا هر مشتری فقط داده مرتبط با خودش را ببیند.
 
-> Row and column security was formerly called data sandboxing. It's the same feature, it just now has a more descriptive name.
+> امنیت ردیف و ستون قبلاً data sandboxing نامیده می‌شد. همان ویژگی است، فقط حالا نام توصیفی‌تری دارد.
 
-## Row and column security examples
+## مثال‌های امنیت ردیف و ستون
 
-You can skip the theory and go [straight to examples of row and column security](row-and-column-security-examples.md).
+می‌توانید تئوری را رد کنید و [مستقیماً به مثال‌های امنیت ردیف و ستون](row-and-column-security-examples.md) بروید.
 
-## How row and column security works
+## نحوهٔ کار امنیت ردیف و ستون
 
-You can think of row and column security as a bundle of permissions that includes:
+می‌توانید امنیت ردیف و ستون را به‌عنوان یک بسته مجوز در نظر بگیرید که شامل موارد زیر است:
 
-- The filtered version of a table that will replace your original table, everywhere that the original table is used in Metabase.
-- The [group](../people-and-groups/managing.md#groups) of people who should see the filtered version of the table.
+- نسخه فیلترشده یک جدول که جدول اصلی شما را جایگزین می‌کند، در هر جایی که جدول اصلی در متابیس استفاده می‌شود.
+- [گروه](../people-and-groups/managing.md#groups) افرادی که باید نسخه فیلترشده جدول را ببینند.
 
-You can define up to one row and column security policy for each table/group combo in your Metabase. This means you can display different versions of a table for different groups, such as "Accounts for Sales" to your salespeople, and "Accounts for Managers" for sales managers.
+می‌توانید حداکثر یک policy امنیت ردیف و ستون برای هر ترکیب جدول/گروه در متابیس خود تعریف کنید. این به این معنی است که می‌توانید نسخه‌های متفاوت یک جدول را برای گروه‌های مختلف نمایش دهید، مثل "Accounts for Sales" برای فروشندگان شما، و "Accounts for Managers" برای مدیران فروش.
 
-## Types of row and column security
+## انواع امنیت ردیف و ستون
 
-Row and column security show specific data to each person based on their [user attributes](../people-and-groups/managing.md#adding-a-user-attribute). You can:
+امنیت ردیف و ستون داده خاصی را به هر شخص بر اساس [ویژگی‌های کاربر](../people-and-groups/managing.md#adding-a-user-attribute) آن‌ها نمایش می‌دهد. می‌توانید:
 
-- [Restrict **rows**](#row-level-security-filter-by-a-column-in-the-table)
-- [Restrict **columns** and rows](#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table) for specific people.
+- [محدود کردن **ردیف‌ها**](#row-level-security-filter-by-a-column-in-the-table)
+- [محدود کردن **ستون‌ها** و ردیف‌ها](#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table) برای افراد خاص.
 
-| Goal                                           | Row (filter by a column in the table) | Custom (use a saved SQL question) |
+| هدف                                           | Row (فیلتر بر اساس یک ستون در جدول) | Custom (استفاده از یک سؤال SQL ذخیره‌شده) |
 | ---------------------------------------------- | ------------------------------------- | --------------------------------- |
-| Restrict rows by filtering on a single column  | ✅                                    | ✅                                |
-| Restrict rows by filtering on multiple columns | ❌                                    | ✅                                |
-| Restrict columns                               | ❌                                    | ✅                                |
-| Edit columns                                   | ❌                                    | ✅                                |
+| محدود کردن ردیف‌ها با فیلتر روی یک ستون واحد  | ✅                                    | ✅                                |
+| محدود کردن ردیف‌ها با فیلتر روی چندین ستون | ❌                                    | ✅                                |
+| محدود کردن ستون‌ها                               | ❌                                    | ✅                                |
+| ویرایش ستون‌ها                                   | ❌                                    | ✅                                |
 
-### Row-level security: filter by a column in the table
+### امنیت سطح ردیف: فیلتر بر اساس یک ستون در جدول
 
-You can **restrict rows** by filtering a column using a [user attribute value](#choosing-user-attributes-for-row-and-column-security).
+می‌توانید **ردیف‌ها را محدود کنید** با فیلتر کردن یک ستون با استفاده از [مقدار ویژگی کاربر](#choosing-user-attributes-for-row-and-column-security).
 
-For example, you can filter the Accounts table for a group so that the user attribute filters the table:
+به‌عنوان مثال، می‌توانید جدول Accounts را برای یک گروه فیلتر کنید تا ویژگی کاربر جدول را فیلتر کند:
 
-- "Basic" will see rows where `Plan = "Basic"` (rows where the Plan column matches the value "Basic").
-- "Premium" will see the rows where `Plan = "Premium"` (rows where the Plan column matches the value "Premium").
+- "Basic" ردیف‌هایی را می‌بیند که `Plan = "Basic"` (ردیف‌هایی که ستون Plan با مقدار "Basic" تطبیق دارد).
+- "Premium" ردیف‌هایی را می‌بیند که `Plan = "Premium"` (ردیف‌هایی که ستون Plan با مقدار "Premium" تطبیق دارد).
 
-### Custom row and column security: use a SQL question to create a custom "view" of a table
+### امنیت ردیف و ستون سفارشی: استفاده از یک سؤال SQL برای ایجاد یک "view" سفارشی از یک جدول
 
-To **restrict rows _and_ columns**, you can use a SQL question to filter the table. When someone views that table, they'll instead see the question's results, not the raw table.
+برای **محدود کردن ردیف‌ها _و_ ستون‌ها**، می‌توانید از یک سؤال SQL برای فیلتر کردن جدول استفاده کنید. وقتی کسی آن جدول را مشاهده می‌کند، در عوض نتایج سؤال را می‌بیند، نه جدول خام.
 
-For example, say your original Accounts table includes the columns: `ID`, `Email`, `Plan`, and `Created At`. If you want to hide the Email column, you can create a "Restricted Accounts" SQL question with the columns: `ID`, `Plan`, and `Created At`.
+به‌عنوان مثال، فرض کنید جدول Accounts اصلی شما شامل ستون‌های زیر است: `ID`، `Email`، `Plan`، و `Created At`. اگر می‌خواهید ستون Email را مخفی کنید، می‌توانید یک سؤال SQL "Restricted Accounts" با ستون‌های زیر ایجاد کنید: `ID`، `Plan`، و `Created At`.
 
-You can use a question to:
+می‌توانید از یک سؤال برای موارد زیر استفاده کنید:
 
-- [Display an edited column instead of hiding the column](#displaying-edited-columns).
-- [Pass a user attribute to a SQL parameter](#restricting-rows-with-user-attributes-using-a-sql-variable).
+- [نمایش یک ستون ویرایش‌شده به جای مخفی کردن ستون](#displaying-edited-columns).
+- [ارسال یک ویژگی کاربر به یک پارامتر SQL](#restricting-rows-with-user-attributes-using-a-sql-variable).
 
-## Prerequisites for row security
+## پیش‌نیازهای امنیت ردیف
 
-- A [group](../people-and-groups/managing.md#groups) of people to add row security.
-- [User attributes](../people-and-groups/managing.md#adding-a-user-attribute) for each person in the group.
+- یک [گروه](../people-and-groups/managing.md#groups) افراد برای اضافه کردن امنیت ردیف.
+- [ویژگی‌های کاربر](../people-and-groups/managing.md#adding-a-user-attribute) برای هر شخص در گروه.
 
-Row security displays a filtered table, in place of an original table, to a specific group. How Metabase filters that table depends on the value in each person's user attribute.
+امنیت ردیف یک جدول فیلترشده را، به جای یک جدول اصلی، به یک گروه خاص نمایش می‌دهد. نحوهٔ فیلتر کردن آن جدول توسط متابیس بستگی به مقدار در ویژگی کاربر هر شخص دارد.
 
-For example, you can set up a row-level security so that the user attribute `plan` shows different rows for different values:
+به‌عنوان مثال، می‌توانید یک امنیت سطح ردیف تنظیم کنید تا ویژگی کاربر `plan` ردیف‌های متفاوتی برای مقادیر متفاوت نشان دهد:
 
-- "Basic" will see a version of the Accounts table with a filter for `Plan = "Basic"` (that is, only the rows where the Plan column matches the value "Basic").
-- "Premium" will see a different version of the Accounts table with the filter `Plan = "Premium"` applied.
+- "Basic" یک نسخه از جدول Accounts با فیلتر `Plan = "Basic"` می‌بیند (یعنی فقط ردیف‌هایی که ستون Plan با مقدار "Basic" تطبیق دارد).
+- "Premium" یک نسخه متفاوت از جدول Accounts با فیلتر `Plan = "Premium"` اعمال‌شده می‌بیند.
 
-## Choosing user attributes for row and column security
+## انتخاب ویژگی‌های کاربر برای امنیت ردیف و ستون
 
-**User attributes are required for row security, and optional for column security**. When [adding a new user attribute](../people-and-groups/managing.md#adding-a-user-attribute), you'll set up a key-value pair for each person.
+**ویژگی‌های کاربر برای امنیت ردیف الزامی هستند، و برای امنیت ستون اختیاری**. هنگام [اضافه کردن یک ویژگی کاربر جدید](../people-and-groups/managing.md#adding-a-user-attribute)، یک جفت کلید-مقدار برای هر شخص تنظیم می‌کنید.
 
-Metabase uses the user attribute key to look up the user attribute value for a specific person. User attribute keys can be mapped to parameters in Metabase.
+متابیس از کلید ویژگی کاربر برای جستجوی مقدار ویژگی کاربر برای یک شخص خاص استفاده می‌کند. کلیدهای ویژگی کاربر می‌توانند به پارامترها در متابیس نگاشت شوند.
 
-The **user attribute value** must be an exact, case-sensitive match for the filter value. For example, if you add row security to the Accounts table with the filter `Plan = "Basic"`, make sure that you enter "Basic" as the user attribute value. If you set the user attribute value to lowercase "basic" (a value which doesn't exist in the Plan column of the Accounts table), the person will get an empty result instead of the table.
+**مقدار ویژگی کاربر** باید یک تطبیق دقیق و حساس به حروف برای مقدار فیلتر باشد. به‌عنوان مثال، اگر امنیت ردیف را به جدول Accounts با فیلتر `Plan = "Basic"` اضافه می‌کنید، مطمئن شوید که "Basic" را به‌عنوان مقدار ویژگی کاربر وارد می‌کنید. اگر مقدار ویژگی کاربر را به حروف کوچک "basic" تنظیم کنید (مقداری که در ستون Plan جدول Accounts وجود ندارد)، شخص به جای جدول یک نتیجه خالی دریافت می‌کند.
 
-Examples of user attributes in play:
+مثال‌هایی از ویژگی‌های کاربر در عمل:
 
-- [Row security](./row-and-column-security-examples.md#filtering-rows-based-on-user-attributes)
-- [Restricting rows and columns](./row-and-column-security-examples.md#custom-example-2-filtering-rows-and-columns)
+- [امنیت ردیف](./row-and-column-security-examples.md#filtering-rows-based-on-user-attributes)
+- [محدود کردن ردیف‌ها و ستون‌ها](./row-and-column-security-examples.md#custom-example-2-filtering-rows-and-columns)
 
-## Adding row-level security
+## اضافه کردن امنیت سطح ردیف
 
-1. Make sure to do the [prerequisites for row security](#prerequisites-for-row-security) first.
-2. Go to **Admin settings** > **Permissions**.
-3. Select the database and table that you want to secure.
-4. Find the group that you want to put in the secure.
-5. Click on the dropdown under **View data** for that group.
-6. Select "Row and column security".
-7. Click the dropdown under **Column** and enter the column to filter the table on, such as "Plan".
-8. Click the dropdown under **User attribute** and enter the user attribute **key**, such as "Plan".
+1. مطمئن شوید که ابتدا [پیش‌نیازهای امنیت ردیف](#prerequisites-for-row-security) را انجام داده‌اید.
+2. به **Admin settings** > **Permissions** بروید.
+3. پایگاه داده و جدولی که می‌خواهید امن کنید را انتخاب کنید.
+4. گروهی که می‌خواهید در امنیت قرار دهید را پیدا کنید.
+5. روی منوی dropdown زیر **View data** برای آن گروه کلیک کنید.
+6. "Row and column security" را انتخاب کنید.
+7. روی منوی dropdown زیر **Column** کلیک کنید و ستون را برای فیلتر کردن جدول وارد کنید، مثل "Plan".
+8. روی منوی dropdown زیر **User attribute** کلیک کنید و **کلید** ویژگی کاربر را وارد کنید، مثل "Plan".
 
-> If you have SQL questions that query data with row-level security, make sure to move all of those questions to admin-only collections. For more info, see [You cannot secure the rows or columns of SQL results](#you-cannot-secure-the-rows-or-columns-of-sql-results).
+> اگر سؤال‌های SQL دارید که داده با امنیت سطح ردیف را کوئری می‌کنند، مطمئن شوید که همه آن سؤال‌ها را به کلکسیون‌های فقط-ادمین منتقل کنید. برای اطلاعات بیشتر، به [شما نمی‌توانید ردیف‌ها یا ستون‌های نتایج SQL را امن کنید](#you-cannot-secure-the-rows-or-columns-of-sql-results) مراجعه کنید.
 
-Check out [row and column security examples](./row-and-column-security-examples.md).
+به [مثال‌های امنیت ردیف و ستون](./row-and-column-security-examples.md) مراجعه کنید.
 
-## Prerequisites for column-level security
+## پیش‌نیازهای امنیت سطح ستون
 
-- A [group](../people-and-groups/managing.md#groups) of people.
-- An admin-only [collection](../exploration-and-organization/collections.md), with [collection permissions](../permissions/collections.md) set to **No access** for all groups except Administrators.
-- A [SQL question](../questions/native-editor/writing-sql.md) with the rows and columns to be displayed to the people in the group, stored in the admin-only collection.
-- Optional: if you want to restrict **rows** as well, set up [user attributes](#choosing-user-attributes-for-row-and-column-security) for each of the people in the group.
+- یک [گروه](../people-and-groups/managing.md#groups) افراد.
+- یک [کلکسیون](../exploration-and-organization/collections.md) فقط-ادمین، با [مجوزهای کلکسیون](../permissions/collections.md) تنظیم‌شده به **No access** برای همه گروه‌ها به جز Administrators.
+- یک [سؤال SQL](../questions/native-editor/writing-sql.md) با ردیف‌ها و ستون‌هایی که باید به افراد در گروه نمایش داده شوند، ذخیره‌شده در کلکسیون فقط-ادمین.
+- اختیاری: اگر می‌خواهید **ردیف‌ها** را نیز محدود کنید، [ویژگی‌های کاربر](#choosing-user-attributes-for-row-and-column-security) را برای هر یک از افراد در گروه تنظیم کنید.
 
-### Creating a SQL question for Metabase to display instead of a table
+### ایجاد یک سؤال SQL برای متابیس برای نمایش به جای یک جدول
 
-Metabase will display the results of the question in place of an original table to a particular group.
+متابیس نتایج سؤال را به جای یک جدول اصلی به یک گروه خاص نمایش می‌دهد.
 
-**Use a SQL question** to define the exact rows and columns to be included in the custom view. Avoid using a query builder (GUI) question, as you might accidentally expose extra data, since GUI questions can include data from other questions or models.
+**از یک سؤال SQL استفاده کنید** برای تعریف ردیف‌ها و ستون‌های دقیق که باید در نمای سفارشی شامل شوند. از استفاده از یک سؤال query builder (GUI) خودداری کنید، چون ممکن است به طور تصادفی داده اضافی را در معرض دید قرار دهید، چون سؤال‌های GUI می‌توانند داده از سؤال‌ها یا مدل‌های دیگر را شامل شوند.
 
-> Make sure to save the SQL question in an admin-only collection ([collection permissions](../permissions/collections.md) set to **No access** for all groups except Administrators). For more info, see [You cannot secure the rows or columns of SQL results](#you-cannot-secure-the-rows-or-columns-of-sql-results).
+> مطمئن شوید که سؤال SQL را در یک کلکسیون فقط-ادمین ذخیره کنید ([مجوزهای کلکسیون](../permissions/collections.md) تنظیم‌شده به **No access** برای همه گروه‌ها به جز Administrators). برای اطلاعات بیشتر، به [شما نمی‌توانید ردیف‌ها یا ستون‌های نتایج SQL را امن کنید](#you-cannot-secure-the-rows-or-columns-of-sql-results) مراجعه کنید.
 
-### Displaying edited columns
+### نمایش ستون‌های ویرایش‌شده
 
-Aside from excluding rows and columns, you can also **display edited columns** (without changing the columns in your database).
+علاوه بر حذف ردیف‌ها و ستون‌ها، همچنین می‌توانید **ستون‌های ویرایش‌شده را نمایش دهید** (بدون تغییر ستون‌ها در پایگاه داده شما).
 
-For example, you can create a "Edited Accounts" SQL question that truncates the Email column to display usernames instead of complete email addresses.
+به‌عنوان مثال، می‌توانید یک سؤال SQL "Edited Accounts" ایجاد کنید که ستون Email را کوتاه می‌کند تا نام‌های کاربری را به جای آدرس‌های ایمیل کامل نمایش دهد.
 
-If you edit a column, the schema of the SQL question (the question you want to display instead of the table) must match the schema of the original table. That means the "Edited Accounts" SQL question must return the same number of columns and corresponding data types as the original Accounts table.
+اگر یک ستون را ویرایش می‌کنید، schema سؤال SQL (سؤالی که می‌خواهید به جای جدول نمایش دهید) باید با schema جدول اصلی تطبیق داشته باشد. این به این معنی است که سؤال SQL "Edited Accounts" باید همان تعداد ستون و انواع داده متناظر را به‌عنوان جدول Accounts اصلی برگرداند.
 
-You cannot add columns.
+نمی‌توانید ستون اضافه کنید.
 
-## Setting up column security
+## تنظیم امنیت ستون
 
-1. Make sure to do the [prerequisites](#prerequisites-for-column-level-security) first.
-2. Go to **Admin settings** > **Permissions**.
-3. Select the database and table that you want to secure.
-4. Find the group to restrict.
-5. Click on the dropdown under **Data access** for that group.
-6. Select "Row and column security".
-7. Select "Use a saved question to create a custom view for this table".
-8. Select your saved question. The question should be written in SQL. If the question contains parameters, those parameters must be required (they cannot be optional).
-9. Optional: [restrict rows based on people's user attributes](#restricting-rows-with-user-attributes-using-a-sql-variable).
+1. مطمئن شوید که ابتدا [پیش‌نیازها](#prerequisites-for-column-level-security) را انجام داده‌اید.
+2. به **Admin settings** > **Permissions** بروید.
+3. پایگاه داده و جدولی که می‌خواهید امن کنید را انتخاب کنید.
+4. گروهی که می‌خواهید محدود کنید را پیدا کنید.
+5. روی منوی dropdown زیر **Data access** برای آن گروه کلیک کنید.
+6. "Row and column security" را انتخاب کنید.
+7. "Use a saved question to create a custom view for this table" را انتخاب کنید.
+8. سؤال ذخیره‌شده خود را انتخاب کنید. سؤال باید در SQL نوشته شده باشد. اگر سؤال شامل پارامترها است، آن پارامترها باید الزامی باشند (نمی‌توانند اختیاری باشند).
+9. اختیاری: [محدود کردن ردیف‌ها بر اساس ویژگی‌های کاربر افراد](#restricting-rows-with-user-attributes-using-a-sql-variable).
 
-You can find sample setups in the [Row and column security examples](./row-and-column-security-examples.md).
+می‌توانید تنظیمات نمونه را در [مثال‌های امنیت ردیف و ستون](./row-and-column-security-examples.md) پیدا کنید.
 
-### Restricting rows with user attributes using a SQL variable
+### محدود کردن ردیف‌ها با ویژگی‌های کاربر با استفاده از یک متغیر SQL
 
-If you set up column security, you can also restrict different rows for each person depending on their [user attributes](../people-and-groups/managing.md#adding-a-user-attribute). For example, you can display the "Accounts" question with the filter `Plan = "Basic"` for one group, and the filter `Plan = "Premium"` for another group.
+اگر امنیت ستون را تنظیم می‌کنید، همچنین می‌توانید ردیف‌های متفاوتی را برای هر شخص بسته به [ویژگی‌های کاربر](../people-and-groups/managing.md#adding-a-user-attribute) آن‌ها محدود کنید. به‌عنوان مثال، می‌توانید سؤال "Accounts" را با فیلتر `Plan = "Basic"` برای یک گروه، و فیلتر `Plan = "Premium"` برای گروه دیگر نمایش دهید.
 
-1. Make sure you've done all the [prerequisites for column-level security](#prerequisites-for-column-level-security).
-2. Go to the SQL question that will be displayed to the people in place of the table.
-3. Add a [parameterized](../questions/native-editor/sql-parameters.md) `WHERE` clause to your SQL query, such as `{%raw%}WHERE plan = {{ plan_variable }} {%endraw%}`.
-4. Save the SQL question.
-5. Go to **Admin settings** > **Permissions**.
-6. Find the group and table you want to secure.
-7. Open the dropdown under **View data**.
-8. Click **Edit row and column security**.
-9. Scroll down and set **Parameter or variable** to the name of the parameter in your SQL question (such as "Plan Variable").
-10. Set the **User attribute** to a [user attribute key](#choosing-user-attributes-for-row-and-column-security) (such as the key "User's Plan", _not_ the value "Basic").
-11. Click **Save**.
+1. مطمئن شوید که همه [پیش‌نیازهای امنیت سطح ستون](#prerequisites-for-column-level-security) را انجام داده‌اید.
+2. به سؤال SQL که به افراد به جای جدول نمایش داده می‌شود بروید.
+3. یک بند `WHERE` [پارامتری](../questions/native-editor/sql-parameters.md) به کوئری SQL خود اضافه کنید، مثل `{%raw%}WHERE plan = {{ plan_variable }} {%endraw%}`.
+4. سؤال SQL را ذخیره کنید.
+5. به **Admin settings** > **Permissions** بروید.
+6. گروه و جدولی که می‌خواهید امن کنید را پیدا کنید.
+7. منوی dropdown زیر **View data** را باز کنید.
+8. روی **Edit row and column security** کلیک کنید.
+9. به پایین اسکرول کنید و **Parameter or variable** را به نام پارامتر در سؤال SQL خود تنظیم کنید (مثل "Plan Variable").
+10. **User attribute** را به یک [کلید ویژگی کاربر](#choosing-user-attributes-for-row-and-column-security) تنظیم کنید (مثل کلید "User's Plan"، _نه_ مقدار "Basic").
+11. روی **Save** کلیک کنید.
 
-For a sample SQL variable and user attribute setup, see the [Row and column security examples](./row-and-column-security-examples.md).
+برای یک تنظیم نمونه متغیر SQL و ویژگی کاربر، به [مثال‌های امنیت ردیف و ستون](./row-and-column-security-examples.md) مراجعه کنید.
 
-### How row restriction works with column security
+### نحوهٔ کار محدودیت ردیف با امنیت ستون
 
-A standard `WHERE` clause filters a table by setting a column to a fixed value:
+یک بند `WHERE` استاندارد یک جدول را با تنظیم یک ستون به یک مقدار ثابت فیلتر می‌کند:
 
 ```sql
 WHERE column_name = column_value
 ```
 
-In step 2 of the [row restriction setup](#restricting-rows-with-user-attributes-using-a-sql-variable) above, you'll add a SQL variable so that the `WHERE` clause will accept a dynamic value. The [SQL variable type](../questions/native-editor/sql-parameters.md#sql-variable-types) must be text, number, or date:
+در مرحله 2 از [تنظیم محدودیت ردیف](#restricting-rows-with-user-attributes-using-a-sql-variable) بالا، یک متغیر SQL اضافه می‌کنید تا بند `WHERE` یک مقدار پویا بپذیرد. [نوع متغیر SQL](../questions/native-editor/sql-parameters.md#sql-variable-types) باید متن، عدد، یا تاریخ باشد:
 
 ```sql
 WHERE plan = {%raw%}{{ plan_variable }}{%endraw%}
 ```
 
-In steps 9-10 of the [row restriction setup](#restricting-rows-with-user-attributes-using-a-sql-variable) above, you're telling Metabase to map the SQL variable `plan_variable` to a **user attribute key** (such as "User's Plan"). Metabase will use the key to look up the specific **user attribute value** (such as "Basic") associated with a person's Metabase account. When that person logs into Metabase and uses the secured table, they'll see the query result that is filtered on:
+در مراحل 9-10 از [تنظیم محدودیت ردیف](#restricting-rows-with-user-attributes-using-a-sql-variable) بالا، به متابیس می‌گویید که متغیر SQL `plan_variable` را به یک **کلید ویژگی کاربر** (مثل "User's Plan") نگاشت کند. متابیس از کلید برای جستجوی **مقدار ویژگی کاربر** خاص (مثل "Basic") مرتبط با حساب متابیس یک شخص استفاده می‌کند. وقتی آن شخص به متابیس وارد می‌شود و از جدول امن‌شده استفاده می‌کند، نتیجه کوئری را می‌بیند که بر اساس این فیلتر شده است:
 
 ```sql
 WHERE plan = "Basic"
 ```
 
-Note that the parameters must be required for SQL questions used to create custom views. For example, you can't use an optional parameter; the following won't work:
+توجه داشته باشید که پارامترها باید برای سؤال‌های SQL استفاده‌شده برای ایجاد viewهای سفارشی الزامی باشند. به‌عنوان مثال، نمی‌توانید از یک پارامتر اختیاری استفاده کنید؛ موارد زیر کار نمی‌کند:
 
 ```sql
 {%raw%}
@@ -188,11 +188,11 @@ Note that the parameters must be required for SQL questions used to create custo
 {%endraw%}
 ```
 
-Learn more about [SQL parameters](../questions/native-editor/sql-parameters.md)
+بیشتر دربارهٔ [پارامترهای SQL](../questions/native-editor/sql-parameters.md) بیاموزید
 
-### Advanced row-level security: filtering tables for people that have multiple IDs
+### امنیت سطح ردیف پیشرفته: فیلتر کردن جداول برای افرادی که چندین ID دارند
 
-For example, say have a table like this:
+به‌عنوان مثال، فرض کنید یک جدول مثل این دارید:
 
 | User_ID | Value |
 | ------- | ----- |
@@ -203,9 +203,9 @@ For example, say have a table like this:
 | 3       | 5     |
 | 3       | 5     |
 
-If you want to give someone access to multiple user IDs (e.g., the person should see rows for both `User_ID` 1 and 2.), you can set up a user attribute, like `user_id` that can handle comma-separated values like "1,2".
+اگر می‌خواهید به کسی دسترسی به چندین user ID بدهید (مثلاً شخص باید ردیف‌هایی را برای هر دو `User_ID` 1 و 2 ببیند)، می‌توانید یک ویژگی کاربر، مثل `user_id` تنظیم کنید که می‌تواند مقادیر جدا شده با کاما مثل "1,2" را مدیریت کند.
 
-1. Create a SQL question that parses the comma-separated string and filters the table:
+1. یک سؤال SQL ایجاد کنید که رشته جدا شده با کاما را parse می‌کند و جدول را فیلتر می‌کند:
 
 ```sql
 {%raw%}
@@ -215,107 +215,107 @@ WHERE user_id = ANY(STRING_TO_ARRAY(REGEXP_REPLACE(TRIM({{user_id}}), '\\s*,\\s*
 {% endraw %}
 ```
 
-This query:
+این کوئری:
 
-- Trims whitespace from the user attribute value
-- Replaces any spaces around commas with just commas
-- Converts the comma-separated string to an array
-- Filters rows where the user_id matches any value in the array
+- فاصله‌های خالی را از مقدار ویژگی کاربر trim می‌کند
+- هر فاصله اطراف کاما را با فقط کاما جایگزین می‌کند
+- رشته جدا شده با کاما را به یک آرایه تبدیل می‌کند
+- ردیف‌هایی را فیلتر می‌کند که user_id با هر مقدار در آرایه تطبیق دارد
 
-The `STRING_TO_ARRAY()` and `REGEXP_REPLACE()` functions are PostgreSQL-specific. To see which functions your database supports, see your database's documentation.
+توابع `STRING_TO_ARRAY()` و `REGEXP_REPLACE()` خاص PostgreSQL هستند. برای دیدن اینکه کدام توابع پایگاه داده شما پشتیبانی می‌کند، به مستندات پایگاه داده خود مراجعه کنید.
 
-3. Set up the row and column security using this SQL question. See [setting up column security](#setting-up-column-security).
+3. امنیت ردیف و ستون را با استفاده از این سؤال SQL تنظیم کنید. به [تنظیم امنیت ستون](#setting-up-column-security) مراجعه کنید.
 
-## Preventing row and column security permissions conflicts
+## جلوگیری از تعارضات مجوز امنیت ردیف و ستون
 
-Some Metabase permissions can conflict with row and column security to give more permissive or more restrictive data access than you intended.
+برخی مجوزهای متابیس می‌توانند با امنیت ردیف و ستون تعارض داشته باشند تا دسترسی داده مجازتر یا محدودتر از آنچه قصد داشتید بدهند.
 
-Say you've set up [column security](#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table) that hides the Email column from the Accounts table (for a particular group).
+فرض کنید [امنیت ستون](#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table) را تنظیم کرده‌اید که ستون Email را از جدول Accounts مخفی می‌کند (برای یک گروه خاص).
 
-The Email column may get exposed to someone if:
+ستون Email ممکن است برای کسی در معرض دید قرار گیرد اگر:
 
-- The person belongs to [multiple row and column security policies](#multiple-row-and-column-security-permissions).
-- Someone else in a non-secured group shares the Email column from:
-  - A [SQL question](../questions/native-editor/writing-sql.md)
-  - A [public link](#public-sharing)
-  - An [alert, or dashboard subscription](../permissions/notifications.md)
+- شخص به [چندین policy امنیت ردیف و ستون](#multiple-row-and-column-security-permissions) تعلق دارد.
+- شخص دیگری در یک گروه غیرامن ستون Email را از موارد زیر به‌اشتراک می‌گذارد:
+  - یک [سؤال SQL](../questions/native-editor/writing-sql.md)
+  - یک [لینک عمومی](#public-sharing)
+  - یک [هشدار، یا اشتراک داشبورد](../permissions/notifications.md)
 
-### Multiple row and column security permissions
+### چندین مجوز امنیت ردیف و ستون
 
-Multiple row and column security policies on the same table can create a permissions conflict. You can add a person to a maximum of one row and column security policy per table (via the person's group).
+چندین policy امنیت ردیف و ستون روی همان جدول می‌تواند یک تعارض مجوز ایجاد کند. می‌توانید یک شخص را حداکثر به یک policy امنیت ردیف و ستون برای هر جدول (از طریق گروه شخص) اضافه کنید.
 
-For example, if you have:
+به‌عنوان مثال، اگر دارید:
 
-- Set up security for the group "Basic Accounts" that filters the Accounts table on `Plan = "Basic"`.
-- Another setup for the group "Converted Accounts" that filters the Accounts table on `Trial Converted = true`.
+- امنیت را برای گروه "Basic Accounts" تنظیم کرده‌اید که جدول Accounts را بر اساس `Plan = "Basic"` فیلتر می‌کند.
+- تنظیم دیگری برای گروه "Converted Accounts" که جدول Accounts را بر اساس `Trial Converted = true` فیلتر می‌کند.
 
-If you put Vincent Accountman in both groups, he'll have conflicting permissions for the Accounts table, and get an error message whenever he tries to use Accounts in Metabase.
+اگر Vincent Accountman را در هر دو گروه قرار دهید، مجوزهای متضادی برای جدول Accounts خواهد داشت، و هر زمان که سعی کند از Accounts در متابیس استفاده کند یک پیام خطا دریافت می‌کند.
 
-To resolve row and column security permissions conflicts:
+برای حل تعارضات مجوز امنیت ردیف و ستون:
 
-- Remove the person from all but one of the groups.
-- Set the all but one of the group's [View data](./data.md#view-data-permissions) access to the datatabase to "Blocked".
+- شخص را از همه گروه‌ها به جز یکی حذف کنید.
+- دسترسی [View data](./data.md#view-data-permissions) همه گروه‌ها به جز یکی به پایگاه داده را به "Blocked" تنظیم کنید.
 
-### You cannot secure the rows or columns of SQL results
+### شما نمی‌توانید ردیف‌ها یا ستون‌های نتایج SQL را امن کنید
 
-Row and column security permissions don't apply to the results of SQL questions. That is, SQL questions will always display results from the original table rather than the secured table.
+مجوزهای امنیت ردیف و ستون به نتایج سؤال‌های SQL اعمال نمی‌شوند. یعنی سؤال‌های SQL همیشه نتایج از جدول اصلی را به جای جدول امن‌شده نمایش می‌دهند.
 
-Say that you've set up column security on the Accounts table to hide the Email column. If someone creates a SQL question that includes the Email column, **anyone with collection permissions to view that SQL question** will be able to:
+فرض کنید امنیت ستون را روی جدول Accounts برای مخفی کردن ستون Email تنظیم کرده‌اید. اگر کسی یک سؤال SQL ایجاد کند که شامل ستون Email است، **هر کسی با مجوزهای کلکسیون برای مشاهده آن سؤال SQL** قادر خواهد بود:
 
-- See the Email column in the SQL question results.
-- Use the SQL question to start a new question that includes the Email column (if they have query permissions).
+- ستون Email را در نتایج سؤال SQL ببیند.
+- از سؤال SQL برای شروع یک سؤال جدید که شامل ستون Email است استفاده کند (اگر مجوزهای کوئری داشته باشد).
 
-To prevent the Email column from being exposed via a SQL question:
+برای جلوگیری از در معرض دید قرار گرفتن ستون Email از طریق یک سؤال SQL:
 
-- Put any SQL questions that include the Email column in a separate collection.
-- Set the [collection permissions](../permissions/collections.md) to **No access** for groups with row and column security set up to hide the Email column.
+- هر سؤال SQL که شامل ستون Email است را در یک کلکسیون جداگانه قرار دهید.
+- [مجوزهای کلکسیون](../permissions/collections.md) را به **No access** برای گروه‌هایی با امنیت ردیف و ستون تنظیم‌شده برای مخفی کردن ستون Email تنظیم کنید.
 
-[Collection permissions](../permissions/collections.md) must be used to prevent secured groups from viewing SQL questions that reference secured tables.
+[مجوزهای کلکسیون](../permissions/collections.md) باید برای جلوگیری از مشاهده سؤال‌های SQL که به جداول امن‌شده ارجاع می‌دهند توسط گروه‌های امن‌شده استفاده شوند.
 
-### Public sharing
+### اشتراک‌گذاری عمومی
 
-Row and column security permissions don't apply to public questions or public dashboards. If somone in an unsecured group creates a public link using an original table, the original table will be displayed to anyone who has the public link URL.
+مجوزهای امنیت ردیف و ستون به سؤال‌ها یا داشبوردهای عمومی اعمال نمی‌شوند. اگر کسی در یک گروه غیرامن یک لینک عمومی با استفاده از یک جدول اصلی ایجاد کند، جدول اصلی به هر کسی که URL لینک عمومی را دارد نمایش داده می‌شود.
 
-To prevent this from happening, you'll have to [disable public sharing](../embedding/public-links.md) for your Metabase.
+برای جلوگیری از این اتفاق، باید [اشتراک‌گذاری عمومی را غیرفعال کنید](../embedding/public-links.md) برای متابیس خود.
 
-Metabase can only create row and column security using the group membership or user attributes of people who are logged in. Since public links don't require logins, Metabase won't have enough info to apply permissions.
+متابیس فقط می‌تواند امنیت ردیف و ستون را با استفاده از عضویت گروه یا ویژگی‌های کاربر افرادی که وارد شده‌اند ایجاد کند. چون لینک‌های عمومی نیاز به ورود ندارند، متابیس اطلاعات کافی برای اعمال مجوزها نخواهد داشت.
 
-## Limitations of row and column security
+## محدودیت‌های امنیت ردیف و ستون
 
-Some things to keep in mind when using row and column security.
+برخی چیزها که باید هنگام استفاده از امنیت ردیف و ستون در نظر داشته باشید.
 
-### Groups with native query permissions (access to the SQL editor) can bypass row and column security
+### گروه‌هایی با مجوزهای کوئری native (دسترسی به ویرایشگر SQL) می‌توانند امنیت ردیف و ستون را دور بزنند
 
-Row and column security is limited to the [query builder](../questions/query-builder/editor.md).
-You can't set up [native query persmissons](./data.md#create-queries-permissions) for groups with row and column security.
+امنیت ردیف و ستون به [query builder](../questions/query-builder/editor.md) محدود است.
+نمی‌توانید [مجوزهای کوئری native](./data.md#create-queries-permissions) را برای گروه‌هایی با امنیت ردیف و ستون تنظیم کنید.
 
-To enforce row-level permissions with the native query editor, check out [impersonation](./impersonation.md).
+برای اعمال مجوزهای سطح ردیف با ویرایشگر کوئری native، به [جعل هویت](./impersonation.md) مراجعه کنید.
 
-### You can't apply row and column security to SQL questions
+### شما نمی‌توانید امنیت ردیف و ستون را به سؤال‌های SQL اعمال کنید
 
-Since Metabase can't parse SQL queries, the results of SQL questions will always use original tables.
+چون متابیس نمی‌تواند کوئری‌های SQL را parse کند، نتایج سؤال‌های SQL همیشه از جداول اصلی استفاده می‌کنند.
 
-[Use collection permissions](#you-cannot-secure-the-rows-or-columns-of-sql-results) to prevent groups from viewing saved SQL questions with restricted data.
+[از مجوزهای کلکسیون استفاده کنید](#you-cannot-secure-the-rows-or-columns-of-sql-results) برای جلوگیری از مشاهده سؤال‌های SQL ذخیره‌شده با داده محدودشده توسط گروه‌ها.
 
-### Non-SQL databases have limited row and column security
+### پایگاه‌داده‌های غیر-SQL امنیت ردیف و ستون محدودی دارند
 
-MongoDB only supports [row-level security](#row-level-security-filter-by-a-column-in-the-table). Row and column security permissions are unavailable for Apache Druid.
+MongoDB فقط از [امنیت سطح ردیف](#row-level-security-filter-by-a-column-in-the-table) پشتیبانی می‌کند. مجوزهای امنیت ردیف و ستون برای Apache Druid در دسترس نیستند.
 
-### Advanced data types require a workaround
+### انواع داده پیشرفته نیاز به یک راه‌حل دارند
 
-If you're trying to set up row security on a column with an advanced data type (like enums or arrays), you'll need to convert that data to a basic type first. Options include:
+اگر سعی می‌کنید امنیت ردیف را روی یک ستون با یک نوع داده پیشرفته (مثل enumها یا آرایه‌ها) تنظیم کنید، باید ابتدا آن داده را به یک نوع پایه تبدیل کنید. گزینه‌ها شامل موارد زیر هستند:
 
-#### Option 1: Use SQL to cast the advanced data type to a basic SQL type
+#### گزینه 1: استفاده از SQL برای cast کردن نوع داده پیشرفته به یک نوع SQL پایه
 
-Create a SQL question that casts the advanced data type column to a basic data type, then use that question for your row and column security setup.
+یک سؤال SQL ایجاد کنید که ستون نوع داده پیشرفته را به یک نوع داده پایه cast می‌کند، سپس از آن سؤال برای تنظیم امنیت ردیف و ستون خود استفاده کنید.
 
-#### Option 2: Create a database view
+#### گزینه 2: ایجاد یک view پایگاه داده
 
-If you can't use SQL casting in Metabase, create a view in your database that converts the advanced data type to a basic type, then set up row and column security on that view instead of the original table. You'll also need to block the original table.
+اگر نمی‌توانید از SQL casting در متابیس استفاده کنید، یک view در پایگاه داده خود ایجاد کنید که نوع داده پیشرفته را به یک نوع پایه تبدیل می‌کند، سپس امنیت ردیف و ستون را روی آن view به جای جدول اصلی تنظیم کنید. همچنین باید جدول اصلی را مسدود کنید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Row and column security examples](./row-and-column-security-examples.md)
-- [Permissions strategies](https://www.metabase.com/learn/metabase-basics/administration/permissions/strategy)
-- [Configuring permissions for embedding](../permissions/embedding.md)
-- [Securing embedded Metabase](../embedding/securing-embeds.md)
+- [مثال‌های امنیت ردیف و ستون](./row-and-column-security-examples.md)
+- [استراتژی‌های مجوز](https://www.metabase.com/learn/metabase-basics/administration/permissions/strategy)
+- [پیکربندی مجوزها برای جاسازی](../permissions/embedding.md)
+- [امن کردن متابیس جاسازی‌شده](../embedding/securing-embeds.md)

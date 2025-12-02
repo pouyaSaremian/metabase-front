@@ -1,68 +1,68 @@
 ---
-title: Impersonation access
+title: دسترسی جعل هویت
 ---
 
-# Impersonation permissions
+# مجوزهای جعل هویت
 
 {% include plans-blockquote.html feature="Impersonation access" %}
 
-This page covers the [View data](./data.md#view-data-permissions) permission level called Impersonation.
+این صفحه سطح مجوز [View data](./data.md#view-data-permissions) به نام Impersonation را پوشش می‌دهد.
 
-**Impersonation access** allows admins to "outsource" View data permissions to roles in your database. Admins can associate user attributes with database-defined roles and their privileges. If someone is in a group with their View data permission set to Impersonation, the person will be able to view and query data based on the privileges granted to the role specified by their user attribute.
+**دسترسی جعل هویت** به ادمین‌ها امکان می‌دهد مجوزهای View data را به نقش‌ها در پایگاه داده شما "برون‌سپاری" کنند. ادمین‌ها می‌توانند ویژگی‌های کاربر را با نقش‌های تعریف‌شده در پایگاه داده و مجوزهای آن‌ها مرتبط کنند. اگر کسی در گروهی با مجوز View data تنظیم‌شده به Impersonation باشد، آن شخص قادر خواهد بود داده را مشاهده و کوئری کند بر اساس مجوزهای اعطا شده به نقش مشخص‌شده توسط ویژگی کاربر آن‌ها.
 
-## Databases that support impersonation
+## پایگاه‌داده‌هایی که از جعل هویت پشتیبانی می‌کنند
 
-For now, impersonation access is only available for the following databases:
+فعلاً، دسترسی جعل هویت فقط برای پایگاه‌داده‌های زیر در دسترس است:
 - ClickHouse
 - MySQL
-- PostgreSQL. If you're using views in PostgresSQL, the row-level security policies on views will only work on Postgres versions 15 and higher.
+- PostgreSQL. اگر از viewها در PostgresSQL استفاده می‌کنید، سیاست‌های امنیت سطح ردیف روی viewها فقط در نسخه‌های Postgres 15 و بالاتر کار می‌کنند.
 - Redshift
 - Snowflake
 - SQL Server.
 
-If you want to switch database _connections_ based on who is logged in, check out [Database routing](./database-routing.md).
+اگر می‌خواهید _اتصال‌های_ پایگاه داده را بسته به اینکه چه کسی وارد شده است تغییر دهید، به [مسیریابی پایگاه داده](./database-routing.md) مراجعه کنید.
 
-## Impersonation vs row and column security
+## جعل هویت در مقابل امنیت ردیف و ستون
 
-### Impersonation sets permissions for questions written in both the SQL editor and the query builder
+### جعل هویت مجوزها را برای سؤال‌های نوشته‌شده در هر دو ویرایشگر SQL و query builder تنظیم می‌کند
 
-Impersonation operates at the database level. In a database engine, setting the role before the query runs can alter the results of the query, as the role defines the permissions that your database should use when it executes the statements.
+جعل هویت در سطح پایگاه داده عمل می‌کند. در یک موتور پایگاه داده، تنظیم نقش قبل از اجرای کوئری می‌تواند نتایج کوئری را تغییر دهد، چون نقش مجوزهایی را تعریف می‌کند که پایگاه داده شما باید هنگام اجرای عبارات استفاده کند.
 
-### Row and column security only sets permissions for query builder questions
+### امنیت ردیف و ستون فقط مجوزها را برای سؤال‌های query builder تنظیم می‌کند
 
-Row and column security operates at the Metabase level. Since Metabase can't parse SQL queries to find out what data people are allowed to view, row and column security only applies to questions composed in the query builder (where Metabase can interpret the queries).
+امنیت ردیف و ستون در سطح متابیس عمل می‌کند. چون متابیس نمی‌تواند کوئری‌های SQL را parse کند تا بفهمد چه داده‌ای افراد مجاز به مشاهده هستند، امنیت ردیف و ستون فقط برای سؤال‌های ساخته‌شده در query builder اعمال می‌شود (جایی که متابیس می‌تواند کوئری‌ها را تفسیر کند).
 
-## Example use case for impersonation
+## مثال مورد استفاده برای جعل هویت
 
-Let's say we have a People table that includes rows of accounts from all 50 states of the United States. Let's say you want your Vermont sales team to:
+فرض کنید یک جدول People داریم که شامل ردیف‌هایی از حساب‌ها از همه 50 ایالت ایالات متحده است. فرض کنید می‌خواهید تیم فروش Vermont شما:
 
-- Be able to ask questions using both the query builder and the native SQL editor.
-- Only be able to view customer accounts in the People table who live in Vermont.
+- بتوانند سؤال‌ها را با استفاده از هر دو query builder و ویرایشگر SQL native بپرسند.
+- فقط بتوانند حساب‌های مشتری در جدول People که در Vermont زندگی می‌کنند را مشاهده کنند.
 
-First, you'll set up permissions in your database by creating a role with a policy. Then in Metabase, you'll set data access to that database to Impersonation, so when people run queries on that database, Metabase will use that role to limit what data they can see.
+ابتدا، مجوزها را در پایگاه داده خود با ایجاد یک نقش با یک policy تنظیم می‌کنید. سپس در متابیس، دسترسی داده به آن پایگاه داده را به Impersonation تنظیم می‌کنید، تا وقتی افراد کوئری‌ها را روی آن پایگاه داده اجرا می‌کنند، متابیس از آن نقش برای محدود کردن داده‌ای که می‌توانند ببینند استفاده کند.
 
-## Set up connection impersonation
+## تنظیم جعل هویت اتصال
 
-For impersonation access to work, you'll first need to set up roles in your database for Metabase to impersonate, then configure Metabase to impersonate those roles when people view or query data.
+برای اینکه دسترسی جعل هویت کار کند، ابتدا باید نقش‌ها را در پایگاه داده خود برای متابیس تنظیم کنید تا جعل هویت کند، سپس متابیس را پیکربندی کنید تا آن نقش‌ها را وقتی افراد داده را مشاهده یا کوئری می‌کنند جعل هویت کند.
 
-### Set up Metabase database connection for impersonation
+### تنظیم اتصال پایگاه داده متابیس برای جعل هویت
 
-Impersonation uses database roles to run queries on your database, but there still needs to be a default role that will be used to run operations like [sync, scans, and fingerprinting](../databases/sync-scan.md). So the user account that Metabase uses to [connect to your database](../databases/connecting.md) should have access to everything in that database that any Metabase group may need access to, as that database user account is what Metabase uses to sync table information.
+جعل هویت از نقش‌های پایگاه داده برای اجرای کوئری‌ها روی پایگاه داده شما استفاده می‌کند، اما همچنان نیاز به یک نقش پیش‌فرض است که برای اجرای عملیات مثل [همگام‌سازی، اسکن‌ها، و fingerprinting](../databases/sync-scan.md) استفاده شود. بنابراین حساب کاربری که متابیس برای [اتصال به پایگاه داده شما](../databases/connecting.md) استفاده می‌کند باید به همه چیز در آن پایگاه داده که هر گروه متابیس ممکن است نیاز به دسترسی داشته باشد دسترسی داشته باشد، چون آن حساب کاربر پایگاه داده چیزی است که متابیس برای همگام‌سازی اطلاعات جدول استفاده می‌کند.
 
-You can then create roles in the database that have more restrictive access to the database (like row-level or table-level security). When the role is passed to the database using impersonation, the engine will return a subset of the data, or restrict the query altogether.
+سپس می‌توانید نقش‌هایی در پایگاه داده ایجاد کنید که دسترسی محدودتری به پایگاه داده دارند (مثل امنیت سطح ردیف یا سطح جدول). وقتی نقش از طریق جعل هویت به پایگاه داده ارسال می‌شود، موتور یک زیرمجموعه از داده را برمی‌گرداند، یا کوئری را به‌طور کامل محدود می‌کند.
 
-> For **Redshift** databases, the user account Metabase uses to [connect to your Redshift database](../databases/connections/redshift.md) must be a superuser, as Metabase will need to be able to run the [SET SESSION AUTHORIZATION](https://docs.aws.amazon.com/redshift/latest/dg/r_SET_SESSION_AUTHORIZATION) command, which can only be run by a database superuser.
+> برای پایگاه‌داده‌های **Redshift**، حساب کاربری که متابیس برای [اتصال به پایگاه داده Redshift شما](../databases/connections/redshift.md) استفاده می‌کند باید یک superuser باشد، چون متابیس نیاز دارد بتواند دستور [SET SESSION AUTHORIZATION](https://docs.aws.amazon.com/redshift/latest/dg/r_SET_SESSION_AUTHORIZATION) را اجرا کند، که فقط می‌تواند توسط یک superuser پایگاه داده اجرا شود.
 
-### In your database, set up roles
+### در پایگاه داده خود، نقش‌ها را تنظیم کنید
 
-In your database (not in Metabase):
+در پایگاه داده خود (نه در متابیس):
 
-1. Create a new database role (in Redshift, this would be a new user).
-2. Grant that role privileges that you'd like impersonated users to have..
+1. یک نقش پایگاه داده جدید ایجاد کنید (در Redshift، این یک کاربر جدید خواهد بود).
+2. مجوزهایی را که می‌خواهید کاربران جعل‌هویت‌شده داشته باشند به آن نقش اعطا کنید.
 
-For exactly how to create a new role in your database and grant that role privileges, you'll need to consult your database's documentation. We also have some docs on [users, roles, and privileges](../databases/users-roles-privileges.md) that can help you get started.
+برای دقیقاً نحوهٔ ایجاد یک نقش جدید در پایگاه داده خود و اعطای مجوزها به آن نقش، باید به مستندات پایگاه داده خود مراجعه کنید. همچنین برخی مستندات دربارهٔ [کاربران، نقش‌ها، و مجوزها](../databases/users-roles-privileges.md) داریم که می‌تواند به شما کمک کند شروع کنید.
 
-For example, if you're using PostgreSQL, the SQL below will create a role called `vermont_sales_team` and only allow that role to select rows in the `people` table where the value in the `state` column is `VT` (the abbreviation for Vermont):
+به‌عنوان مثال، اگر از PostgreSQL استفاده می‌کنید، SQL زیر یک نقش به نام `vermont_sales_team` ایجاد می‌کند و فقط به آن نقش اجازه می‌دهد ردیف‌هایی را در جدول `people` انتخاب کند که مقدار در ستون `state` `VT` است (مخفف Vermont):
 
 ```sql
 CREATE ROLE vermont_sales_team;
@@ -79,105 +79,105 @@ SELECT TO vermont_sales_team USING (state = 'VT');
 ALTER TABLE people ENABLE ROW LEVEL SECURITY;
 ```
 
-### Snowflake connections should disable secondary roles when using impersonation
+### اتصال‌های Snowflake باید نقش‌های ثانویه را هنگام استفاده از جعل هویت غیرفعال کنند
 
-For impersonation to work correctly with **Snowflake** databases, the user account Metabase uses to [connect to your Snowflake database](../databases/connections/snowflake.md) must have [secondary roles](https://docs.snowflake.com/en/user-guide/security-access-control-overview#authorization-through-primary-role-and-secondary-roles) disabled. You can disable secondary roles with:
+برای اینکه جعل هویت به‌درستی با پایگاه‌داده‌های **Snowflake** کار کند، حساب کاربری که متابیس برای [اتصال به پایگاه داده Snowflake شما](../databases/connections/snowflake.md) استفاده می‌کند باید [نقش‌های ثانویه](https://docs.snowflake.com/en/user-guide/security-access-control-overview#authorization-through-primary-role-and-secondary-roles) غیرفعال داشته باشد. می‌توانید نقش‌های ثانویه را با این غیرفعال کنید:
 
 ```sql
 ALTER USER metabase_user SET DEFAULT_SECONDARY_ROLES = ();
 ```
 
-If you don't disable secondary roles, each impersonated role will also get permissions of all other roles you've granted to the Metabase user.
+اگر نقش‌های ثانویه را غیرفعال نکنید، هر نقش جعل‌هویت‌شده همچنین مجوزهای همه نقش‌های دیگری که به کاربر متابیس اعطا کرده‌اید را دریافت می‌کند.
 
-### Set up a Metabase group
+### تنظیم یک گروه متابیس
 
-Permissions in Metabase, including impersonation, are managed by groups, so you'll need to:
+مجوزها در متابیس، از جمله جعل هویت، توسط گروه‌ها مدیریت می‌شوند، بنابراین باید:
 
-1. [Create a new group](../people-and-groups/managing.md#groups) (or select an existing one).
-2. [Add people to the group](../people-and-groups/managing.md#adding-people-to-groups).
+1. [یک گروه جدید ایجاد کنید](../people-and-groups/managing.md#groups) (یا یکی موجود را انتخاب کنید).
+2. [افراد را به گروه اضافه کنید](../people-and-groups/managing.md#adding-people-to-groups).
 
-You might want to create a test user and add them to the group to verify later that impersonation is working correctly.
+ممکن است بخواهید یک کاربر تست ایجاد کنید و آن‌ها را به گروه اضافه کنید تا بعداً تأیید کنید که جعل هویت به‌درستی کار می‌کند.
 
-### Assign a user attribute to people in the group
+### اختصاص یک ویژگی کاربر به افراد در گروه
 
-To associate people in the group with a role that you created in your database, you'll use a user attribute.
+برای مرتبط کردن افراد در گروه با نقشی که در پایگاه داده خود ایجاد کردید، از یک ویژگی کاربر استفاده می‌کنید.
 
-Assign a [user attribute](../people-and-groups/managing.md#adding-a-user-attribute) to people in your group:
+یک [ویژگی کاربر](../people-and-groups/managing.md#adding-a-user-attribute) به افراد در گروه خود اختصاص دهید:
 
-- The **key** of the attribute can be anything.
-- The **value** of the attribute must match the desired database role for every person.
+- **کلید** ویژگی می‌تواند هر چیزی باشد.
+- **مقدار** ویژگی باید با نقش پایگاه داده موردنظر برای هر شخص تطبیق داشته باشد.
 
-![Setting a user attribute for impersonation](./images/user-attribute-impersonation.png)
+![تنظیم یک ویژگی کاربر برای جعل هویت](./images/user-attribute-impersonation.png)
 
-For example, if you created a role named `vermont_sales_team` in your database with access to a subset of data relevant to the Vermont sales team (like [in the example above](#in-your-database-set-up-roles)), you could add a user attribute called `db_role` (or whatever you want to call the attribute) and assign the value `vermont_sales_team` to the person's `db_role` attribute.
+به‌عنوان مثال، اگر یک نقش به نام `vermont_sales_team` در پایگاه داده خود با دسترسی به یک زیرمجموعه از داده مرتبط با تیم فروش Vermont ایجاد کردید (مثل [در مثال بالا](#in-your-database-set-up-roles))، می‌توانید یک ویژگی کاربر به نام `db_role` (یا هر چیزی که می‌خواهید ویژگی را نام بگذارید) اضافه کنید و مقدار `vermont_sales_team` را به ویژگی `db_role` شخص اختصاص دهید.
 
-Some databases enforce case sensitivity, so you might want to make sure the attribute's value and the database's role match exactly.
+برخی پایگاه‌داده‌ها حساسیت به حروف را اعمال می‌کنند، بنابراین ممکن است بخواهید مطمئن شوید که مقدار ویژگی و نقش پایگاه داده دقیقاً تطبیق دارند.
 
-People in one group can have different attribute values, but must have the same attribute key. See [People in a group with impersonation access to data do not necessarily share the same privileges](#people-in-a-group-with-impersonation-access-to-data-do-not-necessarily-share-the-same-privileges).
+افراد در یک گروه می‌توانند مقادیر ویژگی متفاوت داشته باشند، اما باید کلید ویژگی یکسان داشته باشند. به [افراد در یک گروه با دسترسی جعل هویت به داده لزوماً مجوزهای یکسان را به‌اشتراک نمی‌گذارند](#people-in-a-group-with-impersonation-access-to-data-do-not-necessarily-share-the-same-privileges) مراجعه کنید.
 
-### Set up impersonation
+### تنظیم جعل هویت
 
-1. In Metabase, hit Cmd/Ctrl + K to bring up the command palette and search for **Permissions**, or go directly to **Admin settings** > **Permissions** > **Data**.
+1. در متابیس، Cmd/Ctrl + K را بزنید تا command palette باز شود و برای **Permissions** جستجو کنید، یا مستقیماً به **Admin settings** > **Permissions** > **Data** بروید.
 
-2. Select the group that you want to associate with the database role you created.
+2. گروهی که می‌خواهید با نقش پایگاه داده ایجادشده مرتبط کنید را انتخاب کنید.
 
-3. Select the database to configure access to.
+3. پایگاه داده را برای پیکربندی دسترسی انتخاب کنید.
 
-4. Under **View data** setting for that database, select **Impersonation**. This option will only be visible if you already [created a user attribute](#assign-a-user-attribute-to-people-in-the-group).
+4. زیر تنظیم **View data** برای آن پایگاه داده، **Impersonation** را انتخاب کنید. این گزینه فقط در صورتی قابل مشاهده خواهد بود که قبلاً [یک ویژگی کاربر ایجاد کرده باشید](#assign-a-user-attribute-to-people-in-the-group).
 
-   ![Select impersonated permissions](./images/select-impersonated.png)
+   ![انتخاب مجوزهای جعل‌هویت‌شده](./images/select-impersonated.png)
 
-   If your All Users group has more permissive access to this database (for example, "Can view"), you will see a warning, because [Metabase gives people the most permissive access to data across all of their groups](#metabase-gives-people-the-most-permissive-access-to-data-across-all-of-their-groups). You'll need to [block database access for the All Users group](./data.md#revoke-access-even-though-all-users-has-greater-access) before setting up impersonation.
+   اگر گروه All Users شما دسترسی مجازتری به این پایگاه داده داشته باشد (مثلاً "Can view")، یک هشدار می‌بینید، چون [متابیس به افراد مجازترین دسترسی به داده را در همه گروه‌هایشان می‌دهد](#metabase-gives-people-the-most-permissive-access-to-data-across-all-of-their-groups). باید [دسترسی پایگاه داده را برای گروه All Users مسدود کنید](./data.md#revoke-access-even-though-all-users-has-greater-access) قبل از تنظیم جعل هویت.
 
-5. From the user attribute dropdown, select the user attribute that you added that maps to the role you want the group to use when querying the database.
+5. از منوی dropdown ویژگی کاربر، ویژگی کاربری که اضافه کردید که نقش موردنظر برای استفاده گروه هنگام کوئری پایگاه داده را نگاشت می‌کند انتخاب کنید.
 
-6. Save your changes.
+6. تغییرات خود را ذخیره کنید.
 
-Remember to also set up ["Create queries"](./data.md#create-queries-permissions) permissions for your group and database. For example, if you'd like people to be able to write SQL while using impersonated database roles, you'll need to set "Create queries" permissions to "Query builder and native".
+به خاطر داشته باشید که همچنین ["Create queries"](./data.md#create-queries-permissions) را برای گروه و پایگاه داده خود تنظیم کنید. به‌عنوان مثال، اگر می‌خواهید افراد بتوانند SQL بنویسند در حالی که از نقش‌های پایگاه داده جعل‌هویت‌شده استفاده می‌کنند، باید مجوزهای "Create queries" را به "Query builder and native" تنظیم کنید.
 
-### Verify that impersonated permissions are working
+### تأیید اینکه مجوزهای جعل‌هویت‌شده کار می‌کنند
 
-Admins will not be able to verify that impersonation is are working from their own account, so you should create a test user, add them to the group and set up their user attributes.
+ادمین‌ها نمی‌توانند از حساب خودشان تأیید کنند که جعل هویت کار می‌کند، بنابراین باید یک کاربر تست ایجاد کنید، آن‌ها را به گروه اضافه کنید و ویژگی‌های کاربر آن‌ها را تنظیم کنید.
 
-To verify that the impersonated permissions are working:
+برای تأیید اینکه مجوزهای جعل‌هویت‌شده کار می‌کنند:
 
-- If the test user has "Create queries" permissions set to "Create queries and native", create a SQL question and verify that the test user can only see the right data.
+- اگر کاربر تست مجوزهای "Create queries" تنظیم‌شده به "Create queries and native" داشته باشد، یک سؤال SQL ایجاد کنید و تأیید کنید که کاربر تست فقط می‌تواند داده درست را ببیند.
 
-For example, for the `vermont_sales_team` role from the [example above](#in-your-database-set-up-roles), you can run:
+به‌عنوان مثال، برای نقش `vermont_sales_team` از [مثال بالا](#in-your-database-set-up-roles)، می‌توانید اجرا کنید:
 
 ```
 SELECT * FROM people;
 ```
 
-to verify that the test user only sees data from Vermont.
+برای تأیید اینکه کاربر تست فقط داده از Vermont را می‌بیند.
 
-- If the test user has "Create queries" permissions set to "Query builder only", go to **Browse data** in the left sidebar and verify that the user can only see the tables they have access to, and only the data in those tables that
+- اگر کاربر تست مجوزهای "Create queries" تنظیم‌شده به "Query builder only" داشته باشد، به **Browse data** در نوار کناری چپ بروید و تأیید کنید که کاربر فقط می‌تواند جداولی را که به آن‌ها دسترسی دارد ببیند، و فقط داده در آن جداول که
 
-## People in a group with impersonation access to data do not necessarily share the same privileges
+## افراد در یک گروه با دسترسی جعل هویت به داده لزوماً مجوزهای یکسان را به‌اشتراک نمی‌گذارند
 
-Metabase will use whatever role you specify in the user attribute for each person. E.g., if you select the `db_role` attribute for impersonation, one person's `db_role` could be `sales`, another person's could be `engineering`, or whatever other value that maps to a valid role in your database.
+متابیس از هر نقشی که در ویژگی کاربر برای هر شخص مشخص می‌کنید استفاده می‌کند. مثلاً، اگر ویژگی `db_role` را برای جعل هویت انتخاب کنید، `db_role` یک شخص می‌تواند `sales` باشد، `db_role` شخص دیگر می‌تواند `engineering` باشد، یا هر مقدار دیگری که به یک نقش معتبر در پایگاه داده شما نگاشت می‌شود.
 
-## Use impersonation to set up row-level SQL access
+## استفاده از جعل هویت برای تنظیم دسترسی SQL سطح ردیف
 
-You can use impersonation to give people access to the SQL editor, while restricting their access to data based on a specific database role. And not just table-level access, but row-level access---or however you define access for that role in your database. Effectively, you can use impersonation to set up row and column security-like access to your data, while letting people use the SQL editor to query that data. The difference is that, _instead of setting up row and column security in Metabase, you need to set up that row-level security via the privileges granted to a role in your database._
+می‌توانید از جعل هویت برای دادن دسترسی ویرایشگر SQL به افراد استفاده کنید، در حالی که دسترسی آن‌ها به داده را بر اساس یک نقش پایگاه داده خاص محدود می‌کنید. و نه فقط دسترسی سطح جدول، بلکه دسترسی سطح ردیف — یا هر طور که دسترسی را برای آن نقش در پایگاه داده خود تعریف می‌کنید. به‌طور مؤثر، می‌توانید از جعل هویت برای تنظیم دسترسی شبیه امنیت ردیف و ستون به داده‌هایتان استفاده کنید، در حالی که به افراد امکان می‌دهید از ویرایشگر SQL برای کوئری آن داده استفاده کنند. تفاوت این است که، _به جای تنظیم امنیت ردیف و ستون در متابیس، باید آن امنیت سطح ردیف را از طریق مجوزهای اعطا شده به یک نقش در پایگاه داده خود تنظیم کنید._
 
-If instead you want to give a group SQL access to some, but not all, of the schemas or tables in that database, you can create an additional role in your database that only includes a subset of those tables---or even specific row-level access---and then use Metabase's impersonation feature to associate a user attribute with that role. Essentially what Metabase will do is take the user attribute and pass that attribute as a string into a `SET ROLE` or `USE ROLE` command for the database _before_ Metabase executes the query.
+اگر در عوض می‌خواهید به یک گروه دسترسی SQL به برخی، اما نه همه، schemaها یا جداول در آن پایگاه داده بدهید، می‌توانید یک نقش اضافی در پایگاه داده خود ایجاد کنید که فقط شامل یک زیرمجموعه از آن جداول است — یا حتی دسترسی سطح ردیف خاص — و سپس از ویژگی جعل هویت متابیس برای مرتبط کردن یک ویژگی کاربر با آن نقش استفاده کنید. اساساً آنچه متابیس انجام می‌دهد این است که ویژگی کاربر را می‌گیرد و آن ویژگی را به‌عنوان یک رشته به یک دستور `SET ROLE` یا `USE ROLE` برای پایگاه داده _قبل از_ اینکه متابیس کوئری را اجرا کند ارسال می‌کند.
 
-Connection impersonation doesn't apply to people in the Metabase Admins group, as their more permissive privileges take precedence.
+جعل هویت اتصال برای افراد در گروه Metabase Admins اعمال نمی‌شود، چون مجوزهای مجازتر آن‌ها اولویت دارد.
 
-## Metabase gives people the most permissive access to data across all of their groups
+## متابیس به افراد مجازترین دسترسی به داده را در همه گروه‌هایشان می‌دهد
 
-So if a person is in two groups with different permissions for the same database:
+پس اگر یک شخص در دو گروه با مجوزهای متفاوت برای همان پایگاه داده باشد:
 
-- Red group with impersonated access that limits what they can see.
-- Blue group with View data set to "Can view" and Create queries set to "Query builder and native".
+- گروه قرمز با دسترسی جعل‌هویت‌شده که آنچه می‌توانند ببینند را محدود می‌کند.
+- گروه آبی با View data تنظیم‌شده به "Can view" و Create queries تنظیم‌شده به "Query builder and native".
 
-Blue group's more permissive access would override the impersonated access.
+دسترسی مجازتر گروه آبی دسترسی جعل‌هویت‌شده را override می‌کند.
 
-## Admins won't see the effects of impersonation
+## ادمین‌ها تأثیرات جعل هویت را نمی‌بینند
 
-Admins won't ever see the effects of impersonation effects, because their privileges will override those of any other group they're a member of.
+ادمین‌ها هرگز تأثیرات جعل هویت را نمی‌بینند، چون مجوزهای آن‌ها مجوزهای هر گروه دیگری که عضو آن هستند را override می‌کند.
 
-Metabase's default Administrators group has "Can view" access to all databases, and Metabase uses the most permissive access for any person in multple groups, so any admin will have "Can view" - not "Impersonated" - access to the database.
+گروه پیش‌فرض Administrators متابیس دسترسی "Can view" به همه پایگاه‌داده‌ها دارد، و متابیس از مجازترین دسترسی برای هر شخص در چندین گروه استفاده می‌کند، بنابراین هر ادمینی دسترسی "Can view" — نه "Impersonated" — به پایگاه داده خواهد داشت.
 
-To test impersonation, create a test user, assign them a user attribute with the database role, and add them to the impersonated group. Then, log in as the test user and verify the data access.
+برای تست جعل هویت، یک کاربر تست ایجاد کنید، یک ویژگی کاربر با نقش پایگاه داده به آن‌ها اختصاص دهید، و آن‌ها را به گروه جعل‌هویت‌شده اضافه کنید. سپس، به‌عنوان کاربر تست وارد شوید و دسترسی داده را تأیید کنید.

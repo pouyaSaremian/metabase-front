@@ -1,71 +1,71 @@
 ---
-title: SAML with Okta
+title: SAML با Okta
 ---
 
-# SAML with Okta
+# SAML با Okta
 
 {% include plans-blockquote.html feature="Okta SAML authentication" %}
 
-1. [Turn on SAML-based SSO in Metabase](#turn-on-saml-based-sso-in-metabase)
-2. [Set up SAML in Okta](#set-up-saml-in-okta).
-3. [Set up SAML up in Metabase](#set-up-saml-in-metabase).
+1. [روشن کردن SSO مبتنی بر SAML در متابیس](#turn-on-saml-based-sso-in-metabase)
+2. [تنظیم SAML در Okta](#set-up-saml-in-okta).
+3. [تنظیم SAML در متابیس](#set-up-saml-in-metabase).
 
-You can also optionally [configure group mappings](#configure-group-mappings) to automatically assign Okta users to Metabase groups.
+همچنین می‌توانید به‌صورت اختیاری [نگاشت‌های گروه را پیکربندی کنید](#configure-group-mappings) تا به‌طور خودکار کاربران Okta را به گروه‌های متابیس اختصاص دهید.
 
-See [authenticating with SAML](./authenticating-with-saml.md) for general SAML info.
+به [احراز هویت با SAML](./authenticating-with-saml.md) برای اطلاعات عمومی SAML مراجعه کنید.
 
-## Turn on SAML-based SSO in Metabase
+## روشن کردن SSO مبتنی بر SAML در متابیس
 
-In the **Admin**>**Settings** section of the Admin area, go to the **Authentication** tab and click on **Set up** under **SAML**.
+در بخش **Admin**>**Settings** از ناحیه Admin، به تب **Authentication** بروید و روی **Set up** زیر **SAML** کلیک کنید.
 
-You'll see a SAML configuration form like this:
+یک فرم پیکربندی SAML مثل این می‌بینید:
 
-![SAML form](images/saml-form.png)
+![فرم SAML](images/saml-form.png)
 
-You'll need to use the information in this form to set up SAML in Okta.
+باید از اطلاعات در این فرم برای تنظیم SAML در Okta استفاده کنید.
 
-## Set up SAML in Okta
+## تنظیم SAML در Okta
 
-Before configuring SAML authentication in Metabase, you'll need to create a new SAML app integration in Okta.
+قبل از پیکربندی احراز هویت SAML در متابیس، باید یک ادغام اپلیکیشن SAML جدید در Okta ایجاد کنید.
 
-### Create an app integration in Okta
+### ایجاد یک ادغام اپلیکیشن در Okta
 
-From the Okta **Admin** console, [create a new SAML app integration][okta-saml-docs] to use with Metabase.
+از کنسول **Admin** Okta، [یک ادغام اپلیکیشن SAML جدید ایجاد کنید][okta-saml-docs] برای استفاده با متابیس.
 
-### Configure Okta SAML settings
+### پیکربندی تنظیمات SAML Okta
 
-To configure Okta app integration with Metabase, you'll need to use the information found in Metabase in the **Admin panel** > **Authentication** > **SAML** section.
+برای پیکربندی ادغام اپلیکیشن Okta با متابیس، باید از اطلاعات یافت‌شده در متابیس در بخش **Admin panel** > **Authentication** > **SAML** استفاده کنید.
 
-#### General settings
+#### تنظیمات عمومی
 
-| Okta SAML                       | Metabase SAML                                                                                                                               |
+| SAML Okta                       | SAML متابیس                                                                                                                               |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Single sign-on URL**          | **URL the IdP should redirect to**. This is your Metabase [Site URL][site-url] -- it should start with `https://` and end with `/auth/sso`. |
-| **Audience URI (SP Entity ID)** | **SAML Application Name** ("Metabase" by default)                                                                                           |
+| **Single sign-on URL**          | **URL the IdP should redirect to**. این [Site URL][site-url] متابیس شما است -- باید با `https://` شروع شود و به `/auth/sso` ختم شود. |
+| **Audience URI (SP Entity ID)** | **SAML Application Name** ("Metabase" به‌طور پیش‌فرض)                                                                                           |
 
-#### Attribute statements
+#### statementهای ویژگی
 
-In the **Attribute statements (optional)** section of the Okta application SAML setting, create the following attribute statements:
+در بخش **Attribute statements (optional)** از تنظیم SAML اپلیکیشن Okta، statementهای ویژگی زیر را ایجاد کنید:
 
-- email address
-- first name (given name)
-- last name (surname)
+- آدرس ایمیل
+- نام (given name)
+- نام خانوادگی (surname)
 
-Even though Okta says these are optional, Metabase requires them. Okta will pass these attributes to Metabase during authentication to automatically log people in to Metabase.
+حتی اگر Okta می‌گوید این‌ها اختیاری هستند، متابیس آن‌ها را الزامی می‌کند. Okta این ویژگی‌ها را هنگام احراز هویت به متابیس ارسال می‌کند تا به‌طور خودکار افراد را به متابیس وارد کند.
 
-| Name                                                                 | Value          |
+| نام                                                                 | مقدار          |
 | -------------------------------------------------------------------- | -------------- |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` | user.email     |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`    | user.firstName |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`      | user.lastName  |
 
-The names of attribute statement in Okta should match the attribute names in Metabase (names are case sensitive). If you want to use non-default attribute names in you Okta app configuration, you will also need to change the names for the attribute fields in Metabase in **Admin panel** > **Authentication** > **SAML**.
+نام‌های statement ویژگی در Okta باید با نام‌های ویژگی در متابیس تطبیق داشته باشند (نام‌ها به حروف بزرگ و کوچک حساس هستند). اگر می‌خواهید از نام‌های ویژگی غیرپیش‌فرض در پیکربندی اپلیکیشن Okta خود استفاده کنید، همچنین باید نام‌های فیلدهای ویژگی را در متابیس در **Admin panel** > **Authentication** > **SAML** تغییر دهید.
 
-> **Make sure that people [cannot edit their email address attribute](https://help.okta.com/oie/en-us/content/topics/users-groups-profiles/usgp-user-edit-attributes.htm)**. To log people in to your Metabase (or to create a Metabase account on first login), your IdP will pass the email address attribute to Metabase. If a person can change the email address attribute, they'll potentially be able to access Metabase accounts other than their own.
+> **مطمئن شوید که افراد [نمی‌توانند ویژگی آدرس ایمیل خود را ویرایش کنند](https://help.okta.com/oie/en-us/content/topics/users-groups-profiles/usgp-user-edit-attributes.htm)**. برای وارد کردن افراد به متابیس شما (یا ایجاد یک حساب متابیس در اولین ورود)، IdP شما ویژگی آدرس ایمیل را به متابیس ارسال می‌کند. اگر یک شخص بتواند ویژگی آدرس ایمیل را تغییر دهد، به‌طور بالقوه قادر خواهد بود به حساب‌های متابیس غیر از خودش دسترسی پیدا کند.
 
-### Example of an Okta assertion
+### مثال یک assertion Okta
 
-You can click **Preview SAML assertion** to view the XML file generated by Okta. It should look something like this:
+می‌توانید روی **Preview SAML assertion** کلیک کنید تا فایل XML تولید شده توسط Okta را مشاهده کنید. باید چیزی شبیه این باشد:
 
 ```
 <saml2:Assertion
@@ -107,91 +107,91 @@ You can click **Preview SAML assertion** to view the XML file generated by Okta.
 </saml2:Assertion>
 ```
 
-## Set up SAML in Metabase
+## تنظیم SAML در متابیس
 
-Once you set up your SAML app in Okta, you'll need to configure SAML in Metabase. You'll need some information from Okta:
+بعد از اینکه اپلیکیشن SAML خود را در Okta تنظیم کردید، باید SAML را در متابیس پیکربندی کنید. به برخی اطلاعات از Okta نیاز دارید:
 
-1. In Okta, go to the page for your Metabase app integration.
-2. Go to the **Sign On** tab.
-3. Click on **View SAML setup instructions**.
+1. در Okta، به صفحه ادغام اپلیکیشن Metabase خود بروید.
+2. به تب **Sign On** بروید.
+3. روی **View SAML setup instructions** کلیک کنید.
 
-Use the information from Okta SAML instructions to fill the Metabase SAML form in **Admin panel** > **Authentication** > **SAML**:
+از اطلاعات از دستورالعمل‌های SAML Okta برای پر کردن فرم SAML متابیس در **Admin panel** > **Authentication** > **SAML** استفاده کنید:
 
-| Metabase SAML                      | Okta SAML                            |
+| SAML متابیس                      | SAML Okta                            |
 | ---------------------------------- | ------------------------------------ |
 | SAML Identity Provider URL         | Identity Provider Single Sign-On URL |
 | SAML Identity Provider Certificate | X.509 Certificate\*                  |
 | SAML Identity Provider Issuer      | Identity Provider Issuer             |
 
-\*Make sure to include any header and footer comments, like `---BEGIN CERTIFICATE---` and `---END CERTIFICATE---`.
+\*مطمئن شوید که هر کامنت header و footer، مثل `---BEGIN CERTIFICATE---` و `---END CERTIFICATE---` را شامل می‌شود.
 
-## Configure group mappings
+## پیکربندی نگاشت‌های گروه
 
-You can configure Metabase to automatically assign people to Metabase groups when they log in. You'll need to create a SAML attribute statement that will pass the groups information to Metabase, and then configure Metabase to read this attribute and map its contents to Metabase groups.
+می‌توانید متابیس را پیکربندی کنید تا به‌طور خودکار افراد را به گروه‌های متابیس هنگام ورود اختصاص دهد. باید یک statement ویژگی SAML ایجاد کنید که اطلاعات گروه را به متابیس ارسال کند، و سپس متابیس را پیکربندی کنید تا این ویژگی را بخواند و محتوای آن را به گروه‌های متابیس نگاشت کند.
 
-You can use either:
+می‌توانید از یکی از این‌ها استفاده کنید:
 
-- [A custom user profile attribute](#use-a-user-profile-attribute-to-assign-groups) that contains user's Metabase groups.
+- [یک ویژگی پروفایل کاربر سفارشی](#use-a-user-profile-attribute-to-assign-groups) که شامل گروه‌های متابیس کاربر است.
 - [Okta User Groups](#map-okta-user-groups-to-metabase-groups).
 
-### Use a user profile attribute to assign groups
+### استفاده از یک ویژگی پروفایل کاربر برای اختصاص گروه‌ها
 
-You can create a custom user profile attribute and fill it with the Metabase groups for each user.
+می‌توانید یک ویژگی پروفایل کاربر سفارشی ایجاد کنید و آن را با گروه‌های متابیس برای هر کاربر پر کنید.
 
-1. In Okta **Profile Editor**, [create a new User Profile attribute](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-add-custom-user-attributes.htm) called `metabaseGroups`, which can be a `string` or a `string array`.
-   ![New User Profile attribute](images/okta-new-attribute.png)
-2. For each user in Okta, fill the `metabaseGroups` attribute with their Metabase group(s).
+1. در **Profile Editor** Okta، [یک ویژگی User Profile جدید ایجاد کنید](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-add-custom-user-attributes.htm) به نام `metabaseGroups`، که می‌تواند یک `string` یا یک `string array` باشد.
+   ![ویژگی User Profile جدید](images/okta-new-attribute.png)
+2. برای هر کاربر در Okta، ویژگی `metabaseGroups` را با گروه(های) متابیس آن‌ها پر کنید.
 
-   ![Metabase groups attribute](images/okta-adding-groups.png)
+   ![ویژگی گروه‌های متابیس](images/okta-adding-groups.png)
 
-   We recommend that you use the same names for the groups in Okta as you would use in Metabase.
+   توصیه می‌کنیم که از همان نام‌ها برای گروه‌ها در Okta استفاده کنید که در متابیس استفاده می‌کنید.
 
-   Metabase groups don't have to correspond to Okta User Groups. If you'd like to use Okta User Groups to set up Metabase Groups, see [Map Okta User Groups to Metabase groups](#map-okta-user-groups-to-metabase-groups).
+   گروه‌های متابیس نیازی به مطابقت با Okta User Groups ندارند. اگر می‌خواهید از Okta User Groups برای تنظیم Metabase Groups استفاده کنید، به [نگاشت Okta User Groups به گروه‌های متابیس](#map-okta-user-groups-to-metabase-groups) مراجعه کنید.
 
-   > Your Okta account has to have `SAML_SUPPORT_ARRAY_ATTRIBUTES` enabled, as Metabase expects Okta to pass attributes as an array. If your Okta account is old, you might need to reach out to Okta support to enable `SAML_SUPPORT_ARRAY_ATTRIBUTES`.
+   > حساب Okta شما باید `SAML_SUPPORT_ARRAY_ATTRIBUTES` فعال داشته باشد، چون متابیس انتظار دارد Okta ویژگی‌ها را به‌عنوان یک آرایه ارسال کند. اگر حساب Okta شما قدیمی است، ممکن است نیاز داشته باشید با پشتیبانی Okta تماس بگیرید تا `SAML_SUPPORT_ARRAY_ATTRIBUTES` را فعال کند.
 
-3. In the **Okta SAML settings** for the Metabase app integration, add a new attribute statement `MetabaseGroupName` with the value `user.metabaseGroups` (the profile attribute you just created)
+3. در **تنظیمات SAML Okta** برای ادغام اپلیکیشن Metabase، یک statement ویژگی جدید `MetabaseGroupName` با مقدار `user.metabaseGroups` (ویژگی پروفایلی که تازه ایجاد کردید) اضافه کنید
 
-   ![New attribute statement referencing the attribute](images/okta-new-attribute-custom.png)
+   ![statement ویژگی جدید که به ویژگی ارجاع می‌دهد](images/okta-new-attribute-custom.png)
 
-4. In **Metabase SAML settings**:
+4. در **تنظیمات SAML متابیس**:
 
-- Turn on **Synchronize Group Memberships**.
-- For each of the groups you added to Okta users, set up a new mapping to a Metabase group.
-- In **Group attribute name**, enter `MetabaseGroupName` (the name of the SAML attribute statement).
+- **Synchronize Group Memberships** را روشن کنید.
+- برای هر یک از گروه‌هایی که به کاربران Okta اضافه کردید، یک نگاشت جدید به یک گروه متابیس تنظیم کنید.
+- در **Group attribute name**، `MetabaseGroupName` را وارد کنید (نام statement ویژگی SAML).
 
-  ![Metabase group mapping](images/saml-okta-groups.png)
+  ![نگاشت گروه متابیس](images/saml-okta-groups.png)
 
-### Map Okta User Groups to Metabase groups
+### نگاشت Okta User Groups به گروه‌های متابیس
 
-1. Create Okta User groups corresponding to Metabase groups and assign them to Okta users.
-2. In Okta's **SAML Settings** for the Metabase app integration, add a new attribute statement `MetabaseGroupName`, set the type to "Basic", and the value to:
+1. Okta User Groups متناظر با گروه‌های متابیس ایجاد کنید و آن‌ها را به کاربران Okta اختصاص دهید.
+2. در **SAML Settings** Okta برای ادغام اپلیکیشن Metabase، یک statement ویژگی جدید `MetabaseGroupName` اضافه کنید، نوع را به "Basic" تنظیم کنید، و مقدار را به:
 
    ```
    Arrays.flatten(getFilteredGroups({"groupID1", "groupID2"}, "group.name", 100))
    ```
 
-   where the Group IDs in `{"groupId1", "groupId2"}` are the groups that you would like to map to Metabase groups. You can find the Okta Group ID in the URL of the group's page: `https://your-okta-url.okta.com/admin/group/GROUP_ID`.
+   جایی که Group IDها در `{"groupId1", "groupId2"}` گروه‌هایی هستند که می‌خواهید به گروه‌های متابیس نگاشت کنید. می‌توانید Okta Group ID را در URL صفحه گروه پیدا کنید: `https://your-okta-url.okta.com/admin/group/GROUP_ID`.
 
-   This expression will retrieve the names of Okta User Groups that a user is a part of and return them as an array.
+   این expression نام‌های Okta User Groups که یک کاربر بخشی از آن است را بازیابی می‌کند و آن‌ها را به‌عنوان یک آرایه برمی‌گرداند.
 
-   ![New attribute statement for groups](images/okta-group-attribute.png)
+   ![statement ویژگی جدید برای گروه‌ها](images/okta-group-attribute.png)
 
-   > Your Okta account has to have `SAML_SUPPORT_ARRAY_ATTRIBUTES` enabled, as Metabase expects Okta to pass attributes as an array. If your Okta account is old, you might need to reach out to Okta support to enable `SAML_SUPPORT_ARRAY_ATTRIBUTES`.
+   > حساب Okta شما باید `SAML_SUPPORT_ARRAY_ATTRIBUTES` فعال داشته باشد، چون متابیس انتظار دارد Okta ویژگی‌ها را به‌عنوان یک آرایه ارسال کند. اگر حساب Okta شما قدیمی است، ممکن است نیاز داشته باشید با پشتیبانی Okta تماس بگیرید تا `SAML_SUPPORT_ARRAY_ATTRIBUTES` را فعال کند.
 
-   Next, you'll need to tell Metabase how to map Okta groups to Metabase groups.
+   بعد، باید به متابیس بگویید چگونه Okta groups را به گروه‌های متابیس نگاشت کند.
 
-3. In **Metabase SAML settings**:
+3. در **تنظیمات SAML متابیس**:
 
-- Turn on **Synchronize Group Memberships**.
-- For each of the groups you added to Okta users, set up a new mapping to a Metabase group.
-- In **Group attribute name**, enter `MetabaseGroupName` (the name of the SAML attribute statement).
+- **Synchronize Group Memberships** را روشن کنید.
+- برای هر یک از گروه‌هایی که به کاربران Okta اضافه کردید، یک نگاشت جدید به یک گروه متابیس تنظیم کنید.
+- در **Group attribute name**، `MetabaseGroupName` را وارد کنید (نام statement ویژگی SAML).
 
-  ![Metabase group mapping](images/saml-okta-groups.png)
+  ![نگاشت گروه متابیس](images/saml-okta-groups.png)
 
-## Troubleshooting SAML issues
+## عیب‌یابی مشکلات SAML
 
-For common issues, go to [Troubleshooting SAML][troubleshooting-saml].
+برای مشکلات رایج، به [عیب‌یابی SAML][troubleshooting-saml] بروید.
 
 [enabling-saml-in-metabase]: ./authenticating-with-saml.md#enabling-saml-authentication-in-metabase
 [okta-saml-docs]: https://help.okta.com/oie/en-us/content/topics/apps/apps_app_integration_wizard_saml.htm
@@ -200,6 +200,6 @@ For common issues, go to [Troubleshooting SAML][troubleshooting-saml].
 [site-url]: ../configuring-metabase/settings.md#site-url
 [troubleshooting-saml]: ../troubleshooting-guide/saml.md
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [User provisioning](./user-provisioning.md)
+- [Provisioning کاربر](./user-provisioning.md)

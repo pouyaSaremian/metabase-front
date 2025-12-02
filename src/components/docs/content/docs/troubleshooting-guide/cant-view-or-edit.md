@@ -1,44 +1,44 @@
 ---
-title: Can't view or edit
+title: نمی‌توانم مشاهده یا ویرایش کنم
 ---
 
-# Can't view or edit
+# نمی‌توانم مشاهده یا ویرایش کنم
 
-1. Clear your browser cache.
-2. Check if a browser extension or plugin is interfering with Metabase:
-   - Disable all extensions and plugins,
-   - Open the link in an incognito browser session, or
-   - Open the link in a different browser.
-3. If you aren't the creator of the question, dashboard, or model, check if you have permissions to the collection where the item is saved.
-4. Check the [Trash](../exploration-and-organization/delete-and-restore.md#see-items-in-trash).
+1. cache مرورگر خود را پاک کنید.
+2. بررسی کنید که آیا یک extension یا plugin مرورگر با متابیس تداخل دارد:
+   - همه extensionها و pluginها را غیرفعال کنید،
+   - لینک را در یک نشست مرورگر ناشناس باز کنید، یا
+   - لینک را در یک مرورگر متفاوت باز کنید.
+3. اگر شما سازنده سؤال، داشبورد، یا مدل نیستید، بررسی کنید که آیا مجوز به کلکسیونی که آیتم در آن ذخیره شده است دارید.
+4. [Trash](../exploration-and-organization/delete-and-restore.md#see-items-in-trash) را بررسی کنید.
 
-## Can't view cards on a dashboard
+## نمی‌توانم کارت‌ها را در یک داشبورد مشاهده کنم
 
-1. Check the collections where each question (or card) on the dashboard is saved.
-2. If a saved question is in a collection that you don't have access to, you'll need to ask someone with edit access to the collection to:
-   - Grant you permission to the collection.
-   - Or, to move the saved question to a collection that you have permissions to.
-3. If the steps above don't solve your problem, ask your Metabase admin if you have [permission to the database that's used by the question](../permissions/data.md#blocked-view-data-permission).
+1. کلکسیون‌هایی که هر سؤال (یا کارت) در داشبورد در آن ذخیره شده است را بررسی کنید.
+2. اگر یک سؤال ذخیره‌شده در یک کلکسیونی است که به آن دسترسی ندارید، باید از کسی با دسترسی ویرایش به کلکسیون بخواهید:
+   - مجوز به کلکسیون را به شما بدهد.
+   - یا، سؤال ذخیره‌شده را به یک کلکسیونی که به آن مجوز دارید منتقل کند.
+3. اگر مراحل بالا مشکل شما را حل نمی‌کند، از ادمین متابیس خود بپرسید که آیا [مجوز به پایگاه داده استفاده‌شده توسط سؤال](../permissions/data.md#blocked-view-data-permission) دارید.
 
-**Explanation**
+**توضیح**
 
-Moving a dashboard to a different collection doesn't move the dashboard's questions into that collection.
+انتقال یک داشبورد به یک کلکسیون متفاوت سؤال‌های داشبورد را به آن کلکسیون منتقل نمی‌کند.
 
-If the saved questions are stored in a restricted collection (such as someone's personal folder), then other groups won't be able to view those cards.
+اگر سؤال‌های ذخیره‌شده در یک کلکسیون محدود (مثل پوشه شخصی کسی) ذخیره شده‌اند، گروه‌های دیگر نمی‌توانند آن کارت‌ها را مشاهده کنند.
 
-Someone with edit permissions (your Metabase admin is probably a safe bet) will need to move those questions into a collection that you have permissions to.
+کسی با مجوزهای ویرایش (احتمالاً ادمین متابیس شما یک شرط مطمئن است) باید آن سؤال‌ها را به یک کلکسیونی که به آن مجوز دارید منتقل کند.
 
-## Related problems
+## مشکلات مرتبط
 
-- [Error message: your question took too long](./timeout.md).
-- [Error message: permission denied](./data-permissions.md#getting-a-permission-denied-error-message).
-- [I can't view or edit queries from the SQL editor](./data-permissions.md#a-user-group-cant-access-the-sql-editor).
-- [I can't save my question or dashboard](./proxies.md).
-- [I can't see my tables](./cant-see-tables.md).
+- [پیام خطا: سؤال شما خیلی طول کشید](./timeout.md).
+- [پیام خطا: مجوز رد شد](./data-permissions.md#getting-a-permission-denied-error-message).
+- [نمی‌توانم کوئری‌ها را از ویرایشگر SQL مشاهده یا ویرایش کنم](./data-permissions.md#a-user-group-cant-access-the-sql-editor).
+- [نمی‌توانم سؤال یا داشبورد خود را ذخیره کنم](./proxies.md).
+- [نمی‌توانم جداول خود را ببینم](./cant-see-tables.md).
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.

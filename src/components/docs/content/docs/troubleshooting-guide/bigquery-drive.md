@@ -1,21 +1,21 @@
 ---
-title: Troubleshooting BigQuery and Google Drive connections in Metabase
+title: عیب‌یابی اتصالات BigQuery و Google Drive در متابیس
 ---
 
-# Troubleshooting BigQuery and Google Drive connections in Metabase
+# عیب‌یابی اتصالات BigQuery و Google Drive در متابیس
 
-[This page](../databases/connections/bigquery.md) explains how to connect a BigQuery data source, including one that uses a file stored in Google Drive, like a Google Sheet (GSheets).
+[این صفحه](../databases/connections/bigquery.md) نحوهٔ اتصال یک منبع داده BigQuery را توضیح می‌دهد، از جمله یکی که از یک فایل ذخیره‌شده در Google Drive استفاده می‌کند، مثل یک Google Sheet (GSheets).
 
-## 403 Forbidden POST error
+## خطای 403 Forbidden POST
 
-If you encounter an error that looks like this:
+اگر با خطایی مواجه شدید که شبیه این است:
 
 ```
 403 Forbidden POST https://www.googleapis.com/bigquery/v2/projects/PROJECT-NAME/queries { "code" : 403, "errors" : [ { "domain" : "global", "message" : "Access Denied: BigQuery BigQuery: Permission denied while getting Drive credentials.", "reason" : "accessDenied" } ], "message" : "Access Denied: BigQuery BigQuery: Permission denied while getting Drive credentials.", "status" : "PERMISSION_DENIED" }
 ```
 
-You may have forgotten to [share your Google Drive source](../databases/connections/bigquery.md#share-your-google-drive-source-with-the-service-account) with the service account email. Once that's been fixed, that error should disappear and you'll be able to view and query your data source.
+ممکن است فراموش کرده باشید که [منبع Google Drive خود را](../databases/connections/bigquery.md#share-your-google-drive-source-with-the-service-account) با ایمیل service account به‌اشتراک بگذارید. بعد از اینکه این رفع شد، آن خطا باید ناپدید شود و می‌توانید منبع داده خود را مشاهده و کوئری کنید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Troubleshooting database connections](./db-connection.md)
+- [عیب‌یابی اتصالات پایگاه داده](./db-connection.md)

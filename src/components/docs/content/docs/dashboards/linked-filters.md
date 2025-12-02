@@ -1,65 +1,65 @@
 ---
-title: Linked filters
+title: فیلترهای متصل
 ---
 
-# Linked filters
+# فیلترهای متصل
 
-You can **link filters** on a dashboard so that a child filter limits its values based on the value(s) applied by a parent filter.
+می‌توانید **فیلترها را در یک داشبورد متصل کنید** تا یک فیلتر فرزند مقادیرش را بر اساس مقدار(های) اعمال‌شده توسط یک فیلتر والد محدود کند.
 
-For example, let's say you want a filter for the state column to restrict the values available to a filter on the city column, so that if someone selects a state, they'll only be able to select cities in that state. To do this, you can link the city filter (child) to a (parent) state filter.
+به‌عنوان مثال، فرض کنید می‌خواهید یک فیلتر برای ستون ایالت مقادیر در دسترس برای یک فیلتر روی ستون شهر را محدود کند، تا اگر کسی یک ایالت را انتخاب کند، فقط بتواند شهرهای آن ایالت را انتخاب کند. برای انجام این کار، می‌توانید فیلتر شهر (فرزند) را به یک فیلتر (والد) ایالت متصل کنید.
 
-![Linked filters](./images/field-values-linked-filters.png)
+![فیلترهای متصل](./images/field-values-linked-filters.png)
 
-## Set up tables for linked filters
+## تنظیم جداول برای فیلترهای متصل
 
-You can only link dashboard filters that are wired to database columns (not custom columns or summaries) on dashboard cards, because Metabase needs column metadata to create linked filters. Metabase needs to know what values are there in the columns, and how the columns in the parent and child relate to each other.
+فقط می‌توانید فیلترهای داشبوردی را که به ستون‌های پایگاه داده (نه ستون‌های سفارشی یا خلاصه‌ها) در کارت‌های داشبورد متصل هستند را متصل کنید، چون متابیس برای ایجاد فیلترهای متصل به ابردادهٔ ستون نیاز دارد. متابیس باید بداند چه مقادیری در ستون‌ها وجود دارد و چگونه ستون‌ها در والد و فرزند به یکدیگر مرتبط هستند.
 
-Filters can only be linked when they're connected to columns that have an explicit relationship in the table metadata. By relationship, we mean that the columns should be either:
+فیلترها فقط وقتی می‌توانند متصل شوند که به ستون‌هایی متصل باشند که یک رابطهٔ صریح در ابردادهٔ جدول دارند. با رابطه، منظورمان این است که ستون‌ها باید یا:
 
-- In the same table.
-- In two different tables that have a foreign key relationship specified in the [table metadata](../data-modeling/metadata-editing.md).
-- In two different tables that have a foreign key relationships to one or more intermediate tables, as specified in the [table metadata](../data-modeling/metadata-editing.md).
+- در همان جدول باشند.
+- در دو جدول مختلف که یک رابطهٔ foreign key در [ابردادهٔ جدول](../data-modeling/metadata-editing.md) مشخص شده است داشته باشند.
+- در دو جدول مختلف که روابط foreign key به یک یا چند جدول میانی دارند، همانطور که در [ابردادهٔ جدول](../data-modeling/metadata-editing.md) مشخص شده است.
 
-![Setting up foreign key in table metadata](./images/foreign-key-linked-filters.png)
+![تنظیم foreign key در ابردادهٔ جدول](./images/foreign-key-linked-filters.png)
 
-If you try to set up linked filters between two columns that aren't connected, Metabase won't show an error, but you'll see that the values in the child filter aren't restricted by the parent filter. For more troubleshooting tips, see [Troubleshooting link filters](../troubleshooting-guide/linked-filters.md).
+اگر سعی کنید فیلترهای متصل را بین دو ستون که متصل نیستند تنظیم کنید، متابیس خطایی نشان نمی‌دهد، اما می‌بینید که مقادیر در فیلتر فرزند توسط فیلتر والد محدود نمی‌شوند. برای نکات بیشتر عیب‌یابی، به [عیب‌یابی فیلترهای متصل](../troubleshooting-guide/linked-filters.md) مراجعه کنید.
 
-## Set up linked filters
+## تنظیم فیلترهای متصل
 
-You can link a child filter to one or more parent filters. The child filter must be either an ID, Location, or Text or Category filter. Parent filters can be any [filter type](./filters.md).
+می‌توانید یک فیلتر فرزند را به یک یا چند فیلتر والد متصل کنید. فیلتر فرزند باید یا یک فیلتر ID، Location، یا Text یا Category باشد. فیلترهای والد می‌توانند هر [نوع فیلتر](./filters.md) باشند.
 
-To link a child filter on a dashboard to one or more parent filters:
+برای اتصال یک فیلتر فرزند در یک داشبورد به یک یا چند فیلتر والد:
 
-1. Edit the dashboard by clicking on the pencil icon in the top right of the dashboard.
-2. Edit the child filter by clicking on the gear icon in the filter.
-3. In the filter settings sidebar, switch to **Linked filters** tab.
-4. Select the parent filter(s).
+1. داشبورد را با کلیک روی آیکون pencil در گوشهٔ بالا سمت راست داشبورد ویرایش کنید.
+2. فیلتر فرزند را با کلیک روی آیکون gear در فیلتر ویرایش کنید.
+3. در نوار کناری تنظیمات فیلتر، به تب **Linked filters** بروید.
+4. فیلتر(های) والد را انتخاب کنید.
 
-![Linked filters](./images/linked-filter.png)
+![فیلترهای متصل](./images/linked-filter.png)
 
-The filter(s) you select in the **linked filters** tab will be the parent filter(s), that is, the filter(s) that limit the values this (child) filter that you're currently editing.
+فیلتر(های) انتخابی در تب **linked filters** فیلتر(های) والد خواهند بود، یعنی فیلتر(های) که مقادیر این (فرزند) فیلتری که در حال ویرایش آن هستید را محدود می‌کنند.
 
-## Limitations of linked filters
+## محدودیت‌های فیلترهای متصل
 
-### Linked filters ignore relationships defined by models and questions
+### فیلترهای متصل روابط تعریف‌شده توسط مدل‌ها و سؤال‌ها را نادیده می‌گیرند
 
-Linked filters are only "aware" of relationships defined in the table metadata. This constraint lets people connect filters to the same column on multiple dashboard cards (across multiple tabs), but the constraint also means that:
+فیلترهای متصل فقط از روابط تعریف‌شده در ابردادهٔ جدول "آگاه" هستند. این محدودیت به افراد امکان می‌دهد فیلترها را به همان ستون در چندین کارت داشبورد (در چندین تب) متصل کنند، اما محدودیت همچنین به این معنی است که:
 
-- Linked filters can't see relationships defined by joins in models or questions.
-- Linked filters can't use any filter or join logic from any underlying card or model.
+- فیلترهای متصل نمی‌توانند روابط تعریف‌شده توسط joinها در مدل‌ها یا سؤال‌ها را ببینند.
+- فیلترهای متصل نمی‌توانند از هیچ منطق فیلتر یا join از هر کارت یا مدل زیربنایی استفاده کنند.
 
-For example, say you have a table with State and City columns, and you build a model that filters out rows with `City = San Francisco`. You ask a question based on that model, and add it to a dashboard. You add State and City filters to the dashboard, and link them. If you select were to select `State = CA`, the city filter may still show `San Francisco` as option, even though there are no records with `San Francisco` in the question and the underlying model, because the filter only "knows" about the underlying table metadata (which includes sample values for the column).
+به‌عنوان مثال، فرض کنید یک جدول با ستون‌های State و City دارید، و یک مدل می‌سازید که ردیف‌های با `City = San Francisco` را فیلتر می‌کند. یک سؤال بر اساس آن مدل می‌پرسید و آن را به یک داشبورد اضافه می‌کنید. فیلترهای State و City را به داشبورد اضافه می‌کنید و آن‌ها را متصل می‌کنید. اگر `State = CA` را انتخاب کنید، فیلتر شهر ممکن است همچنان `San Francisco` را به‌عنوان گزینه نشان دهد، حتی اگر هیچ رکوردی با `San Francisco` در سؤال و مدل زیربنایی وجود نداشته باشد، چون فیلتر فقط از ابردادهٔ جدول زیربنایی (که شامل مقادیر نمونه برای ستون است) "آگاه" است.
 
-### Linked filters don't work with custom columns or summaries
+### فیلترهای متصل با ستون‌های سفارشی یا خلاصه‌ها کار نمی‌کنند
 
-Metabase uses database column metadata to populate values for linked filters, which means that linked filters have to be connected to database columns. In particular:
+متابیس از ابردادهٔ ستون پایگاه داده برای پر کردن مقادیر فیلترهای متصل استفاده می‌کند، که به این معنی است که فیلترهای متصل باید به ستون‌های پایگاه داده متصل باشند. به طور خاص:
 
-- You can't create linked filters on custom columns.
+- نمی‌توانید فیلترهای متصل روی ستون‌های سفارشی ایجاد کنید.
 
-- Native/SQL questions must have a [field filter](../questions/native-editor/field-filters.md) variable to be linked. Basic SQL variables aren't connected to database columns, so they won't work for linked filters.
+- سؤال‌های Native/SQL باید یک متغیر [فیلتر فیلد](../questions/native-editor/field-filters.md) داشته باشند تا متصل شوند. متغیرهای SQL پایه به ستون‌های پایگاه داده متصل نیستند، بنابراین برای فیلترهای متصل کار نمی‌کنند.
 
-- You can't link filters that use "Custom List" or "From another model or question" as their value's source.
+- نمی‌توانید فیلترهایی را که از "Custom List" یا "From another model or question" به‌عنوان منبع مقادیرشان استفاده می‌کنند متصل کنید.
 
-## Troubleshooting linked filters
+## عیب‌یابی فیلترهای متصل
 
-If you're not seeing what you expect with linked filters, make sure that your table relationships are [set up to support linked filters](#set-up-tables-for-linked-filters) . See [Troubleshooting linked filters](../troubleshooting-guide/linked-filters.md) for more troubleshooting information.
+اگر آنچه انتظار دارید با فیلترهای متصل نمی‌بینید، مطمئن شوید که روابط جدول شما [برای پشتیبانی از فیلترهای متصل تنظیم شده‌اند](#set-up-tables-for-linked-filters). به [عیب‌یابی فیلترهای متصل](../troubleshooting-guide/linked-filters.md) برای اطلاعات بیشتر عیب‌یابی مراجعه کنید.

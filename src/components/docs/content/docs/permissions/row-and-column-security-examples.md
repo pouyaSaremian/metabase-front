@@ -1,83 +1,83 @@
 ---
-title: Row and column security examples
+title: مثال‌های امنیت ردیف و ستون
 redirect_from:
   - /docs/latest/permissions/row-and-column-security-examples
 ---
 
-# Row and column security examples
+# مثال‌های امنیت ردیف و ستون
 
 {% include plans-blockquote.html feature="Row and column security" %}
 
-[Row and column security](./row-and-column-security.md) let you:
+[امنیت ردیف و ستون](./row-and-column-security.md) به شما امکان می‌دهد:
 
-- [Restrict **rows**](./row-and-column-security.md#row-level-security-filter-by-a-column-in-the-table).
-- [Restrict **columns** (and rows)](./row-and-column-security.md#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table).
+- [محدود کردن **ردیف‌ها**](./row-and-column-security.md#row-level-security-filter-by-a-column-in-the-table).
+- [محدود کردن **ستون‌ها** (و ردیف‌ها)](./row-and-column-security.md#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table).
 
-## Setup for all examples below
+## تنظیمات برای همه مثال‌های زیر
 
-The examples below use the Sample database included with Metabase. Here's the basic setup:
+مثال‌های زیر از Sample database همراه متابیس استفاده می‌کنند. در اینجا تنظیمات پایه است:
 
-1. **Block permissions for the All users group**: Hit cmd/ctrl + k to bring up the command palette and search for "Permissions". In the **Permissions** > **Data** tab. Click on the **All users** group. For the Sample database, set the All User's [View data](./data.md#view-data-permissions) permission to "Blocked".
+1. **مجوزها را برای گروه All users مسدود کنید**: Cmd/ctrl + k را بزنید تا command palette باز شود و برای "Permissions" جستجو کنید. در تب **Permissions** > **Data**. روی گروه **All users** کلیک کنید. برای Sample database، مجوز [View data](./data.md#view-data-permissions) All User را به "Blocked" تنظیم کنید.
 
-2. **Create a group called Customers**. Hit cmd/ctrl + k and search for the People settings. [Create a group called "Customers".
+2. **یک گروه به نام Customers ایجاد کنید**. Cmd/ctrl + k را بزنید و برای تنظیمات People جستجو کنید. [یک گروه به نام "Customers" ایجاد کنید].
 
-3. **Create a user account for Cloyd Beer**. We'll [create a user account](../people-and-groups/managing.md#creating-an-account) for a random person from the People table in our Sample Database. Let's go with `Cloyd Beer` from the Sample database's `People` table.
+3. **یک حساب کاربر برای Cloyd Beer ایجاد کنید**. ما [یک حساب کاربر ایجاد می‌کنیم](../people-and-groups/managing.md#creating-an-account) برای یک شخص تصادفی از جدول People در Sample Database خود. بیایید با `Cloyd Beer` از جدول `People` Sample database برویم.
 
-4. **Add a user attribute to the account**: We'll add a user attribute to Cloyd's account. Since we want to be able to filter the data by user ID, we'll grab Cloyd's ID from the Sample database's `People` table and add the ID as a [user attribute](../people-and-groups/managing.md#adding-a-user-attribute): `user_id: 2499` (`2499` is Mr. Beer's ID in the Sample database).
+4. **یک ویژگی کاربر به حساب اضافه کنید**: ما یک ویژگی کاربر به حساب Cloyd اضافه می‌کنیم. چون می‌خواهیم بتوانیم داده را بر اساس user ID فیلتر کنیم، ID Cloyd را از جدول `People` Sample database می‌گیریم و ID را به‌عنوان یک [ویژگی کاربر](../people-and-groups/managing.md#adding-a-user-attribute) اضافه می‌کنیم: `user_id: 2499` (`2499` ID آقای Beer در Sample database است).
 
-![User details](images/edit-user-details.png)
+![جزئیات کاربر](images/edit-user-details.png)
 
-5. **Add Mr. Beer to the Customers group**: See [adding people to groups](../people-and-groups/managing.md#adding-people-to-groups).
+5. **آقای Beer را به گروه Customers اضافه کنید**: به [اضافه کردن افراد به گروه‌ها](../people-and-groups/managing.md#adding-people-to-groups) مراجعه کنید.
 
-6. **Create a collection that is only viewable by Admins.**. Call it "Admin collection". We'll use this collection to store SQL questions that we use to secure tables in examples 2 and 3. See [Collection permissions](./collections.md).
+6. **یک کلکسیون ایجاد کنید که فقط توسط ادمین‌ها قابل مشاهده است.** آن را "Admin collection" بنامید. از این کلکسیون برای ذخیره سؤال‌های SQL که برای امن کردن جداول در مثال‌های 2 و 3 استفاده می‌کنیم استفاده می‌کنیم. به [مجوزهای کلکسیون](./collections.md) مراجعه کنید.
 
-## Filtering rows based on user attributes
+## فیلتر کردن ردیف‌ها بر اساس ویژگی‌های کاربر
 
-In this example, we’ll secure our `Orders` table so that anyone in our Customers group will only be able to see rows in the Orders table where the `User ID` column matches the person's `user_id` attribute.
+در این مثال، جدول `Orders` خود را امن می‌کنیم تا هر کسی در گروه Customers ما فقط بتواند ردیف‌هایی را در جدول Orders ببیند که ستون `User ID` با ویژگی `user_id` شخص تطبیق دارد.
 
-1. **Go to the Admin settings > Permissions > data**. Click on the "Customers" group.
+1. **به Admin settings > Permissions > data بروید**. روی گروه "Customers" کلیک کنید.
 
-2. **Set View data to Granular**. For the Sample Database, set the Customer group's [View data](./data.md#view-data-permissions) to "Granular". Setting to "Granular" will allow us to set up permissions on individual tables for the Customer group.
+2. **View data را به Granular تنظیم کنید**. برای Sample Database، مجوز [View data](./data.md#view-data-permissions) گروه Customer را به "Granular" تنظیم کنید. تنظیم به "Granular" به ما امکان می‌دهد مجوزها را روی جداول جداگانه برای گروه Customer تنظیم کنیم.
 
-3. **Add row and column security to the Orders and People tables**. Here, we'll set the View data permissions on the `Orders` and `People` tables to "Row and column security". And since we want people to self-serve their data (by asking questions, creating dashboards, etc.), we'll also set their [Create queries](../permissions/data.md#create-queries-permissions) permission to "Query builder only."
+3. **امنیت ردیف و ستون را به جداول Orders و People اضافه کنید**. اینجا، مجوزهای View data را روی جداول `Orders` و `People` به "Row and column security" تنظیم می‌کنیم. و چون می‌خواهیم افراد داده خود را self-serve کنند (با پرسیدن سؤال‌ها، ایجاد داشبوردها، و غیره)، همچنین مجوز [Create queries](../permissions/data.md#create-queries-permissions) آن‌ها را به "Query builder only" تنظیم می‌کنیم.
 
-![Set row and column security](./images/apply-row-and-column-security.png)
+![تنظیم امنیت ردیف و ستون](./images/apply-row-and-column-security.png)
 
-4. **Filter by a column for each table.** For each table, Metabase will ask us "How do you want to filter this table for users in this group?". In each case, we'll keep the default selection: "Filter by a column on this table." For the `Orders` table, we'll filter by the `User ID` column, which we'll set equal to the `user_id` attribute for people in the Customers group.
+4. **بر اساس یک ستون برای هر جدول فیلتر کنید.** برای هر جدول، متابیس از ما می‌پرسد "چگونه می‌خواهید این جدول را برای کاربران در این گروه فیلتر کنید؟". در هر مورد، انتخاب پیش‌فرض را نگه می‌داریم: "Filter by a column on this table." برای جدول `Orders`، بر اساس ستون `User ID` فیلتر می‌کنیم، که آن را برابر با ویژگی `user_id` برای افراد در گروه Customers تنظیم می‌کنیم.
 
-![Select user attribute](images/select-user-attribute.png)
+![انتخاب ویژگی کاربر](images/select-user-attribute.png)
 
-For the `People` table, we'll filter by the `ID` column, which we'll set equal to that same `user_id` attribute.
+برای جدول `People`، بر اساس ستون `ID` فیلتر می‌کنیم، که آن را برابر با همان ویژگی `user_id` تنظیم می‌کنیم.
 
-5. **Save your changes**. Otherwise, all is for naught.
+5. **تغییرات خود را ذخیره کنید**. در غیر این صورت، همه بیهوده است.
 
-### Testing out the row security
+### تست کردن امنیت ردیف
 
-To test out Mr. Beer's view of the world, we’ll open up a new incognito/private browser window and log in using Mr. Beer's account.
+برای تست کردن نمای آقای Beer از جهان، یک پنجره مرورگر incognito/private جدید باز می‌کنیم و با استفاده از حساب آقای Beer وارد می‌شویم.
 
-1. Log in as Cloyd Beer.
-2. Click **Browse** > **Databases**.
-3. Click on the **Orders** table.
-4. Confirm that Metabase displays only the orders that Mr. Beer placed, that is, orders associated with the User ID of `2499`.
+1. به‌عنوان Cloyd Beer وارد شوید.
+2. روی **Browse** > **Databases** کلیک کنید.
+3. روی جدول **Orders** کلیک کنید.
+4. تأیید کنید که متابیس فقط سفارش‌هایی را که آقای Beer ثبت کرده است نمایش می‌دهد، یعنی سفارش‌های مرتبط با User ID `2499`.
 
-If Mr. Beer views any charts, dashboards, or even automated [X-ray explorations](../exploration-and-organization/x-rays.md) that include the secured `Orders` data, Metabase will also filter those results to show only the data Mr. Beer is permitted to see. When Mr. Beer uses the query builder to ask new questions, his results will be limited to the filtered data.
+اگر آقای Beer هر نمودار، داشبورد، یا حتی [اکتشافات X-ray خودکار](../exploration-and-organization/x-rays.md) که شامل داده امن‌شده `Orders` است را مشاهده کند، متابیس همچنین آن نتایج را فیلتر می‌کند تا فقط داده‌ای که آقای Beer مجاز به دیدن است را نمایش دهد. وقتی آقای Beer از query builder برای پرسیدن سؤال‌های جدید استفاده می‌کند، نتایج او به داده فیلترشده محدود می‌شود.
 
-## Using a question to define a custom view of a table
+## استفاده از یک سؤال برای تعریف یک نمای سفارشی از یک جدول
 
-You can set up row and column security so that when someone in that group queries the table, behind the scenes Metabase will instead use the question you created as the source data for their query.
+می‌توانید امنیت ردیف و ستون را طوری تنظیم کنید که وقتی کسی در آن گروه جدول را کوئری می‌کند، در پشت صحنه متابیس در عوض از سؤالی که ایجاد کردید به‌عنوان منبع داده برای کوئری آن‌ها استفاده کند.
 
-You can:
+می‌توانید:
 
-- [Filter out columns](#custom-example-1-filtering-columns)
-- [Filter out rows and columns](#custom-example-2-filtering-rows-and-columns)
+- [ستون‌ها را فیلتر کنید](#custom-example-1-filtering-columns)
+- [ردیف‌ها و ستون‌ها را فیلتر کنید](#custom-example-2-filtering-rows-and-columns)
 
-## Custom example 1: filtering columns
+## مثال سفارشی 1: فیلتر کردن ستون‌ها
 
-In this example, we have a table called `People` that we want to trim down so that Mr. Beer and other Customers can view any row, but only some columns.
+در این مثال، یک جدول به نام `People` داریم که می‌خواهیم آن را کاهش دهیم تا آقای Beer و دیگر Customers بتوانند هر ردیف را مشاهده کنند، اما فقط برخی ستون‌ها.
 
-![Original People table](images/advanced-example-1-people-table.png)
+![جدول People اصلی](images/advanced-example-1-people-table.png)
 
-1. **Create a query that limits the columns in the People table.** Using the native/SQL editor, we'll write a query that only returns the columns in that table that we _do_ want our Customers group to see, like this:
+1. **یک کوئری ایجاد کنید که ستون‌ها را در جدول People محدود می‌کند.** با استفاده از ویرایشگر native/SQL، یک کوئری می‌نویسیم که فقط ستون‌هایی را در آن جدول که _می‌خواهیم_ گروه Customers ما ببیند برمی‌گرداند، مثل این:
 
 ```sql
 SELECT
@@ -89,29 +89,29 @@ FROM
   People
 ```
 
-Here are the results:
+در اینجا نتایج هستند:
 
-![Filtering question](images/filtering-question.png)
+![سؤال فیلتر کردن](images/filtering-question.png)
 
-We'll call this question "Filtered people table". Save it to the "Admins collection" you created in the setup (or any collection that only Admins have access to).
+این سؤال را "Filtered people table" می‌نامیم. آن را در "Admins collection" که در تنظیمات ایجاد کردید (یا هر کلکسیونی که فقط ادمین‌ها به آن دسترسی دارند) ذخیره کنید.
 
-2. **Use a SQL question to create a custom view for this table**: We'll go to the Permissions section and grant this group row and column secuity to this table. This time we'll select the second option, "Use a saved question to create a custom view for this table", and select the question we just created ("Filtered people table"), like so:
+2. **از یک سؤال SQL برای ایجاد یک نمای سفارشی برای این جدول استفاده کنید**: به بخش Permissions می‌رویم و امنیت ردیف و ستون را به این جدول برای این گروه اعطا می‌کنیم. این بار گزینه دوم را انتخاب می‌کنیم، "Use a saved question to create a custom view for this table"، و سؤالی که تازه ایجاد کردیم ("Filtered people table") را انتخاب می‌کنیم، مثل این:
 
-![Using a question to create a custom view](images/question-modal.png)
+![استفاده از یک سؤال برای ایجاد یک نمای سفارشی](images/question-modal.png)
 
-3. **Save changes**, lest our toil matter not.
+3. **تغییرات را ذخیره کنید**، مبادا زحمت ما بیهوده باشد.
 
-4. **Verify things are working correctly**. We can log in as Mr. Beer, and when we go to open up the `People` table, we should see that Mr. Beer can instead see the results of the filtering question.
+4. **تأیید کنید که همه چیز به‌درستی کار می‌کند**. می‌توانیم به‌عنوان آقای Beer وارد شویم، و وقتی جدول `People` را باز می‌کنیم، باید ببینیم که آقای Beer در عوض می‌تواند نتایج سؤال فیلتر کردن را ببیند.
 
-When Mr. Beer views a chart that uses data from this secured table, Metabase will also apply the filtering. **If the chart uses any columns excluded by the secured table, the chart will NOT load for Mr. Beer.**
+وقتی آقای Beer یک نمودار که از داده این جدول امن‌شده استفاده می‌کند را مشاهده می‌کند، متابیس همچنین فیلتر کردن را اعمال می‌کند. **اگر نمودار از هر ستونی که توسط جدول امن‌شده حذف شده است استفاده کند، نمودار برای آقای Beer بارگذاری نمی‌شود.**
 
-## Custom example 2: Filtering rows and columns
+## مثال سفارشی 2: فیلتر کردن ردیف‌ها و ستون‌ها
 
-If we want to specify which columns _and_ rows people can view, we can apply row and column security to a table based on a SQL question with a variable, and associate that variable with a user attribute. To do that, we'll give our Customers group a custom view of the `Orders` table, but only let each person see rows based on their `user_id` user attribute.
+اگر می‌خواهیم مشخص کنیم کدام ستون‌ها _و_ ردیف‌ها را افراد می‌توانند مشاهده کنند، می‌توانیم امنیت ردیف و ستون را به یک جدول بر اساس یک سؤال SQL با یک متغیر اعمال کنیم، و آن متغیر را با یک ویژگی کاربر مرتبط کنیم. برای انجام این کار، به گروه Customers خود یک نمای سفارشی از جدول `Orders` می‌دهیم، اما فقط به هر شخص اجازه می‌دهیم ردیف‌هایی را بر اساس ویژگی کاربر `user_id` خود ببیند.
 
-1. **Create a SQL question with a variable**. We'll create a query that selects only some of the columns from the `Orders` table, and then add a `WHERE` clause with a variable that we can associate with Cloyd Beer's `user_id` user attribute.
+1. **یک سؤال SQL با یک متغیر ایجاد کنید**. یک کوئری ایجاد می‌کنیم که فقط برخی از ستون‌ها را از جدول `Orders` انتخاب می‌کند، و سپس یک بند `WHERE` با یک متغیر اضافه می‌کنیم که می‌توانیم آن را با ویژگی کاربر `user_id` Cloyd Beer مرتبط کنیم.
 
-Here's the code:
+در اینجا کد است:
 
 ```sql
 {% raw %}
@@ -129,18 +129,18 @@ WHERE
 {% endraw %}
 ```
 
-Save it to the "Admins collection" you created in the setup (or any collection that only Admins have access to).
+آن را در "Admins collection" که در تنظیمات ایجاد کردید (یا هر کلکسیونی که فقط ادمین‌ها به آن دسترسی دارند) ذخیره کنید.
 
-2. **Create the custom view**: Return to the **Permissions** tab. Select Cloyd Beer's Customer group, and set the **View data** access for the `Orders` table to **Row and column security**. Select **Use a saved question to create a custom view for this table**. Open up the row and column security modal and select the second option. Select the filtering question, we'll see an additional section which allows us to map the variable we defined in our question with a user attribute:
+2. **نمای سفارشی را ایجاد کنید**: به تب **Permissions** برگردید. گروه Customer آقای Beer را انتخاب کنید، و دسترسی **View data** را برای جدول `Orders` به **Row and column security** تنظیم کنید. **Use a saved question to create a custom view for this table** را انتخاب کنید. مودال امنیت ردیف و ستون را باز کنید و گزینه دوم را انتخاب کنید. سؤال فیلتر کردن را انتخاب کنید، بخش اضافی را می‌بینیم که به ما امکان می‌دهد متغیری که در سؤال خود تعریف کردیم را با یک ویژگی کاربر نگاشت کنیم:
 
-3. **Save your changes**. Or abandon all hope.
+3. **تغییرات خود را ذخیره کنید**. یا همه امید را رها کنید.
 
-4. **Verify the permissions are working**: Now, when we log in as Mr. Beer and look at the `Orders` table, Mr. Beer will only see the columns we included in the filtering question, and the rows are filtered as specified by the variable in the question's `WHERE` clause:
+4. **تأیید کنید که مجوزها کار می‌کنند**: حالا، وقتی به‌عنوان آقای Beer وارد می‌شویم و به جدول `Orders` نگاه می‌کنیم، آقای Beer فقط ستون‌هایی را می‌بیند که در سؤال فیلتر کردن شامل کردیم، و ردیف‌ها طبق متغیر در بند `WHERE` سؤال فیلتر می‌شوند:
 
-![Results](images/advanced-example-2-results.png)
+![نتایج](images/advanced-example-2-results.png)
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Setting row-level permissions](https://www.metabase.com/learn/metabase-basics/administration/permissions/data-sandboxing-row-permissions)
-- [Custom views: limiting access to columns](https://www.metabase.com/learn/metabase-basics/administration/permissions/data-sandboxing-column-permissions)
-- [Configuring permissions for embedding](../permissions/embedding.md)
+- [تنظیم مجوزهای سطح ردیف](https://www.metabase.com/learn/metabase-basics/administration/permissions/data-sandboxing-row-permissions)
+- [نمای سفارشی: محدود کردن دسترسی به ستون‌ها](https://www.metabase.com/learn/metabase-basics/administration/permissions/data-sandboxing-column-permissions)
+- [پیکربندی مجوزها برای جاسازی](../permissions/embedding.md)

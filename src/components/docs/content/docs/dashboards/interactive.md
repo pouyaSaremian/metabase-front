@@ -1,133 +1,133 @@
 ---
-title: Dashboard interactivity
+title: تعامل داشبورد
 redirect_from:
   - /docs/latest/users-guide/interactive-dashboards
 ---
 
-# Dashboard interactivity
+# تعامل داشبورد
 
-You can customize what happens when people click on questions in your dashboard.
+می‌توانید آنچه را که هنگام کلیک افراد روی سؤال‌ها در داشبوردتان اتفاق می‌افتد سفارشی کنید.
 
-By default, when you create charts using Metabase's graphical query builder, your charts automatically come with [drill-through capabilities](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through), which let folks click on a chart to explore further. But if you have a more customized click path in mind, Metabase allows you to customize what happens when a user clicks on a chart or table in your dashboard.
+به‌طور پیش‌فرض، وقتی نمودارها را با استفاده از query builder گرافیکی متابیس ایجاد می‌کنید، نمودارهایتان به‌طور خودکار با [قابلیت‌های drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) می‌آیند، که به افراد امکان می‌دهد روی یک نمودار کلیک کنند تا بیشتر کاوش کنند. اما اگر یک مسیر کلیک سفارشی‌تر در ذهن دارید، متابیس به شما امکان می‌دهد آنچه را که هنگام کلیک یک کاربر روی یک نمودار یا جدول در داشبوردتان اتفاق می‌افتد سفارشی کنید.
 
-You can set up a dashboard card to:
+می‌توانید یک کارت داشبورد را طوری تنظیم کنید که:
 
-- Send the user to a [custom destination](#custom-destinations): a dashboard, question, or custom URL.
-- [Update a dashboard filter](#use-a-chart-to-filter-a-dashboard).
+- کاربر را به یک [مقصد سفارشی](#custom-destinations) بفرستد: یک داشبورد، سؤال، یا URL سفارشی.
+- [یک فیلتر داشبورد را به‌روزرسانی کند](#use-a-chart-to-filter-a-dashboard).
 
-To configure this interactivity, you'll use the **click behavior** option on a dashboard card.
+برای پیکربندی این تعامل، از گزینهٔ **click behavior** روی یک کارت داشبورد استفاده می‌کنید.
 
-## Customizing click behavior
+## سفارشی کردن رفتار کلیک
 
-From your dashboard, first click on the **pencil** icon to enter dashboard edit mode.
+از داشبوردتان، ابتدا روی **آیکون pencil** کلیک کنید تا وارد حالت ویرایش داشبورد شوید.
 
-If you hover over the card that contains question you want to customize, Metabase will display a menu at the top right of that card containing these options, from left to right:
+اگر روی کارتی که شامل سؤالی است که می‌خواهید سفارشی کنید hover کنید، متابیس یک منو در گوشهٔ بالا سمت راست آن کارت نمایش می‌دهد که شامل این گزینه‌ها است، از چپ به راست:
 
-- **Visualization options**: This icon looks like a painter's palette.
-- **Click behavior**: This is the icon with the mouse cursor clicking on a card.
-- **Add series**: If your question has a visualization to which you can add an [additional series](./multiple-series.md) (like a line or bar chart), you'll see this icon as a **+** next to a small representation of that chart type. Not all cards will show this option.
-- **Remove**: This icon is an **X**. Selecting this will remove your question from the dashboard.
+- **گزینه‌های ویژوالیزیشن**: این آیکون شبیه پالت نقاش است.
+- **رفتار کلیک**: این آیکون با نشانگر ماوس است که روی یک کارت کلیک می‌کند.
+- **اضافه کردن سری**: اگر سؤال شما یک ویژوالیزیشن دارد که می‌توانید یک [سری اضافی](./multiple-series.md) به آن اضافه کنید (مثل یک نمودار خطی یا ستونی)، این آیکون را به‌صورت **+** کنار یک نمایش کوچک از آن نوع نمودار می‌بینید. همهٔ کارت‌ها این گزینه را نشان نمی‌دهند.
+- **حذف**: این آیکون یک **X** است. انتخاب این کارت سؤال شما را از داشبورد حذف می‌کند.
 
-Select the **Click behavior** option.
+گزینهٔ **Click behavior** را انتخاب کنید.
 
-![Click behavior icon](./images/click-behavior-icon.png)
+![آیکون رفتار کلیک](./images/click-behavior-icon.png)
 
-Metabase will slide out the **Click behavior sidebar**:
+متابیس **نوار کناری رفتار کلیک** را باز می‌کند:
 
-![Click behavior menu](./images/click-behavior-menu.png)
+![منوی رفتار کلیک](./images/click-behavior-menu.png)
 
-For questions composed using the query builder, you can select from three options:
+برای سؤال‌های ساخته‌شده با query builder، می‌توانید از سه گزینه انتخاب کنید:
 
-- Open the Metabase drill-through menu.
-- Go to a custom destination.
-- Update a dashboard filter (if the dashboard has a filter).
+- باز کردن منوی drill-through متابیس.
+- رفتن به یک مقصد سفارشی.
+- به‌روزرسانی یک فیلتر داشبورد (اگر داشبورد یک فیلتر دارد).
 
-SQL questions will only have the option to **Go to a custom destination**, and **Update a dashboard filter**.
+سؤال‌های SQL فقط گزینهٔ **رفتن به یک مقصد سفارشی** و **به‌روزرسانی یک فیلتر داشبورد** را دارند.
 
-If your dashboard has a filter, you'll also see an option to [update the filter](#use-a-chart-to-filter-a-dashboard).
+اگر داشبوردتان یک فیلتر دارد، همچنین گزینه‌ای برای [به‌روزرسانی فیلتر](#use-a-chart-to-filter-a-dashboard) می‌بینید.
 
-## Open the drill-through menu
+## باز کردن منوی drill-through
 
-For questions composed using the query builder, the default click behavior is to open the **drill-through menu**, which presents people with the option to [drill through the data](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through):
+برای سؤال‌های ساخته‌شده با query builder، رفتار کلیک پیش‌فرض باز کردن **منوی drill-through** است، که به افراد گزینهٔ [drill through داده](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) را ارائه می‌دهد:
 
-![Drill-through menu](./images/drill-through-menu.png)
+![منوی drill-through](./images/drill-through-menu.png)
 
-## Custom destinations
+## مقصدهای سفارشی
 
-You can set custom destinations for all questions, including SQL questions.
+می‌توانید مقصدهای سفارشی برای همهٔ سؤال‌ها، از جمله سؤال‌های SQL تنظیم کنید.
 
-![Custom destinations](./images/custom-destination.png)
+![مقصدهای سفارشی](./images/custom-destination.png)
 
-Possible destinations include:
+مقصدهای ممکن شامل موارد زیر هستند:
 
-- Dashboards
-- Saved questions
-- URLs
+- داشبوردها
+- سؤال‌های ذخیره‌شده
+- URLها
 
-Internal Metabase destinations (dashboards or saved questions) will load in the same browser tab or window. External URLs will open in a new tab or window.
+مقصدهای داخلی متابیس (داشبوردها یا سؤال‌های ذخیره‌شده) در همان تب یا پنجرهٔ مرورگر بارگذاری می‌شوند. URLهای خارجی در یک تب یا پنجرهٔ جدید باز می‌شوند.
 
-## Passing values to the destination
+## ارسال مقادیر به مقصد
 
-If you're linking to a dashboard or a SQL question that has filters, you can pass values from the current dashboard to filters in the destination.
+اگر به یک داشبورد یا یک سؤال SQL که فیلتر دارد لینک می‌دهید، می‌توانید مقادیر را از داشبورد فعلی به فیلترها در مقصد ارسال کنید.
 
-For example, if you link to a dashboard that has a filter for `Category`, you can pass a value for `Category` from the origin question to the destination dashboard:
+به‌عنوان مثال، اگر به یک داشبورد که یک فیلتر برای `Category` دارد لینک می‌دهید، می‌توانید یک مقدار برای `Category` از سؤال مبدأ به داشبورد مقصد ارسال کنید:
 
-![Pass value to dashboard](./images/pass-value.png)
+![ارسال مقدار به داشبورد](./images/pass-value.png)
 
-Once you select the column that contains the value you want to pass, the sidebar will display the column used to pass the value, as well as the target filter at the destination that Metabase will pass the value to:
+وقتی ستونی را که شامل مقداری است که می‌خواهید ارسال کنید انتخاب می‌کنید، نوار کناری ستون استفاده‌شده برای ارسال مقدار و همچنین فیلتر هدف در مقصد که متابیس مقدار را به آن ارسال می‌کند نمایش می‌دهد:
 
-![Pass category to filter](./images/pass-category-to-filter.png)
+![ارسال دسته‌بندی به فیلتر](./images/pass-category-to-filter.png)
 
-In the example above, when a user clicks on the **Orders by product category** card, Metabase will pass the clicked `Product -> Category` to the destination dashboard ("Interactive Dashboard"), which will then filter its cards by that `Category`.
+در مثال بالا، وقتی یک کاربر روی کارت **Orders by product category** کلیک می‌کند، متابیس `Product -> Category` کلیک‌شده را به داشبورد مقصد ("Interactive Dashboard") ارسال می‌کند، که سپس کارت‌هایش را بر اساس آن `Category` فیلتر می‌کند.
 
-You can also send the currently selected value of a dashboard filter on the current dashboard to the destination. In [some plans](https://www.metabase.com/pricing/), you can pass a user attribute provided by SSO to the destination, too. Those user attributes will show up as options when you click on one of the destination's filters (provided the values are compatible with that filter).
+همچنین می‌توانید مقدار در حال انتخاب فیلتر داشبورد در داشبورد فعلی را به مقصد ارسال کنید. در [برخی پلن‌ها](https://www.metabase.com/pricing/)، همچنین می‌توانید یک ویژگی کاربر ارائه‌شده توسط SSO را به مقصد ارسال کنید. آن ویژگی‌های کاربر به‌عنوان گزینه‌ها ظاهر می‌شوند وقتی روی یکی از فیلترهای مقصد کلیک می‌کنید (به شرطی که مقادیر با آن فیلتر سازگار باشند).
 
-When displaying questions as tables, you can select different click behaviors for different columns in the table. You can also modify the contents of the cells in a given column, replacing the value with custom text. For example, if you had a column that listed categories, you could change the text in the cell to read: "Click for details about {% raw %}{{Category}}{% endraw %}", where `Category` is the name of your column.
+وقتی سؤال‌ها را به‌صورت جدول نمایش می‌دهید، می‌توانید رفتارهای کلیک مختلف برای ستون‌های مختلف در جدول انتخاب کنید. همچنین می‌توانید محتوای سلول‌ها در یک ستون مشخص را تغییر دهید، مقدار را با متن سفارشی جایگزین کنید. به‌عنوان مثال، اگر یک ستون داشتید که دسته‌بندی‌ها را فهرست می‌کرد، می‌توانستید متن در سلول را تغییر دهید تا بخواند: "برای جزئیات دربارهٔ {% raw %}{{Category}}{% endraw %} کلیک کنید"، جایی که `Category` نام ستون شما است.
 
-You can also use values to construct URLs to external resources.
+همچنین می‌توانید از مقادیر برای ساخت URLها به منابع خارجی استفاده کنید.
 
-![Enter a URL](./images/enter-a-url.png)
+![وارد کردن یک URL](./images/enter-a-url.png)
 
-From the **Click behavior** sidebar, select **Go to a custom destination** and link to **URL**. The **Enter a URL to link to** modal will pop up, allowing you to specify a URL, as well as a column or dashboard filter.
+از نوار کناری **Click behavior**، **Go to a custom destination** را انتخاب کنید و به **URL** لینک دهید. مودال **Enter a URL to link to** باز می‌شود و به شما امکان می‌دهد یک URL و همچنین یک ستون یا فیلتر داشبورد را مشخص کنید.
 
-What we need to do here is to type in the full URL of where a user should go when they click on a value in a card. But the really powerful thing we can do is to include variables in the URL. These variables will insert the value that the user clicks on into the URL.
+آنچه باید اینجا انجام دهیم تایپ کردن URL کامل جایی است که یک کاربر باید هنگام کلیک روی یک مقدار در یک کارت به آن برود. اما چیز واقعاً قدرتمندی که می‌توانیم انجام دهیم این است که متغیرها را در URL قرار دهیم. این متغیرها مقداری را که کاربر روی آن کلیک می‌کند در URL وارد می‌کنند.
 
-For example, we could type a URL like this:
+به‌عنوان مثال، می‌توانستیم یک URL مثل این تایپ کنیم:
 
 ```
 https://www.metabase.com/search.html?query={% raw %}{{Category}}{% endraw %}
 ```
 
-The important part is the `{% raw %}{{Category}}{% endraw %}` bit. What we’re doing here is referring to the `Category` that the user clicked on. So if someone clicks on the `Widget` bar in our chart, the value of the `Category` column for that bar (`Widget`) would be inserted into our URL: `https://www.metabase.com/search.html?query=Widget`. Your URL can use as many column variables as you want - you can even refer to the same column multiple times in different parts of the URL. To see which variables you can include in the URL, click on the dropdown menu **Values you can reference**.
+قسمت مهم قسمت `{% raw %}{{Category}}{% endraw %}` است. آنچه اینجا انجام می‌دهیم ارجاع به `Category` است که کاربر روی آن کلیک کرده است. بنابراین اگر کسی روی نوار `Widget` در نمودار ما کلیک کند، مقدار ستون `Category` برای آن نوار (`Widget`) در URL ما وارد می‌شود: `https://www.metabase.com/search.html?query=Widget`. URL شما می‌تواند از هر تعداد متغیر ستون که می‌خواهید استفاده کند - حتی می‌توانید به همان ستون چندین بار در قسمت‌های مختلف URL ارجاع دهید. برای دیدن اینکه کدام متغیرها را می‌توانید در URL قرار دهید، روی منوی dropdown **Values you can reference** کلیک کنید.
 
-Next we’ll click **Done**, then **Save** our dashboard. Now when we click our chart, we’ll be taken to the URL that we entered above, with the value of the clicked bar inserted into the URL.
+بعد روی **Done** کلیک می‌کنیم، سپس داشبوردمان را **Save** می‌کنیم. حالا وقتی روی نمودارمان کلیک می‌کنیم، به URL که در بالا وارد کردیم می‌رویم، با مقدار نوار کلیک‌شده در URL وارد شده است.
 
-To learn more, check out [Custom destinations: choose what happens when people click on charts in your dashboard](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/dashboards/custom-destinations).
+برای یادگیری بیشتر، به [مقصدهای سفارشی: انتخاب آنچه هنگام کلیک افراد روی نمودارها در داشبوردتان اتفاق می‌افتد](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/dashboards/custom-destinations) مراجعه کنید.
 
-## Use a chart to filter a dashboard
+## استفاده از یک نمودار برای فیلتر کردن یک داشبورد
 
-If your dashboard contains at least one filter, you can set things up so that clicking on a chart in the dashboard will update a filter.
+اگر داشبوردتان حداقل یک فیلتر دارد، می‌توانید طوری تنظیم کنید که کلیک روی یک نمودار در داشبورد یک فیلتر را به‌روزرسانی کند.
 
-When a user clicks on, say, a bar in a bar chart, you could send the value of the clicked bar to the filter, and update cards across the dashboard. We call this functionality **cross-filtering**. You can use this cross-filtering to make a chart behave as kind of "navigation question" that filters data across other cards.
+وقتی یک کاربر روی، مثلاً، یک نوار در یک نمودار ستونی کلیک می‌کند، می‌توانید مقدار نوار کلیک‌شده را به فیلتر ارسال کنید و کارت‌ها را در سراسر داشبورد به‌روزرسانی کنید. ما این قابلیت را **cross-filtering** می‌نامیم. می‌توانید از این cross-filtering استفاده کنید تا یک نمودار به‌عنوان نوعی "سؤال ناوبری" عمل کند که داده را در کارت‌های دیگر فیلتر می‌کند.
 
-For example, clicking on the `Widget` bar will update the current dashboard's **category** filter to filter for `Widget`:
+به‌عنوان مثال، کلیک روی نوار `Widget` فیلتر **category** داشبورد فعلی را برای فیلتر کردن `Widget` به‌روزرسانی می‌کند:
 
 ![Cross-filtering](./images/cross-filter.png)
 
-To set up cross-filtering, choose a dashboard filter that you'd like to update on click, and a question to use to update that filter. You can think of this question as your "navigation question." Instead of wiring this navigation question up to the filter, you'll [wire up every other question on the dashboard to the filter](./filters.md).
+برای تنظیم cross-filtering، یک فیلتر داشبورد را که می‌خواهید با کلیک به‌روزرسانی شود انتخاب کنید، و یک سؤال را برای به‌روزرسانی آن فیلتر استفاده کنید. می‌توانید این سؤال را به‌عنوان "سؤال ناوبری" خود در نظر بگیرید. به جای اتصال این سؤال ناوبری به فیلتر، [هر سؤال دیگر در داشبورد را به فیلتر متصل می‌کنید](./filters.md).
 
-Below, we'll use the **Orders by product category question** as our navigation question, so we'll leave this question disconnected from the filter, and connect all the other questions to the **Category** filter.
+در زیر، از سؤال **Orders by product category** به‌عنوان سؤال ناوبری خود استفاده می‌کنیم، بنابراین این سؤال را از فیلتر قطع می‌کنیم و همهٔ سؤال‌های دیگر را به فیلتر **Category** متصل می‌کنیم.
 
-![Wiring up filter](./images/wiring-up-filter.png)
+![اتصال فیلتر](./images/wiring-up-filter.png)
 
-With your filter wired up, stay in dashboard edit mode, and hover over the question you want to use as your navigation question to filter the dashboard. Click on the **click behavior** icon, then select the **Update a dashboard filter**.
+با اتصال فیلترتان، در حالت ویرایش داشبورد بمانید و روی سؤالی که می‌خواهید به‌عنوان سؤال ناوبری برای فیلتر کردن داشبورد استفاده کنید hover کنید. روی آیکون **click behavior** کلیک کنید، سپس **Update a dashboard filter** را انتخاب کنید.
 
-Metabase will list the filters you can update. Here we select the **Category** filter, and supply the value to that filter from the question's `Product -> Category` column.
+متابیس فیلترهایی را که می‌توانید به‌روزرسانی کنید فهرست می‌کند. اینجا فیلتر **Category** را انتخاب می‌کنیم و مقدار آن فیلتر را از ستون `Product -> Category` سؤال ارائه می‌دهیم.
 
-![Update a dashboard filter](./images/update-a-dashboard-filter.png)
+![به‌روزرسانی یک فیلتر داشبورد](./images/update-a-dashboard-filter.png)
 
-Click **Done** in the sidebar, then **Save** your dashboard.
+روی **Done** در نوار کناری کلیک کنید، سپس داشبوردتان را **Save** کنید.
 
-Now we can use our navigation question (Orders by product category) to interactively filter the data across your dashboard. When people click on a value in the navigation question, Metabase will send the clicked value to the filter, and update every card on the dashboard by filtering them for the clicked value - every card except for the navigation question: Orders by product category. The reason we don't want the navigation question to update is so that we can click on other bars to update the filter with a different value.
+حالا می‌توانیم از سؤال ناوبری خود (Orders by product category) برای فیلتر کردن تعاملی داده در سراسر داشبوردتان استفاده کنیم. وقتی افراد روی یک مقدار در سؤال ناوبری کلیک می‌کنند، متابیس مقدار کلیک‌شده را به فیلتر ارسال می‌کند و هر کارت در داشبورد را با فیلتر کردن آن‌ها برای مقدار کلیک‌شده به‌روزرسانی می‌کند - هر کارتی به جز سؤال ناوبری: Orders by product category. دلیل اینکه نمی‌خواهیم سؤال ناوبری به‌روزرسانی شود این است که بتوانیم روی نوارهای دیگر کلیک کنیم تا فیلتر را با یک مقدار مختلف به‌روزرسانی کنیم.
 
-To learn more, check out [Cross-filtering: using a chart to update a dashboard filter](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/dashboards/cross-filtering).
+برای یادگیری بیشتر، به [Cross-filtering: استفاده از یک نمودار برای به‌روزرسانی یک فیلتر داشبورد](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/dashboards/cross-filtering) مراجعه کنید.

@@ -1,96 +1,96 @@
 ---
-title: Metrics
+title: متریک‌ها
 redirect_from:
   - /docs/latest/administration-guide/07-segments-and-metrics
   - /docs/latest/data-modeling/segments-and-metrics
 ---
 
-# Metrics
+# متریک‌ها
 
-Create metrics to define the official way to calculate important numbers for your team.
+متریک‌ها ایجاد کنید تا روش رسمی محاسبهٔ اعداد مهم برای تیمتان را تعریف کنید.
 
-Metrics are like pre-defined calculations: create your aggregations once, save them as metrics, and use them whenever you need to analyze your data.
+متریک‌ها مثل محاسبات از پیش تعریف‌شده هستند: تجمیع‌هایتان را یک بار ایجاد کنید، آن‌ها را به‌عنوان متریک ذخیره کنید، و هر زمان که نیاز به تحلیل داده‌هایتان دارید از آن‌ها استفاده کنید.
 
-For example, you may want to create a metric that calculates revenue, so people can refer to revenue in their own questions. That way you standardize how revenue is calculated (so you don't end up with five different calculations for the revenue).
+به‌عنوان مثال، ممکن است بخواهید یک متریک ایجاد کنید که درآمد را محاسبه می‌کند، تا افراد بتوانند به درآمد در سؤال‌های خودشان ارجاع دهند. به این ترتیب نحوهٔ محاسبهٔ درآمد را استاندارد می‌کنید (تا با پنج محاسبهٔ مختلف برای درآمد مواجه نشوید).
 
-## Using metrics
+## استفاده از متریک‌ها
 
-You can:
+می‌توانید:
 
-- Save metrics to [collections](../exploration-and-organization/collections.md).
-- Add metrics to [dashboards](../dashboards/introduction.md).
-- View metrics in the [database browser](../exploration-and-organization/exploration.md#browse-your-databases).
-- Pick metrics as aggregation columns in the Summarize block when creating questions, modify them or combine.
-- [Pro](https://www.metabase.com/product/pro) and [Enterprise](https://www.metabase.com/product/enterprise) plans include the ability to [mark metrics as verified](../exploration-and-organization/content-verification.md).
+- متریک‌ها را در [کلکسیون‌ها](../exploration-and-organization/collections.md) ذخیره کنید.
+- متریک‌ها را به [داشبوردها](../dashboards/introduction.md) اضافه کنید.
+- متریک‌ها را در [مرورگر پایگاه داده](../exploration-and-organization/exploration.md#browse-your-databases) مشاهده کنید.
+- متریک‌ها را به‌عنوان ستون‌های تجمیع در بلوک Summarize هنگام ایجاد سؤال‌ها انتخاب کنید، آن‌ها را تغییر دهید یا ترکیب کنید.
+- پلن‌های [Pro](https://www.metabase.com/product/pro) و [Enterprise](https://www.metabase.com/product/enterprise) شامل قابلیت [علامت‌گذاری متریک‌ها به‌عنوان تأییدشده](../exploration-and-organization/content-verification.md) هستند.
 
-### Metrics in the query builder
+### متریک‌ها در query builder
 
-When asking questions in the query builder, you can find metrics that your team created in the summarization section under **Common metrics**. You can pick multiple metrics and they will be calculated independently and joined automatically along the chosen dimensions.
+هنگام پرسیدن سؤال‌ها در query builder، می‌توانید متریک‌هایی که تیم شما ایجاد کرده است را در بخش خلاصه‌سازی زیر **Common metrics** پیدا کنید. می‌توانید چندین متریک انتخاب کنید و آن‌ها به‌طور مستقل محاسبه می‌شوند و به‌طور خودکار در امتداد ابعاد انتخاب‌شده join می‌شوند.
 
-![Common metrics](./images/common-metrics.png)
+![متریک‌های رایج](./images/common-metrics.png)
 
-You can also pick a metric as a data source when creating a new question. If the metric has a time dimension, Metabase will include the time dimension as a grouping. You can change the groupings to break out the metric by other dimensions.
+همچنین می‌توانید یک متریک را به‌عنوان منبع داده هنگام ایجاد یک سؤال جدید انتخاب کنید. اگر متریک یک بعد زمان دارد، متابیس بعد زمان را به‌عنوان یک گروه‌بندی شامل می‌کند. می‌توانید گروه‌بندی‌ها را تغییر دهید تا متریک را بر اساس ابعاد دیگر تفکیک کنید.
 
-![Metrics tab in the entity picker](./images/entity-picker-metrics-tab.png)
+![تب متریک‌ها در entity picker](./images/entity-picker-metrics-tab.png)
 
-You can use custom expressions to combine multiple metrics, or perform calculations on top of metrics.
+می‌توانید از عبارات سفارشی برای ترکیب چندین متریک، یا انجام محاسبات روی متریک‌ها استفاده کنید.
 
-## Creating a metric
+## ایجاد یک متریک
 
-To create a metric, bring up the command palette with cmd/ctrl + k. That’s cmd + k for Macs, or ctrl + k for Windows PCs. Search for New metric.
+برای ایجاد یک متریک، command palette را با cmd/ctrl + k باز کنید. این cmd + k برای Macs، یا ctrl + k برای رایانه‌های Windows است. برای New metric جستجو کنید.
 
-You can also create a new metric by going to **Browse > Metrics** in the navigation side bar and clicking on **+**.
+همچنین می‌توانید یک متریک جدید با رفتن به **Browse > Metrics** در نوار کناری ناوبری و کلیک روی **+** ایجاد کنید.
 
-Select your starting data. You can start from a model, metric, table, or saved question.
+دادهٔ شروع خود را انتخاب کنید. می‌توانید از یک مدل، متریک، جدول، یا سؤال ذخیره‌شده شروع کنید.
 
-The metric editor is similar to the regular query builder, with two key differences:
+ویرایشگر متریک شبیه query builder معمولی است، با دو تفاوت کلیدی:
 
-- The aggregation section is called [**Formula**](#metric-formula)
-- The group by section is called the [**Default time dimension**](#metric-default-time-dimension). You can only group by a single time dimension.
+- بخش تجمیع [**Formula**](#metric-formula) نامیده می‌شود
+- بخش group by [**Default time dimension**](#metric-default-time-dimension) نامیده می‌شود. فقط می‌توانید بر اساس یک بعد زمان واحد گروه‌بندی کنید.
 
-![Formula](./images/formula.png)
+![فرمول](./images/formula.png)
 
-Only the data and formula steps are required to define a metric. You can join and filter data before the formula step, and set a default time dimension to group by.
+فقط مراحل داده و فرمول برای تعریف یک متریک الزامی هستند. می‌توانید داده را join و فیلتر کنید قبل از مرحلهٔ فرمول، و یک بعد زمان پیش‌فرض برای گروه‌بندی تنظیم کنید.
 
-## Metric formula
+## فرمول متریک
 
-The formula is the core of the metric. It's the thing you are aggregating, and it's required when defining a metric.
+فرمول هستهٔ متریک است. این چیزی است که شما تجمیع می‌کنید، و هنگام تعریف یک متریک الزامی است.
 
-You can build metrics on top of existing metrics.
+می‌توانید متریک‌ها را روی متریک‌های موجود بسازید.
 
-![Metric built on top of other metrics](./images/metrics-built-on-other-metrics.png)
+![متریک ساخته‌شده روی متریک‌های دیگر](./images/metrics-built-on-other-metrics.png)
 
-## Metric default time dimension
+## بعد زمان پیش‌فرض متریک
 
-You can optionally set a default time dimension for the metric. Metabase will use this default time dimension when the metric is opened or displayed on a card in a collection or dashboard. In the image below that shows two pinned metrics at the top of a collection, the left metric lacks a default time dimension, so Metabase displays the metric as a number chart. The right metric has a default time dimension, so Metabase displays it as a line chart.
+می‌توانید به‌صورت اختیاری یک بعد زمان پیش‌فرض برای متریک تنظیم کنید. متابیس از این بعد زمان پیش‌فرض استفاده می‌کند وقتی متریک باز می‌شود یا در یک کارت در یک کلکسیون یا داشبورد نمایش داده می‌شود. در تصویر زیر که دو متریک pin‌شده در بالای یک کلکسیون را نشان می‌دهد، متریک چپ فاقد یک بعد زمان پیش‌فرض است، بنابراین متابیس متریک را به‌صورت یک نمودار عددی نمایش می‌دهد. متریک راست یک بعد زمان پیش‌فرض دارد، بنابراین متابیس آن را به‌صورت یک نمودار خطی نمایش می‌دهد.
 
-![Pinned metrics](./images/pinned-metrics.png)
+![متریک‌های pin‌شده](./images/pinned-metrics.png)
 
-Setting a time dimension doesn't lock the metric to that specific dimension. If someone uses the metric in a question or dashboard, they'll be able to group by other time dimensions and granularities as well.
+تنظیم یک بعد زمان متریک را به آن بعد خاص قفل نمی‌کند. اگر کسی از متریک در یک سؤال یا داشبورد استفاده کند، قادر خواهد بود بر اساس ابعاد زمان و دانه‌بندی‌های دیگر نیز گروه‌بندی کند.
 
-For example, you could calculate revenue and set a default time dimension of `Created At` by month, but if someone added that metric to a dashboard, they could group revenue by a different time granularity (e.g., by quarter). This is just an FYI so that you don't name a metric "Monthly Revenue" and think that by setting a default time dimension to "month", Metabase will prevent people from slicing revenue by other time granularities.
+به‌عنوان مثال، می‌توانستید درآمد را محاسبه کنید و یک بعد زمان پیش‌فرض `Created At` بر اساس ماه تنظیم کنید، اما اگر کسی آن متریک را به یک داشبورد اضافه کند، می‌تواند درآمد را بر اساس یک دانه‌بندی زمان متفاوت (مثلاً بر اساس سه‌ماهه) گروه‌بندی کند. این فقط یک FYI است تا متریک را "Monthly Revenue" نام نگذارید و فکر نکنید که با تنظیم یک بعد زمان پیش‌فرض به "month"، متابیس از برش دادن درآمد بر اساس دانه‌بندی‌های زمان دیگر جلوگیری می‌کند.
 
-## Editing a metric
+## ویرایش یک متریک
 
-To edit a metric, click on the three dot menu (**...**) and select **Edit metric definition**. Editing a metric requires curate access to the metric's collection.
+برای ویرایش یک متریک، روی منوی سه نقطه (**...**) کلیک کنید و **Edit metric definition** را انتخاب کنید. ویرایش یک متریک نیاز به دسترسی curate به کلکسیون متریک دارد.
 
-Do your thing, and save your changes.
+کارتان را انجام دهید و تغییراتتان را ذخیره کنید.
 
-When you click on a metric, Metabase will assume that you're using that metric as the starting point for a new question. You can save any changes you make as a new question, but these changes won't affect the metric's definition.
+وقتی روی یک متریک کلیک می‌کنید، متابیس فرض می‌کند که از آن متریک به‌عنوان نقطهٔ شروع برای یک سؤال جدید استفاده می‌کنید. می‌توانید هر تغییری که ایجاد می‌کنید را به‌عنوان یک سؤال جدید ذخیره کنید، اما این تغییرات روی تعریف متریک تأثیر نمی‌گذارد.
 
-## Metric permissions
+## مجوزهای متریک
 
-Like questions, models, and dashboards, whether a group can view or edit a metric depends on [collection permissions](../permissions/collections.md). By "view" we mean the ability to see the metric in a collection, or see the metric as an option when building a query with the metric's data source. If a metric is used in another question, whether a group can view the question depends on the question's collection, not the metric's collection.
+مثل سؤال‌ها، مدل‌ها، و داشبوردها، اینکه آیا یک گروه می‌تواند یک متریک را مشاهده یا ویرایش کند بستگی به [مجوزهای کلکسیون](../permissions/collections.md) دارد. با "مشاهده" منظورمان توانایی دیدن متریک در یک کلکسیون، یا دیدن متریک به‌عنوان یک گزینه هنگام ساخت یک کوئری با منبع داده متریک است. اگر یک متریک در سؤال دیگری استفاده شود، اینکه آیا یک گروه می‌تواند سؤال را مشاهده کند بستگی به کلکسیون سؤال دارد، نه کلکسیون متریک.
 
-By "editing" a metric, we mean [editing the metric's query definition](#editing-a-metric).
+با "ویرایش" یک متریک، منظورمان [ویرایش تعریف کوئری متریک](#editing-a-metric) است.
 
-These collection permissions also interact with the group's [data permissions](../permissions/data.md), which define whether the group can view or query the metric's source data.
+این مجوزهای کلکسیون همچنین با [مجوزهای داده](../permissions/data.md) گروه تعامل دارند، که تعریف می‌کند آیا گروه می‌تواند دادهٔ منبع متریک را مشاهده یا کوئری کند.
 
-## Verifying a metric
+## تأیید یک متریک
 
-See [content verification](../exploration-and-organization/content-verification.md).
+به [تأیید محتوا](../exploration-and-organization/content-verification.md) مراجعه کنید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Models](./models.md)
-- [Segments](./segments.md)
+- [مدل‌ها](./models.md)
+- [سگمنت‌ها](./segments.md)

@@ -1,98 +1,98 @@
 ---
-title: Charts with multiple series
+title: نمودارها با چند سری
 redirect_from:
   - /docs/latest/users-guide/09-multi-series-charting
 ---
 
-# Charts with multiple series
+# نمودارها با چند سری
 
-One of the best ways to add context and clarity when communicating with data is to show data side-by-side with other data. For example:
+یکی از بهترین راه‌ها برای اضافه کردن بافت و وضوح هنگام ارتباط با داده، نمایش داده در کنار دادهٔ دیگر است. به‌عنوان مثال:
 
-- Your company's revenue vs. its costs over time
-- Average order price this month and user signups for that month
-- Orders per day from a few different product lines
+- درآمد شرکت شما در مقابل هزینه‌هایش در طول زمان
+- میانگین قیمت سفارش این ماه و ثبت‌نام کاربران برای آن ماه
+- سفارش‌ها در روز از چند خط محصول مختلف
 
-## Displaying data side by side
+## نمایش داده در کنار هم
 
-There are two main ways to visualize multiple series in Metabase:
+دو راه اصلی برای ویژوالیزه کردن چند سری در متابیس وجود دارد:
 
-- [**Ask a question that involves multiple dimensions**](#ask-a-question-that-involves-multiple-dimensions) with the query builder (or in SQL, if you're using SQL). For example, the count of users by region over time.
-- [**Combine multiple questions on one dashboard card**](#combining-multiple-questions-on-one-dashboard-card) that share a common dimension (like time) on a dashboard. For example, you could look at revenue over time and costs over time together.
+- [**پرسیدن یک سؤال که شامل چند بعد است**](#ask-a-question-that-involves-multiple-dimensions) با query builder (یا در SQL، اگر از SQL استفاده می‌کنید). به‌عنوان مثال، تعداد کاربران بر اساس منطقه در طول زمان.
+- [**ترکیب چندین سؤال روی یک کارت داشبورد**](#combining-multiple-questions-on-one-dashboard-card) که یک بعد مشترک (مثل زمان) را در یک داشبورد به اشتراک می‌گذارند. به‌عنوان مثال، می‌توانید درآمد در طول زمان و هزینه‌ها در طول زمان را با هم ببینید.
 
-## Ask a question that involves multiple dimensions
+## پرسیدن یک سؤال که شامل چند بعد است
 
-If you're creating a new question, you can view the results as a multi-series visualization by summarizing your data and grouping it by two or more dimensions.
+اگر یک سؤال جدید ایجاد می‌کنید، می‌توانید نتایج را به‌عنوان یک ویژوالیزیشن چندسری با خلاصه کردن داده‌هایتان و گروه‌بندی آن بر اساس دو یا چند بعد مشاهده کنید.
 
-For example, we might want to see sales by month and product category. In the **Sample Database** that ships with Metabase, you would count the number of rows, then group by the `Product -> Category` and `Created At`:
+به‌عنوان مثال، ممکن است بخواهیم فروش را بر اساس ماه و دسته‌بندی محصول ببینیم. در **Sample Database** که همراه متابیس ارسال می‌شود، تعداد ردیف‌ها را می‌شمارید، سپس بر اساس `Product -> Category` و `Created At` گروه‌بندی می‌کنید:
 
-![Orders by product category](./images/editor-orders-by-product-category.png)
+![سفارش‌ها بر اساس دسته‌بندی محصول](./images/editor-orders-by-product-category.png)
 
-Metabase will automatically display a multi-series line chart, with each series representing a different category.
+متابیس به‌طور خودکار یک نمودار خطی چندسری نمایش می‌دهد، با هر سری که یک دسته‌بندی مختلف را نشان می‌دهد.
 
-![Multi-series in the query builder](./images/multi-series_query_builder.png)
+![چند سری در query builder](./images/multi-series_query_builder.png)
 
-Metabase can visualize up to 100 distinct values of a dimension at once, so if you're selecting a field that contains many values, you might need to filter the values.
+متابیس می‌تواند تا 100 مقدار متمایز از یک بعد را به‌طور همزمان ویژوالیزه کند، بنابراین اگر فیلدی را انتخاب می‌کنید که شامل مقادیر زیادی است، ممکن است نیاز به فیلتر کردن مقادیر داشته باشید.
 
-## Combining multiple questions on one dashboard card
+## ترکیب چندین سؤال روی یک کارت داشبورد
 
-You can layer multiple questions on a single dashboard card. You can even layer questions that query different databases, as long as they share the same datetime dimension.
+می‌توانید چندین سؤال را روی یک کارت داشبورد لایه‌بندی کنید. حتی می‌توانید سؤال‌هایی را که پایگاه‌داده‌های مختلف را کوئری می‌کنند لایه‌بندی کنید، به شرطی که بعد datetime مشترک داشته باشند.
 
-1. **Create a dashboard and enter dashboard edit mode**. On a dashboard, click the **Pencil** icon to enter editing mode.
+1. **یک داشبورد ایجاد کنید و وارد حالت ویرایش داشبورد شوید**. روی یک داشبورد، روی **آیکون Pencil** کلیک کنید تا وارد حالت ویرایش شوید.
 
-2. **Add a question** with a dimension like time or category to a dashboard. In practice, questions you'll typically want to overlay will be line or bar charts.
+2. **یک سؤال** با یک بعد مثل زمان یا دسته‌بندی به یک داشبورد اضافه کنید. در عمل، سؤال‌هایی که معمولاً می‌خواهید overlay کنید نمودارهای خطی یا ستونی خواهند بود.
 
-3. **Edit the card's visualization**. Still in dashboard edit mode, hover over the question's card and click the **Pencil** icon to edit the card's visualization.
+3. **ویژوالیزیشن کارت را ویرایش کنید**. هنوز در حالت ویرایش داشبورد، روی کارت سؤال hover کنید و روی **آیکون Pencil** کلیک کنید تا ویژوالیزیشن کارت را ویرایش کنید.
 
-![Edit visualization](./images/edit-visualization.png)
+![ویرایش ویژوالیزیشن](./images/edit-visualization.png)
 
-4. **Add more data**. In the Manage data sidebar on the left, click on **Add more data**.
+4. **داده‌های بیشتری اضافه کنید**. در نوار کناری Manage data در سمت چپ، روی **Add more data** کلیک کنید.
 
-![Manage data sidebar](./images/add-data.png)
+![نوار کناری Manage data](./images/add-data.png)
 
-Metabase will list questions in the left sidebar. Valid questions that you can plot on the card will have a plus sign **+**. You can also swap out the card's current question for a different question, which may update the list of compatible questions.
+متابیس سؤال‌ها را در نوار کناری سمت چپ فهرست می‌کند. سؤال‌های معتبری که می‌توانید روی کارت رسم کنید علامت plus **+** خواهند داشت. همچنین می‌توانید سؤال فعلی کارت را با یک سؤال متفاوت جایگزین کنید، که ممکن است لیست سؤال‌های سازگار را به‌روزرسانی کند.
 
-If necessary, the X and Y axes will automatically update. Metabase will create a legend using the existing card titles to help you understand which question maps to which series on the chart. Repeat this process as many times as you need.
+در صورت لزوم، محورهای X و Y به‌طور خودکار به‌روزرسانی می‌شوند. متابیس یک legend با استفاده از عنوان‌های کارت موجود ایجاد می‌کند تا به شما کمک کند بفهمید کدام سؤال به کدام سری در نمودار نگاشت می‌شود. این فرآیند را هر چند بار که نیاز دارید تکرار کنید.
 
-You can also swap out the chart's original question entirely, for example if you want to start over, or to reset the question's visualization to its original settings.
+همچنین می‌توانید سؤال اصلی نمودار را کاملاً جایگزین کنید، به‌عنوان مثال اگر می‌خواهید از نو شروع کنید، یا تنظیمات ویژوالیزیشن سؤال را به تنظیمات اصلی‌اش بازنشانی کنید.
 
-5. (Optional) **Rename your chart** to reflect the combined data.
+5. (اختیاری) **نمودارتان را تغییر نام دهید** تا دادهٔ ترکیبی را منعکس کند.
 
-6. **Save** your changes.
+6. تغییراتتان را **Save** کنید.
 
-## Combining number charts
+## ترکیب نمودارهای عددی
 
-If you need to compare single numbers to get a sense of how they differ, Metabase can turn multiple number charts into a funnel or bar chart.
+اگر نیاز به مقایسه اعداد واحد دارید تا بفهمید چگونه با هم تفاوت دارند، متابیس می‌تواند چندین نمودار عددی را به یک نمودار funnel یا ستونی تبدیل کند.
 
-1. **Add a number chart to a dashboard.**
+1. **یک نمودار عددی به یک داشبورد اضافه کنید.**
 
-2. **Visualize as a funnel chart**. (Yes, we know you're going for a bar chart, bear with us, you're going to switch the funnel's type to a bar chart.) In dashboard edit mode, hover over the card and click on **Visualize another way**. Metabase will change the visualization to a funnel chart.
+2. **به‌صورت نمودار funnel ویژوالیزه کنید**. (بله، می‌دانیم که دنبال یک نمودار ستونی هستید، صبر کنید، می‌خواهید نوع funnel را به یک نمودار ستونی تغییر دهید.) در حالت ویرایش داشبورد، روی کارت hover کنید و روی **Visualize another way** کلیک کنید. متابیس ویژوالیزیشن را به یک نمودار funnel تغییر می‌دهد.
 
-![Visualize another way](./images/visualize-another-way.png)
+![ویژوالیزه کردن به روش دیگر](./images/visualize-another-way.png)
 
-3. **Add more data**. Add another question that returns a single number to the chart.
+3. **داده‌های بیشتری اضافه کنید**. یک سؤال دیگر که یک عدد واحد برمی‌گرداند به نمودار اضافه کنید.
 
-4. **Set the Funnel type to a bar chart**. Click **Settings** and change **Funnel type** to "Bar chart".
+4. **نوع Funnel را به یک نمودار ستونی تنظیم کنید**. روی **Settings** کلیک کنید و **Funnel type** را به "Bar chart" تغییر دهید.
 
-![Set Funnel chart to Bar chart](./images/set-to-bar-chart.png)
+![تنظیم نمودار Funnel به نمودار ستونی](./images/set-to-bar-chart.png)
 
-## Multi-series charts, values, and legibility
+## نمودارهای چندسری، مقادیر، و خوانایی
 
-When displaying multiple series, it's important to keep legibility in mind. Combining many series can sometimes decrease the communication value of the data.
+هنگام نمایش چند سری، مهم است که خوانایی را در نظر داشته باشید. ترکیب سری‌های زیاد گاهی می‌تواند ارزش ارتباطی داده را کاهش دهد.
 
-Metabase allows you to add values to multi-series charts, but use this feature sparingly, especially on charts with many data points. Adding values to multiple series, each with many data points, can make charts _more_ difficult to read.
+متابیس به شما امکان می‌دهد مقادیر را به نمودارهای چندسری اضافه کنید، اما از این ویژگی به‌اندازه استفاده کنید، به‌ویژه در نمودارهایی با نقاط دادهٔ زیاد. اضافه کردن مقادیر به چندین سری، هر کدام با نقاط دادهٔ زیاد، می‌تواند نمودارها را _دشوارتر_ برای خواندن کند.
 
-From the **Visualization > Display** options, you can toggle the option: **Show values on data points**. Metabase will do its best to fit as many values as can fit nicely. You can also force Metabase to show values for all data points by setting the **Values to show** to **All**.
+از گزینه‌های **Visualization > Display**، می‌توانید گزینهٔ **Show values on data points** را toggle کنید. متابیس بهترین تلاشش را می‌کند تا تا جایی که ممکن است به خوبی جا می‌شود مقادیر را جا دهد. همچنین می‌توانید متابیس را مجبور کنید مقادیر را برای همهٔ نقاط داده نمایش دهد با تنظیم **Values to show** به **All**.
 
-![Add values to multi-series chart](./images/add_values.png)
+![اضافه کردن مقادیر به نمودار چندسری](./images/add_values.png)
 
-Additionally, you can configure the formatting of the values:
+علاوه بر این، می‌توانید فرمت مقادیر را پیکربندی کنید:
 
-- **Auto**: Metabase selects the appropriate style for you
-- **Compact**: Metabase abbreviates values, e.g., 1,000 becomes 1K
-- **Full**: Values are displayed in their natural form
+- **Auto**: متابیس سبک مناسب را برای شما انتخاب می‌کند
+- **Compact**: متابیس مقادیر را خلاصه می‌کند، مثلاً 1,000 می‌شود 1K
+- **Full**: مقادیر به‌صورت فرم طبیعی‌شان نمایش داده می‌شوند
 
-Now go forth and start letting your data get to know each other!
+حالا بروید و شروع کنید بگذارید داده‌هایتان با هم آشنا شوند!
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Time series comparisons](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/time-series/time-series-comparisons)
+- [مقایسه‌های سری زمانی](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/time-series/time-series-comparisons)

@@ -1,111 +1,111 @@
 ---
-title: Troubleshooting data permissions
+title: عیب‌یابی مجوزهای داده
 ---
 
-# Troubleshooting data permissions
+# عیب‌یابی مجوزهای داده
 
-If a person has the wrong level of access to the data that's returned by a question or query, you'll need to troubleshoot different levels of [data permissions][data-permissions], starting from the most granular.
+اگر یک شخص سطح دسترسی اشتباه به داده‌ای که توسط یک سؤال یا کوئری برگردانده می‌شود دارد، باید سطوح مختلف [مجوزهای داده][data-permissions] را عیب‌یابی کنید، از جزئی‌ترین شروع کنید.
 
-### Row and column permissions
+### مجوزهای ردیف و ستون
 
-- [Troubleshooting row and column security][troubleshooting-row-and-column-security].
+- [عیب‌یابی امنیت ردیف و ستون][troubleshooting-row-and-column-security].
 
-### Native query (SQL) permissions
+### مجوزهای کوئری native (SQL)
 
-- [A user group can't access the SQL editor][sql-access].
-- [A user group with SQL permissions isn't being restricted by their row and column security policy](../permissions/row-and-column-security.md).
+- [یک گروه کاربری نمی‌تواند به ویرایشگر SQL دسترسی پیدا کند][sql-access].
+- [یک گروه کاربری با مجوزهای SQL توسط policy امنیت ردیف و ستون آن‌ها محدود نمی‌شود](../permissions/row-and-column-security.md).
 
-### Table or schema permissions
+### مجوزهای جدول یا schema
 
-- [A user group has the wrong access to a table or schema](#a-user-group-has-the-wrong-access-to-a-table-or-schema).
-- [A user group can view collections that contain restricted data](#a-user-group-can-view-collections-that-contain-restricted-data).
-- [Getting a "permission denied" error message](#getting-a-permission-denied-error-message).
-- [Checking someone's access to a table or schema](#checking-someones-access-to-a-table-or-schema).
+- [یک گروه کاربری دسترسی اشتباه به یک جدول یا schema دارد](#a-user-group-has-the-wrong-access-to-a-table-or-schema).
+- [یک گروه کاربری می‌تواند کلکسیون‌هایی که شامل داده محدود شده است را مشاهده کند](#a-user-group-can-view-collections-that-contain-restricted-data).
+- [دریافت یک پیام خطای "permission denied"](#getting-a-permission-denied-error-message).
+- [بررسی دسترسی کسی به یک جدول یا schema](#checking-someones-access-to-a-table-or-schema).
 
-## A user group can't access the SQL editor
+## یک گروه کاربری نمی‌تواند به ویرایشگر SQL دسترسی پیدا کند
 
-1. Ensure scripts are loading by disabling browser extensions and refreshing the browser.
-2. Go to **Admin** > **Permissions** and select the relevant group.
-3. Find the database that you want to grant SQL access to.
-4. From the **View data** dropdown.elect **Can view**.
-5. From the **Create queries** dropdown, select **Query builder and native**.
-6. [Check if the access problem is fixed](#checking-someones-access-to-a-table-or-schema).
+1. اطمینان حاصل کنید که اسکریپت‌ها با غیرفعال کردن extensionهای مرورگر و refresh کردن مرورگر بارگذاری می‌شوند.
+2. به **Admin** > **Permissions** بروید و گروه مرتبط را انتخاب کنید.
+3. پایگاه داده‌ای که می‌خواهید دسترسی SQL به آن بدهید را پیدا کنید.
+4. از منوی dropdown **View data**، **Can view** را انتخاب کنید.
+5. از منوی dropdown **Create queries**، **Query builder and native** را انتخاب کنید.
+6. [بررسی کنید که آیا مشکل دسترسی رفع شده است](#checking-someones-access-to-a-table-or-schema).
 
-For more information about the different types of database permissions, check out the [section on data access][data-access] in our permissions documentation.
+برای اطلاعات بیشتر دربارهٔ انواع مختلف مجوزهای پایگاه داده، بخش [دسترسی داده][data-access] را در مستندات مجوزهای ما بررسی کنید.
 
-## A user group has the wrong access to a table or schema
+## یک گروه کاربری دسترسی اشتباه به یک جدول یا schema دارد
 
-1. Go to **Admin** > **People** and check if the person is in [more than one group with conflicting permissions][group-permissions].
-2. If the person is in multiple groups:
-   - Remove the person from the group with wider permissions, or
-   - Go to **Admin** > **Permissions** and change the **Data access** permission type.
-3. [Check if the access problem is fixed](#checking-someones-access-to-a-table-or-schema).
+1. به **Admin** > **People** بروید و بررسی کنید که آیا شخص در [بیش از یک گروه با مجوزهای متضاد][group-permissions] است.
+2. اگر شخص در چندین گروه است:
+   - شخص را از گروه با مجوزهای گسترده‌تر حذف کنید، یا
+   - به **Admin** > **Permissions** بروید و نوع مجوز **Data access** را تغییر دهید.
+3. [بررسی کنید که آیا مشکل دسترسی رفع شده است](#checking-someones-access-to-a-table-or-schema).
 
-**Explanation**
+**توضیح**
 
-If a person is a member of multiple [groups][groups], Metabase will grant the _most permissive_ level of access across all the groups in which they're a member.
+اگر یک شخص عضو چندین [گروه][groups] است، متابیس _مجازترین_ سطح دسترسی را در همه گروه‌هایی که عضو آن‌ها هستند اعطا می‌کند.
 
-For example, if a person is a member of two groups — one which grants [View data] access of "Can view" to a database or table and another that grants "Blocked" access to that database — that person will be able to view the data.
+به‌عنوان مثال، اگر یک شخص عضو دو گروه است — یکی که دسترسی [View data] "Can view" به یک پایگاه داده یا جدول اعطا می‌کند و دیگری که دسترسی "Blocked" به آن پایگاه داده اعطا می‌کند — آن شخص قادر خواهد بود داده را مشاهده کند.
 
-Remember that everyone is a member of the **All Users** group. We recommend you revoke permissions from the **All Users** group, and create new groups to selectively apply permissions to your data sources.
+به خاطر داشته باشید که همه عضو گروه **All Users** هستند. توصیه می‌کنیم مجوزها را از گروه **All Users** لغو کنید، و گروه‌های جدید ایجاد کنید تا مجوزها را به‌صورت انتخابی به منابع داده خود اعمال کنید.
 
-## A user group can view collections that contain restricted data
+## یک گروه کاربری می‌تواند کلکسیون‌هایی که شامل داده محدود شده است را مشاهده کند
 
 {% include plans-blockquote.html %}
 
-1. Go to **Admin** > **Permissions** and select the user group.
-2. Select the database or table that you want to restrict.
-3. Set **View data** permissions to **Blocked** and click **Save**.
-4. [Check if the access problem is fixed](#checking-someones-access-to-a-table-or-schema).
+1. به **Admin** > **Permissions** بروید و گروه کاربری را انتخاب کنید.
+2. پایگاه داده یا جدولی که می‌خواهید محدود کنید را انتخاب کنید.
+3. مجوزهای **View data** را روی **Blocked** تنظیم کنید و روی **Save** کلیک کنید.
+4. [بررسی کنید که آیا مشکل دسترسی رفع شده است](#checking-someones-access-to-a-table-or-schema).
 
-**Explanation**
+**توضیح**
 
-If you've granted a group View data access of "Can view" to a database or table, people can view saved questions and dashboards that draw on that database, as long as those questions and dashboards are stored in a collection that they have access to.
+اگر به یک گروه دسترسی View data "Can view" به یک پایگاه داده یا جدول اعطا کرده‌اید، افراد می‌توانند سؤال‌ها و داشبوردهای ذخیره‌شده که از آن پایگاه داده استفاده می‌کنند را مشاهده کنند، تا زمانی که آن سؤال‌ها و داشبوردها در یک کلکسیونی که به آن دسترسی دارند ذخیره شده باشند.
 
-The [**Blocked** data permission][block-data-permission] is available on [Pro and Enterprise versions of Metabase][pricing]. If you block a group's access to a database, members of that group will not be able to see any data from this database, regardless of their collection permissions.
+مجوز داده [**Blocked**][block-data-permission] در [نسخه‌های Pro و Enterprise متابیس][pricing] در دسترس است. اگر دسترسی یک گروه به یک پایگاه داده را مسدود کنید، اعضای آن گروه نمی‌توانند هیچ داده‌ای از این پایگاه داده را ببینند، صرف نظر از مجوزهای کلکسیون آن‌ها.
 
-## Getting a "permission denied" error message
+## دریافت یک پیام خطای "permission denied"
 
-If you get an error message that says something like "permission denied to \<your table\>", you'll need to check if the Metabase application has the correct permissions to query your database.
+اگر یک پیام خطا دریافت می‌کنید که چیزی مثل "permission denied to \<your table\>" می‌گوید، باید بررسی کنید که آیا اپلیکیشن متابیس مجوزهای صحیح برای کوئری کردن پایگاه داده شما را دارد.
 
-1. Go to the SQL editor and run a basic query against the table or schema in question:
+1. به ویرایشگر SQL بروید و یک کوئری پایه علیه جدول یا schema مورد نظر اجرا کنید:
    ```
    SELECT 1
    FROM <your table>;
    ```
-2. Get the credentials that Metabase uses to connect to your database. If you're not sure what those credentials are, ask your database admin.
-3. Using a different application (like your CLI or database IDE), connect to your database using the same credentials your Metabase uses to connect to that database, and run the query from step 1.
-4. If you cannot access the table or schema in both step 1 and 3, ask your database admin to:
-   - [Grant database privileges](../databases/users-roles-privileges.md) to the role that Metabase is using to connect, or
-   - Provide a set of database credentials with the correct permissions.
-5. [Check if the access problem is fixed](#checking-someones-access-to-a-table-or-schema).
+2. اعتبارنامه‌هایی که متابیس برای اتصال به پایگاه داده شما استفاده می‌کند را دریافت کنید. اگر مطمئن نیستید آن اعتبارنامه‌ها چیست، از ادمین پایگاه داده خود بپرسید.
+3. با استفاده از یک اپلیکیشن دیگر (مثل CLI یا IDE پایگاه داده خود)، با استفاده از همان اعتبارنامه‌هایی که متابیس برای اتصال به آن پایگاه داده استفاده می‌کند به پایگاه داده خود متصل شوید، و کوئری از مرحله 1 را اجرا کنید.
+4. اگر نمی‌توانید به جدول یا schema در هر دو مرحله 1 و 3 دسترسی پیدا کنید، از ادمین پایگاه داده خود بخواهید:
+   - [امتیازات پایگاه داده](../databases/users-roles-privileges.md) را به نقشی که متابیس برای اتصال استفاده می‌کند اعطا کند، یا
+   - مجموعه‌ای از اعتبارنامه‌های پایگاه داده با مجوزهای صحیح ارائه دهد.
+5. [بررسی کنید که آیا مشکل دسترسی رفع شده است](#checking-someones-access-to-a-table-or-schema).
 
-**Explanation**
+**توضیح**
 
-Your database has its own set of permissions that are configured for each person (or application) that logs in.
+پایگاه داده شما مجموعه‌ای از مجوزهای خود را دارد که برای هر شخص (یا اپلیکیشن) که وارد می‌شود پیکربندی شده است.
 
-Database permissions apply at the level of your database connection, _before_ your data and collection permissions are applied in Metabase.
+مجوزهای پایگاه داده در سطح اتصال پایگاه داده شما اعمال می‌شوند، _قبل از_ اینکه مجوزهای داده و کلکسیون شما در متابیس اعمال شوند.
 
-This means that settings configured on the database side can prevent Metabase from connecting to certain schemas or tables, regardless of what you've set up on the Metabase side.
+این به این معنی است که تنظیمات پیکربندی شده در سمت پایگاه داده می‌توانند از اتصال متابیس به schemaها یا جداول خاص جلوگیری کنند، صرف نظر از آنچه در سمت متابیس تنظیم کرده‌اید.
 
-## Checking someone's access to a table or schema
+## بررسی دسترسی کسی به یک جدول یا schema
 
-1. Open an incognito browser window.
-2. Log in to Metabase as the person in question.
-3. Run a question, dashboard, or native query to confirm that the person can see the data they're supposed to.
+1. یک پنجره مرورگر ناشناس باز کنید.
+2. به‌عنوان شخص مورد نظر به متابیس وارد شوید.
+3. یک سؤال، داشبورد، یا کوئری native اجرا کنید تا تأیید کنید که شخص می‌تواند داده‌ای که باید ببیند را ببیند.
 
-## Do you have a different problem?
+## آیا مشکل متفاوتی دارید؟
 
-- [I can't view or edit my question or dashboard][view-edit].
-- [I can't save my question or dashboard][proxies].
-- [I can't see my tables][cant-see-tables].
+- [نمی‌توانم سؤال یا داشبورد خود را مشاهده یا ویرایش کنم][view-edit].
+- [نمی‌توانم سؤال یا داشبورد خود را ذخیره کنم][proxies].
+- [نمی‌توانم جداول خود را ببینم][cant-see-tables].
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community][discourse].
-- Search for [known bugs or limitations][known-issues].
+- در [انجمن متابیس][discourse] جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده][known-issues] جستجو کنید.
 
 [admin-permissions]: ../permissions/introduction.md
 [block-data-permission]: ../permissions/data.md#blocked-view-data-permission

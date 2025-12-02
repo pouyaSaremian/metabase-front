@@ -1,41 +1,41 @@
 ---
-title: Using or migrating from an H2 application database
+title: استفاده یا مهاجرت از یک پایگاه داده اپلیکیشن H2
 ---
 
-# Using or migrating from an H2 application database
+# استفاده یا مهاجرت از یک پایگاه داده اپلیکیشن H2
 
-You've installed Metabase, but:
+متابیس را نصب کرده‌اید، اما:
 
-- You're trying to migrate the application database from H2 to another database and something has gone wrong,
-- You're trying to downgrade rather than upgrade,
-- Metabase logs a `liquibase` error message when you try to run it,
-- Metabase logs another error message that mentions `H2` or `h2` while it is running, or
-- You're on Windows 10 and get a warning about file permissions.
+- سعی می‌کنید پایگاه داده اپلیکیشن را از H2 به پایگاه داده دیگری migrate کنید و مشکلی پیش آمده است،
+- سعی می‌کنید downgrade کنید به جای upgrade،
+- متابیس یک پیام خطای `liquibase` را وقتی سعی می‌کنید آن را اجرا کنید لاگ می‌کند،
+- متابیس پیام خطای دیگری که `H2` یا `h2` را ذکر می‌کند را در حالی که در حال اجرا است لاگ می‌کند، یا
+- در Windows 10 هستید و یک هشدار دربارهٔ مجوزهای فایل دریافت می‌کنید.
 
-## Are you currently using H2 as your application database?
+## آیا در حال حاضر از H2 به‌عنوان پایگاه داده اپلیکیشن خود استفاده می‌کنید؟
 
-**Root cause:** Metabase stores information about users, questions, and so on in a database of its own called the "application database", or "app database" for short. By default Metabase uses H2 for the application database, but we don't recommended it for production---because it's an on-disk database, it's sensitive to filesystem errors, such as a drive being corrupted or a file not being flushed properly.
+**علت اصلی:** متابیس اطلاعات دربارهٔ کاربران، سؤال‌ها، و غیره را در یک پایگاه داده خودش به نام "application database"، یا به اختصار "app database" ذخیره می‌کند. به‌طور پیش‌فرض متابیس از H2 برای پایگاه داده اپلیکیشن استفاده می‌کند، اما آن را برای production توصیه نمی‌کنیم---چون یک پایگاه داده on-disk است، به خطاهای filesystem حساس است، مثل اینکه یک drive خراب شود یا یک فایل به‌درستی flush نشود.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. To check what you're using as the app database, go to **Admin Panel**, open the **Tools** tab, scroll down to "Diagnostic Info", and look for the `application-database` key in the JSON it displays.
-2. See [Migrating from H2](../installation-and-operation/migrating-from-h2.md) for instructions on how to migrate to a more robust app database.
+1. برای بررسی اینکه چه چیزی را به‌عنوان app database استفاده می‌کنید، به **پنل Admin** بروید، تب **Tools** را باز کنید، به "Diagnostic Info" اسکرول کنید، و به دنبال کلید `application-database` در JSON که نمایش می‌دهد بگردید.
+2. به [مهاجرت از H2](../installation-and-operation/migrating-from-h2.md) برای دستورالعمل‌های نحوهٔ مهاجرت به یک app database قوی‌تر مراجعه کنید.
 
-## Are you trying to migrate the application database from H2 to something else?
+## آیا سعی می‌کنید پایگاه داده اپلیکیشن را از H2 به چیز دیگری migrate کنید؟
 
-**Root cause:** You are trying to [migrate](../installation-and-operation/migrating-from-h2.md) the app database from H2 to a production database such as PostgreSQL or MySQL/MariaDB using the `load-from-h2` command, but this has failed because the database filename is incorrect with an error message like:
+**علت اصلی:** سعی می‌کنید [app database را migrate کنید](../installation-and-operation/migrating-from-h2.md) از H2 به یک پایگاه داده production مثل PostgreSQL یا MySQL/MariaDB با استفاده از دستور `load-from-h2`، اما این به دلیل اینکه نام فایل پایگاه داده اشتباه است با یک پیام خطا مثل این شکست خورده است:
 
 ```
 Command failed with exception: Unsupported database file version or invalid file header in file <YOUR FILENAME>
 ```
 
-**Steps to take:**
+**مراحل انجام:**
 
-1.  Create a copy of the exported H2 database (see [Backing up Metabase Application Data][backup]). _Do not proceed until you have done this_ in case something goes wrong.
+1.  یک کپی از پایگاه داده H2 export شده ایجاد کنید (به [پشتیبان‌گیری از داده اپلیکیشن متابیس][backup] مراجعه کنید). _تا زمانی که این کار را انجام نداده‌اید ادامه ندهید_ در صورت بروز مشکل.
 
-2.  Check that the H2 database file you exported is named `metabase.db.mv.db`.
+2.  بررسی کنید که فایل پایگاه داده H2 که export کرده‌اید `metabase.db.mv.db` نام دارد.
 
-3.  H2 automatically adds `.mv.db` extension to the database path you specify on the command line, so make sure the path to the DB file you pass to the command does _not_ include the `.mv.db` extension. For example, if you've exported an application database, and you want to load the data from that H2 database into a PostgreSQL database using `load-from-h2`, your command will look something like:
+3.  H2 به‌طور خودکار extension `.mv.db` را به مسیر پایگاه داده که در command line مشخص می‌کنید اضافه می‌کند، بنابراین مطمئن شوید که مسیر به فایل DB که به دستور ارسال می‌کنید extension `.mv.db` را _شامل نمی‌شود_. به‌عنوان مثال، اگر یک پایگاه داده اپلیکیشن را export کرده‌اید، و می‌خواهید داده را از آن پایگاه داده H2 به یک پایگاه داده PostgreSQL با استفاده از `load-from-h2` بارگذاری کنید، دستور شما چیزی شبیه این خواهد بود:
 
     ```
     export MB_DB_TYPE=postgres
@@ -47,42 +47,42 @@ Command failed with exception: Unsupported database file version or invalid file
     java --add-opens java.base/java.nio=ALL-UNNAMED -jar metabase.jar load-from-h2 /path/to/metabase.db # do not include .mv.db
     ```
 
-If you're using a [Pro or Enterprise version of Metabase][enterprise], you can use [serialization][serialization-docs] to snapshot your application database. Serialization is useful when you want to [preload questions and dashboards][serialization-learn] in a new Metabase instance.
+اگر از [نسخه Pro یا Enterprise متابیس][enterprise] استفاده می‌کنید، می‌توانید از [serialization][serialization-docs] برای snapshot پایگاه داده اپلیکیشن خود استفاده کنید. Serialization زمانی مفید است که می‌خواهید [سؤال‌ها و داشبوردها را preload کنید][serialization-learn] در یک instance متابیس جدید.
 
-## Are you trying to downgrade?
+## آیا سعی می‌کنید downgrade کنید؟
 
-**Root cause:** Metabase does not support downgrading (i.e., reverting to an early version of the application).
+**علت اصلی:** متابیس از downgrading (یعنی، بازگشت به یک نسخه قبلی اپلیکیشن) پشتیبانی نمی‌کند.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1.  Shut down Metabase.
-2.  Restore the backup copy of the app database you made before trying to upgrade or downgrade.
-3.  Restore the JAR file or container of the older version you want to revert to.
-4.  Restart Metabase.
+1.  متابیس را خاموش کنید.
+2.  کپی پشتیبان از app database که قبل از تلاش برای upgrade یا downgrade ایجاد کردید را restore کنید.
+3.  فایل JAR یا container نسخه قدیمی‌تری که می‌خواهید به آن revert کنید را restore کنید.
+4.  متابیس را راه‌اندازی مجدد کنید.
 
-## Is the app database locked?
+## آیا app database قفل شده است؟
 
-**Root cause:** Sometimes Metabase fails to start up because an app database lock did not clear properly during a previous run. The error message looks something like:
+**علت اصلی:** گاهی اوقات متابیس راه‌اندازی نمی‌شود چون یک قفل app database به‌درستی در طول یک اجرای قبلی پاک نشده است. پیام خطا چیزی شبیه این است:
 
 ```
 liquibase.exception.DatabaseException: liquibase.exception.LockException: Could not acquire change log lock.
 ```
 
-**Steps to take:**
+**مراحل انجام:**
 
-1.  Open a shell on the server where Metabase is installed and manually clear the locks by running:
+1.  یک shell روی سروری که متابیس روی آن نصب شده است باز کنید و قفل‌ها را به صورت دستی با اجرای این پاک کنید:
 
     ```
     java --add-opens java.base/java.nio=ALL-UNNAMED -jar metabase.jar migrate release-locks
     ```
 
-2.  Once this command completes, restart your Metabase instance normally (_without_ the `migrate release-locks` flag).
+2.  بعد از اینکه این دستور تکمیل شد، instance متابیس خود را به صورت عادی راه‌اندازی مجدد کنید (_بدون_ flag `migrate release-locks`).
 
-## Is the app database corrupted?
+## آیا app database خراب شده است؟
 
-**Root cause:** H2 is less reliable than production-quality database management systems, and sometimes the database itself becomes corrupted. This can result in loss of data in the app database, but can _not_ damage data in the databases that Metabase is connected.
+**علت اصلی:** H2 کمتر قابل اعتماد از سیستم‌های مدیریت پایگاه داده production-quality است، و گاهی اوقات خود پایگاه داده خراب می‌شود. این می‌تواند منجر به از دست دادن داده در app database شود، اما نمی‌تواند داده در پایگاه‌داده‌هایی که متابیس به آن‌ها متصل است را آسیب برساند.
 
-**Steps to take:** Error messages can vary depending on how the app database was corrupted, but in most cases the log message will mention `h2`. A typical command and message are:
+**مراحل انجام:** پیام‌های خطا بسته به نحوهٔ خراب شدن app database می‌توانند متفاوت باشند، اما در بیشتر موارد پیام لاگ `h2` را ذکر می‌کند. یک دستور و پیام معمولی:
 
 ```
 myUser@myIp:~$ java --add-opens java.base/java.nio=ALL-UNNAMED -cp metabase.jar org.h2.tools.RunScript -script whatever.sql -url jdbc:h2:~/metabase.db
@@ -91,9 +91,9 @@ Exception in thread "main" org.h2.jdbc.JdbcSQLException: Row not found when tryi
     [etc]
 ```
 
-**How to fix this:** not all H2 errors are recoverable (which is why if you're using H2, _please_ have a backup strategy for the application database file).
+**نحوهٔ رفع این:** همه خطاهای H2 قابل بازیابی نیستند (به همین دلیل اگر از H2 استفاده می‌کنید، _لطفاً_ یک استراتژی پشتیبان‌گیری برای فایل پایگاه داده اپلیکیشن داشته باشید).
 
-If you are running a recent version and using H2, the app database is stored in `metabase.db.mv.db`. - Open a shell on the server where the Metabase instance is running and attempt to recover the corrupted H2 file by running the following four commands:
+اگر یک نسخه اخیر را اجرا می‌کنید و از H2 استفاده می‌کنید، app database در `metabase.db.mv.db` ذخیره می‌شود. - یک shell روی سروری که instance متابیس روی آن در حال اجرا است باز کنید و سعی کنید فایل H2 خراب شده را با اجرای چهار دستور زیر بازیابی کنید:
 
 ```
 java -cp metabase.jar org.h2.tools.Recover
@@ -105,29 +105,29 @@ touch metabase.db.mv.db
 java --add-opens java.base/java.nio=ALL-UNNAMED -cp target/uberjar/metabase.jar org.h2.tools.RunScript -script metabase.db.h2.sql -url jdbc:h2:`pwd`/metabase.db
 ```
 
-## Are you running Metabase with H2 on Windows 10?
+## آیا متابیس را با H2 روی Windows 10 اجرا می‌کنید؟
 
-**Root cause:** In some situations on Windows 10, the Metabase JAR needs to have permissions to create local files for the application database. When running the JAR, you'll see an error message like this:
+**علت اصلی:** در برخی موقعیت‌ها در Windows 10، JAR متابیس نیاز به مجوز برای ایجاد فایل‌های محلی برای پایگاه داده اپلیکیشن دارد. هنگام اجرای JAR، یک پیام خطا مثل این می‌بینید:
 
 ```
 Exception in thread "main" java.lang.AssertionError: Assert failed: Unable to connect to Metabase DB.
 ```
 
-**Steps to take:**
+**مراحل انجام:**
 
-1.  Right-click on the Metabase JAR file (_not_ the app database file).
-2.  Select "Properties".
-3.  Select "Unblock."
+1.  راست‌کلیک روی فایل JAR متابیس (_نه_ فایل app database).
+2.  "Properties" را انتخاب کنید.
+3.  "Unblock." را انتخاب کنید.
 
-## Is the application database taking too long to load?
+## آیا پایگاه داده اپلیکیشن خیلی طول می‌کشد تا بارگذاری شود؟
 
-**Root cause:** You're using H2 as your app database, and the app database is so large that it can't be loaded in less than 5 seconds (which is the default timeout value). You'll see the message "Timeout" appear in the console when you try to start Metabase.
+**علت اصلی:** از H2 به‌عنوان app database خود استفاده می‌کنید، و app database آنقدر بزرگ است که نمی‌تواند در کمتر از 5 ثانیه بارگذاری شود (که مقدار timeout پیش‌فرض است). پیام "Timeout" در کنسول وقتی سعی می‌کنید متابیس را راه‌اندازی کنید ظاهر می‌شود.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1.  Use a production-quality database such as PostgreSQL for the app database (preferred).
-2.  Go to the **Admin Panel** and increase the timeout setting for the app database.
-3.  Move Metabase to a faster server (in particular, a server with faster disks).
+1.  از یک پایگاه داده production-quality مثل PostgreSQL برای app database استفاده کنید (ترجیح داده می‌شود).
+2.  به **پنل Admin** بروید و تنظیم timeout برای app database را افزایش دهید.
+3.  متابیس را به یک سرور سریع‌تر منتقل کنید (به‌طور خاص، یک سرور با دیسک‌های سریع‌تر).
 
 [backup]: ../installation-and-operation/backing-up-metabase-application-data.md
 [enterprise]: https://www.metabase.com/pricing

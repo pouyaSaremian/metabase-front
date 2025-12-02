@@ -1,80 +1,80 @@
 ---
-title: Introduction to dashboards
+title: مقدمه‌ای بر داشبوردها
 redirect_from:
   - /docs/latest/users-guide/07-dashboards
 ---
 
-# Introduction to dashboards
+# مقدمه‌ای بر داشبوردها
 
-![Interactive dashboard](./images/interactive-dashboard.png)
+![داشبورد تعاملی](./images/interactive-dashboard.png)
 
-## What is a dashboard?
+## داشبورد چیست؟
 
-**Dashboards** group a set of questions into tabs on a single page. You can think of dashboards as shareable reports that feature a set of related questions. You can set up [subscriptions to dashboards](./subscriptions.md) via email or Slack to receive the exported results of the dashboard's questions.
+**داشبوردها** مجموعه‌ای از سؤال‌ها را در تب‌هایی در یک صفحه گروه‌بندی می‌کنند. می‌توانید داشبوردها را به‌عنوان گزارش‌های قابل‌اشتراک‌گذاری در نظر بگیرید که مجموعه‌ای از سؤال‌های مرتبط را ارائه می‌دهند. می‌توانید [اشتراک‌های داشبورد](./subscriptions.md) را از طریق ایمیل یا Slack تنظیم کنید تا نتایج صادرشدهٔ سؤال‌های داشبورد را دریافت کنید.
 
-A dashboard comprises a set of cards arranged on a grid. These cards can be:
+یک داشبورد شامل مجموعه‌ای از کارت‌هایی است که روی یک شبکه مرتب شده‌اند. این کارت‌ها می‌توانند شامل موارد زیر باشند:
 
-- [Questions](../questions/introduction.md). You can add questions from collections, or saved questions directly to a dashboard.
-- [Text and header cards](#adding-headings-or-descriptions-with-text-cards)
-- [Iframe cards](#iframe-cards)
-- [Link cards](#link-cards)
+- [سؤال‌ها](../questions/introduction.md). می‌توانید سؤال‌هایی از کلکسیون‌ها یا سؤال‌های ذخیره‌شده را مستقیماً به یک داشبورد اضافه کنید.
+- [کارت‌های متنی و هدر](#adding-headings-or-descriptions-with-text-cards)
+- [کارت‌های Iframe](#iframe-cards)
+- [کارت‌های لینک](#link-cards)
 
-You can add [filter widgets to dashboards](./filters.md) that filter data identically across multiple questions, and [customize what happens when people click on a chart or a table](./interactive.md).
+می‌توانید [ویجت‌های فیلتر به داشبوردها](./filters.md) اضافه کنید که داده‌ها را به‌طور یکسان در چندین سؤال فیلتر می‌کنند، و [آنچه را که هنگام کلیک افراد روی یک نمودار یا جدول اتفاق می‌افتد](./interactive.md) سفارشی کنید.
 
-You can make as many dashboards as you want. Go nuts.
+می‌توانید هر تعداد داشبورد که می‌خواهید بسازید. آزاد باشید.
 
-## How to create a dashboard
+## نحوهٔ ایجاد یک داشبورد
 
-In the top right of the screen, click the **+ New** > **Dashboard**. Give your new dashboard a name and a description, choose which [collections](../exploration-and-organization/collections.md) the dashboard should go in, then click **Create**, and Metabase will take you to your shiny new dashboard.
+در گوشهٔ بالا سمت راست صفحه، روی **+ New** > **Dashboard** کلیک کنید. نام و توضیحات را برای داشبورد جدیدتان وارد کنید، [کلکسیون](../exploration-and-organization/collections.md) موردنظر را انتخاب کنید، سپس روی **Create** کلیک کنید و متابیس شما را به داشبورد جدیدتان می‌برد.
 
-## Adding or saving questions to a dashboard
+## اضافه کردن یا ذخیره کردن سؤال‌ها در یک داشبورد
 
-You can add questions that are saved to collections, or save questions directly to a dashboard.
+می‌توانید سؤال‌هایی که در کلکسیون‌ها ذخیره شده‌اند را اضافه کنید، یا سؤال‌ها را مستقیماً در یک داشبورد ذخیره کنید.
 
-### From a dashboard
+### از یک داشبورد
 
-When editing a dashboard, you can add a question by clicking the **+** icon in the top right. You can add a chart from a new question, SQL/native query, or an existing question.
+هنگام ویرایش یک داشبورد، می‌توانید با کلیک روی آیکون **+** در گوشهٔ بالا سمت راست یک سؤال اضافه کنید. می‌توانید یک نمودار از یک سؤال جدید، کوئری SQL/native، یا یک سؤال موجود اضافه کنید.
 
-You can't add questions that are saved to other dashboards. If you want to add a question to multiple dashboards, you should save that question to a collection. Alternatively, if the questions don't need to stay in sync, you could duplicate a question, and save that duplicate to your dashboard. Just keep in mind that changes to one question won't affect the duplicate question.
+نمی‌توانید سؤال‌هایی که در داشبوردهای دیگر ذخیره شده‌اند را اضافه کنید. اگر می‌خواهید یک سؤال را به چندین داشبورد اضافه کنید، باید آن سؤال را در یک کلکسیون ذخیره کنید. به‌عنوان جایگزین، اگر سؤال‌ها نیازی به همگام‌سازی ندارند، می‌توانید یک سؤال را تکثیر کنید و آن نسخهٔ تکثیرشده را در داشبوردتان ذخیره کنید. فقط به خاطر داشته باشید که تغییرات در یک سؤال روی سؤال تکثیرشده تأثیر نمی‌گذارد.
 
-### From a question
+### از یک سؤال
 
-When creating or editing a question, you can [save the question directly to a dashboard](../questions/introduction.md#saving-questions-to-dashboards). That question can only be used by that dashboard.
+هنگام ایجاد یا ویرایش یک سؤال، می‌توانید [سؤال را مستقیماً در یک داشبورد ذخیره کنید](../questions/introduction.md#saving-questions-to-dashboards). آن سؤال فقط توسط آن داشبورد قابل استفاده است.
 
-### Adding a question saved to a collection
+### اضافه کردن یک سؤال ذخیره‌شده در یک کلکسیون
 
-To add a question saved to a collection to a dashboard, visit the question and click on the three-dot menu (**...**) at the top right and select **Add to dashboard**. You can also [browse questions from dashboard edit mode](#from-a-dashboard).
+برای اضافه کردن یک سؤال ذخیره‌شده در یک کلکسیون به یک داشبورد، به سؤال بروید و روی منوی سه‌نقطه (**...**) در گوشهٔ بالا سمت راست کلیک کنید و **Add to dashboard** را انتخاب کنید. همچنین می‌توانید [از حالت ویرایش داشبورد سؤال‌ها را مرور کنید](#from-a-dashboard).
 
-Adding a question to a dashboard does not save the question to the dashboard.
+اضافه کردن یک سؤال به یک داشبورد، سؤال را در داشبورد ذخیره نمی‌کند.
 
-If a question is saved to your personal collection, you'll only be able to add that question to dashboards _in_ your personal collection. If you want to add the question to a dashboard in a public collection, you'll need to move your question out of your personal collection.
+اگر یک سؤال در کلکسیون شخصی شما ذخیره شده باشد، فقط می‌توانید آن سؤال را به داشبوردهای _درون_ کلکسیون شخصی خود اضافه کنید. اگر می‌خواهید سؤال را به یک داشبورد در یک کلکسیون عمومی اضافه کنید، باید سؤال را از کلکسیون شخصی خود خارج کنید.
 
-## Adding headings or descriptions with text cards
+## اضافه کردن عنوان‌ها یا توضیحات با کارت‌های متنی
 
-Another neat thing you can do is add heading and text cards to your dashboards. Text cards allow you to include descriptions, explanations, notes, or even images and GIFs to your dashboards. You can also use text cards to create separations between sections of charts in your dashboards, or include links to other dashboards, questions, or websites.
+کار دیگری که می‌توانید انجام دهید اضافه کردن کارت‌های عنوان و متنی به داشبوردهایتان است. کارت‌های متنی به شما امکان می‌دهند توضیحات، توضیحات، یادداشت‌ها، یا حتی تصاویر و GIFها را به داشبوردهایتان اضافه کنید. همچنین می‌توانید از کارت‌های متنی برای ایجاد جداسازی بین بخش‌های نمودارها در داشبوردهایتان استفاده کنید، یا لینک‌هایی به داشبوردها، سؤال‌ها یا وب‌سایت‌های دیگر اضافه کنید.
 
-To add a new text card, create a new dashboard (or edit an existing one) and click on the text card button, **T**, in the top-right:
+برای اضافه کردن یک کارت متنی جدید، یک داشبورد جدید ایجاد کنید (یا یکی از داشبوردهای موجود را ویرایش کنید) و روی دکمهٔ کارت متنی، **T**، در گوشهٔ بالا سمت راست کلیک کنید:
 
-![Text card button](images/text-card-button.png)
+![دکمهٔ کارت متنی](images/text-card-button.png)
 
-You have two options:
+دو گزینه دارید:
 
-- **Heading**: a preformatted heading text card that spans the width of the dashboard.
-- **Text**: a customizable text card that will render Markdown-formatted text.
+- **Heading**: یک کارت متنی عنوان از پیش فرمت‌شده که عرض داشبورد را می‌پوشاند.
+- **Text**: یک کارت متنی قابل سفارشی‌سازی که متن فرمت‌شده با Markdown را رندر می‌کند.
 
-Each text card has two modes: writing and previewing. When you click to focus on the card, the card will enter editing mode. When you click away from the card, Metabase will render the card to show you what it will look like on the live dashboard.
+هر کارت متنی دو حالت دارد: نوشتن و پیش‌نمایش. وقتی روی کارت کلیک می‌کنید تا روی آن فوکوس کنید، کارت وارد حالت ویرایش می‌شود. وقتی از کارت دور می‌شوید، متابیس کارت را رندر می‌کند تا به شما نشان دهد که در داشبورد زنده چگونه به نظر می‌رسد.
 
 ![Markdown](images/markdown.png)
 
-You can use [Markdown](https://commonmark.org/help/) to format the text in your text card, create inline tables or code snippets, or even embed linked images (easy on the GIFs, friends). To preview the rendered card, just click away from the card.
+می‌توانید از [Markdown](https://commonmark.org/help/) برای فرمت‌کردن متن در کارت متنی‌تان استفاده کنید، جداول درون‌خطی یا قطعه‌های کد ایجاد کنید، یا حتی تصاویر لینک‌شده را جاسازی کنید (در استفاده از GIFها زیاده‌روی نکنید). برای پیش‌نمایش کارت رندر شده، فقط از کارت دور شوید.
 
-![Result](images/result.png)
+![نتیجه](images/result.png)
 
-To learn more, see [Fun with Markdown in your dashboards](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/dashboards/markdown).
+برای یادگیری بیشتر، به [سرگرمی با Markdown در داشبوردهایتان](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/dashboards/markdown) مراجعه کنید.
 
-### Including variables in text cards
+### شامل کردن متغیرها در کارت‌های متنی
 
-You can include a variable in a text card, then wire that variable up to a dashboard filter. All you need to do to create a variable is to wrap a word in double braces, `{% raw %}{{{% endraw %}` and `{% raw %}}}{%endraw%}` (the variable can't contain any spaces). For example, you could add a text card with the following text:
+می‌توانید یک متغیر را در یک کارت متنی قرار دهید، سپس آن متغیر را به یک فیلتر داشبورد متصل کنید. برای ایجاد یک متغیر، فقط کافی است یک کلمه را در دو بریس قرار دهید، `{% raw %}{{{% endraw %}` و `{% raw %}}}{%endraw%}` (متغیر نمی‌تواند فاصله داشته باشد). به‌عنوان مثال، می‌توانید یک کارت متنی با متن زیر اضافه کنید:
 
 ```
 {% raw %}
@@ -82,9 +82,9 @@ You can include a variable in a text card, then wire that variable up to a dashb
 {% endraw %}
 ```
 
-And connect that variable to a dashboard filter widget that filters for states. If someone selected `WI` in the state filter, the text in the markdown card would read: **WI orders**.
+و آن متغیر را به یک ویجت فیلتر داشبورد که برای ایالت‌ها فیلتر می‌کند متصل کنید. اگر کسی `WI` را در فیلتر ایالت انتخاب کند، متن در کارت markdown به این صورت خوانده می‌شود: **WI orders**.
 
-You can also make text optional by wrapping the text in double brackets, `[[` and `]]`:
+همچنین می‌توانید متن را اختیاری کنید با قرار دادن آن در براکت‌های دوتایی، `[[` و `]]`:
 
 ```
 {% raw %}
@@ -92,19 +92,19 @@ You can also make text optional by wrapping the text in double brackets, `[[` an
 {% endraw %}
 ```
 
-In this case, the phrase `{% raw %}from {{state}}{%endraw%}` would only display if someone selected a value (or values) in the filter widget.
+در این حالت، عبارت `{% raw %}from {{state}}{%endraw%}` فقط در صورتی نمایش داده می‌شود که کسی یک مقدار (یا مقادیر) در ویجت فیلتر انتخاب کرده باشد.
 
-To see how to wire up a filter to a card, see [dashboard filters](./filters.md).
+برای دیدن نحوهٔ اتصال یک فیلتر به یک کارت، به [فیلترهای داشبورد](./filters.md) مراجعه کنید.
 
-## Link cards
+## کارت‌های لینک
 
-![Dashboards with link cards](./images/dashboard-with-link-cards.png)
+![داشبوردها با کارت‌های لینک](./images/dashboard-with-link-cards.png)
 
-Link cards are specialized cards that let you search and link to other items in your Metabase. You can also use them for external links. Useful for pointing people to other resources relevant to your dashboard.
+کارت‌های لینک کارت‌های تخصصی هستند که به شما امکان می‌دهند آیتم‌های دیگر در متابیس خود را جستجو و لینک کنید. همچنین می‌توانید از آن‌ها برای لینک‌های خارجی استفاده کنید. برای اشاره دادن افراد به منابع دیگر مرتبط با داشبوردتان مفید است.
 
-To add a link card to a dashboard, click the **pencil** icon to enter dashboard editing mode, then click on the **link** icon. Click on the input field in the link card to search your Metabase for an item to link to, or paste an external link.
+برای اضافه کردن یک کارت لینک به یک داشبورد، روی آیکون **pencil** کلیک کنید تا وارد حالت ویرایش داشبورد شوید، سپس روی آیکون **link** کلیک کنید. روی فیلد ورودی در کارت لینک کلیک کنید تا متابیس خود را برای یک آیتم برای لینک کردن جستجو کنید، یا یک لینک خارجی را جای‌گذاری کنید.
 
-Link cards support variables so you can use dashboard filters to update values in the link card's URL. For example, you could include a variable in a URL using double braces, like so:
+کارت‌های لینک از متغیرها پشتیبانی می‌کنند، بنابراین می‌توانید از فیلترهای داشبورد برای به‌روزرسانی مقادیر در URL کارت لینک استفاده کنید. به‌عنوان مثال، می‌توانید یک متغیر را در یک URL با استفاده از بریس‌های دوتایی قرار دهید، مانند:
 
 ```
 {% raw %}
@@ -112,17 +112,17 @@ https://www.example.com/{{path}}
 {% endraw %}
 ```
 
-To provide values for the variable, you'll need to add a filter to the dashboard, and connect that filter to the card's variable (in this case `path`). Parameters are only supported for non-Metabase URLs (that is, URLs that you manually enter, not URLs you search and select from your Metabase). You can optionally set a default value for the variable. See [Connecting a filter or parameter widget to dashboard cards](./filters.md#connecting-a-filter-or-parameter-widget-to-dashboard-cards).
+برای ارائه مقادیر برای متغیر، باید یک فیلتر به داشبورد اضافه کنید و آن فیلتر را به متغیر کارت (در این مورد `path`) متصل کنید. پارامترها فقط برای URLهای غیرمتابیس پشتیبانی می‌شوند (یعنی URLهایی که به صورت دستی وارد می‌کنید، نه URLهایی که از متابیس خود جستجو و انتخاب می‌کنید). می‌توانید به‌صورت اختیاری یک مقدار پیش‌فرض برای متغیر تنظیم کنید. به [اتصال یک ویجت فیلتر یا پارامتر به کارت‌های داشبورد](./filters.md#connecting-a-filter-or-parameter-widget-to-dashboard-cards) مراجعه کنید.
 
-## Iframe cards
+## کارت‌های Iframe
 
-[Iframes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) allow you to nest one HTML page in another HTML page. With iframe cards in Metabase, you can embed a webpage in your dashboard. You can embed:
+[Iframeها](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) به شما امکان می‌دهند یک صفحه HTML را در صفحه HTML دیگری قرار دهید. با کارت‌های iframe در متابیس، می‌توانید یک صفحه وب را در داشبوردتان جاسازی کنید. می‌توانید موارد زیر را جاسازی کنید:
 
-- Spreadsheets or surveys for data entry or workflows
-- Videos or slides for contextualizing and storytelling on dashboards
-- Live charts and visualizations from other tools
+- صفحه‌گسترده‌ها یا نظرسنجی‌ها برای ورود داده یا گردش کار
+- ویدیوها یا اسلایدها برای بافت‌سازی و روایت در داشبوردها
+- نمودارها و ویژوالیزیشن‌های زنده از ابزارهای دیگر
 
-To add an iframe card to a dashboard, click the **pencil** icon to enter dashboard editing mode, then click on the **link** icon and select **Iframe**. Then paste the iframe URL. Here's an iframe for our video on how to create a dashboard:
+برای اضافه کردن یک کارت iframe به یک داشبورد، روی آیکون **pencil** کلیک کنید تا وارد حالت ویرایش داشبورد شوید، سپس روی آیکون **link** کلیک کنید و **Iframe** را انتخاب کنید. سپس URL iframe را جای‌گذاری کنید. در اینجا یک iframe برای ویدیوی ما دربارهٔ نحوهٔ ایجاد یک داشبورد آورده شده است:
 
 ```html
 <iframe
@@ -137,11 +137,11 @@ To add an iframe card to a dashboard, click the **pencil** icon to enter dashboa
 ></iframe>
 ```
 
-And behold, a dashboard with an embedded video:
+و ببینید، یک داشبورد با ویدیوی جاسازی‌شده:
 
-![Dashboard with iframe of video](./images/dashboard-with-iframe.png)
+![داشبورد با iframe ویدیو](./images/dashboard-with-iframe.png)
 
-Iframe cards support variables so that you can use a filter widget to update values in the iframe. For example, you could include a variable in the iframe's `src` URL with double braces, like so:
+کارت‌های Iframe از متغیرها پشتیبانی می‌کنند تا بتوانید از یک ویجت فیلتر برای به‌روزرسانی مقادیر در iframe استفاده کنید. به‌عنوان مثال، می‌توانید یک متغیر را در URL `src` iframe با استفاده از بریس‌های دوتایی قرار دهید، مانند:
 
 ```
 {% raw %}
@@ -149,221 +149,221 @@ src="https://www.youtube.com/embed/{{video_id}}
 {% endraw %}
 ```
 
-To provide values for the variable, you'll need to add a filter to the dashboard, and connect that filter to the card's variable (in this case `video_id`). You can optionally set a default value for the variable. See [Connecting a filter or parameter widget to dashboard cards](./filters.md#connecting-a-filter-or-parameter-widget-to-dashboard-cards).
+برای ارائه مقادیر برای متغیر، باید یک فیلتر به داشبورد اضافه کنید و آن فیلتر را به متغیر کارت (در این مورد `video_id`) متصل کنید. می‌توانید به‌صورت اختیاری یک مقدار پیش‌فرض برای متغیر تنظیم کنید. به [اتصال یک ویجت فیلتر یا پارامتر به کارت‌های داشبورد](./filters.md#connecting-a-filter-or-parameter-widget-to-dashboard-cards) مراجعه کنید.
 
-## Dashboard tabs
+## تب‌های داشبورد
 
-You can add multiple tabs to a dashboard to keep your cards organized.
+می‌توانید چندین تب به یک داشبورد اضافه کنید تا کارت‌هایتان منظم بمانند.
 
-![Dashboard tabs](./images/dashboard-tabs.png)
+![تب‌های داشبورد](./images/dashboard-tabs.png)
 
-### Duplicate a tab
+### تکثیر یک تب
 
-When in dashboard edit mode, you can duplicate a tab and all the its cards by clicking on the down arrow next to the tab that you want to copy.
+هنگام ویرایش داشبورد، می‌توانید یک تب و تمام کارت‌هایش را با کلیک روی فلش پایین کنار تب موردنظر برای کپی کردن تکثیر کنید.
 
-### Moving cards between tabs
+### جابه‌جایی کارت‌ها بین تب‌ها
 
-See [Arranging cards](#arranging-dashboard-cards).
+به [مرتب‌سازی کارت‌ها](#arranging-dashboard-cards) مراجعه کنید.
 
-## Duplicating a dashboard
+## تکثیر یک داشبورد
 
-If you don't want to build a dashboard from scratch, or want to experiment by making changes to an existing dashboard without affecting the original, you can **duplicate** an existing dashboard.
+اگر نمی‌خواهید یک داشبورد را از صفر بسازید، یا می‌خواهید با ایجاد تغییرات در یک داشبورد موجود بدون تأثیرگذاری روی نسخهٔ اصلی آزمایش کنید، می‌توانید یک داشبورد موجود را **تکثیر** کنید.
 
-To duplicate a dashboard, click on the **...** menu in the upper right of the dashboard, and select **Duplicate**.
+برای تکثیر یک داشبورد، روی منوی **...** در گوشهٔ بالا سمت راست داشبورد کلیک کنید و **Duplicate** را انتخاب کنید.
 
-By default, Metabase will create a new dashboard, with copies of the questions in the original dashboard (including the dashboard's tabs). Metabase will save the duplicated questions either to the target collection, or to the duplicated dashboard, depending on where the original questions were saved.
+به‌طور پیش‌فرض، متابیس یک داشبورد جدید با کپی‌هایی از سؤال‌های داشبورد اصلی (شامل تب‌های داشبورد) ایجاد می‌کند. متابیس سؤال‌های تکثیرشده را یا در کلکسیون هدف، یا در داشبورد تکثیرشده ذخیره می‌کند، بسته به اینکه سؤال‌های اصلی کجا ذخیره شده‌اند.
 
-Duplication only includes the dashboard, its card layout, filters, and (optionally) the questions. What's not copied: dashboard subscriptions, actions, or any sharing or embedding data settings. For example, if you copy a dashboard that has been made public, that copied dashboard will not be public by default.
+تکثیر فقط شامل داشبورد، چیدمان کارت‌هایش، فیلترها، و (به‌صورت اختیاری) سؤال‌ها می‌شود. آنچه کپی نمی‌شود: اشتراک‌های داشبورد، اکشن‌ها، یا هر تنظیمات اشتراک‌گذاری یا جاسازی داده. به‌عنوان مثال، اگر یک داشبورد عمومی را کپی کنید، آن داشبورد کپی‌شده به‌طور پیش‌فرض عمومی نخواهد بود.
 
-## Arranging dashboard cards
+## مرتب‌سازی کارت‌های داشبورد
 
-To edit dashboard cards and move them around, click the **pencil** icon in the top right of a dashboard to enter the dashboard's editing interface.
+برای ویرایش کارت‌های داشبورد و جابه‌جایی آن‌ها، روی آیکون **pencil** در گوشهٔ بالا سمت راست یک داشبورد کلیک کنید تا وارد رابط ویرایش داشبورد شوید.
 
-### Moving cards around
+### جابه‌جایی کارت‌ها
 
-Once you're in edit mode, you'll see a grid appear. You can move and resize the cards in the dashboard to your liking and they'll snap to the grid.
+وقتی وارد حالت ویرایش شدید، یک شبکه ظاهر می‌شود. می‌توانید کارت‌های داشبورد را جابه‌جا کنید و اندازه آن‌ها را تغییر دهید و آن‌ها به شبکه می‌چسبند.
 
-![Editing dashboard](images/duplicate-card.png)
+![ویرایش داشبورد](images/duplicate-card.png)
 
-- **Duplicate a card**: hover over the card and click the Duplicate icon.
-- **Move a card to a new tab**: hover over the card, click the move icon, and select that tab you want to move the card to.
-- **Move a card within a tab**: click and drag the card. Other cards will move out of the way.
-- **Resize a card**: click the handle at the bottom right corner of the card, and drag to resize. Nearby cards will move away to accommodate the new size.
-- **Remove a card**: hover over the card and click the X icon in the top right corner.
-- **Replace a card**: hover over the card and click the Replace icon in the top right corner. Search for a question to swap in for the existing question on that card. You can only replace a question with another question, not another type of card (like a text card).
+- **تکثیر یک کارت**: روی کارت hover کنید و روی آیکون Duplicate کلیک کنید.
+- **انتقال یک کارت به یک تب جدید**: روی کارت hover کنید، روی آیکون move کلیک کنید و تب موردنظر برای انتقال کارت را انتخاب کنید.
+- **جابه‌جایی یک کارت درون یک تب**: روی کارت کلیک کنید و بکشید. کارت‌های دیگر کنار می‌روند.
+- **تغییر اندازه یک کارت**: روی دستگیره در گوشهٔ پایین سمت راست کارت کلیک کنید و بکشید تا اندازه را تغییر دهید. کارت‌های مجاور کنار می‌روند تا اندازهٔ جدید را جا دهند.
+- **حذف یک کارت**: روی کارت hover کنید و روی آیکون X در گوشهٔ بالا سمت راست کلیک کنید.
+- **جایگزین کردن یک کارت**: روی کارت hover کنید و روی آیکون Replace در گوشهٔ بالا سمت راست کلیک کنید. یک سؤال را جستجو کنید تا با سؤال موجود در آن کارت جایگزین شود. فقط می‌توانید یک سؤال را با سؤال دیگری جایگزین کنید، نه نوع دیگری از کارت (مثل یک کارت متنی).
 
-Metabase will automatically update a question's display to make sure your data looks great at any size you choose.
+متابیس به‌طور خودکار نمایش یک سؤال را به‌روزرسانی می‌کند تا مطمئن شود داده‌هایتان در هر اندازه‌ای که انتخاب می‌کنید عالی به نظر می‌رسند.
 
-To edit the cards themselves, see [Editing dashboard cards](#editing-dashboard-cards).
+برای ویرایش خود کارت‌ها، به [ویرایش کارت‌های داشبورد](#editing-dashboard-cards) مراجعه کنید.
 
-### Dashboard sections
+### بخش‌های داشبورد
 
-To speed up card arrangement, you can add **sections** to your dashboards.
+برای سرعت بخشیدن به چیدمان کارت‌ها، می‌توانید **بخش‌هایی** به داشبوردهایتان اضافه کنید.
 
-![Add section](./images/add-section.png)
+![اضافه کردن بخش](./images/add-section.png)
 
-Sections are templates with headings and pre-arranged cards. Once you add a section to a dashboard, you can pick questions for each card, and make any other changes you like. You can only pick questions for cards, not another type of card (like a text card).
+بخش‌ها قالب‌هایی با عنوان‌ها و کارت‌های از پیش مرتب‌شده هستند. وقتی یک بخش به یک داشبورد اضافه می‌کنید، می‌توانید سؤال‌هایی برای هر کارت انتخاب کنید و هر تغییر دیگری که می‌خواهید اعمال کنید. فقط می‌توانید سؤال‌هایی برای کارت‌ها انتخاب کنید، نه نوع دیگری از کارت (مثل یک کارت متنی).
 
-If you forget to set a question for a card, the dashboard will simply render a blank card.
+اگر فراموش کنید که یک سؤال برای یک کارت تنظیم کنید، داشبورد به سادگی یک کارت خالی را رندر می‌کند.
 
-Sections include:
+بخش‌ها شامل موارد زیر هستند:
 
 **KPI Grid**
 
 ![KPI Grid](./images/kpi-grid.png)
 
-**Large chart with KPIs to the right**
+**نمودار بزرگ با KPIها در سمت راست**
 
-![Large chart with KPIS to the right**](./images/large-chart-with-kpis-to-the-right.png)
+![نمودار بزرگ با KPIها در سمت راست](./images/large-chart-with-kpis-to-the-right.png)
 
-**KPIs with large chart below**
+**KPIها با نمودار بزرگ در پایین**
 
-![KPIs with large chart below](./images/kpis-with-large-chart-below.png)
+![KPIها با نمودار بزرگ در پایین](./images/kpis-with-large-chart-below.png)
 
-## Dashboard width
+## عرض داشبورد
 
-You can change the width of a dashboard by going into the three dots menu in the upper right:
+می‌توانید عرض یک داشبورد را با رفتن به منوی سه نقطه در گوشهٔ بالا سمت راست تغییر دهید:
 
-![Change dashboard width](./images/toggle-width.png)
+![تغییر عرض داشبورد](./images/toggle-width.png)
 
-- **Fixed width** (default). Metabase will restrict the layout to a fixed width in the center of the screen. This fixed width can keep dashboard layouts consistent between smaller laptop screens and larger desktop screens.
-- **Full width**. The layout and cards will expand to take up the full width of the screen.
+- **عرض ثابت** (پیش‌فرض). متابیس چیدمان را به یک عرض ثابت در مرکز صفحه محدود می‌کند. این عرض ثابت می‌تواند چیدمان داشبورد را بین صفحه‌نمایش‌های کوچک‌تر لپ‌تاپ و صفحه‌نمایش‌های بزرگ‌تر دسکتاپ یکسان نگه دارد.
+- **عرض کامل**. چیدمان و کارت‌ها گسترش می‌یابند تا عرض کامل صفحه را اشغال کنند.
 
-## Editing dashboard cards
+## ویرایش کارت‌های داشبورد
 
-To edit a card's:
+برای ویرایش موارد زیر یک کارت:
 
-- **Underlying query**: click on the card's title while _not_ in dashboard editing mode. If the card displays multiple questions, pick the question you want to edit from the dropdown.
-- **Visualization settings**, see [changing a card's visualization settings](#changing-a-cards-visualization-settings).
+- **کوئری زیربنایی**: روی عنوان کارت کلیک کنید در حالی که در حالت ویرایش داشبورد _نیستید_. اگر کارت چندین سؤال را نمایش می‌دهد، سؤالی را که می‌خواهید ویرایش کنید از منوی dropdown انتخاب کنید.
+- **تنظیمات ویژوالیزیشن**، به [تغییر تنظیمات ویژوالیزیشن یک کارت](#changing-a-cards-visualization-settings) مراجعه کنید.
 
-## Changing a card's visualization settings
+## تغییر تنظیمات ویژوالیزیشن یک کارت
 
-You can change a card's visualization settings (to add a goal line, for example). Changing a card's visualization settings will only affect how the question appears on that dashboard card; these changes won't affect the original question's visualization settings.
+می‌توانید تنظیمات ویژوالیزیشن یک کارت را تغییر دهید (مثلاً برای اضافه کردن یک خط هدف). تغییر تنظیمات ویژوالیزیشن یک کارت فقط بر نحوهٔ نمایش سؤال در آن کارت داشبورد تأثیر می‌گذارد؛ این تغییرات بر تنظیمات ویژوالیزیشن سؤال اصلی تأثیر نمی‌گذارد.
 
-Click on the **pencil** icon to enter dashboard edit mode, hover over the question you want to edit, and click on the **pencil** icon or **palette** icon (depending on the chart type) to edit a card's visualization's settings.
+روی آیکون **pencil** کلیک کنید تا وارد حالت ویرایش داشبورد شوید، روی سؤالی که می‌خواهید ویرایش کنید hover کنید و روی آیکون **pencil** یا آیکون **palette** (بسته به نوع نمودار) کلیک کنید تا تنظیمات ویژوالیزیشن یک کارت را ویرایش کنید.
 
-![Visualization settings](images/visualization-settings.png)
+![تنظیمات ویژوالیزیشن](images/visualization-settings.png)
 
-If you clicked the pencil icon, look for **Settings** button in the bottom right.
+اگر روی آیکون pencil کلیک کردید، به دنبال دکمهٔ **Settings** در پایین سمت راست بگردید.
 
-![Settings sidebar](./images/settings-sidebar.png)
+![نوار کناری تنظیمات](./images/settings-sidebar.png)
 
-You can also [add more data to the chart](./multiple-series.md).
+همچنین می‌توانید [داده‌های بیشتری به نمودار اضافه کنید](./multiple-series.md).
 
-### Hiding a card when it doesn't return results
+### مخفی کردن یک کارت وقتی نتایجی برنمی‌گرداند
 
-One neat thing to call out: if you have a question card that rarely returns results, but you still want to include that card in your dashboard because you want to know when the question _does_ return results, you can tell Metabase to hide the card unless it returns at least one row of data.
+یک نکتهٔ جالب: اگر یک کارت سؤال دارید که به ندرت نتایجی برمی‌گرداند، اما هنوز می‌خواهید آن کارت را در داشبوردتان قرار دهید چون می‌خواهید بدانید چه زمانی سؤال _نتایجی_ برمی‌گرداند، می‌توانید به متابیس بگویید که کارت را مخفی کند مگر اینکه حداقل یک ردیف داده برگرداند.
 
-When in dashboard edit mode, click on the **Visualization settings** for the card.
+هنگام ویرایش داشبورد، روی **تنظیمات ویژوالیزیشن** برای کارت کلیک کنید.
 
-- For tables, the option is in the **Columns** tab.
-- For other charts, the option is in the **Display** tab.
+- برای جداول، گزینه در تب **Columns** است.
+- برای نمودارهای دیگر، گزینه در تب **Display** است.
 
-Toggle the option **Hide this card if there are no results**. When you turn on this option, the query will still run in the background, but the dashboard won't display the card. If the query returns results, the dashboard will display the card, moving the other cards around to make room for it according to how you've arranged the cards in dashboard edit mode.
+گزینهٔ **Hide this card if there are no results** را toggle کنید. وقتی این گزینه را روشن می‌کنید، کوئری همچنان در پس‌زمینه اجرا می‌شود، اما داشبورد کارت را نمایش نمی‌دهد. اگر کوئری نتایجی برگرداند، داشبورد کارت را نمایش می‌دهد و کارت‌های دیگر را جابه‌جا می‌کند تا برای آن فضا ایجاد کند، طبق نحوه‌ای که کارت‌ها را در حالت ویرایش داشبورد مرتب کرده‌اید.
 
-### Resetting a card's visualization settings
+### بازنشانی تنظیمات ویژوالیزیشن یک کارت
 
-If you want to revert a dashboard card to its original visualization settings (i.e., the settings on the question when it was _first_ saved to your dashboard):
+اگر می‌خواهید یک کارت داشبورد را به تنظیمات ویژوالیزیشن اصلی‌اش (یعنی تنظیمات روی سؤال وقتی که _اولین بار_ در داشبوردتان ذخیره شد) برگردانید:
 
-1. Go to your dashboard and click the **pencil icon** to go into edit mode.
-2. Hover over the card (question) that you want to edit.
-3. Click the **palette icon** to bring up the visualization settings for that card.
-4. Click **Reset to defaults** (bottom right).
-5. Click **Done** to save the card's visualization settings.
-6. Click **Save** to save the dashboard.
+1. به داشبوردتان بروید و روی **آیکون pencil** کلیک کنید تا وارد حالت ویرایش شوید.
+2. روی کارت (سؤال) موردنظر برای ویرایش hover کنید.
+3. روی **آیکون palette** کلیک کنید تا تنظیمات ویژوالیزیشن آن کارت باز شود.
+4. روی **Reset to defaults** (پایین سمت راست) کلیک کنید.
+5. روی **Done** کلیک کنید تا تنظیمات ویژوالیزیشن کارت ذخیره شود.
+6. روی **Save** کلیک کنید تا داشبورد ذخیره شود.
 
-If you don't see the palette icon, you'll need to:
+اگر آیکون palette را نمی‌بینید، باید:
 
-1. Click the **pencil icon** to edit the card's visualization settings.
-2. Remove the data in the **Manage data** section.
-3. Re-add the question to the card.
-4. **Save** your changes.
+1. روی **آیکون pencil** کلیک کنید تا تنظیمات ویژوالیزیشن کارت را ویرایش کنید.
+2. داده‌ها را در بخش **Manage data** حذف کنید.
+3. سؤال را دوباره به کارت اضافه کنید.
+4. تغییراتتان را **Save** کنید.
 
-## Fullscreen dashboards
+## داشبوردهای تمام‌صفحه
 
-After you've made your ideal dashboard, you may want to put the dashboard on a TV to help keep your team up to date throughout the day.
+بعد از اینکه داشبورد ایده‌آلتان را ساختید، ممکن است بخواهید داشبورد را روی یک تلویزیون قرار دهید تا به تیمتان کمک کند در طول روز به‌روز بمانند.
 
-To enter fullscreen mode, click the **fullscreen** icon in the top right of the dashboard (the icon with the arrows pointing in opposite directions).
+برای ورود به حالت تمام‌صفحه، روی آیکون **fullscreen** در گوشهٔ بالا سمت راست داشبورد (آیکونی با فلش‌هایی که در جهت مخالف اشاره می‌کنند) کلیک کنید.
 
-## Auto refresh
+## به‌روزرسانی خودکار
 
-If your data updates frequently, you can set up your dashboard to refresh automatically by clicking on the **clock** icon.
+اگر داده‌هایتان به‌طور مکرر به‌روزرسانی می‌شوند، می‌توانید داشبوردتان را طوری تنظیم کنید که به‌طور خودکار به‌روزرسانی شود با کلیک روی آیکون **clock**.
 
-![Autorefresh](./images/autorefresh.png)
+![به‌روزرسانی خودکار](./images/autorefresh.png)
 
-You can set your dashboard to update in 1, 5, 10, 15, 30, and 60 minute intervals, depending on how fresh you need the data to be.
+می‌توانید داشبوردتان را طوری تنظیم کنید که در بازه‌های 1، 5، 10، 15، 30 و 60 دقیقه‌ای به‌روزرسانی شود، بسته به اینکه چقدر تازه بودن داده‌ها برایتان مهم است.
 
-Enabling auto refresh will re-run all the queries on the dashboard at the interval you choose, so keep the size of the dashboard and the complexity of the questions in mind when setting up auto refresh.
+فعال‌سازی به‌روزرسانی خودکار تمام کوئری‌های روی داشبورد را در بازه‌ای که انتخاب می‌کنید دوباره اجرا می‌کند، بنابراین هنگام تنظیم به‌روزرسانی خودکار، اندازهٔ داشبورد و پیچیدگی سؤال‌ها را در نظر داشته باشید.
 
-Combining fullscreen mode and auto refresh is a great way to keep your team in sync with your data throughout the day.
+ترکیب حالت تمام‌صفحه و به‌روزرسانی خودکار راهی عالی برای همگام نگه داشتن تیمتان با داده‌هایتان در طول روز است.
 
-## Caching dashboard results
+## کش کردن نتایج داشبورد
 
 {% include plans-blockquote.html feature="Caching dashboard results" %}
 
-See [Caching per dashboard](../configuring-metabase/caching.md#dashboard-caching-policy).
+به [کش کردن برای هر داشبورد](../configuring-metabase/caching.md#dashboard-caching-policy) مراجعه کنید.
 
-## Sharing dashboards with public links
+## اشتراک‌گذاری داشبوردها با لینک‌های عمومی
 
-If your Metabase administrator has enabled [public sharing](../embedding/public-links.md) on a saved question or dashboard, you can go to that question or dashboard and click on the **sharing** icon to find its public links.
+اگر مدیر متابیس شما [اشتراک‌گذاری عمومی](../embedding/public-links.md) را روی یک سؤال یا داشبورد ذخیره‌شده فعال کرده باشد، می‌توانید به آن سؤال یا داشبورد بروید و روی آیکون **sharing** کلیک کنید تا لینک‌های عمومی آن را پیدا کنید.
 
-![Share icon](./images/share-icon.png)
+![آیکون اشتراک‌گذاری](./images/share-icon.png)
 
-Public links can be viewed by anyone, even if they don't have access to Metabase. You can also use the public embedding code to embed your question or dashboard in a simple web page or blog post. Check out examples of simple apps with embedded dashboards in our [embedding-reference-apps repository](https://github.com/metabase/embedding-reference-apps). To learn more about [embedding](../embedding/introduction.md), check out our article on [How to use Metabase to deliver analytics to your customers](https://www.metabase.com/learn/metabase-basics/embedding/overview), as well as an article on how to combine branding, Single Sign-On, full app embedding, and row and column security to deliver [multi-tenant, self-service analytics](https://www.metabase.com/learn/metabase-basics/embedding/multi-tenant-self-service-analytics).
+لینک‌های عمومی توسط هر کسی قابل مشاهده هستند، حتی اگر به متابیس دسترسی نداشته باشند. همچنین می‌توانید از کد جاسازی عمومی برای جاسازی سؤال یا داشبوردتان در یک صفحه وب ساده یا پست وبلاگ استفاده کنید. نمونه‌هایی از اپلیکیشن‌های ساده با داشبوردهای جاسازی‌شده را در [مخزن embedding-reference-apps ما](https://github.com/metabase/embedding-reference-apps) بررسی کنید. برای یادگیری بیشتر دربارهٔ [جاسازی](../embedding/introduction.md)، به مقالهٔ ما دربارهٔ [نحوهٔ استفاده از متابیس برای ارائهٔ تحلیل‌ها به مشتریانتان](https://www.metabase.com/learn/metabase-basics/embedding/overview)، و همچنین مقاله‌ای دربارهٔ نحوهٔ ترکیب برندسازی، Single Sign-On، جاسازی کامل اپلیکیشن، و امنیت ردیف و ستون برای ارائهٔ [تحلیل‌های چند‌مستأجری و خودخدمت](https://www.metabase.com/learn/metabase-basics/embedding/multi-tenant-self-service-analytics) مراجعه کنید.
 
-## Exporting results from a dashboard
+## Export کردن نتایج از یک داشبورد
 
-See [Exporting results](../questions/exporting-results.md).
+به [Export کردن نتایج](../questions/exporting-results.md) مراجعه کنید.
 
-## Configuring a dashboard through its URL
+## پیکربندی یک داشبورد از طریق URL آن
 
-You can amend the URL of a dashboard to automatically enter fullscreen, enable night mode, or auto-refresh the dashboard. Customizing the dashboard's URL allows you to configure the dashboard - even when you do not have any input access to the device where the dashboard will be displayed, like scripted screens, for example.
+می‌توانید URL یک داشبورد را تغییر دهید تا به‌طور خودکار وارد حالت تمام‌صفحه شود، حالت شب را فعال کند، یا داشبورد را به‌طور خودکار به‌روزرسانی کند. سفارشی‌سازی URL داشبورد به شما امکان می‌دهد داشبورد را پیکربندی کنید - حتی وقتی دسترسی ورودی به دستگاهی که داشبورد روی آن نمایش داده می‌شود ندارید، مثل صفحه‌نمایش‌های اسکریپت‌شده.
 
-To configure a dashboard using its URL, you can add the following optional keywords:
+برای پیکربندی یک داشبورد با استفاده از URL آن، می‌توانید کلمات کلیدی اختیاری زیر را اضافه کنید:
 
 - `fullscreen`
 - `night`
 - `refresh`
 
-Here's an example URL:
+در اینجا یک مثال URL آورده شده است:
 
 ```
 https://metabase.mydomain.com/dash/2#refresh=60&fullscreen&night
 ```
 
-The part that says `refresh=60` sets the dashboard to automatically refresh every 60 seconds, `fullscreen` sets it to fullscreen mode, and `night` sets it to night mode (night mode only works when using fullscreen). Use an ampersand, `&`, in between keywords, and make sure there's a hash, `#`, after the dashboard's ID number.
+قسمتی که می‌گوید `refresh=60` داشبورد را طوری تنظیم می‌کند که هر 60 ثانیه به‌طور خودکار به‌روزرسانی شود، `fullscreen` آن را در حالت تمام‌صفحه قرار می‌دهد، و `night` آن را در حالت شب قرار می‌دهد (حالت شب فقط وقتی کار می‌کند که از تمام‌صفحه استفاده می‌کنید). از علامت ampersand، `&`، بین کلمات کلیدی استفاده کنید و مطمئن شوید که یک hash، `#`، بعد از شماره ID داشبورد وجود دارد.
 
-There is one important limitation with the `fullscreen` option: for security reasons, many browsers require user interaction to initiate fullscreen. In those browsers, using the `fullscreen` option will enable the fullscreen UI in Metabase, but it won't expand the browser content to fill the screen. To ensure the dashboard occupies the entire screen, either activate fullscreen by clicking the button in the UI, or use the `fullscreen` URL option and launch the browser in fullscreen or kiosk mode.
+یک محدودیت مهم با گزینهٔ `fullscreen` وجود دارد: به دلایل امنیتی، بسیاری از مرورگرها نیاز به تعامل کاربر برای شروع تمام‌صفحه دارند. در آن مرورگرها، استفاده از گزینهٔ `fullscreen` UI تمام‌صفحه را در متابیس فعال می‌کند، اما محتوای مرورگر را برای پر کردن صفحه گسترش نمی‌دهد. برای اطمینان از اینکه داشبورد کل صفحه را اشغال می‌کند، یا با کلیک روی دکمه در UI تمام‌صفحه را فعال کنید، یا از گزینهٔ URL `fullscreen` استفاده کنید و مرورگر را در حالت تمام‌صفحه یا kiosk راه‌اندازی کنید.
 
-## Dashboard version history
+## تاریخچهٔ نسخهٔ داشبورد
 
-For [questions](../questions/start.md), dashboards, and [models](../data-modeling/models.md), Metabase keeps a version history for the previous fifteen versions of that item.
+برای [سؤال‌ها](../questions/start.md)، داشبوردها، و [مدل‌ها](../data-modeling/models.md)، متابیس یک تاریخچهٔ نسخه برای پانزده نسخهٔ قبلی آن آیتم نگه می‌دارد.
 
-See [History](../exploration-and-organization/history.md).
+به [تاریخچه](../exploration-and-organization/history.md) مراجعه کنید.
 
-## Verifying a dashboard
+## تأیید یک داشبورد
 
-See [content verification](../exploration-and-organization/content-verification.md).
+به [تأیید محتوا](../exploration-and-organization/content-verification.md) مراجعه کنید.
 
-## Deleting a dashboard
+## حذف یک داشبورد
 
-See [deleting and restoring](../exploration-and-organization/delete-and-restore.md).
+به [حذف و بازیابی](../exploration-and-organization/delete-and-restore.md) مراجعه کنید.
 
-## Tips on creating helpful dashboards
+## نکاتی برای ایجاد داشبوردهای مفید
 
-To make a great dashboard, you first need to decide what you want the dashboard to tell about your data. What questions will give you insight into what you want to know? It helps to think of a topic or theme for your dashboard — something like “customer satisfaction,” or “second quarter sales goals".
+برای ساخت یک داشبورد عالی، ابتدا باید تصمیم بگیرید که می‌خواهید داشبورد چه چیزی دربارهٔ داده‌هایتان بگوید. چه سؤال‌هایی بینش شما را دربارهٔ آنچه می‌خواهید بدانید ارائه می‌دهند؟ کمک می‌کند که به یک موضوع یا تم برای داشبوردتان فکر کنید - چیزی مثل "رضایت مشتری"، یا "اهداف فروش سه‌ماههٔ دوم".
 
-Some tips:
+برخی نکات:
 
-- **Emphasize the most important questions**. To draw people’s attention to what matters most, place the most important saved question cards near the top of the dashboard, and/or make them bigger than the other cards,
-- **Keep dashboards focused**. If you have more than 10 cards on a dashboard, think about breaking the dashboard into two separate ones. You don't want to overwhelm people with too much information, and each dashboard should revolve around one theme or topic. Remember — you can make as many dashboards as you want, so you don’t have to cram everything into just one.
-- **Add filters to your dashboard**. [Adding filters](./filters.md) to dashboards makes them more useful. For example, instead of your dashboard being full of questions that are restricted to a specific time span, you can make more general questions and use dashboard filters to change the time span you're looking at.
-- **Make your dashboards interactive.** [Customize what happens when users click on a chart or table in your dashboard](./interactive.md).
+- **بر سؤال‌های مهم‌تر تأکید کنید**. برای جلب توجه افراد به آنچه بیشتر اهمیت دارد، کارت‌های سؤال ذخیره‌شدهٔ مهم‌تر را نزدیک بالای داشبورد قرار دهید، و/یا آن‌ها را بزرگ‌تر از کارت‌های دیگر کنید.
+- **داشبوردها را متمرکز نگه دارید**. اگر بیش از 10 کارت در یک داشبورد دارید، به تقسیم داشبورد به دو داشبورد جداگانه فکر کنید. نمی‌خواهید افراد را با اطلاعات بیش از حد غرق کنید، و هر داشبورد باید حول یک تم یا موضوع بچرخد. به خاطر داشته باشید - می‌توانید هر تعداد داشبورد که می‌خواهید بسازید، بنابراین نیازی نیست همه چیز را فقط در یکی جا دهید.
+- **فیلترها را به داشبوردتان اضافه کنید**. [اضافه کردن فیلترها](./filters.md) به داشبوردها آن‌ها را مفیدتر می‌کند. به‌عنوان مثال، به جای اینکه داشبوردتان پر از سؤال‌هایی باشد که به یک بازهٔ زمانی خاص محدود شده‌اند، می‌توانید سؤال‌های کلی‌تر بسازید و از فیلترهای داشبورد برای تغییر بازهٔ زمانی که به آن نگاه می‌کنید استفاده کنید.
+- **داشبوردهایتان را تعاملی کنید.** [آنچه را که هنگام کلیک کاربران روی یک نمودار یا جدول در داشبوردتان اتفاق می‌افتد](./interactive.md) سفارشی کنید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Dashboard filters](./filters.md)
-- [Interactive dashboards](./interactive.md)
-- [Dashboard charts with multiple series](./multiple-series.md)
-- [Dashboard subscriptions](./subscriptions.md)
-- [Making dashboards faster](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster)
+- [فیلترهای داشبورد](./filters.md)
+- [داشبوردهای تعاملی](./interactive.md)
+- [نمودارهای داشبورد با چند سری](./multiple-series.md)
+- [اشتراک‌های داشبورد](./subscriptions.md)
+- [سریع‌تر کردن داشبوردها](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster)

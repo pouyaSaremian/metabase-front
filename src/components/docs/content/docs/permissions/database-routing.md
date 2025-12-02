@@ -1,82 +1,82 @@
 ---
-title: Database routing
-summary: Route queries to different databases based on who's viewing them. Great for multi-tenant setups where each customer has their own database.
+title: مسیریابی پایگاه داده
+summary: مسیریابی کوئری‌ها به پایگاه‌داده‌های مختلف بر اساس اینکه چه کسی آن‌ها را مشاهده می‌کند. عالی برای تنظیمات چند‌مستأجری که هر مشتری پایگاه داده خودش را دارد.
 ---
 
-# Database routing
+# مسیریابی پایگاه داده
 
 {% include plans-blockquote.html feature="Database routing" %}
 
-With database routing, an admin can build a question once using one database, and the question will run its query against a different database with the same schema depending on who is viewing the question.
+با مسیریابی پایگاه داده، یک ادمین می‌تواند یک سؤال یک بار با استفاده از یک پایگاه داده بسازد، و سؤال کوئری خود را علیه یک پایگاه داده متفاوت با همان schema بسته به اینکه چه کسی سؤال را مشاهده می‌کند اجرا می‌کند.
 
-Database routing is useful for:
+مسیریابی پایگاه داده برای موارد زیر مفید است:
 
-- Managing interactive embedding setups where each customer has their own database with identical schemas.
+- مدیریت تنظیمات جاسازی تعاملی که هر مشتری پایگاه داده خودش را با schemaهای یکسان دارد.
 
-  Database routing can't be used with static embedding, because database routing requires people who use the embedded questions and dashboards to have a Metabase account. Without a Metabase account, Metabase can't route the queries because it doesn't know who is viewing the embed.
+  مسیریابی پایگاه داده نمی‌تواند با جاسازی ایستا استفاده شود، چون مسیریابی پایگاه داده نیاز دارد افرادی که از سؤال‌ها و داشبوردهای جاسازی‌شده استفاده می‌کنند یک حساب متابیس داشته باشند. بدون یک حساب متابیس، متابیس نمی‌تواند کوئری‌ها را مسیریابی کند چون نمی‌داند چه کسی جاسازی را مشاهده می‌کند.
 
-- Switching between dev and prod data warehouses.
-- Changing the target data warehouse for certain teams.
-- Managing separate connections to the same data warehouse, with each connection having separate privileges. This connection management is akin to [connection impersonation](./impersonation.md) for databases that prevent the same connection from changing roles.
+- جابه‌جایی بین انبارهای داده dev و prod.
+- تغییر انبار داده هدف برای تیم‌های خاص.
+- مدیریت اتصال‌های جداگانه به همان انبار داده، با هر اتصال دارای مجوزهای جداگانه. این مدیریت اتصال شبیه [جعل هویت اتصال](./impersonation.md) برای پایگاه‌داده‌هایی است که از تغییر نقش‌ها توسط همان اتصال جلوگیری می‌کنند.
 
 
-## Database routing limitations
+## محدودیت‌های مسیریابی پایگاه داده
 
-> Database routing is **not supported** on ClickHouse, Oracle, Spark SQL, and Vertica.
+> مسیریابی پایگاه داده **پشتیبانی نمی‌شود** در ClickHouse، Oracle، Spark SQL، و Vertica.
 
-Different database have different setups, so _what_ you can route between (database, schema, data catalog, etc.) will differ slightly depending on which data warehouse you're using.
+پایگاه‌داده‌های مختلف تنظیمات متفاوتی دارند، بنابراین _آنچه_ می‌توانید بین آن‌ها مسیریابی کنید (پایگاه داده، schema، کاتالوگ داده، و غیره) بسته به اینکه از کدام انبار داده استفاده می‌کنید کمی متفاوت خواهد بود.
 
-- [Athena](../databases/connections/athena.md): Only routing between different connections is supported (e.g., different buckets, roles, or catalogs). 
-- [BigQuery](../databases/connections/bigquery.md): Only routing between databases in different projects is supported.
-- [Databricks](../databases/connections/databricks.md): When multi-catalog is not enabled, you can route between catalogs on the same host. If multi-catalog is enabled, then you can only route between databases on separate hosts.
+- [Athena](../databases/connections/athena.md): فقط مسیریابی بین اتصال‌های مختلف پشتیبانی می‌شود (مثلاً bucketهای مختلف، نقش‌ها، یا کاتالوگ‌ها). 
+- [BigQuery](../databases/connections/bigquery.md): فقط مسیریابی بین پایگاه‌داده‌ها در پروژه‌های مختلف پشتیبانی می‌شود.
+- [Databricks](../databases/connections/databricks.md): وقتی multi-catalog فعال نیست، می‌توانید بین کاتالوگ‌ها در همان host مسیریابی کنید. اگر multi-catalog فعال باشد، فقط می‌توانید بین پایگاه‌داده‌ها در hostهای جداگانه مسیریابی کنید.
 
-## How database routing works
+## نحوهٔ کار مسیریابی پایگاه داده
 
-You connect Metabase to a database as normal. When you turn on database routing for that database, it becomes a **router database** - the main database that will handle routing queries to **destination databases**. You'll add these destination databases to this router database, with each destination database associated with a value for the user attribute you assign to the router database. You don't need to have your customer databases as separate connections.
+متابیس را به یک پایگاه داده به‌صورت عادی متصل می‌کنید. وقتی مسیریابی پایگاه داده را برای آن پایگاه داده روشن می‌کنید، به یک **پایگاه داده router** تبدیل می‌شود - پایگاه داده اصلی که مسیریابی کوئری‌ها به **پایگاه‌داده‌های مقصد** را مدیریت می‌کند. این پایگاه‌داده‌های مقصد را به این پایگاه داده router اضافه می‌کنید، با هر پایگاه داده مقصد مرتبط با یک مقدار برای ویژگی کاربری که به پایگاه داده router اختصاص می‌دهید. نیازی نیست پایگاه‌داده‌های مشتری خود را به‌عنوان اتصال‌های جداگانه داشته باشید.
 
-With the router database set up with its destination databases, an admin can then create questions that query the router database. When other people log in and view these questions, Metabase will route the queries to the destination database specified by the person's user attribute.
+با پایگاه داده router تنظیم‌شده با پایگاه‌داده‌های مقصدش، یک ادمین می‌تواند سپس سؤال‌هایی ایجاد کند که پایگاه داده router را کوئری می‌کنند. وقتی افراد دیگر وارد می‌شوند و این سؤال‌ها را مشاهده می‌کنند، متابیس کوئری‌ها را به پایگاه داده مقصد مشخص‌شده توسط ویژگی کاربر شخص مسیریابی می‌کند.
 
-## Setting up database routing
+## تنظیم مسیریابی پایگاه داده
 
-![Database routing](./images/database-routing.png)
+![مسیریابی پایگاه داده](./images/database-routing.png)
 
-1. [Connect to a database](../databases/connecting.md) that has _the same schema as all of your customer's databases_. This database should be a mock/dev database, ideally with some fake data. The name used for this router database will be the name all users will see, regardless of which destination database they're routed to, so make sure the name makes sense for everyone. (You can change the display name at any time).
-2. Once connected to this initial database (the "Router database"), go to its Database routing section and toggle on **Enable database routing**.
-3. Enter the user attribute you want to use to determine which database a user should be routed to.
-4. In the **Destination databases** section, click **Add**, then fill out the connection details. For each destination database, you'll need to specify a **slug** - this slug is the value that Metabase will use to match against the user attribute you assigned to the router database. At run time, when a user views a question built on the router database, Metabase will check the person's user attribute. If the value matches this slug, the question will query this destination database instead.
+1. [به یک پایگاه داده متصل شوید](../databases/connecting.md) که _همان schema همهٔ پایگاه‌داده‌های مشتری شما را دارد_. این پایگاه داده باید یک پایگاه داده mock/dev باشد، ترجیحاً با برخی داده‌های جعلی. نام استفاده‌شده برای این پایگاه داده router نامی است که همه کاربران می‌بینند، صرف نظر از اینکه به کدام پایگاه داده مقصد مسیریابی می‌شوند، بنابراین مطمئن شوید نام برای همه منطقی است. (می‌توانید نام نمایشی را در هر زمان تغییر دهید).
+2. بعد از اتصال به این پایگاه داده اولیه (پایگاه داده "Router")، به بخش Database routing آن بروید و **Enable database routing** را toggle کنید.
+3. ویژگی کاربری که می‌خواهید برای تعیین اینکه یک کاربر باید به کدام پایگاه داده مسیریابی شود استفاده کنید را وارد کنید.
+4. در بخش **Destination databases**، روی **Add** کلیک کنید، سپس جزئیات اتصال را پر کنید. برای هر پایگاه داده مقصد، باید یک **slug** مشخص کنید - این slug مقداری است که متابیس برای تطبیق با ویژگی کاربری که به پایگاه داده router اختصاص داده‌اید استفاده می‌کند. در زمان اجرا، وقتی یک کاربر یک سؤال ساخته‌شده روی پایگاه داده router را مشاهده می‌کند، متابیس ویژگی کاربر شخص را بررسی می‌کند. اگر مقدار با این slug تطبیق داشته باشد، سؤال این پایگاه داده مقصد را کوئری می‌کند.
 
-## User attributes and database routing
+## ویژگی‌های کاربر و مسیریابی پایگاه داده
 
-For database routing to work, your users must have a user attribute that Metabase can use to route them to the right destination database.
+برای اینکه مسیریابی پایگاه داده کار کند، کاربران شما باید یک ویژگی کاربر داشته باشند که متابیس بتواند از آن برای مسیریابی آن‌ها به پایگاه داده مقصد درست استفاده کند.
 
-You can add user attributes manually, or via Single Sign-On (SSO) via [JWT](../people-and-groups/authenticating-with-jwt.md) or [SAML](../people-and-groups/authenticating-with-saml.md).
+می‌توانید ویژگی‌های کاربر را به صورت دستی اضافه کنید، یا از طریق Single Sign-On (SSO) از طریق [JWT](../people-and-groups/authenticating-with-jwt.md) یا [SAML](../people-and-groups/authenticating-with-saml.md).
 
-If an admin user lacks a value for the user attribute, they'll see the router database. You can also explicitly set the value for admins (or any user) to `__METABASE_ROUTER__`.
+اگر یک کاربر ادمین فاقد یک مقدار برای ویژگی کاربر باشد، پایگاه داده router را می‌بیند. همچنین می‌توانید مقدار را برای ادمین‌ها (یا هر کاربری) به صراحت به `__METABASE_ROUTER__` تنظیم کنید.
 
-If a non-admin user account lacks a valid value for the user attribute, they won't be able to view the question at all.
+اگر یک حساب کاربر غیرادمین فاقد یک مقدار معتبر برای ویژگی کاربر باشد، اصلاً نمی‌توانند سؤال را مشاهده کنند.
 
-See our docs on [user attributes](../people-and-groups/managing.md#adding-a-user-attribute).
+به مستندات ما دربارهٔ [ویژگی‌های کاربر](../people-and-groups/managing.md#adding-a-user-attribute) مراجعه کنید.
 
-## Testing database routing
+## تست مسیریابی پایگاه داده
 
-To see if database routing is working:
+برای دیدن اینکه آیا مسیریابی پایگاه داده کار می‌کند:
 
-1. Log in as an admin.
-2. Create a question that queries the router database.
-3. Create a user account and add the user attribute you associated with your router database. Set the value as the slug of one of your destination databases.
-4. In a private/incognito tab, log in as the user and view the question you created. You should see data from the destination database associated with person's user attribute, not the data in the router database.
+1. به‌عنوان یک ادمین وارد شوید.
+2. یک سؤال ایجاد کنید که پایگاه داده router را کوئری می‌کند.
+3. یک حساب کاربر ایجاد کنید و ویژگی کاربری که با پایگاه داده router خود مرتبط کرده‌اید را اضافه کنید. مقدار را به‌عنوان slug یکی از پایگاه‌داده‌های مقصد تنظیم کنید.
+4. در یک تب private/incognito، به‌عنوان کاربر وارد شوید و سؤالی که ایجاد کردید را مشاهده کنید. باید داده از پایگاه داده مقصد مرتبط با ویژگی کاربر شخص را ببینید، نه داده در پایگاه داده router.
 
-## Adding destination databases with the API
+## اضافه کردن پایگاه‌داده‌های مقصد با API
 
-To add destination databases programmatically, you'll need an [API key](../people-and-groups/api-keys.md).
+برای اضافه کردن پایگاه‌داده‌های مقصد به‌صورت برنامه‌نویسی، نیاز به یک [کلید API](../people-and-groups/api-keys.md) دارید.
 
-Because each database engine has its own settings, we recommend that you use the Network tab in your browser's developer tools while you manually add a destination database in the UI. This way you can see the request Metabase generates.
+چون هر موتور پایگاه داده تنظیمات خودش را دارد، توصیه می‌کنیم که از تب Network در ابزارهای توسعه‌دهنده مرورگر خود استفاده کنید در حالی که به صورت دستی یک پایگاه داده مقصد را در UI اضافه می‌کنید. به این ترتیب می‌توانید درخواستی که متابیس تولید می‌کند را ببینید.
 
-When you click **Add**, you'll see a `POST` request to `/mirror-database?check_connection_details=true`. Click on that request to get the request's headers and JSON payload.
+وقتی روی **Add** کلیک می‌کنید، یک درخواست `POST` به `/mirror-database?check_connection_details=true` می‌بینید. روی آن درخواست کلیک کنید تا headerها و payload JSON درخواست را دریافت کنید.
 
-### Adding a new destination database: example with PostgreSQL via `curl`
+### اضافه کردن یک پایگاه داده مقصد جدید: مثال با PostgreSQL از طریق `curl`
 
-Here's a `curl` command to add a PostgreSQL database as a destination database. Here the database's `slug` is defined by `name` (in this case, `Green PostgreSQL`).
+در اینجا یک دستور `curl` برای اضافه کردن یک پایگاه داده PostgreSQL به‌عنوان یک پایگاه داده مقصد آورده شده است. اینجا `slug` پایگاه داده توسط `name` تعریف شده است (در این مورد، `Green PostgreSQL`).
 
 ```sh
 curl 'http://localhost:3000/api/ee/database-routing/mirror-database?check_connection_details=true' \
@@ -106,9 +106,9 @@ curl 'http://localhost:3000/api/ee/database-routing/mirror-database?check_connec
 }'
 ```
 
-The `details` object will have a different set of keys depending on the database.
+شیء `details` بسته به پایگاه داده مجموعه‌ای متفاوت از کلیدها خواهد داشت.
 
-If you grab the payload from the browser's Network tab, you may see additional, non-required settings:
+اگر payload را از تب Network مرورگر می‌گیرید، ممکن است تنظیمات اضافی و غیرالزامی ببینید:
 
 ```sh
 curl 'http://localhost:3000/api/ee/database-routing/mirror-database?check_connection_details=true' \

@@ -1,118 +1,118 @@
 ---
-title: JWT-based authentication
-description: How to set up JWT-based authentication in Metabase to connect with your identity provider and manage user access.
+title: احراز هویت مبتنی بر JWT
+description: نحوهٔ تنظیم احراز هویت مبتنی بر JWT در متابیس برای اتصال با ارائه‌دهنده هویت خود و مدیریت دسترسی کاربر.
 redirect_from:
   - /docs/latest/enterprise-guide/authenticating-with-jwt
 ---
 
-# JWT-based authentication
+# احراز هویت مبتنی بر JWT
 
 {% include plans-blockquote.html feature="JWT-based authentication" %}
 
-You can connect Metabase to your identity provider using JSON Web Tokens (JWT) to authenticate people.
+می‌توانید متابیس را به ارائه‌دهنده هویت خود با استفاده از JSON Web Tokens (JWT) برای احراز هویت افراد متصل کنید.
 
-## Typical flow for a JWT-based SSO interaction with Metabase
+## جریان معمولی برای یک تعامل SSO مبتنی بر JWT با متابیس
 
-Assuming your site is localhost serving on port 3000:
+فرض کنید سایت شما localhost است که روی پورت 3000 سرو می‌دهد:
 
-1. Person attempts to view a question, e.g., `http://localhost:3000/question/1-superb-question`.
-2. If the person isn't logged in, Metabase redirects them to `http://localhost:3000/auth/sso`.
-3. Retaining the original `/question/1-superb-question` URI, Metabase redirects the person to the SSO provider (the authentication app).
-4. Person logs in using the basic form.
-5. In the event of a successful sign-in, your authentication app should issue a GET request to your Metabase endpoint with the token and the "return to" URI: `http://localhost:3000/auth/sso?jwt=TOKEN_GOES_HERE&return_to=/question/1-superb-question`.
-6. Metabase verifies the JSON Web Token, logs the person in, then redirects the person to their original destination, `/question/1-superb-question`.
+1. شخص سعی می‌کند یک سؤال را مشاهده کند، مثلاً `http://localhost:3000/question/1-superb-question`.
+2. اگر شخص وارد نشده باشد، متابیس آن‌ها را به `http://localhost:3000/auth/sso` redirect می‌کند.
+3. با حفظ URI اصلی `/question/1-superb-question`، متابیس شخص را به ارائه‌دهنده SSO (اپلیکیشن احراز هویت) redirect می‌کند.
+4. شخص با استفاده از فرم پایه وارد می‌شود.
+5. در صورت ورود موفق، اپلیکیشن احراز هویت شما باید یک درخواست GET به endpoint متابیس شما با token و URI "return to" ارسال کند: `http://localhost:3000/auth/sso?jwt=TOKEN_GOES_HERE&return_to=/question/1-superb-question`.
+6. متابیس JSON Web Token را تأیید می‌کند، شخص را وارد می‌کند، سپس شخص را به مقصد اصلی خود، `/question/1-superb-question` redirect می‌کند.
 
-## Set up JWT authentication
+## تنظیم احراز هویت JWT
 
-Navigate to the **Admin**>**Settings** section of the Admin area, then click on the **Authentication > JWT** tab.
+به بخش **Admin**>**Settings** از ناحیه Admin بروید، سپس روی تب **Authentication > JWT** کلیک کنید.
 
-![JWT form](images/JWT-auth-form.png)
+![فرم JWT](images/JWT-auth-form.png)
 
-Here's a breakdown of each of the settings:
+در اینجا تجزیه هر یک از تنظیمات:
 
-- **JWT Identity Provider URI**: This is where Metabase will redirect login requests. That is, it's where your users go to log in through your identity provider.
+- **JWT Identity Provider URI**: این جایی است که متابیس درخواست‌های ورود را redirect می‌کند. یعنی جایی است که کاربران شما برای ورود از طریق ارائه‌دهنده هویت می‌روند.
 
-- **String Used by the JWT Signing Key**: The string used to seed the private key used to validate JWT messages. Both Metabase and the authentication app should have the same JWT signing key.
+- **String Used by the JWT Signing Key**: رشته استفاده‌شده برای seed کردن کلید خصوصی استفاده‌شده برای اعتبارسنجی پیام‌های JWT. هم متابیس و هم اپلیکیشن احراز هویت باید همان JWT signing key را داشته باشند.
 
-## User attribute configuration (optional)
+## پیکربندی ویژگی کاربر (اختیاری)
 
-These are additional settings you can fill in to pass user attributes to Metabase.
+این تنظیمات اضافی هستند که می‌توانید پر کنید تا ویژگی‌های کاربر را به متابیس ارسال کنید.
 
-- **Email attribute:** the key to retrieve each JWT user's email address.
-- **First name attribute:** the key to retrieve each JWT user's first name.
-- **Last name attribute:** if you guessed that this is the key to retrieve each JWT user's last name, well then you have been paying attention.
-- **Group assignment attribute:** the key to retrieve each JWT user's group assignments.
+- **Email attribute:** کلید برای دریافت آدرس ایمیل هر کاربر JWT.
+- **First name attribute:** کلید برای دریافت نام هر کاربر JWT.
+- **Last name attribute:** اگر حدس زدید که این کلید برای دریافت نام خانوادگی هر کاربر JWT است، خوب پس توجه کرده‌اید.
+- **Group assignment attribute:** کلید برای دریافت تخصیص‌های گروه هر کاربر JWT.
 
-You can send additional user attributes to Metabase by adding the attributes as key/value pairs to your JWT. These attributes will be synced on every login.
+می‌توانید ویژگی‌های کاربر اضافی را با اضافه کردن ویژگی‌ها به‌عنوان جفت‌های کلید/مقدار به JWT خود به متابیس ارسال کنید. این ویژگی‌ها در هر ورود همگام‌سازی می‌شوند.
 
-## Configure group mappings
+## پیکربندی نگاشت‌های گروه
 
-You can use your JWT to assign Metabase users to custom Metabase [groups](./managing.md#groups) based on their attributes, e.g. automatically assign everyone with a certain JWT attribute to the `Sales` group in Metabase. This can be helpful for [permissions management](../permissions/introduction.md#key-points-regarding-permissions) at scale.
+می‌توانید از JWT خود برای اختصاص کاربران متابیس به [گروه‌های](./managing.md#groups) متابیس سفارشی بر اساس ویژگی‌های آن‌ها استفاده کنید، مثلاً به‌طور خودکار همه با یک ویژگی JWT خاص را به گروه `Sales` در متابیس اختصاص دهید. این می‌تواند برای [مدیریت مجوزها](../permissions/introduction.md#key-points-regarding-permissions) در مقیاس مفید باشد.
 
-You can configure JWT group assignments through Metabase's Admin interface, or by setting environment variables.
+می‌توانید تخصیص‌های گروه JWT را از طریق رابط Admin متابیس، یا با تنظیم متغیرهای محیطی پیکربندی کنید.
 
-### Configure group mapping in Metabase
+### پیکربندی نگاشت گروه در متابیس
 
-1. Add groups to your JWT: `groups: ["group_name"]`. The attribute key (e.g. `groups`) should match the **Group assignment attribute** in Metabase.
-1. In Metabase JWT settings, under **Group Sync**, toggle on **Synchronize Group Memberships**
-1. If the group names in your JWT match the Metabase group names, they will be synced automatically, and you don't need to set up mappings manually.
+1. گروه‌ها را به JWT خود اضافه کنید: `groups: ["group_name"]`. کلید ویژگی (مثلاً `groups`) باید با **Group assignment attribute** در متابیس تطبیق داشته باشد.
+1. در تنظیمات JWT متابیس، زیر **Group Sync**، **Synchronize Group Memberships** را toggle کنید
+1. اگر نام‌های گروه در JWT شما با نام‌های گروه متابیس تطبیق داشته باشند، به‌طور خودکار همگام‌سازی می‌شوند، و نیازی به تنظیم دستی نگاشت‌ها ندارید.
 
-1. Otherwise, click **New mapping** and add the name of a JWT group.
-1. In the row that appears, click the dropdown to pick the Metabase group(s) that this should map to.
-   ![Metabase JWT group mappings](./images/jwt-groups.png)
-1. Repeat this for each of the groups you want to map.
+1. در غیر این صورت، روی **New mapping** کلیک کنید و نام یک گروه JWT را اضافه کنید.
+1. در ردیفی که ظاهر می‌شود، روی منوی dropdown کلیک کنید تا گروه(های) متابیس که این باید به آن نگاشت شود را انتخاب کنید.
+   ![نگاشت‌های گروه متابیس JWT](./images/jwt-groups.png)
+1. این را برای هر یک از گروه‌هایی که می‌خواهید نگاشت کنید تکرار کنید.
 
-### Configure group mapping through environment variables
+### پیکربندی نگاشت گروه از طریق متغیرهای محیطی
 
-You can use the following environment variables to configure JTW group mappings instead of configuring them in Metabase's Admin settings:
+می‌توانید از متغیرهای محیطی زیر برای پیکربندی نگاشت‌های گروه JTW استفاده کنید به جای پیکربندی آن‌ها در تنظیمات Admin متابیس:
 
-- [`MB_JWT_ATTRIBUTE_GROUPS`](../configuring-metabase/environment-variables.md#mb_jwt_attribute_groups) to specify the key to retrieve the JWT user's groups;
+- [`MB_JWT_ATTRIBUTE_GROUPS`](../configuring-metabase/environment-variables.md#mb_jwt_attribute_groups) برای مشخص کردن کلید برای دریافت گروه‌های کاربر JWT؛
 
-- [`MB_JWT_GROUP_SYNC`](../configuring-metabase/environment-variables.md#mb_jwt_group_sync) to turn group sync on or off (sync is off by default).
+- [`MB_JWT_GROUP_SYNC`](../configuring-metabase/environment-variables.md#mb_jwt_group_sync) برای روشن یا خاموش کردن همگام‌سازی گروه (همگام‌سازی به‌طور پیش‌فرض خاموش است).
 
   ```
   MB_JWT_GROUP_SYNC=true
   ```
 
-- [`MB_JWT_GROUP_MAPPINGS`](../configuring-metabase/environment-variables.md#mb_jwt_group_mappings) to configure group mapping. It accepts a JSON object where the keys are JWT groups and the values are lists of Metabase groups IDs. For example:
+- [`MB_JWT_GROUP_MAPPINGS`](../configuring-metabase/environment-variables.md#mb_jwt_group_mappings) برای پیکربندی نگاشت گروه. یک object JSON می‌پذیرد که کلیدها گروه‌های JWT هستند و مقادیر لیست‌هایی از IDهای گروه متابیس هستند. به‌عنوان مثال:
 
   ```
   MB_JWT_GROUP_MAPPINGS='{"extHR":[7], "extSales":[3,4]}'
   ```
 
-  where `extHR`, `extSales` are names of JWT groups and 3,4,7 are IDs of Metabase groups.
+  جایی که `extHR`، `extSales` نام‌های گروه‌های JWT هستند و 3،4،7 IDهای گروه‌های متابیس هستند.
 
-  You can find Metabase Group ID in the URL for the group page, like `http://your-metabase-url/admin/people/groups/<ID>`. "All Users" group has ID 1 and "Administrators" group has ID 2.
+  می‌توانید ID گروه متابیس را در URL برای صفحه گروه پیدا کنید، مثل `http://your-metabase-url/admin/people/groups/<ID>`. گروه "All Users" ID 1 دارد و گروه "Administrators" ID 2 دارد.
 
-### If group mappings are not specified, Metabase will match groups by name
+### اگر نگاشت‌های گروه مشخص نشده باشند، متابیس گروه‌ها را بر اساس نام تطبیق می‌دهد
 
-If you don't specify any group mappings in Metabase's Admin settings or via `MB_JWT_GROUP_MAPPINGS` environment variables, then Metabase will try to assign Metabase groups to users based on the matching names. If the names of groups in the JWT group attribute array match Metabase group names exactly (e.g. both are `"Sales"`), then the groups will be mapped automatically.
+اگر هیچ نگاشت گروهی را در تنظیمات Admin متابیس یا از طریق متغیرهای محیطی `MB_JWT_GROUP_MAPPINGS` مشخص نکنید، متابیس سعی می‌کند گروه‌های متابیس را به کاربران بر اساس نام‌های تطبیق‌دار اختصاص دهد. اگر نام‌های گروه‌ها در آرایه ویژگی گروه JWT دقیقاً با نام‌های گروه متابیس تطبیق داشته باشند (مثلاً هر دو `"Sales"` هستند)، گروه‌ها به‌طور خودکار نگاشت می‌شوند.
 
-If you add group mappings manually, Metabase will _not_ try to also match groups by names.
+اگر نگاشت‌های گروه را به صورت دستی اضافه کنید، متابیس _سعی نمی‌کند_ همچنین گروه‌ها را بر اساس نام‌ها تطبیق دهد.
 
-## Creating Metabase accounts with SSO
+## ایجاد حساب‌های متابیس با SSO
 
-> Paid plans [charge for each additional account](../cloud/how-billing-works.md#what-counts-as-a-user-account).
+> پلن‌های پولی [برای هر حساب اضافی شارژ می‌کنند](../cloud/how-billing-works.md#what-counts-as-a-user-account).
 
-A new SSO login will automatically create a new Metabase account.
+یک ورود SSO جدید به‌طور خودکار یک حساب متابیس جدید ایجاد می‌کند.
 
-Metabase accounts created with an external identity provider login don't have passwords. People who sign up for Metabase using an IdP must continue to use the IdP to log into Metabase.
+حساب‌های متابیس ایجادشده با ورود ارائه‌دهنده هویت خارجی رمز عبور ندارند. افرادی که با استفاده از یک IdP برای متابیس ثبت‌نام می‌کنند باید همچنان از IdP برای ورود به متابیس استفاده کنند.
 
-## Disabling password logins
+## غیرفعال کردن ورود با رمز عبور
 
-> **Avoid locking yourself out of your Metabase!** This setting will apply to all Metabase accounts, _including your Metabase admin account_. We recommend that you keep password authentication **enabled**. This will safeguard you from getting locked out of Metabase in case of any problems with SSO.
+> **از قفل شدن خارج از متابیس خود جلوگیری کنید!** این تنظیم برای همه حساب‌های متابیس اعمال می‌شود، _از جمله حساب ادمین متابیس شما_. توصیه می‌کنیم که احراز هویت رمز عبور را **فعال** نگه دارید. این شما را از قفل شدن خارج از متابیس در صورت هر مشکلی با SSO محافظت می‌کند.
 
-To require people to log in with SSO, disable password authentication from **Admin settings** > **Authentication**.
+برای اینکه از افراد بخواهید با SSO وارد شوند، احراز هویت رمز عبور را از **Admin settings** > **Authentication** غیرفعال کنید.
 
-![Password disable](images/password-disable.png)
+![غیرفعال کردن رمز عبور](images/password-disable.png)
 
-## Note about Azure
+## یادداشتی دربارهٔ Azure
 
-If you're using Azure, you may need to use Azure AD B2C. Check out their [tokens overview](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tokens-overview).
+اگر از Azure استفاده می‌کنید، ممکن است نیاز به استفاده از Azure AD B2C داشته باشید. [نمای کلی tokenهای آن‌ها](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tokens-overview) را بررسی کنید.
 
-## Example code using JWT-based authentication
+## کد مثال با استفاده از احراز هویت مبتنی بر JWT
 
-You can find example code that uses JWT authentication in the [SSO examples repository](https://github.com/metabase/sso-examples).
+می‌توانید کد مثال که از احراز هویت JWT استفاده می‌کند را در [مخزن مثال‌های SSO](https://github.com/metabase/sso-examples) پیدا کنید.
 
-- [JWT example in a Clojure app](https://github.com/metabase/sso-examples/tree/master/clj-jwt-example)
-- [JWT example in JavaScript (Node) app](https://github.com/metabase/sso-examples/tree/master/nodejs-jwt-example)
+- [مثال JWT در یک اپلیکیشن Clojure](https://github.com/metabase/sso-examples/tree/master/clj-jwt-example)
+- [مثال JWT در یک اپلیکیشن JavaScript (Node)](https://github.com/metabase/sso-examples/tree/master/nodejs-jwt-example)

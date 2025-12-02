@@ -1,62 +1,62 @@
 ---
-title: Google Sign-In
+title: ورود با Google
 redirect_from:
   - /docs/latest/administration-guide/10-single-sign-on
   - /docs/latest/people-and-groups/google-and-ldap
 ---
 
-# Google Sign-In
+# ورود با Google
 
-Enabling [Google Sign-In](https://developers.google.com/identity/sign-in/web/sign-in) for single sign-on (SSO) lets your team log in with a click instead of using email and password. SSO can also be used to let people create Metabase accounts without asking an admin to add each person manually. You can find SSO options under **Settings** > **Admin settings** > **Authentication**.
+فعال کردن [ورود با Google](https://developers.google.com/identity/sign-in/web/sign-in) برای single sign-on (SSO) به تیم شما امکان می‌دهد با یک کلیک وارد شوند به جای استفاده از ایمیل و رمز عبور. SSO همچنین می‌تواند برای اجازه دادن به افراد برای ایجاد حساب‌های متابیس بدون درخواست از یک ادمین برای اضافه کردن هر شخص به صورت دستی استفاده شود. می‌توانید گزینه‌های SSO را در **Settings** > **Admin settings** > **Authentication** پیدا کنید.
 
-If you'd like to have people authenticate with [SAML][saml-docs] or [JWT][jwt-docs], Metabase's [Pro and Enterprise](https://www.metabase.com/pricing/) let you do just that.
+اگر می‌خواهید افراد با [SAML][saml-docs] یا [JWT][jwt-docs] احراز هویت کنند، [Pro و Enterprise](https://www.metabase.com/pricing/) متابیس به شما امکان می‌دهد این کار را انجام دهید.
 
-## Enabling Google Sign-In
+## فعال کردن ورود با Google
 
-Google Sign-In is a good option for SSO if:
+ورود با Google یک گزینه خوب برای SSO است اگر:
 
-- Your team is already using Google Workspace, or
-- You'd like to use Google's 2-step or multi-factor authentication (2FA or MFA) to secure your Metabase.
+- تیم شما از قبل از Google Workspace استفاده می‌کند، یا
+- می‌خواهید از احراز هویت 2 مرحله‌ای یا چند عاملی Google (2FA یا MFA) برای امن کردن متابیس خود استفاده کنید.
 
-## Get your Client ID from the Google developer console
+## دریافت Client ID خود از کنسول توسعه‌دهنده Google
 
-To let your team start signing in with Google, you’ll first need to create an application through Google’s [developer console](https://console.developers.google.com/projectselector2/apis/library).
+برای اینکه تیم شما شروع به ورود با Google کند، ابتدا باید یک اپلیکیشن از طریق [کنسول توسعه‌دهنده](https://console.developers.google.com/projectselector2/apis/library) Google ایجاد کنید.
 
-Next, you'll have to create authorization credentials and [get a Google API Client ID](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid):
+بعد، باید اعتبارنامه‌های مجوز ایجاد کنید و [یک Google API Client ID دریافت کنید](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid):
 
-- In the `Authorized JavaScript origins` section, specify the URI of your Metabase instance.
-- Leave the `Authorized Redirect URIs` section blank.
-- Copy your Client ID, which you'll paste into Metabase when setting up Google Sign-in.
+- در بخش `Authorized JavaScript origins`، URI instance متابیس خود را مشخص کنید.
+- بخش `Authorized Redirect URIs` را خالی بگذارید.
+- Client ID خود را کپی کنید، که هنگام تنظیم ورود با Google در متابیس paste می‌کنید.
 
-## Setting up Google Sign-in in Metabase
+## تنظیم ورود با Google در متابیس
 
-Once you have your Google API `Client ID` (ending in `.apps.googleusercontent.com`), visit your Metabase and:
+بعد از اینکه Google API `Client ID` خود را (که به `.apps.googleusercontent.com` ختم می‌شود) دریافت کردید، به متابیس خود بروید و:
 
-1. Click on the settings **Gear** icon in the upper right.
-2. Select **Admin settings**.
-3. In the **Settings** tab, click on **Authentication**.
-4. On the **Sign in with Google** card, click **Set up**.
-5. In the **Client ID** field, paste your Google API Client ID.
+1. روی **آیکون Gear** تنظیمات در گوشهٔ بالا سمت راست کلیک کنید.
+2. **Admin settings** را انتخاب کنید.
+3. در تب **Settings**، روی **Authentication** کلیک کنید.
+4. روی کارت **Sign in with Google**، روی **Set up** کلیک کنید.
+5. در فیلد **Client ID**، Google API Client ID خود را paste کنید.
 
-## Creating Metabase accounts with Google Sign-in
+## ایجاد حساب‌های متابیس با ورود با Google
 
-> On [paid plans](https://www.metabase.com/pricing/), you're [charged for each active account](../cloud/how-billing-works.md#what-counts-as-a-user-account).
+> در [پلن‌های پولی](https://www.metabase.com/pricing/)، [برای هر حساب فعال شارژ می‌شوید](../cloud/how-billing-works.md#what-counts-as-a-user-account).
 
-If people's Google account email addresses are from a specific domain, and you want to allow them to sign up on their own, you can enter that domain in the **Domain** field.
+اگر آدرس‌های ایمیل حساب Google افراد از یک دامنه خاص است، و می‌خواهید به آن‌ها اجازه دهید خودشان ثبت‌نام کنند، می‌توانید آن دامنه را در فیلد **Domain** وارد کنید.
 
-Once set up, existing Metabase users signed in to a Google account that matches the email they used to set up their Metabase account will be able to sign in with just a click.
+بعد از تنظیم، کاربران متابیس موجود که به یک حساب Google وارد شده‌اند که با ایمیل استفاده‌شده برای تنظیم حساب متابیس آن‌ها تطبیق دارد قادر خواهند بود فقط با یک کلیک وارد شوند.
 
-Note that Metabase accounts _created_ with Google Sign-In will not have passwords; they must use Google to sign in to Metabase.
+توجه داشته باشید که حساب‌های متابیس _ایجادشده_ با ورود با Google رمز عبور نخواهند داشت؛ باید از Google برای ورود به متابیس استفاده کنند.
 
-## Multiple domains for Google Sign-in
+## چندین دامنه برای ورود با Google
 
 {% include plans-blockquote.html feature="Multiple domains for Google Sign-in" %}
 
-If you're on a [pro](https://www.metabase.com/product/pro) or [Enterprise](https://www.metabase.com/product/enterprise) plan, you can specify multiple domains from the same Google Workspace in the **Domain** field, separated by a comma. For example, `mycompany.com,example.com.br,otherdomain.co.uk`.
+اگر در یک پلن [pro](https://www.metabase.com/product/pro) یا [Enterprise](https://www.metabase.com/product/enterprise) هستید، می‌توانید چندین دامنه از همان Google Workspace را در فیلد **Domain** مشخص کنید، جدا شده با کاما. به‌عنوان مثال، `mycompany.com,example.com.br,otherdomain.co.uk`.
 
-## Syncing user attributes with Google
+## همگام‌سازی ویژگی‌های کاربر با Google
 
-User attributes can't be synced with regular Google Sign-In. To synchronize user attributes, you'll need to set up [Google SAML][google-saml-docs] or [JWT][jwt-docs] instead.
+ویژگی‌های کاربر نمی‌توانند با ورود با Google معمولی همگام‌سازی شوند. برای همگام‌سازی ویژگی‌های کاربر، باید [Google SAML][google-saml-docs] یا [JWT][jwt-docs] را به جای آن تنظیم کنید.
 
 [google-saml-docs]: ./saml-google.md
 [jwt-docs]: ./authenticating-with-jwt.md

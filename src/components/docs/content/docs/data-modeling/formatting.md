@@ -1,190 +1,190 @@
 ---
-title: Formatting defaults
-summary: Configure how dates, numbers, currencies, and text display in Metabase at global, field, and question levels.
+title: پیش‌فرض‌های قالب‌بندی
+summary: پیکربندی کنید که تاریخ‌ها، اعداد، ارزها، و متن چگونه در متابیس در سطوح سراسری، فیلد، و سؤال نمایش داده شوند.
 redirect_from:
   - /docs/latest/administration-guide/19-formatting-settings
 ---
 
-# Formatting defaults
+# پیش‌فرض‌های قالب‌بندی
 
-People all around the world use Metabase, and everyone has different preferences for how dates, times, numbers, and currencies should be formatted and displayed. Metabase lets you to customize these formatting options at three different levels:
+افراد در سراسر جهان از متابیس استفاده می‌کنند، و همه ترجیحات متفاوتی برای نحوهٔ فرمت و نمایش تاریخ‌ها، زمان‌ها، اعداد، و ارزها دارند. متابیس به شما امکان می‌دهد این گزینه‌های قالب‌بندی را در سه سطح مختلف سفارشی کنید:
 
-1. **Global**. Set global defaults in Admin -> Settings -> [Localization](../configuring-metabase/localization.md).
-2. **Field**. Set field (column) defaults in Admin -> Table Metadata. Field defaults override global defaults.
-3. **Question**. Set formatting defaults for individual questions in the visualization settings of that question. Question defaults override global and field defaults.
+1. **سراسری**. پیش‌فرض‌های سراسری را در Admin -> Settings -> [Localization](../configuring-metabase/localization.md) تنظیم کنید.
+2. **فیلد**. پیش‌فرض‌های فیلد (ستون) را در Admin -> Table Metadata تنظیم کنید. پیش‌فرض‌های فیلد پیش‌فرض‌های سراسری را override می‌کنند.
+3. **سؤال**. پیش‌فرض‌های قالب‌بندی را برای سؤال‌های جداگانه در تنظیمات ویژوالیزیشن آن سؤال تنظیم کنید. پیش‌فرض‌های سؤال پیش‌فرض‌های سراسری و فیلد را override می‌کنند.
 
-## Field formatting
-
-_Admin settings > Table Metadata > Database > Table > Field > Formatting_
-
-You can override the global defaults for a specific field by going to the `Table Metadata` section of the Admin Panel. Select the database and table of the field in question, then click scroll down to the **Formatting**.
-
-## Formatting options depend on the data type and the semantic type
-
-The options you'll see here will depend on the field's data type and it's [semantic type](./semantic-types.md).
-
-## Text formatting options
+## قالب‌بندی فیلد
 
 _Admin settings > Table Metadata > Database > Table > Field > Formatting_
 
-Options depend on the [semantic type](./semantic-types.md) you select for the field.
+می‌توانید پیش‌فرض‌های سراسری را برای یک فیلد خاص با رفتن به بخش `Table Metadata` از پنل Admin override کنید. پایگاه داده و جدول فیلد موردنظر را انتخاب کنید، سپس به پایین به **Formatting** اسکرول کنید.
 
-### Align
+## گزینه‌های قالب‌بندی بستگی به نوع داده و نوع معنایی دارد
 
-Whether to display the values in the middle, left, or right in table cells.
+گزینه‌هایی که اینجا می‌بینید بستگی به نوع دادهٔ فیلد و [نوع معنایی](./semantic-types.md) آن دارد.
 
-### Display As
+## گزینه‌های قالب‌بندی متن
 
-If you have text, like an image URL, you may need to change the semantic type before Metabase will offer you the option to display the text as an image.
+_Admin settings > Table Metadata > Database > Table > Field > Formatting_
 
-- Text (display "as is").
-- Email link (i.e., if you have a `mailto` link).
-- Image. Metabase will display links to images as images in tables.
-- Automatic. Metabase will detect the string based on its format.
-- Link. You can optionally change the text that you want to display in the **Link text** input field. For example, if you set the **Link URL** for an "Adjective" column to:
+گزینه‌ها بستگی به [نوع معنایی](./semantic-types.md) که برای فیلد انتخاب می‌کنید دارد.
+
+### تراز
+
+آیا مقادیر را در وسط، چپ، یا راست در سلول‌های جدول نمایش دهد.
+
+### نمایش به‌صورت
+
+اگر متن دارید، مثل یک URL تصویر، ممکن است نیاز داشته باشید نوع معنایی را قبل از اینکه متابیس گزینهٔ نمایش متن به‌صورت تصویر را به شما ارائه دهد تغییر دهید.
+
+- Text (نمایش "همان‌طور که هست").
+- Email link (یعنی اگر یک لینک `mailto` دارید).
+- Image. متابیس لینک‌های تصاویر را به‌صورت تصویر در جداول نمایش می‌دهد.
+- Automatic. متابیس رشته را بر اساس فرمت آن تشخیص می‌دهد.
+- Link. می‌توانید به‌صورت اختیاری متنی را که می‌خواهید در فیلد ورودی **Link text** نمایش دهید تغییر دهید. به‌عنوان مثال، اگر **Link URL** برای یک ستون "Adjective" را به این تنظیم کنید:
 
 ```
 https://www.google.com/search?q={% raw %}{{adjective}}{% endraw %}
 ```
 
-When someone clicks on the value "askew" in the "Adjective" column, they'll be taken to the Google search URL:
+وقتی کسی روی مقدار "askew" در ستون "Adjective" کلیک می‌کند، به URL جستجوی Google برده می‌شود:
 
 ```
 https://www.google.com/search?q=askew
 ```
 
-## Dates and times
+## تاریخ‌ها و زمان‌ها
 
 _Admin settings > Table Metadata > Database > Table > Field > Formatting_
 
-Options depend on the [semantic type](./semantic-types.md) you select for the field.
+گزینه‌ها بستگی به [نوع معنایی](./semantic-types.md) که برای فیلد انتخاب می‌کنید دارد.
 
-### Align
+### تراز
 
-Whether to display the values in the middle, left, or right in table cells.
+آیا مقادیر را در وسط، چپ، یا راست در سلول‌های جدول نمایش دهد.
 
-### Display as
+### نمایش به‌صورت
 
-- **Text** (display "as is").
-- **Link** (display the date/time as a clickable link).
+- **Text** (نمایش "همان‌طور که هست").
+- **Link** (نمایش تاریخ/زمان به‌صورت یک لینک قابل کلیک).
 
-### Date style
+### سبک تاریخ
 
-Choose how dates are displayed. Options include formats like:
+انتخاب کنید که تاریخ‌ها چگونه نمایش داده شوند. گزینه‌ها شامل فرمت‌هایی مثل:
 
 - January 31, 2018
 - 31/1/2018
 - 2018/1/31
-- And other regional date formats
+- و فرمت‌های تاریخ منطقه‌ای دیگر
 
-### Abbreviate days and months
+### مخفف کردن روزها و ماه‌ها
 
-Check this option to use abbreviated forms for days and months (e.g., "Jan" instead of "January", "Mon" instead of "Monday").
+این گزینه را تیک بزنید تا از فرم‌های مخفف برای روزها و ماه‌ها استفاده شود (مثلاً "Jan" به جای "January"، "Mon" به جای "Monday").
 
-### Show the time
+### نمایش زمان
 
-This lets you choose if this time field should be displayed by default without the time; with hours and minutes; with hours, minutes, and seconds; or additionally with milliseconds.
+این به شما امکان می‌دهد انتخاب کنید که آیا این فیلد زمان باید به‌طور پیش‌فرض بدون زمان نمایش داده شود؛ با ساعت و دقیقه؛ با ساعت، دقیقه، و ثانیه؛ یا علاوه بر این با میلی‌ثانیه.
 
-- **Off** - Display only the date without time
-- **HH:MM** - Display hours and minutes
-- **HH:MM:SS** - Display hours, minutes, and seconds
-- **HH:MM:SS.MS** - Display hours, minutes, seconds, and milliseconds
+- **Off** - فقط تاریخ را بدون زمان نمایش دهید
+- **HH:MM** - ساعت و دقیقه را نمایش دهید
+- **HH:MM:SS** - ساعت، دقیقه، و ثانیه را نمایش دهید
+- **HH:MM:SS.MS** - ساعت، دقیقه، ثانیه، و میلی‌ثانیه را نمایش دهید
 
-### Time style
+### سبک زمان
 
-Choose between 12-hour and 24-hour time format:
+انتخاب بین فرمت زمان 12 ساعته و 24 ساعته:
 
-- **12-hour clock** (e.g., 5:24 PM)
-- **24-hour clock** (e.g., 17:24)
+- **ساعت 12 ساعته** (مثلاً 5:24 PM)
+- **ساعت 24 ساعته** (مثلاً 17:24)
 
-## Numbers
+## اعداد
 
 _Admin settings > Table Metadata > Database > Table > Field > Formatting_
 
-Options depend on the [semantic type](./semantic-types.md) you select for the field.
+گزینه‌ها بستگی به [نوع معنایی](./semantic-types.md) که برای فیلد انتخاب می‌کنید دارد.
 
-### Align
+### تراز
 
-Whether to display the values in the middle, left, or right in table cells.
+آیا مقادیر را در وسط، چپ، یا راست در سلول‌های جدول نمایش دهد.
 
-### Show a mini bar chart
+### نمایش یک نمودار می‌نیمال بار
 
-Only applies to table visualizations. Displays a bar for each value to show large or small it is relative to the other values in the column.
+فقط برای ویژوالیزیشن‌های جدول اعمال می‌شود. یک نوار برای هر مقدار نمایش می‌دهد تا نشان دهد چقدر بزرگ یا کوچک است نسبت به مقادیر دیگر در ستون.
 
-### Display as
+### نمایش به‌صورت
 
-- **Automatic** - Metabase will automatically detect the best display format
-- **Text** - Display the number as plain text
-- **Link** - Display the number as a clickable link
+- **Automatic** - متابیس به‌طور خودکار بهترین فرمت نمایش را تشخیص می‌دهد
+- **Text** - عدد را به‌صورت متن ساده نمایش دهید
+- **Link** - عدد را به‌صورت یک لینک قابل کلیک نمایش دهید
 
-### Style
+### سبک
 
-Lets you choose to display the number as a plain number, a percent, in scientific notation, or as a currency.
+به شما امکان می‌دهد عدد را به‌صورت یک عدد ساده، یک درصد، در نماد علمی، یا به‌صورت یک ارز نمایش دهید.
 
-- **Normal** - Display as a regular number
-- **Percent** - Display as a percentage
-- **Scientific notation** - Display in scientific format (e.g., 1.23e+4)
-- **Currency** - Display with currency formatting
+- **Normal** - به‌صورت یک عدد معمولی نمایش دهید
+- **Percent** - به‌صورت درصد نمایش دهید
+- **Scientific notation** - در فرمت علمی نمایش دهید (مثلاً 1.23e+4)
+- **Currency** - با قالب‌بندی ارز نمایش دهید
 
-### Currency label style
+### سبک برچسب ارز
 
-For fields with Style set to "Currency", choose how to display the currency label. For example, for Canadian dollars:
+برای فیلدهایی با Style تنظیم‌شده به "Currency"، انتخاب کنید که برچسب ارز چگونه نمایش داده شود. به‌عنوان مثال، برای دلار کانادا:
 
 - **Symbol**: `CA$` 
 - **Local symbol**: `$`
 - **Code**: `CAD`
 - **Name**: `Canadian dollars`
 
-### Where to display the unit of currency
+### کجا واحد ارز را نمایش دهیم
 
-For currency fields, choose where to show the currency symbol:
+برای فیلدهای ارز، انتخاب کنید که نماد ارز کجا نمایش داده شود:
 
-- **In the column heading** - Show the currency symbol in the table header
-- **In every table cell** - Show the currency symbol next to each value
+- **در هدر ستون** - نماد ارز را در هدر جدول نمایش دهید
+- **در هر سلول جدول** - نماد ارز را کنار هر مقدار نمایش دهید
 
-### Separator style
+### سبک جداکننده
 
-This gives you various options for how commas and periods are used to separate the number (e.g., 100,000.00, 100.000,00, 100 000.00).
+این گزینه‌های مختلفی برای نحوهٔ استفاده از کاما و نقطه برای جدا کردن عدد ارائه می‌دهد (مثلاً 100,000.00، 100.000,00، 100 000.00).
 
-### Number of decimal places
+### تعداد اعشار
 
-Forces the number to be displayed with exactly this many decimal places.
+عدد را مجبور می‌کند که دقیقاً با این تعداد اعشار نمایش داده شود.
 
-### Multiply by a number
+### ضرب در یک عدد
 
-Multiplies this number by whatever you type here. Useful for unit conversions or scaling values.
+این عدد را در هر چیزی که اینجا تایپ می‌کنید ضرب می‌کند. برای تبدیل واحد یا مقیاس‌بندی مقادیر مفید است.
 
-### Add a prefix
+### اضافه کردن یک پیشوند
 
-Lets you put a symbol, word, etc. before this number (e.g., "$" for currency).
+به شما امکان می‌دهد یک نماد، کلمه، و غیره قبل از این عدد قرار دهید (مثلاً "$" برای ارز).
 
-### Add a suffix
+### اضافه کردن یک پسوند
 
-Lets you put a symbol, word, etc. after this number (e.g., "dollars", "%", "units").
+به شما امکان می‌دهد یک نماد، کلمه، و غیره بعد از این عدد قرار دهید (مثلاً "dollars"، "%"، "units").
 
-### Currency
+### ارز
 
-Currency field formatting settings include all the same options as in the global formatting section, as well as all the options that Number fields have.
+تنظیمات قالب‌بندی فیلد ارز شامل همهٔ گزینه‌های مشابه در بخش قالب‌بندی سراسری، و همچنین همهٔ گزینه‌هایی که فیلدهای Number دارند می‌شود.
 
-See [Currency formatting options](../questions/visualizations/table.md#currency-formatting-options).
+به [گزینه‌های قالب‌بندی ارز](../questions/visualizations/table.md#currency-formatting-options) مراجعه کنید.
 
-## Question-level formatting
+## قالب‌بندی سطح سؤال
 
-You can also override all formatting settings in any specific saved question or dashboard card by clicking on the gear to open the visualization options. To reset any overridden setting to the default, just click on the rotating arrow icon next to the setting's label. This will reset the setting to the field-level setting if there is one; otherwise it will be reset to the global default.
+همچنین می‌توانید همهٔ تنظیمات قالب‌بندی را در هر سؤال ذخیره‌شده یا کارت داشبورد خاص با کلیک روی gear برای باز کردن گزینه‌های ویژوالیزیشن override کنید. برای بازنشانی هر تنظیم override شده به پیش‌فرض، فقط روی آیکون فلش چرخان کنار برچسب تنظیم کلیک کنید. این تنظیم را به تنظیم سطح فیلد بازنشانی می‌کند اگر یکی وجود داشته باشد؛ در غیر این صورت به پیش‌فرض سراسری بازنشانی می‌شود.
 
-Formatting options vary depending on the type of visualization:
+گزینه‌های قالب‌بندی بسته به نوع ویژوالیزیشن متفاوت هستند:
 
-- [Combo chart](../questions/visualizations/combo-chart.md)
-- [Detail](../questions/visualizations/detail.md)
-- [Funnel](../questions/visualizations/funnel.md)
-- [Gauge](../questions/visualizations/gauge.md)
-- [Line, Bar, and area charts](../questions/visualizations/line-bar-and-area-charts.md)
-- [Maps](../questions/visualizations/map.md)
-- [Numbers](../questions/visualizations/numbers.md)
-- [Pie or donut chart](../questions/visualizations/pie-or-donut-chart.md)
-- [Pivot table](../questions/visualizations/pivot-table.md)
-- [Progress bar](../questions/visualizations/progress-bar.md)
-- [Scatter plot or bubble chart](../questions/visualizations/scatterplot-or-bubble-chart.md)
-- [Tables](../questions/visualizations/table.md)
-- [Trend](../questions/visualizations/trend.md)
-- [Waterfall chart](../questions/visualizations/waterfall-chart.md)
+- [نمودار ترکیبی](../questions/visualizations/combo-chart.md)
+- [جزئیات](../questions/visualizations/detail.md)
+- [قیفی](../questions/visualizations/funnel.md)
+- [گیج](../questions/visualizations/gauge.md)
+- [نمودارهای خطی، ستونی، و سطحی](../questions/visualizations/line-bar-and-area-charts.md)
+- [نقشه‌ها](../questions/visualizations/map.md)
+- [اعداد](../questions/visualizations/numbers.md)
+- [نمودار دایره‌ای یا دونات](../questions/visualizations/pie-or-donut-chart.md)
+- [جدول محوری](../questions/visualizations/pivot-table.md)
+- [نوار پیشرفت](../questions/visualizations/progress-bar.md)
+- [نمودار پراکندگی یا حبابی](../questions/visualizations/scatterplot-or-bubble-chart.md)
+- [جداول](../questions/visualizations/table.md)
+- [روند](../questions/visualizations/trend.md)
+- [نمودار آبشاری](../questions/visualizations/waterfall-chart.md)

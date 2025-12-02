@@ -1,73 +1,73 @@
 ---
-title: Introduction to actions
+title: مقدمه‌ای بر اکشن‌ها
 ---
 
-# Introduction to actions
+# مقدمه‌ای بر اکشن‌ها
 
-> For now, actions are only available for PostgreSQL and MySQL.
+> فعلاً اکشن‌ها فقط برای PostgreSQL و MySQL در دسترس هستند.
 
-![Example action](./images/example-action.png)
+![مثال اکشن](./images/example-action.png)
 
-## What are actions?
+## اکشن‌ها چیستند؟
 
-**Actions** are entities in Metabase that let you build custom forms and business logic.
+**اکشن‌ها** موجودیت‌هایی در متابیس هستند که به شما امکان می‌دهند فرم‌ها و منطق کسب‌وکار سفارشی بسازید.
 
-Actions let you write parameterized SQL that writes back to your database. Actions can be attached to [buttons on dashboards](../dashboards/actions.md) to create custom workflows. You can even publicly share the parameterized forms that actions generate to collect data.
+اکشن‌ها به شما امکان می‌دهند SQL پارامتری‌شده بنویسید که به پایگاه دادهٔ شما می‌نویسد. اکشن‌ها می‌توانند به [دکمه‌ها در داشبوردها](../dashboards/actions.md) متصل شوند تا گردش کارهای سفارشی ایجاد کنند. حتی می‌توانید فرم‌های پارامتری‌شده‌ای که اکشن‌ها تولید می‌کنند را به‌صورت عمومی به‌اشتراک بگذارید تا داده جمع‌آوری کنید.
 
-Here are a few ideas for what you can do with actions:
+در اینجا چند ایده برای آنچه می‌توانید با اکشن‌ها انجام دهید آورده شده است:
 
-- Mark the customer you’re viewing in a dashboard as a VIP.
-- Let team members remove redundant data.
-- Create a customer feedback form and embed it on your website.
+- مشتری‌ای که در یک داشبورد مشاهده می‌کنید را به‌عنوان VIP علامت‌گذاری کنید.
+- به اعضای تیم امکان حذف داده‌های اضافی را بدهید.
+- یک فرم بازخورد مشتری ایجاد کنید و آن را در وب‌سایتتان جاسازی کنید.
 
-Actions must be added to a [model](../data-modeling/models.md), but actions only run on the raw tables that back those models (so actions will never edit your [model definition](../data-modeling/models.md#edit-a-models-query)).
+اکشن‌ها باید به یک [مدل](../data-modeling/models.md) اضافه شوند، اما اکشن‌ها فقط روی جداول خامی که آن مدل‌ها را پشتیبانی می‌کنند اجرا می‌شوند (بنابراین اکشن‌ها هرگز [تعریف مدل شما](../data-modeling/models.md#edit-a-models-query) را ویرایش نمی‌کنند).
 
-If you're an admin who just wants to edit data in your tables, check out [Editable table data](../data-modeling/editable-tables.md).
+اگر یک ادمین هستید که فقط می‌خواهید داده را در جداولتان ویرایش کنید، به [دادهٔ جدول قابل ویرایش](../data-modeling/editable-tables.md) مراجعه کنید.
 
-## Enabling actions for a database
+## فعال‌سازی اکشن‌ها برای یک پایگاه داده
 
-For actions to work, you'll first need to do the following two things:
+برای اینکه اکشن‌ها کار کنند، ابتدا باید دو کار زیر را انجام دهید:
 
-1. **Enable model actions for the database connection**. To enable actions for a database connection, admins should click on the **gear** icon in the upper right and navigate to **Admin settings** > **Databases**, then click on the database you want to create actions for. On the right side of the connection settings form, toggle the **Model actions** option. For actions to work, the database user account (the account you're using to connect to the database) must have [write permissions](../databases/users-roles-privileges.md#privileges-to-enable-actions-and-editable-table-data). And for now, actions are only supported on PostgreSQL and MySQL databases.
-2. **Create at least one model from that database.** Actions are associated with models, so you'll need to have created (or have access to) at least one model before you can start creating actions.
+1. **فعال‌سازی اکشن‌های مدل برای اتصال پایگاه داده**. برای فعال‌سازی اکشن‌ها برای یک اتصال پایگاه داده، ادمین‌ها باید روی **آیکون gear** در گوشهٔ بالا سمت راست کلیک کنند و به **Admin settings** > **Databases** بروند، سپس روی پایگاه داده‌ای که می‌خواهید برای آن اکشن ایجاد کنید کلیک کنند. در سمت راست فرم تنظیمات اتصال، گزینهٔ **Model actions** را toggle کنید. برای اینکه اکشن‌ها کار کنند، حساب کاربر پایگاه داده (حسابی که برای اتصال به پایگاه داده استفاده می‌کنید) باید [مجوزهای نوشتن](../databases/users-roles-privileges.md#privileges-to-enable-actions-and-editable-table-data) داشته باشد. و فعلاً اکشن‌ها فقط در پایگاه‌داده‌های PostgreSQL و MySQL پشتیبانی می‌شوند.
+2. **حداقل یک مدل از آن پایگاه داده ایجاد کنید.** اکشن‌ها با مدل‌ها مرتبط هستند، بنابراین باید حداقل یک مدل ایجاد کرده باشید (یا به آن دسترسی داشته باشید) قبل از اینکه بتوانید شروع به ایجاد اکشن کنید.
 
-## Who can use actions
+## چه کسانی می‌توانند از اکشن‌ها استفاده کنند
 
-- **To create or edit an action**, a person must be in a group with [Native query editing](../permissions/data.md) privileges for the relevant database.
-- **To run an action**, all you need is view access to the action's model or dashboard (or a link to a public action).
+- **برای ایجاد یا ویرایش یک اکشن**، یک شخص باید در گروهی با مجوزهای [ویرایش کوئری Native](../permissions/data.md) برای پایگاه دادهٔ مرتبط باشد.
+- **برای اجرای یک اکشن**، فقط نیاز به دسترسی مشاهده به مدل یا داشبورد اکشن (یا یک لینک به یک اکشن عمومی) دارید.
 
-## Types of actions
+## انواع اکشن‌ها
 
-There are two types of actions:
+دو نوع اکشن وجود دارد:
 
-- [Basic](./basic.md)
-- [Custom](./custom.md)
+- [پایه](./basic.md)
+- [سفارشی](./custom.md)
 
-## Running actions
+## اجرای اکشن‌ها
 
-There are multiple ways to run actions:
+راه‌های متعددی برای اجرای اکشن‌ها وجود دارد:
 
-- [From the model details page](../data-modeling/models.md#model-details) by clicking the **run** button.
-- From a [public form](./custom.md#make-public) of an action.
-- From a [button on dashboard](../dashboards/actions.md).
+- [از صفحهٔ جزئیات مدل](../data-modeling/models.md#model-details) با کلیک روی دکمهٔ **run**.
+- از یک [فرم عمومی](./custom.md#make-public) یک اکشن.
+- از یک [دکمه در داشبورد](../dashboards/actions.md).
 
-## Actions change data in tables, which affect models
+## اکشن‌ها داده را در جداول تغییر می‌دهند، که بر مدل‌ها تأثیر می‌گذارد
 
-Just something to clarify here: actions, even though they are added to models, make their changes to the underlying table that a model queries. Which means that anyone who has access to the underlying table, or to questions or other models based on that table, will be able to see the effects of an action. Tools other than Metabase that are connected to that database will also pick up these changes.
+فقط چیزی برای روشن‌سازی اینجا: اکشن‌ها، حتی اگر به مدل‌ها اضافه شوند، تغییراتشان را در جدول زیربنایی که یک مدل کوئری می‌کند اعمال می‌کنند. که به این معنی است که هر کسی که به جدول زیربنایی دسترسی دارد، یا به سؤال‌ها یا مدل‌های دیگر بر اساس آن جدول، قادر به دیدن تأثیرات یک اکشن خواهد بود. ابزارهای دیگر غیر از متابیس که به آن پایگاه داده متصل هستند نیز این تغییرات را دریافت می‌کنند.
 
-In this sense, models are containers for actions; models are a way to organize actions. In fact, you could (in theory) add a [custom action](./custom.md) to a model that performs some update unrelated to its model's data. For example, you could write a custom action that updates the `Accounts` table, and add that action to a model that only queries an unrelated table (e.g., the `Orders` table). But, you know, maybe don't do that (unless you have a good reason). [Basic actions](./basic.md), however, are only be available for models that wrap a single raw table.
+در این معنا، مدل‌ها کانتینرهایی برای اکشن‌ها هستند؛ مدل‌ها راهی برای سازمان‌دهی اکشن‌ها هستند. در واقع، می‌توانید (در تئوری) یک [اکشن سفارشی](./custom.md) به یک مدل اضافه کنید که به‌روزرسانی غیرمرتبط با دادهٔ مدلش را انجام می‌دهد. به‌عنوان مثال، می‌توانید یک اکشن سفارشی بنویسید که جدول `Accounts` را به‌روزرسانی می‌کند، و آن اکشن را به یک مدل اضافه کنید که فقط یک جدول غیرمرتبط (مثلاً جدول `Orders`) را کوئری می‌کند. اما، می‌دانید، شاید این کار را نکنید (مگر اینکه دلیل خوبی داشته باشید). با این حال، [اکشن‌های پایه](./basic.md) فقط برای مدل‌هایی که یک جدول خام واحد را می‌پوشانند در دسترس هستند.
 
-Before using actions in production, consider playing around with actions on some sample data (like the Sample Database included with Metabase) to get a feel for how they work.
+قبل از استفاده از اکشن‌ها در production، در نظر بگیرید که با اکشن‌ها روی برخی داده‌های نمونه (مثل Sample Database همراه متابیس) بازی کنید تا احساس کنید چگونه کار می‌کنند.
 
-## Action gotchas
+## نکات اکشن‌ها
 
-- If caching is enabled for the relevant table or model, you may not see the effects of an action in Metabase until Metabase refreshes the data (though you can always manually refresh the data).
-- When creating records on a table that lacks an automatically generated primary key, you'll need to input an available ID (i.e., an ID not already in use by another record).
-- You can't "undo" actions. You can, however, create and run an action to recreate a deleted record, or change an updated record back to its original values (provided you know the original values).
-- Actions are unavailable for public dashboards, and dashboards in [static embeds](../embedding/static-embedding.md).
+- اگر کش برای جدول یا مدل مرتبط فعال باشد، ممکن است تأثیرات یک اکشن را در متابیس نبینید تا زمانی که متابیس داده را به‌روزرسانی کند (اگرچه همیشه می‌توانید داده را به صورت دستی به‌روزرسانی کنید).
+- هنگام ایجاد رکوردها در جدولی که فاقد کلید اصلی تولیدشده به‌طور خودکار است، باید یک ID در دسترس وارد کنید (یعنی یک ID که قبلاً توسط رکورد دیگری استفاده نشده باشد).
+- نمی‌توانید اکشن‌ها را "undo" کنید. با این حال، می‌توانید یک اکشن ایجاد و اجرا کنید تا یک رکورد حذف‌شده را دوباره ایجاد کنید، یا یک رکورد به‌روزرسانی‌شده را به مقادیر اصلی‌اش برگردانید (به شرطی که مقادیر اصلی را بدانید).
+- اکشن‌ها برای داشبوردهای عمومی و داشبوردها در [جاسازی‌های ایستا](../embedding/static-embedding.md) در دسترس نیستند.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Basic actions](./basic.md)
-- [Custom actions](./custom.md)
-- [Actions in dashboards](../dashboards/actions.md)
+- [اکشن‌های پایه](./basic.md)
+- [اکشن‌های سفارشی](./custom.md)
+- [اکشن‌ها در داشبوردها](../dashboards/actions.md)

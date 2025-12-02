@@ -1,58 +1,58 @@
 ---
-title: Notification permissions
-summary: Learn who can create and edit alerts and dashboard subscriptions, and what data recipients can see in their notifications.
+title: مجوزهای اعلان
+summary: یاد بگیرید چه کسانی می‌توانند هشدارها و اشتراک‌های داشبورد را ایجاد و ویرایش کنند، و چه داده‌ای گیرندگان می‌توانند در اعلان‌های خود ببینند.
 ---
 
-# Notification permissions
+# مجوزهای اعلان
 
-Notifications in Metabase include [alerts](../questions/alerts.md) and [dashboard subscriptions](../dashboards/subscriptions.md#setting-up-a-dashboard-subscription).
+اعلان‌ها در متابیس شامل [هشدارها](../questions/alerts.md) و [اشتراک‌های داشبورد](../dashboards/subscriptions.md#setting-up-a-dashboard-subscription) می‌شوند.
 
-## Who can edit dashboard subscriptions and alerts
+## چه کسانی می‌توانند اشتراک‌های داشبورد و هشدارها را ویرایش کنند
 
-What you can do with alerts and dashboard subscriptions depends on whether you're in the Administrators group or in a group with [row and column security](../permissions/row-and-column-security.md).
+آنچه می‌توانید با هشدارها و اشتراک‌های داشبورد انجام دهید بستگی به این دارد که آیا در گروه Administrators هستید یا در گروهی با [امنیت ردیف و ستون](../permissions/row-and-column-security.md).
 
-- [All Users group](#all-users-group-notification-permissions)
-- [Restricted group](#notification-permissions-for-people-in-groups-with-row-and-column-security)
-- [Administrators group](#administrators-group-notification-permissions)
+- [گروه All Users](#all-users-group-notification-permissions)
+- [گروه محدودشده](#notification-permissions-for-people-in-groups-with-row-and-column-security)
+- [گروه Administrators](#administrators-group-notification-permissions)
 
-### All Users group notification permissions
+### مجوزهای اعلان گروه All Users
 
-Everyone's in the All Users group. Which means that everyone can:
+همه در گروه All Users هستند. که به این معنی است که همه می‌توانند:
 
-- Create [alerts](../questions/alerts.md) and [dashboard subscriptions](../dashboards/subscriptions.md#setting-up-a-dashboard-subscription).
-- Add new recipients to dashboard subscriptions and alerts that they created.
-- Unsubscribe from any alert or subscription in their [Account settings](../people-and-groups/account-settings.md).
+- [هشدارها](../questions/alerts.md) و [اشتراک‌های داشبورد](../dashboards/subscriptions.md#setting-up-a-dashboard-subscription) ایجاد کنند.
+- گیرندگان جدید را به اشتراک‌های داشبورد و هشدارهایی که ایجاد کردند اضافه کنند.
+- از هر هشدار یا اشتراکی در [تنظیمات حساب](../people-and-groups/account-settings.md) خود unsubscribe کنند.
 
-When a notification creator adds new recipients to an alert or subscription, Metabase will display data to the recipients using the **creator's** [data permissions](../permissions/data.md) and [collection permissions](../permissions/collections.md).
+وقتی یک سازنده اعلان گیرندگان جدید را به یک هشدار یا اشتراک اضافه می‌کند، متابیس داده را به گیرندگان با استفاده از [مجوزهای داده](../permissions/data.md) و [مجوزهای کلکسیون](../permissions/collections.md) **سازنده** نمایش می‌دهد.
 
-### Notification permissions for people in groups with row and column security
+### مجوزهای اعلان برای افراد در گروه‌هایی با امنیت ردیف و ستون
 
-Same as everyone in the All Users group, but with a special case: **people in groups with row and column security will only see themselves in the list of recipients** when creating an alert or subscription.
+مثل همه در گروه All Users، اما با یک مورد خاص: **افراد در گروه‌هایی با امنیت ردیف و ستون فقط خودشان را در لیست گیرندگان** هنگام ایجاد یک هشدار یا اشتراک می‌بینند.
 
-### Administrators group notification permissions
+### مجوزهای اعلان گروه Administrators
 
-People in the admin group can:
+افراد در گروه ادمین می‌توانند:
 
-- View all subscriptions and alerts.
-- Add or remove recipients from an existing subscription or alert. Admins can safely add and remove recipients without changing the permissions of the alert or subscription. For example, if an admin adds Anya to a subscription created by Beau, Anya will receive emails with the same data that Beau can see (not what the admin can see).
-- Delete subscriptions or alerts.
+- همه اشتراک‌ها و هشدارها را مشاهده کنند.
+- گیرندگان را به یک اشتراک یا هشدار موجود اضافه یا حذف کنند. ادمین‌ها می‌توانند با خیال راحت گیرندگان را اضافه و حذف کنند بدون تغییر مجوزهای هشدار یا اشتراک. به‌عنوان مثال، اگر یک ادمین Anya را به یک اشتراک ایجادشده توسط Beau اضافه کند، Anya ایمیل‌هایی با همان داده‌ای که Beau می‌تواند ببیند (نه آنچه ادمین می‌تواند ببیند) دریافت می‌کند.
+- اشتراک‌ها یا هشدارها را حذف کنند.
 
-## What notification recipients can see
+## آنچه گیرندگان اعلان می‌توانند ببینند
 
-Notification **recipients** can see whatever the notification **creator** can see. For example, if:
+**گیرندگان** اعلان می‌توانند هر چیزی را که **سازنده** اعلان می‌تواند ببیند ببینند. به‌عنوان مثال، اگر:
 
-- Beau creates a subscription to a dashboard saved in their [personal collection](../exploration-and-organization/collections.md#your-personal-collection).
-- Beau adds Anya to the dashboard subscription.
-- Anya will see the dashboard results in her email, even though she lacks permissions to view that dashboard in Beau's personal collection.
+- Beau یک اشتراک به یک داشبورد ذخیره‌شده در [کلکسیون شخصی](../exploration-and-organization/collections.md#your-personal-collection) خود ایجاد می‌کند.
+- Beau Anya را به اشتراک داشبورد اضافه می‌کند.
+- Anya نتایج داشبورد را در ایمیل خود می‌بیند، حتی اگر فاقد مجوز برای مشاهده آن داشبورد در کلکسیون شخصی Beau باشد.
 
-## More control over email options
+## کنترل بیشتر بر گزینه‌های ایمیل
 
-On [Enterprise](https://www.metabase.com/product/enterprise) and [Pro](https://www.metabase.com/product/pro) plans, Admins can:
+در پلن‌های [Enterprise](https://www.metabase.com/product/enterprise) و [Pro](https://www.metabase.com/product/pro)، ادمین‌ها می‌توانند:
 
-- Limit email recipients to [approved domains for notifications](../configuring-metabase/email.md#approved-domains-for-notifications).
-- [Limit which recipients Metabase suggests](../configuring-metabase/email.md#suggest-recipients-on-dashboard-subscriptions-and-alerts) when people set up a subscription or alert.
+- گیرندگان ایمیل را به [دامنه‌های تأییدشده برای اعلان‌ها](../configuring-metabase/email.md#approved-domains-for-notifications) محدود کنند.
+- [محدود کردن اینکه متابیس چه گیرندگانی را پیشنهاد می‌دهد](../configuring-metabase/email.md#suggest-recipients-on-dashboard-subscriptions-and-alerts) وقتی افراد یک اشتراک یا هشدار تنظیم می‌کنند.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Dashboard subscriptions](../dashboards/subscriptions.md)
-- [Alerts](../questions/alerts.md)
+- [اشتراک‌های داشبورد](../dashboards/subscriptions.md)
+- [هشدارها](../questions/alerts.md)

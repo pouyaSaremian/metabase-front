@@ -1,45 +1,45 @@
 ---
-title: Account settings
-summary: Update your profile, change your password, view login history, manage notifications, and customize your Metabase experience.
+title: تنظیمات حساب
+summary: پروفایل خود را به‌روزرسانی کنید، رمز عبور خود را تغییر دهید، تاریخچه ورود را مشاهده کنید، اعلان‌ها را مدیریت کنید، و تجربه متابیس خود را سفارشی کنید.
 redirect_from:
   - /docs/latest/users-guide/account-settings
 ---
 
-# Account settings
+# تنظیمات حساب
 
-You can view your account settings by going to the top right of the screen and clicking on the **gear** icon > **Account settings**.
+می‌توانید تنظیمات حساب خود را با رفتن به گوشهٔ بالا سمت راست صفحه و کلیک روی **آیکون gear** > **Account settings** مشاهده کنید.
 
-## Account profile
+## پروفایل حساب
 
-You can set your first and last names, change your email address, and set your language. See our list of [supported languages](../configuring-metabase/localization.md). If you use SSO to log into your Metabase (e.g., your Google account), you won't be able to edit these settings in Metabase.
+می‌توانید نام و نام خانوادگی خود را تنظیم کنید، آدرس ایمیل خود را تغییر دهید، و زبان خود را تنظیم کنید. به لیست [زبان‌های پشتیبانی‌شده](../configuring-metabase/localization.md) ما مراجعه کنید. اگر از SSO برای ورود به متابیس خود استفاده می‌کنید (مثلاً حساب Google شما)، نمی‌توانید این تنظیمات را در متابیس ویرایش کنید.
 
-## Theme
+## تم
 
-You can choose to display Metabase in light or dark mode.
+می‌توانید انتخاب کنید که متابیس را در حالت روشن یا تاریک نمایش دهید.
 
-The theme only applies to your account. The theme doesn't apply to chart colors or embedded Metabases.
+تم فقط برای حساب شما اعمال می‌شود. تم به رنگ‌های نمودار یا متابیس‌های جاسازی‌شده اعمال نمی‌شود.
 
-## Account password
+## رمز عبور حساب
 
-You can change your password here. Note that if your Metabase uses Single Sign-On (SSO), your administrator will have disabled this password section, as your identity provider will manage logins.
+می‌توانید رمز عبور خود را اینجا تغییر دهید. توجه داشته باشید که اگر متابیس شما از Single Sign-On (SSO) استفاده می‌کند، ادمین شما این بخش رمز عبور را غیرفعال کرده است، چون ارائه‌دهنده هویت شما ورودها را مدیریت می‌کند.
 
-If you're having trouble logging in, see our [People can't log into Metabase](../troubleshooting-guide/cant-log-in.md).
+اگر مشکل ورود دارید، به [افراد نمی‌توانند به متابیس وارد شوند](../troubleshooting-guide/cant-log-in.md) مراجعه کنید.
 
-## Account login history
+## تاریخچه ورود حساب
 
-The login history lists each login, along with some location information (if available), and some client information (like Browser (Firefox/Windows)).
-If you see any suspicious login attempts, change your password and notify your administrator.
+تاریخچه ورود هر ورود را فهرست می‌کند، همراه با برخی اطلاعات مکان (در صورت در دسترس بودن)، و برخی اطلاعات کلاینت (مثل Browser (Firefox/Windows)).
+اگر هر تلاش ورود مشکوکی می‌بینید، رمز عبور خود را تغییر دهید و به ادمین خود اطلاع دهید.
 
-### A note about new login emails
+### یادداشتی دربارهٔ ایمیل‌های ورود جدید
 
-Whenever you log in from a new device, Metabase will send you an email just to let you know someone (presumably you) has logged in from an unrecognized device. If you see this email, but don't remember logging in, or don't recognize the device, change your password and let your administrator know.
+هر زمان که از یک دستگاه جدید وارد می‌شوید، متابیس یک ایمیل برای شما ارسال می‌کند فقط تا به شما اطلاع دهد کسی (احتمالاً شما) از یک دستگاه ناشناس وارد شده است. اگر این ایمیل را می‌بینید، اما ورود را به خاطر نمی‌آورید، یا دستگاه را نمی‌شناسید، رمز عبور خود را تغییر دهید و به ادمین خود اطلاع دهید.
 
-## Disable animations in Metabase
+## غیرفعال کردن انیمیشن‌ها در متابیس
 
-This isn't an in-Metabase setting, but just so you know: you can disable UI animations in Metabase (like sidebars sliding around, or rotating spinners) by changing the settings for your operating system so it respects the `prefers-reduced-motion` CSS media feature. This change will also affect other applications, not just Metabase. Check out the instructions for how to set the user preferences for your operating system in the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#user_preferences).
+این یک تنظیم درون متابیس نیست، اما فقط تا بدانید: می‌توانید انیمیشن‌های UI در متابیس را (مثل نوارهای کناری که می‌لغزند، یا spinnerهای چرخان) با تغییر تنظیمات سیستم عامل خود غیرفعال کنید تا ویژگی media CSS `prefers-reduced-motion` را رعایت کند. این تغییر همچنین روی برنامه‌های دیگر تأثیر می‌گذارد، نه فقط متابیس. دستورالعمل‌های نحوهٔ تنظیم ترجیحات کاربر برای سیستم عامل خود را در [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#user_preferences) بررسی کنید.
 
-## Notifications
+## اعلان‌ها
 
-If you subscribe or are added to dashboard subscriptions or alerts, you’ll be able to manage those notifications here (as well as on the relevant question or dashboard themselves).
+اگر به اشتراک‌های داشبورد یا هشدارها subscribe می‌کنید یا اضافه می‌شوید، می‌توانید آن اعلان‌ها را اینجا (و همچنین روی سؤال یا داشبورد مرتبط خود) مدیریت کنید.
 
-Metabase excludes notificatione for [comments](../documents/introduction.md#comment-notifications) from this page.
+متابیس اعلان‌ها برای [نظرات](../documents/introduction.md#comment-notifications) را از این صفحه مستثنی می‌کند.

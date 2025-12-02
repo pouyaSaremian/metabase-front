@@ -1,50 +1,50 @@
 ---
-title: Troubleshooting permissions
+title: عیب‌یابی مجوزها
 ---
 
-# Troubleshooting permissions
+# عیب‌یابی مجوزها
 
-If someone has the wrong level of access to a dashboard or a question, the problem may be coming from group settings, collection permissions, or data permissions.
+اگر کسی سطح دسترسی اشتباه به یک داشبورد یا سؤال دارد، مشکل ممکن است از تنظیمات گروه، مجوزهای کلکسیون، یا مجوزهای داده ناشی شود.
 
-1. Go to **Admin** > **People** and check if the person is in [more than one group with different permissions][group-permissions].
-2. If a person **can't view or edit** questions or dashboards, see [Troubleshooting collection permissions](#troubleshooting-collection-permissions).
-3. If a person **can't access data**, such as schema, tables, rows, or columns, see [Troubleshooting data permissions](#troubleshooting-data-permissions).
+1. به **Admin** > **People** بروید و بررسی کنید که آیا شخص در [بیش از یک گروه با مجوزهای متفاوت][group-permissions] است.
+2. اگر یک شخص **نمی‌تواند سؤال‌ها یا داشبوردها را مشاهده یا ویرایش کند**، به [عیب‌یابی مجوزهای کلکسیون](#troubleshooting-collection-permissions) مراجعه کنید.
+3. اگر یک شخص **نمی‌تواند به داده دسترسی پیدا کند**، مثل schema، جداول، ردیف‌ها، یا ستون‌ها، به [عیب‌یابی مجوزهای داده](#troubleshooting-data-permissions) مراجعه کنید.
 
-If you have a different issue, see [related problems](#do-you-have-a-different-problem).
+اگر مشکل متفاوتی دارید، به [مشکلات مرتبط](#do-you-have-a-different-problem) مراجعه کنید.
 
-## Troubleshooting collection permissions
+## عیب‌یابی مجوزهای کلکسیون
 
-- [A user group can't access a dashboard in a collection that they have permissions for][troubleshooting-viewing-editing].
-- [A user group can view collections that contain restricted data][collections-restricted-data].
+- [یک گروه کاربری نمی‌تواند به یک داشبورد در یک کلکسیونی که به آن مجوز دارند دسترسی پیدا کند][troubleshooting-viewing-editing].
+- [یک گروه کاربری می‌تواند کلکسیون‌هایی که شامل داده محدود شده است را مشاهده کند][collections-restricted-data].
 
-## [Troubleshooting data permissions][troubleshooting-data-permissions]
+## [عیب‌یابی مجوزهای داده][troubleshooting-data-permissions]
 
-### Row and column permissions
+### مجوزهای ردیف و ستون
 
-- [Troubleshooting data row and column security](./row-and-column-security.md)
+- [عیب‌یابی امنیت داده ردیف و ستون](./row-and-column-security.md)
 
-### Native query (SQL) permissions
+### مجوزهای کوئری native (SQL)
 
-- [A user group can't access the SQL editor][sql-access].
-- [A user group with SQL permissions isn't being restricted by their row and column security](./row-and-column-security.md)
+- [یک گروه کاربری نمی‌تواند به ویرایشگر SQL دسترسی پیدا کند][sql-access].
+- [یک گروه کاربری با مجوزهای SQL توسط امنیت ردیف و ستون آن‌ها محدود نمی‌شود](./row-and-column-security.md)
 
-### Table or schema permissions
+### مجوزهای جدول یا schema
 
-- [A user group has the wrong access to a table or schema][table-schema-access].
-- [Getting a "permission denied" error message][permission-denied].
-- [Checking someone's access to a table or schema](./data-permissions.md#checking-someones-access-to-a-table-or-schema)
+- [یک گروه کاربری دسترسی اشتباه به یک جدول یا schema دارد][table-schema-access].
+- [دریافت یک پیام خطای "permission denied"][permission-denied].
+- [بررسی دسترسی کسی به یک جدول یا schema](./data-permissions.md#checking-someones-access-to-a-table-or-schema)
 
-## Do you have a different problem?
+## آیا مشکل متفاوتی دارید؟
 
-- [I can't save my question or dashboard][proxies].
-- [I can't see my tables](./cant-see-tables.md).
+- [نمی‌توانم سؤال یا داشبورد خود را ذخیره کنم][proxies].
+- [نمی‌توانم جداول خود را ببینم](./cant-see-tables.md).
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community][discourse].
-- Search for [known bugs or limitations][known-issues].
+- در [انجمن متابیس][discourse] جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده][known-issues] جستجو کنید.
 
 [admin-permissions]: ../permissions/start.md
 [collection-permissions]: ../permissions/collections.md

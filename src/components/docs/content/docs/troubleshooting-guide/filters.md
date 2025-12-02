@@ -1,111 +1,111 @@
 ---
-title: Troubleshooting filters
+title: عیب‌یابی فیلترها
 ---
 
-# Troubleshooting filters
+# عیب‌یابی فیلترها
 
-It's always a good idea to start with a quick sanity check:
+همیشه ایده خوبی است که با یک بررسی سریع شروع کنید:
 
-1. Clear your browser cache.
-2. Refresh the page.
-3. Open your question or dashboard in an incognito window.
+1. cache مرورگر خود را پاک کنید.
+2. صفحه را refresh کنید.
+3. سؤال یا داشبورد خود را در یک پنجره ناشناس باز کنید.
 
-## Dashboard filters
+## فیلترهای داشبورد
 
-If a dashboard filter is giving you no results or the wrong results:
+اگر یک فیلتر داشبورد هیچ نتیجه‌ای یا نتایج اشتباه به شما می‌دهد:
 
-1. Click the **pencil** icon to go into edit mode.
-2. Click the **gear** icon beside your filter widget.
-3. Make sure you've selected a column for your filter under **Column to filter on**.
-4. If you can't find the right **Column to filter on**, or you're getting "No Results" when you apply the filter:
-   - Exit edit mode and click on a dashboard card to go to the _original question_.
-   - Follow the troubleshooting steps under [Question filters](#question-filters).
+1. روی **آیکون pencil** کلیک کنید تا به حالت ویرایش بروید.
+2. روی **آیکون gear** کنار widget فیلتر خود کلیک کنید.
+3. مطمئن شوید که یک ستون برای فیلتر خود زیر **Column to filter on** انتخاب کرده‌اید.
+4. اگر نمی‌توانید **Column to filter on** صحیح را پیدا کنید، یا وقتی فیلتر را اعمال می‌کنید "No Results" دریافت می‌کنید:
+   - از حالت ویرایش خارج شوید و روی یک کارت داشبورد کلیک کنید تا به _سؤال اصلی_ بروید.
+   - مراحل عیب‌یابی زیر [فیلترهای سؤال](#question-filters) را دنبال کنید.
 
-## Question filters
+## فیلترهای سؤال
 
-If a question filter is giving you no results or the wrong results:
+اگر یک فیلتر سؤال هیچ نتیجه‌ای یا نتایج اشتباه به شما می‌دهد:
 
-1. Make sure the question includes the column you want to filter on.
-2. Check that the column contains the value(s) you're filtering on. You can do this by:
-   - sorting number or date columns,
-   - creating a "contains" filter for string columns, or
-   - asking your database admin.
-3. Ask your Metabase admin to help you check if:
-   - Metabase is [up to date](../databases/sync-scan.md) with your database,
-   - the column is [visible](../data-modeling/metadata-editing.md#field-visibility) in Metabase,
-   - you have the correct [data permissions](../permissions/data.md) to access the column.
+1. مطمئن شوید که سؤال شامل ستونی است که می‌خواهید روی آن فیلتر کنید.
+2. بررسی کنید که ستون شامل مقدار(های) فیلترشده شما است. می‌توانید این را با:
+   - مرتب‌سازی ستون‌های عدد یا تاریخ،
+   - ایجاد یک فیلتر "contains" برای ستون‌های رشته، یا
+   - پرسیدن از ادمین پایگاه داده خود انجام دهید.
+3. از ادمین متابیس خود بخواهید به شما کمک کند بررسی کند که آیا:
+   - متابیس [به‌روز است](../databases/sync-scan.md) با پایگاه داده شما،
+   - ستون [قابل مشاهده است](../data-modeling/metadata-editing.md#field-visibility) در متابیس،
+   - شما مجوزهای [داده صحیح](../permissions/data.md) برای دسترسی به ستون دارید.
 
-### Special cases
+### موارد خاص
 
-If you're having trouble filtering on a:
+اگر در فیلتر کردن روی یک مشکل دارید:
 
-- [Custom column](../questions/query-builder/editor.md#custom-columns): check if the custom expression is working as expected. For example, your custom expression might be returning blank values when you expect numbers.
-- [SQL field filter](../questions/native-editor/field-filters.md): make sure you're using the correct [field filter syntax](../questions/native-editor/field-filters.md#field-filter-syntax), then see [Troubleshooting SQL variables](./sql.md#sql-variables-and-field-filters).
+- [ستون سفارشی](../questions/query-builder/editor.md#custom-columns): بررسی کنید که expression سفارشی طبق انتظار کار می‌کند. به‌عنوان مثال، expression سفارشی شما ممکن است مقادیر خالی را وقتی انتظار اعداد دارید برگرداند.
+- [فیلتر فیلد SQL](../questions/native-editor/field-filters.md): مطمئن شوید که از [syntax فیلتر فیلد صحیح](../questions/native-editor/field-filters.md#field-filter-syntax) استفاده می‌کنید، سپس [عیب‌یابی متغیرهای SQL](./sql.md#sql-variables-and-field-filters) را ببینید.
 
-**Explanation**
+**توضیح**
 
-When we first set up a filter, we need to link the filter to a column. If we make the wrong assumptions about a column's values or data type, the filter won't work at all. If a column changes on the database side, the filter might suddenly stop working.
+وقتی برای اولین بار یک فیلتر را تنظیم می‌کنیم، باید فیلتر را به یک ستون لینک کنیم. اگر فرضیات اشتباه دربارهٔ مقادیر یا نوع داده یک ستون داشته باشیم، فیلتر اصلاً کار نمی‌کند. اگر یک ستون در سمت پایگاه داده تغییر کند، فیلتر ممکن است ناگهان کار را متوقف کند.
 
-For example, let's say we want to create a filter named "Select Product ID" linked to a column named **Product ID**. The filter won't work if any of these things happen:
+به‌عنوان مثال، بیایید بگوییم می‌خواهیم یک فیلتر به نام "Select Product ID" لینک شده به یک ستون به نام **Product ID** ایجاد کنیم. فیلتر کار نمی‌کند اگر هر یک از این چیزها اتفاق بیفتد:
 
-- Our question doesn't include the **Product ID** column.
-- We type the number 4 into the "Select Product ID" filter, when the **Product ID** column only contains the values 1, 2, and 3.
-- **Product ID** is renamed to something else in the database or Table Metadata page.
-- **Product ID** is deleted from the database, or hidden in the Table Metadata page.
-- **Product ID** is a custom column that's not working as expected.
-- We don't have data permissions to access the **Product ID** column.
-- We made "Select Product ID" a numerical filter, but **Product ID** is a string column (see the section below).
+- سؤال ما شامل ستون **Product ID** نیست.
+- عدد 4 را در فیلتر "Select Product ID" تایپ می‌کنیم، وقتی ستون **Product ID** فقط شامل مقادیر 1، 2، و 3 است.
+- **Product ID** در پایگاه داده یا صفحه Table Metadata به چیز دیگری تغییر نام داده شده است.
+- **Product ID** از پایگاه داده حذف شده است، یا در صفحه Table Metadata مخفی شده است.
+- **Product ID** یک ستون سفارشی است که طبق انتظار کار نمی‌کند.
+- مجوزهای داده برای دسترسی به ستون **Product ID** نداریم.
+- "Select Product ID" را یک فیلتر عددی کرده‌ایم، اما **Product ID** یک ستون رشته است (بخش زیر را ببینید).
 
-## Time, ID, and number filters
+## فیلترهای زمان، ID، و عدد
 
-To debug dashboard and question filters that involve timestamps, UUIDs, or numeric data:
+برای debug کردن فیلترهای داشبورد و سؤال که شامل timestampها، UUIDها، یا داده عددی هستند:
 
-1. Find the [data type](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview) of the column that you want to filter on. You can find this info from:
-   - the [Data reference](../exploration-and-organization/data-model-reference.md),
-   - the [Table Metadata page](../data-modeling/metadata-editing.md) (admins only), or
-   - directly from the database.
-2. Cast the column to a data type that matches the desired [filter type](../questions/query-builder/filters.md#filter-types). You can:
-   - [cast strings or numbers to dates](../data-modeling/metadata-editing.md#cast-to-a-specific-data-type) from the Table Metadata page, or
-   - change the data type of the column in your database, and [re-sync](../databases/sync-scan.md#manually-syncing-tables-and-columns) the database schema.
+1. [نوع داده](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview) ستونی که می‌خواهید روی آن فیلتر کنید را پیدا کنید. می‌توانید این اطلاعات را از:
+   - [مرجع داده](../exploration-and-organization/data-model-reference.md)،
+   - صفحه [Table Metadata](../data-modeling/metadata-editing.md) (فقط ادمین‌ها)، یا
+   - مستقیماً از پایگاه داده پیدا کنید.
+2. ستون را به یک نوع داده که با [نوع فیلتر مورد نظر](../questions/query-builder/filters.md#filter-types) تطبیق دارد cast کنید. می‌توانید:
+   - [رشته‌ها یا اعداد را به تاریخ cast کنید](../data-modeling/metadata-editing.md#cast-to-a-specific-data-type) از صفحه Table Metadata، یا
+   - نوع داده ستون را در پایگاه داده خود تغییر دهید، و [schema پایگاه داده را دوباره همگام‌سازی کنید](../databases/sync-scan.md#manually-syncing-tables-and-columns).
 
-If you're not a Metabase admin, you might have to ask your admin to help you with some of these steps.
+اگر یک ادمین متابیس نیستید، ممکن است نیاز داشته باشید از ادمین خود بخواهید در برخی از این مراحل به شما کمک کند.
 
-**Explanation**
+**توضیح**
 
-Metabase needs to know the data type of a column to present you with a curated selection of filter types. Sometimes these columns are mistyped---if a column stores your numbers as strings, Metabase will only show you text or category filters (with options like "is", "is not") instead of number filters (with options like "greater than", "less than").
+متابیس نیاز دارد نوع داده یک ستون را بداند تا یک انتخاب curate شده از انواع فیلتر را به شما ارائه دهد. گاهی اوقات این ستون‌ها mistype شده‌اند---اگر یک ستون اعداد شما را به‌عنوان رشته ذخیره می‌کند، متابیس فقط فیلترهای متن یا category (با گزینه‌هایی مثل "is"، "is not") را به جای فیلترهای عدد (با گزینه‌هایی مثل "greater than"، "less than") به شما نشان می‌دهد.
 
-Timestamps, in particular, are the root of all evil, so please be patient with your Metabase admin (or yourself!) when trying to get the data type right.
+Timestampها، به‌طور خاص، ریشه همه شر هستند، بنابراین لطفاً با ادمین متابیس خود (یا خودتان!) صبور باشید هنگام تلاش برای درست کردن نوع داده.
 
-## Field filters in BigQuery and Oracle
+## فیلترهای فیلد در BigQuery و Oracle
 
-If you are getting an error when using field filters with BigQuery or Oracle, make sure you use the correct syntax for the `FROM` clause. See [Field filters in BigQuery and Oracle](../questions/native-editor/field-filters.md#field-filters-in-bigquery-and-oracle).
+اگر هنگام استفاده از فیلترهای فیلد با BigQuery یا Oracle خطایی دریافت می‌کنید، مطمئن شوید که از syntax صحیح برای بند `FROM` استفاده می‌کنید. به [فیلترهای فیلد در BigQuery و Oracle](../questions/native-editor/field-filters.md#field-filters-in-bigquery-and-oracle) مراجعه کنید.
 
-## Missing or incorrect filter values
+## مقادیر فیلتر گم شده یا اشتباه
 
-If your filter dropdown menu displays the wrong values for a column:
+اگر منوی dropdown فیلتر شما مقادیر اشتباه برای یک ستون نمایش می‌دهد:
 
-1. Go to **Admin settings** > **Table Metadata**.
-2. Find your database, table, and column.
-3. Click the **gear** icon at the right of a column's settings box.
-4. Scroll to **Cached field values**.
-5. Optional: click **Discard cached field values**.
-6. Click **Re-scan this field**.
+1. به **Admin settings** > **Table Metadata** بروید.
+2. پایگاه داده، جدول، و ستون خود را پیدا کنید.
+3. روی **آیکون gear** در سمت راست جعبه تنظیمات ستون کلیک کنید.
+4. به **Cached field values** اسکرول کنید.
+5. اختیاری: روی **Discard cached field values** کلیک کنید.
+6. روی **Re-scan this field** کلیک کنید.
 
-**Explanation**
+**توضیح**
 
-Metabase [scans](../databases/sync-scan.md#how-database-scans-work) get the values for your filter dropdown menus by querying and caching the first 1,000 distinct records from a table. You might see outdated filter values if your tables are getting updated more frequently compared to your [scan schedule](../databases/sync-scan.md#scanning-for-filter-values).
+[scanهای](../databases/sync-scan.md#how-database-scans-work) متابیس مقادیر برای منوهای dropdown فیلتر شما را با کوئری کردن و cache کردن اولین 1,000 رکورد متمایز از یک جدول دریافت می‌کنند. ممکن است مقادیر فیلتر قدیمی ببینید اگر جداول شما بیشتر از [برنامه scan](../databases/sync-scan.md#scanning-for-filter-values) به‌روزرسانی می‌شوند.
 
-## Related topics
+## موضوعات مرتبط
 
-- [Troubleshooting linked filters](./linked-filters.md)
-- [Troubleshooting SQL variables and field filters](./sql.md#sql-variables-and-field-filters)
-- [Troubleshooting dates and times](./timezones.md)
-- [Creating dropdown filters](../data-modeling/metadata-editing.md#changing-a-search-box-filter-to-a-dropdown-filter)
-- [Creating SQL filters](../questions/native-editor/sql-parameters.md)
+- [عیب‌یابی فیلترهای مرتبط](./linked-filters.md)
+- [عیب‌یابی متغیرهای SQL و فیلترهای فیلد](./sql.md#sql-variables-and-field-filters)
+- [عیب‌یابی تاریخ‌ها و زمان‌ها](./timezones.md)
+- [ایجاد فیلترهای dropdown](../data-modeling/metadata-editing.md#changing-a-search-box-filter-to-a-dropdown-filter)
+- [ایجاد فیلترهای SQL](../questions/native-editor/sql-parameters.md)
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can't solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.

@@ -4,101 +4,101 @@ title: LDAP
 
 # LDAP
 
-Metabase supports authentication with Lightweight Directory Access Protocol (LDAP).
+متابیس از احراز هویت با Lightweight Directory Access Protocol (LDAP) پشتیبانی می‌کند.
 
-You can find SSO options under **Admin settings** > **Settings** > **Authentication**.
+می‌توانید گزینه‌های SSO را در **Admin settings** > **Settings** > **Authentication** پیدا کنید.
 
-## Required LDAP attributes
+## ویژگی‌های LDAP الزامی
 
-You need to set up your LDAP directory with these attributes:
+باید دایرکتوری LDAP خود را با این ویژگی‌ها تنظیم کنید:
 
-- email (defaulting to the `mail` attribute)
-- first name (defaulting to the `givenName` attribute)
-- last name (defaulting to the `sn` attribute).
+- email (پیش‌فرض به ویژگی `mail`)
+- نام (پیش‌فرض به ویژگی `givenName`)
+- نام خانوادگی (پیش‌فرض به ویژگی `sn`).
 
-If your LDAP setup uses other attributes for these, you can edit this under the "Attributes" portion of the form.
+اگر تنظیم LDAP شما از ویژگی‌های دیگر برای این‌ها استفاده می‌کند، می‌توانید این را در بخش "Attributes" فرم ویرایش کنید.
 
-![Attributes](./images/ldap-attributes.png)
+![ویژگی‌ها](./images/ldap-attributes.png)
 
-Your LDAP directory must have the email field populated for each entry that will become a Metabase user, otherwise Metabase won't be able to create the account, nor will that person be able to log in. If either name field is missing, Metabase will use a default of "Unknown," and the person can change their name in their [account settings](./account-settings.md).
+دایرکتوری LDAP شما باید فیلد ایمیل را برای هر ورودی که به یک کاربر متابیس تبدیل می‌شود پر کند، در غیر این صورت متابیس نمی‌تواند حساب را ایجاد کند، و آن شخص نمی‌تواند وارد شود. اگر هر فیلد نامی گم شده باشد، متابیس از پیش‌فرض "Unknown" استفاده می‌کند، و شخص می‌تواند نام خود را در [تنظیمات حساب](./account-settings.md) تغییر دهد.
 
-## Enabling LDAP authentication
+## فعال کردن احراز هویت LDAP
 
-In the **Admin settings** > **Settings** > **Authentication** tab, go to the LDAP section and click **Set up**. Click the toggle at the top of the form to enable LDAP, then fill out the form with the relevant details.
+در تب **Admin settings** > **Settings** > **Authentication**، به بخش LDAP بروید و روی **Set up** کلیک کنید. toggle در بالای فرم را برای فعال کردن LDAP بزنید، سپس فرم را با جزئیات مرتبط پر کنید.
 
-## User provisioning
+## Provisioning کاربر
 
-When a person logs in via LDAP, Metabase can create a Metabase account for them automatically (if they don't already have a Metabase account).
+وقتی یک شخص از طریق LDAP وارد می‌شود، متابیس می‌تواند یک حساب متابیس برای آن‌ها به‌طور خودکار ایجاد کند (اگر قبلاً حساب متابیس ندارند).
 
-## Server settings
+## تنظیمات سرور
 
-- LDAP Host. Your server name. E.g., ldap.yourdomain.org
-- LDAP Port. The Server port, usually 389 or 636 if SSL is used.
-- LDAP Security settings. Options are None, SSL, or StarTLS.
-- LDAP admin username. The distinguished name to bind as (if any). This user will be used to look up information about other users.
-- LDAP admin password.
+- LDAP Host. نام سرور شما. مثلاً، ldap.yourdomain.org
+- LDAP Port. پورت سرور، معمولاً 389 یا 636 اگر SSL استفاده شود.
+- تنظیمات امنیتی LDAP. گزینه‌ها None، SSL، یا StarTLS هستند.
+- نام کاربری ادمین LDAP. نام متمایز برای bind شدن (در صورت وجود). این کاربر برای جستجوی اطلاعات دربارهٔ کاربران دیگر استفاده می‌شود.
+- رمز عبور ادمین LDAP.
 
-Then save your changes. Metabase will automatically pull the [required attributes](#required-ldap-attributes) from your LDAP directory.
+سپس تغییرات خود را ذخیره کنید. متابیس به‌طور خودکار [ویژگی‌های الزامی](#required-ldap-attributes) را از دایرکتوری LDAP شما می‌کشد.
 
-## User schema
+## Schema کاربر
 
-The **User Schema** section on this same page is where you can adjust settings related to where and how Metabase connects to your LDAP server to authenticate users.
+بخش **User Schema** در همین صفحه جایی است که می‌توانید تنظیمات مرتبط با اینکه متابیس کجا و چگونه به سرور LDAP شما متصل می‌شود تا کاربران را احراز هویت کند تنظیم کنید.
 
-### User search base
+### پایه جستجوی کاربر
 
-The **User search base** field should be completed with the _distinguished name_ (DN) of the entry in your LDAP server that is the starting point when searching for users.
+فیلد **User search base** باید با _نام متمایز_ (DN) ورودی در سرور LDAP شما که نقطه شروع هنگام جستجو برای کاربران است تکمیل شود.
 
-For example, let's say you're configuring LDAP for your company, WidgetCo, where your base DN is `dc=widgetco,dc=com`. If entries for employees are all stored within an organizational unit in your LDAP server named `People`, you'll want to supply the user search base field with the DN `ou=People,dc=widgetco,dc=com`. This tells Metabase to begin searching for matching entries at that location within the LDAP server.
+به‌عنوان مثال، فرض کنید LDAP را برای شرکت خود، WidgetCo، پیکربندی می‌کنید، جایی که DN پایه شما `dc=widgetco,dc=com` است. اگر ورودی‌های کارمندان همه درون یک واحد سازمانی در سرور LDAP شما به نام `People` ذخیره شده‌اند، می‌خواهید فیلد user search base را با DN `ou=People,dc=widgetco,dc=com` تأمین کنید. این به متابیس می‌گوید که جستجو برای ورودی‌های تطبیق‌دار را در آن مکان درون سرور LDAP شروع کند.
 
-### User filter
+### فیلتر کاربر
 
-You'll see the following grayed-out default value in the **User filter** field:
+مقدار پیش‌فرض زیر را در فیلد **User filter** می‌بینید که خاکستری شده است:
 
 ```
 (&(objectClass=inetOrgPerson)(|(uid={login})(mail={login})))
 ```
 
-When a person logs into Metabase, this command confirms that the login they supplied matches either a UID _or_ email field in your LDAP server, _and_ that the matching entry has an objectClass of `inetOrgPerson`.
+وقتی یک شخص به متابیس وارد می‌شود، این دستور تأیید می‌کند که ورود ارائه‌شده آن‌ها با یک فیلد UID _یا_ ایمیل در سرور LDAP شما تطبیق دارد، _و_ اینکه ورودی تطبیق‌دار یک objectClass از `inetOrgPerson` دارد.
 
-This default command will work for most LDAP servers, since `inetOrgPerson` is a widely-adopted objectClass. But if your company for example uses a different objectClass to categorize employees, this field is where you can set a different command for how Metabase finds and authenticates an LDAP entry upon a person logging in.
+این دستور پیش‌فرض برای بیشتر سرورهای LDAP کار می‌کند، چون `inetOrgPerson` یک objectClass به‌طور گسترده پذیرفته شده است. اما اگر شرکت شما مثلاً از یک objectClass متفاوت برای دسته‌بندی کارمندان استفاده می‌کند، این فیلد جایی است که می‌توانید یک دستور متفاوت برای نحوهٔ پیدا کردن و احراز هویت یک ورودی LDAP توسط متابیس هنگام ورود یک شخص تنظیم کنید.
 
-## LDAP group mapping
+## نگاشت گروه LDAP
 
-Manually assigning people to [groups](./managing.md#groups) in Metabase after they've logged in via SSO can get tedious. Instead, you can take advantage of the groups that already exist in your LDAP directory by enabling [group mappings](https://www.metabase.com/learn/metabase-basics/administration/permissions/ldap-auth-access-control#group-management).
+اختصاص دستی افراد به [گروه‌ها](./managing.md#groups) در متابیس بعد از اینکه از طریق SSO وارد شده‌اند می‌تواند خسته‌کننده شود. در عوض، می‌توانید از گروه‌هایی که از قبل در دایرکتوری LDAP شما وجود دارند با فعال کردن [نگاشت‌های گروه](https://www.metabase.com/learn/metabase-basics/administration/permissions/ldap-auth-access-control#group-management) استفاده کنید.
 
-Scroll to **Group Schema** on the same LDAP settings page, and click the toggle to enable group mapping. Selecting **Edit Mapping** will bring up a modal where you can create and edit mappings, specifying which LDAP group corresponds to which Metabase group.
+به **Group Schema** در همان صفحه تنظیمات LDAP اسکرول کنید، و toggle را برای فعال کردن نگاشت گروه بزنید. انتخاب **Edit Mapping** یک مودال باز می‌کند که می‌توانید در آن نگاشت‌ها را ایجاد و ویرایش کنید، مشخص کردن اینکه کدام گروه LDAP با کدام گروه متابیس مطابقت دارد.
 
-As you can see below, if you have an **Accounting** group in both your LDAP server and Metabase instance, you'll just need to supply the Distinguished Name from your LDAP server (in the example, it's `cn=Accounting,ou=Groups,dc=widgetco,dc=com`) and select its match from the dropdown of your existing Metabase groups.
+همانطور که در زیر می‌بینید، اگر یک گروه **Accounting** در هر دو سرور LDAP و instance متابیس خود دارید، فقط باید نام متمایز از سرور LDAP خود را (در مثال، `cn=Accounting,ou=Groups,dc=widgetco,dc=com` است) تأمین کنید و تطبیق آن را از منوی dropdown گروه‌های متابیس موجود انتخاب کنید.
 
-![Group Mapping](images/ldap-group-mapping.png)
+![نگاشت گروه](images/ldap-group-mapping.png)
 
-Some things to keep in mind regarding group mapping:
+برخی چیزها برای در نظر گرفتن دربارهٔ نگاشت گروه:
 
-- The Administrator group works like any other group.
-- Updates to a person's group membership based on LDAP mappings are not instantaneous; the changes will take effect only _after_ people log back in.
-- People are only ever added to or removed from mapped groups; the sync has no effect on groups in your Metabase that don't have an LDAP mapping.
+- گروه Administrator مثل هر گروه دیگری کار می‌کند.
+- به‌روزرسانی‌های عضویت گروه یک شخص بر اساس نگاشت‌های LDAP فوری نیستند؛ تغییرات فقط _بعد از_ اینکه افراد دوباره وارد می‌شوند اعمال می‌شوند.
+- افراد فقط به گروه‌های نگاشت‌شده اضافه یا از آن‌ها حذف می‌شوند؛ همگام‌سازی روی گروه‌هایی در متابیس شما که نگاشت LDAP ندارند تأثیری ندارد.
 
-## LDAP group membership filter
-
-{% include plans-blockquote.html feature="LDAP advanced features" %}
-
-Group membership lookup filter. The placeholders {dn} and {uid} will be replaced by the user's Distinguished Name and UID, respectively.
-
-## Syncing user attributes with LDAP
+## فیلتر عضویت گروه LDAP
 
 {% include plans-blockquote.html feature="LDAP advanced features" %}
 
-You can manage [user attributes][user-attributes-def] such as names, emails, and roles from your LDAP directory. When you set up [row and column security][row-and-column-security], your LDAP directory will be able to [pass these attributes][user-attributes-docs] to Metabase.
+فیلتر جستجوی عضویت گروه. placeholderهای {dn} و {uid} به‌ترتیب با نام متمایز و UID کاربر جایگزین می‌شوند.
 
-## Troubleshooting login issues
+## همگام‌سازی ویژگی‌های کاربر با LDAP
 
-- [Can't log in](../troubleshooting-guide/cant-log-in.md).
-- [Troubleshooting LDAP](../troubleshooting-guide/ldap.md)
+{% include plans-blockquote.html feature="LDAP advanced features" %}
 
-## Further reading
+می‌توانید [ویژگی‌های کاربر][user-attributes-def] مثل نام‌ها، ایمیل‌ها، و نقش‌ها را از دایرکتوری LDAP خود مدیریت کنید. وقتی [امنیت ردیف و ستون][row-and-column-security] را تنظیم می‌کنید، دایرکتوری LDAP شما قادر خواهد بود [این ویژگی‌ها را][user-attributes-docs] به متابیس ارسال کند.
 
-- [Using LDAP for authentication and access control](https://www.metabase.com/learn/metabase-basics/administration/permissions/ldap-auth-access-control).
-- [Permissions overview](../permissions/start.md).
+## عیب‌یابی مشکلات ورود
+
+- [نمی‌تواند وارد شود](../troubleshooting-guide/cant-log-in.md).
+- [عیب‌یابی LDAP](../troubleshooting-guide/ldap.md)
+
+## مطالعهٔ بیشتر
+
+- [استفاده از LDAP برای احراز هویت و کنترل دسترسی](https://www.metabase.com/learn/metabase-basics/administration/permissions/ldap-auth-access-control).
+- [نمای کلی مجوزها](../permissions/start.md).
 
 [row-and-column-security]: ../permissions/row-and-column-security.md
 [google-saml-docs]: ./saml-google.md

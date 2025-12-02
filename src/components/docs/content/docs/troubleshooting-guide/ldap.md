@@ -1,14 +1,14 @@
 ---
-title: Troubleshooting LDAP
+title: عیب‌یابی LDAP
 ---
 
-# Troubleshooting LDAP
+# عیب‌یابی LDAP
 
-Metabase can use LDAP for authentication. [This article](../people-and-groups/ldap.md) explains how to set it up, and the guide below will help you troubleshoot if anything goes wrong. If your problem isn't specific to LDAP, go to [our troubleshooting guide for logging in](./cant-log-in.md).
+متابیس می‌تواند از LDAP برای احراز هویت استفاده کند. [این مقاله](../people-and-groups/ldap.md) نحوهٔ تنظیم آن را توضیح می‌دهد، و راهنمای زیر به شما کمک می‌کند اگر مشکلی پیش آمد عیب‌یابی کنید. اگر مشکل شما خاص LDAP نیست، به [راهنمای عیب‌یابی ما برای ورود](./cant-log-in.md) بروید.
 
-## LDAP sample configuration
+## پیکربندی نمونه LDAP
 
-You can test Metabase with LDAP by using this `docker-compose` definition:
+می‌توانید متابیس را با LDAP با استفاده از این تعریف `docker-compose` تست کنید:
 
 ```yml
 version: "3.7"
@@ -57,7 +57,7 @@ networks:
     driver: bridge
 ```
 
-If you don't pass environment variables to Metabase and you want to configure the environment manually, you can go to the Admin Panel, selectin "Settings", select "Authentication", and then select "LDAP Configuration" and enter the following values:
+اگر متغیرهای محیطی را به متابیس ارسال نمی‌کنید و می‌خواهید environment را به صورت دستی پیکربندی کنید، می‌توانید به پنل Admin بروید، "Settings" را انتخاب کنید، "Authentication" را انتخاب کنید، و سپس "LDAP Configuration" را انتخاب کنید و مقادیر زیر را وارد کنید:
 
 - `USERNAME OR DN`: `cn=admin,dc=example,dc=org`
 - `PASSWORD`: `adminpassword`
@@ -65,21 +65,21 @@ If you don't pass environment variables to Metabase and you want to configure th
 - `USER FILTER`: `(&(objectClass=inetOrgPerson)(|(uid={login})))`
 - `GROUP SEARCH BASE`: `cn=readers`
 
-For the `USER FILTER`, you can leave the default value, which will look for the user ID in both the `uid` or `email` field.
+برای `USER FILTER`، می‌توانید مقدار پیش‌فرض را بگذارید، که به دنبال user ID در هر دو فیلد `uid` یا `email` می‌گردد.
 
-## Related software for troubleshooting
+## نرم‌افزار مرتبط برای عیب‌یابی
 
-If you run into an issue, check that you can login to your LDAP directory and issue queries using software like [Apache Directory Studio][apache-directory-studio]. It will let you see the whole LDAP tree and view the logs of your LDAP application to see queries run.
+اگر با مشکلی مواجه شدید، بررسی کنید که می‌توانید به دایرکتوری LDAP خود وارد شوید و کوئری‌ها را با استفاده از نرم‌افزاری مثل [Apache Directory Studio][apache-directory-studio] صادر کنید. این به شما امکان می‌دهد کل درخت LDAP را ببینید و لاگ‌های اپلیکیشن LDAP خود را برای دیدن کوئری‌های اجرا شده مشاهده کنید.
 
-<h2 id="current-limitations">Current limitations</h2>
+<h2 id="current-limitations">محدودیت‌های فعلی</h2>
 
-- When using Metabase Enterprise with a MySQL database and LDAP enabled, make sure that you disable synchronization of binary fields from your LDAP directory by using the `MB_LDAP_SYNC_USER_ATTRIBUTES_BLACKLIST` environment variable. If you do not, you may hit the 60K field size limitation of the text field in MySQL, which will prevent you from creating users or those users from logging in.
+- هنگام استفاده از Metabase Enterprise با یک پایگاه داده MySQL و LDAP فعال، مطمئن شوید که همگام‌سازی فیلدهای binary از دایرکتوری LDAP خود را با استفاده از متغیر محیطی `MB_LDAP_SYNC_USER_ATTRIBUTES_BLACKLIST` غیرفعال می‌کنید. اگر این کار را نکنید، ممکن است به محدودیت اندازه فیلد 60K فیلد متن در MySQL برخورد کنید، که از ایجاد کاربران یا ورود آن کاربران جلوگیری می‌کند.
 
 [apache-directory-studio]: https://directory.apache.org/studio/
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.

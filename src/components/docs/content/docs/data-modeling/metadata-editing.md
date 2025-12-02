@@ -1,222 +1,222 @@
 ---
-title: "Table metadata admin settings"
+title: "تنظیمات ادمین ابردادهٔ جدول"
 redirect_from:
   - /docs/latest/administration-guide/03-metadata-editing
 ---
 
-# Table metadata admin settings
+# تنظیمات ادمین ابردادهٔ جدول
 
 _Admin settings > Table metadata_
 
-![Table metadata settings](./images/table-metadata-settings.png)
+![تنظیمات ابردادهٔ جدول](./images/table-metadata-settings.png)
 
-Metabase lets you add and edit metadata for your tables and columns.
+متابیس به شما امکان می‌دهد ابرداده را برای جداول و ستون‌هایتان اضافه و ویرایش کنید.
 
-The **Table metadata settings only affect the way Metabase displays the data. None of the settings change the data in your database.**
+**تنظیمات ابردادهٔ جدول فقط بر نحوهٔ نمایش داده توسط متابیس تأثیر می‌گذارد. هیچ یک از تنظیمات داده را در پایگاه داده شما تغییر نمی‌دهد.**
 
-Admins can grant access to these metadata settings to other groups. See [table metadata permissions](../permissions/data.md#manage-table-metadata-permissions).
+ادمین‌ها می‌توانند دسترسی به این تنظیمات ابرداده را به گروه‌های دیگر اعطا کنند. به [مجوزهای ابردادهٔ جدول](../permissions/data.md#manage-table-metadata-permissions) مراجعه کنید.
 
-## Table settings
+## تنظیمات جدول
 
 _Admin settings > Table metadata > Database > Table_
 
-You can search for tables, or use the tree navigation to find each of your connected databases and their tables.
+می‌توانید برای جداول جستجو کنید، یا از ناوبری درختی برای پیدا کردن هر یک از پایگاه‌داده‌های متصل و جداول آن‌ها استفاده کنید.
 
-### Table display name and description
+### نام نمایشی و توضیحات جدول
 
-To edit a table's display name or description in the table metadata tab, click into the box that contains the current table name or description and edit it. Changes will be saved automatically once you click out of the box.
+برای ویرایش نام نمایشی یا توضیحات یک جدول در تب ابردادهٔ جدول، روی جعبه‌ای که حاوی نام یا توضیحات جدول فعلی است کلیک کنید و آن را ویرایش کنید. تغییرات به‌طور خودکار ذخیره می‌شوند وقتی از جعبه خارج می‌شوید.
 
-Descriptions are displayed in Metabase's [data reference](../exploration-and-organization/data-model-reference.md) and tooltips when view the table. Decscriptions help people find the right table for their use case.
+توضیحات در [مرجع داده](../exploration-and-organization/data-model-reference.md) متابیس و tooltipها هنگام مشاهدهٔ جدول نمایش داده می‌شوند. توضیحات به افراد کمک می‌کنند جدول درست را برای مورد استفاده‌شان پیدا کنند.
 
-### Table sync options
+### گزینه‌های همگام‌سازی جدول
 
-Actions you can take to refresh the schema or field values. For more, check out [syncs and scans](../databases/sync-scan.md).
+اقداماتی که می‌توانید برای به‌روزرسانی schema یا مقادیر فیلد انجام دهید. برای اطلاعات بیشتر، به [همگام‌سازی‌ها و اسکن‌ها](../databases/sync-scan.md) مراجعه کنید.
 
-#### Sync table schema
+#### همگام‌سازی schema جدول
 
-If you've made changes to this table in the underlying database that aren't showing up in Metabase yet, re-syncing the table schema can fix that.
+اگر تغییراتی در این جدول در پایگاه داده زیربنایی ایجاد کرده‌اید که هنوز در متابیس نمایش داده نمی‌شوند، همگام‌سازی مجدد schema جدول می‌تواند آن را برطرف کند.
 
-To update the values in your filter dropdown menus, refresh or reset the cached values.
+برای به‌روزرسانی مقادیر در منوهای dropdown فیلتر، مقادیر کش‌شده را رفرش یا بازنشانی کنید.
 
-#### Scan field values
+#### اسکن مقادیر فیلد
 
-Metabase uses these values to populate dropdown filters. You can also [scan values for a specific field](#scan-values-for-a-specific-field).
+متابیس از این مقادیر برای پر کردن فیلترهای dropdown استفاده می‌کند. همچنین می‌توانید [مقادیر را برای یک فیلد خاص اسکن کنید](#scan-values-for-a-specific-field).
 
-#### Discard cached field values
+#### دور انداختن مقادیر فیلد کش‌شده
 
-Clears cached values. Metabase will pull new values for display in your [filter widgets](#filtering).
+مقادیر کش‌شده را پاک می‌کند. متابیس مقادیر جدید را برای نمایش در [ویجت‌های فیلتر](#filtering) شما می‌کشد.
 
-### Table sorting
+### مرتب‌سازی جدول
 
-You can sort the fields in a table in different ways:
+می‌توانید فیلدها را در یک جدول به روش‌های مختلف مرتب کنید:
 
-- Automatically (Metabase decides for you)
-- By how they appear in the database
-- Alphabetically
-- Custom order (just drag and drop to rearrange, then click "Done")
+- به‌طور خودکار (متابیس برای شما تصمیم می‌گیرد)
+- بر اساس نحوهٔ ظاهر شدن در پایگاه داده
+- به‌صورت الفبایی
+- ترتیب سفارشی (فقط drag and drop کنید تا مرتب‌سازی مجدد کنید، سپس "Done" را کلیک کنید)
 
-### Table visibility
+### قابلیت مشاهدهٔ جدول
 
-You can toggle the visibility of a table by clicking on the **eye** icon next to the table name in the left sidebar navigation tree in the Table metadata tab.
+می‌توانید قابلیت مشاهدهٔ یک جدول را با کلیک روی **آیکون eye** کنار نام جدول در درخت ناوبری نوار کناری چپ در تب Table metadata toggle کنید.
 
-**Hidden tables** won't show up in the [query builder](../questions/query-builder/editor.md) or [data reference](../exploration-and-organization/data-model-reference.md). **But this is not a permissions feature**: hidden tables can still be used in SQL questions if someone knows the name of the table. For example, `SELECT * FROM table_name` from the [SQL editor](../questions/native-editor/writing-sql.md) would return results. To prevent people from writing queries against specific tables, see [data permissions](../permissions/data.md).
+**جداول مخفی** در [query builder](../questions/query-builder/editor.md) یا [مرجع داده](../exploration-and-organization/data-model-reference.md) نمایش داده نمی‌شوند. **اما این یک ویژگی مجوز نیست**: جداول مخفی همچنان می‌توانند در سؤال‌های SQL استفاده شوند اگر کسی نام جدول را بداند. به‌عنوان مثال، `SELECT * FROM table_name` از [ویرایشگر SQL](../questions/native-editor/writing-sql.md) نتایج را برمی‌گرداند. برای جلوگیری از نوشتن کوئری‌ها علیه جداول خاص توسط افراد، به [مجوزهای داده](../permissions/data.md) مراجعه کنید.
 
-To hide **all of the tables in a database** (say, if you've migrated to a new database), click on the **eye** icon next to the database name in the sidebar.
+برای مخفی کردن **همهٔ جداول در یک پایگاه داده** (مثلاً اگر به یک پایگاه داده جدید migrate کرده‌اید)، روی **آیکون eye** کنار نام پایگاه داده در نوار کناری کلیک کنید.
 
-## Field settings
+## تنظیمات فیلد
 
 _Admin settings > Table Metadata > Database > Table > Field_
 
-Fields are also known as Columns (see the [difference between fields and columns](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/database-basics#columns-vs-fields)).
+فیلدها همچنین به‌عنوان ستون‌ها شناخته می‌شوند (به [تفاوت بین فیلدها و ستون‌ها](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/database-basics#columns-vs-fields) مراجعه کنید).
 
-## Field name and description
+## نام و توضیحات فیلد
 
-To change the _global_ display name of a column in Metabase, click on the name of the column. For example, you could display "auth.user" as "User" to make the column more readable. People can also use [models](./models.md) to give columns a display name that's local to the model.
+برای تغییر نام نمایشی _سراسری_ یک ستون در متابیس، روی نام ستون کلیک کنید. به‌عنوان مثال، می‌توانید "auth.user" را به‌عنوان "User" نمایش دهید تا ستون خوانا تر شود. افراد همچنین می‌توانند از [مدل‌ها](./models.md) برای دادن یک نام نمایشی به ستون‌ها استفاده کنند که محلی به مدل است.
 
-To add a description, click into the box below the column name. Descriptions are displayed in the [data reference](../exploration-and-organization/data-model-reference.md) to help people interpret the column's values. You should consider adding a description if your column contains:
+برای اضافه کردن یک توضیحات، روی جعبه زیر نام ستون کلیک کنید. توضیحات در [مرجع داده](../exploration-and-organization/data-model-reference.md) نمایش داده می‌شوند تا به افراد کمک کنند مقادیر ستون را تفسیر کنند. باید در نظر بگیرید که یک توضیحات اضافه کنید اگر ستون شما حاوی موارد زیر است:
 
-- Abbreviations or codes
-- Zeroes, nulls, or blank values
-- Placeholder values, like `9999-99-99`
+- مخفف‌ها یا کدها
+- صفرها، nullها، یا مقادیر خالی
+- مقادیر placeholder، مثل `9999-99-99`
 
-## Field preview
+## پیش‌نمایش فیلد
 
-![Field filtering preview](./images/field-filtering-preview.png)
+![پیش‌نمایش فیلتر کردن فیلد](./images/field-filtering-preview.png)
 
-Click the preview button to see sample data from that field.
+روی دکمهٔ preview کلیک کنید تا دادهٔ نمونه از آن فیلد را ببینید.
 
 - Table preview
 - Detail
 - Filtering
 
-## Scan values for a specific field
+## اسکن مقادیر برای یک فیلد خاص
 
 _Admin settings > Table Metadata > Database > Table > Field_
 
-To scan or discard field values for a specific field, click on the **Field values** button. Metabase uses these values to populate dropdown menus in filter widgets. (Values aren't dropped from your database.)
+برای اسکن یا دور انداختن مقادیر فیلد برای یک فیلد خاص، روی دکمهٔ **Field values** کلیک کنید. متابیس از این مقادیر برای پر کردن منوهای dropdown در ویجت‌های فیلتر استفاده می‌کند. (مقادیر از پایگاه داده شما حذف نمی‌شوند.)
 
-## Field data
+## دادهٔ فیلد
 
 _Admin settings > Table Metadata > Database > Table > Field_
 
-### Field name
+### نام فیلد
 
-This is the name of the field in the database itself. You can't change it in Metabase.
+این نام فیلد در خود پایگاه داده است. نمی‌توانید آن را در متابیس تغییر دهید.
 
-### Data type
+### نوع داده
 
-This is the data type of the field in the database. You can't change the data type in Metabase, but you can cast certain data types to another data type.
+این نوع دادهٔ فیلد در پایگاه داده است. نمی‌توانید نوع داده را در متابیس تغییر دهید، اما می‌توانید انواع دادهٔ خاص را به نوع دادهٔ دیگر cast کنید.
 
-### Cast to a specific data type
+### Cast به یک نوع دادهٔ خاص
 
-If you want Metabase to treat a text or number column as a datetime column, you can cast it to that type. Casting data types won't affect the original data types in your database.
+اگر می‌خواهید متابیس یک ستون متن یا عدد را به‌عنوان یک ستون datetime در نظر بگیرد، می‌توانید آن را به آن نوع cast کنید. Cast کردن انواع داده روی انواع دادهٔ اصلی در پایگاه داده شما تأثیر نمی‌گذارد.
 
-For example, say you have a "Created At" column with a string [data type](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview) in your database. If you want to:
+به‌عنوان مثال، فرض کنید یک ستون "Created At" با یک [نوع داده](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview) رشته در پایگاه داده خود دارید. اگر می‌خواهید:
 
-- Create relative date filters, such as "Created At = Last week".
-- Use "Created At" with formulas like [datetimeAdd](../questions/query-builder/expressions/datetimeadd.md).
+- فیلترهای تاریخ نسبی ایجاد کنید، مثل "Created At = Last week".
+- از "Created At" با فرمول‌هایی مثل [datetimeAdd](../questions/query-builder/expressions/datetimeadd.md) استفاده کنید.
 
-You can cast that string to a Date type.
+می‌توانید آن رشته را به یک نوع Date cast کنید.
 
-Casting options include:
+گزینه‌های Cast شامل موارد زیر هستند:
 
-**Text to datetime casting options**:
+**گزینه‌های cast متن به datetime**:
 
 - ISO8601->Date
 - ISO8601->Datetime
 - ISO8601->Time
 
-**Numeric to datetime casting options**:
+**گزینه‌های cast عددی به datetime**:
 
 - UNIXMicroSeconds->DateTime
 - UNIXMilliSeconds->DateTime
 - UNIXNanoSeconds->DateTime
 - UNIXSeconds->DateTime
 
-**Text to numeric casting options**:
+**گزینه‌های cast متن به عددی**:
 
 - String->Integer
 - String->Float
 
-**Other options**:
+**گزینه‌های دیگر**:
 
 - Float->Integer
 - Datetime->Date
 
-If Metabase doesn't support the casting option you need, you can [create a SQL question](../questions/native-editor/writing-sql.md#starting-a-new-sql-query) that casts the data and [save it as a model](./models.md#create-a-model-from-a-saved-question), or create a view directly in your database.
+اگر متابیس گزینهٔ cast موردنیاز شما را پشتیبانی نمی‌کند، می‌توانید [یک سؤال SQL ایجاد کنید](../questions/native-editor/writing-sql.md#starting-a-new-sql-query) که داده را cast می‌کند و [آن را به‌عنوان یک مدل ذخیره کنید](./models.md#create-a-model-from-a-saved-question)، یا یک view مستقیماً در پایگاه داده خود ایجاد کنید.
 
-## Field metadata
-
-_Admin settings > Table Metadata > Database > Table > Field_
-
-### Semantic type
-
-You can change the [semantic type](../data-modeling/semantic-types.md) to give people more context and enable additional functionality, such as displaying text as an image (if the text is an image URL. Another example: you could set an Integer as a "Score" so people have a better idea what those integers indicate.
-
-The semantic types you can choose from depend on the data type. If none of the options describe the values in the column, you can set this setting to "No semantic type".
-
-See [semantic types](../data-modeling/semantic-types.md).
-
-## Field behavior
+## ابردادهٔ فیلد
 
 _Admin settings > Table Metadata > Database > Table > Field_
 
-### Field visibility
+### نوع معنایی
 
-- **Everywhere**: By default, users can see all of the columns in a table.
-- **Only in detail views**: The detail view is the view you seen when you expand a single row in a table. This will hide lengthy text from question results. This setting is applied by default if a column's values have an average length of more than 50 characters. For example, you could use this setting on a column like "Customer Comments" if you already have a column for "Customer Rating".
-- **Do not include**: Columns won't show up in the query builder or data reference. You can set this option on sensitive columns (such as PII) or irrelevant columns. But this visibility option is a simple omit/hide option; **it's not a permissions feature**. These columns are still accessible for people with native query privileges; they can write `SELECT hidden_column FROM table` or `SELECT * FROM table` in the [SQL editor](../questions/native-editor/writing-sql.md) and they'll be able to view these fields and their values.
+می‌توانید [نوع معنایی](../data-modeling/semantic-types.md) را تغییر دهید تا بافت بیشتری به افراد بدهید و عملکرد اضافی را فعال کنید، مثل نمایش متن به‌صورت تصویر (اگر متن یک URL تصویر است. مثال دیگر: می‌توانید یک Integer را به‌عنوان "Score" تنظیم کنید تا افراد ایدهٔ بهتری از آنچه آن اعداد نشان می‌دهند داشته باشند.
 
-To restrict what data people can view and query, see [data permissions](../permissions/data.md).
+انواع معنایی که می‌توانید از بین آن‌ها انتخاب کنید بستگی به نوع داده دارد. اگر هیچ یک از گزینه‌ها مقادیر در ستون را توصیف نمی‌کند، می‌توانید این تنظیم را به "No semantic type" تنظیم کنید.
 
-### Filtering
+به [انواع معنایی](../data-modeling/semantic-types.md) مراجعه کنید.
 
-The **Filtering** setting changes a column's default [filter widget](../dashboards/filters.md). Options include:
-
-- **Search box**: Display a search box and suggest autocompletions for values in that column that match the search term(s).
-- **A list of all values**: Display a search box, as well as a dropdown menu with checkboxes for values. If the number of distinct values exceeds 1000, however, Metabase will instead display a search box. See [Changing a search box filter to a dropdown filter](#changing-a-search-box-filter-to-a-dropdown-filter).
-- **Plain input box**: Display a search box, but don't suggest autocompletions.
-
-The settings here will also affect dashboard filters. For example, if you set this to plain input box, you won't be able to set up a dashboard filter that has a dropdown menu. See [dropdown list](../dashboards/filters.md#dropdown-list).
-
-#### Changing a search box filter to a dropdown filter
-
-The dropdown filter widget can be finicky, because Metabase needs to run a [scan](../databases/sync-scan.md#how-database-scans-work) to get the list of values for the dropdown menu. If you're having trouble:
-
-1. Set the [Semantic type](#semantic-type) to "Category".
-2. Set [Filtering](#filtering) to "A list of all values".
-
-When you change a default filter to a dropdown filter, you'll trigger a database query that gets the first 1,000 distinct values (ordered ascending) for that column. Metabase will cache the first 100kB of text to display in the dropdown menu.
-
-If you have columns with more than 1,000 distinct values, or columns with text-heavy data, we recommend setting **Filtering** to "Search box" instead.
-
-### Display values
-
-You can map another column connected by a foreign key relationship, like mapping a `Product_ID` column to instead display the name of the product.
-
-#### Mapping values to foreign keys
-
-You can map another column connected by a foreign key relationship, like mapping a Product_ID column to instead display the name of the product.
-
-#### Mapping numbers to custom values
-
-Say you have a column with values 1, 2, and 3. You could instead display "low", "medium", and "high".
-
-For this option to be available, you'll need to set the [filtering](#filtering) settings to "A list of all values".
-
-Select "Custom mapping" from the dropdown menu. For each value in the column, enter a display value under **Mapped values**.
-
-## Field formatting
+## رفتار فیلد
 
 _Admin settings > Table Metadata > Database > Table > Field_
 
-See [Field formatting](./formatting.md#field-formatting).
+### قابلیت مشاهدهٔ فیلد
 
-## Unfold JSON
+- **Everywhere**: به‌طور پیش‌فرض، کاربران می‌توانند همهٔ ستون‌ها را در یک جدول ببینند.
+- **Only in detail views**: نمای جزئیات نمای است که وقتی یک ردیف واحد را در یک جدول expand می‌کنید می‌بینید. این متن طولانی را از نتایج سؤال مخفی می‌کند. این تنظیم به‌طور پیش‌فرض اعمال می‌شود اگر مقادیر یک ستون طول متوسط بیش از 50 کاراکتر داشته باشند. به‌عنوان مثال، می‌توانید از این تنظیم روی یک ستون مثل "Customer Comments" استفاده کنید اگر قبلاً یک ستون برای "Customer Rating" دارید.
+- **Do not include**: ستون‌ها در query builder یا مرجع داده نمایش داده نمی‌شوند. می‌توانید این گزینه را روی ستون‌های حساس (مثل PII) یا ستون‌های نامرتبط تنظیم کنید. اما این گزینهٔ قابلیت مشاهده یک گزینهٔ سادهٔ omit/hide است؛ **این یک ویژگی مجوز نیست**. این ستون‌ها همچنان برای افراد با مجوزهای کوئری native قابل دسترسی هستند؛ می‌توانند `SELECT hidden_column FROM table` یا `SELECT * FROM table` را در [ویرایشگر SQL](../questions/native-editor/writing-sql.md) بنویسند و قادر به مشاهدهٔ این فیلدها و مقادیرشان خواهند بود.
 
-See [Working with JSON](./json-unfolding.md).
+برای محدود کردن داده‌ای که افراد می‌توانند مشاهده و کوئری کنند، به [مجوزهای داده](../permissions/data.md) مراجعه کنید.
 
-## Further reading
+### فیلتر کردن
 
-- [Keeping your analytics organized](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/same-page)
-- [Data modeling tutorials](https://www.metabase.com/learn/metabase-basics/getting-started/models)
+تنظیم **Filtering** ویجت [فیلتر پیش‌فرض](../dashboards/filters.md) یک ستون را تغییر می‌دهد. گزینه‌ها شامل موارد زیر هستند:
+
+- **Search box**: یک جعبه جستجو نمایش دهید و autocompletion برای مقادیر در آن ستون که با عبارت(های) جستجو تطبیق دارند پیشنهاد دهید.
+- **A list of all values**: یک جعبه جستجو نمایش دهید، و همچنین یک منوی dropdown با چک‌باکس‌ها برای مقادیر. با این حال، اگر تعداد مقادیر منحصر به فرد از 1000 تجاوز کند، متابیس در عوض یک جعبه جستجو نمایش می‌دهد. به [تغییر یک فیلتر جعبه جستجو به یک فیلتر dropdown](#changing-a-search-box-filter-to-a-dropdown-filter) مراجعه کنید.
+- **Plain input box**: یک جعبه جستجو نمایش دهید، اما autocompletion پیشنهاد ندهید.
+
+تنظیمات اینجا همچنین روی فیلترهای داشبورد تأثیر می‌گذارد. به‌عنوان مثال، اگر این را به plain input box تنظیم کنید، نمی‌توانید یک فیلتر داشبورد که یک منوی dropdown دارد تنظیم کنید. به [لیست dropdown](../dashboards/filters.md#dropdown-list) مراجعه کنید.
+
+#### تغییر یک فیلتر جعبه جستجو به یک فیلتر dropdown
+
+ویجت فیلتر dropdown می‌تواند حساس باشد، چون متابیس نیاز دارد یک [اسکن](../databases/sync-scan.md#how-database-scans-work) اجرا کند تا لیست مقادیر برای منوی dropdown را دریافت کند. اگر مشکل دارید:
+
+1. [نوع معنایی](#semantic-type) را به "Category" تنظیم کنید.
+2. [Filtering](#filtering) را به "A list of all values" تنظیم کنید.
+
+وقتی یک فیلتر پیش‌فرض را به یک فیلتر dropdown تغییر می‌دهید، یک کوئری پایگاه داده را راه‌اندازی می‌کنید که اولین 1000 مقدار منحصر به فرد (مرتب‌شده صعودی) را برای آن ستون دریافت می‌کند. متابیس اولین 100kB متن را برای نمایش در منوی dropdown کش می‌کند.
+
+اگر ستون‌هایی با بیش از 1000 مقدار منحصر به فرد دارید، یا ستون‌هایی با دادهٔ متنی سنگین، توصیه می‌کنیم **Filtering** را به "Search box" تنظیم کنید.
+
+### نمایش مقادیر
+
+می‌توانید ستون دیگری متصل شده توسط یک رابطهٔ foreign key را نگاشت کنید، مثل نگاشت یک ستون `Product_ID` برای نمایش نام محصول به جای آن.
+
+#### نگاشت مقادیر به foreign keyها
+
+می‌توانید ستون دیگری متصل شده توسط یک رابطهٔ foreign key را نگاشت کنید، مثل نگاشت یک ستون Product_ID برای نمایش نام محصول به جای آن.
+
+#### نگاشت اعداد به مقادیر سفارشی
+
+فرض کنید یک ستون با مقادیر 1، 2، و 3 دارید. می‌توانید به جای آن "low"، "medium"، و "high" را نمایش دهید.
+
+برای اینکه این گزینه در دسترس باشد، باید تنظیمات [filtering](#filtering) را به "A list of all values" تنظیم کنید.
+
+"Custom mapping" را از منوی dropdown انتخاب کنید. برای هر مقدار در ستون، یک مقدار نمایشی زیر **Mapped values** وارد کنید.
+
+## قالب‌بندی فیلد
+
+_Admin settings > Table Metadata > Database > Table > Field_
+
+به [قالب‌بندی فیلد](./formatting.md#field-formatting) مراجعه کنید.
+
+## باز کردن JSON
+
+به [کار با JSON](./json-unfolding.md) مراجعه کنید.
+
+## مطالعهٔ بیشتر
+
+- [سازمان‌دهی تحلیل‌هایتان](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/same-page)
+- [آموزش‌های مدل‌سازی داده](https://www.metabase.com/learn/metabase-basics/getting-started/models)

@@ -1,71 +1,71 @@
 ---
-title: My linked filters don't work
+title: فیلترهای مرتبط من کار نمی‌کنند
 ---
 
-# My linked filters don't work
+# فیلترهای مرتبط من کار نمی‌کنند
 
-You have created a [linked filter][linked-filter-gloss] so that (for example) if a dashboard contains both a "State" and a "City" filter, the "City" filter only shows cities in the state selected by the "State" filter. However:
+یک [فیلتر مرتبط][linked-filter-gloss] ایجاد کرده‌اید تا (مثلاً) اگر یک داشبورد شامل هر دو فیلتر "State" و "City" باشد، فیلتر "City" فقط شهرهای موجود در state انتخاب شده توسط فیلتر "State" را نشان دهد. با این حال:
 
-- your cards are showing "No result" when you apply the linked filter,
-- your linked filter seems to have no effect, or
-- your linked filter widget does not display a dropdown of filtered values.
+- کارت‌های شما "No result" را وقتی فیلتر مرتبط را اعمال می‌کنید نشان می‌دهند،
+- فیلتر مرتبط شما به نظر می‌رسد هیچ تأثیری ندارد، یا
+- widget فیلتر مرتبط شما یک dropdown از مقادیر فیلتر شده نمایش نمی‌دهد.
 
-If you are having problems with a regular [filter widget][filter-widget-gloss], please see [this guide](./filters.md). To fix problems with linked filters, you need a clear understanding of how they work:
+اگر با یک [widget فیلتر][filter-widget-gloss] معمولی مشکل دارید، لطفاً [این راهنما](./filters.md) را ببینید. برای رفع مشکلات با فیلترهای مرتبط، نیاز به درک واضح از نحوهٔ کار آن‌ها دارید:
 
-## Does a connected dashboard card use a SQL variable?
+## آیا یک کارت داشبورد متصل از یک متغیر SQL استفاده می‌کند؟
 
-**Root cause**: Native/SQL questions must have a [field filter](../questions/native-editor/field-filters.md) variable to be linked. Regular SQL variables won't work.
+**علت اصلی**: سؤال‌های Native/SQL باید یک متغیر [فیلتر فیلد](../questions/native-editor/field-filters.md) داشته باشند تا لینک شوند. متغیرهای SQL معمولی کار نمی‌کنند.
 
-**Steps to take**:
+**مراحل انجام**:
 
-1. Update the card's query to change the regular variable to a [field filter](../questions/native-editor/field-filters.md) variable.
+1. کوئری کارت را به‌روزرسانی کنید تا متغیر معمولی را به یک متغیر [فیلتر فیلد](../questions/native-editor/field-filters.md) تغییر دهید.
 
-See [Limitations of linking filters](../dashboards/linked-filters.md#limitations-of-linked-filters).
+به [محدودیت‌های لینک کردن فیلترها](../dashboards/linked-filters.md#limitations-of-linked-filters) مراجعه کنید.
 
-## Do you understand the directionality of linked filters?
+## آیا جهت‌گیری فیلترهای مرتبط را درک می‌کنید؟
 
-**Root cause:** Linked filters are one of the more complex features of Metabase, and many problems stems from misunderstanding their operation.
+**علت اصلی:** فیلترهای مرتبط یکی از ویژگی‌های پیچیده‌تر متابیس هستند، و بسیاری از مشکلات از سوء تفاهم در مورد عملکرد آن‌ها ناشی می‌شود.
 
-**Steps to take:** Check that you understand the points below, and that your linked filter is set up with them in mind.
+**مراحل انجام:** بررسی کنید که نکات زیر را درک می‌کنید، و فیلتر مرتبط شما با در نظر گرفتن آن‌ها تنظیم شده است.
 
-1. A filter isn't part of a specific question. Instead, a filter is added to a dashboard and its value is used to fill in variables in questions.
+1. یک فیلتر بخشی از یک سؤال خاص نیست. در عوض، یک فیلتر به یک داشبورد اضافه می‌شود و مقدار آن برای پر کردن متغیرها در سؤال‌ها استفاده می‌شود.
 
-2. In order for Metabase to display a dropdown list of possible filter values, it must know that the column corresponds to a category. This happens automatically if the question is created from tables via the Notebook Editor, since Metabase has knowledge about the table and columns from synchronization.
+2. برای اینکه متابیس یک لیست dropdown از مقادیر فیلتر ممکن را نمایش دهد، باید بداند که ستون با یک category مطابقت دارد. این به‌طور خودکار اتفاق می‌افتد اگر سؤال از جداول از طریق Notebook Editor ایجاد شود، چون متابیس دانش دربارهٔ جدول و ستون‌ها از همگام‌سازی دارد.
 
-3. If the question that contains the variable is written in SQL, on the other hand, the author of the question must have selected "Field Filter". Also, the field referenced must be set as a category in the Table Metadata in order for Metabase to show a dropdown list of values.
+3. اگر سؤالی که شامل متغیر است در SQL نوشته شده است، از طرف دیگر، نویسنده سؤال باید "Field Filter" را انتخاب کرده باشد. همچنین، فیلد ارجاع داده شده باید به‌عنوان یک category در Table Metadata تنظیم شده باشد تا متابیس یک لیست dropdown از مقادیر را نشان دهد.
 
-## Are the filters linked in the correct direction?
+## آیا فیلترها در جهت صحیح لینک شده‌اند؟
 
-**Root cause:** The most common cause is that the filters have been linked in the wrong direction. If you want the values shown by Filter B to be restricted by the setting of Filter A, you have to change the settings for Filter B, not Filter A---i.e., the downstream filter has the setting, not the upstream filter.
+**علت اصلی:** رایج‌ترین علت این است که فیلترها در جهت اشتباه لینک شده‌اند. اگر می‌خواهید مقادیر نمایش داده شده توسط Filter B توسط تنظیم Filter A محدود شوند، باید تنظیمات برای Filter B را تغییر دهید، نه Filter A---یعنی، فیلتر downstream تنظیم را دارد، نه فیلتر upstream.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Remove the existing linkage and create a new one in the opposite direction.
+1. لینک موجود را حذف کنید و یک لینک جدید در جهت مخالف ایجاد کنید.
 
-## Do some rows satisfy the full filter condition?
+## آیا برخی ردیف‌ها شرط فیلتر کامل را برآورده می‌کنند؟
 
-**Root cause:** There aren't any rows that satisfy all the conditions in a linked filter. Continuing with the city and state example, if you manually enter the name of a city that isn't in the selected state, no record will satisfy both conditions.
+**علت اصلی:** هیچ ردیفی وجود ندارد که همه شرایط در یک فیلتر مرتبط را برآورده کند. ادامه با مثال city و state، اگر به صورت دستی نام شهری که در state انتخاب شده نیست را وارد کنید، هیچ رکوردی هر دو شرط را برآورده نمی‌کند.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Create a question that only uses the first filter and check that it produces some rows. (If it does not, adding a second filter isn't going to make any rows appear.)
-2. Create a question that you think should produce the same result as the combination of linked filter settings that isn't producing any data. If it produces the result you expect, check for typing mistakes and that you are using [the correct type of join][join-types].
+1. یک سؤال ایجاد کنید که فقط از فیلتر اول استفاده می‌کند و بررسی کنید که برخی ردیف‌ها تولید می‌کند. (اگر نمی‌کند، اضافه کردن یک فیلتر دوم قرار نیست هیچ ردیفی را ظاهر کند.)
+2. یک سؤال ایجاد کنید که فکر می‌کنید باید همان نتیجه ترکیب تنظیمات فیلتر مرتبط که هیچ داده‌ای تولید نمی‌کند را تولید کند. اگر نتیجه مورد انتظار شما را تولید می‌کند، برای اشتباهات تایپی و اینکه از [نوع join صحیح][join-types] استفاده می‌کنید بررسی کنید.
 
-## Do all rows that pass the first test also pass the second?
+## آیا همه ردیف‌هایی که تست اول را پاس می‌کنند تست دوم را نیز پاس می‌کنند؟
 
-**Root cause:** In some cases all of the rows that satisfy the first filter's condition also satisfy the second filter's condition, so the second filter has no effect.
+**علت اصلی:** در برخی موارد همه ردیف‌هایی که شرط فیلتر اول را برآورده می‌کنند همچنین شرط فیلتر دوم را برآورده می‌کنند، بنابراین فیلتر دوم هیچ تأثیری ندارد.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Create a question that includes the first filter condition directly (i.e., in the question rather than using a variable), then add the second filter's condition. If the result set does not change, the problem is in the logic rather than in the filters.
+1. یک سؤال ایجاد کنید که شامل شرط فیلتر اول به‌طور مستقیم است (یعنی، در سؤال به جای استفاده از یک متغیر)، سپس شرط فیلتر دوم را اضافه کنید. اگر مجموعه نتیجه تغییر نمی‌کند، مشکل در منطق است نه در فیلترها.
 
-## Does the linked filter widget display a dropdown of filtered values?
+## آیا widget فیلتر مرتبط یک dropdown از مقادیر فیلتر شده نمایش می‌دهد؟
 
-**Root cause:** In order for a linked filter widget to display the correct subset of values as a dropdown, an explicit [foreign key][foreign-key-gloss] definition must be set up---linking the filters does not by itself tell Metabase about the relationship.
+**علت اصلی:** برای اینکه یک widget فیلتر مرتبط زیرمجموعه صحیح مقادیر را به‌عنوان یک dropdown نمایش دهد، باید یک تعریف [foreign key][foreign-key-gloss] صریح تنظیم شده باشد---لینک کردن فیلترها به خودی خود به متابیس دربارهٔ رابطه نمی‌گوید.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Check that Metabase's table metadata for your database includes the foreign key relationship.
+1. بررسی کنید که metadata جدول متابیس برای پایگاه داده شما شامل رابطه foreign key است.
 
 [filter-widget-gloss]: https://www.metabase.com/glossary/filter-widget
 [foreign-key-gloss]: https://www.metabase.com/glossary/foreign-key

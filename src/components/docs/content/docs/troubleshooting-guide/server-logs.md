@@ -1,31 +1,31 @@
 ---
-title: How to read the server logs
+title: نحوهٔ خواندن لاگ‌های سرور
 ---
 
-# How to read the server logs
+# نحوهٔ خواندن لاگ‌های سرور
 
-Here's an example log from running a query:
+در اینجا یک مثال لاگ از اجرای یک کوئری:
 
 ```
 2021-07-07 15:53:18,560 DEBUG middleware.log :: POST /api/dataset 202 [ASYNC: completed] 46.9 ms (17 DB calls) App DB connections: 1/10 Jetty threads: 3/50 (4 idle, 0 queued) (72 total active threads) Queries in flight: 0 (0 queued); h2 DB 4 connections: 0/1 (0 threads blocked)
 ```
 
-Let's unpack the log:
+بیایید لاگ را باز کنیم:
 
-- **Time of log:** `2021-07-07 15:53:18,560`.
-- **Log level:** `DEBUG`. There are different types of log levels. To learn more, check out [Metabase logs][log-level].
-- **Namespace:**. `middleware.log`. You can tweak your logging level to get more or less information from this namespace.
-- **Method:** `POST`. The HTTP method verb, like POST, PUT, GET, DELETE.
-- **Path:** `/api/dataset`. The handling URL. Note that URL parameters aren't included, which can make debugging certain issues a little tricky.
-- **Code:** `202`. The HTTP status code.
-- **ASYNC:** `[ASYNC: completed]`. Whether Metabase could deliver the results to the browser. If Metabase couldn't deliver the results, for example if someone starts a query and closes their browser before the query finishes, the ASYNC status will say "cancelled".
-- **Response time:** `46.9 ms`. The time Metabase takes to handle the request (from when Metabase receives the request until it's returned results back to the browser).
-- **Database calls:** `(17 DB calls)`. The number of query statements used, which in addition to calls to the queried data source(s), includes calls to the Metabase application database.
-- **Application database connections:** `App DB connections: 1/10`. The number of active connections, and the available pool of connections.
-- **Jetty threads:** `Jetty threads: 3/50 (4 idle, 0 queued)`. List the number of active threads, and the total pool of threads available. The `(4 idle, 0 queued)` are the spare hot threads, and the number of threads queued. If you find you're maxing out the number threads in your pool, check out [Metabase at scale][scale].
-- **Java threads:** `(72 total active threads)`. The total number of threads Metabase is using.
-- **Queries in flight:** `Queries in flight: 0 (0 queued)`. The number of active and queued queries across all database sources connected to Metabase. We recommend checking the **Database info** below for troubleshooting issues with the database related to the request.
-- **Database info**:`h2 DB 4 connections: 0/1 (0 threads blocked)`. Shows database type, database ID, connections active/pool (and queue). This info is specific to the database related to the request (in this case a `POST` request), and not to the overall queries in flight.
+- **زمان لاگ:** `2021-07-07 15:53:18,560`.
+- **سطح لاگ:** `DEBUG`. انواع مختلفی از سطوح لاگ وجود دارد. برای یادگیری بیشتر، [لاگ‌های متابیس][log-level] را بررسی کنید.
+- **Namespace:**. `middleware.log`. می‌توانید سطح logging خود را تنظیم کنید تا اطلاعات بیشتر یا کمتر از این namespace دریافت کنید.
+- **Method:** `POST`. فعل HTTP method، مثل POST، PUT، GET، DELETE.
+- **Path:** `/api/dataset`. URL handling. توجه داشته باشید که پارامترهای URL شامل نمی‌شوند، که می‌تواند عیب‌یابی مشکلات خاص را کمی مشکل کند.
+- **Code:** `202`. کد وضعیت HTTP.
+- **ASYNC:** `[ASYNC: completed]`. اینکه آیا متابیس می‌تواند نتایج را به مرورگر تحویل دهد. اگر متابیس نمی‌توانست نتایج را تحویل دهد، مثلاً اگر کسی یک کوئری شروع کند و مرورگر خود را قبل از تمام شدن کوئری ببندد، وضعیت ASYNC "cancelled" می‌گوید.
+- **زمان پاسخ:** `46.9 ms`. زمانی که متابیس برای handling درخواست می‌گیرد (از زمانی که متابیس درخواست را دریافت می‌کند تا زمانی که نتایج را به مرورگر برمی‌گرداند).
+- **فراخوانی‌های پایگاه داده:** `(17 DB calls)`. تعداد statementهای کوئری استفاده شده، که علاوه بر فراخوانی‌ها به منبع(های) داده کوئری شده، شامل فراخوانی‌ها به پایگاه داده اپلیکیشن متابیس می‌شود.
+- **اتصال‌های پایگاه داده اپلیکیشن:** `App DB connections: 1/10`. تعداد اتصالات فعال، و pool اتصالات در دسترس.
+- **threadهای Jetty:** `Jetty threads: 3/50 (4 idle, 0 queued)`. تعداد threadهای فعال، و pool کل threadهای در دسترس را فهرست می‌کند. `(4 idle, 0 queued)` threadهای hot اضافی، و تعداد threadهای صف‌بندی شده هستند. اگر می‌بینید که تعداد threadها در pool خود را max می‌کنید، [متابیس در مقیاس][scale] را بررسی کنید.
+- **threadهای Java:** `(72 total active threads)`. تعداد کل threadهایی که متابیس استفاده می‌کند.
+- **کوئری‌های در حال پرواز:** `Queries in flight: 0 (0 queued)`. تعداد کوئری‌های فعال و صف‌بندی شده در همه منابع پایگاه داده متصل به متابیس. توصیه می‌کنیم **Database info** زیر را برای عیب‌یابی مشکلات مرتبط با پایگاه داده با درخواست بررسی کنید.
+- **اطلاعات پایگاه داده**:`h2 DB 4 connections: 0/1 (0 threads blocked)`. نوع پایگاه داده، ID پایگاه داده، اتصالات فعال/pool (و صف) را نشان می‌دهد. این اطلاعات خاص به پایگاه داده مرتبط با درخواست (در این مورد یک درخواست `POST`) است، و نه به کوئری‌های کلی در حال پرواز.
 
 [log-level]: ../configuring-metabase/log-configuration.md
 [scale]: https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/metabase-at-scale

@@ -1,47 +1,47 @@
 ---
-title: Metabase isn't sending email
+title: متابیس ایمیل ارسال نمی‌کند
 ---
 
-# Metabase isn't sending email
+# متابیس ایمیل ارسال نمی‌کند
 
-You have told Metabase to send email notifications, but:
+به متابیس گفته‌اید که اعلان‌های ایمیل ارسال کند، اما:
 
-- the notifications aren't arriving.
+- اعلان‌ها نمی‌رسند.
 
-Before any other troubleshooting, try sending a test email to isolate the problem.
+قبل از هر عیب‌یابی دیگری، سعی کنید یک ایمیل تست ارسال کنید تا مشکل را جدا کنید.
 
-## Can you successfully send a test email?
+## آیا می‌توانید با موفقیت یک ایمیل تست ارسال کنید؟
 
-**Root cause:** The host, port, email address, or password may have been set up incorrectly, or the email server's host and port have been set up incorrectly.
+**علت اصلی:** host، port، آدرس ایمیل، یا رمز عبور ممکن است به‌اشتباه تنظیم شده باشند، یا host و port سرور ایمیل به‌اشتباه تنظیم شده باشند.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Navigate to the **Admin Panel** and click **Email** in the left sidebar.
-2. Confirm that your host, port, email address, and password are entered correctly. If they are, click **Save changes**. If your changes have successfully saved, you'll see an option to **Send test email**.
-3. Click **Send test email**. The test email will go the address associated with your Metabase account.
-4. Verify that the email is delivered to your account.
-5. If the message is not sent or an error message is displayed in Metabase, try to use the same account credentials in another email program and see if they work. See the logs for more detailed error by navigating to **Tools** and click **Logs** in the left sidebar.
+1. به **پنل Admin** بروید و **Email** را در نوار کناری چپ کلیک کنید.
+2. تأیید کنید که host، port، آدرس ایمیل، و رمز عبور شما به‌درستی وارد شده‌اند. اگر هستند، روی **Save changes** کلیک کنید. اگر تغییرات شما با موفقیت ذخیره شده‌اند، یک گزینه برای **Send test email** می‌بینید.
+3. روی **Send test email** کلیک کنید. ایمیل تست به آدرس مرتبط با حساب متابیس شما ارسال می‌شود.
+4. تأیید کنید که ایمیل به حساب شما تحویل داده شده است.
+5. اگر پیام ارسال نشد یا یک پیام خطا در متابیس نمایش داده شد، سعی کنید از همان اعتبارنامه حساب در یک برنامه ایمیل دیگر استفاده کنید و ببینید آیا کار می‌کنند. برای خطای جزئی‌تر به لاگ‌ها مراجعه کنید با رفتن به **Tools** و کلیک روی **Logs** در نوار کناری چپ.
 
-## Is the mail server sending the message?
+## آیا سرور ایمیل پیام را ارسال می‌کند؟
 
-**Root cause:** Some email delivery services have specific rules regarding valid "from" addresses, or have test modes that restrict delivery.
+**علت اصلی:** برخی سرویس‌های تحویل ایمیل قوانین خاصی دربارهٔ آدرس‌های "from" معتبر دارند، یا حالت‌های تستی دارند که تحویل را محدود می‌کنند.
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Check that your delivery service allows you to send email to the domain you're trying to get email sent to. (Exactly how to do this depends on the delivery service you're connecting to.)
-2. Make sure you've whitelisted the "from" address that you're using for Metabase.
-3. Check the mail server's logs for any error messages.
-4. If you have access to your email delivery service's outbound queue or a dashboard, check that for errors as well.
+1. بررسی کنید که سرویس تحویل شما به شما امکان ارسال ایمیل به دامنه‌ای که سعی می‌کنید ایمیل به آن ارسال شود را می‌دهد. (دقیقاً نحوهٔ انجام این کار به سرویس تحویلی که به آن متصل می‌شوید بستگی دارد.)
+2. مطمئن شوید که آدرس "from" که برای متابیس استفاده می‌کنید را whitelist کرده‌اید.
+3. لاگ‌های سرور ایمیل را برای هر پیام خطایی بررسی کنید.
+4. اگر به صف خروجی یا داشبورد سرویس تحویل ایمیل خود دسترسی دارید، آن را نیز برای خطاها بررسی کنید.
 
-## Is the mail being sent but not arriving?
+## آیا ایمیل ارسال می‌شود اما نمی‌رسد؟
 
-**Root cause:** The message is being sent correctly, but isn't being received (at least, not where you expect it to be).
+**علت اصلی:** پیام به‌درستی ارسال می‌شود، اما دریافت نمی‌شود (حداقل، نه جایی که انتظار دارید).
 
-**Steps to take:**
+**مراحل انجام:**
 
-1. Check whether email sent to other accounts is arriving, e.g., are colleagues receiving their notifications?
-2. If so, check your spam folder, any forwarding rules you have set up, etc.
-3. Check whether you're using the same email provider as the people who are receiving their messages. If not, the problem might be with deliverability rules---look into signing your emails with [DomainKeys Identified Mail][dkim] (DKIM).
+1. بررسی کنید که آیا ایمیل ارسال شده به حساب‌های دیگر می‌رسد، مثلاً آیا همکاران اعلان‌های خود را دریافت می‌کنند؟
+2. اگر بله، پوشه spam خود، هر قانون forwarding که تنظیم کرده‌اید، و غیره را بررسی کنید.
+3. بررسی کنید که آیا از همان ارائه‌دهنده ایمیل استفاده می‌کنید که افرادی که پیام‌های خود را دریافت می‌کنند استفاده می‌کنند. اگر نه، مشکل ممکن است با قوانین deliverability باشد---به امضای ایمیل‌های خود با [DomainKeys Identified Mail][dkim] (DKIM) نگاه کنید.
 
 [bugs]: ./bugs.md
 [dkim]: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail

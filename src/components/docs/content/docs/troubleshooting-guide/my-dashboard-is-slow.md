@@ -1,77 +1,77 @@
 ---
-title: My dashboard is slow
+title: داشبورد من کند است
 ---
 
-# My dashboard is slow
+# داشبورد من کند است
 
-First, you'll want to make sure your browser is on friendly terms with Metabase:
+ابتدا، می‌خواهید مطمئن شوید که مرورگر شما با متابیس در شرایط دوستانه است:
 
-- Clear your browser cache and disable all extensions before refreshing the page, or
-- Try loading the dashboard in a private/incognito session.
+- cache مرورگر خود را پاک کنید و همه extensionها را قبل از refresh کردن صفحه غیرفعال کنید، یا
+- سعی کنید داشبورد را در یک نشست private/incognito بارگذاری کنید.
 
-## Dashboard has over 10 cards
+## داشبورد بیش از 10 کارت دارد
 
-1. Create a new dashboard for each group of cards that are related to the same time period or segment.
-   - For example, create new dashboards for weekly vs. monthly metrics, or new vs. returning customers.
-2. Move your cards to the new dashboard(s) until each dashboard has 10 or fewer cards.
-3. Use [custom destinations](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/dashboards/custom-destinations) to link related cards on different dashboards.
+1. یک داشبورد جدید برای هر گروه از کارت‌هایی که به همان دوره زمانی یا segment مرتبط هستند ایجاد کنید.
+   - به‌عنوان مثال، داشبوردهای جدید برای متریک‌های هفتگی در مقابل ماهانه، یا مشتریان جدید در مقابل بازگشتی ایجاد کنید.
+2. کارت‌های خود را به داشبورد(های) جدید منتقل کنید تا هر داشبورد 10 کارت یا کمتر داشته باشد.
+3. از [مقصدهای سفارشی](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/dashboards/custom-destinations) برای لینک کردن کارت‌های مرتبط در داشبوردهای متفاوت استفاده کنید.
 
-**Explanation**
+**توضیح**
 
-A dashboard with 50 cards is almost always going to be slower than 5 dashboards with 10 cards. Metabase displays a dashboard by refreshing all of the questions on it (that is, re-executing all of the queries against your database). Your data warehouse may try to run these queries at the same time to return the results faster, however, these queries can compete with each other and slow things down (like having too many programs open on your computer at once).
+یک داشبورد با 50 کارت تقریباً همیشه کندتر از 5 داشبورد با 10 کارت خواهد بود. متابیس یک داشبورد را با refresh کردن همه سؤال‌های روی آن نمایش می‌دهد (یعنی، اجرای مجدد همه کوئری‌ها علیه پایگاه داده شما). data warehouse شما ممکن است سعی کند این کوئری‌ها را به‌طور همزمان اجرا کند تا نتایج را سریع‌تر برگرداند، با این حال، این کوئری‌ها می‌توانند با یکدیگر رقابت کنند و همه چیز را کند کنند (مثل داشتن برنامه‌های زیادی که به‌طور همزمان روی کامپیوتر شما باز هستند).
 
-Aside from running faster, a small and focused dashboard is also easier for people to understand without getting overwhelmed. For more tips, check out our article on [BI dashboard best practices](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/dashboards/bi-dashboard-best-practices).
+علاوه بر اجرای سریع‌تر، یک داشبورد کوچک و متمرکز همچنین برای افراد آسان‌تر است تا بدون غرق شدن درک کنند. برای نکات بیشتر، مقاله ما دربارهٔ [بهترین روش‌های داشبورد BI](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/dashboards/bi-dashboard-best-practices) را بررسی کنید.
 
-## Dashboard used by many people at the same time
+## داشبورد توسط افراد زیادی به‌طور همزمان استفاده می‌شود
 
-1. Optional: use Metabase's [Usage analytics](../usage-and-performance-tools/usage-analytics.md) to look at your Metabase usage stats\*.
-2. Set up [caching](../configuring-metabase/caching.md) for the questions on your popular dashboard.
-3. Run the dashboard during off-hours so that people can load the cached results in seconds instead of executing a fresh query to your database.
+1. اختیاری: از [تحلیل استفاده](../usage-and-performance-tools/usage-analytics.md) متابیس برای نگاه کردن به آمار استفاده متابیس خود استفاده کنید\*.
+2. [caching](../configuring-metabase/caching.md) را برای سؤال‌های روی داشبورد محبوب خود تنظیم کنید.
+3. داشبورد را در ساعات غیرکاری اجرا کنید تا افراد بتوانند نتایج cache شده را در ثانیه‌ها به جای اجرای یک کوئری تازه به پایگاه داده شما بارگذاری کنند.
 
-\* Available on Pro and Enterprise plans.
+\* در پلن‌های Pro و Enterprise در دسترس است.
 
-**Explanation**
+**توضیح**
 
-If you have a dashboard that many people check around the same time (e.g., at the start of the work day), you may end up with queued queries or saturated database connections. Caching allows you to prepare for peak traffic by running those slow queries once, ahead of time, so that the results are ready to go.
+اگر یک داشبورد دارید که افراد زیادی تقریباً در همان زمان بررسی می‌کنند (مثلاً در شروع روز کاری)، ممکن است با کوئری‌های صف‌بندی شده یا اتصالات پایگاه داده اشباع شده مواجه شوید. Caching به شما امکان می‌دهد برای ترافیک peak با اجرای آن کوئری‌های کند یک بار، از قبل، آماده شوید تا نتایج آماده باشند.
 
-Caching takes less effort because it doesn't involve any changes to your schemas or databases. If you're ready to invest more resources into the root cause of dashboard performance issues, check out this list of common [schema and database optimizations](https://metabase.com/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster#organize-data-to-anticipate-common-questions).
+Caching تلاش کمتری می‌طلبد چون شامل هیچ تغییری در schemaها یا پایگاه‌داده‌های شما نمی‌شود. اگر آماده سرمایه‌گذاری منابع بیشتر در علت اصلی مشکلات عملکرد داشبورد هستید، این لیست از [بهینه‌سازی‌های schema و پایگاه داده رایج](https://metabase.com/learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster#organize-data-to-anticipate-common-questions) را بررسی کنید.
 
-## Embedded dashboard is slow compared to original dashboard
+## داشبورد جاسازی‌شده کندتر از داشبورد اصلی است
 
-1. To speed up the embedded dashboard, set up a [locked parameter to pre-filter your data](../embedding/static-embedding-parameters.md#restricting-data-in-a-static-embed-with-locked-parameters).
+1. برای سرعت بخشیدن به داشبورد جاسازی‌شده، یک [پارامتر قفل شده برای pre-filter کردن داده خود](../embedding/static-embedding-parameters.md#restricting-data-in-a-static-embed-with-locked-parameters) تنظیم کنید.
 
-**Explanation**
+**توضیح**
 
-One of the easiest ways to make a question or dashboard run faster is to work with a smaller dataset. Your Metabase admin can apply automatic data limitations using things like [SSO](../people-and-groups/start.md#authentication), [data permissions](../permissions/data.md), and [row and column security](../permissions/row-and-column-security.md).
+یکی از آسان‌ترین راه‌ها برای سریع‌تر کردن یک سؤال یا داشبورد کار با یک dataset کوچکتر است. ادمین متابیس شما می‌تواند محدودیت‌های داده خودکار با استفاده از چیزهایی مثل [SSO](../people-and-groups/start.md#authentication)، [مجوزهای داده](../permissions/data.md)، و [امنیت ردیف و ستون](../permissions/row-and-column-security.md) اعمال کند.
 
-When someone loads a question or a dashboard in a static embed, however, that question or dashboard will query the full dataset (rather than a smaller dataset limited by permissions). Static, [signed embeds](../embedding/static-embedding.md) don't require people to be logged in, and unauthenticated people viewing the signed embed won't be subject to the permissions and data restrictions set up by your admin.
+وقتی کسی یک سؤال یا یک داشبورد را در یک embed استاتیک بارگذاری می‌کند، با این حال، آن سؤال یا داشبورد dataset کامل را کوئری می‌کند (به جای یک dataset کوچکتر محدود شده توسط مجوزها). embedهای استاتیک، [امضا شده](../embedding/static-embedding.md) نیاز به ورود افراد ندارند، و افراد غیراحراز هویت شده که embed امضا شده را مشاهده می‌کنند مشمول مجوزها و محدودیت‌های داده تنظیم شده توسط ادمین شما نخواهند شد.
 
-## Dashboard is slow compared to similar dashboards
+## داشبورد کندتر از داشبوردهای مشابه است
 
-1. Remove fields (columns) that you don't need in the final result.
-2. Add a [filter](../questions/query-builder/filters.md) to reduce the amount of data being queried. For example:
-   - Narrow down the time frame to the reporting period that you care about.
-   - Exclude invalid records, such as: blanks, nulls, or rows with values like "cancelled", "expired", "invalid", and so on.
-3. Remove [joins](../questions/query-builder/join.md) to tables that aren't being used.
-4. If you're aggregating data from the query builder, ask your database admin if there's a pre-aggregated [view](https://www.metabase.com/glossary/view) that you can use instead.
+1. فیلدها (ستون‌ها) که در نتیجه نهایی نیاز ندارید را حذف کنید.
+2. یک [فیلتر](../questions/query-builder/filters.md) اضافه کنید تا مقدار داده کوئری شده را کاهش دهید. به‌عنوان مثال:
+   - بازه زمانی را به دوره گزارش‌دهی که به آن اهمیت می‌دهید محدود کنید.
+   - رکوردهای نامعتبر را حذف کنید، مثل: خالی‌ها، nullها، یا ردیف‌هایی با مقادیری مثل "cancelled"، "expired"، "invalid"، و غیره.
+3. [joinها](../questions/query-builder/join.md) به جداولی که استفاده نمی‌شوند را حذف کنید.
+4. اگر داده را از query builder aggregate می‌کنید، از ادمین پایگاه داده خود بپرسید که آیا یک [view](https://www.metabase.com/glossary/view) pre-aggregated وجود دارد که می‌توانید به جای آن استفاده کنید.
 
-**Explanation**
+**توضیح**
 
-When you update your question to use a minimal number of rows or columns (or switch your question to use a smaller table, such as a summary table) your database can spend less time scanning those records to return your results. Narrowing the scope of your question is especially important to think about if you're starting from someone else's saved question or model, because you might not need all of the data that the original creator decided to include.
+وقتی سؤال خود را به‌روزرسانی می‌کنید تا از حداقل تعداد ردیف یا ستون استفاده کند (یا سؤال خود را تغییر می‌دهید تا از یک جدول کوچکتر، مثل یک جدول خلاصه استفاده کند) پایگاه داده شما می‌تواند زمان کمتری برای scan کردن آن رکوردها برای برگرداندن نتایج شما صرف کند. محدود کردن دامنه سؤال شما به‌طور خاص مهم است که در نظر بگیرید اگر از سؤال ذخیره‌شده یا مدل شخص دیگری شروع می‌کنید، چون ممکن است به همه داده‌ای که سازنده اصلی تصمیم گرفت شامل شود نیاز نداشته باشید.
 
-If all of your dashboards are slow, you might be limited by the performance of a particular data source. In that case, we recommend teaming up with your database admin to [Troubleshoot database performance](./db-performance.md).
+اگر همه داشبوردهای شما کند هستند، ممکن است توسط عملکرد یک منبع داده خاص محدود شده باشید. در آن مورد، توصیه می‌کنیم با ادمین پایگاه داده خود همکاری کنید تا [عملکرد پایگاه داده را عیب‌یابی کنید](./db-performance.md).
 
-## Related problems
+## مشکلات مرتبط
 
-- [Error message: your question took too long](./timeout.md).
-- [Questions that use numbers, dates, or times are slower than other questions](./db-performance.md#questions-that-use-number-date-or-timestamp-columns).
-- [I can't save my question or dashboard](./proxies.md).
-- [I can't view or edit a question or dashboard](./cant-view-or-edit.md).
-- [My visualizations are wrong](./visualization.md).
+- [پیام خطا: سؤال شما خیلی طول کشید](./timeout.md).
+- [سؤال‌هایی که از اعداد، تاریخ‌ها، یا زمان‌ها استفاده می‌کنند کندتر از سؤال‌های دیگر هستند](./db-performance.md#questions-that-use-number-date-or-timestamp-columns).
+- [نمی‌توانم سؤال یا داشبورد خود را ذخیره کنم](./proxies.md).
+- [نمی‌توانم یک سؤال یا داشبورد را مشاهده یا ویرایش کنم](./cant-view-or-edit.md).
+- [تجسم‌های من اشتباه هستند](./visualization.md).
 
-## Are you still stuck?
+## آیا هنوز گیر کرده‌اید؟
 
-If you can’t solve your problem using the troubleshooting guides:
+اگر نمی‌توانید مشکل خود را با استفاده از راهنماهای عیب‌یابی حل کنید:
 
-- Search or ask the [Metabase community](https://discourse.metabase.com/).
-- Search for [known bugs or limitations](./known-issues.md).
+- در [انجمن متابیس](https://discourse.metabase.com/) جستجو کنید یا بپرسید.
+- برای [باگ‌ها یا محدودیت‌های شناخته شده](./known-issues.md) جستجو کنید.
