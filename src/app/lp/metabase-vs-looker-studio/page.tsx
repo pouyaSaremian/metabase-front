@@ -411,7 +411,6 @@ export default function MetabaseVsLookerStudioPage() {
           text="این اولین بار در سال‌های کار من در داده بود که کاربران کسب و کار غیرفنی خودشان داشبوردها و تجزیه و تحلیل را در پلتفرم BI ما ایجاد کردند، همه به لطف قابلیت‌های کاربرپسند و بصری Metabase برای کاوش داده و داشبوردسازی."
           author="Dobo Radichkov"
           company="Chief Data Officer, Holland & Barrett"
-          imageSrc="/images/reviews/profiles/dave-holmes-kinsella.jpeg"
         />
         <FAQSection items={faqItems} title="سوالات پرتکرار" description="" />
         <CTACardsSection

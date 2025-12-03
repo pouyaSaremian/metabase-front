@@ -418,6 +418,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metabase/embedding-sdk-react@npm:^0.57.0":
+  version: 0.57.0
+  resolution: "@metabase/embedding-sdk-react@npm:0.57.0"
+  peerDependencies:
+    react: ">=18 <=19"
+    react-dom: ">=18 <=19"
+  bin:
+    embedding-sdk-react: dist/cli.js
+  checksum: 10c0/66201e7af6d706a9d2f0140f896c202e657c030f40dfe5246a173719b6334468053e24e38eecba64f9dff382aa07a7095ef69bb2240922bd0d8d143e30c17e9d
+  languageName: node
+  linkType: hard
+
 "@napi-rs/wasm-runtime@npm:^0.2.11, @napi-rs/wasm-runtime@npm:^0.2.12":
   version: 0.2.12
   resolution: "@napi-rs/wasm-runtime@npm:0.2.12"
@@ -3036,6 +3048,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"marked@npm:^12.0.2":
+  version: 12.0.2
+  resolution: "marked@npm:12.0.2"
+  bin:
+    marked: bin/marked.js
+  checksum: 10c0/45ae2e1e3f06b30a5b5f64efc6cde9830c81d1d024fd7668772a3217f1bc0f326e66a6b8970482d9783edf1f581fecac7023a7fa160f2c14dbcc16e064b4eafb
+  languageName: node
+  linkType: hard
+
 "math-intrinsics@npm:^1.1.0":
   version: 1.1.0
   resolution: "math-intrinsics@npm:1.1.0"
@@ -3055,6 +3076,7 @@ __metadata:
   resolution: "metabase-landing@workspace:."
   dependencies:
     "@eslint/eslintrc": "npm:^3"
+    "@metabase/embedding-sdk-react": "npm:^0.57.0"
     "@tailwindcss/postcss": "npm:^4"
     "@types/node": "npm:^20"
     "@types/react": "npm:^19"
@@ -3065,6 +3087,7 @@ __metadata:
     eslint-config-next: "npm:15.5.2"
     lottie-react: "npm:^2.4.1"
     lucide-react: "npm:^0.553.0"
+    marked: "npm:^12.0.2"
     next: "npm:15.5.2"
     next-seo: "npm:^6.8.0"
     react: "npm:19.1.0"

@@ -405,7 +405,6 @@ export default function MetabaseVsLookerPage() {
           text="Metabase تقریباً یک سوم هزینه ابزار BI قبلی ما (Looker) را برای ما هزینه می‌کند در حالی که همزمان تجسم‌های بهتر و استفاده آسان‌تر ارائه می‌دهد."
           author="Tijs Bronnenberg"
           company="Business Analyst at Floryn"
-          imageSrc="/images/reviews/profiles/tijs-bronnenberg.jpeg"
         />
         <FAQSection items={faqItems} title="سوالات پرتکرار" description="" />
         <CTACardsSection

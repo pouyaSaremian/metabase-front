@@ -1,32 +1,56 @@
-import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { DocsContent } from "@/content/docs/DocsContent";
+import { getAllDocsSlugs, getDocBySlug } from "@/content/docs/markdown";
+
+interface DocsPageParams {
+  slug: string[];
+}
 
 interface DocsPageProps {
-  params: Promise<{ slug: string[] }>;
+  params: Promise<DocsPageParams>;
 }
+
+export const dynamic = "error";
+
+export const generateStaticParams = async (): Promise<DocsPageParams[]> => {
+  const slugs = await getAllDocsSlugs();
+  return slugs.map((slug) => ({ slug }));
+};
 
 export async function generateMetadata({
   params,
 }: DocsPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const path = slug ? slug.join("/") : "";
-  const title = slug
-    ? slug.map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join(" - ")
-    : "مستندات";
+  const doc = await getDocBySlug(slug);
+
+  if (!doc) {
+    return {
+      title: "صفحه یافت نشد | مستندات متابیس",
+    };
+  }
+
+  const path = doc.slug.join("/");
+  const baseTitle = doc.metadata.title || "مستندات";
+  const title = `${baseTitle} | مستندات متابیس`;
+
+  const description =
+    doc.metadata.description ||
+    `مستندات متابیس - ${baseTitle}. راهنمای کامل و جامع برای استفاده از ویژگی‌های متابیس`;
 
   return {
-    title: `${title} | مستندات متابیس`,
-    description: `مستندات متابیس - ${title}. راهنمای کامل و جامع برای استفاده از ویژگی‌های متابیس`,
+    title,
+    description,
     keywords: [
       "مستندات متابیس",
       "Metabase",
-      title,
+      baseTitle,
       "راهنمای متابیس",
       "هوش تجاری",
     ],
     openGraph: {
-      title: `${title} | مستندات متابیس`,
-      description: `مستندات متابیس - ${title}`,
+      title,
+      description,
       type: "article",
       locale: "fa_IR",
     },
@@ -38,12 +62,14 @@ export async function generateMetadata({
 
 export default async function DocsSlugPage({ params }: DocsPageProps) {
   const { slug } = await params;
-  const path = slug ? slug.join("/") : "";
-  const title = slug
-    ? slug
-        .map((s) => s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, " "))
-        .join(" - ")
-    : "مستندات";
+  const doc = await getDocBySlug(slug);
+
+  if (!doc) {
+    notFound();
+  }
+
+  const path = doc.slug.join("/");
+  const title = doc.metadata.title || "مستندات";
 
   return (
     <>
@@ -54,19 +80,22 @@ export default async function DocsSlugPage({ params }: DocsPageProps) {
             "@context": "https://schema.org",
             "@type": "Article",
             headline: title,
-            description: `مستندات متابیس - ${title}`,
+            description:
+              doc.metadata.description || `مستندات متابیس - ${title}`,
             inLanguage: "fa-IR",
             author: {
               "@type": "Organization",
               name: "Metabase",
             },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `/docs/latest/${path}`,
+            },
           }),
         }}
       />
       <DocsContent>
-        <h1>{title}</h1>
-        <p>این صفحه در حال توسعه است. محتوای مستندات به زودی اضافه خواهد شد.</p>
-        <p className="text-sm text-gray-500">مسیر: {path || "/"}</p>
+        <div dangerouslySetInnerHTML={{ __html: doc.html }} />
       </DocsContent>
     </>
   );

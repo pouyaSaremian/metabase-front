@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import EmbeddedAnalyticsDemoHero from "@/components/embedded-analytics/EmbeddedAnalyticsDemoHero";
 import EmbeddedAnalyticsThreeCards from "@/components/embedded-analytics/EmbeddedAnalyticsThreeCards";
 import FeatureSection from "@/components/business-intelligence/FeatureSection";
-import FeatureSectionWithImage from "@/components/embedded-analytics/FeatureSectionWithImage";
+// import FeatureSectionWithImage from "@/components/embedded-analytics/FeatureSectionWithImage";
 import ComparisonTableSection from "@/components/embedded-analytics/ComparisonTableSection";
 import ReadyToGetStartedSection from "@/components/embedded-analytics/ReadyToGetStartedSection";
 import FAQSection from "@/components/FAQSection";
@@ -371,27 +371,9 @@ export default function EmbeddedAnalyticsDemoPage() {
       <div>
         <EmbeddedAnalyticsDemoHero />
         <EmbeddedAnalyticsThreeCards />
-        <FeatureSectionWithImage
-          title="راه‌حل تجزیه و تحلیل تعبیه شده که سریع برای نمونه‌سازی، سریع برای پیاده‌سازی، سریع برای تکرار است"
-          description="ثبت نام کنید، به منبع داده خود متصل شوید، و اولین تجسم‌ها و داشبوردهای خود را در branch خود در 5 دقیقه داشته باشید. یک تجربه تجزیه و تحلیل درجه یک را در مقابل مشتریان خود سریع دریافت کنید:"
-          items={[
-            {
-              text: "سریع‌تر از انتخاب یک کتابخانه نمودار راه‌اندازی کنید. اولین تجسم‌های خود را قبل از ناهار در production داشته باشید.",
-              bold: true,
-            },
-            {
-              text: "فراتر از iframe بروید. خودخدمات را با تعبیه تعاملی باز کنید. به کاربران اجازه دهید داده را به تنهایی با drill-through و breakouts بصری کاوش کنند.",
-              bold: true,
-            },
-            {
-              text: "نیاز به تغییر دارید؟ مشکلی نیست. به سرعت پرس‌وجوها را به‌روزرسانی کنید، رفتار کلیک سفارشی را تعریف کنید و بیشتر - همه در رابط Metabase.",
-              bold: true,
-            },
-          ]}
-          imageSrc="/images/landing-pages/embedded-analytics/embedded_analytics-embedding_example.jpg"
-          imageAlt="اسکرین‌شات از تجسم‌ها و فیلترهای Metabase تعبیه شده شامل شده در Incident.io"
-          reverse={false}
-        />
+        {/* FeatureSectionWithImage temporarily disabled because the component file
+        is missing. Uncomment the import and this block after adding
+        "@/components/embedded-analytics/FeatureSectionWithImage". */}
         <FeatureSection
           title="با همه چیزهایی که مشتریان شما برای تصمیم‌گیری مبتنی بر داده نیاز دارند همراه است"
           description="ما زمان صرف کرده‌ایم تا همه چیز را درست کنیم، بنابراین تیم شما مجبور نیست."

@@ -158,7 +158,7 @@ const ReviewsCarouselSection: React.FC = () => {
                 className="bg-white border border-metabase-border-light rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <p className="text-base text-metabase-text-primary mb-6 leading-relaxed">
-                  "{review.quote}"
+                  &ldquo;{review.quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0">

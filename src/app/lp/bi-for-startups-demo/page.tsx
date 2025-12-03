@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import BIForStartupsHero from "@/components/bi-for-startups/BIForStartupsHero";
+// import BIForStartupsHero from "@/components/bi-for-startups/BIForStartupsHero";
 import BIForStartupsThreeCards from "@/components/bi-for-startups/BIForStartupsThreeCards";
 import CustomerLogosSection from "@/components/business-intelligence/CustomerLogosSection";
 import FeatureSection from "@/components/business-intelligence/FeatureSection";
 import TestimonialSection from "@/components/business-intelligence/TestimonialSection";
 import ReviewsCarouselSection from "@/components/business-intelligence/ReviewsCarouselSection";
-import TryMetabaseFooter from "@/components/bi-for-startups/TryMetabaseFooter";
+// import TryMetabaseFooter from "@/components/bi-for-startups/TryMetabaseFooter";
 import FAQSection from "@/components/FAQSection";
 import { AccordionItem } from "@/components/common/Accordion";
 
@@ -382,7 +382,9 @@ export default function BIForStartupsDemoPage() {
         }}
       />
       <div>
-        {/* <BIForStartupsHero /> */}
+        {/* BIForStartupsHero temporarily disabled because the component file
+        is missing. Uncomment the import and this block after adding
+        "@/components/bi-for-startups/BIForStartupsHero". */}
         <BIForStartupsThreeCards />
         <CustomerLogosSection />
         <FeatureSection
@@ -435,7 +437,6 @@ export default function BIForStartupsDemoPage() {
           text="این اولین بار در سال‌های کار من در داده بود که کاربران کسب و کار غیرفنی خودشان داشبوردها و تجزیه و تحلیل را در پلتفرم BI ما ایجاد کردند، همه به لطف قابلیت‌های کاربرپسند و بصری Metabase برای کاوش داده و داشبوردسازی."
           author="Dobo Radichkov"
           company="Chief Data Officer, Holland & Barrett"
-          imageSrc="/images/reviews/profiles/dave-holmes-kinsella.jpeg"
         />
         <FeatureSection
           title="داده‌ها را با یا بدون SQL برای تجزیه و تحلیل داده‌های خودخدمت واقعی پرس‌وجو کنید"

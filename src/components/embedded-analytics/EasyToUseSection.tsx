@@ -7,7 +7,7 @@ import Link from "next/link";
 interface TabContent {
   id: string;
   title: string;
-  description: string;
+  description: string | React.ReactNode;
   testimonial?: {
     text: string;
     author: string;

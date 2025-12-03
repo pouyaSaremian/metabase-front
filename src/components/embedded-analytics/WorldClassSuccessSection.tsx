@@ -110,7 +110,7 @@ const WorldClassSuccessSection: React.FC = () => {
                 className="bg-white border border-metabase-border-light rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <p className="text-metabase-text-primary mb-6 leading-relaxed">
-                  "{review.quote}"
+                  &ldquo;{review.quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
