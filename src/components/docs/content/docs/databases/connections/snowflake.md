@@ -6,150 +6,150 @@ redirect_from:
 
 # Snowflake
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای اضافه کردن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-You can edit these settings at any time. Just remember to save your changes.
+می‌توانید هر زمان این تنظیمات را ویرایش کنید؛ فقط یادتان باشد تغییرات را ذخیره کنید.
 
 ## Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+می‌توانید یک connection string اینجا paste کنید تا فیلدهای باقی‌مانده به‌طور خودکار پر شوند.
 
 ## Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط کاربری متابیس.
 
-## Account or hostname
+## Account یا hostname
 
-You have the option of using an account name or hostname. Your hostname is your database's IP address or its domain name (e.g., database.example.com).
+می‌توانید از account name یا hostname استفاده کنید. hostname همان آدرس IP پایگاه‌داده یا نام دامنهٔ آن است (مثلاً `database.example.com`).
 
-If your URL includes your database's region, you can connect using an account name, otherwise connect using a hostname.
+اگر URL شما شامل region پایگاه‌داده‌تان باشد، می‌توانید با account name متصل شوید، در غیر این صورت با hostname متصل شوید.
 
 ### AWS
 
-Connect with an account name.
+اتصال با account name.
 
-Enter your Account identifier with the region that your Snowflake cluster is running on. E.g., `xxxxxxxxx.us-east-3.aws`. For example, if you're running Snowflake on AWS and your account URL is `https://az12345.ca-central-1.snowflakecomputing.com`:
+شناسهٔ حساب (Account identifier) را همراه با regionای که کلاستر Snowflake شما روی آن اجرا می‌شود وارد کنید، مثلاً `xxxxxxxxx.us-east-3.aws`. اگر Snowflake را روی AWS اجرا می‌کنید و URL حساب شما `https://az12345.ca-central-1.snowflakecomputing.com` است:
 
-- `<account_identifier>`: `az12345.ca-central-1`.
-- `<cloud_platform>`: `aws`.
+- `<account_identifier>`: مقدار `az12345.ca-central-1`
+- `<cloud_platform>`: مقدار `aws`
 
-You'd enter `az12345.ca-central-1.aws` as the account name in Metabase.
+باید در متابیس مقدار `az12345.ca-central-1.aws` را به‌عنوان account name وارد کنید.
 
-Not all regions require the cloud platform identifier. If you're in `us-west-2`, you would enter `az12345` as the account name. For the requirements per region, see [the official Snowflake's documentation](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region).
+همهٔ regionها به شناسهٔ پلتفرم ابری نیاز ندارند. اگر در `us-west-2` هستید، باید فقط `az12345` را به‌عنوان account name وارد کنید. برای نیازمندی‌های هر region، [مستندات رسمی Snowflake](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region) را ببینید.
 
 ### app.snowflake.com
 
-Connect with a host name.
+اتصال با host name.
 
-You can get your host name by going to Admin > Accounts. The Account name will be under Accounts. Click on the account you want to use, and click on the link icon to copy the host URL: that's your host name. In the image below, Metabot is discreetly covering sensitive info. The "Copy account URL" link on the right is what you're looking for:
+می‌توانید با رفتن به Admin > Accounts، host name را به‌دست بیاورید. Account name زیر بخش Accounts نمایش داده می‌شود. روی حساب مورد نظر کلیک کنید و روی آیکون لینک کلیک کنید تا host URL کپی شود؛ همان host name شما است. در تصویر زیر، Metabot بخش‌های حساس را پوشانده است. لینک «Copy account URL» در سمت راست چیزی است که باید دنبال آن باشید:
 
 ![Snowflake copy account URL](../images/snowflake-copy-account-url.png)
 
-Learn more about [Account Identifiers in Snowflake](https://docs.snowflake.com/en/user-guide/admin-account-identifier).
+برای اطلاعات بیشتر، [Account Identifiers in Snowflake](https://docs.snowflake.com/en/user-guide/admin-account-identifier) را ببینید.
 
 ## Username
 
-The database username for the account that you want to use to connect to your database. You can set up multiple connections to the same database using different user accounts to connect to the same database, each with different sets of [privileges](../users-roles-privileges.md).
+نام کاربری پایگاه‌داده برای اکانتی که می‌خواهید با آن به دیتابیس وصل شوید. می‌توانید چند اتصال مختلف به همان پایگاه‌داده بسازید که هرکدام از یک کاربر متفاوت با مجموعهٔ متفاوتی از [سطوح دسترسی (privileges)](../users-roles-privileges.md) استفاده می‌کنند.
 
-On your app.snowflake.com account page, you can find Users and roles under Admin > Users & Roles.
+در صفحهٔ app.snowflake.com، می‌توانید Users و roles را در مسیر Admin > Users & Roles پیدا کنید.
 
 ## Password
 
-The password for the username that you use to connect to the database.
+رمز عبوری که برای نام کاربری اتصال به پایگاه‌داده استفاده می‌کنید.
 
-## RSA private key (PEM)
+## کلید خصوصی RSA (فرمت PEM)
 
-Not required. You have the option of using a **Local file path** or an **Uploaded file path**. If you're on Metabase Cloud, you'll need to select **Uploaded file path** and upload your certificate.
+اجباری نیست. می‌توانید از **Local file path** یا **Uploaded file path** استفاده کنید. اگر روی Metabase Cloud هستید، باید **Uploaded file path** را انتخاب و گواهی خود را آپلود کنید.
 
 ## Warehouse
 
-Snowflake warehouse. If the user lacks a default warehouse, you'll need to enter the warehouse to connect to.
+warehouse در Snowflake. اگر کاربر warehouse پیش‌فرض نداشته باشد، باید نام warehouse را برای اتصال وارد کنید.
 
-On app.snowflake.com, you can find warehouses under Admin > Warehouses.
+در app.snowflake.com می‌توانید warehouseها را در مسیر Admin > Warehouses پیدا کنید.
 
-## Database name (case sensitive)
+## نام پایگاه‌داده (Database name - حساس به حروف)
 
-The name of the database you want to connect to in Snowflake. On app.snowflake.com you can find databases under Data > Databases.
+نام پایگاه‌داده‌ای که می‌خواهید در Snowflake به آن متصل شوید. در app.snowflake.com، دیتابیس‌ها زیر Data > Databases فهرست می‌شوند.
 
-## Schemas (optional)
+## Schemas (اختیاری)
 
-You can specify which schemas you want to sync and scan. If no schema is passed, then all schema available to that user and role will be listed as folders in Metabase.
+می‌توانید مشخص کنید کدام schemaها را می‌خواهید sync و scan کنید. اگر schemaای مشخص نکنید، همهٔ schemaهایی که برای آن user و role در دسترس هستند، به‌صورت پوشه در متابیس نمایش داده می‌شوند.
 
-Schema options include:
+گزینه‌های schema:
 
-- All
-- Only these...
-- All except...
+- All  
+- Only these...  
+- All except...  
 
-For the **Only these** and **All except** options, you can input a comma-separated list of values to tell Metabase which schemas you want to include (or exclude). For example:
+برای گزینه‌های **Only these** و **All except** می‌توانید یک فهرست جداشده با کاما وارد کنید تا به متابیس بگویید کدام schemaها را شامل (یا مستثنا) کند. مثلاً:
 
-```
+```text
 FOO,BAR,BAZ
 ```
 
-You can use the `*` wildcard to match multiple schemas.
+می‌توانید از wildcard `*` برای match کردن چند schema استفاده کنید.
 
-Let's say you have three schemas: FOO, BAR, and BAZ.
+فرض کنید سه schema دارید: `FOO`، `BAR` و `BAZ`:
 
-- If you have **Only these...** set, and enter the string `B*`, you'll sync with bar and baz.
-- If you have **All except...** set, and enter the string `B*`, you'll just sync foo.
+- اگر **Only these...** را انتخاب کنید و رشتهٔ `B*` را وارد کنید، `BAR` و `BAZ` sync می‌شوند.
+- اگر **All except...** را انتخاب کنید و رشتهٔ `B*` را وارد کنید، فقط `FOO` sync می‌شود.
 
-Note that only the `*` wildcard is supported; you can't use other special characters or regexes.
+توجه کنید که فقط wildcard `*` پشتیبانی می‌شود؛ نمی‌توانید از regex یا کاراکترهای ویژهٔ دیگر استفاده کنید.
 
-## Role (optional)
+## Role (اختیاری)
 
-> **WARNING:** Metabase gets _all the permissions_ combined from _every_ role you grant the user in Snowflake. Setting the 'Role' here just adds the role to the connection string to tell Snowflake which role to default to – it **won't restrict** access on its own. So **be careful which roles you assign to the connection user**: if down the line you grant that user broader roles in Snowflake, Metabase will automatically gets those new permissions, potentially showing data you didn't mean for it to see. If instead you want Metabase to issue `SET ROLE` commands before querying anything, check out [connection impersonation](../../permissions/impersonation.md).
+> **هشدار:** متابیس _مجموع تمام مجوزها_ را از _همهٔ role_هایی که به کاربر در Snowflake داده‌اید به ارث می‌برد. تنظیم «Role» در اینجا فقط آن role را به connection string اضافه می‌کند تا به Snowflake بگوید نقش پیش‌فرض چیست – این مقدار **به‌تنهایی دسترسی را محدود نمی‌کند**. پس **خیلی دقت کنید چه roleهایی به کاربر اتصال می‌دهید**؛ چون اگر بعداً نقش‌های گسترده‌تری به این کاربر بدهید، متابیس هم به‌طور خودکار آن مجوزها را دریافت می‌کند و ممکن است داده‌هایی را نشان دهد که قصدش را نداشته‌اید. اگر ترجیح می‌دهید متابیس قبل از اجرای هر پرس‌وجو، دستور `SET ROLE` صادر کند، [connection impersonation](../../permissions/impersonation.md) را ببینید.
 
-Specify a role to override the database user's default role. For example, if the database user `METABASE` has the roles:
+می‌توانید یک role مشخص کنید تا جایگزین role پیش‌فرض کاربر پایگاه‌داده شود. برای مثال، اگر کاربر پایگاه‌داده `METABASE` نقش‌های زیر را داشته باشد:
 
-- Default role `APPLICATION`.
-- Additional role `ANALYTICS`.
+- نقش پیش‌فرض `APPLICATION`
+- نقش اضافهٔ `ANALYTICS`
 
-You can enter `ANALYTICS` in the Role field to ensure that the `METABASE` user connects to Snowflake using the `ANALYTICS` role by default.
+می‌توانید در فیلد Role مقدار `ANALYTICS` را وارد کنید تا مطمئن شوید کاربر `METABASE` به‌طور پیش‌فرض با role `ANALYTICS` به Snowflake متصل می‌شود.
 
-## Use an SSH tunnel
+## استفاده از SSH tunnel
 
-See our [guide to SSH tunneling](../ssh-tunnel.md).
+[راهنمای SSH tunneling](../ssh-tunnel.md) را ببینید.
 
-## Additional JDBC connection string options
+## گزینه‌های اضافی JDBC connection string
 
-Some databases allow you to append options to the connection string that Metabase uses to connect to your database.
+برخی پایگاه‌داده‌ها اجازه می‌دهند گزینه‌های اضافی را به connection stringی که متابیس برای اتصال استفاده می‌کند اضافه کنید.
 
-## Re-run queries for simple explorations
+## اجرای دوبارهٔ پرس‌وجو برای اکتشاف ساده
 
-Turn this option **OFF** if people want to click **Run** (the play button) before applying any [Summarize](../../questions/query-builder/summarizing-and-grouping.md) or filter selections.
+اگر می‌خواهید کاربران قبل از اعمال هر [Summarize](../../questions/query-builder/summarizing-and-grouping.md) یا فیلتر، روی **Run** (دکمهٔ play) کلیک کنند، این گزینه را روی **OFF** قرار دهید.
 
-By default, Metabase will execute a query as soon as you choose an grouping option from the **Summarize** menu or a filter condition from the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through). If your database is slow, you may want to disable re-running to avoid loading data on each click.
+به‌طور پیش‌فرض، متابیس به محض انتخاب یک گزینهٔ گروه‌بندی از منوی **Summarize** یا یک شرط فیلتر از [منوی drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through)، پرس‌وجو را اجرا می‌کند. اگر پایگاه‌دادهٔ شما کند است، بهتر است اجرای خودکار را غیرفعال کنید تا با هر کلیک، کوئری جدید اجرا نشود.
 
-## Choose when syncs and scans happen
+## انتخاب زمان sync و scan
 
-See [syncs and scans](../sync-scan.md#choose-when-syncs-and-scans-happen).
+[sync و scan](../sync-scan.md#choose-when-syncs-and-scans-happen) را ببینید.
 
-### Periodically refingerprint tables
+### fingerprint دوره‌ای جدول‌ها
 
-> Periodic refingerprinting will increase the load on your database.
+> fingerprint دوره‌ای بار روی پایگاه‌دادهٔ شما را افزایش می‌دهد.
 
-Turn this option **ON** to scan a sample of values every time Metabase runs a [sync](../sync-scan.md#how-database-syncs-work).
+این گزینه را روی **ON** قرار دهید تا هر بار متابیس یک [sync](../sync-scan.md#how-database-syncs-work) اجرا می‌کند، یک نمونه از مقادیر را اسکن کند.
 
-A fingerprinting query examines the first 10,000 rows from each column and uses that data to guesstimate how many unique values each column has, what the minimum and maximum values are for numeric and timestamp columns, and so on. If you leave this option **OFF**, Metabase will only fingerprint your columns once during setup.
+پرس‌وجوی fingerprinting اولین ۱۰٬۰۰۰ ردیف هر ستون را بررسی می‌کند و بر اساس آن، تعداد مقادیر یکتا در هر ستون، و حداقل و حداکثر مقادیر ستون‌های عددی و زمانی و غیره را تخمین می‌زند. اگر این گزینه را روی **OFF** بگذارید، متابیس فقط یک‌بار و در زمان راه‌اندازی، برای ستون‌ها fingerprint می‌سازد.
 
-## Model features
+## امکانات مدل (Model features)
 
-There aren't (yet) any model features available for Snowflake.
+در حال حاضر هیچ قابلیت مدل خاصی برای Snowflake در دسترس نیست.
 
-## Database routing
+## مسیریابی پایگاه‌داده (Database routing)
 
-With database routing, an admin can build a question once using one database, and the question will run its query against a different database with the same schema depending on who is viewing the question.
+با Database routing، یک ادمین می‌تواند یک‌بار با استفاده از یک پایگاه‌داده سؤال بسازد و آن سؤال، بسته به اینکه چه کسی آن را می‌بیند، روی پایگاه‌داده دیگری با همان schema اجرا شود.
 
-See [Database routing](../../permissions/database-routing.md).
+[Database routing](../../permissions/database-routing.md) را ببینید.
 
-## Danger zone
+## بخش خطر (Danger zone)
 
-See [Danger zone](../danger-zone.md).
+[Danger zone](../danger-zone.md) را ببینید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Managing databases](../../databases/connecting.md)
-- [Metadata editing](../../data-modeling/metadata-editing.md)
-- [Models](../../data-modeling/models.md)
-- [Setting data access permissions](../../permissions/data.md)
+- [مدیریت پایگاه‌داده‌ها](../../databases/connecting.md)
+- [ویرایش متادیتا](../../data-modeling/metadata-editing.md)
+- [مدل‌ها](../../data-modeling/models.md)
+- [تنظیم مجوزهای دسترسی به داده](../../permissions/data.md)

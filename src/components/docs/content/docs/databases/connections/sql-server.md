@@ -4,113 +4,113 @@ title: SQL Server
 
 # SQL Server
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای اضافه کردن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-## Supported versions
+## نسخه‌های پشتیبانی‌شده
 
-Metabase supports the oldest supported version of SQL Server through the latest stable version. See [SQL Server end of support options](https://learn.microsoft.com/en-us/sql/sql-server/end-of-support/sql-server-end-of-support-overview).
+متابیس از قدیمی‌ترین نسخهٔ تحت پشتیبانی SQL Server تا آخرین نسخهٔ پایدار آن پشتیبانی می‌کند. [SQL Server end of support options](https://learn.microsoft.com/en-us/sql/sql-server/end-of-support/sql-server-end-of-support-overview) را ببینید.
 
 ## Settings
 
-You can edit these settings at any time. Just remember to save your changes.
+می‌توانید هر زمان این تنظیمات را ویرایش کنید؛ فقط یادتان باشد تغییرات را ذخیره کنید.
 
 ### Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+می‌توانید یک connection string اینجا paste کنید تا فیلدهای باقی‌مانده به‌طور خودکار پر شوند.
 
 ### Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط کاربری متابیس.
 
 ### Host
 
-Your database's IP address, or its domain name (e.g., esc.mydatabase.com).
+آدرس IP پایگاه‌داده یا نام دامنهٔ آن (مثلاً `esc.mydatabase.com`).
 
 ### Port
 
-The database port. E.g., 1433. To use Dynamic Ports, leave this field empty.
+پورت پایگاه‌داده؛ مثلاً `1433`. برای استفاده از Dynamic Ports این فیلد را خالی بگذارید.
 
 ### Database name
 
-The name of the database you're connecting to.
+نام پایگاه‌داده‌ای که به آن متصل می‌شوید.
 
 ### Database instance name
 
-If you're running multiple databases on the same host, you can include the instance name here.
+اگر چند پایگاه‌داده روی یک host اجرا می‌کنید، می‌توانید نام instance را اینجا وارد کنید.
 
 ### Username
 
-The database username for the account that you want to use to connect to your database. You can set up multiple connections to the same database using different user accounts to connect to the same database, each with different sets of [privileges](../users-roles-privileges.md).
+نام کاربری پایگاه‌داده برای اکانتی که می‌خواهید با آن به دیتابیس وصل شوید. می‌توانید چند اتصال مختلف به همان پایگاه‌داده بسازید که هرکدام از یک کاربر متفاوت با مجموعهٔ متفاوتی از [سطوح دسترسی (privileges)](../users-roles-privileges.md) استفاده می‌کنند.
 
 ### Password
 
-The password for the username that you use to connect to the database.
+رمز عبوری که برای نام کاربری اتصال به پایگاه‌داده استفاده می‌کنید.
 
 ### Use a secure connection (SSL)
 
-Metabase automatically tries to connect to databases with SSL first, then without if that doesn't work. If it's possible to connect to your database with an SSL connection, Metabase will make that the default setting for your database. If you prefer to connect without this layer of security, you can always change this setting later, but we recommend keeping SSL turned on to keep your data secure.
+متابیس به‌صورت خودکار ابتدا تلاش می‌کند با SSL به پایگاه‌داده متصل شود و اگر موفق نشد، بدون SSL تلاش می‌کند. اگر اتصال با SSL امکان‌پذیر باشد، متابیس آن را به‌عنوان پیش‌فرض برای این پایگاه‌داده تنظیم می‌کند. اگر ترجیح می‌دهید بدون این لایه امنیتی متصل شوید، بعداً می‌توانید این تنظیم را تغییر دهید، اما برای امنیت داده‌ها پیشنهاد می‌کنیم SSL روشن بماند.
 
 ### Use an SSH tunnel
 
-See our [guide to SSH tunneling](../ssh-tunnel.md).
+[راهنمای SSH tunneling](../ssh-tunnel.md) را ببینید.
 
 ### Additional JDBC connection string options
 
-You can append options to the connection string that Metabase uses to connect to your database.
+می‌توانید گزینه‌های اضافی را به connection stringی که متابیس برای اتصال به پایگاه‌داده استفاده می‌کند اضافه کنید.
 
 ### Re-run queries for simple explorations
 
-Turn this option **OFF** if people want to click **Run** (the play button) before applying any [Summarize](../../questions/query-builder/summarizing-and-grouping.md) or filter selections.
+اگر می‌خواهید کاربران قبل از اعمال هر [Summarize](../../questions/query-builder/summarizing-and-grouping.md) یا فیلتر، روی **Run** (دکمهٔ play) کلیک کنند، این گزینه را روی **OFF** قرار دهید.
 
-By default, Metabase will execute a query as soon as you choose an grouping option from the **Summarize** menu or a filter condition from the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through). If your database is slow, you may want to disable re-running to avoid loading data on each click.
+به‌طور پیش‌فرض، متابیس به محض انتخاب یک گزینهٔ گروه‌بندی از منوی **Summarize** یا یک شرط فیلتر از [منوی drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through)، پرس‌وجو را اجرا می‌کند. اگر پایگاه‌دادهٔ شما کند است، بهتر است اجرای خودکار را غیرفعال کنید تا با هر کلیک، کوئری جدید اجرا نشود.
 
 ### Choose when syncs and scans happen
 
-See [syncs and scans](../sync-scan.md#choose-when-syncs-and-scans-happen).
+[sync و scan](../sync-scan.md#choose-when-syncs-and-scans-happen) را ببینید.
 
 #### Database syncing
 
-If you've selected **Choose when syncs and scans happen** > **ON**, you'll be able to set:
+اگر گزینهٔ **Choose when syncs and scans happen** را روی **ON** گذاشته باشید، می‌توانید این موارد را تنظیم کنید:
 
-- The frequency of the [sync](../sync-scan.md#how-database-syncs-work): hourly (default) or daily.
-- The time to run the sync, in the timezone of the server where your Metabase app is running.
+- بسامد (frequency) [sync](../sync-scan.md#how-database-syncs-work): ساعتی (پیش‌فرض) یا روزانه.
+- زمان اجرای sync، بر اساس timezone سروری که برنامهٔ متابیس روی آن اجرا می‌شود.
 
 ### Scanning for filter values
 
-Metabase can scan the values present in each field in this database to enable checkbox filters in dashboards and questions. This can be a resource-intensive process, particularly if you have a large database.
+متابیس می‌تواند مقادیر موجود در هر فیلد در این پایگاه‌داده را اسکن کند تا امکان استفاده از فیلترهای checkbox در داشبوردها و سؤال‌ها را فراهم کند. این کار می‌تواند به‌خصوص روی پایگاه‌داده‌های بزرگ، هزینه‌بر (resource-intensive) باشد.
 
-If you've selected **Choose when syncs and scans happen** > **ON**, you'll see the following options under **Scanning for filter values**:
+اگر گزینهٔ **Choose when syncs and scans happen** را روی **ON** گذاشته باشید، زیر بخش **Scanning for filter values** این گزینه‌ها را می‌بینید:
 
-- **Regularly, on a schedule** allows you to run [scan queries](../sync-scan.md#how-database-scans-work) at a frequency that matches the rate of change to your database. The time is set in the timezone of the server where your Metabase app is running. This is the best option for a small database, or tables with distinct values that get updated often.
-- **Only when adding a new filter widget** is a great option if you want scan queries to run on demand. Turning this option **ON** means that Metabase will only scan and cache the values of the field(s) that are used when a new filter is added to a dashboard or SQL question.
-- **Never, I'll do this manually if I need to** is an option for databases that are either prohibitively large, or which rarely have new values added. Use the [Re-scan field values](../sync-scan.md#manually-scanning-column-values) button to run a manual scan and bring your filter values up to date.
+- **Regularly, on a schedule** این امکان را می‌دهد که [scan queryها](../sync-scan.md#how-database-scans-work) را با بسامدی متناسب با نرخ تغییر داده‌ها اجرا کنید. زمان اجرا بر اساس timezone سروری است که متابیس روی آن اجرا می‌شود. این گزینه برای پایگاه‌داده‌های کوچک، یا جدول‌هایی که مقادیر متمایز آن‌ها زیاد و به‌روز می‌شود، مناسب است.
+- **Only when adding a new filter widget** گزینهٔ خوبی است اگر می‌خواهید scan فقط در لحظهٔ نیاز اجرا شود. روشن کردن این گزینه یعنی متابیس فقط زمانی مقادیر فیلد(ها) را اسکن و cache می‌کند که یک فیلتر جدید به یک داشبورد یا سؤال SQL اضافه شود.
+- **Never, I'll do this manually if I need to** مناسب پایگاه‌داده‌هایی است که یا بیش از حد بزرگ‌اند، یا به‌ندرت مقادیر جدیدی در آن‌ها اضافه می‌شود. در این حالت می‌توانید از دکمهٔ [Re-scan field values](../sync-scan.md#manually-scanning-column-values) استفاده کنید تا هر زمان نیاز شد اسکن دستی انجام دهید و مقادیر فیلترها را به‌روز کنید.
 
 ### Periodically refingerprint tables
 
-> Periodic refingerprinting will increase the load on your database.
+> fingerprint دوره‌ای بار روی پایگاه‌دادهٔ شما را افزایش می‌دهد.
 
-Turn this option **ON** to scan a sample of values every time Metabase runs a [sync](../sync-scan.md#how-database-syncs-work).
+این گزینه را روی **ON** قرار دهید تا هر بار متابیس یک [sync](../sync-scan.md#how-database-syncs-work) اجرا می‌کند، یک نمونه از مقادیر را اسکن کند.
 
-A fingerprinting query examines the first 10,000 rows from each column and uses that data to guesstimate how many unique values each column has, what the minimum and maximum values are for numeric and timestamp columns, and so on. If you leave this option **OFF**, Metabase will only fingerprint your columns once during setup.
+پرس‌وجوی fingerprinting اولین ۱۰٬۰۰۰ ردیف هر ستون را بررسی می‌کند و بر اساس آن، تعداد مقادیر یکتا در هر ستون، و حداقل و حداکثر مقادیر ستون‌های عددی و زمانی و غیره را تخمین می‌زند. اگر این گزینه را روی **OFF** بگذارید، متابیس فقط یک‌بار و در زمان راه‌اندازی، برای ستون‌ها fingerprint می‌سازد.
 
 ## Connecting to Azure SQL
 
-To connect to Azure SQL, you'll need to set the port to 1433.
+برای اتصال به Azure SQL باید پورت را روی `1433` تنظیم کنید.
 
 ## Database routing
 
-With database routing, an admin can build a question once using one database, and the question will run its query against a different database with the same schema depending on who is viewing the question.
+با قابلیت database routing، یک ادمین می‌تواند یک سؤال را یک‌بار با استفاده از یک پایگاه‌داده بسازد، و همان سؤال بسته به این‌که چه کسی آن را می‌بیند، پرس‌وجو را روی یک پایگاه‌دادهٔ دیگر با همان schema اجرا کند.
 
-See [Database routing](../../permissions/database-routing.md).
+[مستندات Database routing](../../permissions/database-routing.md) را ببینید.
 
 ## Danger zone
 
-See [Danger zone](../danger-zone.md).
+[بخش Danger zone](../danger-zone.md) را ببینید.
 
 ## Further reading
 
 - [Microsoft JDBC Driver for SQL Server support matrix](https://learn.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server-support-matrix)
-- [Managing databases](../../databases/connecting.md)
-- [Metadata editing](../../data-modeling/metadata-editing.md)
-- [Models](../../data-modeling/models.md)
-- [Setting data access permissions](../../permissions/data.md)
+- [مدیریت پایگاه‌داده‌ها](../../databases/connecting.md)
+- [ویرایش متادیتا](../../data-modeling/metadata-editing.md)
+- [مدل‌ها](../../data-modeling/models.md)
+- [تنظیم مجوزهای دسترسی به داده](../../permissions/data.md)

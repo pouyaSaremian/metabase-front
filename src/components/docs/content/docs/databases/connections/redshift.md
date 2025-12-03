@@ -7,120 +7,120 @@ redirect_from:
 
 # Amazon Redshift
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای اضافه کردن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-## Connection and sync
+## اتصال و همگام‌سازی (Connection and sync)
 
-After connecting to a database, you'll see the "Connection and sync" section that displays the current connection status and options to manage your database connection.
+بعد از اتصال به پایگاه‌داده، بخشی با عنوان «Connection and sync» می‌بینید که وضعیت فعلی اتصال و گزینه‌های مدیریت اتصال پایگاه‌داده را نمایش می‌دهد.
 
-Here you can [sync the database schema and rescan field values](../sync-scan.md), and edit connection details.
+در این بخش می‌توانید [schema پایگاه‌داده را sync کنید و مقادیر فیلدها را دوباره اسکن کنید](../sync-scan.md) و جزئیات اتصال را ویرایش کنید.
 
-## Edit connection details
+## ویرایش جزئیات اتصال
 
-To access or modify your database connection settings, click the **Edit connection details** button.
+برای دیدن یا تغییر تنظیمات اتصال پایگاه‌داده، روی دکمهٔ **Edit connection details** کلیک کنید.
 
 ### Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+می‌توانید یک connection string اینجا paste کنید تا فیلدهای باقی‌مانده به‌طور خودکار پر شوند.
 
 ### Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط کاربری متابیس.
 
 ### Host
 
-Your database's IP address, or its domain name (e.g., esc.mydatabase.com).
+آدرس IP پایگاه‌داده یا نام دامنهٔ آن (مثلاً `esc.mydatabase.com`).
 
 ### Port
 
-The database port. E.g., 3306.
+پورت پایگاه‌داده؛ مثلاً `3306`.
 
 ### Database name
 
-The name of the database you want to connect to.
+نام پایگاه‌داده‌ای که می‌خواهید به آن متصل شوید.
 
 ### Schemas
 
-Here you can specify which schemas you want to sync and scan. Options are:
+می‌توانید مشخص کنید کدام schemaها را می‌خواهید sync و scan کنید. گزینه‌ها:
 
-- All
-- Only these...
-- All except...
+- All  
+- Only these...  
+- All except...  
 
-For the **Only these** and **All except** options, you can input a comma-separated list of values to tell Metabase which schemas you want to include (or exclude). For example:
+برای گزینه‌های **Only these** و **All except** می‌توانید یک فهرست جداشده با کاما وارد کنید تا به متابیس بگویید کدام schemaها را شامل (یا مستثنا) کند. مثلاً:
 
 ```
 foo,bar,baz
 ```
 
-You can use the `*` wildcard to match multiple schemas.
+می‌توانید از wildcard `*` برای match کردن چند schema استفاده کنید.
 
-Let's say you have three schemas: foo, bar, and baz.
+فرض کنید سه schema دارید: `foo`، `bar` و `baz`.
 
-- If you have **Only these...** set, and enter the string `b*`, you'll sync with bar and baz.
-- If you have **All except...** set, and enter the string `b*`, you'll just sync foo.
+- اگر **Only these...** را انتخاب کنید و رشتهٔ `b*` را وارد کنید، `bar` و `baz` sync می‌شوند.
+- اگر **All except...** را انتخاب کنید و رشتهٔ `b*` را وارد کنید، فقط `foo` sync می‌شود.
 
-Note that only the `*` wildcard is supported; you can't use other special characters or regexes.
+توجه کنید که فقط wildcard `*` پشتیبانی می‌شود؛ نمی‌توانید از regex یا کاراکترهای ویژهٔ دیگر استفاده کنید.
 
 ### Username
 
-> In order for sync and scan to work, make sure this database user account has access to the `information_schema`.
+> برای این‌که sync و scan کار کنند، مطمئن شوید این کاربر پایگاه‌داده به `information_schema` دسترسی دارد.
 
-The database username for the account that you want to use to connect to your database. You can set up multiple connections to the same database using different user accounts to connect to the same database, each with different sets of [privileges](../users-roles-privileges.md).
+نام کاربری پایگاه‌داده برای اکانتی که می‌خواهید با آن به دیتابیس وصل شوید. می‌توانید چند اتصال مختلف به همان پایگاه‌داده بسازید که هرکدام از یک کاربر متفاوت با مجموعهٔ متفاوتی از [سطوح دسترسی (privileges)](../users-roles-privileges.md) استفاده می‌کنند.
 
 ### Password
 
-The password for the username that you use to connect to the database.
+رمز عبوری که برای نام کاربری اتصال به پایگاه‌داده استفاده می‌کنید.
 
 ### Use an SSH tunnel
 
-See our [guide to SSH tunneling](../ssh-tunnel.md).
+[راهنمای SSH tunneling](../ssh-tunnel.md) را ببینید.
 
 ### Additional JDBC connection string options
 
-You can append options to the connection string that Metabase uses to connect to your database.
+می‌توانید گزینه‌های اضافی را به connection stringی که متابیس برای اتصال به پایگاه‌داده استفاده می‌کند اضافه کنید.
 
 ### Re-run queries for simple explorations
 
-Turn this option **OFF** if people want to click **Run** (the play button) before applying any [Summarize](../../questions/query-builder/summarizing-and-grouping.md) or filter selections.
+اگر می‌خواهید کاربران قبل از اعمال هر [Summarize](../../questions/query-builder/summarizing-and-grouping.md) یا فیلتر، روی **Run** (دکمهٔ play) کلیک کنند، این گزینه را روی **OFF** قرار دهید.
 
-By default, Metabase will execute a query as soon as you choose an grouping option from the **Summarize** menu or a filter condition from the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through). If your database is slow, you may want to disable re-running to avoid loading data on each click.
+به‌طور پیش‌فرض، متابیس به محض انتخاب یک گزینهٔ گروه‌بندی از منوی **Summarize** یا یک شرط فیلتر از [منوی drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through)، پرس‌وجو را اجرا می‌کند. اگر پایگاه‌دادهٔ شما کند است، بهتر است اجرای خودکار را غیرفعال کنید تا با هر کلیک، کوئری جدید اجرا نشود.
 
-### Choose when syncs and scans happen
+### انتخاب زمان sync و scan
 
-See [syncs and scans](../sync-scan.md#choose-when-syncs-and-scans-happen).
+[sync و scan](../sync-scan.md#choose-when-syncs-and-scans-happen) را ببینید.
 
-### Periodically refingerprint tables
+### fingerprint دوره‌ای جدول‌ها
 
-> Periodic refingerprinting will increase the load on your database.
+> fingerprint دوره‌ای بار روی پایگاه‌دادهٔ شما را افزایش می‌دهد.
 
-Turn this option **ON** to scan a sample of values every time Metabase runs a [sync](../sync-scan.md#how-database-syncs-work).
+این گزینه را روی **ON** قرار دهید تا هر بار متابیس یک [sync](../sync-scan.md#how-database-syncs-work) اجرا می‌کند، یک نمونه از مقادیر را اسکن کند.
 
-A fingerprinting query examines the first 10,000 rows from each column and uses that data to guesstimate how many unique values each column has, what the minimum and maximum values are for numeric and timestamp columns, and so on. If you leave this option **OFF**, Metabase will only fingerprint your columns once during setup.
+پرس‌وجوی fingerprinting اولین ۱۰٬۰۰۰ ردیف هر ستون را بررسی می‌کند و بر اساس آن، تعداد مقادیر یکتا در هر ستون، و حداقل و حداکثر مقادیر ستون‌های عددی و زمانی و غیره را تخمین می‌زند. اگر این گزینه را روی **OFF** بگذارید، متابیس فقط یک‌بار و در زمان راه‌اندازی، برای ستون‌ها fingerprint می‌سازد.
 
 ## Model features
 
-Choose whether to enable features related to Metabase models. These will often require a write connection.
+می‌توانید انتخاب کنید امکانات مرتبط با مدل‌های متابیس را فعال کنید یا نه. این امکانات معمولاً نیاز به اتصال با دسترسی نوشتن دارند.
 
 ### Model persistence
 
-You can enable model persistence to allow Metabase to create tables with model data and refresh them on a schedule. This requires write permissions to a designated schema.
+می‌توانید قابلیت model persistence را فعال کنید تا متابیس جداولی با داده‌های مدل بسازد و آن‌ها را طبق یک زمان‌بندی تازه‌سازی کند. برای این کار، اتصال باید روی یک schema مشخص مجوز نوشتن داشته باشد.
 
-Check out [Model persistence](../../data-modeling/model-persistence.md).
+[مستندات Model persistence](../../data-modeling/model-persistence.md) را ببینید.
 
 ## Database routing
 
-With database routing, an admin can build a question once using one database, and the question will run its query against a different database with the same schema depending on who is viewing the question.
+با قابلیت database routing، یک ادمین می‌تواند یک سؤال را یک‌بار با استفاده از یک پایگاه‌داده بسازد، و همان سؤال بسته به این‌که چه کسی آن را می‌بیند، پرس‌وجو را روی یک پایگاه‌دادهٔ دیگر با همان schema اجرا کند.
 
-See [Database routing](../../permissions/database-routing.md).
+[مستندات Database routing](../../permissions/database-routing.md) را ببینید.
 
 ## Danger zone
 
-See [Danger zone](../danger-zone.md).
+[بخش Danger zone](../danger-zone.md) را ببینید.
 
 ## Further reading
 
-- [Managing databases](../../databases/connecting.md)
-- [Metadata editing](../../data-modeling/metadata-editing.md)
-- [Models](../../data-modeling/models.md)
-- [Setting data access permissions](../../permissions/data.md)
+- [مدیریت پایگاه‌داده‌ها](../../databases/connecting.md)
+- [ویرایش متادیتا](../../data-modeling/metadata-editing.md)
+- [مدل‌ها](../../data-modeling/models.md)
+- [تنظیم مجوزهای دسترسی به داده](../../permissions/data.md)

@@ -9,20 +9,20 @@ redirect_from:
 
 ![SQL snippet](../images/sql-snippets.png)
 
-**Snippets** are reusable bits of SQL or native queries. Anyone with permissions to the [native editor](./writing-sql.md) can create and edit snippets, which are then available for all native query authors.
+**Snippet**ها تکه‌کدهای قابل‌استفادهٔ مجدد از SQL یا سایر کوئری‌های Native هستند. هر کسی که به [ویرایشگر Native](./writing-sql.md) دسترسی داشته باشد می‌تواند Snippet بسازد یا ویرایش کند و این Snippetها برای همهٔ افرادی که کوئری Native می‌نویسند در دسترس خواهند بود.
 
-For example, if you frequently write queries that involve multiple tables, you can save the SQL code that joins those tables as a snippet so that you (and others in your organization) can reuse that code in multiple questions.
+مثلاً اگر شما مرتباً کوئری‌هایی می‌نویسید که چند جدول را به هم Join می‌کند، می‌توانید SQL مربوط به آن Joinها را به‌صورت یک Snippet ذخیره کنید تا خودتان (و بقیهٔ تیم) بتوانید همان کد را در چند سؤال مختلف استفاده کنید.
 
-You can use snippets to define standardized KPIs and filters using SQL, just like you do with [metrics](../../data-modeling/metrics.md) and [segments](../../data-modeling/segments.md) in the query builder. For example, you may want to store exactly how you calculate revenue, or what constitutes an active user.
+می‌توانید با Snippetها KPIهای استاندارد یا فیلترهای ثابت را با SQL تعریف کنید، مشابه کاری که با [Metricها](../../data-modeling/metrics.md) و [Segmentها](../../data-modeling/segments.md) در Query builder انجام می‌دهید؛ مثل این‌که «Revenue» دقیقاً چطور محاسبه می‌شود یا «کاربر فعال» چه تعریفی دارد.
 
-You can also use snippets to define a set of reusable filters for SQL questions.
+همچنین می‌توانید مجموعه‌ای از فیلترهای قابل‌استفادهٔ مجدد برای سؤال‌های SQL را هم به‌صورت Snippet ذخیره کنید.
 
-## Create a snippet
+## ساخت Snippet
 
-In the [**native editor**](./writing-sql.md):
+در [ویرایشگر Native](./writing-sql.md):
 
-1. Open the native editor by clicking **+ New > SQL query** or **+ New > Native query** in the top right corner.
-2. Write some SQL or native code and highlight a section of code that you want to save to reuse later. The section doesn't have to be a whole query. For example, you can highlight:
+1. با کلیک روی **+ New > SQL query** یا **+ New > Native query** در بالا سمت راست، ویرایشگر Native را باز کنید.
+2. مقداری SQL (یا کوئری Native) بنویسید و بخشی از کد را که می‌خواهید بعداً مجدد استفاده کنید انتخاب (Highlight) کنید. لازم نیست این بخش کل کوئری باشد. مثلاً می‌توانید این بخش را انتخاب کنید:
 
    ```sql
    orders AS o
@@ -30,29 +30,29 @@ In the [**native editor**](./writing-sql.md):
    WHERE p.category = {% raw %}{{category}}{% endraw %}
    ```
 
-   Within a snippet, you can use:
+   داخل یک Snippet می‌توانید از این موارد استفاده کنید:
 
-   - [SQL parameters](#sql-parameters-in-snippets), like `{% raw %}{{param}}{% endraw %}`,
-   - references to other snippets, like `{% raw %}{{snippet: orders}}{% endraw %}` (Metabase will detect and disallow circular references),
-   - [references to saved questions or models](./referencing-saved-questions-in-queries.md), like `{% raw %}{{#123-orders-model}}{% endraw %}`.
+   - [پارامترهای SQL](#sql-parameters-in-snippets) مثل `{% raw %}{{param}}{% endraw %}`،
+   - ارجاع به Snippetهای دیگر مثل `{% raw %}{{snippet: orders}}{% endraw %}` (متابیس جلوی Reference حلقه‌ای را می‌گیرد)،
+   - [ارجاع به سؤال‌ها یا مدل‌های ذخیره‌شده](./referencing-saved-questions-in-queries.md)، مثل `{% raw %}{{#123-orders-model}}{% endraw %}`.
 
-3. Right-click on the highlighted section and select **Save as snippet** to create a snippet.
+3. روی بخش انتخاب‌شده راست‌کلیک کنید و گزینهٔ **Save as snippet** را بزنید.
 
    ![Save a snippet](../images/save-snippet.png)
 
-4. Name and describe your snippet. Snippet names must be unique (even names of archived snippets).
-5. Save.
+4. برای Snippet نام و توضیح بگذارید. نام Snippet باید یکتا باشد (حتی برای Snippetهای آرشیوشده).
+5. ذخیره کنید.
 
-You can also create a new snippet from the Snippet sidebar:
+همچنین می‌توانید از نوار کناری Snippet هم Snippet جدید بسازید:
 
-1. Open the native editor by clicking **+ New > SQL query** or **+ New > Native query**in the top right corner.
-2. Open the Snippet sidebar by clicking the **Snippets** button above the editor window
-3. Enter the code that you want to save as a reusable snippet.
-4. Save.
+1. ویرایشگر Native را با **+ New > SQL query** یا **+ New > Native query** باز کنید.
+2. با کلیک روی دکمهٔ **Snippets** بالای ادیتور، نوار کناری Snippet را باز کنید.
+3. کدی را که می‌خواهید به‌صورت Snippet ذخیره کنید وارد کنید.
+4. ذخیره کنید.
 
-## Use a snippet
+## استفاده از Snippet
 
-You can insert a saved snippet into your query, which will add a `{% raw %}{{snippet: }}{% endraw %}` reference:
+می‌توانید یک Snippet ذخیره‌شده را داخل کوئری‌تان وارد کنید؛ این کار یک ارجاع به شکل `{% raw %}{{snippet: }}{% endraw %}` در کوئری قرار می‌دهد:
 
 ```sql
 SELECT
@@ -61,72 +61,74 @@ FROM
  {% raw %}{{snippet: orders and products}}{% endraw %}
 ```
 
-To add a snippet to your native code, start typing `{% raw %}{{snippet: }}{% endraw %}` and Metabase will present autocomplete options for available snippets.
+برای اضافه کردن Snippet به کوئری، کافی است شروع کنید به تایپ `{% raw %}{{snippet: }}{% endraw %}`؛ متابیس لیستی از Snippetهای قابل‌دسترسی را به‌صورت Autocomplete نمایش می‌دهد.
 
-Metabase is sensitive to whitespace in snippet references, so you should type `{% raw %}{{snippet: Products}}{% endraw %}`, with no space between `{% raw %}{{{% endraw %}` and `snippet`, and with a space between `:` and snippet's name.
+متابیس روی فاصله‌ها در ارجاع Snippet حساس است؛ یعنی باید به‌صورت `{% raw %}{{snippet: Products}}{% endraw %}` بنویسید؛ بدون فاصله بین `{% raw %}{{{% endraw %}` و `snippet` و **با** یک فاصله بین `:` و نام Snippet.
 
-When you execute the query, behind the scenes Metabase replace the snippet reference with the snippet's SQL.
+هنگام اجرای کوئری، متابیس در پشت صحنه ارجاع Snippet را با SQL آن Snippet جایگزین می‌کند.
 
-You can also just pick a snippet to insert from the snippet sidebar:
+همچنین می‌توانید Snippet را از خود نوار کناری انتخاب و وارد کوئری کنید:
 
-1. Open the snippet sidebar by clicking on the **Snippets** button above the editor window.
+1. با کلیک روی دکمهٔ **Snippets** بالای ادیتور، نوار کناری Snippet را باز کنید.
    ![Open snippet sidebar](../images/snippet-button.png)
-2. Search for the snippet. Note that search results only include snippets that you have permissions to see.
-3. Hover over a snippet and click on the arrow to the left of snippet's name to insert it into your query.
+2. دنبال Snippet مورد نظر بگردید (Search). نتایج فقط شامل Snippetهایی می‌شوند که شما اجازهٔ دیدن آن‌ها را دارید.
+3. روی Snippet مورد نظر بروید و روی فلش کنار نام Snippet کلیک کنید تا Snippet در کوئری وارد شود.
 
-If you use aliases in a snippet, you'll need to refer to those aliases in the larger query. For example, if a snippet aliases `products AS p`, code outside of the snippet will need to use the alias `p` to refer to columns in that table (as in `p.column_name`).
+اگر در Snippet از alias استفاده کرده‌اید، در بقیهٔ کوئری باید از همان alias استفاده کنید. مثلاً اگر در Snippet نوشته باشید `products AS p`، در خارج از Snippet باید `p.column_name` را برای اشاره به ستون‌های آن جدول استفاده کنید.
 
-## Preview a query with snippets
+## پیش‌نمایش کوئری حاوی Snippet
 
-Metabase will keep the snippet as a reference and will not show you the full query - with snippet's code substituted - in the SQL editor itself. You can see the full query that Metabase will send to the database by clicking on the **Eye** icon above the editor.
+متابیس در ادیتور، Snippet را به‌صورت Reference نمایش می‌دهد و نسخهٔ نهایی SQL را (که در آن Snippet باز شده است) نشان نمی‌دهد. برای دیدن کوئری نهایی‌ای که برای دیتابیس ارسال می‌شود، روی آیکون **Eye** بالای ادیتور کلیک کنید.
 
 ![Query preview](../images/query-preview.png)
 
-## Edit snippets
+## ویرایش Snippet
 
-Editing snippets is a great way to make changes to many questions at once. If, for example, you've saved the SQL code to pull user data from tables X, Y, and Z as the snippet `User Data`, but you need to change how that data is pulled (such as by adding data from another column or table), you can update the SQL code in the snippet, and all questions that use the snippet `User Data` will have the updated code.
+ویرایش Snippet راه قدرتمندی است برای اعمال تغییر روی تعداد زیادی سؤال به‌طور هم‌زمان. مثلاً اگر SQL مربوط به دریافت دادهٔ کاربران از جدول‌های X، Y و Z را به‌صورت Snippet با نام `User Data` ذخیره کرده‌اید و بعداً لازم شد روش دریافت این داده‌ها را (مثلاً با اضافه‌کردن یک ستون یا جدول دیگر) تغییر دهید، کافی است خود Snippet را به‌روزرسانی کنید تا همهٔ سؤال‌هایی که از آن Snippet استفاده می‌کنند، خودبه‌خود به‌روزرسانی شوند.
 
 ![Edit a snippet](../images/edit-snippet.png)
 
-To edit a snippet:
+برای ویرایش Snippet:
 
-1. Open the snippet sidebar by clicking on the **Snippet** icon above the editor window.
+1. با کلیک روی آیکون **Snippet** بالای ادیتور، نوار کناری Snippet را باز کنید.
+2. Snippet مورد نظر را جست‌وجو کنید (فقط Snippetهایی را می‌بینید که اجازهٔ ویرایش آن‌ها را دارید).
+3. روی فلش کنار نام Snippet کلیک کنید و گزینهٔ **Edit** را بزنید.
 
-2. Search for the snippet. Search results only include snippets you have permission to edit.
+   در این‌جا می‌توانید کد، نام و توضیح Snippet را تغییر دهید.
 
-3. Click the **down arrow** to the right of the snippet name, then click **Edit**.
+- **تغییر نام Snippet**: با تغییر نام، همهٔ کوئری‌هایی که از آن Snippet استفاده می‌کنند، ارجاع‌شان به نام جدید به‌روزرسانی می‌شود. این کار سؤال‌های موجود را نمی‌شکند، اما **Snippetهای دیگری** را که این Snippet را صدا می‌زنند ممکن است خراب کند (چون نام قدیمی دیگر وجود ندارد).
 
-   You can change the code, snippet name, and snippet description.
+- **تغییر کد Snippet**: این‌جا همان‌جایی است که باید خیلی مراقب باشید؛ اگر کد اشتباه در Snippet ذخیره کنید، تمام سؤال‌هایی که از آن Snippet استفاده می‌کنند می‌شکنند. قبل از ذخیرهٔ تغییرات، حتماً کد را تست کنید.
 
-- **Editing a snippet's name**. Changing a snippet's name will update the snippet's name in every question that uses that snippet. Renaming a snippet won't break any existing _questions_ that reference this snippet, but it will **break other snippets** that reference this snippet.
+## آرشیو کردن Snippetها
 
-- **Editing a snippet's code.** Here's where we have to remind you that with great power comes great responsibility. There is one major caveat when editing snippets, worthy of a callout: if you edit a snippet and include broken code, you will break every question that uses that snippet. Make sure to test your code before saving it to an existing snippet.
+آرشیو کردن Snippetها کمک می‌کند Snippetهای قدیمی یا کم‌استفاده جلوی دست نباشند.
 
-## Archive snippets
+وقتی یک Snippet را آرشیو می‌کنید:
 
-Archiving snippets can help keep dated or less relevant snippets out of the way.
+- دیگر در لیست Autocomplete Snippet ظاهر نمی‌شود،
+- در لیست Snippetهای نوار کناری هم نمایش داده نمی‌شود،
+- **اما** هیچ‌کدام از سؤال‌هایی که از آن Snippet استفاده کرده‌اند خراب نمی‌شوند و همچنان کار می‌کنند.
 
-When you archive a snippet, the snippet no longer populates in the snippet autocomplete dropdown, and the snippet will no longer show up in the list of snippets in the sidebar. Archiving a snippet does **not** affect any existing queries that use the snippet, so you can safely archive a snippet without impacting any questions.
+برای آرشیو کردن Snippet:
 
-To archive a snippet:
+1. نوار کناری Snippet را با کلیک روی آیکون Snippet باز کنید.
+2. Snippet مورد نظر را جست‌وجو کنید.
+3. روی فلش کنار نام Snippet کلیک و گزینهٔ **Edit** را بزنید.
+4. روی **Archive** کلیک کنید.
 
-1. Open the snippet sidebar by clicking on the **Snippet** icon above the editor window.
-2. Search for the snippet.
-3. Click the **down arrow** to the right of the snippet name, then click **Edit**.
-4. Click **Archive**
+می‌توانید از پایینِ نوار کناری Snippet، روی دکمهٔ Archived کلیک کنید تا Snippetهای آرشیوشده را ببینید و در صورت نیاز آن‌ها را Unarchive کنید.
 
-You can access an archived snippet from the snippet sidebar menu by clicking on the archived button in the bottom left of the sidebar.
+در حال حاضر راهی برای حذف کامل Snippet وجود ندارد؛ فقط می‌توانید Snippet را آرشیو یا از آرشیو خارج کنید.
 
-Although there is no way to delete a snippet, you can archive and unarchive a snippet at any time.
+دو Snippet نمی‌توانند نام یکسان داشته باشند؛ حتی اگر یکی از آن‌ها آرشیوشده باشد، چون ممکن است هنوز در یک سؤال استفاده شود.
 
-Two snippets cannot share the same name, as even if a snippet is archived, that snippet might still be active in questions.
+## پارامترهای SQL در Snippetها
 
-## SQL parameters in snippets
-
-You can reference [SQL parameters](sql-parameters.md) in snippets. For example, you can save a snippet with SQL code like
+می‌توانید در Snippetها از [پارامترهای SQL](sql-parameters.md) استفاده کنید. مثلاً:
 
 ```sql
- {% raw %}
+{% raw %}
 WHERE
   {{created_at}}
 AND category = {{category}}
@@ -134,47 +136,53 @@ GROUP BY {{time_grouping}}
 {% endraw %}
 ```
 
-When a snippet with parameters is added to a SQL query, Metabase will show a widget for the snippet's parameter.
+وقتی Snippetای که پارامتر دارد به یک کوئری اضافه شود، متابیس برای آن پارامترها ویجت می‌سازد.
 
 ![Snippet with a parameter](../images/snippet-with-param.png)
 
-You'll be able to specify the type, connected columns, and default values for the parameters coming from snippets in the query's Variables sidebar.
+می‌توانید نوع، ستون‌های متصل (Linked columns) و مقادیر پیش‌فرض پارامترهای Snippet را از نوار کناری Variables برای هر سؤال تنظیم کنید.
 
-Settings for snippet parameters are defined by the query, not the snippet, so settings aren't shared between queries that use the same snippet. For example, if you have a snippet like:
+تنظیمات پارامترهای Snippet وابسته به خود سؤال است، نه خود Snippet؛ یعنی اگر یک Snippet را در دو سؤال مختلف استفاده کنید، می‌توانید پارامترهایش را برای هر سؤال جداگانه تنظیم کنید. مثلاً اگر:
 
 ```sql
 WHERE {% raw %}{{created_at}}{% endraw %}
 ```
 
-you could put the snippet in one query and have the snippet parameter map to a `CREATED_AT` column, and put the snippet in another query and have that same snippet parameter map to a different column, like `CANCELED_AT`.
+را در Snippet ذخیره کرده باشید، در یک سؤال می‌توانید این پارامتر را به ستون `CREATED_AT` و در سؤال دیگر به ستون `CANCELED_AT` وصل کنید.
 
-If you have multiple snippets containing parameters with the same name, the question using those snippets will only use one instance of the parameter. For example, if `{% raw %}{{snippet: 1}}{% endraw %}` contains parameter `{% raw %}{{var}}{% endraw %}` and `{% raw %}{{snippet: 2}}{% endraw %}` also contains parameter `{% raw %}{{var}}{% endraw %}`, the question will display only one `{% raw %}{{var}}{% endraw %}` parameter and use its value in both snippets.
+اگر چند Snippet داشته باشید که در همهٔ آن‌ها پارامتر همنام (مثلاً `{{var}}`) استفاده شده باشد، در سطح سؤال فقط **یک** پارامتر با آن نام خواهید دید و مقدار آن در همهٔ Snippetها مشترک استفاده می‌شود.
 
-## Snippet permissions
+## دسترسی‌ها و مجوزهای Snippet
 
-Any user who has native editor permissions to at least one of your connected databases will be able to view the snippets sidebar, and will be able to create, edit, and archive or unarchive any and all snippets — even snippets intended to be used with databases the user lacks SQL editing access to.
+هر کاربری که برای حداقل یکی از دیتابیس‌های شما مجوز استفاده از ویرایشگر Native را داشته باشد:
 
-Some plans contain additional functionality for organizing snippets into folders and setting permissions on those folders. See our [docs on Snippet folders and permissions](../../permissions/snippets.md).
+- می‌تواند نوار کناری Snippet را ببیند،
+- می‌تواند Snippet بسازد، ویرایش کند، آرشیو یا Unarchive کند،
+- حتی اگر آن Snippet برای دیتابیسی نوشته شده باشد که خودِ او اجازهٔ ویرایش SQL در آن دیتابیس را ندارد.
 
-## Why use Snippets?
+در برخی پلن‌ها، امکانات اضافه‌ای برای سازمان‌دهی Snippetها در پوشه‌ها و تنظیم مجوز روی آن پوشه‌ها وجود دارد. برای جزئیات، [مستندات Snippet folders و permissions](../../permissions/snippets.md) را ببینید.
 
-Snippets are good for:
+## چرا از Snippet استفاده کنیم؟
 
-- **Standardization**
+Snippetها برای این موارد عالی‌اند:
 
-  How does your organization define a popular product? Is it by number of units sold? Or by reviews with an average rating greater than 4? You can define those qualifications for a popular product and codify them in a Snippet, `{% raw %}{{snippet: popular products}}{% endraw %}`, and have that code populate in every question that uses that snippet. If down the line this definition needs to change, simply update the snippet’s SQL, and the change will propagate to all questions that use that snippet.
+- **استانداردسازی (Standardization)**
 
-  Similar to how [segments](../../data-modeling/segments.md) (a named filter or set of filters) and [metrics](../../data-modeling/models.md) (a named computation) can standardize analytics in your organization, snippets offer a way to ensure correctness and consistency of SQL across teams.
+  این‌که «محصول محبوب» در سازمان شما چگونه تعریف می‌شود؟ بر اساس تعداد فروش؟ یا میانگین امتیاز بیشتر از ۴؟ می‌توانید این تعریف را در قالب یک Snippet مثل `{% raw %}{{snippet: popular products}}{% endraw %}` کدگذاری کنید تا همان منطق در تمام سؤال‌هایی که آن Snippet را استفاده می‌کنند اعمال شود. اگر بعداً لازم شد این تعریف تغییر کند، کافی است Snippet را آپدیت کنید.
 
-- **Efficiency**
+  مانند [Segmentها](../../data-modeling/segments.md) (فیلترهای نام‌گذاری‌شده) و [Metricها](../../data-modeling/models.md) (محاسبه‌های نام‌گذاری‌شده)، Snippetها هم کمک می‌کنند تحلیلی استاندارد و قابل‌اعتماد در سطح سازمان داشته باشید.
 
-  Do you find yourself copying and pasting SQL code often? Don’t want to bother remembering which foreign keys map to which tables? Write that complicated join once, save it as a snippet, and summon the snippet as needed.
+- **صرفه‌جویی در زمان (Efficiency)**
 
-- **Education**
+  اگر زیاد SQL کپی‌پیست می‌کنید، یا دوست ندارید هر بار روابط Foreign keyها را به‌خاطر بیاورید، می‌توانید یک بار کوئری پیچیده را بنویسید، آن را به‌صورت Snippet ذخیره کنید و هر وقت لازم شد همان Snippet را استفاده کنید.
 
-  Snippets can level up folks who are new to SQL (or even experienced analysts) by exposing them to your organization’s “canonical SQL,” or to more efficient or more complex queries. Reading, copying, and building upon quality code is one of the best ways to develop skills. It can also save your organization time: people can copy a snippet’s code, modify it to obtain different results, and save that code as a new snippet for others to use.
+- **یادگیری و انتقال دانش (Education)**
 
-## Learn more
+  Snippetها می‌توانند برای افراد تازه‌کار SQL (و حتی آنالیتیک‌های باتجربه) منبعی برای دیدن «SQL مرجع سازمان» یا کوئری‌های بهینه‌تر و پیچیده‌تر باشند. خواندن و بازاستفاده از کدهای خوب، یکی از بهترین راه‌ها برای رشد مهارت است. همچنین افراد می‌توانند یک Snippet را کپی کرده، کمی تغییر دهند و آن را به‌عنوان Snippet جدید برای بقیه ذخیره کنند.
 
-- [Snippets vs Saved Questions vs Views](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/organizing-sql).
-- If you're having trouble with your SQL query, go to the [SQL troubleshooting guide](../../troubleshooting-guide/sql.md).
+## بیشتر یاد بگیرید
+
+- [Snippets vs Saved Questions vs Views](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/sql-in-metabase/organizing-sql)
+- اگر در SQL خودتان مشکل دارید، به [راهنمای رفع اشکال SQL](../../troubleshooting-guide/sql.md) سر بزنید.
+
+

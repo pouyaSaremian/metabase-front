@@ -1,114 +1,115 @@
 ---
-title: Auditing tools
+title: ابزارهای ممیزی
 redirect_from:
   - /docs/latest/enterprise-guide/audit
 ---
 
-# Auditing tools
+# ابزارهای ممیزی
 
-> Auditing tools are deprecated. Instead, check out the (much better) [Usage analytics](./usage-analytics.md).
+> ابزارهای ممیزی منسوخ شده‌اند. در عوض، به [تحلیل استفاده](./usage-analytics.md) (که بسیار بهتر است) سر بزنید.
 
 {% include plans-blockquote.html feature="Audit logs" %}
 
-As an administrator of Metabase, you already know the importance of using data to understand how people interact with your products or services. With the Audit tool, you can use Metabase to understand how people in your organization use Metabase. It's, well, meta!
+به عنوان ادمین متابیس، از قبل می‌دانید استفاده از داده‌ها برای فهمیدن اینکه افراد چگونه با محصولات یا سرویس‌های شما تعامل می‌کنند چقدر مهم است. با ابزار Audit می‌توانید از خود متابیس برای فهمیدن اینکه افراد در سازمان شما چگونه از متابیس استفاده می‌کنند بهره ببرید. کمی «متا» است!
 
-To view the audit logs, go to the top right of the screen and click on the **gear** icon > **Admin settings** > **Audit**. There's a lot of data available, not only about your people, but also about your questions, dashboards, databases and more! We'll walk you through each of the sections below.
+برای مشاهده لاگ‌های audit، به بالا سمت راست صفحه بروید و روی آیکون **چرخ‌دنده** > **Admin settings** > **Audit** کلیک کنید. حجم زیادی داده در دسترس است؛ نه فقط درباره افراد، بلکه درباره سؤال‌ها، داشبوردها، پایگاه‌داده‌ها و موارد دیگر! در ادامه، شما را از هر بخش عبور می‌دهیم.
 
-## People
+## افراد (People)
 
-### Team members
+### اعضای تیم
 
-Use the **People** section to gain a better understanding of how people are interacting with Metabase. You'll want to pay attention to the **Overview** tab, especially when you first launch Metabase at your organization — it will give you data around how many active and newly created accounts you have each day. Further down the page, you'll see charts showing you which people are most engaged.
+از بخش **People** برای درک بهتر اینکه افراد چگونه با متابیس تعامل می‌کنند استفاده کنید. به‌ویژه وقتی متابیس را برای اولین‌بار در سازمان خود راه‌اندازی می‌کنید، بهتر است به تب **Overview** توجه کنید — این تب به شما داده‌هایی مانند تعداد حساب‌های فعال و تازه‌ساخته‌شده در هر روز می‌دهد. پایین‌تر در صفحه، نمودارهایی می‌بینید که نشان می‌دهد کدام افراد بیشترین درگیری را دارند.
 
 ![Team Members](./images/audit-team.png)
 
-The **Team Members** panel has a view of other options for viewing your team's usage data. The **All Members** tab will give you a list of your team members, and stats about their activity, such as when they were last active.
+پنل **Team Members** نماهای دیگری برای مشاهده داده‌های استفاده تیم شما ارائه می‌دهد. تب **All Members** فهرستی از اعضای تیم و آماری درباره فعالیت آن‌ها، مانند آخرین زمان فعال بودن، نشان می‌دهد.
 
-The **Audit Log** tab will display, in chronological order, each query, who viewed it, and when. Note that if the person didn't save their query, its name will be listed as `Ad-hoc`. Each query name can be clicked to view more details about the person's interactions with it, including a full revision history. You'll also be able to view the query in Metabase. Note that this link will always show the latest version of the query - use the revision history to see changes over time.
+تب **Audit Log** هر پرس‌وجو را به ترتیب زمانی، همراه با اینکه چه کسی و چه زمانی آن را دیده است، نمایش می‌دهد. توجه کنید اگر فرد پرس‌وجوی خود را ذخیره نکرده باشد، نام آن به صورت `Ad-hoc` نمایش داده می‌شود. می‌توانید روی هر نام پرس‌وجو کلیک کنید تا جزئیات بیشتری از تعاملات آن فرد با پرس‌وجو، از جمله تاریخچه کامل ویرایش، را ببینید. همچنین می‌توانید پرس‌وجو را در متابیس مشاهده کنید. توجه کنید این لینک همیشه آخرین نسخه پرس‌وجو را نشان می‌دهد — برای دیدن تغییرات در طول زمان از تاریخچه ویرایش استفاده کنید.
 
-Throughout the People section, names can be clicked to access the profile of a specific person’s activity. This profile includes:
+در سراسر بخش People، می‌توانید روی نام‌ها کلیک کنید تا به پروفایل فعالیت فرد خاصی دسترسی پیدا کنید. این پروفایل شامل موارد زیر است:
 
-- Dashboard views
-- Query views
-- Downloads
-- Subscriptions and Alerts
+- نمایش‌های داشبورد
+- نمایش‌های پرس‌وجو
+- دانلودها
+- اشتراک‌ها و هشدارها
 
 ![Team Members](./images/audit-teammember.png)
 
-## Data
+## داده (Data)
 
-The Data section focuses on your databases, schemas and tables, and is divided into corresponding sections. Look here if you're trying to uncover queries and schemas that need optimization. Each section provides visualizations around the use and speed of querying against your databases, schemas or tables. You will also be able to view lists of stats about all of your databases, schemas and tables.
+بخش Data روی پایگاه‌داده‌ها، schemaها و جدول‌های شما تمرکز دارد و به بخش‌های متناظر تقسیم شده است. اگر در تلاش هستید پرس‌وجوها و schemaهایی را پیدا کنید که نیاز به بهینه‌سازی دارند، اینجا را ببینید. هر بخش نمودارهایی درباره میزان استفاده و سرعت پرس‌وجو روی پایگاه‌داده‌ها، schemaها یا جدول‌های شما ارائه می‌دهد. همچنین می‌توانید فهرست آمار همه پایگاه‌داده‌ها، schemaها و جدول‌ها را ببینید.
 
 ![Data](./images/audit-data.png)
 
-## Items
+## موارد (Items)
 
-The **Items** section focuses on questions, dashboards, downloads, and Subscriptions and Alerts.
+بخش **Items** روی سؤال‌ها، داشبوردها، دانلودها و اشتراک‌ها و هشدارها تمرکز دارد.
 
-### Questions
+### سؤال‌ها
 
-The Questions section will show you your most popular queries, as well as your slowest queries. If queries you think are important aren't appearing on your most popular queries list, you may want to make sure your team is focusing on the right things.
+بخش Questions محبوب‌ترین پرس‌وجوها و همچنین کندترین آن‌ها را به شما نشان می‌دهد. اگر پرس‌وجوهایی که فکر می‌کنید مهم هستند در فهرست محبوب‌ترین پرس‌وجوها ظاهر نمی‌شوند، شاید بد نباشد مطمئن شوید تیم شما روی چیزهای درستی تمرکز دارد.
 
-If important queries are appearing on the list of slowest queries, you will want to look at optimizing them. One option is to adjust your [caching settings](../configuring-metabase/caching.md), but there are plenty of other options as well. To help you determine if your optimization efforts are heading in the right direction, use the `Query views and speed per day` visualization at the bottom of the page.
+اگر پرس‌وجوهای مهم در فهرست کندترین پرس‌وجوها ظاهر می‌شوند، باید به بهینه‌سازی آن‌ها فکر کنید. یک گزینه تنظیم [تنظیمات کش](../configuring-metabase/caching.md) است، اما گزینه‌های زیاد دیگری هم وجود دارد. برای کمک به سنجش اینکه آیا تلاش‌های بهینه‌سازی شما در جهت درستی حرکت می‌کند یا نه، می‌توانید از نمودار `Query views and speed per day` در پایین صفحه استفاده کنید.
 
 ![Items](./images/audit-questions.png)
 
-A list of all of your questions is available as well, and you can see various data points about each question at a glance:
+فهرستی از همه سؤال‌های شما نیز در دسترس است و می‌توانید در یک نگاه چند نقطه داده درباره هر سؤال ببینید:
 
-- Query Runs
-- Average Runtime
-- Cache Duration
-- Total Runtime
-- Database
-- Table
-- Collection
-- Public Link
+- تعداد اجرای پرس‌وجو (Query Runs)
+- میانگین زمان اجرا (Average Runtime)
+- مدت کش (Cache Duration)
+- مجموع زمان اجرا (Total Runtime)
+- پایگاه‌داده
+- جدول
+- مجموعه (Collection)
+- لینک عمومی (Public Link)
 
-You can also click on any question to drill into a more detailed profile showing:
+همچنین می‌توانید روی هر سؤال کلیک کنید تا به یک پروفایل جزئی‌تر شامل موارد زیر دسترسی پیدا کنید:
 
-- View activity
-- Revision History
-- A full audit log of who viewed the question, and when
+- فعالیت نمایش
+- تاریخچه ویرایش
+- لاگ کامل audit از اینکه چه کسی سؤال را چه زمانی دیده است
 
-### Dashboards
+### داشبوردها
 
-The **Dashboards** section helps you understand what dashboards people are looking at, and to make sure they're having a smooth experience. If you notice that a popular dashboard has a high average question loading time, you can investigate further using the Questions section outlined above.
+بخش **Dashboards** به شما کمک می‌کند بفهمید مردم کدام داشبوردها را نگاه می‌کنند و مطمئن شوید تجربه روانی دارند. اگر متوجه شوید یک داشبورد محبوب زمان بارگذاری سؤال بالایی دارد، می‌توانید با استفاده از بخش Questions که در بالا توضیح داده شد بیشتر بررسی کنید.
 
 ![Items](./images/audit-dashboards.png)
 
-A list of all of your dashboards is available as well, and you can see various data points about each dashboard at a glance, such as:
+فهرستی از همه داشبوردهای شما نیز در دسترس است و می‌توانید در یک نگاه چند نقطه داده درباره هر داشبورد ببینید، مانند:
 
-- Number of views
-- Average question execution time(ms)
-- Number of cards
-- Saved by
-- Cache duration
-- Public link
-- Saved on
-- Last edited on
+- تعداد نمایش‌ها
+- میانگین زمان اجرای سؤال (میلی‌ثانیه)
+- تعداد کارت‌ها
+- ذخیره شده توسط چه کسی (Saved by)
+- مدت کش
+- لینک عمومی
+- تاریخ ذخیره شدن
+- تاریخ آخرین ویرایش
 
-### Downloads
+### دانلودها
 
-Use the **Downloads** section to understand which people are downloading (or exporting) data, and the size (number of rows) of the downloads they're performing. This section contains some visualizations, as well as a list of all downloads.
+از بخش **Downloads** برای فهمیدن اینکه چه کسانی داده‌ها را دانلود (یا export) می‌کنند و اندازه (تعداد ردیف‌ها) دانلودهایی که انجام می‌دهند استفاده کنید. این بخش شامل چند نمودار و همچنین فهرست همه دانلودها است.
 
-### Subscriptions and Alerts
+### اشتراک‌ها و هشدارها
 
-Here admins can get an overview of all of the [dashboard subscriptions][dashboard-subscriptions] and [alerts][alerts] that are currently active for that Metabase.
+در اینجا ادمین‌ها می‌توانند یک نمای کلی از همه [اشتراک‌های داشبورد][dashboard-subscriptions] و [هشدارها][alerts] که در حال حاضر برای آن متابیس فعال هستند به دست آورند.
 
-- Dashboard name (or Question name for Alerts)
-- Recipients
-- Type (e.g., email or Slack)
-- Collection
-- Frequency
-- Created By
-- Created At
-- Filters
+- نام داشبورد (یا برای Alerts نام سؤال)
+- دریافت‌کنندگان (Recipients)
+- نوع (مثلاً ایمیل یا Slack)
+- مجموعه
+- تناوب (Frequency)
+- ایجاد شده توسط
+- ایجاد شده در
+- فیلترها
 
-Admins can add and remove people from a subscription or alert by clicking on the item's **Recipients** number. Admins can also delete the subscription or alert entirely by clicking on the **X** on the relevant line.
+ادمین‌ها می‌توانند با کلیک روی عدد **Recipients** یک مورد، افراد را به یک اشتراک یا هشدار اضافه یا از آن حذف کنند. ادمین‌ها همچنین می‌توانند با کلیک روی **X** در ردیف مربوطه، اشتراک یا هشدار را به طور کامل حذف کنند.
 
-Everyone can view all of their subscriptions and alerts by clicking on the **gear** icon in the upper right and navigating to **Account settings** > **Notifications**.
+همه افراد می‌توانند همه اشتراک‌ها و هشدارهای خود را با کلیک روی آیکون **چرخ‌دنده** در بالا سمت راست و رفتن به **Account settings** > **Notifications** ببینند.
 
-For more, see [how permissions work with alerts and subscriptions](../permissions/notifications.md).
+برای توضیحات بیشتر، [نحوه کارکرد مجوزها با هشدارها و اشتراک‌ها](../permissions/notifications.md) را ببینید.
 
 [alerts]: ../questions/alerts.md
 [dashboard-subscriptions]: ../dashboards/subscriptions.md
+

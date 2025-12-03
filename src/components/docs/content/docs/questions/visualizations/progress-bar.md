@@ -13,7 +13,7 @@ redirect_from:
 
 ## چه زمانی از Progress bar استفاده کنیم؟
 
-Progress bar زمانی مفید است که می‌خواهید حرکت یک معیار به سمت هدف را نشان دهید؛ مثلاً ارزیابی عملکرد یک KPI یا رصد درصد اتمام یک پروژه.
+Progress bar زمانی مفید است که می‌خواهید حرکت یک معیار (Metric) به سمت یک هدف (Goal) را نشان دهید؛ مثلاً ارزیابی عملکرد یک KPI یا رصد درصد اتمام یک پروژه.
 
 Progress bar این امکان را می‌دهد که هر وقت نتیجهٔ یک سؤال به Goal تعریف‌شده در تنظیمات Progress bar برسد، Alert تنظیم کنید. بخش [Progress bar alerts](../alerts.md#progress-bar-alerts) را ببینید.
 
@@ -21,129 +21,105 @@ Progress bar این امکان را می‌دهد که هر وقت نتیجهٔ 
 
 برای ساخت Progress bar به این موارد نیاز دارید:
 
-- کوئری‌ای که یک ردیف با یک یا چند ستون عددی برگرداند، مثل «Sum of order quantity». Progress bar با Breakout کار نمی‌کند.
+- یک کوئری که فقط **یک ردیف** با یک یا چند ستون عددی برگرداند، مثل «Sum of order quantity». Progress bar با Breakout کار نمی‌کند.
 
   | Sum of Quantity | Average Quantity | Max Quantity |
   | --------------- | ---------------- | ------------ |
   | 4910            | 17.32            | 173          |
 
-- یک مقدار هدف (Goal). این مقدار می‌تواند یک عدد مثبت ثابت باشد یا مقداری از ستونی دیگر در همان کوئری؛ بخش [تنظیم Goal](#set-goal-for-a-progress-bar) را ببینید.
+- یک مقدار هدف (Goal). این مقدار می‌تواند یک عدد ثابت مثبت باشد یا مقداری از یک ستون دیگر در همان کوئری؛ بخش [تنظیم Goal](#تنظیم-هدف-برای-progress-bar-set-goal-for-a-progress-bar) را ببینید.
 
-  Goal در [تنظیمات نمودار](#progress-bar-options) تنظیم می‌شود.
-
-![Progress bar](../images/progress.png)
-
-## When to use a progress bar
-
-Progress bars are useful when you want to show the movement of a metric toward a goal, like assessing performance of a KPI, or tracking the percentage of completion on a project.
-
-Progress bars give you an option to set up an alert whenever the result of a question reaches the goal set in the progress bar settings. See [Progress bar alerts](../alerts.md#progress-bar-alerts).
-
-## Data shape for the progress bar
-
-To create a progress bar you'll need:
-
-- A query that returns a single row with one or more numeric columns, like "Sum of order quantity". Progress bars don't work with breakouts.
-
-  | Sum of Quantity | Average Quantity | Max Quantity |
-  | --------------- | ---------------- | ------------ |
-  | 4910            | 17.32            | 173          |
-
-- A goal value. The goal value can be a positive number or a value from another column in the same query, see [Set progress bar goal](#set-goal-for-a-progress-bar).
-
-  The goal is set in the [chart options](#progress-bar-options).
+  مقدار Goal در [تنظیمات نمودار](#گزینه‌های-progress-bar-progress-bar-options) تنظیم می‌شود.
 
   ![Progress bar KPI](../images/progress-bar-elements.png)
 
-## Create a progress bar
+## ساخت Progress bar
 
-Once you built the query that returns data in the appropriate shape, you can create a progress bar:
+بعد از این‌که کوئری‌ای ساختید که خروجی‌اش شکل مناسب برای Progress bar دارد، می‌توانید Visualization را به Progress تغییر دهید:
 
-1. Visualize the query results.
+1. نتایج کوئری را Visualize کنید.
+   به‌صورت پیش‌فرض، متابیس ممکن است نتایج را به‌صورت جدول یا عدد (Number) نمایش دهد، اما شما می‌توانید نوع Visualization را عوض کنید.
+2. هنگام مشاهدهٔ Visualization، روی دکمهٔ **Visualization** در پایین چپ صفحه کلیک کنید و نوع Visualization را روی **Progress** بگذارید.
+3. برای تنظیم Metric و Goal نوار پیشرفت، روی آیکون **چرخ‌دنده (gear)** در پایین چپ کلیک کنید تا سایدبار تنظیمات باز شود.
+4. در نوار «Display» در سایدبار تنظیمات، ستونی را که به‌عنوان Metric استفاده می‌شود و ستونی (یا عددی) را که به‌عنوان Goal استفاده می‌شود انتخاب کنید. بخش [تنظیم هدف](#تنظیم-هدف-برای-progress-bar-set-goal-for-a-progress-bar) را ببینید.
 
-   By default, Metabase might display results as a table or a number, but you can switch the visualization type.
+   اگر کوئری فقط یک عدد برگرداند، فقط می‌توانید یک Goal ثابت تنظیم کنید.
 
-2. While viewing a visualization, click the **Visualization** button in the bottom left of the screen and switch visualization to **Progress**.
+## تنظیم هدف برای Progress bar (Set goal for a progress bar)
 
-3. To set the bar's goal and metric, click the **gear** icon in the bottom left to open the settings sidebar.
-4. In the "Display" bar in the settings sidebar, choose the column to use as a metric and the column or number to use as a goal. See [Set a goal](#set-goal-for-a-progress-bar).
+می‌توانید یک هدف ثابت (مثلاً ۵۰۰۰) یا هدفی پویا بر اساس ستون دیگری تنظیم کنید.
 
-   If your query only returns one number, you'll only be able to set a constant goal.
+### استفاده از هدف ثابت
 
-## Set goal for a progress bar
+برای تنظیم Goal ثابت:
 
-You can set a constant goal (e.g., 5000) or a custom goal based on another column.
+1. هنگام مشاهدهٔ Progress bar، روی آیکون **Gear** در پایین چپ برای باز کردن تنظیمات کلیک کنید.
+2. در تب Display، روی منوی کشویی **Goal** کلیک کنید و گزینهٔ **Custom value** را انتخاب کنید.
 
-### Use a constant goal
+   اگر نتیجهٔ کوئری فقط شامل یک ستون باشد، منوی انتخاب ستون را نخواهید دید و فقط یک فیلد برای وارد کردن مقدار ثابت Goal می‌بینید.
 
-To set a constant goal for the progress bar:
+3. مقدار هدف را وارد کنید.
 
-1. While viewing the progress bar, click the **Gear** icon in bottom left to open settings.
-2. On the display tab, click the **Goal** dropdown and select **Custom value**.
+### استفاده از ستون دیگر به‌عنوان Goal
 
-   If your query result contains only a single column, you won't see the column dropdown, and instead you'll just see a field to enter your constant goal.
-
-3. Enter the goal value.
-
-### Use another column as the goal
-
-The custom goal has to come from a column in the same query, so your query has to return the result in the form of:
+Goal سفارشی باید از ستونی در همان کوئری بیاید؛ بنابراین خروجی کوئری باید شبیه زیر باشد:
 
 | Value | Goal |
 | ----- | ---- |
 | 4910  | 5000 |
 
-If you're using the query builder, you might need to compute both the metric and the goal as aggregations, so [custom aggregations](../query-builder/expressions-list.md#aggregations) might be handy.
+اگر از Query builder استفاده می‌کنید، ممکن است لازم باشد هم Metric و هم Goal را به‌صورت Aggregation محاسبه کنید، بنابراین [تعبیرهای سفارشی Aggregation](../query-builder/expressions-list.md#aggregations) می‌توانند مفید باشند.
 
-For example, if you want to build a progress bar comparing count of orders this year (the metric) vs count of orders last year (the goal) you can make use of [`CountIf()`](../query-builder/expressions/countif.md) to build a query returning conditional counts based on years:
+برای مثال، اگر می‌خواهید Progress barی بسازید که `Count of orders this year` (به‌عنوان Metric) را با `Count of orders last year` (به‌عنوان Goal) مقایسه کند، می‌توانید از [`CountIf()`](../query-builder/expressions/countif.md) استفاده کنید و کوئری‌ای بسازید که شمارش‌های شرطی بر اساس سال‌ها برگرداند:
 
 ![Conditional counts as metric and goal](../images/progress-conditional-count.png)
 
-Note that both columns are computed fields here, one for 2024 and one for the current year.
+توجه کنید که هر دو ستون در این مثال فیلدهای محاسبه‌شده (Computed fields) هستند؛ یکی برای سال ۲۰۲۴ و دیگری برای سال جاری.
 
-Once you have a column that you want to use, set it as a goal:
+بعد از این‌که ستونی که می‌خواهید به‌عنوان Goal استفاده کنید ایجاد شد:
 
-1. While viewing the progress bar visualization, click on the **Gear** icon in bottom left to open settings.
-2. On the display tab, select the columns you want to serve as the value and the goal.
+1. هنگام مشاهدهٔ Visualization Progress bar، روی آیکون **Gear** در پایین چپ کلیک کنید.
+2. در تب Display، ستونی را که قرار است به‌عنوان Value و ستونی را که قرار است به‌عنوان Goal استفاده شود انتخاب کنید.
 
 ![Set custom goal for progress bar](../images/progress-set-custom-goal.png)
 
-### Use another query's result as the goal
+### استفاده از نتیجهٔ یک کوئری دیگر به‌عنوان Goal
 
-To use the result of another query as the goal value for the progress bar, you'll first need to bring this value into your query as a column, then select that newly added column as the goal value in progress bar settings. In the query builder, you can bring in a result from another question using a join on `1=1`:
+برای این‌که نتیجهٔ یک کوئری دیگر را به‌عنوان Goal در Progress bar استفاده کنید، ابتدا باید آن مقدار را به‌عنوان یک ستون به کوئری اصلی اضافه کنید و سپس همان ستون جدید را در تنظیمات Progress bar به‌عنوان Goal انتخاب کنید. در Query builder می‌توانید نتیجهٔ یک سؤال دیگر را با یک Join روی `1=1` وارد کوئری کنید:
 
-1. Create a separate question returning a single number: your dynamic goal.
-2. Create a new question. This question should return the metric you want to compare to the goal. This is the question you'll visualize as a progress bar.
-3. [Join](../query-builder/join.md) this question to the question containing your dynamic goal from step 1. Join the question using a custom expression `1` for both sides of the join. See [joins with custom expressions](../query-builder/join.md#joins-with-custom-expressions).
+1. یک سؤال جداگانه بسازید که فقط یک عدد (Goal پویا) را برگرداند.
+2. یک سؤال جدید بسازید. این سؤال باید Metricی را که می‌خواهید با Goal مقایسه کنید برگرداند؛ همین سؤال را بعداً به‌صورت Progress bar نمایش می‌دهید.
+3. این سؤال را با سؤالی که در مرحلهٔ ۱ ساخته‌اید [Join](../query-builder/join.md) کنید. Join را با استفاده از یک عبارت سفارشی `1` برای هر دو سمت Join انجام دهید. بخش [Joins با عبارت‌های سفارشی](../query-builder/join.md#joins-with-custom-expressions) را ببینید.
 
-   This join should add the dynamic goal as a new column to your query.
+   این Join باید ستون Goal پویا را به‌عنوان یک ستون جدید به نتیجهٔ کوئری اضافه کند.
 
    ![Dynamic goal in the query builder](../images/progress-bar-dynamic.png)
 
-4. Set the visualization to a [progress bar](#create-a-progress-bar) and [set the dynamic goal column as the goal](#use-another-column-as-the-goal).
+4. Visualization را روی [Progress bar](#ساخت-progress-bar) بگذارید و [ستون Goal پویا را به‌عنوان Goal انتخاب کنید](#استفاده-از-ستون-دیگر-به‌عنوان-goal).
 
-## Progress bar options
+## گزینه‌های Progress bar (Progress bar options)
 
-To open the chart options, click on the gear icon at the bottom left of the screen.
+برای باز کردن تنظیمات نمودار، روی آیکون چرخ‌دنده در پایین چپ کلیک کنید.
 
-Format options will apply to both the result of the query and the goal value:
+گزینه‌های فرمت روی هم مقدار Metric و هم Goal اعمال می‌شوند:
 
 ![Progress bar with format applied](../images/progress-with-format.png)
 
-Selecting "**Style**: Percent" in format options will only change how the result of the query is formatted: for example, `17` will be formatted as `1700%`. If you instead want to display the query result as a percentage of the goal, you'll need to calculate that percentage in your query. For example, to display the count of orders as a percentage of the goal of `20`, use [custom expressions](../query-builder/expressions.md) to return "Count of orders divided by 20", and format the result as a percentage.
+اگر در گزینه‌های فرمت، **Style: Percent** را انتخاب کنید، فقط نحوهٔ نمایش نتیجهٔ کوئری عوض می‌شود؛ مثلاً `17` به‌صورت `1700%` نمایش داده می‌شود. اگر می‌خواهید نتیجهٔ کوئری را به‌صورت «درصدی از Goal» نشان دهید، باید این درصد را در خود کوئری محاسبه کنید. مثلاً برای نمایش `Count of orders` به‌صورت درصدی از Goal برابر با `20`، می‌توانید با استفاده از [تعبیرهای سفارشی](../query-builder/expressions.md) عبارتی مثل «Count of orders divided by 20» بسازید و نتیجه را به‌صورت درصد فرمت کنید.
 
-## Progress bar alerts
+## آلارم‌های Progress bar
 
-You can tell Metabase to send alerts when the progress bar goes above or below the goal. See [progress bar alerts](../alerts.md#progress-bar-alerts).
+می‌توانید به متابیس بگویید وقتی Progress bar بالاتر یا پایین‌تر از Goal رفت، برایتان آلارم بفرستد. بخش [Progress bar alerts](../alerts.md#progress-bar-alerts) را ببینید.
 
-## Limitations and alternatives
+## محدودیت‌ها و جایگزین‌ها
 
-- Progress bars assume that your objective is to _increase_ a metric. If the objective is to decrease or reduce a metric, consider using the [gauge chart](gauge.md).
+- Progress bar فرض می‌کند هدف شما این است که یک Metric را **افزایش** دهید. اگر هدف کاهش یک Metric باشد (مثلاً کم‌ کردن نرخ خطا)، بهتر است از [Gauge chart](./gauge.md) استفاده کنید.
+- Progress bar از Breakout پشتیبانی نمی‌کند. اگر می‌خواهید پیشرفت یک Metric نسبت به Goal را به‌صورت شکسته‌شده بر اساس Dimensionها نمایش دهید، می‌توانید از [نمودار میله‌ای یا خطی با خط هدف (Goal line)](./line-bar-and-area-charts.md#goal-lines) استفاده کنید.
 
-- Progress bars don't support breakouts. If you'd like to display progress of a metric towards a goal across a breakout, consider using a [bar or line chart with a goal line](line-bar-and-area-charts.md#goal-lines).
+## مطالعهٔ بیشتر
 
-## Further reading
+- [نمودار Gauge](./gauge.md)
+- [خط هدف در نمودارهای میله‌ای و خطی](./line-bar-and-area-charts.md#goal-lines)
+- راهنما: [از کدام نمودار استفاده کنم؟](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/visualization/chart-guide)
 
-- [Gauge charts](./gauge.md)
-- [Goal lines on bar and line charts](./line-bar-and-area-charts.md#goal-lines)
-- Tutorial: [Which chart should I use?](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/visualization/chart-guide)
+

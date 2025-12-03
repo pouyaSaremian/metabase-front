@@ -4,122 +4,122 @@ title: Databricks
 
 # Databricks
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**. Then select **Databricks**.
+برای اضافه کردن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید و **Databricks** را انتخاب کنید.
 
-You can edit these settings at any time. Just remember to save your changes.
+می‌توانید هر زمان این تنظیمات را ویرایش کنید؛ فقط یادتان باشد تغییرات را ذخیره کنید.
 
-## Edit connection details
+## ویرایش جزئیات اتصال
 
 ### Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+می‌توانید یک connection string اینجا paste کنید تا فیلدهای باقی‌مانده به‌طور خودکار پر شوند.
 
 ### Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط کاربری متابیس.
 
 ### Host
 
-Your database's IP address, or its domain name (e.g., `xxxxxxxxxx.cloud.databricks.com` or `adb-xxxxx.azuredatabricks.net`). This is the value of your Databrick's compute resource's Server Hostname.
+آدرس IP پایگاه‌داده یا نام دامنهٔ آن (مثلاً `xxxxxxxxxx.cloud.databricks.com` یا `adb-xxxxx.azuredatabricks.net`). این مقدار همان **Server Hostname** منبع محاسباتی (compute resource) در Databricks است.
 
-See [Compute settings for the Databricks JDBC Driver](https://docs.databricks.com/en/integrations/jdbc/compute.html).
+[Compute settings for the Databricks JDBC Driver](https://docs.databricks.com/en/integrations/jdbc/compute.html) را ببینید.
 
 ### HTTP path
 
-This is the Databrick's compute resources HTTP Path value. This value is often a SQL warehouse endpoint in the format `/sql/1.0/endpoints/abcdef1234567890`. See [Connect to a SQL warehouse](https://docs.databricks.com/en/compute/sql-warehouse/index.html).
+این مقدار همان **HTTP Path** منبع محاسباتی Databricks است. این مقدار معمولاً یک endpoint مربوط به SQL warehouse است، با فرمتی مثل `/sql/1.0/endpoints/abcdef1234567890`. ببینید: [Connect to a SQL warehouse](https://docs.databricks.com/en/compute/sql-warehouse/index.html).
 
-Additionally, see [Compute settings for the Databricks JDBC Driver](https://docs.databricks.com/en/integrations/jdbc/compute.html).
+همچنین [Compute settings for the Databricks JDBC Driver](https://docs.databricks.com/en/integrations/jdbc/compute.html) را ببینید.
 
 ### Authentication
 
-There are two ways to authenticate with Databricks. You can use a personal access token (PAT) or a service principal using OAuth (OAuth M2M).
+دو روش برای احراز هویت در Databricks وجود دارد: استفاده از personal access token (PAT) یا service principal با OAuth (OAuth M2M).
 
-The Databricks driver supports both options. Use the toggle to select the authentication method you want to use.
+درایور Databricks هر دو روش را پشتیبانی می‌کند. با استفاده از toggle می‌توانید روش احراز هویت مورد نظر خود را انتخاب کنید.
 
-#### Personal access token authentication
+#### احراز هویت با personal access token
 
-See [Personal Access Token (PAT)](https://docs.databricks.com/en/dev-tools/auth/pat.html).
+[Personal Access Token (PAT)](https://docs.databricks.com/en/dev-tools/auth/pat.html) را ببینید.
 
-#### Authenticate access with a service principal using OAuth (OAuth M2M)
+#### احراز هویت با service principal و OAuth (OAuth M2M)
 
-See [Authenticate access with a service principal using OAuth](https://docs.databricks.com/en/dev-tools/auth/oauth-m2m.html).
+[Authenticate access with a service principal using OAuth](https://docs.databricks.com/en/dev-tools/auth/oauth-m2m.html) را ببینید.
 
-### Enable multiple catalogs
+### فعال‌سازی multi-catalog
 
-Toggle on to sync multiple catalogs. If you enable this, you'll be able to [specify which catalogs to sync](#catalogs-and-schemas).
+برای sync کردن چند catalog این گزینه را روشن کنید. اگر این گزینه را فعال کنید، می‌توانید [مشخص کنید کدام catalogها را sync کنید](#catalogs-and-schemas).
 
 ### Default catalog
 
-Required. You must specify a default catalog (so you don't have to deal with catalog qualification in native queries).
+الزامی است. باید یک catalog پیش‌فرض مشخص کنید (تا در پرس‌وجوهای native لازم نباشد همیشه نام catalog را بنویسید).
 
-You can't sync Databricks's legacy catalogs, however, including the `samples` or `hive_metastore` catalogs.
+نمی‌توانید catalogهای legacy در Databricks (مثل `samples` یا `hive_metastore`) را sync کنید.
 
-### Catalogs and schemas
+### Catalogها و schemaها
 
-You can specify which catalogs and schemas you want to sync and scan. Options are:
+می‌توانید مشخص کنید کدام catalogها و schemaها را می‌خواهید sync و scan کنید. گزینه‌ها:
 
 - All
 - Only these...
 - All except...
 
-For the **Only these** and **All except** options, you can input a comma-separated list of values to tell Metabase which catalogs and schemas you want to include (or exclude). For example:
+برای گزینه‌های **Only these** و **All except** می‌توانید یک لیست comma-separated وارد کنید تا به متابیس بگویید کدام catalogها و schemaها را شامل (یا مستثنا) کند. مثلاً:
 
-```
+```text
 foo,bar,baz
 ```
 
-You can use the `*` wildcard to match multiple schemas.
+می‌توانید از wildcard یعنی `*` برای match کردن چند schema استفاده کنید.
 
-Let's say you have three schemas: foo, bar, and baz.
+فرض کنید سه schema دارید: foo، bar و baz.
 
-- If you have **Only these...** set, and enter the string `b*`, you'll sync with bar and baz.
-- If you have **All except...** set, and enter the string `b*`, you'll just sync foo.
+- اگر **Only these...** را انتخاب کرده‌اید و رشتهٔ `b*` را وارد کنید، bar و baz sync می‌شوند.
+- اگر **All except...** را انتخاب کرده‌اید و رشتهٔ `b*` را وارد کنید، فقط foo sync می‌شود.
 
-Note that only the `*` wildcard is supported; you can't use other special characters or regexes.
+دقت کنید که فقط wildcard `*` پشتیبانی می‌شود؛ نمی‌توانید از سایر کاراکترهای خاص یا regex استفاده کنید.
 
-### Additional JDBC connection string options
+### گزینه‌های اضافی JDBC connection string
 
-You can append options to the connection string that Metabase uses to connect to your database. E.g., `IgnoreTransactions=0`.
+می‌توانید گزینه‌های اضافی را به connection stringای که متابیس برای اتصال به پایگاه‌داده استفاده می‌کند اضافه کنید، مثلاً: `IgnoreTransactions=0`.
 
-See [Compute settings for the Databricks JDBC Driver](https://docs.databricks.com/en/integrations/jdbc/compute.html).
+[Compute settings for the Databricks JDBC Driver](https://docs.databricks.com/en/integrations/jdbc/compute.html) را ببینید.
 
-### Re-run queries for simple explorations
+### اجرای دوبارهٔ پرس‌وجو برای اکتشاف ساده
 
-Turn this option **OFF** if people want to click **Run** (the play button) before applying any summarizations or filters in the query builder.
+اگر می‌خواهید کاربران قبل از اعمال هر summarize یا فیلتر در query builder روی **Run** (دکمهٔ play) کلیک کنند، این گزینه را روی **OFF** قرار دهید.
 
-By default, Metabase will execute a query as soon as you choose an grouping option from the **Summarize** menu or a filter condition from the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through). If your database is slow, you may want to disable re-running to avoid loading data on each click.
+به‌طور پیش‌فرض، متابیس به محض انتخاب یک گزینهٔ گروه‌بندی از منوی **Summarize** یا یک شرط فیلتر از [منوی drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through)، پرس‌وجو را اجرا می‌کند. اگر پایگاه‌دادهٔ شما کند است، بهتر است اجرای خودکار را غیرفعال کنید تا با هر کلیک، کوئری جدید اجرا نشود.
 
-### Choose when syncs and scans happen
+### انتخاب زمان sync و scan
 
-See [syncs and scans](../sync-scan.md#choose-when-syncs-and-scans-happen).
+[مستندات sync و scan](../sync-scan.md#choose-when-syncs-and-scans-happen) را ببینید.
 
-### Periodically refingerprint tables
+### fingerprint دوره‌ای جدول‌ها
 
-> Periodic refingerprinting will increase the load on your database.
+> fingerprint دوره‌ای بار روی پایگاه‌دادهٔ شما را افزایش می‌دهد.
 
-Turn this option **ON** to scan a sample of values every time Metabase runs a [sync](../sync-scan.md#how-database-syncs-work).
+این گزینه را روی **ON** قرار دهید تا هر بار متابیس یک [sync](../sync-scan.md#how-database-syncs-work) اجرا می‌کند، یک نمونه از مقادیر را اسکن کند.
 
-A fingerprinting query examines the first 10,000 rows from each column and uses that data to guesstimate how many unique values each column has, what the minimum and maximum values are for numeric and timestamp columns, and so on. If you leave this option **OFF**, Metabase will only fingerprint your columns once during setup.
+پرس‌وجوی fingerprinting اولین ۱۰٬۰۰۰ ردیف هر ستون را بررسی می‌کند و بر اساس آن، تعداد مقادیر یکتا در هر ستون، و حداقل و حداکثر مقادیر ستون‌های عددی و زمانی و غیره را تخمین می‌زند. اگر این گزینه را روی **OFF** بگذارید، متابیس فقط یک‌بار و در زمان راه‌اندازی، برای ستون‌ها fingerprint می‌سازد.
 
-## Model features
+## قابلیت‌های مدل (Model features)
 
-There aren't (yet) any model features available for Databricks.
+در حال حاضر، هیچ قابلیت خاصی برای مدل‌ها روی Databricks در دسترس نیست.
 
 ## Database routing
 
-With database routing, an admin can build a question once using one database, and the question will run its query against a different database with the same schema depending on who is viewing the question.
+با قابلیت database routing، یک ادمین می‌تواند یک سؤال را یک‌بار با استفاده از یک پایگاه‌داده بسازد، و همان سؤال بسته به این‌که چه کسی آن را می‌بیند، پرس‌وجو را روی یک پایگاه‌دادهٔ دیگر با همان schema اجرا کند.
 
-When **multi-catalog is not enabled**, you can route between catalogs on the same host. If multi-catalog is enabled, then you can only route between databases on separate hosts.
+وقتی **multi-catalog** غیرفعال است، می‌توانید بین catalogهای روی یک host route کنید. اگر multi-catalog فعال باشد، تنها می‌توانید بین پایگاه‌داده‌هایی روی hostهای جداگانه route کنید.
 
-See [Database routing](../../permissions/database-routing.md).
+[مستندات Database routing](../../permissions/database-routing.md) را ببینید.
 
 ## Danger zone
 
-See [Danger zone](../danger-zone.md).
+[بخش Danger zone](../danger-zone.md) را ببینید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Managing databases](../../databases/connecting.md)
-- [Metadata editing](../../data-modeling/metadata-editing.md)
-- [Models](../../data-modeling/models.md)
-- [Setting data access permissions](../../permissions/data.md)
+- [مدیریت پایگاه‌داده‌ها](../../databases/connecting.md)
+- [ویرایش متادیتا](../../data-modeling/metadata-editing.md)
+- [مدل‌ها](../../data-modeling/models.md)
+- [تنظیم سطوح دسترسی به داده](../../permissions/data.md)

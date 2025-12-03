@@ -1,81 +1,81 @@
 ---
-title: Embedded analytics SDK - quickstart
-description: "This guide walks you through how to set up the Embedded analytics SDK in your application with your Metabase."
+title: SDK تجزیه و تحلیل تعبیه‌شده - شروع سریع
+description: "این راهنما شما را در نحوه راه‌اندازی SDK تجزیه و تحلیل تعبیه‌شده در برنامه خود با متابیس راهنمایی می‌کند"
 ---
 
-# Embedded analytics SDK - quickstart
+# SDK تجزیه و تحلیل تعبیه‌شده - شروع سریع
 
-This guide walks you through how to set up the Embedded analytics SDK in your application with your Metabase using API keys.
+این راهنما شما را در نحوه راه‌اندازی SDK تجزیه و تحلیل تعبیه‌شده در برنامه خود با متابیس با استفاده از کلیدهای API راهنمایی می‌کند.
 
-This setup:
+این راه‌اندازی:
 
-- Is only for evaluation (so you can see how the SDK works).
-- Only works on localhost when developing your app (though your Metabase doesn't need to be running locally).
-- Works with both the Enterprise and Open Source editions of Metabase, both self-hosted and on Metabase Cloud.
+- فقط برای ارزیابی است (تا بتوانید ببینید SDK چگونه کار می‌کند).
+- فقط در localhost هنگام توسعه برنامه شما کار می‌کند (اگرچه متابیس شما نیازی به اجرای محلی ندارد).
+- با هر دو نسخه Enterprise و Open Source متابیس، هم self-hosted و هم در Metabase Cloud کار می‌کند.
 
-If you want to use the SDK in production, however, you'll also need to [set up JWT SSO authentication](./authentication.md), which requires a [Pro](https://store.metabase.com/checkout/embedding) or [Enterprise plan](https://www.metabase.com/pricing/). To enable JWT SSO when you're self-hosting Metabase, you'll need to run the Enterprise Edition Docker image or JAR, and [activate your license](../../installation-and-operation/activating-the-enterprise-edition.md).
+با این حال، اگر می‌خواهید از SDK در تولید استفاده کنید، همچنین نیاز دارید [احراز هویت SSO JWT را راه‌اندازی کنید](./authentication.md)، که نیاز به یک [پلن Pro](https://store.metabase.com/checkout/embedding) یا [Enterprise](https://www.metabase.com/pricing/) دارد. برای فعال کردن JWT SSO وقتی که متابیس را self-host می‌کنید، نیاز دارید تصویر Docker یا JAR نسخه Enterprise را اجرا کنید و [مجوز خود را فعال کنید](../../installation-and-operation/activating-the-enterprise-edition.md).
 
-## Prerequisites
+## پیش‌نیازها
 
-- [Metabase](https://github.com/metabase/metabase/releases) version 52 or higher (OSS or EE). See [Installing Metabase](../../installation-and-operation/installing-metabase.md).
-- Make sure your [React version is compatible](./introduction.md#embedded-analytics-sdk-prerequisites). (You could also use the [sample React app](https://github.com/metabase/metabase-nodejs-react-sdk-embedding-sample/tree/{{page.version | remove: "v0."}}-stable).)
+- نسخه [متابیس](https://github.com/metabase/metabase/releases) 52 یا بالاتر (OSS یا EE). [نصب متابیس](../../installation-and-operation/installing-metabase.md) را ببینید.
+- مطمئن شوید [نسخه React شما سازگار است](./introduction.md#embedded-analytics-sdk-prerequisites). (همچنین می‌توانید از [برنامه نمونه React](https://github.com/metabase/metabase-nodejs-react-sdk-embedding-sample/tree/{{page.version | remove: "v0."}}-stable) استفاده کنید.)
 
-If you _don't_ have a Metabase up and running, check out the [Quickstart CLI](./quickstart-cli.md).
+اگر متابیس در حال اجرا _ندارید_، [شروع سریع CLI](./quickstart-cli.md) را بررسی کنید.
 
-If you _don't_ want to use your own application code, check out our [quickstart with a sample app](./quickstart-with-sample-app.md).
+اگر _نمی‌خواهید_ از کد برنامه خود استفاده کنید، [شروع سریع با یک برنامه نمونه](./quickstart-with-sample-app.md) ما را بررسی کنید.
 
-## Overview
+## نمای کلی
 
-To embed a dashboard in your app using the SDK, you'll need to:
+برای جاسازی یک داشبورد در برنامه خود با استفاده از SDK، نیاز دارید:
 
-1. [Enable the SDK in Metabase](#1-enable-the-sdk-in-metabase)
-2. [Create an API key in Metabase](#2-create-an-api-key-in-metabase)
-3. [Install the SDK in your app](#3-install-the-sdk-in-your-app)
-4. [Embed SDK components in your app](#4-embed-sdk-components-in-your-app)
-5. [View your embedded Metabase dashboard](#5-view-your-embedded-metabase-dashboard)
+۱. [SDK را در متابیس فعال کنید](#1-enable-the-sdk-in-metabase)
+۲. [یک کلید API در متابیس ایجاد کنید](#2-create-an-api-key-in-metabase)
+۳. [SDK را در برنامه خود نصب کنید](#3-install-the-sdk-in-your-app)
+۴. [اجزای SDK را در برنامه خود جاسازی کنید](#4-embed-sdk-components-in-your-app)
+۵. [داشبورد متابیس جاسازی شده خود را مشاهده کنید](#5-view-your-embedded-metabase-dashboard)
 
-## 1. Enable the SDK in Metabase
+## ۱. فعال کردن SDK در متابیس
 
-In Metabase, click on the gear icon in the upper right and navigate to **Admin Settings > Embedding > Modular** and enable the **SDK for React**.
+در متابیس، روی آیکون چرخ‌دنده در بالا سمت راست کلیک کنید و به **Admin Settings > Embedding > Modular** بروید و **SDK for React** را فعال کنید.
 
-## 2. Create an API key in Metabase
+## ۲. ایجاد یک کلید API در متابیس
 
-Still in the Admin console, go to **Settings > Authentication** and click on the **API keys** tab. [Create a new API key](../../people-and-groups/api-keys.md).
+هنوز در کنسول Admin، به **Settings > Authentication** بروید و روی تب **API keys** کلیک کنید. [یک کلید API جدید ایجاد کنید](../../people-and-groups/api-keys.md).
 
-- Key name: "Embedded analytics SDK" (just to make the key easy to identify).
-- Group: select “Admin” (since this is only for local testing).
+- نام کلید: "Embedded analytics SDK" (فقط برای اینکه کلید را آسان شناسایی کنید).
+- گروه: "Admin" را انتخاب کنید (از آنجایی که این فقط برای تست محلی است).
 
-## 3. Install the SDK in your app
+## ۳. نصب SDK در برنامه خود
 
-When installing the npm package, it's critical to use the npm dist-tag that corresponds to the major version of your Metabase. For example, if your Metabase is version 1.56.x, you'd run `56-stable`. See [SDK versioning](./version.md).
+هنگام نصب بسته npm، استفاده از npm dist-tag که با نسخه اصلی متابیس شما مطابقت دارد بسیار مهم است. به عنوان مثال، اگر متابیس شما نسخه 1.56.x است، `56-stable` را اجرا می‌کنید. [نسخه‌گذاری SDK](./version.md) را ببینید.
 
-Via npm:
+از طریق npm:
 
 ```
 npm install @metabase/embedding-sdk-react@53-stable
 ```
 
-Via Yarn:
+از طریق Yarn:
 
 ```
 yarn add @metabase/embedding-sdk-react@53-stable
 ```
 
-## 4. Embed SDK components in your app
+## ۴. جاسازی اجزای SDK در برنامه خود
 
-In your app, import the SDK components, like so:
+در برنامه خود، اجزای SDK را import کنید، مانند این:
 
 ```jsx
 {% include_file "{{ dirname }}/snippets/quickstart/example.tsx" %}
 ```
 
-## 5. View your embedded Metabase dashboard
+## ۵. مشاهده داشبورد متابیس جاسازی شده خود
 
-Run your app and visit the page with the embedded dashboard.
+برنامه خود را اجرا کنید و صفحه با داشبورد جاسازی شده را بازدید کنید.
 
 ![Embedded example dashboard](../images/embedded-example-dashboard.png)
 
-## Next steps
+## مراحل بعدی
 
-- Explore [theming to change the look and feel](./appearance.md).
-- Continue by [setting up JWT SSO in Metabase and your app](./authentication.md) to sign people in, manage permissions, and deploy your app in production.
+- [تم‌دهی را برای تغییر ظاهر و احساس کاوش کنید](./appearance.md).
+- با [راه‌اندازی JWT SSO در متابیس و برنامه خود](./authentication.md) برای ورود افراد، مدیریت مجوزها و استقرار برنامه خود در تولید ادامه دهید.

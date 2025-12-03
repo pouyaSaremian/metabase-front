@@ -1,28 +1,28 @@
 ---
-title: Sankey charts
+title: نمودارهای Sankey
 redirect_from:
   - /docs/latest/questions/sharing/visualizations/sankey
 ---
 
-# Sankey charts
+# نمودارهای Sankey
 
-Sankey charts show how data flows through multi-dimensional steps. They're useful for showing which elements, called nodes, contribute to the overall flow.
+نمودارهای Sankey نشان می‌دهند داده‌ها چطور در چند گامِ متوالی جریان پیدا می‌کنند. این نمودارها برای نمایش این‌که هر گره (Node) چه سهمی در جریان کلی دارد، بسیار مفید هستند.
 
 ![Left-aligned sankey chart](../images/sankey-left-aligned.png)
 
-## Sankey data shape
+## شکل داده برای Sankey
 
-To create a Sankey chart, you'll need at least three columns in your results:
+برای ساخت یک نمودار Sankey، حداقل به سه ستون در خروجی نیاز دارید:
 
-- **Source column**: specifies a node in the Sankey flow.
-- **Target column**: specifies a receiving node.
-- **Count column**: value that determines the thickness of the target node.
+- **ستون مبدأ (Source column)**: مشخص‌کنندهٔ گره مبدأ در جریان Sankey.
+- **ستون مقصد (Target column)**: مشخص‌کنندهٔ گره مقصد.
+- **ستون تعداد/مقدار (Count column)**: مقداری که ضخامت یال و گره مقصد را تعیین می‌کند.
 
-If you had raw page views where each row had a source page (like the title of a referrer page) and a target page (like the title for the current page view), you could summarize by count and group by the source, then the target.
+اگر داده‌های خام page view داشته باشید که در هر ردیف یک صفحهٔ مبدأ (مثلاً عنوان صفحهٔ ارجاع‌دهنده) و یک صفحهٔ مقصد (مثلاً عنوان صفحهٔ فعلی) باشد، می‌توانید داده‌ها را بر اساس `source` و سپس `target` گروه‌بندی کرده و `count` را روی آن‌ها محاسبه کنید.
 
 ![Sankey summarize count and group by source and target](../images/sankey-summarize-count-source-target.png)
 
-Here's the data shape used to create the chart above.
+شکل دادهٔ زیر برای ساخت نمودار بالا استفاده شده است:
 
 | Source page  | Target page  | Total Visitors |
 | ------------ | ------------ | -------------- |
@@ -42,46 +42,48 @@ Here's the data shape used to create the chart above.
 | Checkout     | Purchase     | 2,217          |
 | Homepage     | Exit         | 1,020          |
 
-See [data options](#sankey-data-options).
+بخش [گزینه‌های داده](#گزینه‌های-دادهٔ-sankey) را هم ببینید.
 
-### Circular dependencies won't work
+### وابستگی‌های حلقه‌ای کار نمی‌کنند
 
-If some of your sources point to targets that point back to the same sources, Metabase won't be able to create a Sankey chart.
+اگر بعضی از گره‌های مبدأ به گره‌های مقصدی اشاره کنند که دوباره به همان گره‌های مبدأ برمی‌گردند (چرخه ایجاد شود)، متابیس نمی‌تواند نمودار Sankey رسم کند.
 
-## Sankey data options
+## گزینه‌های دادهٔ Sankey
 
-To select which columns Metabase should use as the source, target, and values for the Sankey chart, click on the **settings** icon in the bottom right to view the **Data** tab.
+برای این‌که مشخص کنید متابیس از کدام ستون‌ها به‌عنوان مبدأ، مقصد و مقدار در نمودار Sankey استفاده کند، روی آیکون **settings** در پایین راست کلیک کنید تا تب **Data** باز شود.
 
 ![Sankey data options](../images/sankey-data-options.png)
 
-Your data can include more than three columns, but each row must include the required three columns: source, target, and a value to scale the size of the target node.
+داده‌های شما می‌تواند بیش از سه ستون داشته باشد، اما هر ردیف باید حتماً این سه ستون الزامی را شامل شود: مبدأ، مقصد و یک مقدار برای مقیاس‌دهی اندازهٔ گره مقصد.
 
-## Sankey display options
+## گزینه‌های نمایشی Sankey
 
-You can change a charts alignment, edge labels, and edge colors.
+می‌توانید چیدمان (alignment) نمودار، نمایش لیبل یال‌ها و رنگ یال‌ها را تغییر دهید.
 
-### Alignment
+### چیدمان (Alignment)
 
-You can select left, right, or justified alignment for the Sankey chart. Alignment determines how the chart should display the end nodes (a.k.a. leaf nodes or terminal nodes).
+می‌توانید برای نمودار Sankey یکی از چیدمان‌های چپ، راست یا Justified را انتخاب کنید. چیدمان مشخص می‌کند گره‌های انتهایی (Leaf/Terminal nodes) چطور نمایش داده شوند.
 
-The chart in the section above is left-aligned. The end nodes, `Exit` and `Purchase`, are aligned to the left.
+نموداری که بالاتر دیدید، چپ‌چین است؛ گره‌های انتهایی مثل `Exit` و `Purchase` در سمت چپ تراز شده‌اند.
 
-For right alignment, the end nodes, `Exit` and `Purchase`, move to the chart's right:
+اگر چیدمان را روی راست بگذارید، گره‌های انتهایی `Exit` و `Purchase` به سمت راست نمودار منتقل می‌شوند:
 
 ![Right-aligned sankey chart](../images/sankey-right-aligned.png)
 
-In this case, justified alignment looks the same, as the end nodes move to take up the whole chart.
+در این مثال، چیدمان Justified ظاهر مشابهی دارد، چون گره‌های انتهایی طوری جابه‌جا می‌شوند که تمام عرض نمودار را پوشش دهند.
 
-### Edge labels
+### لیبل یال‌ها (Edge labels)
 
-Whether an edge (a.k.a. link or arrow) displays its value. Options for displaying labels include auto, compact, or full formatting.
+منظور از Edge یا Link همان پیکان‌هایی است که بین گره‌ها کشیده می‌شوند. می‌توانید مشخص کنید روی یال‌ها مقدارشان نمایش داده شود یا نه. گزینه‌های نمایش لیبل‌ها شامل حالت‌های auto، compact و full هستند.
 
-### Edge color
+### رنگ یال‌ها (Edge color)
 
 ![Sankey gray edges](../images/sankey-gray-edges.png)
 
-Options for edge colors include:
+گزینه‌های رنگ برای یال‌ها:
 
-- **Gray**: All edges are gray. Nodes retain their color.
-- **Source**: The source node determines the edge colors. The source node is the node to the left of an edge.
-- **Target**: The target node determines the edge colors. The target node is the node to the right of an edge.
+- **Gray**: همهٔ یال‌ها خاکستری هستند و فقط رنگ گره‌ها متفاوت است.
+- **Source**: رنگ یال بر اساس رنگ گرهٔ مبدأ تعیین می‌شود (گره‌ای که در سمت چپ یال قرار دارد).
+- **Target**: رنگ یال بر اساس رنگ گرهٔ مقصد تعیین می‌شود (گره‌ای که در سمت راست یال قرار دارد).
+
+

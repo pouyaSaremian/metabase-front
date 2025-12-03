@@ -1,66 +1,66 @@
 ---
-title: Embedded analytics SDK
+title: SDK تجزیه و تحلیل تعبیه‌شده
 redirect_from:
   - /docs/latest/embedding/sdk
 ---
 
-# Embedded analytics SDK
+# SDK تجزیه و تحلیل تعبیه‌شده
 
 {% include plans-blockquote.html feature="Embedded analytics SDK" sdk=true %}
 
-With the Embedded analytics SDK, you can embed individual Metabase components with React (like standalone charts, dashboards, the query builder, and more). You can manage access and interactivity per component, and you have advanced customization for seamless styling.
+با SDK تجزیه و تحلیل تعبیه‌شده، می‌توانید اجزای جداگانه متابیس را با React جاسازی کنید (مانند نمودارهای مستقل، داشبوردها، سازنده پرس‌وجو و موارد بیشتر). می‌توانید دسترسی و تعامل را برای هر جزء مدیریت کنید و سفارشی‌سازی پیشرفته برای استایل‌دهی یکپارچه دارید.
 
-## Example apps built with the embedded analytics SDK
+## برنامه‌های نمونه ساخته شده با SDK تجزیه و تحلیل تعبیه‌شده
 
-To give you an idea of what's possible with the SDK, we've put together example sites at [metaba.se/sdk-demo](https://metaba.se/sdk-demo). Navigate between different shop websites. Check them out and poke around their products and analytics sections, as well as the New Question and New Dashboard options.
+برای اینکه ایده‌ای از آنچه با SDK ممکن است به شما بدهیم، سایت‌های نمونه را در [metaba.se/sdk-demo](https://metaba.se/sdk-demo) گردآوری کرده‌ایم. بین وب‌سایت‌های فروشگاه مختلف پیمایش کنید. آن‌ها را بررسی کنید و در بخش‌های محصولات و تجزیه و تحلیل آن‌ها، و همچنین گزینه‌های New Question و New Dashboard جستجو کنید.
 
 ![Pug and play example app built with embedded analytics SDK](../images/pug-and-play.png)
 
-Here's the [Shoppy source code](https://github.com/metabase/shoppy).
+در اینجا [کد منبع Shoppy](https://github.com/metabase/shoppy) است.
 
-## Embedded analytics SDK prerequisites
+## پیش‌نیازهای SDK تجزیه و تحلیل تعبیه‌شده
 
-- React application using React 18 or React 19.
-- Nodejs 20.x or higher.
-- Metabase version 1.52 or higher.
+- برنامه React با استفاده از React 18 یا React 19.
+- Nodejs 20.x یا بالاتر.
+- نسخه متابیس 1.52 یا بالاتر.
 
-## Quickstarts
+## شروع‌های سریع
 
-- [Quickstart](./quickstart.md) (If you have Metabase and an app)
-- [Quickstart CLI](./quickstart-cli.md) (If you have an app, but no Metabase)
-- [Quickstart with sample React app](./quickstart-with-sample-app.md) (If you don't have either)
+- [شروع سریع](./quickstart.md) (اگر متابیس و یک برنامه دارید)
+- [شروع سریع CLI](./quickstart-cli.md) (اگر یک برنامه دارید، اما متابیس ندارید)
+- [شروع سریع با برنامه نمونه React](./quickstart-with-sample-app.md) (اگر هیچ کدام را ندارید)
 
-## Installation
+## نصب
 
-To use the SDK, you'll need to enable the SDK in Metabase, and install the SDK in your React app.
+برای استفاده از SDK، باید SDK را در متابیس فعال کنید و SDK را در برنامه React خود نصب کنید.
 
-### Enable the SDK in Metabase
+### فعال کردن SDK در متابیس
 
-1. Enable the Embedded analytics SDK by going to **Admin settings > Embedding > Modular**.
-2. Toggle on **SDK for React**.
-3. In **Cross-Origin Resource Sharing (CORS)**, enter the origins for your website or app where you want to allow SDK embedding, separated by a space. Localhost is automatically included.
+۱. SDK تجزیه و تحلیل تعبیه‌شده را با رفتن به **Admin settings > Embedding > Modular** فعال کنید.
+۲. **SDK for React** را روشن کنید.
+۳. در **اشتراک‌گذاری منابع مبدأ متقابل (CORS)**، مبدأهای وب‌سایت یا برنامه خود که می‌خواهید جاسازی SDK را در آن‌ها مجاز کنید را وارد کنید، با فاصله جدا شده. Localhost به طور خودکار شامل می‌شود.
 
-### Install the SDK in your React application
+### نصب SDK در برنامه React شما
 
-You can install the Embedded analytics SDK for React via npm. Make sure to use the dist-tag that corresponds to your Metabase version, example: 56-stable for Metabase 56:
+می‌توانید SDK تجزیه و تحلیل تعبیه‌شده برای React را از طریق npm نصب کنید. مطمئن شوید که از dist-tag که با نسخه متابیس شما مطابقت دارد استفاده کنید، مثال: 56-stable برای متابیس 56:
 
 ```bash
 npm install @metabase/embedding-sdk-react@56-stable
 ```
 
-or with Yarn:
+یا با Yarn:
 
 ```bash
 yarn add @metabase/embedding-sdk-react@56-stable
 ```
 
-### Resolving `@types/react` version mismatches
+### حل عدم تطابق نسخه `@types/react`
 
-In rare scenarios, the Embedding SDK and your application may use different major versions of `@types/react`, causing TypeScript conflicts.
+در سناریوهای نادر، Embedding SDK و برنامه شما ممکن است از نسخه‌های اصلی مختلف `@types/react` استفاده کنند، که باعث تعارض‌های TypeScript می‌شود.
 
-To enforce a single `@types/react` version across all dependencies, add an `overrides` (npm) or `resolutions` (Yarn) section to your `package.json` and specify the `@types/react` version your application uses.
+برای اعمال یک نسخه واحد `@types/react` در همه وابستگی‌ها، یک بخش `overrides` (npm) یا `resolutions` (Yarn) به `package.json` خود اضافه کنید و نسخه `@types/react` که برنامه شما استفاده می‌کند را مشخص کنید.
 
-#### npm set @types/react version
+#### تنظیم نسخه @types/react با npm
 
 ```json
 {
@@ -70,7 +70,7 @@ To enforce a single `@types/react` version across all dependencies, add an `over
 }
 ```
 
-#### Yarn set @types/react version
+#### تنظیم نسخه @types/react با Yarn
 
 ```json
 {
@@ -80,35 +80,35 @@ To enforce a single `@types/react` version across all dependencies, add an `over
 }
 ```
 
-## Architecture
+## معماری
 
-Starting with Metabase 57, the SDK consists of two parts:
+شروع با متابیس 57، SDK شامل دو بخش است:
 
-- **SDK Package** – The `@metabase/embedding-sdk-react` npm package is a lightweight bootstrapper library. Its primary purpose is to load and run the main SDK Bundle code.
-- **SDK Bundle** – The full SDK code, served directly from your self-hosted Metabase instance or Metabase Cloud, and it's the part of the Metabase. This ensures that the main SDK code is always compatible with its corresponding Metabase instance.
+- **بسته SDK** – بسته npm `@metabase/embedding-sdk-react` یک کتابخانه bootstrapper سبک است. هدف اصلی آن بارگذاری و اجرای کد SDK Bundle اصلی است.
+- **SDK Bundle** – کد کامل SDK، مستقیماً از نمونه متابیس self-hosted شما یا Metabase Cloud سرو می‌شود، و بخشی از متابیس است. این اطمینان می‌دهد که کد SDK اصلی همیشه با نمونه متابیس مربوطه سازگار است.
 
-## Developing with the Embedded analytics SDK
+## توسعه با SDK تجزیه و تحلیل تعبیه‌شده
 
-Start with one of the quickstarts, then see these pages for more info on components, theming, and more.
+با یکی از شروع‌های سریع شروع کنید، سپس این صفحات را برای اطلاعات بیشتر در مورد اجزا، تم‌دهی و موارد بیشتر ببینید.
 
-- [Authentication](./authentication.md)
-- [Questions](./questions.md)
-- [AI chat](./ai-chat.md)
-- [Dashboards](./dashboards.md)
-- [Appearance](./appearance.md)
-- [Collections](./collections.md)
-- [Plugins](./plugins.md)
-- [Config](./config.md)
-- [Versioning](./version.md)
-- [Notes on Next.js](./next-js.md)
+- [احراز هویت](./authentication.md)
+- [سؤال‌ها](./questions.md)
+- [چت هوش مصنوعی](./ai-chat.md)
+- [داشبوردها](./dashboards.md)
+- [ظاهر](./appearance.md)
+- [مجموعه‌ها](./collections.md)
+- [پلاگین‌ها](./plugins.md)
+- [پیکربندی](./config.md)
+- [نسخه‌گذاری](./version.md)
+- [یادداشت‌هایی در مورد Next.js](./next-js.md)
 
-## Embedded analytics SDK source code
+## کد منبع SDK تجزیه و تحلیل تعبیه‌شده
 
-You can find the [Embedded analytics SDK source code in the Metabase repo](https://github.com/metabase/metabase/tree/master/enterprise/frontend/src/embedding-sdk).
+می‌توانید [کد منبع SDK تجزیه و تحلیل تعبیه‌شده را در مخزن متابیس](https://github.com/metabase/metabase/tree/master/enterprise/frontend/src/embedding-sdk) پیدا کنید.
 
-## Changelog
+## تغییرات
 
-View the SDK's changelog:
+مشاهده changelog SDK:
 
 - [56-stable](https://github.com/metabase/metabase/blob/release-x.56.x/enterprise/frontend/src/embedding-sdk-bundle/CHANGELOG.md)
 - [55-stable](https://github.com/metabase/metabase/blob/release-x.55.x/enterprise/frontend/src/embedding-sdk-bundle/CHANGELOG.md)
@@ -116,33 +116,33 @@ View the SDK's changelog:
 - [53-stable](https://github.com/metabase/metabase/blob/release-x.53.x/enterprise/frontend/src/embedding-sdk/CHANGELOG.md)
 - [52-stable](https://github.com/metabase/metabase/blob/release-x.52.x/enterprise/frontend/src/embedding-sdk/CHANGELOG.md)
 
-## Embedded analytics SDK on npm
+## SDK تجزیه و تحلیل تعبیه‌شده در npm
 
-Check out the Metabase Embedded analytics SDK on npm: [metaba.se/sdk-npm](https://metaba.se/sdk-npm).
+SDK تجزیه و تحلیل تعبیه‌شده متابیس را در npm بررسی کنید: [metaba.se/sdk-npm](https://metaba.se/sdk-npm).
 
-## SDK limitations
+## محدودیت‌های SDK
 
-The SDK doesn't support:
+SDK از موارد زیر پشتیبانی نمی‌کند:
 
-- Verified content
-- Official collections
-- Subscriptions
-- Alerts
-- Server-side rendering (SSR)
+- محتوای تأیید شده
+- مجموعه‌های رسمی
+- اشتراک‌ها
+- هشدارها
+- رندر سمت سرور (SSR)
 
-Other limitations:
+محدودیت‌های دیگر:
 
-- Multiple _interactive_ dashboards on the same application page. If you need to embed multiple dashboards on the same application page, you can embed static dashboards.
-- If you have Leaflet 1.x as a dependency in your app, you may run into compatibility issues. You can try using Leaflet 2.x instead.
+- چندین داشبورد _تعاملی_ در همان صفحه برنامه. اگر نیاز دارید چندین داشبورد را در همان صفحه برنامه جاسازی کنید، می‌توانید داشبوردهای ایستا را جاسازی کنید.
+- اگر Leaflet 1.x را به عنوان یک وابستگی در برنامه خود دارید، ممکن است با مشکلات سازگاری مواجه شوید. می‌توانید به جای آن از Leaflet 2.x استفاده کنید.
 
-## Issues, feature requests and support
+## مسائل، درخواست‌های ویژگی و پشتیبانی
 
-[Bugs](https://github.com/metabase/metabase/issues/?q=is%3Aissue%20state%3Aopen%20label%3AType%3ABug%20label%3AEmbedding%2FSDK) and [feature requests](https://github.com/metabase/metabase/issues/?q=is%3Aissue%20state%3Aopen%20label%3AEmbedding%2FSDK%20label%3A%22Type%3ANew%20Feature%22) are tracked on GitHub.
+[Bugها](https://github.com/metabase/metabase/issues/?q=is%3Aissue%20state%3Aopen%20label%3AType%3ABug%20label%3AEmbedding%2FSDK) و [درخواست‌های ویژگی](https://github.com/metabase/metabase/issues/?q=is%3Aissue%20state%3Aopen%20label%3AEmbedding%2FSDK%20label%3A%22Type%3ANew%20Feature%22) در GitHub ردیابی می‌شوند.
 
-You can upvote an existing feature request by leaving a thumbs up emoji reaction on the issue. Feel free to leave comments with context that could be useful. [Read more](https://www.metabase.com/docs/latest/troubleshooting-guide/requesting-new-features).
+می‌توانید یک درخواست ویژگی موجود را با گذاشتن یک emoji reaction thumbs up روی issue upvote کنید. با خیال راحت نظرات با زمینه‌ای که می‌تواند مفید باشد بگذارید. [بیشتر بخوانید](https://www.metabase.com/docs/latest/troubleshooting-guide/requesting-new-features).
 
-Before creating new issues, please make sure an issue for your problem or feature request doesn't already exist.
-To seek help:
+قبل از ایجاد issueهای جدید، لطفاً مطمئن شوید که یک issue برای مشکل یا درخواست ویژگی شما از قبل وجود ندارد.
+برای جستجوی کمک:
 
-- Paid customers can contact our success team through the usual channels.
-- People using the open-source edition can post on our [discussion forums](https://discourse.metabase.com/).
+- مشتریان پولی می‌توانند از طریق کانال‌های معمول با تیم موفقیت ما تماس بگیرند.
+- افرادی که از نسخه open-source استفاده می‌کنند می‌توانند در [انجمن‌های بحث ما](https://discourse.metabase.com/) پست بگذارند.

@@ -1,36 +1,36 @@
 ---
-title: Embedded analytics SDK - versions
+title: SDK تجزیه و تحلیل تعبیه‌شده - نسخه‌ها
 ---
 
-# Embedded analytics SDK - versions
+# SDK تجزیه و تحلیل تعبیه‌شده - نسخه‌ها
 
 {% include plans-blockquote.html feature="Embedded analytics SDK" sdk=true %}
 
-The SDK stable version tracks with the Metabase version.
+نسخه stable SDK با نسخه متابیس همگام است.
 
-So, for example, if you're on Metabase 56 (`0.56.x`, `1.56.x`), _any_ version 0.56.x of the @metabase/embedding-sdk-react npm package will be compatible.
+پس، به عنوان مثال، اگر در متابیس 56 (`0.56.x`، `1.56.x`) هستید، _هر_ نسخه 0.56.x از بسته npm @metabase/embedding-sdk-react سازگار خواهد بود.
 
-To simplify things, we publish dist-tags for each stable Metabase version. For example, to install the latest version of the SDK compatible with Metabase 56, run:
+برای ساده کردن چیزها، dist-tagها را برای هر نسخه stable متابیس منتشر می‌کنیم. به عنوان مثال، برای نصب آخرین نسخه SDK سازگار با متابیس 56، اجرا کنید:
 
 ```sh
 npm install @metabase/embedding-sdk-react@56-stable
 ```
 
-To grab the latest version of the SDK that works with Metabase nightly builds, use the `canary` dist-tag.
+برای گرفتن آخرین نسخه SDK که با nightly buildهای متابیس کار می‌کند، از dist-tag `canary` استفاده کنید.
 
-## Minimum SDK version
+## حداقل نسخه SDK
 
-Version 52 is the minimum version supported for the Embedded analytics SDK.
+نسخه 52 حداقل نسخه پشتیبانی شده برای SDK تجزیه و تحلیل تعبیه‌شده است.
 
-## You can pin instances to a version on Metabase Cloud
+## می‌توانید نمونه‌ها را به یک نسخه در Metabase Cloud pin کنید
 
-Metabase Cloud upgrades your instance automatically as new versions roll out. But if you're using the SDK with Metabase Cloud, you may want to pin your version so you can upgrade manually. This way you can make sure that your embeds don't break when you upgrade both your Metabase and your SDK version.
+Metabase Cloud نمونه شما را به طور خودکار با انتشار نسخه‌های جدید ارتقا می‌دهد. اما اگر از SDK با Metabase Cloud استفاده می‌کنید، ممکن است بخواهید نسخه خود را pin کنید تا بتوانید به صورت دستی ارتقا دهید. به این ترتیب می‌توانید اطمینان حاصل کنید که جاسازی‌های شما هنگام ارتقای هم نسخه متابیس و هم نسخه SDK شما خراب نمی‌شوند.
 
-### Manually pinning your instance version on Metabase Cloud
+### Pin کردن دستی نسخه نمونه در Metabase Cloud
 
-To manually pin your version of Metabase:
+برای pin کردن دستی نسخه متابیس:
 
-1. Go to **Admin > Embedding > Modular**.
-2. Scroll to **Version pinning** and click **Request version pinning**.
+۱. به **Admin > Embedding > Modular** بروید.
+۲. به **Version pinning** اسکرول کنید و **Request version pinning** را کلیک کنید.
 
-This will open a mailto link to our support team.
+این یک لینک mailto به تیم پشتیبانی ما باز می‌کند.

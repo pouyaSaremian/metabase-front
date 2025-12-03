@@ -4,76 +4,76 @@ title: SQLite
 
 # SQLite
 
-> SQLite isn't available for [Metabase Cloud](https://www.metabase.com/cloud/).
+> SQLite روی [Metabase Cloud](https://www.metabase.com/cloud/) در دسترس نیست.
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای اضافه کردن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-Fill out the fields for that database, and click **Save changes** at the bottom.
+فیلدهای مربوط به این پایگاه‌داده را پر کنید و در انتها روی **Save changes** کلیک کنید.
 
 ## Settings
 
-You can edit these settings at any time. Just remember to save your changes.
+می‌توانید هر زمان این تنظیمات را ویرایش کنید؛ فقط یادتان باشد تغییرات را ذخیره کنید.
 
 ### Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+می‌توانید یک connection string اینجا paste کنید تا فیلدهای باقی‌مانده به‌طور خودکار پر شوند.
 
 ### Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط کاربری متابیس.
 
 ### Filename
 
-The location of the SQLite database (the absolute path).
+مسیر پایگاه‌دادهٔ SQLite (مسیر مطلق).
 
 ### Re-run queries for simple explorations
 
-Turn this option **OFF** if people want to click **Run** (the play button) before applying any [Summarize](../../questions/query-builder/summarizing-and-grouping.md) or filter selections.
+اگر می‌خواهید کاربران قبل از اعمال هر [Summarize](../../questions/query-builder/summarizing-and-grouping.md) یا فیلتر، روی **Run** (دکمهٔ play) کلیک کنند، این گزینه را روی **OFF** قرار دهید.
 
-By default, Metabase will execute a query as soon as you choose an grouping option from the **Summarize** menu or a filter condition from the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through). If your database is slow, you may want to disable re-running to avoid loading data on each click.
+به‌طور پیش‌فرض، متابیس به محض انتخاب یک گزینهٔ گروه‌بندی از منوی **Summarize** یا یک شرط فیلتر از [منوی drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through)، پرس‌وجو را اجرا می‌کند. اگر پایگاه‌دادهٔ شما کند است، بهتر است اجرای خودکار را غیرفعال کنید تا با هر کلیک، کوئری جدید اجرا نشود.
 
 ### Choose when Metabase syncs and scans
 
-Turn this option **ON** to manage the queries that Metabase uses to stay up to date with your database. For more information, see [Syncing and scanning databases](../sync-scan.md).
+این گزینه را روی **ON** قرار دهید تا بتوانید پرس‌وجوهایی را که متابیس برای به‌روز ماندن با پایگاه‌داده اجرا می‌کند مدیریت کنید. برای اطلاعات بیشتر، [Syncing and scanning databases](../sync-scan.md) را ببینید.
 
 #### Database syncing
 
-If you've selected **Choose when syncs and scans happen** > **ON**, you'll be able to set:
+اگر گزینهٔ **Choose when syncs and scans happen** را روی **ON** گذاشته باشید، می‌توانید این موارد را تنظیم کنید:
 
-- The frequency of the [sync](../sync-scan.md#how-database-syncs-work): hourly (default) or daily.
-- The time to run the sync, in the timezone of the server where your Metabase app is running.
+- بسامد (frequency) [sync](../sync-scan.md#how-database-syncs-work): ساعتی (پیش‌فرض) یا روزانه.
+- زمان اجرای sync، بر اساس timezone سروری که برنامهٔ متابیس روی آن اجرا می‌شود.
 
 ### Scanning for filter values
 
-Metabase can scan the values present in each field in this database to enable checkbox filters in dashboards and questions. This can be a resource-intensive process, particularly if you have a large database.
+متابیس می‌تواند مقادیر موجود در هر فیلد در این پایگاه‌داده را اسکن کند تا امکان استفاده از فیلترهای checkbox در داشبوردها و سؤال‌ها را فراهم کند. این کار می‌تواند به‌خصوص روی پایگاه‌داده‌های بزرگ، هزینه‌بر (resource-intensive) باشد.
 
-If you've selected **Choose when syncs and scans happen** > **ON**, you'll see the following options under **Scanning for filter values**:
+اگر گزینهٔ **Choose when syncs and scans happen** را روی **ON** گذاشته باشید، زیر بخش **Scanning for filter values** این گزینه‌ها را می‌بینید:
 
-- **Regularly, on a schedule** allows you to run [scan queries](../sync-scan.md#how-database-scans-work) at a frequency that matches the rate of change to your database. The time is set in the timezone of the server where your Metabase app is running. This is the best option for a small database, or tables with distinct values that get updated often.
-- **Only when adding a new filter widget** is a great option if you want scan queries to run on demand. Turning this option **ON** means that Metabase will only scan and cache the values of the field(s) that are used when a new filter is added to a dashboard or SQL question.
-- **Never, I'll do this manually if I need to** is an option for databases that are either prohibitively large, or which rarely have new values added. Use the [Re-scan field values](../sync-scan.md#manually-scanning-column-values) button to run a manual scan and bring your filter values up to date.
+- **Regularly, on a schedule** این امکان را می‌دهد که [scan queryها](../sync-scan.md#how-database-scans-work) را با بسامدی متناسب با نرخ تغییر داده‌ها اجرا کنید. زمان اجرا بر اساس timezone سروری است که متابیس روی آن اجرا می‌شود. این گزینه برای پایگاه‌داده‌های کوچک، یا جدول‌هایی که مقادیر متمایز آن‌ها زیاد و به‌روز می‌شود، مناسب است.
+- **Only when adding a new filter widget** گزینهٔ خوبی است اگر می‌خواهید scan فقط در لحظهٔ نیاز اجرا شود. روشن کردن این گزینه یعنی متابیس فقط زمانی مقادیر فیلد(ها) را اسکن و cache می‌کند که یک فیلتر جدید به یک داشبورد یا سؤال SQL اضافه شود.
+- **Never, I'll do this manually if I need to** مناسب پایگاه‌داده‌هایی است که یا بیش از حد بزرگ‌اند، یا به‌ندرت مقادیر جدیدی در آن‌ها اضافه می‌شود. در این حالت می‌توانید از دکمهٔ [Re-scan field values](../sync-scan.md#manually-scanning-column-values) استفاده کنید تا هر زمان نیاز شد اسکن دستی انجام دهید و مقادیر فیلترها را به‌روز کنید.
 
 ### Periodically refingerprint tables
 
-> Periodic refingerprinting will increase the load on your database.
+> fingerprint دوره‌ای بار روی پایگاه‌دادهٔ شما را افزایش می‌دهد.
 
-Turn this option **ON** to scan a sample of values every time Metabase runs a [sync](../sync-scan.md#how-database-syncs-work).
+این گزینه را روی **ON** قرار دهید تا هر بار متابیس یک [sync](../sync-scan.md#how-database-syncs-work) اجرا می‌کند، یک نمونه از مقادیر را اسکن کند.
 
-A fingerprinting query examines the first 10,000 rows from each column and uses that data to guesstimate how many unique values each column has, what the minimum and maximum values are for numeric and timestamp columns, and so on. If you leave this option **OFF**, Metabase will only fingerprint your columns once during setup.
+پرس‌وجوی fingerprinting اولین ۱۰٬۰۰۰ ردیف هر ستون را بررسی می‌کند و بر اساس آن، تعداد مقادیر یکتا در هر ستون، و حداقل و حداکثر مقادیر ستون‌های عددی و زمانی و غیره را تخمین می‌زند. اگر این گزینه را روی **OFF** بگذارید، متابیس فقط یک‌بار و در زمان راه‌اندازی، برای ستون‌ها fingerprint می‌سازد.
 
 ## Database routing
 
-With database routing, an admin can build a question once using one database, and the question will run its query against a different database with the same schema depending on who is viewing the question.
+با قابلیت database routing، یک ادمین می‌تواند یک سؤال را یک‌بار با استفاده از یک پایگاه‌داده بسازد، و همان سؤال بسته به این‌که چه کسی آن را می‌بیند، پرس‌وجو را روی یک پایگاه‌دادهٔ دیگر با همان schema اجرا کند.
 
-See [Database routing](../../permissions/database-routing.md).
+[مستندات Database routing](../../permissions/database-routing.md) را ببینید.
 
 ## Danger zone
 
-See [Danger zone](../danger-zone.md).
+[بخش Danger zone](../danger-zone.md) را ببینید.
 
 ## Further reading
 
-- [Managing databases](../../databases/connecting.md)
-- [Metadata editing](../../data-modeling/metadata-editing.md)
-- [Models](../../data-modeling/models.md)
-- [Setting data access permissions](../../permissions/data.md)
+- [مدیریت پایگاه‌داده‌ها](../../databases/connecting.md)
+- [ویرایش متادیتا](../../data-modeling/metadata-editing.md)
+- [مدل‌ها](../../data-modeling/models.md)
+- [تنظیم مجوزهای دسترسی به داده](../../permissions/data.md)

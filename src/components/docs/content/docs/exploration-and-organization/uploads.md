@@ -1,136 +1,144 @@
 ---
-title: Uploading data
+title: بارگذاری داده (Uploading data)
 ---
 
-# Uploading data
+# بارگذاری داده (Uploading data)
 
-If an admin has [set up uploads](../databases/uploads.md), you can upload CSV data by clicking on the **Upload** icon in the top right of the collection page.
+اگر ادمین شما [آپلودها را فعال کرده باشد](../databases/uploads.md)، می‌توانید با کلیک روی آیکون **Upload** در بالا سمت راست صفحهٔ کالکشن، فایل‌های CSV را آپلود کنید.
 
-![Upload CSV data](../databases/images/upload-icon.png).
+![Upload CSV data](../databases/images/upload-icon.png)
 
-## Create, append, or replace models with uploads
+## ساخت، الحاق یا جایگزینی مدل‌ها با Upload
 
-When you upload a CSV file, Metabase may ask to select a destination for that upload (depending on whether there are other uploads).
+وقتی یک فایل CSV آپلود می‌کنید، متابیس (بسته به این‌که قبلاً آپلودهای دیگری وجود دارد یا نه) ممکن است از شما بخواهد مقصد آپلود را انتخاب کنید.
 
-If your CSV has the same columns as a model from a previously uploaded file, you can append data to that model. Otherwise, you can create a new [model](../data-modeling/models.md). if you want to:
+اگر CSV شما همان ستون‌هایی را داشته باشد که یک مدل از آپلود قبلی داشته، می‌توانید داده‌های جدید را به همان مدل اضافه (Append) کنید. در غیر این صورت می‌توانید یک [مدل جدید](../data-modeling/models.md) بسازید. با Upload می‌توانید:
 
-- Create a new model
-- [Append to an existing model created by an upload](#appending-to-a-model-created-by-an-upload)
-- [Replace the data for an existing model created by an upload](#replacing-the-data-of-an-uploaded-model)
+- یک مدل جدید بسازید؛
+- [به مدلی که قبلاً با Upload ساخته شده الحاق کنید](#الحاق-به-مدلی-که-با-upload-ساخته-شده-appending-to-a-model-created-by-an-upload)؛
+- [داده‌های یک مدلِ ساخته‌شده با Upload را جایگزین کنید](#جایگزینی-داده‌های-یک-مدل-upload-شده-replacing-the-data-of-an-uploaded-model).
 
-Metabase will create a [model](../data-modeling/models.md) that contains that CSV data, as well as the model's underlying table.
+متابیس یک [مدل](../data-modeling/models.md) می‌سازد که داده‌های CSV را در خود نگه می‌دارد، به‌همراه جدول زیرین (Underlying table) مربوط به آن مدل.
 
-Uploads will only be available if your admin has enabled uploads for your Metabase, and you're in a group with Unrestricted access to the schema used to store those uploads. See [Uploading data](../databases/uploads.md).
+Uploadها فقط وقتی در دسترس‌اند که ادمین شما این قابلیت را برای متابیس فعال کرده باشد و شما در گروهی باشید که به Schema مخصوص Upload دسترسی **Unrestricted** دارد. بخش [Uploading data](../databases/uploads.md) را ببینید.
 
-## Appending to a model created by an upload
+## الحاق به مدلی که با Upload ساخته شده (Appending to a model created by an upload)
 
-You can upload additional CSV data to an existing model created by a previous CSV upload.
+می‌توانید CSVهای جدید را به مدلی که قبلاً با یک CSV دیگر ساخته شده، الحاق کنید.
 
 ![Append data to existing upload model](./images/append-data.png)
 
-The uploaded CSV must have the same column name, order, and type as the columns in the model. Metabase will look for a header row to check that the column names are the same. So if you split a large CSV into multiple CSVs, make sure to include header rows for all of the files.
+فایل CSV جدید باید **همان نام ستون‌ها، همان ترتیب و همان نوع داده** را داشته باشد. متابیس برای چک‌کردن نام ستون‌ها به ردیف Header نگاه می‌کند. پس اگر یک CSV بزرگ را به چند CSV کوچک‌تر تقسیم می‌کنید، باید در همهٔ آن‌ها ردیف Header را قرار دهید.
 
-When appending, Metabase will simply insert the rows into the underlying table, which will update the model that sits on top of that table. If you have duplicate rows from one upload to the next, Metabase will preserve those duplicate rows.
+در حالت Append، متابیس صرفاً ردیف‌های جدید را به جدول زیرین اضافه می‌کند و مدل روی آن جدول به‌طور خودکار به‌روز می‌شود. اگر بین آپلودها ردیف‌های تکراری داشته باشید، متابیس آن ردیف‌های تکراری را هم نگه می‌دارد.
 
-The upload icon will only be visible on models created by uploads.
+آیکون Upload فقط روی مدل‌هایی نمایش داده می‌شود که با Upload ساخته شده‌اند.
 
-## Replacing the data of an uploaded model
+## جایگزینی داده‌های یک مدل Upload شده (Replacing the data of an uploaded model)
 
-Instead of deleting a model and recreating it, you can replace the underlying data with an updated spreadsheet.
+به‌جای این‌که یک مدل را حذف و از صفر دوباره بسازید، می‌توانید داده‌های زیرین آن را با یک Spreadsheet به‌روزشده جایگزین کنید.
 
-Like appending to uploaded models, replacing the uploaded CSV data with a new CSV file requires the columns and headings to match.
+درست مثل حالت Append، برای جایگزینی CSV آپلودشده با CSV جدید، باید ستون‌ها و Headerها دقیقاً یکسان باشند.
 
-If you [delete the uploaded table](../exploration-and-organization/uploads.md#deleting-models-and-tables-created-by-uploads), you won't be able to replace the model's data.
+اگر [جدول Uploadشده را حذف کنید](../exploration-and-organization/uploads.md#حذف-مدل‌ها-و-جدول‌های-ساخته‌شده-با-upload-deleting-models-and-tables-created-by-uploads)، دیگر نمی‌توانید داده‌های مدل را جایگزین کنید.
 
-## Primary key auto-generation
+## تولید خودکار کلید اصلی (Primary key auto-generation)
 
-When you upload a CSV, Metabase will create an a unique primary key column, called `_mb_row_id`, as the first (left-most) column of the uploaded CSV table. This `_mb_row_id` column will contain automatically generated integers. Metabase will also ignore any columns in the upload that have a name that will be in the database with the same name as the auto-generated primary key column (e.g., `_MB row-ID` in the CSV will be `_mb_row_id` or `_MB_ROW_ID` in the database).
+وقتی یک CSV را آپلود می‌کنید، متابیس یک ستون کلید اصلی (Primary key) یکتا به نام `_mb_row_id` به‌عنوان اولین ستون جدول اضافه می‌کند. مقدارهای این ستون عددهای صحیح تولیدشدهٔ خودکار هستند. متابیس همچنین هر ستونی در CSV را که نامش (بعد از نرمال‌سازی) با نام این ستون یکی باشد نادیده می‌گیرد (مثلاً ستون `_MB row-ID` در CSV معادل `_mb_row_id` یا `_MB_ROW_ID` در دیتابیس خواهد شد).
 
-If you don't want this autogenerated ID column, you can always remove the column from the model Metabase created. Visit the model, click on the info **i** icon, then **Model details**. From the model details page, click the **Edit definition** button. In the Data section of the query builder, click on the down arrow next to the table, deselect the added ID column, and save your changes.
+اگر این ستون ID خودکار را نمی‌خواهید، می‌توانید آن را از خود مدل حذف کنید. برای این کار:
 
-## Data type errors
+1. وارد صفحهٔ مدل شوید.
+2. روی آیکون **i** (اطلاعات) کلیک کنید و **Model details** را بزنید.
+3. در صفحهٔ جزئیات مدل روی دکمهٔ **Edit definition** کلیک کنید.
+4. در بخش Data در Query builder، روی فلش کنار جدول کلیک کنید، تیک ستون اضافه‌شده (ID) را بردارید و تغییرات را ذخیره کنید.
 
-Metabase will try to guess what the data type is for each column, but if some entries are not like the others, Metabase may not guess the type correctly. For example, if you have a column that starts with integers like 100, 130, 140, then later on a float 105.5, Metabase may reject the upload. To fix this, you'll need to use spreadsheet software to adjust the formatting so that all the integers are formatted as floats (e.g., 100.00, 130.00, 140.00 and so on) before uploading.
+## خطاهای نوع داده (Data type errors)
 
-## File size limit
+متابیس سعی می‌کند نوع دادهٔ هر ستون را حدس بزند، اما اگر بعضی مقدارها با بقیهٔ ردیف‌ها جور نباشد، ممکن است حدسش غلط باشد یا آپلود را رد کند. مثلاً اگر ستونی با مقادیر ۱۰۰، ۱۳۰، ۱۴۰ شروع شود و بعداً مقداری مثل ۱۰۵٫۵ داشته باشد، متابیس ممکن است آپلود را نپذیرد.
 
-CSV files cannot exceed 50 MB in size.
+برای رفع این مشکل، باید در نرم‌افزار Spreadsheet نوع فرمت ستون را اصلاح کنید؛ مثلاً همهٔ عددهای صحیح را هم به‌صورت Float ذخیره کنید (۱۰۰٫۰۰، ۱۳۰٫۰۰، ۱۴۰٫۰۰ و غیره) و سپس فایل را دوباره آپلود کنید.
 
-> While Metabase limits uploads to 50 MB, the server you use to run your Metabase may impose a lower limit. For example, the default client upload limit for [NGINX is 1 MB](https://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size). So you may need to change your server settings to allow uploads up to 50 MB. People on Metabase Cloud don't have to worry about this.
+## محدودیت اندازهٔ فایل (File size limit)
 
-If you have a file larger than 50 MB, the workaround here is to split the data into multiple files and [append those files to an existing model](../exploration-and-organization/uploads.md#appending-to-a-model-created-by-an-upload). Each file that you upload to Metabase must have a header row (the names of the columns), so if you're splitting one file into multiple files, you'll need to add header rows to each file.
+فایل‌های CSV نمی‌توانند بیشتر از **۵۰ مگابایت** باشند.
 
-## Date formats
+> هرچند متابیس آپلودها را به ۵۰ مگابایت محدود می‌کند، ممکن است سروری که متابیس را روی آن اجرا می‌کنید محدودیت کمتری اعمال کند. مثلاً مقدار پیش‌فرض `client_max_body_size` در [NGINX برابر ۱ مگابایت است](https://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size). در این صورت باید تنظیمات سرور را طوری تغییر دهید که آپلود تا ۵۰ مگابایت مجاز باشد. کاربران Metabase Cloud لازم نیست نگران این مورد باشند.
 
-For now, Metabase only recognizes dates and datetimes from strings in uploaded CSVs with the following formats:
+اگر فایل شما بزرگ‌تر از ۵۰ مگابایت است، می‌توانید داده را به چند فایل کوچک‌تر تقسیم کنید و هرکدام را جداگانه [به یک مدل موجود Append کنید](../exploration-and-organization/uploads.md#الحاق-به-مدلی-که-با-upload-ساخته-شده-appending-to-a-model-created-by-an-upload). یادتان باشد هر فایلی که آپلود می‌کنید باید یک ردیف Header (نام ستون‌ها) داشته باشد؛ در نتیجه اگر یک فایل را به چند قسمت تقسیم می‌کنید، باید در هر قسمت Header را اضافه کنید.
 
-### Dates
+## فرمت تاریخ‌ها (Date formats)
 
-Represents the year, month, and day without time information.
+فعلاً متابیس فقط تاریخ‌ها و DateTimeهایی را که به‌صورت رشته در CSV با فرمت‌های زیر آمده باشند می‌شناسد:
 
-**Format**: `yyyy-MM-dd`
+### تاریخ‌ها (Dates)
 
-**Example**: `2023-01-01`
+نمایش سال، ماه و روز بدون زمان.
 
-### Datetimes
+**فرمت**: `yyyy-MM-dd`  
+**مثال**: `2023-01-01`
 
-Represents the year, month, day, hour. Minutes, seconds, and fractional seconds are optional.
+### DateTimeها (Datetimes)
 
-**Format**: `yyyy-MM-ddTHH:mm:ss.SSS`. The "T" separator could also be a space (" ").
+نمایش سال، ماه، روز و ساعت؛ دقیقه، ثانیه و اعشار ثانیه اختیاری هستند.
 
-**Examples**:
+**فرمت**: `yyyy-MM-ddTHH:mm:ss.SSS`  
+کاراکتر `"T"` می‌تواند یک فاصلهٔ `" "` هم باشد.
+
+**مثال‌ها**:
 
 - `2023-01-01 00`
 - `2023-01-01 00:00:00.000`
 - `2023-01-01T00:00:00.000`
 - `2023-01-01 00:00:00.0000000`
 
-### Datetimes with offsets
+### DateTimeها با Offset
 
-Represents the datetime with an offset from Coordinated Universal Time (UTC). Minutes and seconds in the offset are optional.
+این فرمت‌ها DateTime را همراه با Offset نسبت به زمان UTC نشان می‌دهند؛ دقیقه و ثانیه در Offset اختیاری است.
 
-**Formats**:
+**فرمت‌ها**:
 
-Datetime formats:
+- فرمت‌های DateTime:
+  - `yyyy-MM-ddTHH:mm`
+  - `yyyy-MM-ddTHH:mm:ss`
+  - `yyyy-MM-ddTHH:mm:ss.SSS` (با هر تعداد `S`)
 
-- `yyyy-MM-ddTHH:mm`.
-- `yyyy-MM-ddTHH:mm:ss`.
-- `yyyy-MM-ddTHH:mm:ss.SSS` (and any number of S's).
+  کاراکتر `"T"` می‌تواند یک فاصلهٔ `" "` هم باشد.
 
-The "T" separator could also be a space (" ").
+- Offsetها:
+  - `Z` (برای UTC)
+  - `+HH` یا `-HH`
+  - `+HH:mm` یا `-HH:mm`
+  - `+HH:mm:ss` یا `-HH:mm:ss`
 
-Offsets:
-
-- `Z` (for UTC)
-- `+HH` or `-HH`
-- `+HH:mm` or `-HH:mm`
-- `+HH:mm:ss` or `-HH:mm:ss`
-
-**Examples**:
+**مثال‌ها**:
 
 - `2023-01-01 00:00:00+00:00:00`
 - `2023-01-01T00:00:00+00:00:00`
 
-## Deleting models and tables created by uploads
+## حذف مدل‌ها و جدول‌های ساخته‌شده با Upload (Deleting models and tables created by uploads)
 
-### Deleting models created by uploads
-
-{% include plans-blockquote.html feature="Deleting uploaded tables" %}
-
-You can move a model to Trash by clicking on the three dots in the upper right and selecting **Move to Trash**.
-
-For deleting models completely, see [Deleting items permanently](../exploration-and-organization/delete-and-restore.md).
-
-### Deleting tables created by uploads
+### حذف مدل‌های ساخته‌شده با Upload
 
 {% include plans-blockquote.html feature="Deleting uploaded tables" %}
 
-To delete tables created by uploads, go to **Admin settings** > **Settings** > **Uploads**.
+برای فرستادن یک مدل به سطل زباله، روی منوی سه‌نقطه‌ای بالا سمت راست کلیک و گزینهٔ **Move to Trash** را انتخاب کنید.
 
-Under **Manage uploads**, Metabase will list the tables underlying the models.
+برای حذف دائمی مدل‌ها، بخش [Deleting items permanently](../exploration-and-organization/delete-and-restore.md) را ببینید.
 
-When you delete the table, Metabase will give you the option to **Also send all models and questions based on this table to the trash**.
+### حذف جدول‌های ساخته‌شده با Upload
 
-## Further reading
+{% include plans-blockquote.html feature="Deleting uploaded tables" %}
 
-- [Enabling uploads](../databases/uploads.md)
+برای حذف جدول‌هایی که با Upload ساخته شده‌اند، به مسیر **Admin settings > Settings > Uploads** بروید.
+
+در بخش **Manage uploads**، متابیس لیستی از جدول‌های زیرینِ مدل‌ها را نمایش می‌دهد.
+
+وقتی یک جدول را حذف می‌کنید، متابیس این گزینه را نمایش می‌دهد که:  
+**همهٔ مدل‌ها و سؤال‌هایی که بر اساس این جدول ساخته شده‌اند هم به سطل زباله فرستاده شوند**.
+
+## مطالعهٔ بیشتر
+
+- [فعال‌کردن Upload](../databases/uploads.md)
+
+

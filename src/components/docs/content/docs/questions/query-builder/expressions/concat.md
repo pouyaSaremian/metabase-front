@@ -4,17 +4,17 @@ title: Concat
 
 # Concat
 
-`concat` concatenates data from two or more columns or values, and returns a string.
+تابع `concat` مقدارهای دو یا چند ستون یا مقدار دلخواه را به هم می‌چسباند و یک رشته (String) برمی‌گرداند.
 
-## Syntax
+## نحوهٔ نوشتن (Syntax)
 
-```
+```text
 concat(value1, value2, ...)
 ```
 
-`value1`, `value2` ... can be columns or values. Metabase will convert non-string columns into strings before concatenating their values.
+`value1`، `value2` و ... می‌توانند ستون یا مقدار ثابت باشند. متابیس قبل از الحاق مقادیر، ستون‌های غیرمتنی (مثل عدد یا تاریخ) را به رشته تبدیل می‌کند.
 
-### Example
+### مثال
 
 | Expression                               | Result                   |
 | ---------------------------------------- | ------------------------ |
@@ -22,11 +22,11 @@ concat(value1, value2, ...)
 | `concat("Vienna", " is in " ,"Austria")` | `"Vienna is in Austria"` |
 | `concat([City], " is in " ,[Country])`   | `"Vienna is in Austria"` |
 
-### Metabase will use unformatted values for non-string columns
+### استفاده از مقدارهای خام برای ستون‌های غیررشته‌ای
 
-When you use non-string columns in `concat`, Metabase will ignore any [formatting](../../../data-modeling/formatting.md) that you applied to the columns when converting the column to a string.
+وقتی در `concat` از ستون‌های غیررشته‌ای استفاده می‌کنید، متابیس هر نوع [فرمت‌گذاری‌ای](../../../data-modeling/formatting.md) را که روی آن ستون‌ها اعمال شده نادیده می‌گیرد و از مقدار خام استفاده می‌کند.
 
-For example, if you formatted a number to display only the first two decimal digits in the table results, the results of `concat` would still include additional decimal digits (if any) found in the raw results.
+مثلاً اگر عددی را طوری فرمت کرده باشید که فقط دو رقم اعشار نمایش داده شود، ولی مقدار خام آن رقم‌های اعشار بیشتری داشته باشد، خروجی `concat` همان تعداد اعشارِ واقعی را نشان می‌دهد.
 
 | Formatted display | Value                     | `concat("Result:", " ", [Value])` |
 | ----------------- | ------------------------- | --------------------------------- |
@@ -34,11 +34,11 @@ For example, if you formatted a number to display only the first two decimal dig
 | `17`              | `17`                      | `Result: 17`                      |
 | `31.25`           | `31.24823945`             | `Result: 31.24823945`             |
 | `42%`             | `0.42`                    | `Result: 0.42`                    |
-| `January 1, 2024` | `2025-02-11 21:40:27.892` | `Result: 31.24823945`             |
+| `January 1, 2024` | `2025-02-11 21:40:27.892` | `Result: 2025-02-11 21:40:27.892` |
 
-## Accepted data types
+## انواع دادهٔ پذیرفته‌شده
 
-| [Data type](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview#examples-of-data-types) | Works with `concat` |
+| [Data type](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview#examples-of-data-types) | سازگار با `concat` |
 | ------------------------------------------------------------------------------------------------------------------------------ | ------------------- |
 | String                                                                                                                         | ✅                  |
 | Number                                                                                                                         | ✅                  |
@@ -46,64 +46,66 @@ For example, if you formatted a number to display only the first two decimal dig
 | Boolean                                                                                                                        | ✅                  |
 | JSON                                                                                                                           | ✅                  |
 
-Non-string types will be converted to strings. Regardless of the type of the value passed to `concat`, the result will be a string.
+انواعِ غیررشته‌ای قبل از الحاق به رشته تبدیل می‌شوند. مستقل از نوع دادهٔ ورودی، خروجی `concat` همیشه یک رشته است.
 
-## Related functions
+## توابع مرتبط
 
-This section covers functions and formulas that work the same way as the Metabase `concat` expression, with notes on how to choose the best option for your use case.
+در این بخش توابع و الگوهایی را می‌بینید که معادل `concat` در ابزارهای دیگر هستند:
 
 - [SQL](#sql)
-- [Spreadsheets](#spreadsheets)
+- [Spreadsheet](#spreadsheets)
 - [Python](#python)
 
 ### SQL
 
-In most cases (unless you're using a NoSQL database), questions created from the [notebook editor](https://www.metabase.com/glossary/notebook-editor) are converted into SQL queries that run against your database or data warehouse.
+در اغلب موارد (مگر این‌که از دیتابیس NoSQL استفاده کنید)، سؤال‌هایی که با [notebook editor](https://www.metabase.com/glossary/notebook-editor) ساخته می‌شوند به SQL ترجمه شده و روی دیتابیس اجرا می‌شوند.
 
-If our sample data is stored in a relational database:
+اگر دادهٔ نمونه در یک دیتابیس رابطه‌ای ذخیره شده باشد:
 
 ```sql
 SELECT
-    CONCAT(City, ", ", Country) AS "Location"
+    CONCAT(City, ', ', Country) AS "Location"
 FROM
     richard_linklater_films;
 ```
 
-is equivalent to the Metabase `concat` expression:
+معادل این عبارت در متابیس است:
 
-```
+```text
 concat([City], ", ", [Country])
 ```
 
 ### Spreadsheets
 
-If our sample data is in a spreadsheet where "City" is in column A, and "Country" in column B, we can create a third column "Location" like this:
+اگر دادهٔ نمونه در یک Spreadsheet باشد که ستون "City" در ستون A و ستون "Country" در ستون B باشد، می‌توانید ستون سومی به نام "Location" بسازید:
 
-```
+```text
 =CONCATENATE(A2, ", ", B2)
 ```
 
-which is equivalent to the Metabase `concat` expression:
+که معادل عبارت زیر در متابیس است:
 
-```
+```text
 concat([City], ", ", [Country])
 ```
 
 ### Python
 
-Assuming the sample data is in a dataframe column called `df`:
+اگر دادهٔ نمونه در یک DataFrame به نام `df` ذخیره شده باشد:
 
-```
+```python
 df["Location"] = df["City"] + ", " + df["Country"]
 ```
 
-is the same as the Metabase `concat` expression:
+معادل عبارت زیر در متابیس است:
 
-```
+```text
 concat([City], ", ", [Country])
 ```
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Custom expressions documentation](../expressions.md)
-- [Custom expressions tutorial](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/custom-expressions)
+- [مستندات تعبیرهای سفارشی](../expressions.md)
+- [آموزش تعبیرهای سفارشی](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/custom-expressions)
+
+

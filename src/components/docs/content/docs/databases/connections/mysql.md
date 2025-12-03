@@ -6,147 +6,149 @@ redirect_from:
 
 # MySQL
 
-> This page covers connecting to MySQL as a _data warehouse_. For using MySQL as Metabase's _application database_, see [Configuring the Metabase application database](../../installation-and-operation/configuring-application-database.md).
+> این صفحه اتصال MySQL را به‌عنوان یک _انبار داده (data warehouse)_ توضیح می‌دهد. برای استفاده از MySQL به‌عنوان _پایگاه‌دادهٔ برنامهٔ متابیس (application database)_، بخش [پیکربندی پایگاه‌دادهٔ برنامهٔ متابیس](../../installation-and-operation/configuring-application-database.md) را ببینید.
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای اضافه کردن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-## Supported versions
+## نسخه‌های پشتیبانی‌شده
 
-Metabase supports the oldest supported version through the latest stable version. See [MySQL end-of-life dates](https://endoflife.software/applications/databases/mysql).
+متابیس از قدیمی‌ترین نسخهٔ تحت پشتیبانی MySQL تا آخرین نسخهٔ پایدار آن پشتیبانی می‌کند. [MySQL end-of-life dates](https://endoflife.software/applications/databases/mysql) را ببینید.
 
-## Edit connection details
+## ویرایش جزئیات اتصال
 
-You can edit these settings at any time. Just remember to save your changes.
+می‌توانید هر زمان این تنظیمات را ویرایش کنید؛ فقط یادتان باشد تغییرات را ذخیره کنید.
 
 ### Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+می‌توانید یک connection string اینجا paste کنید تا فیلدهای باقی‌مانده به‌طور خودکار پر شوند.
 
 ### Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط کاربری متابیس.
 
 ### Host
 
-Your database's IP address, or its domain name (e.g., esc.mydatabase.com).
+آدرس IP پایگاه‌داده یا نام دامنهٔ آن (مثلاً `esc.mydatabase.com`).
 
 ### Port
 
-The database port. E.g., 3306.
+پورت پایگاه‌داده؛ مثلاً `3306`.
 
 ### Username
 
-The database username for the account that you want to use to connect to your database. You can set up multiple connections to the same database using different user accounts to connect to the same database, each with different sets of [privileges](../users-roles-privileges.md).
+نام کاربری پایگاه‌داده برای اکانتی که می‌خواهید با آن به دیتابیس وصل شوید. می‌توانید چند اتصال مختلف به همان پایگاه‌داده بسازید که هرکدام از یک کاربر متفاوت با مجموعهٔ متفاوتی از [سطوح دسترسی (privileges)](../users-roles-privileges.md) استفاده می‌کنند.
 
 ### Password
 
-The password for the username that you use to connect to the database.
+رمز عبوری که برای نام کاربری اتصال به پایگاه‌داده استفاده می‌کنید.
 
-### Use a secure connection (SSL)
+### استفاده از اتصال امن (SSL)
 
-You can paste your server's SSL certification chain.
+می‌توانید زنجیرهٔ گواهی SSL سرور خود را اینجا paste کنید.
 
-### Use an SSH tunnel
+### استفاده از SSH tunnel
 
-See our [guide to SSH tunneling](../ssh-tunnel.md).
+[راهنمای SSH tunneling](../ssh-tunnel.md) را ببینید.
 
 ### Unfold JSON Columns
 
-For MySQL databases, Metabase can unfold JSON columns into component fields to yield a table where each JSON key becomes a column. JSON unfolding is on by default, but you can turn off JSON unfolding if performance is slow.
+برای پایگاه‌داده‌های MySQL، متابیس می‌تواند ستون‌های JSON را به فیلدهای جزئی آن‌ها باز کند تا جدولی بسازد که در آن هر کلید JSON یک ستون جداگانه باشد. قابلیت JSON unfolding به‌صورت پیش‌فرض روشن است، اما اگر عملکرد کند شد می‌توانید آن را خاموش کنید.
 
-If you turn on JSON unfolding, you can also toggle the unfolding for individual columns in [table metadata](../../data-modeling/metadata-editing.md#unfold-json).
+اگر JSON unfolding را روشن گذاشته باشید، می‌توانید رفتار unfold کردن را برای هر ستون، در [متادیتای جدول](../../data-modeling/metadata-editing.md#unfold-json) به‌صورت جداگانه تنظیم کنید.
 
-### Additional JDBC connection string options
+### گزینه‌های اضافی JDBC connection string
 
-You can append options to the connection string that Metabase uses to connect to your database.
+می‌توانید گزینه‌های اضافی را به connection stringی که متابیس برای اتصال به پایگاه‌داده استفاده می‌کند اضافه کنید.
 
-### Re-run queries for simple explorations
+### اجرای دوبارهٔ پرس‌وجو برای اکتشاف ساده
 
-Turn this option **OFF** if people want to click **Run** (the play button) before applying any [Summarize](../../questions/query-builder/summarizing-and-grouping.md) or filter selections.
+اگر می‌خواهید کاربران قبل از اعمال هر [Summarize](../../questions/query-builder/summarizing-and-grouping.md) یا فیلتر، روی **Run** (دکمهٔ play) کلیک کنند، این گزینه را روی **OFF** قرار دهید.
 
-By default, Metabase will execute a query as soon as you choose an grouping option from the **Summarize** menu or a filter condition from the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through). If your database is slow, you may want to disable re-running to avoid loading data on each click.
+به‌طور پیش‌فرض، متابیس به محض انتخاب یک گزینهٔ گروه‌بندی از منوی **Summarize** یا یک شرط فیلتر از [منوی drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through)، پرس‌وجو را اجرا می‌کند. اگر پایگاه‌دادهٔ شما کند است، بهتر است اجرای خودکار را غیرفعال کنید تا با هر کلیک، کوئری جدید اجرا نشود.
 
-### Choose when syncs and scans happen
+### انتخاب زمان sync و scan
 
-See [syncs and scans](../sync-scan.md#choose-when-syncs-and-scans-happen).
+[sync و scan](../sync-scan.md#choose-when-syncs-and-scans-happen) را ببینید.
 
-### Periodically refingerprint tables
+### fingerprint دوره‌ای جدول‌ها
 
-> Periodic refingerprinting will increase the load on your database.
+> fingerprint دوره‌ای بار روی پایگاه‌دادهٔ شما را افزایش می‌دهد.
 
-Turn this option **ON** to scan a sample of values every time Metabase runs a [sync](../sync-scan.md#how-database-syncs-work).
+این گزینه را روی **ON** قرار دهید تا هر بار متابیس یک [sync](../sync-scan.md#how-database-syncs-work) اجرا می‌کند، یک نمونه از مقادیر را اسکن کند.
 
-A fingerprinting query examines the first 10,000 rows from each column and uses that data to guesstimate how many unique values each column has, what the minimum and maximum values are for numeric and timestamp columns, and so on. If you leave this option **OFF**, Metabase will only fingerprint your columns once during setup.
+پرس‌وجوی fingerprinting اولین ۱۰٬۰۰۰ ردیف هر ستون را بررسی می‌کند و بر اساس آن، تعداد مقادیر یکتا در هر ستون، و حداقل و حداکثر مقادیر ستون‌های عددی و زمانی و غیره را تخمین می‌زند. اگر این گزینه را روی **OFF** بگذارید، متابیس فقط یک‌بار و در زمان راه‌اندازی، برای ستون‌ها fingerprint می‌سازد.
 
-## Connecting to MySQL 8+ servers
+## اتصال به سرورهای MySQL 8+
 
-Metabase uses the MariaDB connector to connect to MySQL servers. The MariaDB connector lacks support for MySQL 8's default authentication plugin. To connect, you'll need to change the plugin used by the Metabase user:
+متابیس برای اتصال به سرورهای MySQL از درایور MariaDB استفاده می‌کند. این درایور از پلاگین احراز هویت پیش‌فرض MySQL 8 پشتیبانی نمی‌کند. برای اتصال، باید پلاگینی را که کاربر Metabase استفاده می‌کند تغییر دهید:
 
+```sql
+ALTER USER 'metabase'@'%' IDENTIFIED WITH mysql_native_password BY 'thepassword';
 ```
-mysql_native_password`: `ALTER USER 'metabase'@'%' IDENTIFIED WITH mysql_native_password BY 'thepassword';
-```
 
-### Unable to log in with correct credentials
+### ناتوانی در ورود با credentialهای درست
 
-**How to detect this:** Metabase fails to connect to your MySQL server with the error message "Looks like the username or password is incorrect", but you're sure that the username and password is correct. You may have created the MySQL user with an allowed host other than the host you're connecting from.
+**چطور این مشکل را تشخیص بدهیم:** متابیس هنگام اتصال به سرور MySQL شما با پیام خطای «Looks like the username or password is incorrect» شکست می‌خورد، اما شما مطمئن هستید نام کاربری و رمز عبور درست‌اند. ممکن است کاربر MySQL را با host مجاز متفاوتی نسبت به میزبان واقعی‌ای که از آن متصل می‌شوید ساخته باشید.
 
-For example, if the MySQL server is running in a Docker container, and your `metabase` user was created with `CREATE USER 'metabase'@'localhost' IDENTIFIED BY 'thepassword';`, the `localhost` will be resolved to the Docker container, and not the host machine, causing access to be denied.
+برای مثال، اگر سرور MySQL در یک کانتینر Docker اجرا می‌شود و کاربر `metabase` را با دستور `CREATE USER 'metabase'@'localhost' IDENTIFIED BY 'thepassword';` ساخته باشید، مقدار `localhost` به کانتینر Docker رِزولوشن می‌شود، نه ماشین میزبان، و در نتیجه دسترسی رد می‌شود.
 
-You can identify this issue by looking in the Metabase server logs for the error message:
+می‌توانید با جست‌وجو در لاگ‌های سرور متابیس برای پیام خطای زیر این مشکل را تشخیص دهید:
 
-```
+```text
 Access denied for user 'metabase'@'172.17.0.1' (using password: YES).
 ```
 
-Note the host name `172.17.0.1` (in this case a Docker network IP address), and `using password: YES` at the end.
+به hostname `172.17.0.1` (در این مثال، یک IP شبکه Docker) و عبارت `using password: YES` در انتهای پیام توجه کنید.
 
-You'll see the same error message when attempting to connect to the MySQL server with the command-line client: `mysql -h 127.0.0.1 -u metabase -p`.
+همین پیام خطا را هنگام تلاش برای اتصال به MySQL با کلاینت خط فرمان هم مشاهده می‌کنید:  
+`mysql -h 127.0.0.1 -u metabase -p`
 
-**How to fix this:** Recreate the MySQL user with the correct host name:
+**چطور این مشکل را برطرف کنیم:** کاربر MySQL را با hostname درست دوباره بسازید:
 
 ```sql
 CREATE USER 'metabase'@'172.17.0.1' IDENTIFIED BY 'thepassword';
 ```
 
-Otherwise, if necessary, a wildcard may be used for the host name:
+در صورت نیاز می‌توانید برای hostname از wildcard استفاده کنید:
 
 ```sql
 CREATE USER 'metabase'@'%' IDENTIFIED BY 'thepassword';
 ```
 
-That user's permissions will need to be set:
+سپس باید مجوزهای این کاربر را تنظیم کنید:
 
 ```sql
 GRANT SELECT ON targetdb.* TO 'metabase'@'172.17.0.1';
 FLUSH PRIVILEGES;
 ```
 
-Remember to drop the old user:
+و در نهایت، کاربر قبلی را حذف کنید:
 
 ```sql
 DROP USER 'metabase'@'localhost';
 ```
 
-If you can't connect to the database, but the user, host, and password are correct, try adding `trustServerCertificate=true` to the additional JDBC options. This option will tell the Metabase driver to trust the server certificate even though it lacks a root certificate, and it should establish a secure connection.
+اگر نمی‌توانید به پایگاه‌داده متصل شوید، اما کاربر، host و رمز عبور درست هستند، گزینهٔ `trustServerCertificate=true` را به گزینه‌های اضافی JDBC اضافه کنید. این گزینه به درایور متابیس می‌گوید به گواهی سرور حتی بدون روت‌سرتیفیکیت اعتماد کند و باید اتصال امن برقرار شود.
 
-## Syncing records that include JSON
+## Sync رکوردهایی که شامل JSON هستند
 
-**Metabase will infer the JSON "schema" based on the keys in the first five hundred rows of a table.** MySQL JSON fields lack schema, so Metabase can't rely on table metadata to define which keys a JSON field has. To work around the lack of schema, Metabase will get the first five hundred records and parse the JSON in those records to infer the JSON's "schema". The reason Metabase limits itself to five hundred records is so that syncing metadata doesn't put unnecessary strain on your database.
+**متابیس "schema" JSON را بر اساس کلیدهای موجود در اولین ۵۰۰ ردیف جدول استنتاج می‌کند.** فیلدهای JSON در MySQL schema صریح ندارند، بنابراین متابیس نمی‌تواند برای فهمیدن این‌که یک فیلد JSON چه کلیدهایی دارد فقط به متادیتای جدول تکیه کند. برای دور زدن نبود schema، متابیس اولین ۵۰۰ رکورد را می‌گیرد و JSON موجود در آن‌ها را parse می‌کند تا "schema" JSON را حدس بزند. دلیل این‌که متابیس خودش را به ۵۰۰ رکورد محدود می‌کند این است که sync کردن متادیتا فشار غیرضروری روی پایگاه‌داده وارد نکند.
 
-The problem is that, if the keys in the JSON vary record to record, the first five hundred rows may not capture all the keys used by JSON objects in that JSON field. To get Metabase to infer all the JSON keys, you'll need to add the additional keys to the JSON objects in the first five hundred rows.
+مشکل این‌جاست که اگر کلیدهای JSON از رکوردی به رکورد دیگر تغییر کنند، ممکن است ۵۰۰ ردیف اول همهٔ کلیدهایی را که در اشیای JSON استفاده شده‌اند پوشش ندهند. برای این‌که متابیس بتواند همهٔ کلیدهای JSON را تشخیص دهد، لازم است کلیدهای اضافی را به اشیای JSON موجود در ۵۰۰ ردیف اول اضافه کنید.
 
-## Raising a MySQL Docker container of MySQL 8+
+## بالا آوردن یک کانتینر Docker از MySQL 8+
 
-If you are spinning up a new MySQL container, and:
+اگر یک کانتینر MySQL جدید بالا می‌آورید و:
 
-- you want Metabase to connect to the container without having to manually create the user or change the authentication mechanism,
-- or you're facing a `RSA public key is not available client side (option serverRsaPublicKeyFile not set)` error,
+- می‌خواهید متابیس بدون ساخت کاربر به‌صورت دستی یا تغییر مکانیزم احراز هویت به آن متصل شود،  
+- یا با خطای `RSA public key is not available client side (option serverRsaPublicKeyFile not set)` مواجه هستید،
 
-Use the `['--default-authentication-plugin=mysql_native_password']` modifiers when you run the container, like so:
+هنگام اجرای کانتینر از پارامتر `['--default-authentication-plugin=mysql_native_password']` استفاده کنید؛ مثلاً:
 
-- a simple docker run: `docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=xxxxxx mysql:8.xx.xx --default-authentication-plugin=mysql_native_password`
+- اجرای ساده با docker run:  
+  `docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=xxxxxx mysql:8.xx.xx --default-authentication-plugin=mysql_native_password`
 
-- or in docker-compose:
+- یا در docker-compose:
 
 ```yml
 mysql:
@@ -165,52 +167,51 @@ mysql:
   command: ["--default-authentication-plugin=mysql_native_password"]
 ```
 
-## Limitations with Vitess-based databases
+## محدودیت‌ها در پایگاه‌داده‌های مبتنی بر Vitess
 
-- When querying Vitess databases (like Planetscale), you should add a `LIMIT` clause inside each subquery.
+- هنگام اجرای پرس‌وجو روی پایگاه‌داده‌های مبتنی بر Vitess (مثل Planetscale)، باید داخل هر زیربرس‌وجو (subquery) یک عبارت `LIMIT` اضافه کنید.
 
-  The reason: typically, Metabase applies limits (e.g., 2000 or 10000 rows) to the final query results. But due to a known bug in Vitess, Vitess might apply these limits to subqueries, which can lead to unexpected results (for example, not all rows of results will be displayed within Metabase). The workaround is to add limits to each of your subqueries.
+  دلیلش این است که معمولاً متابیس limit (مثلاً ۲۰۰۰ یا ۱۰٬۰۰۰ ردیف) را روی نتیجهٔ نهایی پرس‌وجو اعمال می‌کند؛ اما به‌دلیل یک باگ شناخته‌شده در Vitess، این سیستم ممکن است همین limit را روی زیربرس‌وجوها اعمال کند، که می‌تواند به نتایج غیرمنتظره (مثلاً نمایش‌ندادن همهٔ ردیف‌ها در متابیس) منجر شود. راه‌حل این است که روی هر زیربرس‌وجو یک limit جداگانه قرار دهید.
 
-- You may want to check in with the vendor that's hosting the platform, as Vitess can run into issues returning metadata from the information schema. Metabase needs this metadata to populate its application database; if Metabase can't get that metadata, fields may not appear (or appear empty).
+- همچنین بهتر است با سرویس‌دهنده‌ای که این پلتفرم را میزبانی می‌کند در تماس باشید، چون Vitess گاهی در بازگرداندن متادیتا از information schema مشکل دارد. متابیس برای پر کردن پایگاه‌دادهٔ برنامهٔ خود به این متادیتا نیاز دارد؛ اگر متابیس نتواند این متادیتا را دریافت کند، ممکن است فیلدها ظاهر نشوند (یا خالی نمایش داده شوند).
 
-## Passwords with special characters
+## رمزهای عبور با کاراکترهای خاص
 
-If your password contains characters that aren't UTF-8, then you might need to add an additional variable to the connection string `passwordCharacterEncoding=<your_encoding_here>`. This ensures that MySQL understands the special characters in the password during authentication.
+اگر رمز عبور شما شامل کاراکترهایی است که UTF-8 نیستند، ممکن است لازم باشد یک متغیر اضافی به connection string اضافه کنید:  
+`passwordCharacterEncoding=<your_encoding_here>`. این کار مطمئن می‌شود MySQL هنگام احراز هویت، کاراکترهای خاص موجود در رمز عبور را به‌درستی تفسیر کند.
 
-## Model features
+## امکانات مدل (Model features)
 
-Choose whether to enable features related to [Metabase models](../../data-modeling/models.md). These features will often require that the database user account, the one you use to connect to your database, has both read and write privileges.
+می‌توانید انتخاب کنید آیا امکانات مرتبط با [مدل‌های متابیس](../../data-modeling/models.md) را فعال کنید یا نه. این امکانات معمولاً نیاز دارند اکانت کاربری پایگاه‌داده‌ای که برای اتصال استفاده می‌کنید هم مجوز خواندن و هم نوشتن داشته باشد.
 
 ### Model actions
 
-Turn this setting on to allow [actions](../../actions/introduction.md) from models created from this data to be run. Actions can read, write, and delete data. Your database user will need write permissions.
+این تنظیم را روشن کنید تا [actions](../../actions/introduction.md) قابل اجرا از روی مدل‌های ساخته‌شده روی این داده باشند. اکشن‌ها می‌توانند داده‌ها را بخوانند، بنویسند و حذف کنند. اکانت پایگاه‌داده شما باید مجوز نوشتن داشته باشد.
 
 ### Model persistence
 
-We'll create tables with model data and refresh them on a schedule you define. To enable [model persistence](../../data-modeling/model-persistence.md), you need to grant this connection's credentials read and write permissions on a schema Metabase provides.
+متابیس جداولی با داده‌های مدل ایجاد می‌کند و آن‌ها را بر اساس زمان‌بندی‌ای که تعریف می‌کنید تازه‌سازی می‌کند. برای فعال کردن [model persistence](../../data-modeling/model-persistence.md)، باید به اعتبارنامه‌های این اتصال، مجوز خواندن و نوشتن روی schemaای که متابیس فراهم می‌کند بدهید.
 
-## Editable table data
+## ویرایش دادهٔ جدول (Editable table data)
 
-Turn this setting **ON** to enable editing of table data directly within Metabase. When enabled, Admins can create, update, and delete records in your tables through Metabase's interface.
+این تنظیم را روی **ON** بگذارید تا امکان ویرایش داده جدول‌ها مستقیماً در متابیس فعال شود. وقتی این ویژگی فعال باشد، ادمین‌ها می‌توانند رکوردها را در جدول‌های شما از طریق رابط متابیس ایجاد، به‌روزرسانی و حذف کنند.
 
-Your database connection will need Write permissions to enable this feature. Meaning: the database user account that you use to connect Metabase to your database must have appropriate privileges to modify data in the tables you want to make editable.
+اتصال پایگاه‌داده شما برای فعال شدن این قابلیت باید مجوز نوشتن داشته باشد؛ یعنی اکانت کاربری پایگاه‌داده‌ای که برای اتصال متابیس استفاده می‌کنید باید مجوزهای لازم برای تغییر داده در جدول‌هایی که می‌خواهید قابل ویرایش باشند داشته باشد. [مجوزها](../users-roles-privileges.md) را ببینید.
 
-See [privileges](../users-roles-privileges.md).
+## مسیریابی پایگاه‌داده (Database routing)
 
-## Database routing
+با Database routing، ادمین می‌تواند یک‌بار با استفاده از یک پایگاه‌داده سؤال بسازد و آن سؤال، بسته به اینکه چه کسی آن را می‌بیند، روی پایگاه‌داده دیگری با همان schema اجرا شود.
 
-With database routing, an admin can build a question once using one database, and the question will run its query against a different database with the same schema depending on who is viewing the question.
+[Database routing](../../permissions/database-routing.md) را ببینید.
 
-See [Database routing](../../permissions/database-routing.md).
+## بخش خطر (Danger zone)
 
-## Danger zone
+[Danger zone](../danger-zone.md) را ببینید.
 
-See [Danger zone](../danger-zone.md).
-
-## Further reading
+## مطالعهٔ بیشتر
 
 - [MariaDB](./mariadb.md)
-- [Managing databases](../../databases/connecting.md)
-- [Metadata editing](../../data-modeling/metadata-editing.md)
-- [Models](../../data-modeling/models.md)
-- [Setting data access permissions](../../permissions/data.md)
+- [مدیریت پایگاه‌داده‌ها](../../databases/connecting.md)
+- [ویرایش متادیتا](../../data-modeling/metadata-editing.md)
+- [مدل‌ها](../../data-modeling/models.md)
+- [تنظیم مجوزهای دسترسی به داده](../../permissions/data.md)

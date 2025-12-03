@@ -6,140 +6,140 @@ redirect_from:
 
 # MongoDB
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای اضافه کردن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-## Supported versions
+## نسخه‌های پشتیبانی‌شده
 
-Metabase supports the oldest supported version of MongoDB through the latest stable version. See [MongoDB Software Lifecycle Schedules](https://www.mongodb.com/legal/support-policy/lifecycles).
+متابیس از قدیمی‌ترین نسخهٔ تحت پشتیبانی MongoDB تا آخرین نسخهٔ پایدار آن پشتیبانی می‌کند. [MongoDB Software Lifecycle Schedules](https://www.mongodb.com/legal/support-policy/lifecycles) را ببینید.
 
-## Connecting to MongoDB
+## اتصال به MongoDB
 
-There are two ways to connect to MongoDB:
+دو راه برای اتصال به MongoDB وجود دارد:
 
-1. Using the [Metabase fields to input your connection details](#using-metabase-fields).
-2. Pasting your [connection string](#using-a-connection-string).
+1. استفاده از [فیلدهایی که متابیس برای وارد کردن جزئیات اتصال فراهم می‌کند](#استفاده-از-فیلدهای-metabase).
+2. چسباندن [connection string](#استفاده-از-connection-string).
 
-### Using Metabase fields
+### استفاده از فیلدهای Metabase
 
-The default way to connect to MongoDB is to fill out your connection details in the fields Metabase provides:
+روش پیش‌فرض برای اتصال به MongoDB این است که جزئیات اتصال را در فیلدهایی که متابیس فراهم کرده وارد کنید:
 
 - Host
 - Database name
 - Port
 - Username
 - Password
-- Authentication Database (optional)
-- Additional connection string options (optional)
+- Authentication Database (اختیاری)
+- Additional connection string options (اختیاری)
 
-You'll also have the option to **Use a secure connection (SSL)**. Enable SSL and paste the contents of the server's SSL certificate chain in the input text box. This option is available for this method of connection only (i.e. you cannot include a certificate when connecting with a connection string).
+همچنین می‌توانید گزینهٔ **Use a secure connection (SSL)** را فعال کنید. SSL را روشن کنید و محتوای زنجیرهٔ گواهی SSL سرور را در کادر متنی paste کنید. این گزینه فقط در همین روش اتصال در دسترس است (یعنی وقتی از connection string استفاده می‌کنید، نمی‌توانید گواهی را داخل رشته قرار دهید).
 
-### Advanced settings for direct connection
+### تنظیمات پیشرفته برای اتصال مستقیم
 
-- **Use DNS SRV when connecting** Using this option requires that provided host is a FQDN. If connecting to an Atlas cluster, you might need to enable this option. If you don't know what this means, leave this disabled.
+- **Use DNS SRV when connecting**: استفاده از این گزینه نیاز دارد که مقداری که برای host می‌دهید یک FQDN باشد. اگر به یک کلاستر Atlas وصل می‌شوید، ممکن است لازم باشد این گزینه را روشن کنید. اگر نمی‌دانید یعنی چه، این گزینه را غیرفعال بگذارید.
 
-### Using a connection string
+### استفاده از connection string
 
-If you'd prefer to connect to MongoDB using a [connection string](https://docs.mongodb.com/manual/reference/connection-string/), click on **Paste a connection string**. The Metabase user interface will update with a field to paste your connection string.
+اگر ترجیح می‌دهید با استفاده از یک [connection string](https://docs.mongodb.com/manual/reference/connection-string/) به MongoDB وصل شوید، روی **Paste a connection string** کلیک کنید. رابط متابیس با یک فیلد برای paste کردن connection string به‌روزرسانی می‌شود.
 
-Metabase currently does NOT support the following connection string parameters:
+در حال حاضر متابیس از پارامترهای زیر در connection string پشتیبانی **نمی‌کند**:
 
 - `tlsCertificateKeyFile`
 - `tlsCertificateKeyFilePassword`
 - `tlsCAFile`
 
-If you need to use a certificate, connect via the [default method](#using-metabase-fields) and enable **Use a secure connection(SSL)**.
+اگر باید از گواهی (certificate) استفاده کنید، از [روش پیش‌فرض](#استفاده-از-فیلدهای-metabase) استفاده کنید و **Use a secure connection (SSL)** را فعال کنید.
 
-### Settings common to both connection options
+### تنظیمات مشترک بین هر دو روش اتصال
 
-- **Use an SSH tunnel**: Some database installations can only be accessed by connecting through an SSH bastion host. This option also provides an extra layer of security when a VPN is not available. Enabling this is usually slower than a direct connection.
-- **Rerun queries for simple exploration**: When this is on, Metabase will automatically run queries when users do simple explorations with the Summarize and Filter buttons when viewing a table or chart. You can turn this off if querying this database is slow. This setting doesn't affect drill-throughs or SQL queries.
-- **Choose when syncs and scans happen**: See [syncs and scans](../sync-scan.md#choose-when-syncs-and-scans-happen).
-- **Periodically refingerprint tables**: This setting — disabled by default — enables Metabase to scan for additional field values during syncs allowing smarter behavior, like improved auto-binning on your bar charts.
+- **Use an SSH tunnel**: بعضی نصب‌های پایگاه‌داده فقط از طریق یک SSH bastion host قابل دسترسی هستند. این گزینه وقتی VPN دردسترس نیست، یک لایهٔ امنیتی اضافه فراهم می‌کند. فعال کردن این گزینه معمولاً کندتر از اتصال مستقیم است.
+- **Rerun queries for simple exploration**: وقتی این گزینه روشن باشد، متابیس هنگام اکتشاف سادهٔ داده (استفاده از دکمه‌های Summarize و Filter در هنگام مشاهدهٔ جدول یا نمودار) به‌طور خودکار کوئری‌ها را اجرا می‌کند. اگر پرس‌وجو روی این پایگاه‌داده کند است، می‌توانید این گزینه را خاموش کنید. این تنظیم روی drill-throughها یا پرس‌وجوهای SQL تأثیر نمی‌گذارد.
+- **Choose when syncs and scans happen**: [sync و scan](../sync-scan.md#choose-when-syncs-and-scans-happen) را ببینید.
+- **Periodically refingerprint tables**: این تنظیم (که به‌طور پیش‌فرض غیرفعال است) باعث می‌شود متابیس هنگام sync مقادیر اضافی فیلدها را اسکن کند و هوشمندی بیشتری مثل auto-binning بهتر روی نمودارهای میله‌ای ارائه دهد.
 
-## Connecting to a MongoDB Atlas cluster
+## اتصال به کلاستر MongoDB Atlas
 
-### Whitelist IP addresses
+### قرار دادن IPها در whitelist
 
-If you are using Metabase Cloud, you'll need to whitelist [Metabase Cloud IP addresses](../../cloud/ip-addresses-to-whitelist.md) in your Atlas cluster. If you are using self-hosted Metabase, you'll need to whitelist the IP of your Metabase instance.
+اگر از Metabase Cloud استفاده می‌کنید، باید [آدرس‌های IP متابیس‌کلود](../../cloud/ip-addresses-to-whitelist.md) را در کلاستر Atlas خود whitelist کنید. اگر متابیس را خودتان میزبانی کرده‌اید (self-hosted)، باید IP سروری را که متابیس روی آن اجرا می‌شود whitelist کنید.
 
-1. Log into your [Atlas cluster](https://cloud.mongodb.com)
-2. Go to **Network Access**
-3. Add the IP addresses that your Metabase uses to connect.
+1. وارد [کلاستر Atlas](https://cloud.mongodb.com) خود شوید.
+2. به **Network Access** بروید.
+3. آدرس‌های IPای که متابیس برای اتصال استفاده می‌کند را اضافه کنید.
 
-### Connect Metabase to your Atlas cluster
+### اتصال متابیس به کلاستر Atlas
 
-> The connection string provided in Atlas "Connect" interface does not include the database. Metabase requires you to provide a database name when connecting, so you'll need to edit the connection string to add the database name.
+> connection stringی که در رابط "Connect" در Atlas به شما نشان داده می‌شود، نام پایگاه‌داده را شامل نمی‌شود. متابیس برای اتصال نیاز دارد که نام پایگاه‌داده را مشخص کنید، بنابراین باید connection string را ویرایش کنید و نام دیتابیس را اضافه کنید.
 
-1. Log into your [Atlas account](https://cloud.mongodb.com)
-
-2. Select the cluster you want to connect to, and click **Connect**.
+1. وارد [حساب Atlas](https://cloud.mongodb.com) خود شوید.
+2. کلاستری را که می‌خواهید به آن وصل شوید انتخاب کنید و روی **Connect** کلیک کنید.
 
    ![Your cluster screengrab](../images/atlas-connect.png)
 
-3. Select **Drivers**.
-
-4. Copy the connection string from **Add your connection string into your application code** section.
+3. **Drivers** را انتخاب کنید.
+4. connection string را از بخش **Add your connection string into your application code** کپی کنید.
 
    ![Connect screengrab](../images/connection-string.png)
 
-5. In Metabase, go to Admin -> Databases, and click the **Add database** button.
-6. Select MongoDB from the dropdown, and enter a **Display name** for this database.
-7. Click on **"Paste the connection string"** and paste your connection string.
-8. Edit the connection string to include the name of the database after `/`:
+5. در متابیس به Admin -> Databases بروید و روی دکمهٔ **Add database** کلیک کنید.
+6. از منوی کشویی، MongoDB را انتخاب کنید و یک **Display name** برای این پایگاه‌داده وارد کنید.
+7. روی **"Paste the connection string"** کلیک کنید و connection string خود را paste کنید.
+8. connection string را طوری ویرایش کنید که نام پایگاه‌داده بعد از `/` بیاید:
 
    ```
    mongodb+srv://metabot:metapass@my-test-cluster.a5ej7.mongodb.net/DATABASE_NAME?retryWrites=true&w=majority&appName=my-test-cluster
    ```
 
-If you're using Metabase fields to input connection information for your Atlas cluster instead of using the connection string, you might need to turn on **Use DNS SRV when connecting**.
+اگر برای کلاستر Atlas خود به‌جای connection string از فیلدهای متابیس برای وارد کردن اطلاعات اتصال استفاده می‌کنید، ممکن است لازم باشد گزینهٔ **Use DNS SRV when connecting** را روشن کنید.
 
-See more information about [Advanced options](#settings-common-to-both-connection-options).
+برای اطلاعات بیشتر، [گزینه‌های پیشرفته](#تنظیمات-مشترک-بین-هر-دو-روش-اتصال) را ببینید.
 
-## Configuring SSL via the command line
+## پیکربندی SSL از طریق خط فرمان
 
-You can enter a self-signed certificate via the Metabase UI (though not when using a connection string), or you can use the command line to add a self-signed certificate.
+می‌توانید یک گواهی self-signed را از طریق رابط متابیس وارد کنید (البته نه زمانی که از connection string استفاده می‌کنید)، یا می‌توانید از خط فرمان برای اضافه کردن گواهی self-signed استفاده کنید.
 
-```
+```bash
 cp /usr/lib/jvm/default-jvm/jre/lib/security/cacerts ./cacerts.jks
 keytool -import -alias cacert -storepass changeit -keystore cacerts.jks -file my-cert.pem
 ```
 
-Then, start Metabase using the store:
+سپس متابیس را با استفاده از همین keystore راه‌اندازی کنید:
 
-```
+```bash
 java -Djavax.net.ssl.trustStore=cacerts.jks -Djavax.net.ssl.trustStorePassword=changeit -jar metabase.jar
 ```
 
-Learn more about [configuring SSL with MongoDB](https://mongodb.github.io/mongo-java-driver/3.0/driver/reference/connecting/ssl/).
+برای اطلاعات بیشتر، [مستندات پیکربندی SSL در MongoDB](https://mongodb.github.io/mongo-java-driver/3.0/driver/reference/connecting/ssl/) را ببینید.
 
-## How Metabase syncs data in MongoDB
+## متابیس چطور داده‌ها را در MongoDB sync می‌کند
 
-Because MongoDB contains unstructured data, Metabase takes a different approach to syncing your database's metadata. To get a sense of the schema, Metabase will query the first and last 500 documents (most of the calculation is done in MongoDB). This sampling helps Metabase do things like differentiate datetime fields from string fields, and provide people with pre-populated filters. Metabase also syncs 1,000 leaf fields (fields at the deepest nesting level) per MongoDB collection. The reason Metabase only scans a sample of the documents is because scanning every document in every collection on every sync would put too much strain on your database. And while the sampling does a pretty good job keeping Metabase up to date, it can also mean that new fields can sometimes fall through the cracks, leading to visualization issues, or even fields failing to appear in your results. For more info, check out our [troubleshooting guide](../../troubleshooting-guide/db-connection.md).
+چون MongoDB دادهٔ غیرساخت‌یافته (unstructured) نگه می‌دارد، متابیس برای sync کردن متادیتای پایگاه‌دادهٔ شما رویکرد متفاوتی دارد. برای این‌که یک دید کلی از schema بگیرد، متابیس اولین و آخرین ۵۰۰ سند (document) را کوئری می‌زند (بیشتر محاسبات سمت MongoDB انجام می‌شود). این نمونه‌برداری کمک می‌کند متابیس بتواند مثلاً فیلدهای datetime را از string تشخیص دهد و فیلترهای آماده (pre-populated) در اختیار کاربر بگذارد. متابیس همچنین برای هر collection در MongoDB حداکثر ۱٬۰۰۰ فیلد leaf (فیلدهایی در عمیق‌ترین سطح تو در تویی) را sync می‌کند.
 
-## General connectivity concerns
+دلیل این‌که متابیس فقط یک نمونه از اسناد را اسکن می‌کند این است که اگر بخواهد در هر sync، همهٔ اسناد را در همهٔ collectionها اسکن کند، فشار بسیار زیادی روی پایگاه‌دادهٔ شما می‌آید. این نمونه‌برداری معمولاً عملکرد خوبی در به‌روز نگه داشتن متابیس دارد، اما می‌تواند باعث شود فیلدهای جدید گاهی از زیر رادار رد شوند، که در نتیجه باعث مشکلات visualization یا حتی دیده نشدن فیلد در نتایج می‌شود. برای جزئیات بیشتر، [راهنمای عیب‌یابی](../../troubleshooting-guide/db-connection.md) را ببینید.
 
-- **Connect using `DNS SRV`**, which is the recommended method for newer Atlas clusters.
-- **Have you checked your cluster host whitelist?** When testing a connection but seeing failure, have you tried setting the IP whitelist to `0.0.0.0/0`? Whitelisting this address allows connections from any IP addresses. If you know the IP address(es) or CIDR block of clients, use that instead.
-- **Connect to the secondary server**. When connecting to a cluster, always use the `?readPreference=secondary` argument in the connection string, which allows Metabase to read from a secondary server instead of consuming resources from the primary server.
+## نکات عمومی اتصال
 
-## I added fields to my database but don't see them in Metabase
+- **با استفاده از `DNS SRV` وصل شوید**؛ این روش برای کلاسترهای جدید Atlas پیشنهاد می‌شود.
+- **لیست سفید (whitelist) آدرس‌های میزبان کلاستر را چک کرده‌اید؟** اگر اتصال را تست می‌کنید و با خطا مواجه می‌شوید، آیا IP whitelist را روی `0.0.0.0/0` گذاشته‌اید؟ این آدرس به معنی اجازهٔ اتصال از هر IP است. اگر IP یا بلوک CIDR کلاینت‌ها را می‌دانید، بهتر است همان را whitelist کنید.
+- **به سرور secondary وصل شوید**. هنگام اتصال به یک کلاستر، همیشه پارامتر `?readPreference=secondary` را در connection string قرار دهید تا متابیس بتواند از سرور secondary بخواند و منابع سرور primary را مصرف نکند.
 
-Metabase may not sync all of your fields. Since any document in a MongoDB collection can contain any number of fields, the only way to get 100% coverage of all fields would be to scan every single document in every single collection. The reason Metabase doesn't do a full scan is because it would put too much strain on your database.
+## فیلدهایی به پایگاه‌داده اضافه کرده‌ام اما در متابیس نمی‌بینم
 
-Instead, Metabase gets a sample of the fields in a collection by scanning a sample of 1000 documents in each collection (the first 500 documents and the last 500 documents in each collection).
+ممکن است متابیس همهٔ فیلدهای شما را sync نکند. چون هر سند در یک collection MongoDB می‌تواند هر تعداد فیلد دلخواه داشته باشد، تنها راه برای پوشش ۱۰۰٪ فیلدها این است که هر سند را در هر collection در هر sync اسکن کنیم؛ و این کار فشار زیادی روی پایگاه‌داده وارد می‌کند، بنابراین متابیس این کار را نمی‌کند.
 
-If you're not seeing all of the fields show up for a collection in Metabase, one workaround is to include all possible keys in the first document of the collection, and give those keys null values. That way, Metabase will be able to recognize the correct schema for the entire collection.
+در عوض، متابیس با اسکن کردن نمونه‌ای از ۱٬۰۰۰ سند در هر collection (۵۰۰ سند اول و ۵۰۰ سند آخر در هر collection) یک نمونه از فیلدها را به‌دست می‌آورد.
+
+اگر همهٔ فیلدها را برای یک collection در متابیس نمی‌بینید، یک workaround این است که همهٔ کلیدهای ممکن را در اولین سند collection قرار دهید و برای آن‌ها مقدار null بگذارید. به این شکل، متابیس می‌تواند schema درست برای کل collection را تشخیص دهد.
 
 ## Database routing
 
-With database routing, an admin can build a question once using one database, and the question will run its query against a different database with the same schema depending on who is viewing the question.
+با قابلیت database routing، یک ادمین می‌تواند یک سؤال را یک‌بار با استفاده از یک پایگاه‌داده بسازد، و همان سؤال بسته به این‌که چه کسی آن را می‌بیند، پرس‌وجو را روی یک پایگاه‌دادهٔ دیگر با همان schema اجرا کند.
 
-See [Database routing](../../permissions/database-routing.md).
+[مستندات Database routing](../../permissions/database-routing.md) را ببینید.
 
 ## Danger zone
 
-See [Danger zone](../danger-zone.md).
+[بخش Danger zone](../danger-zone.md) را ببینید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-See our troubleshooting guide for [troubleshooting your connection](../../troubleshooting-guide/db-connection.md).
+برای عیب‌یابی اتصال، [راهنمای عیب‌یابی اتصال پایگاه‌داده](../../troubleshooting-guide/db-connection.md) را ببینید.

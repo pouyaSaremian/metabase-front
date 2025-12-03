@@ -1,103 +1,103 @@
 ---
-title: Embedded analytics JS
-summary: Getting started with Embedded Analytics JS for embedding Metabase entities into external applications
+title: تجزیه و تحلیل تعبیه‌شده JS
+summary: شروع کار با تجزیه و تحلیل تعبیه‌شده JS برای جاسازی موجودیت‌های متابیس در برنامه‌های خارجی
 ---
 
-# Embedded analytics JS
+# تجزیه و تحلیل تعبیه‌شده JS
 
 {% include plans-blockquote.html feature="Embedded analytics JS" convert_pro_link_to_embbedding=true %}
 
-Embedded analytics JS lets you embed Metabase entities like questions, dashboards, or even the query builder into your own application using customizable components.
+تجزیه و تحلیل تعبیه‌شده JS به شما امکان می‌دهد موجودیت‌های متابیس مانند سؤال‌ها، داشبوردها یا حتی سازنده پرس‌وجو را در برنامه خود با استفاده از اجزای قابل سفارشی‌سازی جاسازی کنید.
 
 {% include shared/in-page-promo-embedding-workshop.html %}
 
-Embedded Analytics JS is a JavaScript library built on top of Metabase's [Embedded Analytics React SDK](./sdk/introduction.md). But it does not require using React or setting up full SDK embedding.
-Unlike with [interactive embedding](./interactive-embedding.md), where you embed the entire Metabase app in an iframe, Embedded Analytics JS lets you choose from a set of predefined components like a single chart, a dashboard with optional drill-through, or query builder, and customize those components.
+تجزیه و تحلیل تعبیه‌شده JS یک کتابخانه JavaScript است که بر اساس [SDK React تجزیه و تحلیل تعبیه‌شده متابیس](./sdk/introduction.md) ساخته شده است. اما نیازی به استفاده از React یا راه‌اندازی جاسازی کامل SDK ندارد.
+برخلاف [جاسازی تعاملی](./interactive-embedding.md)، که در آن برنامه کامل متابیس را در یک iframe جاسازی می‌کنید، تجزیه و تحلیل تعبیه‌شده JS به شما امکان می‌دهد از مجموعه‌ای از اجزای از پیش تعریف شده مانند یک نمودار واحد، یک داشبورد با حفاری اختیاری، یا سازنده پرس‌وجو انتخاب کنید و آن اجزا را سفارشی کنید.
 
-Embedded Analytics JS uses [JWT](../people-and-groups/authenticating-with-jwt.md) or [SAML](../people-and-groups/authenticating-with-saml.md) to authenticate people and automatically apply the right permissions.
+تجزیه و تحلیل تعبیه‌شده JS از [JWT](../people-and-groups/authenticating-with-jwt.md) یا [SAML](../people-and-groups/authenticating-with-saml.md) برای احراز هویت افراد و اعمال خودکار مجوزهای مناسب استفاده می‌کند.
 
-Currently you can choose to embed:
+در حال حاضر می‌توانید انتخاب کنید که جاسازی کنید:
 
-- A dashboard
-- A question (chart). You can embed both questions built with the query builder and questions built with SQL.
-- Full graphical [query builder](../questions/query-builder/editor.md) to enable people to build their own charts and explorations.
-- A browser to navigate collections and open dashboards or questions.
-- [AI chat interface](./sdk/ai-chat.md).
+- یک داشبورد
+- یک سؤال (نمودار). می‌توانید هم سؤال‌های ساخته شده با سازنده پرس‌وجو و هم سؤال‌های ساخته شده با SQL را جاسازی کنید.
+- [سازنده پرس‌وجوی گرافیکی کامل](../questions/query-builder/editor.md) برای فعال کردن افراد برای ساخت نمودارها و کاوش‌های خود.
+- یک مرورگر برای پیمایش مجموعه‌ها و باز کردن داشبوردها یا سؤال‌ها.
+- [رابط چت هوش مصنوعی](./sdk/ai-chat.md).
 
-## Quickstart
+## شروع سریع
 
-You can also follow the setup guide directly in Metabase in **Admin settings > Embedding > Setup guide**. We're recording the steps here for convenience.
+همچنین می‌توانید راهنمای راه‌اندازی را مستقیماً در متابیس در **تنظیمات مدیر > جاسازی > راهنمای راه‌اندازی** دنبال کنید. ما مراحل را برای راحتی اینجا ثبت می‌کنیم.
 
-### 1. Enable Embedded Analytics JS
+### ۱. فعال کردن تجزیه و تحلیل تعبیه‌شده JS
 
-1. In Metabase, go to **Admin settings > Embedding > Modular embedding**.
-2. Toggle on **Embedded Analytics JS**.
-3. Under **Cross-Origin Resource Sharing (CORS)**, add the URLs of the websites where you want to embed Metabase (such as `https://*.example.com`). For testing embeds, you can use `localhost` which is always included in CORS policy.
-4. If you are embedding Metabase components in a domain that's different from your Metabase's domain (including when you're testing the app locally but use Metabase Cloud), go to **Admin settings > Embedding > Security** and set **SameSite cookie** to **None**.
+۱. در متابیس، به **تنظیمات مدیر > جاسازی > جاسازی ماژولار** بروید.
+۲. **تجزیه و تحلیل تعبیه‌شده JS** را روشن کنید.
+۳. در زیر **اشتراک‌گذاری منابع مبدأ متقابل (CORS)**، URLهای وب‌سایت‌هایی که می‌خواهید متابیس را در آن‌ها جاسازی کنید (مانند `https://*.example.com`) را اضافه کنید. برای تست جاسازی‌ها، می‌توانید از `localhost` استفاده کنید که همیشه در سیاست CORS گنجانده شده است.
+۴. اگر در حال جاسازی اجزای متابیس در دامنه‌ای متفاوت از دامنه متابیس خود هستید (از جمله زمانی که برنامه را به صورت محلی تست می‌کنید اما از متابیس کلود استفاده می‌کنید)، به **تنظیمات مدیر > جاسازی > امنیت** بروید و **کوکی SameSite** را روی **None** تنظیم کنید.
 
-### 2. Create a new embed
+### ۲. ایجاد یک جاسازی جدید
 
-1. In Metabase, go to **Admin > Embedding > Modular embedding**, and select **New embed** next to **Embedded analytics JS**.
+۱. در متابیس، به **مدیر > جاسازی > جاسازی ماژولار** بروید و **جاسازی جدید** را در کنار **تجزیه و تحلیل تعبیه‌شده JS** انتخاب کنید.
 
-   If you're planning to embed an existing question or dashboard, you can instead go straight to that question or dashboard, click on the **Share** button, and choose **Embedded Analytics JS**.
+   اگر قصد دارید یک سؤال یا داشبورد موجود را جاسازی کنید، می‌توانید مستقیماً به آن سؤال یا داشبورد بروید، روی دکمه **اشتراک‌گذاری** کلیک کنید و **تجزیه و تحلیل تعبیه‌شده JS** را انتخاب کنید.
 
-2. Choose the _type_ of entity to embed:
+۲. _نوع_ موجودیت برای جاسازی را انتخاب کنید:
 
-   - Dashboard
-   - Chart
-   - Exploration (which will embed the Metabase query builder)
-   - Browser
-   - Metabot question (which will embed AI chat)
+   - داشبورد
+   - نمودار
+   - کاوش (که سازنده پرس‌وجوی متابیس را جاسازی می‌کند)
+   - مرورگر
+   - سؤال Metabot (که چت هوش مصنوعی را جاسازی می‌کند)
 
-3. Next, select the entity you want to embed. For browser, pick the collection you want people to start from.
+۳. بعد، موجودیتی که می‌خواهید جاسازی کنید را انتخاب کنید. برای مرورگر، مجموعه‌ای که می‌خواهید افراد از آن شروع کنند را انتخاب کنید.
 
-Once you've selected what you want to embed, click Next to customize your embed.
+پس از انتخاب آنچه می‌خواهید جاسازی کنید، برای سفارشی‌سازی جاسازی خود روی Next کلیک کنید.
 
-### 3. Customize your embed
+### ۳. سفارشی‌سازی جاسازی خود
 
-The exact customization options you see will depend on what type of entity you're embedding. You'll see a live preview of how the embed will look with your chosen options. Check out [Customizing embeds](#customizing-embeds) for more details on customization options.
+گزینه‌های سفارشی‌سازی دقیقی که می‌بینید بستگی به نوع موجودیتی دارد که در حال جاسازی آن هستید. یک پیش‌نمایش زنده از نحوه ظاهر جاسازی با گزینه‌های انتخابی خود را خواهید دید. برای جزئیات بیشتر در مورد گزینه‌های سفارشی‌سازی، [سفارشی‌سازی جاسازی‌ها](#customizing-embeds) را بررسی کنید.
 
 ![Customizing embeds](./images/embed-flow-options.png)
 
-You'll also be able to pick brand, text, and background color used for all your embeds. To configure other colors (e.g. secondary colors, query builder colors etc), as well as font, you can specify a [theme](#theming) in your embed code snippet.
+همچنین می‌توانید رنگ برند، متن و پس‌زمینه استفاده شده برای همه جاسازی‌های خود را انتخاب کنید. برای پیکربندی رنگ‌های دیگر (مثلاً رنگ‌های ثانویه، رنگ‌های سازنده پرس‌وجو و غیره)، و همچنین فونت، می‌توانید یک [تم](#theming) را در قطعه کد جاسازی خود مشخص کنید.
 
-All the customization options you select in this interactive flow will be reflected in the parameter values in the embed code, so you'll be able to adjust them later by editing the embed snippet.
+همه گزینه‌های سفارشی‌سازی که در این جریان تعاملی انتخاب می‌کنید در مقادیر پارامتر در کد جاسازی منعکس می‌شوند، بنابراین می‌توانید بعداً با ویرایش قطعه جاسازی آن‌ها را تنظیم کنید.
 
-Once you're done customizing your embed, click "Next".
+پس از اتمام سفارشی‌سازی جاسازی خود، روی "Next" کلیک کنید.
 
-### 4. Select authentication method
+### ۴. انتخاب روش احراز هویت
 
-You'll get a choice between "Existing Metabase session" and "Single sign-on (SSO)".
+انتخابی بین "جلسه متابیس موجود" و "ورود یکپارچه (SSO)" دریافت خواهید کرد.
 
-- If you select **Existing Metabase session**, you'll be able to preview your embeds as the user you're currently logged into Metabase, and only in the same browser as your current session. Not all browsers are supported - we recommend using Google Chrome. To test out embedding in other contexts, you can use [API keys](#use-api-keys-to-test-embeds) instead. For production usage, use [SSO](#set-up-sso).
+- اگر **جلسه متابیس موجود** را انتخاب کنید، می‌توانید جاسازی‌های خود را به‌عنوان کاربری که در حال حاضر وارد متابیس شده‌اید پیش‌نمایش کنید و فقط در همان مرورگری که جلسه فعلی شما است. همه مرورگرها پشتیبانی نمی‌شوند - ما استفاده از Google Chrome را توصیه می‌کنیم. برای تست جاسازی در زمینه‌های دیگر، می‌توانید به جای آن از [کلیدهای API](#use-api-keys-to-test-embeds) استفاده کنید. برای استفاده در تولید، از [SSO](#set-up-sso) استفاده کنید.
 
-- If you set up JWT in your Metabase instance, you'll be able to select **Single sign-on (SSO)**, see [Set up SSO](#set-up-sso).
+- اگر JWT را در نمونه متابیس خود راه‌اندازی کرده‌اید، می‌توانید **ورود یکپارچه (SSO)** را انتخاب کنید، [راه‌اندازی SSO](#set-up-sso) را ببینید.
 
-### 5. Add the embedding script into your app
+### ۵. افزودن اسکریپت جاسازی به برنامه خود
 
-Metabase will generate a code snippet that you can copy and paste into your app, see [Embed code snippets](#embed-code-snippets) for an example. You can later modify this code snippet to specify additional appearance options or change the behavior of some components.
+متابیس یک قطعه کد تولید می‌کند که می‌توانید آن را کپی کرده و در برنامه خود جایگذاری کنید، برای مثال [قطعه‌های کد جاسازی](#embed-code-snippets) را ببینید. می‌توانید بعداً این قطعه کد را برای مشخص کردن گزینه‌های ظاهر اضافی یا تغییر رفتار برخی اجزا تغییر دهید.
 
-Add the code snippet into your app, and refresh the page.
+قطعه کد را به برنامه خود اضافه کنید و صفحه را رفرش کنید.
 
-## Each end user should have their own Metabase account
+## هر کاربر نهایی باید حساب متابیس خود را داشته باشد
 
-Each end-user must have their own Metabase account.
+هر کاربر نهایی باید حساب متابیس خود را داشته باشد.
 
-The problem with having end-users share a Metabase account is that, even if you filter data on the client side via the Embedded analytics JS, all end-users will still have access to the session token, which they could use to access Metabase directly via the API to get data they’re not supposed to see.
+مشکل اشتراک‌گذاری یک حساب متابیس بین کاربران نهایی این است که، حتی اگر داده را در سمت کلاینت از طریق تجزیه و تحلیل تعبیه‌شده JS فیلتر کنید، همه کاربران نهایی همچنان به توکن جلسه دسترسی خواهند داشت، که می‌توانند از آن برای دسترسی مستقیم به متابیس از طریق API برای دریافت داده‌هایی که نباید ببینند استفاده کنند.
 
-If each end-user has their own Metabase account, however, you can configure permissions in Metabase and everyone will only have access to the data they should.
+با این حال، اگر هر کاربر نهایی حساب متابیس خود را داشته باشد، می‌توانید مجوزها را در متابیس پیکربندی کنید و همه فقط به داده‌هایی که باید دسترسی خواهند داشت.
 
-In addition to this, we consider shared accounts to be unfair usage. Fair usage of Embedded Analytics JS involves giving each end-user of the embedded analytics their own Metabase account.
+علاوه بر این، ما حساب‌های اشتراکی را استفاده ناعادلانه می‌دانیم. استفاده عادلانه از تجزیه و تحلیل تعبیه‌شده JS شامل دادن حساب متابیس خود به هر کاربر نهایی تجزیه و تحلیل جاسازی‌شده است.
 
-## Embed code snippets
+## قطعه‌های کد جاسازی
 
-The code snippets to embed Metabase entities using Embedded Analytics JS should have three parts:
+قطعه‌های کد برای جاسازی موجودیت‌های متابیس با استفاده از تجزیه و تحلیل تعبیه‌شده JS باید سه بخش داشته باشند:
 
-1. Loading the Embedded Analytics JS library from your Metabase instance.
-2. Global configuration settings to be used for all embeds, like the URL of your Metabase instance, appearance themes, etc. See [Configuring embeds](#configuring-embeds).
-3. Components for Metabase entities to be embedded, with their parameters. See [Components](#components).
+۱. بارگذاری کتابخانه تجزیه و تحلیل تعبیه‌شده JS از نمونه متابیس شما.
+۲. تنظیمات پیکربندی سراسری برای استفاده در همه جاسازی‌ها، مانند URL نمونه متابیس شما، تم‌های ظاهر و غیره. [پیکربندی جاسازی‌ها](#configuring-embeds) را ببینید.
+۳. اجزا برای موجودیت‌های متابیس برای جاسازی، با پارامترهای آن‌ها. [اجزا](#components) را ببینید.
 
-Here's an example of a script:
+در اینجا یک مثال از یک اسکریپت آمده است:
 
 ```html
 <!-- Load embedding library -->
@@ -127,49 +127,49 @@ Here's an example of a script:
 <metabase-dashboard dashboard-id="2" with-title="false"></metabase-dashboard>
 ```
 
-Note the `defer` attribute and the reference to your Metabase URL in the script that loads `embed.js` library.
+توجه داشته باشید ویژگی `defer` و ارجاع به URL متابیس شما در اسکریپتی که کتابخانه `embed.js` را بارگذاری می‌کند.
 
-If you're embedding multiple entities in a single page, you only need to include the `<script>` tags once globally.
+اگر در حال جاسازی چندین موجودیت در یک صفحه هستید، فقط باید تگ‌های `<script>` را یک بار به صورت سراسری شامل کنید.
 
-You can also generate the code snippet for Embedded Analytics JS interactively in Metabase through **Admin > Embedding > Setup guide > Embed in your code**. Check out the [quickstart](#quickstart).
+همچنین می‌توانید قطعه کد برای تجزیه و تحلیل تعبیه‌شده JS را به صورت تعاملی در متابیس از طریق **مدیر > جاسازی > راهنمای راه‌اندازی > جاسازی در کد شما** تولید کنید. [شروع سریع](#quickstart) را بررسی کنید.
 
-## Customizing embeds
+## سفارشی‌سازی جاسازی‌ها
 
-The exact customization options you see will depend on what type of entity you're embedding.
+گزینه‌های سفارشی‌سازی دقیقی که می‌بینید بستگی به نوع موجودیتی دارد که در حال جاسازی آن هستید.
 
-When you're creating a new embed using **Admin > Embedding > Setup guide > Embed in your code**, you'll see the following customization options in the interactive creation flow. These options correspond to parameters in [components](#components).
+هنگامی که در حال ایجاد یک جاسازی جدید با استفاده از **مدیر > جاسازی > راهنمای راه‌اندازی > جاسازی در کد شما** هستید، گزینه‌های سفارشی‌سازی زیر را در جریان ایجاد تعاملی خواهید دید. این گزینه‌ها با پارامترهای [اجزا](#components) مطابقت دارند.
 
-- **Allow people to drill through on data points**: determines whether people can interact with the chart (or charts on a dashboard). Interactivity includes [drilling down](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) to individual records from aggregated questions, filtering on click, zooming in, etc. Disabling drill-through for an embedded _question_ also disables people's ability to add filters and summaries.
+- **اجازه دادن به افراد برای حفاری روی نقاط داده**: تعیین می‌کند که آیا افراد می‌توانند با نمودار (یا نمودارهای روی یک داشبورد) تعامل داشته باشند. تعامل شامل [حفاری به پایین](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) به رکوردهای فردی از سؤال‌های تجمیع شده، فیلتر کردن با کلیک، زوم کردن و غیره است. غیرفعال کردن حفاری برای یک _سؤال_ جاسازی شده همچنین توانایی افراد برای افزودن فیلترها و خلاصه‌ها را غیرفعال می‌کند.
 
-- **Allow downloads**: determines whether people can download question results and save dashboards as PDFs.
+- **اجازه دانلود**: تعیین می‌کند که آیا افراد می‌توانند نتایج سؤال را دانلود کنند و داشبوردها را به صورت PDF ذخیره کنند.
 
-- **Allow people to save new questions**. If you embed the query builder but disable this option, people can still do their own explorations, they just won't be able to save them.
+- **اجازه دادن به افراد برای ذخیره سؤال‌های جدید**. اگر سازنده پرس‌وجو را جاسازی کنید اما این گزینه را غیرفعال کنید، افراد همچنان می‌توانند کاوش‌های خود را انجام دهند، فقط نمی‌توانند آن‌ها را ذخیره کنند.
 
-- **Parameters**: for dashboard filters, SQL variables, and time grouping parameters, you can add default values. Default values set here override the default values set at the dashboard or question level. For dashboard filters and parameters, you can choose whether to hide the parameter.
+- **پارامترها**: برای فیلترهای داشبورد، متغیرهای SQL و پارامترهای گروه‌بندی زمان، می‌توانید مقادیر پیش‌فرض اضافه کنید. مقادیر پیش‌فرض تنظیم شده در اینجا مقادیر پیش‌فرض تنظیم شده در سطح داشبورد یا سؤال را لغو می‌کند. برای فیلترهای داشبورد و پارامترها، می‌توانید انتخاب کنید که آیا پارامتر را مخفی کنید.
 
-- **Show title**: what it says on the tin.
+- **نمایش عنوان**: همان چیزی که روی قوطی نوشته شده است.
 
-- **Allow editing dashboards and questions**: lets people create and edit dashboards or questions in the current collection. When disabled, they can still perform actions like filter, summarize, and drill-through, but won’t be able to save results.
+- **اجازه ویرایش داشبوردها و سؤال‌ها**: به افراد امکان می‌دهد داشبوردها یا سؤال‌ها را در مجموعه فعلی ایجاد و ویرایش کنند. وقتی غیرفعال است، آن‌ها همچنان می‌توانند اقداماتی مانند فیلتر، خلاصه و حفاری انجام دهند، اما نمی‌توانند نتایج را ذخیره کنند.
 
-## Configuring embeds
+## پیکربندی جاسازی‌ها
 
-To define the configuration that applies to every embed on the page, use the `defineMetabaseConfig()` function. Its parameters include:
+برای تعریف پیکربندی که برای هر جاسازی در صفحه اعمال می‌شود، از تابع `defineMetabaseConfig()` استفاده کنید. پارامترهای آن شامل موارد زیر است:
 
-- `instanceUrl: "https://your-metabase-url"` (required): the URL of your Metabase instance, like `https://youlooknicetoday.metabaseapp.com`
+- `instanceUrl: "https://your-metabase-url"` (الزامی): URL نمونه متابیس شما، مانند `https://youlooknicetoday.metabaseapp.com`
 
-- `theme: {...}` (optional): [appearance options for the embeds](#theming).
+- `theme: {...}` (اختیاری): [گزینه‌های ظاهر برای جاسازی‌ها](#theming).
 
-- `useExistingUserSession: true|false` (optional, for development only) - lets you preview the embed locally using your Metabase admin account session. Only supported in Google Chrome.
+- `useExistingUserSession: true|false` (اختیاری، فقط برای توسعه) - به شما امکان می‌دهد جاسازی را به صورت محلی با استفاده از جلسه حساب مدیر متابیس خود پیش‌نمایش کنید. فقط در Google Chrome پشتیبانی می‌شود.
 
-- `apiKey: mb_YourAPIKey` (optional, for development only) - another way to preview embeds locally using an API key.
+- `apiKey: mb_YourAPIKey` (اختیاری، فقط برای توسعه) - روش دیگری برای پیش‌نمایش جاسازی‌ها به صورت محلی با استفاده از یک کلید API.
 
-- `fetchRequestToken: () => Promise<{ jwt: string }>` (optional) - you can customize how the SDK fetches the refresh token for JWT authentication by specifying the `fetchRequestToken` function. See [customizing JWT authentication](./sdk/authentication.md#customizing-jwt-authentication).
+- `fetchRequestToken: () => Promise<{ jwt: string }>` (اختیاری) - می‌توانید نحوه دریافت توکن تازه‌سازی SDK برای احراز هویت JWT را با مشخص کردن تابع `fetchRequestToken` سفارشی کنید. [سفارشی‌سازی احراز هویت JWT](./sdk/authentication.md#customizing-jwt-authentication) را ببینید.
 
-### Theming
+### تم‌دهی
 
-You can specify colors, fonts, spacing, and other appearance options using the `theme` parameter in your embed configuration.
+می‌توانید رنگ‌ها، فونت‌ها، فاصله‌گذاری و سایر گزینه‌های ظاهر را با استفاده از پارامتر `theme` در پیکربندی جاسازی خود مشخص کنید.
 
-For example, this code defines the font, color, and size for text, background colors, and colors for filters and summaries:
+به عنوان مثال، این کد فونت، رنگ و اندازه برای متن، رنگ‌های پس‌زمینه و رنگ‌ها برای فیلترها و خلاصه‌ها را تعریف می‌کند:
 
 ```html
 <script>
@@ -190,17 +190,17 @@ For example, this code defines the font, color, and size for text, background co
 </script>
 ```
 
-See [appearance](./sdk/appearance.md).
+[ظاهر](./sdk/appearance.md) را ببینید.
 
-## Authentication
+## احراز هویت
 
-### Use existing user session to test embeds
+### استفاده از جلسه کاربر موجود برای تست جاسازی‌ها
 
-> Existing sessions can only be used for testing embeds locally. To make your embeds production-ready, you'll need to implement SSO.
+> جلسات موجود فقط می‌توانند برای تست جاسازی‌ها به صورت محلی استفاده شوند. برای آماده کردن جاسازی‌های خود برای تولید، باید SSO را پیاده‌سازی کنید.
 
-If you're signed into Metabase, you can use that existing session cookie to preview and test your embeds. This only works in the same browser (we recommend Chrome) you're using for your Metabase session (so it won't work in Incognito mode).
+اگر وارد متابیس شده‌اید، می‌توانید از آن کوکی جلسه موجود برای پیش‌نمایش و تست جاسازی‌های خود استفاده کنید. این فقط در همان مرورگری (Chrome را توصیه می‌کنیم) که برای جلسه متابیس خود استفاده می‌کنید کار می‌کند (بنابراین در حالت ناشناس کار نمی‌کند).
 
-Add `useExistingUserSession: true` to `defineMetabaseConfig()` in your embed code. Check out [Configuring embeds](#configuring-embeds).
+`useExistingUserSession: true` را به `defineMetabaseConfig()` در کد جاسازی خود اضافه کنید. [پیکربندی جاسازی‌ها](#configuring-embeds) را بررسی کنید.
 
 ```html
 <script>
@@ -211,16 +211,16 @@ Add `useExistingUserSession: true` to `defineMetabaseConfig()` in your embed cod
 </script>
 ```
 
-Note that this will not work in some browsers, or in incognito mode. We recommend using Chrome if you'd like to use existing Metabase sessions to test your embeds.
+توجه داشته باشید که این در برخی مرورگرها یا در حالت ناشناس کار نمی‌کند. اگر می‌خواهید از جلسات متابیس موجود برای تست جاسازی‌های خود استفاده کنید، استفاده از Chrome را توصیه می‌کنیم.
 
-### Use API keys to test embeds
+### استفاده از کلیدهای API برای تست جاسازی‌ها
 
-> API keys can only be used for testing embeds locally. To make your embeds production-ready or deploy them to another domain, you'll need to implement SSO.
+> کلیدهای API فقط می‌توانند برای تست جاسازی‌ها به صورت محلی استفاده شوند. برای آماده کردن جاسازی‌های خود برای تولید یا استقرار آن‌ها در دامنه دیگر، باید SSO را پیاده‌سازی کنید.
 
-To use an API key to test your embeds:
+برای استفاده از یک کلید API برای تست جاسازی‌های خود:
 
-1. Create an [API key](../people-and-groups/api-keys.md)
-2. Add `apiKey: "YOUR_API_KEY"` to `defineMetabaseConfig()`:
+۱. یک [کلید API](../people-and-groups/api-keys.md) ایجاد کنید
+۲. `apiKey: "YOUR_API_KEY"` را به `defineMetabaseConfig()` اضافه کنید:
 
 ```html
 <script>
@@ -231,27 +231,27 @@ To use an API key to test your embeds:
 </script>
 ```
 
-API keys should only be used for testing with trusted people. Anyone with access to the front-end can grab the API key and use it to make requests against the Metabase API. For this reason, we only allow using API keys on localhost.
+کلیدهای API فقط باید برای تست با افراد مورد اعتماد استفاده شوند. هر کسی که به front-end دسترسی دارد می‌تواند کلید API را بگیرد و از آن برای درخواست‌های API متابیس استفاده کند. به همین دلیل، ما فقط استفاده از کلیدهای API در localhost را مجاز می‌کنیم.
 
-### Set up SSO
+### راه‌اندازی SSO
 
-SSO is required to embed in a domain other than localhost. You can use JWT or SAML SSO. To configure SAML, check out [Authenticating with SAML](./sdk/authentication.md#authenticating-with-saml-sso). To configure JWT, follow the steps below.
+SSO برای جاسازی در دامنه‌ای غیر از localhost الزامی است. می‌توانید از JWT یا SAML SSO استفاده کنید. برای پیکربندی SAML، [احراز هویت با SAML](./sdk/authentication.md#authenticating-with-saml-sso) را بررسی کنید. برای پیکربندی JWT، مراحل زیر را دنبال کنید.
 
-#### 1. In Metabase, configure [JWT SSO](../people-and-groups/authenticating-with-jwt.md).
+#### ۱. در متابیس، [JWT SSO](../people-and-groups/authenticating-with-jwt.md) را پیکربندی کنید.
 
-#### 2. In your app's backend, add a new endpoint to handle authentication.
+#### ۲. در backend برنامه خود، یک endpoint جدید برای مدیریت احراز هویت اضافه کنید.
 
-You'll need to add a library to your backend to sign your JSON Web Tokens.
+نیاز دارید یک کتابخانه به backend خود اضافه کنید تا JSON Web Tokenهای خود را امضا کنید.
 
-For Node.js, we recommend jsonwebtoken:
+برای Node.js، jsonwebtoken را توصیه می‌کنیم:
 
 ```sh
 npm install jsonwebtoken --save
 ```
 
-Next, set up an endpoint on your backend (like `/sso/metabase`) that uses your Metabase JWT shared secret to generate a JWT for the authenticated person. **This endpoint must return a JSON object with a `jwt` property containing the signed JWT.** For example: `{ "jwt": "your-signed-jwt" }`.
+بعد، یک endpoint در backend خود راه‌اندازی کنید (مانند `/sso/metabase`) که از secret مشترک JWT متابیس شما برای تولید یک JWT برای فرد احراز هویت شده استفاده می‌کند. **این endpoint باید یک شی JSON با ویژگی `jwt` حاوی JWT امضا شده را برگرداند.** به عنوان مثال: `{ "jwt": "your-signed-jwt" }`.
 
-This example code for Node.js sets up an endpoint using Express:
+این کد نمونه برای Node.js یک endpoint با استفاده از Express راه‌اندازی می‌کند:
 
 ```js
 import express from "express";
@@ -305,39 +305,39 @@ app.get("/sso/metabase", async (req, res) => {
 });
 ```
 
-See more examples in the [Embedding SDK docs](./sdk/authentication.md#2-add-a-new-endpoint-to-your-backend-to-handle-authentication).
+مثال‌های بیشتر را در [مستندات Embedding SDK](./sdk/authentication.md#2-add-a-new-endpoint-to-your-backend-to-handle-authentication) ببینید.
 
-#### 3. Embeds will use SSO automatically by default
+#### ۳. جاسازی‌ها به‌طور پیش‌فرض به صورت خودکار از SSO استفاده می‌کنند
 
-By default, Metabase uses JWT SSO, but you can specify another auth method. To turn on SSO, make sure you _don't_ set your configuration to `apiKey` or `useExistingUserSession`.
+به‌طور پیش‌فرض، متابیس از JWT SSO استفاده می‌کند، اما می‌توانید روش auth دیگری را مشخص کنید. برای روشن کردن SSO، مطمئن شوید که پیکربندی خود را روی `apiKey` یا `useExistingUserSession` تنظیم _نکنید_.
 
-## Components
+## اجزا
 
-There are different components available that enable different experiences for the end-user.
+اجزای مختلفی در دسترس هستند که تجربیات مختلفی را برای کاربر نهایی فعال می‌کنند.
 
-> While you can use component parameters to show or hide parts of the embedded component, these parameters are _not_ a substitute for [permissions](../permissions/start.md). Even if you hide stuff, people could still grab their token from the frontend and use it to query the Metabase API.
+> در حالی که می‌توانید از پارامترهای جزء برای نمایش یا مخفی کردن بخش‌هایی از جزء جاسازی شده استفاده کنید، این پارامترها جایگزین [مجوزها](../permissions/start.md) _نیستند_. حتی اگر چیزها را مخفی کنید، افراد همچنان می‌توانند توکن خود را از frontend بگیرند و از آن برای پرس‌وجوی API متابیس استفاده کنند.
 
-### Dashboard
+### داشبورد
 
-To render a dashboard:
+برای رندر کردن یک داشبورد:
 
 ```html
 <metabase-dashboard dashboard-id="1" with-title="true" with-downloads="false">
 </metabase-dashboard>
 ```
 
-**Required parameters:**
+**پارامترهای الزامی:**
 
-- `dashboard-id` - This can be a regular ID or an entity ID. [Using Entity IDs](../installation-and-operation/serialization.md#entity-ids-work-with-embedding) in your embeds ensures that the IDs stay stable when exporting from one Metabase and importing to another.
+- `dashboard-id` - این می‌تواند یک ID معمولی یا یک entity ID باشد. [استفاده از Entity IDها](../installation-and-operation/serialization.md#entity-ids-work-with-embedding) در جاسازی‌های شما اطمینان می‌دهد که IDها هنگام صادرات از یک متابیس و واردات به دیگری پایدار بمانند.
 
-**Optional parameters:**
+**پارامترهای اختیاری:**
 
-- `with-title` (default is true) - show the dashboard title in the embed
-- `with-downloads` (default is false) - show the button to download the dashboard as PDF and download question results
-- `drills` (default is true) - lets you drill through the dashboard
-- `initial-parameters` - default value for dashboard filters, like `{ 'productId': '42' }`.
+- `with-title` (پیش‌فرض true است) - نمایش عنوان داشبورد در جاسازی
+- `with-downloads` (پیش‌فرض false است) - نمایش دکمه برای دانلود داشبورد به صورت PDF و دانلود نتایج سؤال
+- `drills` (پیش‌فرض true است) - به شما امکان می‌دهد از داشبورد حفاری کنید
+- `initial-parameters` - مقدار پیش‌فرض برای فیلترهای داشبورد، مانند `{ 'productId': '42' }`.
 
-  Make sure to use single quotes if you are surrounding your attribute value with double quotes:
+  مطمئن شوید که از نقل‌قول‌های تکی استفاده کنید اگر مقدار ویژگی خود را با نقل‌قول‌های دوتایی احاطه کرده‌اید:
 
   ```html
   <metabase-dashboard
@@ -346,9 +346,9 @@ To render a dashboard:
   ></metabase-dashboard>
   ```
 
-- `hidden-parameters` - list of filter names to hide from the dashboard, like `['productId']`
+- `hidden-parameters` - فهرست نام‌های فیلتر برای مخفی کردن از داشبورد، مانند `['productId']`
 
-  Make sure to use single quotes if you are surrounding your attribute value with double quotes:
+  مطمئن شوید که از نقل‌قول‌های تکی استفاده کنید اگر مقدار ویژگی خود را با نقل‌قول‌های دوتایی احاطه کرده‌اید:
 
   ```html
   <metabase-dashboard
@@ -357,78 +357,78 @@ To render a dashboard:
   ></metabase-dashboard>
   ```
 
-### Question
+### سؤال
 
-To render a question (chart):
+برای رندر کردن یک سؤال (نمودار):
 
 ```html
 <metabase-question question-id="1"></metabase-question>
 ```
 
-**Required parameters:**
+**پارامترهای الزامی:**
 
-- `question-id` - This can be a regular ID or an entity ID. [Using Entity IDs](../installation-and-operation/serialization.md#entity-ids-work-with-embedding) in your embeds ensures that the IDs stay stable when exporting from one Metabase and importing to another.
+- `question-id` - این می‌تواند یک ID معمولی یا یک entity ID باشد. [استفاده از Entity IDها](../installation-and-operation/serialization.md#entity-ids-work-with-embedding) در جاسازی‌های شما اطمینان می‌دهد که IDها هنگام صادرات از یک متابیس و واردات به دیگری پایدار بمانند.
 
-  Use `question-id="new"` to embed the query builder exploration interface.
+  از `question-id="new"` برای جاسازی رابط کاوش سازنده پرس‌وجو استفاده کنید.
 
-**Optional parameters:**
+**پارامترهای اختیاری:**
 
-- `drills` (default is true) - lets you drill through the question
-- `with-title` (default is true) - show the title
-- `with-downloads` (default is false) - show downloads
-- `initial-sql-parameters` - default value for SQL parameters, only applicable to native SQL questions, like `{ "productId": "42" }`
-- `is-save-enabled` (default is false)
-- `target-collection` - this is to enforce saving into a particular collection. Values: regular ID, entity ID, `"personal”`, `"root”`
+- `drills` (پیش‌فرض true است) - به شما امکان می‌دهد از سؤال حفاری کنید
+- `with-title` (پیش‌فرض true است) - نمایش عنوان
+- `with-downloads` (پیش‌فرض false است) - نمایش دانلودها
+- `initial-sql-parameters` - مقدار پیش‌فرض برای پارامترهای SQL، فقط برای سؤال‌های SQL native قابل اعمال است، مانند `{ "productId": "42" }`
+- `is-save-enabled` (پیش‌فرض false است)
+- `target-collection` - این برای اعمال ذخیره در یک مجموعه خاص است. مقادیر: ID معمولی، entity ID، `"personal"`، `"root"`
 
-### Browser
+### مرورگر
 
-To render a collection browser so people can navigate a collection and open dashboards or questions:
+برای رندر کردن یک مرورگر مجموعه تا افراد بتوانند یک مجموعه را پیمایش کنند و داشبوردها یا سؤال‌ها را باز کنند:
 
 ```html
 <metabase-browser initial-collection="14" read-only="false"></metabase-browser>
 ```
 
-**Required parameters:**
+**پارامترهای الزامی:**
 
-- `initial-collection` - This can be a collection ID or `root`. Use a collection ID (e.g., `14`) to start in a specific collection. Use `root` to start at the top-level, "Our Analytics" collection.
+- `initial-collection` - این می‌تواند یک collection ID یا `root` باشد. از یک collection ID (مثلاً `14`) برای شروع در یک مجموعه خاص استفاده کنید. از `root` برای شروع در مجموعه سطح بالا، "Our Analytics" استفاده کنید.
 
-**Optional parameters:**
+**پارامترهای اختیاری:**
 
-- `read-only` (default is true) – if true, people can interact with items (filter, summarize, drill-through) but cannot save. If false, they can create and edit items in the collection.
+- `read-only` (پیش‌فرض true است) – اگر true باشد، افراد می‌توانند با موارد تعامل داشته باشند (فیلتر، خلاصه، حفاری) اما نمی‌توانند ذخیره کنند. اگر false باشد، می‌توانند موارد را در مجموعه ایجاد و ویرایش کنند.
 
 ### Metabot
 
-To render the AI chat interface:
+برای رندر کردن رابط چت هوش مصنوعی:
 
 ```html
 <metabase-metabot></metabase-metabot>
 ```
 
-**Required parameters:**
+**پارامترهای الزامی:**
 
-None.
+هیچ.
 
-**Optional parameters:**
+**پارامترهای اختیاری:**
 
-- `layout` (default is `auto`) – how should the browser position the visualization with respect to the chat interface. Possible values are:
-  - `auto` (default): Metabot uses the `stacked` layout on mobile screens, and a `sidebar` layout on larger screens.
-  - `stacked`: the question visualization stacks on top of the chat interface.
-  - `sidebar`: the question visualization appears to the left of the chat interface, which is in the right sidebar.
+- `layout` (پیش‌فرض `auto` است) – مرورگر باید تجسم را نسبت به رابط چت چگونه قرار دهد. مقادیر ممکن عبارتند از:
+  - `auto` (پیش‌فرض): Metabot از چیدمان `stacked` در صفحه‌نمایش‌های موبایل و چیدمان `sidebar` در صفحه‌نمایش‌های بزرگتر استفاده می‌کند.
+  - `stacked`: تجسم سؤال روی رابط چت قرار می‌گیرد.
+  - `sidebar`: تجسم سؤال در سمت چپ رابط چت ظاهر می‌شود که در نوار کناری راست است.
 
-## Embedding Metabase in a different domain
+## جاسازی متابیس در یک دامنه متفاوت
 
-If you want to embed Metabase in another domain (say, if Metabase is hosted at `metabase.yourcompany.com`, but you want to embed Metabase at `yourcompany.github.io`), you can tell Metabase to set the session cookie's SameSite value to "none".
+اگر می‌خواهید متابیس را در دامنه دیگری جاسازی کنید (مثلاً، اگر متابیس در `metabase.yourcompany.com` میزبانی می‌شود، اما می‌خواهید متابیس را در `yourcompany.github.io` جاسازی کنید)، می‌توانید به متابیس بگویید مقدار SameSite کوکی جلسه را روی "none" تنظیم کند.
 
-You can set session cookie's SameSite value in **Admin settings** > **Embedding** > **Security** > **SameSite cookie setting**.
+می‌توانید مقدار SameSite کوکی جلسه را در **تنظیمات مدیر > جاسازی > امنیت > تنظیم کوکی SameSite** تنظیم کنید.
 
-SameSite values include:
+مقادیر SameSite شامل موارد زیر است:
 
-- **Lax** (default): Allows Metabase session cookies to be shared on the same domain. Used for production instances on the same domain.
-- **None (requires HTTPS)**: Use "None" when your app and Metabase are hosted on different domains. Incompatible with Safari and iOS-based browsers.
-- **Strict** (not recommended): Does not allow Metabase session cookies to be shared with embedded instances. Use this if you do not want to enable session sharing with embedding.
+- **Lax** (پیش‌فرض): به کوکی‌های جلسه متابیس امکان اشتراک‌گذاری در همان دامنه را می‌دهد. برای نمونه‌های تولید در همان دامنه استفاده می‌شود.
+- **None (نیاز به HTTPS)**: از "None" استفاده کنید وقتی برنامه و متابیس شما در دامنه‌های مختلف میزبانی می‌شوند. با Safari و مرورگرهای مبتنی بر iOS ناسازگار است.
+- **Strict** (توصیه نمی‌شود): به کوکی‌های جلسه متابیس امکان اشتراک‌گذاری با نمونه‌های جاسازی شده را نمی‌دهد. اگر نمی‌خواهید اشتراک‌گذاری جلسه با جاسازی را فعال کنید از این استفاده کنید.
 
-You can also set the [`MB_SESSION_COOKIE_SAMESITE` environment variable](../configuring-metabase/environment-variables.md#mb_session_cookie_samesite).
+همچنین می‌توانید [متغیر محیطی `MB_SESSION_COOKIE_SAMESITE`](../configuring-metabase/environment-variables.md#mb_session_cookie_samesite) را تنظیم کنید.
 
-If you're using Safari, you'll need to [allow cross-site tracking](https://support.apple.com/en-tj/guide/safari/sfri40732/mac). Depending on the browser, you may also run into issues when viewing emdedded items in private/incognito tabs.
+اگر از Safari استفاده می‌کنید، باید [ردیابی cross-site را مجاز کنید](https://support.apple.com/en-tj/guide/safari/sfri40732/mac). بسته به مرورگر، ممکن است هنگام مشاهده موارد جاسازی شده در تب‌های خصوصی/ناشناس نیز با مشکلاتی مواجه شوید.
 
-Learn more about [SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite).
+بیشتر در مورد [کوکی‌های SameSite](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite) بیاموزید.

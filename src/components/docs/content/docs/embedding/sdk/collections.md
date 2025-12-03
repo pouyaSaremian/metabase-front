@@ -1,23 +1,23 @@
 ---
-title: Embedded analytics SDK - collections
+title: SDK تجزیه و تحلیل تعبیه‌شده - مجموعه‌ها
 ---
 
-# Embedded analytics SDK - collections
+# SDK تجزیه و تحلیل تعبیه‌شده - مجموعه‌ها
 
 {% include plans-blockquote.html feature="Embedded analytics SDK" sdk=true %}
 
-## Embedding a collection browser
+## جاسازی یک مرورگر مجموعه
 
-You can embed Metabase's collection browser so that people can explore items in your Metabase from your application.
+می‌توانید مرورگر مجموعه متابیس را جاسازی کنید تا افراد بتوانند موارد در متابیس شما را از برنامه شما کاوش کنند.
 
 ### `CollectionBrowser`
 
-#### API Reference
+#### مرجع API
 
 - [Component](./api/CollectionBrowser.html)
 - [Props](./api/CollectionBrowserProps.html)
 
-#### Example
+#### مثال
 
 ```tsx
 {% include_file "{{ dirname }}/snippets/collections/collection-browser.tsx" %}
@@ -27,11 +27,11 @@ You can embed Metabase's collection browser so that people can explore items in 
 
 {% include_file "{{ dirname }}/api/snippets/CollectionBrowserProps.md" snippet="properties" %}
 
-## Hide the collection picker and hard code the collection you want people to save stuff to
+## مخفی کردن collection picker و hard code کردن مجموعه‌ای که می‌خواهید افراد چیزها را در آن ذخیره کنند
 
-With static questions, you set a specific collection as the collection people can save items to, so that they don't have bother picking a collection. To hard-code a collection:
+با سؤال‌های ایستا، یک مجموعه خاص را به عنوان مجموعه‌ای که افراد می‌توانند موارد را در آن ذخیره کنند تنظیم می‌کنید، تا نیازی به انتخاب مجموعه نداشته باشند. برای hard-code کردن یک مجموعه:
 
-1. Set `isSaveEnabled` to true.
-2. Set `targetCollection` to the collection ID you want people to save items to.
+۱. `isSaveEnabled` را روی true تنظیم کنید.
+۲. `targetCollection` را روی collection ID که می‌خواهید افراد موارد را در آن ذخیره کنند تنظیم کنید.
 
-For more options, see [Question props](./questions.md).
+برای گزینه‌های بیشتر، [Props سؤال](./questions.md) را ببینید.

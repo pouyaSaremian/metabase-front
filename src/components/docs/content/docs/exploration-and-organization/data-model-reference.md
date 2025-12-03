@@ -1,80 +1,82 @@
 ---
-title: Data reference
-summary: Use the data reference to explore your databases, tables, and columns, find sample values and relationships between tables, and store terms in a glossary.
+title: مرجع داده
+summary: از بخش مرجع داده برای کاوش پایگاه‌داده‌ها، جدول‌ها و ستون‌ها، دیدن نمونه‌مقادیر و ارتباط بین جدول‌ها، و ذخیرهٔ اصطلاحات در واژه‌نامه استفاده کنید.
 redirect_from:
   - /docs/latest/users-guide/12-data-model-reference
   - /docs/latest/questions/native-editor/data-model-reference
 ---
 
-# Data reference
+# مرجع داده (Data reference)
 
 ![Data reference field](./images/data-reference-fields.png)
 
-Metabase's data reference section is a way to browse your metadata.
+بخش مرجع داده در متابیس راهی است برای مرور و کاوش متادیتا (metadata) داده‌های شما.
 
-The data reference includes:
+مرجع داده شامل این بخش‌ها است:
 
-- [Databases](#databases)
-- [Glossary](#glossary)
-- [Segments](#segments)
+- [پایگاه‌داده‌ها](#databases)
+- [واژه‌نامه (Glossary)](#glossary)
+- [سگمنت‌ها](#segments)
 
-You can open the data reference from:
+می‌توانید مرجع داده را از این مسیرها باز کنید:
 
-- The left sidebar > **Data** > **Databases** > **Learn about our data** (in the upper right).
-- Hovering over a table in the data browser and clicking on the book icon.
-- The native/SQL editor > **Book** icon.
+- نوار کناری چپ > **Data** > **Databases** > دکمهٔ **Learn about our data** در بالا سمت راست.
+- هنگام حرکت ماوس روی یک جدول در مرورگر داده و کلیک روی آیکون کتاب.
+- در ویرایشگر native/SQL با کلیک روی آیکون **کتاب**.
 
-You can also visit `https://[your metabase here]/reference`.
+همچنین می‌توانید مستقیماً به آدرس زیر بروید:  
+`https://[آدرس متابیس شما]/reference`
 
-## Databases
+## پایگاه‌داده‌ها (Databases)
 
-The data reference is a collection of pages organized by database, then schemas in that database (if you have several schemas), and finally tables in that database - the same structure you use to [pick data](../questions/query-builder/editor.md#picking-data). The data reference section is a great place to find information about the [data types](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview) of columns in your data.
+مرجع داده مجموعه‌ای از صفحه‌ها است که بر اساس پایگاه‌داده، بعد schema (اگر چند schema داشته باشید)، و در نهایت جدول‌ها سازمان‌دهی شده‌اند – همان ساختاری که هنگام [انتخاب داده](../questions/query-builder/editor.md#picking-data) استفاده می‌کنید. این بخش جای خوبی برای پیدا کردن اطلاعات دربارهٔ [انواع داده](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview) ستون‌ها است.
 
-### Database details
+### جزئیات پایگاه‌داده (Database details)
 
-When you click into a database, you'll see:
+وقتی روی یک پایگاه‌داده کلیک کنید، این موارد را می‌بینید:
 
-- **Details tab**: Contains metadata about the database, including general description, why this database is interesting, and things to be aware of.
-- **Tables tab**: Displays table names and descriptions. Click on a table to view its details and fields.
+- تب **Details**: شامل متادیتای پایگاه‌داده، از جمله توضیح کلی، این‌که چرا این پایگاه‌داده مهم است و نکاتی که باید درباره‌اش بدانید.
+- تب **Tables**: نام و توضیح جدول‌ها را نمایش می‌دهد. با کلیک روی هر جدول می‌توانید جزئیات و فیلدهای آن را ببینید.
 
-For each table, you can view:
+برای هر جدول می‌توانید موارد زیر را ببینید:
 
-- Table description and metadata
-- Fields in the table with their types and descriptions
-- Sample values for columns (when available)
-- Questions about this table (if you have permission to view them)
-- Option to create an X-ray of the table
+- توضیح جدول و متادیتای آن
+- فیلدهای جدول همراه با نوع و توضیح
+- نمونه‌مقادیر هر ستون (اگر در دسترس باشد)
+- سؤال‌های مربوط به آن جدول (در صورتی که مجوز دیدن آن‌ها را داشته باشید)
+- امکان ایجاد X-ray از جدول
 
-Admins can edit the metadata in this reference by clicking the **Edit** button in the upper right. Admins can also edit metabadata in the [admin settings](../data-modeling/metadata-editing.md).
+ادمین‌ها می‌توانند متادیتای این مرجع را با کلیک روی دکمهٔ **Edit** در بالا سمت راست ویرایش کنند. ادمین‌ها همچنین می‌توانند متادیتا را در بخش [تنظیمات ادمین](../data-modeling/metadata-editing.md) ویرایش کنند.
 
-## Glossary
+## واژه‌نامه (Glossary)
 
-The glossary is a place where anyone can define terms relevant to your data. Currently, the glossary is a simple key-value store of terms and their definitions.
+واژه‌نامه جایی است که همه می‌توانند اصطلاحات مرتبط با داده‌های شما را تعریف کنند. در حال حاضر واژه‌نامه یک ساختار سادهٔ کلید-مقدار است از اصطلاح‌ها و تعریف‌هایشان.
 
-To add a new term, click **+ New term**. Add the term name and its definitions, then click the checkmark to save the term to the glossary.
+برای اضافه کردن یک اصطلاح جدید روی **+ New term** کلیک کنید. نام اصطلاح و تعریف آن را وارد کنید و روی تیک برای ذخیره اصطلاح در واژه‌نامه بزنید.
 
-## Segments
+## سگمنت‌ها (Segments)
 
 ![Segments browser](./images/segments-browser.png)
 
-If your admins have created any [segments](../data-modeling/segments.md), you can browse them in this section.
+اگر ادمین‌های شما [سگمنت](../data-modeling/segments.md) ساخته باشند، می‌توانید آن‌ها را در این بخش مرور کنید.
 
-## Data reference in the native editor
+## مرجع داده در ویرایشگر native
 
-Sometimes when you're writing a query, you might forget the exact names of different tables or columns, or which table contains what. That’s where the **Data reference** comes in handy.
+وقتی در حال نوشتن یک پرس‌وجو هستید، ممکن است نام دقیق جدول‌ها یا ستون‌ها را فراموش کنید، یا ندانید کدام جدول چه چیزی را نگه می‌دارد. این‌جاست که **Data reference** به کار می‌آید.
 
-To bring up the data reference panel in the native/SQL editor, click on the open book icon.
+برای باز کردن پنل مرجع داده در ویرایشگر native/SQL، روی آیکون کتاب باز کلیک کنید.
 
-This panel lists all the databases you have access to, and the [models](../data-modeling/models.md) and tables, and the fields inside of them.
+این پنل همهٔ پایگاه‌داده‌هایی را که به آن‌ها دسترسی دارید فهرست می‌کند، همراه با [مدل‌ها](../data-modeling/models.md)، جدول‌ها و فیلدهای داخل آن‌ها.
 
 ![Data reference sidebar](./images/DataReference.png)
 
-Click the model or table to see a description of it and a list of all the columns it has. Each table or column will only contain a description if your admin wrote something in the table metadata section of the admin panel.
+روی مدل یا جدول کلیک کنید تا توضیح آن و فهرست کامل ستون‌هایش را ببینید. هر جدول یا ستون فقط زمانی توضیح خواهد داشت که ادمین شما چیزی برای آن در بخش متادیتای جدول در پنل ادمین نوشته باشد.
 
-If you click on a column you’re interested in, you’ll see a description of its contents, as well as a list of sample values for columns that don't have a huge number of distinct values.
+اگر روی ستونی که برایتان جالب است کلیک کنید، توضیحی از محتوای آن ستون و همچنین فهرستی از نمونه‌مقادیر آن را می‌بینید (برای ستون‌هایی که تعداد مقادیر متمایزشان خیلی زیاد نباشد).
 
-### Connections
+### اتصال‌ها (Connections)
 
-In the data reference sidebar in the native editor, under **Connections**, you can find a list of table relationships (defined by [foreign keys](https://www.metabase.com/glossary/foreign-key)).
+در نوار کناری مرجع داده در ویرایشگر native، زیر بخش **Connections** می‌توانید فهرستی از ارتباط‌های بین جدول‌ها (که با [کلید خارجی](https://www.metabase.com/glossary/foreign-key) تعریف می‌شوند) را ببینید.
 
-If a foreign key relationship exists in your database, but doesn't show up in your Metabase, your admin will need to update your [Metabase table metadata](../data-modeling/metadata-editing.md).
+اگر یک رابطهٔ کلید خارجی در پایگاه‌دادهٔ شما وجود دارد اما در متابیس دیده نمی‌شود، ادمین باید [متادیتای جدول در متابیس](../data-modeling/metadata-editing.md) را به‌روزرسانی کند.
+

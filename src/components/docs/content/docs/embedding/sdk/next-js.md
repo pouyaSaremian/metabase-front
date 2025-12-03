@@ -1,34 +1,34 @@
 ---
-title: Embedded analytics SDK - Using the SDK with Next.js
+title: SDK تجزیه و تحلیل تعبیه‌شده - استفاده از SDK با Next.js
 ---
 
-# Embedded analytics SDK - Using the SDK with Next.js
+# SDK تجزیه و تحلیل تعبیه‌شده - استفاده از SDK با Next.js
 
 {% include plans-blockquote.html feature="Embedded analytics SDK" sdk=true %}
 
 {% include youtube.html id='UfL8okz36d0' %}
 
-Some notes on using the Embedded analytics SDK with [Next.js](https://nextjs.org/). The SDK is tested to work with Next.js 14, although it may work with other versions.
+برخی یادداشت‌ها در مورد استفاده از SDK تجزیه و تحلیل تعبیه‌شده با [Next.js](https://nextjs.org/). SDK تست شده است که با Next.js 14 کار می‌کند، اگرچه ممکن است با نسخه‌های دیگر کار کند.
 
-See a [sample Next.js app that uses the SDK](https://github.com/metabase/metabase-nextjs-sdk-embedding-sample).
+یک [برنامه نمونه Next.js که از SDK استفاده می‌کند](https://github.com/metabase/metabase-nextjs-sdk-embedding-sample) را ببینید.
 
-## SDK components with Server Side Rendering (SSR) or React Server Components
+## اجزای SDK با Server Side Rendering (SSR) یا React Server Components
 
-As of Embedded Analytics SDK v57, SDK components automatically skip server-side rendering (SSR) and render only on the client.
+از Embedded Analytics SDK v57، اجزای SDK به طور خودکار server-side rendering (SSR) را رد می‌کنند و فقط در کلاینت رندر می‌شوند.
 
-### Compatibility layer for Server Side Rendering (SSR) (DEPRECATED)
+### لایه سازگاری برای Server Side Rendering (SSR) (منسوخ شده)
 
-As of Embedded Analytics SDK 57, the compatibility layer for server-side rendering (SSR) is deprecated and no longer required. If you use the compatibility layer, change your imports from `@metabase/embedding-sdk-react/next` to `@metabase/embedding-sdk-react`.
+از Embedded Analytics SDK 57، لایه سازگاری برای server-side rendering (SSR) منسوخ شده و دیگر لازم نیست. اگر از لایه سازگاری استفاده می‌کنید، importهای خود را از `@metabase/embedding-sdk-react/next` به `@metabase/embedding-sdk-react` تغییر دهید.
 
-## Handling authentication
+## مدیریت احراز هویت
 
-App Router and Pages Router have different ways to define API routes. If you want to authenticate users from your server with JWT, you can follow the instructions below. But if you want to authenticate with API keys for local development, see [Authenticating locally with API keys](./authentication.md#authenticating-locally-with-api-keys).
+App Router و Pages Router روش‌های مختلفی برای تعریف API routeها دارند. اگر می‌خواهید کاربران را از سرور خود با JWT احراز هویت کنید، می‌توانید دستورالعمل‌های زیر را دنبال کنید. اما اگر می‌خواهید با کلیدهای API برای توسعه محلی احراز هویت کنید، [احراز هویت محلی با کلیدهای API](./authentication.md#authenticating-locally-with-api-keys) را ببینید.
 
-### Using App Router
+### استفاده از App Router
 
-You can create a Route handler that signs people in to Metabase.
+می‌توانید یک Route handler ایجاد کنید که افراد را به متابیس وارد می‌کند.
 
-Create a new `route.ts` file in your `app/*` directory, for example `app/sso/metabase/route.ts` that corresponds to an endpoint at /sso/metabase. This route handler should generate a JWT for the authenticated user and return the token in a JSON object with the shape `{ jwt: string }`.
+یک فایل `route.ts` جدید در دایرکتوری `app/*` خود ایجاد کنید، مثلاً `app/sso/metabase/route.ts` که با یک endpoint در /sso/metabase مطابقت دارد. این route handler باید یک JWT برای کاربر احراز هویت شده تولید کند و توکن را در یک شی JSON با شکل `{ jwt: string }` برگرداند.
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/next-js/app-router-authentication-api-route.ts" snippet="imports" %}
@@ -36,17 +36,17 @@ Create a new `route.ts` file in your `app/*` directory, for example `app/sso/met
 {% include_file "{{ dirname }}/snippets/next-js/app-router-authentication-api-route.ts" snippet="example" %}
 ```
 
-Then, pass this `authConfig` to `MetabaseProvider`
+سپس، این `authConfig` را به `MetabaseProvider` ارسال کنید
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/next-js/authentication-auth-config.tsx" %}
 ```
 
-### Using Pages Router
+### استفاده از Pages Router
 
-You can create an API route that signs people in to Metabase.
+می‌توانید یک API route ایجاد کنید که افراد را به متابیس وارد می‌کند.
 
-Create a new `metabase.ts` file in your `pages/api/*` directory, for example `pages/api/sso/metabase.ts` that corresponds to an endpoint at /api/sso/metabase. This API route should generate a JWT for the authenticated user and return the token in a JSON object with the shape `{ jwt: string }`.
+یک فایل `metabase.ts` جدید در دایرکتوری `pages/api/*` خود ایجاد کنید، مثلاً `pages/api/sso/metabase.ts` که با یک endpoint در /api/sso/metabase مطابقت دارد. این API route باید یک JWT برای کاربر احراز هویت شده تولید کند و توکن را در یک شی JSON با شکل `{ jwt: string }` برگرداند.
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/next-js/pages-router-authentication-api-route.ts" snippet="imports" %}
@@ -54,7 +54,7 @@ Create a new `metabase.ts` file in your `pages/api/*` directory, for example `pa
 {% include_file "{{ dirname }}/snippets/next-js/pages-router-authentication-api-route.ts" snippet="example" %}
 ```
 
-Then, pass this `authConfig` to `MetabaseProvider`
+سپس، این `authConfig` را به `MetabaseProvider` ارسال کنید
 
 ```ts
 {% include_file "{{ dirname }}/snippets/next-js/authentication-auth-config.tsx" %}

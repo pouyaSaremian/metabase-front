@@ -1,55 +1,55 @@
 ---
-title: Embedding overview
+title: نمای کلی جاسازی
 redirect_from:
   - /docs/latest/embedding
 ---
 
-# Embedding overview
+# نمای کلی جاسازی
 
-## [Introduction](./introduction.md)
+## [مقدمه](./introduction.md)
 
-What is embedding, and how does it work?
+جاسازی چیست و چگونه کار می‌کند؟
 
-## [Embedded analytics SDK](./sdk/introduction.md)
+## [SDK تجزیه و تحلیل تعبیه‌شده](./sdk/introduction.md)
 
-With the Embedded analytics SDK, you can embed individual Metabase components with React (like standalone charts, dashboards, the query builder, and more). You can manage access and interactivity per component, and you have advanced customization for seamless styling.
+با SDK تجزیه و تحلیل تعبیه‌شده، می‌توانید اجزای جداگانه متابیس را با React جاسازی کنید (مثل نمودارهای مستقل، داشبوردها، سازنده پرس‌وجو و موارد بیشتر). می‌توانید دسترسی و تعامل را برای هر جزء مدیریت کنید و سفارشی‌سازی پیشرفته برای استایل‌دهی یکپارچه دارید.
 
-## [Embedded analytics JS](./embedded-analytics-js.md)
+## [تجزیه و تحلیل تعبیه‌شده JS](./embedded-analytics-js.md)
 
-Embed dashboards, questions, or the query builder in your app with JavaScript (no React required). Built on the Embedded analytics SDK with per-component controls and theming. Integrate your app's auth with Metabase SSO.
+داشبوردها، سؤال‌ها یا سازنده پرس‌وجو را در برنامه خود با JavaScript جاسازی کنید (بدون نیاز به React). ساخته شده بر اساس SDK تجزیه و تحلیل تعبیه‌شده با کنترل‌های هر جزء و تم‌دهی. احراز هویت برنامه خود را با SSO متابیس یکپارچه کنید.
 
-## [Embedded analytics SDK quickstart](./sdk/quickstart.md)
+## [شروع سریع SDK تجزیه و تحلیل تعبیه‌شده](./sdk/quickstart.md)
 
-Jump to a SDK quickstart with a sample React application.
+به یک شروع سریع SDK با یک برنامه نمونه React بروید.
 
-## [Static embedding](./static-embedding.md)
+## [جاسازی ایستا](./static-embedding.md)
 
-Also known as Signed Embedding, Static embedding is a secure way to embed charts and dashboards. Static embeds are view only; people won't be able to drill-through charts and tables.
+همچنین به‌عنوان جاسازی امضا شده شناخته می‌شود، جاسازی ایستا روشی امن برای جاسازی نمودارها و داشبوردها است. جاسازی‌های ایستا فقط مشاهده هستند؛ افراد نمی‌توانند از نمودارها و جداول حفاری کنند.
 
-## [Parameters for static embeds](./static-embedding-parameters.md)
+## [پارامترهای جاسازی‌های ایستا](./static-embedding-parameters.md)
 
-You can pass parameters between Metabase and your website via the embedding URL to specify how Metabase items should look and behave inside the iframe on your website.
+می‌توانید پارامترها را بین متابیس و وب‌سایت خود از طریق URL جاسازی ارسال کنید تا مشخص کنید موارد متابیس باید چگونه درون iframe در وب‌سایت شما به نظر برسند و رفتار کنند.
 
-## [Interactive embedding](./interactive-embedding.md)
+## [جاسازی تعاملی](./interactive-embedding.md)
 
-Interactive embedding allows you to embed full Metabase app in an iframe. Interactive embedding integrates with your data permissions to let people slice and dice data on their own using Metabase's query builder.
+جاسازی تعاملی به شما امکان می‌دهد برنامه کامل متابیس را در یک iframe جاسازی کنید. جاسازی تعاملی با مجوزهای داده شما یکپارچه می‌شود تا افراد بتوانند داده‌های خود را با استفاده از سازنده پرس‌وجوی متابیس برش و تحلیل کنند.
 
-## [Interactive embedding quickstart](./interactive-embedding-quick-start-guide.md)
+## [شروع سریع جاسازی تعاملی](./interactive-embedding-quick-start-guide.md)
 
-You'll embed the full Metabase application in your app. Once logged in, people can view a Metabase dashboard in your web app, and be able to use the full Metabase application to explore their data, and only their data.
+برنامه کامل متابیس را در برنامه خود جاسازی خواهید کرد. پس از ورود، افراد می‌توانند یک داشبورد متابیس را در برنامه وب شما مشاهده کنند و بتوانند از برنامه کامل متابیس برای کاوش داده‌های خود و فقط داده‌های خود استفاده کنند.
 
-## [Interactive UI components](./interactive-ui-components.md)
+## [اجزای رابط کاربری تعاملی](./interactive-ui-components.md)
 
-Customize the UI components in your interactive embed by adding parameters to the embedding URL.
+اجزای رابط کاربری در جاسازی تعاملی خود را با افزودن پارامترها به URL جاسازی سفارشی کنید.
 
-## [Public embeds](./public-links.md)
+## [جاسازی‌های عمومی](./public-links.md)
 
-Admins can also create unsecured public links or embeds of questions and dashboards.
+مدیران همچنین می‌توانند لینک‌های عمومی غیرامن یا جاسازی‌های سؤال‌ها و داشبوردها را ایجاد کنند.
 
-## [Securing embedded Metabase](./securing-embeds.md)
+## [ایمن‌سازی متابیس جاسازی‌شده](./securing-embeds.md)
 
-How to make sure the right people can see the right data in your embedded Metabase.
+چگونه مطمئن شوید که افراد مناسب می‌توانند داده مناسب را در متابیس جاسازی‌شده شما ببینند.
 
-## [Translating questions and dashboards](./translations.md)
+## [ترجمه سؤال‌ها و داشبوردها](./translations.md)
 
-Upload a translation dictionary to translate questions and dashboards (only in static embeds).
+یک فرهنگ لغت ترجمه را برای ترجمه سؤال‌ها و داشبوردها آپلود کنید (فقط در جاسازی‌های ایستا).

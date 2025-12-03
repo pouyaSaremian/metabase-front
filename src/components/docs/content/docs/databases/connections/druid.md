@@ -4,83 +4,83 @@ title: Druid
 
 # Druid
 
-> Prefer the Druid JDBC connection.
+> بهتر است از اتصال Druid JDBC استفاده کنید.
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای اضافه کردن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-## Edit connection details
+## ویرایش جزئیات اتصال
 
-Fill out the fields for that database, and click **Save changes** at the bottom. You can edit these settings at any time. Just remember to save your changes.
+فیلدهای مربوط به این پایگاه‌داده را پر کنید و در انتها روی **Save changes** کلیک کنید. می‌توانید هر زمان این تنظیمات را ویرایش کنید؛ فقط یادتان باشد تغییرات را ذخیره کنید.
 
 ### Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+می‌توانید یک connection string اینجا paste کنید تا فیلدهای باقی‌مانده به‌طور خودکار پر شوند.
 
 ### Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط متابیس.
 
 ### Host
 
-Your database's IP address, or its domain name (e.g., esc.mydatabase.com).
+آدرس IP پایگاه‌داده، یا نام دامنهٔ آن (مثلاً `esc.mydatabase.com`).
 
 ### Broker node port
 
-The database port (e.g, 8082).
+پورت پایگاه‌داده (مثلاً `8082`).
 
-### Use an SSH tunnel
+### استفاده از SSH tunnel
 
-See our [guide to SSH tunneling](../ssh-tunnel.md).
+[راهنمای SSH tunneling](../ssh-tunnel.md) را ببینید.
 
-### Allow unfolding of JSON columns
+### اجازهٔ unfold کردن ستون‌های JSON
 
-> Only available for the Druid JDBC connection.
+> فقط برای اتصال Druid JDBC در دسترس است.
 
-This enables unfolding of JSON columns into their component fields.
+این گزینه امکان unfold کردن ستون‌های JSON را به فیلدهای جزئی آن‌ها می‌دهد.
 
-See [JSON unfolding](../../data-modeling/json-unfolding.md).
+[JSON unfolding](../../data-modeling/json-unfolding.md) را ببینید.
 
 ### Authentication
 
-> Only available for the Druid JDBC connection.
+> فقط برای اتصال Druid JDBC در دسترس است.
 
-Toggle on to enable basic authentication with a username and password.
+برای فعال کردن احراز هویت basic با نام کاربری و رمز عبور، این گزینه را روشن کنید.
 
-### Re-run queries for simple explorations
+### اجرای دوبارهٔ پرس‌وجو برای اکتشاف ساده
 
-Turn this option **OFF** if people want to click **Run** (the play button) before applying any [Summarize](../../questions/query-builder/summarizing-and-grouping.md) or filter selections.
+اگر می‌خواهید کاربران قبل از اعمال هر [Summarize](../../questions/query-builder/summarizing-and-grouping.md) یا فیلتر، روی **Run** (دکمهٔ play) کلیک کنند، این گزینه را روی **OFF** قرار دهید.
 
-By default, Metabase will execute a query as soon as you choose an grouping option from the **Summarize** menu or a filter condition from the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through). If your database is slow, you may want to disable re-running to avoid loading data on each click.
+به‌طور پیش‌فرض، متابیس به محض انتخاب یک گزینهٔ گروه‌بندی از منوی **Summarize** یا یک شرط فیلتر از [منوی drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through)، پرس‌وجو را اجرا می‌کند. اگر پایگاه‌دادهٔ شما کند است، بهتر است اجرای خودکار را غیرفعال کنید تا با هر کلیک، کوئری جدید اجرا نشود.
 
-### Choose when syncs and scans happen
+### انتخاب زمان sync و scan
 
-See [syncs and scans](../sync-scan.md#choose-when-syncs-and-scans-happen).
+[مستندات sync و scan](../sync-scan.md#choose-when-syncs-and-scans-happen) را ببینید.
 
-### Periodically refingerprint tables
+### fingerprint دوره‌ای جدول‌ها
 
-> Periodic refingerprinting will increase the load on your database.
+> fingerprint دوره‌ای بار روی پایگاه‌دادهٔ شما را افزایش می‌دهد.
 
-Turn this option **ON** to scan a sample of values every time Metabase runs a [sync](../sync-scan.md#how-database-syncs-work).
+این گزینه را روی **ON** قرار دهید تا هر بار متابیس یک [sync](../sync-scan.md#how-database-syncs-work) اجرا می‌کند، یک نمونه از مقادیر را اسکن کند.
 
-A fingerprinting query examines the first 10,000 rows from each column and uses that data to guesstimate how many unique values each column has, what the minimum and maximum values are for numeric and timestamp columns, and so on. If you leave this option **OFF**, Metabase will only fingerprint your columns once during setup.
+پرس‌وجوی fingerprinting اولین ۱۰٬۰۰۰ ردیف هر ستون را بررسی می‌کند و بر اساس آن، تعداد مقادیر یکتا در هر ستون، و حداقل و حداکثر مقادیر ستون‌های عددی و زمانی و غیره را تخمین می‌زند. اگر این گزینه را روی **OFF** بگذارید، متابیس فقط یک‌بار و در زمان راه‌اندازی، برای ستون‌ها fingerprint می‌سازد.
 
-## Model features
+## قابلیت‌های مدل (Model features)
 
-There aren't (yet) any model features available for Druid.
+در حال حاضر، هیچ قابلیت خاصی برای مدل‌ها روی Druid در دسترس نیست.
 
 ## Database routing
 
-With database routing, an admin can build a question once using one database, and the question will run its query against a different database with the same schema depending on who is viewing the question.
+با قابلیت database routing، یک ادمین می‌تواند یک سؤال را یک‌بار با استفاده از یک پایگاه‌داده بسازد، و همان سؤال بسته به این‌که چه کسی آن را می‌بیند، پرس‌وجو را روی یک پایگاه‌دادهٔ دیگر با همان schema اجرا کند.
 
-See [Database routing](../../permissions/database-routing.md).
+[مستندات Database routing](../../permissions/database-routing.md) را ببینید.
 
 ## Danger zone
 
-See [Danger Zone](../danger-zone.md).
+[بخش Danger Zone](../danger-zone.md) را ببینید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Managing databases](../../databases/connecting.md)
-- [Metadata editing](../../data-modeling/metadata-editing.md)
-- [Models](../../data-modeling/models.md)
-- [Setting data access permissions](../../permissions/data.md)
+- [مدیریت پایگاه‌داده‌ها](../../databases/connecting.md)
+- [ویرایش متادیتا](../../data-modeling/metadata-editing.md)
+- [مدل‌ها](../../data-modeling/models.md)
+- [تنظیم سطوح دسترسی به داده](../../permissions/data.md)

@@ -258,44 +258,43 @@
 
 ## ۱۳. درون‌گذاری (`embedding/`)
 
-- [ ] پوشهٔ اصلی `embedding/`
-  - [ ] `start.md`
-  - [ ] `introduction.md`
-  - [ ] `embedded-analytics-js.md`
-  - [ ] `interactive-embedding-quick-start-guide.md`
-  - [ ] `interactive-embedding.md`
-  - [ ] `interactive-ui-components.md`
-  - [ ] `public-links.md`
-  - [ ] `securing-embeds.md`
-  - [ ] `static-embedding.md`
-  - [ ] `static-embedding-parameters.md`
-  - [ ] `translations.md`
+- [x] پوشهٔ اصلی `embedding/`
+  - [x] `start.md`
+  - [x] `introduction.md`
+  - [x] `embedded-analytics-js.md`
+  - [x] `interactive-embedding-quick-start-guide.md`
+  - [x] `interactive-embedding.md`
+  - [x] `interactive-ui-components.md`
+  - [x] `public-links.md`
+  - [x] `securing-embeds.md`
+  - [x] `static-embedding.md`
+  - [x] `static-embedding-parameters.md`
+  - [x] `translations.md`
 
-- [ ] زیرپوشهٔ `embedding/sdk/`
-  - [ ] `ai-chat.md`
-  - [ ] `appearance.md`
-  - [ ] `authentication.md`
-  - [ ] `collections.md`
-  - [ ] `config.md`
-  - [ ] `dashboards.md`
-  - [ ] `introduction.md`
-  - [ ] `next-js.md`
-  - [ ] `plugins.md`
-  - [ ] `questions.md`
-  - [ ] `quickstart.md`
-  - [ ] `quickstart-cli.md`
-  - [ ] `quickstart-with-sample-app.md`
-  - [ ] `quickstart-with-sample-app/example.md`
-  - [ ] `upgrade.md`
-  - [ ] `version.md`
+- [x] زیرپوشهٔ `embedding/sdk/`
+  - [x] `ai-chat.md`
+  - [x] `appearance.md`
+  - [x] `authentication.md`
+  - [x] `collections.md`
+  - [x] `config.md`
+  - [x] `dashboards.md`
+  - [x] `introduction.md`
+  - [x] `next-js.md`
+  - [x] `plugins.md`
+  - [x] `questions.md`
+  - [x] `quickstart.md`
+  - [x] `quickstart-cli.md`
+  - [x] `quickstart-with-sample-app.md`
+  - [x] `upgrade.md`
+  - [x] `version.md`
 
 ## ۱۴. ابزارها و کارایی (`usage-and-performance-tools/`)
 
-- [ ] پوشهٔ `usage-and-performance-tools/`
-  - [ ] `start.md`
-  - [ ] `usage-analytics.md`
-  - [ ] `tools.md`
-  - [ ] `audit.md`
+- [x] پوشهٔ `usage-and-performance-tools/`
+  - [x] `start.md`
+  - [x] `usage-analytics.md`
+  - [x] `tools.md`
+  - [x] `audit.md`
 
 ## ۱۵. متابیس کلود (`cloud/`)
 
@@ -344,8 +343,9 @@
   - [x] `visualization.md`
 
 ## ۱۸. راهنمای توسعه‌دهندگان (`developers-guide/`)
+~~این بخش نادیده گرفته شده است.~~
 
-- [ ] پوشهٔ اصلی `developers-guide/`
+<!-- - [ ] پوشهٔ اصلی `developers-guide/`
   - [ ] `start.md`
   - [ ] `api-changelog.md`
   - [ ] `build.md`
@@ -372,15 +372,9 @@
   - [ ] `driver-tests.md`
   - [ ] `multimethods.md`
   - [ ] `plugins.md`
-  - [ ] `start.md`
+  - [ ] `start.md` -->
 
 ## ۱۹. اسناد تکمیلی و نگهداشت
 
 - [ ] بررسی دوره‌ای پوشه‌های `usage-and-performance-tools/`, `documents/`, `cloud/`, `ai/`, `actions/` برای هر فایل جدید.
 - [ ] نگهداشت فایل‌های تصویری و کپشن‌ها با متن جایگزین فارسی در تمام پوشه‌ها.
-
-## ۲۰. تأیید و بازبینی نهایی
-
-- [ ] اجرای بازبینی زبانی با توجه به `rtl/QUICK_GUIDE.md`.
-- [ ] همگام‌سازی با خروجی متنی در `static/docs/latest` برای اطمینان از سازگاری ساختاری.
-- [ ] تکمیل تست‌های نمایش در رابط ایرانی (RTL) و مطابقت با دستورالعمل‌های دسترس‌پذیری.

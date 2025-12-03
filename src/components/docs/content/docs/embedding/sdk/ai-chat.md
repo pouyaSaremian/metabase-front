@@ -1,25 +1,25 @@
 ---
-title: "Embedded analytics SDK - AI chat"
-summary: Embed an AI chat component in your app that can create queries from natural language questions.
+title: "SDK تجزیه و تحلیل تعبیه‌شده - چت هوش مصنوعی"
+summary: یک جزء چت هوش مصنوعی را در برنامه خود جاسازی کنید که می‌تواند پرس‌وجوها را از سؤال‌های زبان طبیعی ایجاد کند.
 ---
 
-# Embedded analytics SDK - AI chat
+# SDK تجزیه و تحلیل تعبیه‌شده - چت هوش مصنوعی
 
 ![Embedded AI chat](../images/ai-chat.png)
 
 {% include plans-blockquote.html feature="Embedded analytics SDK" sdk=true %}
 
-You can embed an AI chat in your application similar to [Metabot](../embedded-analytics-js.md) in Metabase.
+می‌توانید یک چت هوش مصنوعی را در برنامه خود مشابه [Metabot](../embedded-analytics-js.md) در متابیس جاسازی کنید.
 
-To help embedded Metabot more easily find and focus on the data you care about most, select the collection containing the models and metrics it should be able to use to create queries.
+برای کمک به جاسازی Metabot برای یافتن و تمرکز آسان‌تر روی داده‌هایی که بیشتر به آن‌ها اهمیت می‌دهید، مجموعه حاوی مدل‌ها و متریک‌هایی که باید بتواند برای ایجاد پرس‌وجوها استفاده کند را انتخاب کنید.
 
-If you're embedding the Metabot component in an app, you can specify a different collection that embedded Metabot is allowed to use for creating queries.
+اگر جزء Metabot را در یک برنامه جاسازی می‌کنید، می‌توانید یک مجموعه متفاوت را مشخص کنید که جاسازی Metabot مجاز به استفاده از آن برای ایجاد پرس‌وجوها است.
 
-## Chat preview
+## پیش‌نمایش چت
 
-You can check out a [demo of the AI chat component](https://embedded-analytics-sdk-demo.metabase.com/admin/analytics/new/ask-metabot) on our Shoppy demo site.
+می‌توانید [یک دمو از جزء چت هوش مصنوعی](https://embedded-analytics-sdk-demo.metabase.com/admin/analytics/new/ask-metabot) را در سایت دمو Shoppy ما بررسی کنید.
 
-## Example
+## مثال
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/questions/ai-question.tsx" %}
@@ -29,28 +29,28 @@ You can check out a [demo of the AI chat component](https://embedded-analytics-s
 
 {% include_file "{{ dirname }}/api/snippets/MetabotQuestionProps.md" snippet="properties" %}
 
-## API reference
+## مرجع API
 
 - [Component](./api/MetabotQuestion.html)
 - [Props](./api/MetabotQuestionProps.html)
 
-## Setting up AI chat
+## راه‌اندازی چت هوش مصنوعی
 
-To configure your embedded AI chat in your Metabase:
+برای پیکربندی چت هوش مصنوعی جاسازی شده خود در متابیس:
 
-1. Click the **gear** icon in the upper right.
-2. Select **Admin settings**.
-3. Click the **AI** tab.
-4. In the left sidebar, click **Embedded Metabot**.
+۱. روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید.
+۲. **Admin settings** را انتخاب کنید.
+۳. روی تب **AI** کلیک کنید.
+۴. در sidebar سمت چپ، **Embedded Metabot** را کلیک کنید.
 
-When embedding the Metabot component in your app, you should specify a collection that embedded Metabot is allowed to use for creating queries. Embedded Metabot will only have access to that collection.
+هنگام جاسازی جزء Metabot در برنامه خود، باید یک مجموعه را مشخص کنید که جاسازی Metabot مجاز به استفاده از آن برای ایجاد پرس‌وجوها است. جاسازی Metabot فقط به آن مجموعه دسترسی خواهد داشت.
 
-For tips and more, see [Metabot settings](../../ai/settings.md).
+برای نکات و موارد بیشتر، [تنظیمات Metabot](../../ai/settings.md) را ببینید.
 
-## Layout
+## چیدمان
 
-Use the `layout` prop to specify which layout to use for the Metabot component:
+از prop `layout` برای مشخص کردن اینکه از کدام چیدمان برای جزء Metabot استفاده شود استفاده کنید:
 
-- `auto` (default): Metabot uses the `stacked` layout on mobile screens, and a `sidebar` layout on larger screens.
-- `stacked`: the question visualization stacks on top of the chat interface.
-- `sidebar`: the question visualization appears to the left of the chat interface, which is on a sidebar on the right.
+- `auto` (پیش‌فرض): Metabot از چیدمان `stacked` در صفحه‌نمایش‌های موبایل و چیدمان `sidebar` در صفحه‌نمایش‌های بزرگتر استفاده می‌کند.
+- `stacked`: تجسم سؤال روی رابط چت قرار می‌گیرد.
+- `sidebar`: تجسم سؤال در سمت چپ رابط چت ظاهر می‌شود، که در یک sidebar در سمت راست است.

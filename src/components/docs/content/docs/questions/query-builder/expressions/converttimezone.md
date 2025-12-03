@@ -4,45 +4,45 @@ title: ConvertTimezone
 
 # ConvertTimezone
 
-`convertTimezone` shifts a timestamp into a specified time zone by adding or subtracting the right interval from the timestamp.
+تابع `convertTimezone` یک timestamp را با در نظر گرفتن اختلاف منطقهٔ زمانی (Time zone) به منطقهٔ زمانی مقصد منتقل می‌کند؛ یعنی با اضافه یا کم کردن بازهٔ زمانی مناسب، مقدار جدید را برمی‌گرداند.
 
 | Syntax                                                                | Example                                                                           |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `convertTimezone(column, target, source)`                             | `convertTimezone("2022-12-28T12:00:00", "Canada/Pacific", "Canada/Eastern")`      |
-| Shifts a timestamp from the source time zone to the target time zone. | Returns the value `2022-12-28T09:00:00`, displayed as `December 28, 2022 9:00 AM` |
+| شِفت دادن timestamp از منطقهٔ مبدأ به منطقهٔ مقصد                     | مقدار `2022-12-28T09:00:00`، نمایش به‌صورت `December 28, 2022 9:00 AM`           |
 
-Timestamps and time zones are rather nasty to work with (it's easy to make mistakes, and difficult to catch them), so you should only try to use `convertTimezone` if the interpretation of your data is sensitive to time-based cutoffs.
+کار با timestamp و منطقهٔ زمانی معمولاً پر از ریزه‌کاری و خطا است، و اشکال‌ها هم سخت کشف می‌شوند. به همین خاطر بهتر است فقط وقتی از `convertTimezone` استفاده کنید که تفسیر داده‌های شما به مرزهای زمانی (Time-based cutoffs) حساس است.
 
-For example, if you're tracking user logins over time, you probably won't run your business differently if some logins get counted on Mondays instead of Tuesdays. However, if you're using Metabase to do something precise, like your taxes, you (and the government) will probably care a lot more about the difference between transactions that occurred on Dec 31 vs. Jan 1.
+مثلاً اگر فقط در حال شمارش لاگین‌های کاربران در طول زمان هستید، شاید اهمیت نداشته باشد که بعضی لاگین‌ها به‌جای دوشنبه، سه‌شنبه حساب شوند. اما اگر متابیس را برای کارهای دقیقی مثل محاسبهٔ مالیات استفاده می‌کنید، شما (و سازمان‌های قانونی) احتمالاً به تفاوت بین تراکنش‌های ۳۱ دسامبر و ۱ ژانویه خیلی حساس هستید.
 
-## Supported time zones
+## منطقه‌های زمانی پشتیبانی‌شده
 
-Metabase supports [tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+متابیس از [tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) پشتیبانی می‌کند.
 
-## Parameters
+## پارامترها
 
-`column` can be any of:
+`column` می‌تواند یکی از موارد زیر باشد:
 
-- The name of a timestamp column,
-- a custom expression that returns a [timestamp](#accepted-data-types), or
-- a string in the format `"YYYY-MM-DD` or `"YYYY-MM-DDTHH:MM:SS"`.
+- نام یک ستون timestamp،
+- یک عبارت سفارشی که یک [timestamp](#انواع-دادهٔ-پذیرفته‌شده-accepted-data-types) برمی‌گرداند،
+- یا یک رشته (String) با فرمت `"YYYY-MM-DD"` یا `"YYYY-MM-DDTHH:MM:SS"`.
 
 `target`:
 
-- The name of the time zone you want to assign to your column.
+- نام منطقهٔ زمانی مقصد که می‌خواهید timestamp به آن تبدیل شود.
 
 `source`:
 
-- The name of your column's current time zone.
-- Required for columns or expressions with the data type `timestamp without time zone`.
-- Optional for columns or expressions with the data type `timestamp with time zone`.
-- For more info, see [Accepted data types](#accepted-data-types).
+- نام منطقهٔ زمانی فعلی ستون شما.
+- برای ستون‌ها یا عبارت‌هایی با نوع دادهٔ `timestamp بدون time zone` الزامی است.
+- برای ستون‌ها یا عبارت‌هایی با نوع دادهٔ `timestamp با time zone` اختیاری است.
+- برای اطلاعات بیشتر، بخش [انواع دادهٔ پذیرفته‌شده](#انواع-دادهٔ-پذیرفته‌شده-accepted-data-types) را ببینید.
 
-We support [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) time zone names (such as "Canada/Eastern" instead of "EST").
+ما از نام‌های منطقهٔ زمانی در [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) پشتیبانی می‌کنیم (مثل `"Canada/Eastern"` به‌جای `"EST"`).
 
-## Creating custom report dates
+## ساخت تاریخ‌های گزارشی سفارشی
 
-Let's say that you have some time series data that's stored in one or more time zones (**Source Time**). You want to create custom reporting dates for a team that lives in EST.
+فرض کنید داده‌های سری زمانی دارید که در یک یا چند منطقهٔ زمانی ذخیره شده‌اند (**Source Time**)، و می‌خواهید تاریخ‌های گزارشی سفارشی برای تیمی که در EST کار می‌کند بسازید.
 
 | Source Time                 | Team Report Time (EST)      |
 | --------------------------- | --------------------------- |
@@ -50,47 +50,47 @@ Let's say that you have some time series data that's stored in one or more time 
 | December 28, 2022, 21:00:00 | December 28, 2022, 19:00:00 |
 | December 27, 2022, 08:00:00 | December 27, 2022, 05:00:00 |
 
-If **Source Time** is stored as a `timestamp with time zone` or a `timestamp with offset`, you only need to provide the `target` time zone:
+اگر ستون **Source Time** به‌صورت `timestamp with time zone` یا `timestamp with offset` ذخیره شده باشد، فقط کافی است پارامتر `target` را مشخص کنید:
 
-```
-convertTimezone([Source Time], 'EST')
-```
-
-If **Source Time** is stored as a `timestamp without time zone`, you _must_ provide the `source` time zone (which will depend on your database time zone):
-
-```
-convertTimezone([Source Time], 'EST', 'UTC')
+```text
+convertTimezone([Source Time], "Canada/Eastern")
 ```
 
-It's usually a good idea to label `convertTimezone` columns with the name of the target time zone (or add the target time zone to the metadata of a model). We promise this will make your life easier when someone inevitably questions why the numbers don't match.
+اگر **Source Time** به‌صورت `timestamp بدون time zone` ذخیره شده باشد، **حتماً** باید منطقهٔ زمانی مبدأ (`source`) را هم مشخص کنید (که معمولاً همان time zone دیتابیس شما است):
 
-If you're not getting the results that you expect:
+```text
+convertTimezone([Source Time], "Canada/Eastern", "UTC")
+```
 
-- Check if you have the right [source time zone](#choosing-a-source-time-zone).
-- Ask your database admin about `timestamp with time zone` vs. `timestamp without time zone` (for more info, see [Accepted data types](#accepted-data-types)).
+بهتر است ستون‌هایی را که نتیجهٔ `convertTimezone` هستند با نام منطقهٔ زمانی مقصد (مثلاً `*_EST`) برچسب بزنید، یا منطقهٔ زمانی مقصد را در متادیتای مدل ثبت کنید. این کار وقتی کسی اختلاف بین اعداد را زیر سؤال می‌برد، خیلی کمکتان می‌کند.
 
-### Choosing a source time zone
+اگر نتیجه‌ای که می‌گیرید مطابق انتظار نیست:
 
-When you're doing time zone conversions, make sure you know the source time zone that you're working with. Different columns (and even different rows) in the same table, question, or model can be in different "source" time zones.
+- بررسی کنید که [منطقهٔ زمانی مبدأ](#انتخاب-منطقهٔ-زمانی-مبدأ-choosing-a-source-time-zone) را درست انتخاب کرده‌اید یا نه.
+- از ادمین دیتابیس بپرسید ستون شما `timestamp with time zone` است یا `timestamp without time zone` (بخش [انواع دادهٔ پذیرفته‌شده](#انواع-دادهٔ-پذیرفته‌شده-accepted-data-types) را ببینید).
 
-| Possible source time zone | Description                                                          | Example                                                                                                      |
-| ------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| Client time zone          | Time zone where an event happened.                                   | A web analytics service might capture data in the local time zone of each person who visited your website.   |
-| Database time zone        | Time zone metadata that's been added to timestamps in your database. | It's a common database practice to store all timestamps in UTC.                                              |
-| No time zone              | Missing time zone metadata                                           | Databases don't _require_ you to store timestamps with time zone metadata.                                   |
-| Metabase report time zone | Time zone that Metabase uses to _display_ timestamps.                | Metabase can display dates and times in PST, even if the dates and times are stored as UTC in your database. |
+### انتخاب منطقهٔ زمانی مبدأ (Choosing a source time zone)
 
-For example, say you have a table with one row for each person who visited your website. It's hard to tell, just from looking at `December 28, 2022, 12:00 PM`, whether the "raw" timestamp is:
+موقع انجام تبدیل منطقهٔ زمانی، باید بدانید دادهٔ خام شما در چه منطقهٔ زمانی ثبت شده است. حتی در یک جدول، سؤال یا مدل، ممکن است ستون‌ها (یا ردیف‌های) مختلف، «منطقهٔ زمانی مبدأ» متفاوتی داشته باشند.
 
-- stored using your database's time zone (usually UTC),
-- stored without time zone metadata (for example, if the website visitor is in HKT, then the timestamp `December 28, 2022, 12:00 PM` might "implicitly" use Hong Kong time),
-- _displayed_ in your Metabase report time zone.
+| Possible source time zone | توضیح                                                                      | مثال                                                                                                         |
+| ------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Client time zone          | منطقهٔ زمانی‌ای که رویداد در آن اتفاق افتاده است.                          | یک سرویس وب‌آنالیتیکس ممکن است زمان را در منطقهٔ زمانی محلی هر کاربر سایت ذخیره کند.                        |
+| Database time zone        | متادیتای منطقهٔ زمانی که روی timestampهای دیتابیس اضافه شده است.           | رویهٔ رایج این است که همهٔ timestampها در UTC ذخیره شوند.                                                   |
+| No time zone              | بدون متادیتای منطقهٔ زمانی                                                | دیتابیس‌ها شما را مجبور نمی‌کنند timestamp را حتماً با اطلاعات time zone ذخیره کنید.                         |
+| Metabase report time zone | منطقهٔ زمانی‌ای که متابیس برای **نمایش** تاریخ‌ها و زمان‌ها استفاده می‌کند. | مثلاً متابیس می‌تواند زمان‌ها را در PST نمایش دهد، حتی اگر در دیتابیس به‌صورت UTC ذخیره شده باشند.        |
 
-For more gory details, see [Limitations](#limitations).
+برای مثال، فرض کنید جدولی دارید که در هر ردیف یک بازدیدکنندهٔ وب‌سایت را نگه می‌دارد. فقط با دیدن مقدار `December 28, 2022, 12:00 PM` معلوم نیست که این timestamp خام:
 
-## Accepted data types
+- در time zone دیتابیس (معمولاً UTC) ذخیره شده،
+- بدون اطلاعات time zone ذخیره شده (مثلاً اگر کاربر در HKT باشد، همان مقدار ممکن است «ضمنی» به‌معنای زمان هنگ‌کنگ باشد)،
+- یا در گزارش متابیس طبق report time zone نمایش داده می‌شود.
 
-| [Data type](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview#examples-of-data-types) | Works with `convertTimezone` |
+برای جزئیات بیشتر، بخش [محدودیت‌ها](#محدودیت‌ها-limitations) را ببینید.
+
+## انواع دادهٔ پذیرفته‌شده (Accepted data types)
+
+| [Data type](https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview#examples-of-data-types) | سازگار با `convertTimezone` |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------- |
 | String                                                                                                                         | ❌                           |
 | Number                                                                                                                         | ❌                           |
@@ -98,25 +98,25 @@ For more gory details, see [Limitations](#limitations).
 | Boolean                                                                                                                        | ❌                           |
 | JSON                                                                                                                           | ❌                           |
 
-We use "timestamp" and "datetime" to talk about any temporal data type that's supported by Metabase.
+در این سند از واژه‌های "timestamp" و "datetime" برای اشاره به هر نوع دادهٔ زمانی‌ای که متابیس پشتیبانی می‌کند استفاده می‌کنیم.
 
-If your timestamps are stored as strings or numbers in your database, an admin can [cast them to timestamps](../../../data-modeling/metadata-editing.md#cast-to-a-specific-data-type) from the Table Metadata page.
+اگر timestampها در دیتابیس شما به‌صورت String یا عدد ذخیره شده‌اند، ادمین می‌تواند آن‌ها را از صفحهٔ Table Metadata به [نوع timestamp Cast کند](../../../data-modeling/metadata-editing.md#cast-to-a-specific-data-type).
 
-To use `convertTimezone` without running into errors or pesky undetectable mistakes, you should know that there are a few varieties of `timestamp` data types:
+برای این‌که از `convertTimezone` بدون خطا و اشتباهات ظریف استفاده کنید، باید بدانید چند نوع اصلی timestamp وجود دارد:
 
-| Data type                     | Description                               | Example                                              |
-| ----------------------------- | ----------------------------------------- | ---------------------------------------------------- |
-| `timestamp with time zone`    | Knows about location.                     | `2022-12-28T12:00:00 AT TIME ZONE 'America/Toronto'` |
-| `timestamp with offset`       | Knows about the time difference from UTC. | `2022-12-28T12:00:00-04:00`                          |
-| `timestamp without time zone` | No time zone info.                        | `2022-12-28T12:00:00`                                |
+| Data type                     | توضیح                                     | مثال                                              |
+| ----------------------------- | ----------------------------------------- | ------------------------------------------------- |
+| `timestamp with time zone`    | از موقعیت جغرافیایی/منطقهٔ زمانی خبر دارد | `2022-12-28T12:00:00 AT TIME ZONE 'America/Toronto'` |
+| `timestamp with offset`       | از اختلاف زمانی نسبت به UTC آگاه است      | `2022-12-28T12:00:00-04:00`                       |
+| `timestamp without time zone` | بدون اطلاعات time zone                    | `2022-12-28T12:00:00`                             |
 
-Note that the first part of the timestamp is in UTC (same thing as GMT). The time zone or offset tells you how much time to add or subtract for a given time zone.
+بخش اول timestamp معمولاً در UTC است؛ منطقهٔ زمانی یا offset مشخص می‌کند چقدر باید جمع یا کم کنید تا زمان محلی به‌دست بیاید.
 
-`convertTimezone` will work with all three types of timestamps, but the output of `convertTimezone` will always be a `timestamp without time zone`.
+`convertTimezone` با هر سه نوع timestamp کار می‌کند، اما خروجی آن **همیشه** یک `timestamp بدون time zone` خواهد بود.
 
-## Limitations
+## محدودیت‌ها (Limitations)
 
-`convertTimezone` is currently unavailable for the following databases:
+تابع `convertTimezone` در حال حاضر برای دیتابیس‌های زیر در دسترس نیست:
 
 - Amazon Athena
 - Databricks
@@ -127,59 +127,63 @@ Note that the first part of the timestamp is in UTC (same thing as GMT). The tim
 - SQLite
 - Metabase Sample Database
 
-### Notes on source time zones
+### نکاتی دربارهٔ منطقهٔ زمانی مبدأ
 
-Metabase displays timestamps without time zone or offset information, which is why you have to be so careful about the [source time zone](#choosing-a-source-time-zone) when using `convertTimezone`.
+متابیس timestampهایی را که بدون time zone یا offset هستند، بدون تنظیم خاصی نمایش می‌دهد؛ به‌همین خاطر هنگام استفاده از `convertTimezone` باید روی [انتخاب منطقهٔ زمانی مبدأ](#انتخاب-منطقهٔ-زمانی-مبدأ-choosing-a-source-time-zone) دقت زیادی داشته باشید.
 
-The Metabase report time zone only applies to `timestamp with time zone` or `timestamp with offset` data types. For example:
+Metabase report time zone فقط روی داده‌هایی با نوع `timestamp with time zone` یا `timestamp with offset` اثر می‌گذارد. برای مثال:
 
-| Raw timestamp in your database           | Data type                     | Report time zone | Displayed as           |
-| ---------------------------------------- | ----------------------------- | ---------------- | ---------------------- |
-| `2022-12-28T12:00:00 AT TIME ZONE 'CST'` | `timestamp with time zone`    | 'Canada/Eastern' | Dec 28, 2022, 1:00 PM  |
-| `2022-12-28T12:00:00-06:00`              | `timestamp with offset`       | 'Canada/Eastern' | Dec 28, 2022, 1:00 PM  |
-| `2022-12-28T12:00:00`                    | `timestamp without time zone` | 'Canada/Eastern' | Dec 28, 2022, 12:00 AM |
+| Raw timestamp در دیتابیس شما                   | نوع داده                     | Report time zone | نمایش در متابیس          |
+| --------------------------------------------- | ---------------------------- | ---------------- | ------------------------- |
+| `2022-12-28T12:00:00 AT TIME ZONE 'CST'`      | `timestamp with time zone`   | 'Canada/Eastern' | Dec 28, 2022, 1:00 PM     |
+| `2022-12-28T12:00:00-06:00`                   | `timestamp with offset`      | 'Canada/Eastern' | Dec 28, 2022, 1:00 PM     |
+| `2022-12-28T12:00:00`                         | `timestamp without time zone`| 'Canada/Eastern' | Dec 28, 2022, 12:00 PM    |
 
-The Metabase report time zone will not apply to the output of a `convertTimezone` expression. For example:
+Metabase report time zone روی خروجی `convertTimezone` اعمال نمی‌شود. برای مثال:
 
-```
+```text
 convertTimezone("2022-12-28T12:00:00 AT TIME ZONE 'Canada/Central'", "Canada/Pacific", "Canada/Central")
 ```
 
-will produce a raw `timestamp without time zone`
+یک `timestamp بدون time zone` برمی‌گرداند:
 
-```
+```text
 2022-12-28T04:00:00
 ```
 
-and displayed in Metabase as
+که در متابیس به‌صورت:
 
-```
+```text
 Dec 28, 2022, 4:00 AM
 ```
 
-If you use `convertTimezone` on a `timestamp without time zone`, make sure to use 'UTC' as the `source` time zone, otherwise the expression will shift your timestamp by the wrong amount. For example, if our `timestamp without time zone` is only "implied" to be in CST, we should use 'UTC' as the `source` parameter to get the same result as above.
+نمایش داده می‌شود.
 
-For example, if we choose 'CST' as the `source` time zone for a `timestamp without time zone`:
+اگر روی یک `timestamp بدون time zone` از `convertTimezone` استفاده می‌کنید، حتماً `source` را `'UTC'` قرار دهید؛ در غیر این صورت timestamp شما به اندازهٔ اشتباهی شِفت داده می‌شود. مثلاً اگر timestamp ما در واقع «ضمنی» در CST باشد، ولی بدون time zone ذخیره شده باشد، باید برای به‌دست آوردن نتیجه правиль، `'UTC'` را به‌عنوان مبدأ استفاده کنیم، نه `'CST'`.
 
-```
+اگر اشتباهاً `'CST'` را برای `source` یک `timestamp بدون time zone` بگذاریم:
+
+```text
 convertTimezone("2022-12-28T12:00:00", "Canada/Pacific", "Canada/Central")
 ```
 
-we'll get the raw `timestamp without time zone`
+نتیجهٔ خام:
 
-```
+```text
 2022-12-28T10:00:00
 ```
 
-displayed in Metabase as
+خواهد بود که در متابیس به‌صورت:
 
-```
+```text
 Dec 28, 2022, 10:00 AM
 ```
 
-## Related functions
+نمایش داده می‌شود؛ یعنی ۶ ساعت اختلاف ناخواسته.
 
-This section covers functions and formulas that work the same way as the Metabase `convertTimezone` expression, with notes on how to choose the best option for your use case.
+## توابع مرتبط (Related functions)
+
+در این بخش توابع و فرمول‌هایی را می‌بینید که معادل `convertTimezone` در متابیس عمل می‌کنند و بسته به ابزار می‌توانید از آن‌ها استفاده کنید:
 
 - [SQL](#sql)
 - [Spreadsheets](#spreadsheets)
@@ -187,65 +191,69 @@ This section covers functions and formulas that work the same way as the Metabas
 
 ### SQL
 
-When you run a question using the [query builder](https://www.metabase.com/glossary/query-builder), Metabase will convert your graphical query settings (filters, summaries, etc.) into a query, and run that query against your database to get your results.
+وقتی با [Query builder](https://www.metabase.com/glossary/query-builder) یک سؤال می‌سازید، متابیس تنظیمات گرافیکی (فیلترها، خلاصه‌سازی و غیره) را به یک کوئری تبدیل و آن را روی دیتابیس اجرا می‌کند.
 
-If our [timestamp sample data](#creating-custom-report-dates) is a `timestamp without time zone` stored in a PostgreSQL database:
+اگر داده‌های نمونهٔ [بخش بالا](#ساخت-تاریخ‌های-گزارشی-سفارشی-creating-custom-report-dates) به‌صورت `timestamp بدون time zone` در PostgreSQL ذخیره شده باشد:
 
 ```sql
-SELECT source_time::TIMESTAMP AT TIME ZONE 'UTC' AT TIME ZONE 'EST' AS team_report_time_est
+SELECT source_time::TIMESTAMP AT TIME ZONE 'UTC' AT TIME ZONE 'America/Toronto' AS team_report_time_est
 ```
 
-is the same as the `convertTimezone` expression with a `source` parameter set to 'UTC':
+معادل این عبارت در متابیس است:
 
-```
+```text
 convertTimezone([Source Time], "Canada/Eastern", "UTC")
 ```
 
-If `source_time` is a `timestamp with time zone` or `timestamp with offset` (for example, in a Snowflake database), then we don't need to specify a source time zone in SQL or in Metabase.
+اگر `source_time` از نوع `timestamp with time zone` یا `timestamp with offset` باشد (مثلاً در Snowflake)، دیگر لازم نیست در SQL یا متابیس، `source` را مشخص کنید:
 
 ```sql
 SELECT convert_timezone('America/Toronto', source_time) AS team_report_time_est
 ```
 
-is the same as
+معادل:
 
-```
+```text
 convertTimezone([Source Time], "Canada/Eastern")
 ```
 
-Remember that the time zone names depend on your database. For example, Snowflake doesn't accept most time zone abbreviations (like EST).
+است. توجه کنید که نام منطقه‌های زمانی به دیتابیس شما بستگی دارد (مثلاً Snowflake بسیاری از مخفف‌های time zone مثل EST را قبول نمی‌کند).
 
 ### Spreadsheets
 
-If our [timestamp sample data](#creating-custom-report-dates) is in a spreadsheet where "Source Time" is in column A, we can change it to EST by subtracting the hours explicitly:
+اگر داده‌های نمونهٔ [بخش گزارش سفارشی](#ساخت-تاریخ‌های-گزارشی-سفارشی-creating-custom-report-dates) در یک Spreadsheet باشد و «Source Time» در ستون A قرار داشته باشد، می‌توانید با کم‌کردن صریحِ اختلاف ساعت، آن را به EST تبدیل کنید:
 
-```
+```text
 A1 - TIME(5, 0, 0)
 ```
 
-to get the same result as
+که معادل:
 
+```text
+convertTimezone([Source Time], "Canada/Eastern")
 ```
-convertTimezone([Client Time], "Canada/Eastern")
-```
+
+در متابیس است.
 
 ### Python
 
-If the [timestamp sample data](#creating-custom-report-dates) is stored in a `pandas` dataframe, you could convert the **Source Time** column to a `timestamp` object with time zone first(basically making a `timestamp without time zone` into a `timestamp with time zone`), then use `tz_convert` to change the time zone to EST:
+اگر داده‌های نمونهٔ [بخش بالا](#ساخت-تاریخ‌های-گزارشی-سفارشی-creating-custom-report-dates) در یک DataFrame پانداس ذخیره شده باشد، می‌توانید ابتدا ستون **Source Time** را به timestamp همراه با time zone تبدیل کنید، و بعد آن را به EST ببرید:
 
-```
-df['Source Time (UTC)'] = pd.to_timestamp(df['Source Time'], utc=True)
-df['Team Report Time (EST)'] = df['Source Time (UTC)'].dt.tz_convert(tz='Canada/Eastern')
+```python
+df["Source Time (UTC)"] = pd.to_datetime(df["Source Time"], utc=True)
+df["Team Report Time (EST)"] = df["Source Time (UTC)"].dt.tz_convert(tz="Canada/Eastern")
 ```
 
-to do the same thing as a nested `convertTimezone` expression
+این منطق معادل یک `convertTimezone` تو در تو است:
 
-```
+```text
 convertTimezone(convertTimezone([Source Time], "UTC"), "Canada/Eastern", "UTC")
 ```
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Custom expressions documentation](../expressions.md)
-- [Custom expressions tutorial](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/custom-expressions)
-- [Time series analysis](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/time-series/start)
+- [مستندات تعبیرهای سفارشی (Custom expressions)](../expressions.md)
+- [آموزش تعبیرهای سفارشی](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/custom-expressions)
+- [تحلیل سری‌های زمانی](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/time-series/start)
+
+

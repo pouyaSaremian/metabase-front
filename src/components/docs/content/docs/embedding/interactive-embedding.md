@@ -1,176 +1,176 @@
 ---
-title: Interactive embedding
+title: جاسازی تعاملی
 redirect_from:
   - /docs/latest/enterprise-guide/full-app-embedding
   - /docs/latest/embedding/full-app-embedding
 ---
 
-# Interactive embedding
+# جاسازی تعاملی
 
 {% include plans-blockquote.html feature="Interactive embedding" convert_pro_link_to_embbedding=true %}
 
 {% include shared/in-page-promo-embedding-workshop.html %}
 
-**Interactive embedding** lets you embed the entire Metabase app in an iframe. Interactive embedding integrates your [permissions](../permissions/introduction.md) and [SSO](../people-and-groups/start.md#authentication) to give people the right level of access to [query](../questions/query-builder/editor.md) and [drill-down](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) into your data.
+**جاسازی تعاملی** به شما امکان می‌دهد برنامه کامل متابیس را در یک iframe جاسازی کنید. جاسازی تعاملی [مجوزهای](../permissions/introduction.md) و [SSO](../people-and-groups/start.md#authentication) شما را یکپارچه می‌کند تا افراد سطح دسترسی مناسب برای [پرس‌وجو](../questions/query-builder/editor.md) و [حفاری به پایین](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) در داده‌های خود را داشته باشند.
 
-> If you are just starting out with Metabase embedding, consider using [Embedded Analytics JS](./embedded-analytics-js.md) instead of interactive embedding - it's an improved, more customizable option for embedding interactive Metabase elements. Interactive embedding remains fully supported.
+> اگر تازه با جاسازی متابیس شروع می‌کنید، استفاده از [تجزیه و تحلیل تعبیه‌شده JS](./embedded-analytics-js.md) را به جای جاسازی تعاملی در نظر بگیرید - این یک گزینه بهبود یافته و قابل سفارشی‌سازی بیشتر برای جاسازی عناصر تعاملی متابیس است. جاسازی تعاملی همچنان به طور کامل پشتیبانی می‌شود.
 
-## Interactive embedding demo
+## دموی جاسازی تعاملی
 
-To get a feel for what you can do with interactive embedding, check out our [interactive embedding demo](https://www.metabase.com/embedding-demo).
+برای درک آنچه می‌توانید با جاسازی تعاملی انجام دهید، [دموی جاسازی تعاملی ما](https://www.metabase.com/embedding-demo) را بررسی کنید.
 
-To see the query builder in action, click on **Reports** > **+ New** > **Question**.
+برای دیدن سازنده پرس‌وجو در عمل، روی **Reports** > **+ New** > **Question** کلیک کنید.
 
-## Quick start
+## شروع سریع
 
-Check out the [Interactive embedding quick start](./interactive-embedding-quick-start-guide.md).
+[شروع سریع جاسازی تعاملی](./interactive-embedding-quick-start-guide.md) را بررسی کنید.
 
-## Prerequisites for interactive embedding
+## پیش‌نیازهای جاسازی تعاملی
 
-1. Make sure you have a [license token](../installation-and-operation/activating-the-enterprise-edition.md) for a [Pro or Enterprise plan](https://store.metabase.com/checkout/login-details).
-2. Organize people into Metabase [groups](../people-and-groups/start.md).
-3. Set up [permissions](../permissions/introduction.md) for each group.
-4. Set up [SSO](../people-and-groups/start.md#authentication) to automatically apply permissions and show people the right data upon sign-in. In general, **we recommend using [SSO with JWT](../people-and-groups/authenticating-with-jwt.md)**.
+۱. مطمئن شوید که یک [توکن مجوز](../installation-and-operation/activating-the-enterprise-edition.md) برای یک [پلن Pro یا Enterprise](https://store.metabase.com/checkout/login-details) دارید.
+۲. افراد را در [گروه‌های](../people-and-groups/start.md) متابیس سازماندهی کنید.
+۳. [مجوزها](../permissions/introduction.md) را برای هر گروه راه‌اندازی کنید.
+۴. [SSO](../people-and-groups/start.md#authentication) را راه‌اندازی کنید تا به طور خودکار مجوزها را اعمال کند و داده مناسب را به افراد هنگام ورود نشان دهد. به طور کلی، **استفاده از [SSO با JWT](../people-and-groups/authenticating-with-jwt.md) را توصیه می‌کنیم**.
 
-If you're dealing with a [multi-tenant](https://www.metabase.com/learn/metabase-basics/embedding/multi-tenant-self-service-analytics) situation, check out our recommendations for [Configuring permissions for different customer schemas](../permissions/embedding.md).
+اگر با یک وضعیت [چندمستأجری](https://www.metabase.com/learn/metabase-basics/embedding/multi-tenant-self-service-analytics) سروکار دارید، توصیه‌های ما را برای [پیکربندی مجوزها برای schemaهای مختلف مشتری](../permissions/embedding.md) بررسی کنید.
 
-If you have your app running locally, and you're using the Pro Cloud version, or hosting Metabase and your app in different domains, you'll need to set your Metabase environment's session cookie SameSite option to "none".
+اگر برنامه خود را به صورت محلی اجرا می‌کنید و از نسخه Pro Cloud استفاده می‌کنید، یا متابیس و برنامه خود را در دامنه‌های مختلف میزبانی می‌کنید، باید گزینه SameSite کوکی جلسه محیط متابیس خود را روی "none" تنظیم کنید.
 
-## Enabling interactive embedding in Metabase
+## فعال کردن جاسازی تعاملی در متابیس
 
-1. Go to **Admin > Embedding > Interactive**.
-2. Click **Enable interactive embedding**.
-3. Under **Authorized origins**, add the URL of the website or web app where you want to embed Metabase (such as `https://*.example.com`).
+۱. به **مدیر > جاسازی > تعاملی** بروید.
+۲. **فعال کردن جاسازی تعاملی** را کلیک کنید.
+۳. در زیر **مبدأهای مجاز**، URL وب‌سایت یا برنامه وب که می‌خواهید متابیس را در آن جاسازی کنید (مانند `https://*.example.com`) را اضافه کنید.
 
-## Setting up embedding on your website
+## راه‌اندازی جاسازی در وب‌سایت شما
 
-1. Create an iframe with a `src` attribute set to:
-   - the [URL](#pointing-an-iframe-to-a-metabase-url) of the Metabase page you want to embed, or
-   - an [authentication endpoint](#pointing-an-iframe-to-an-authentication-endpoint) that redirects to your Metabase URL.
-2. Optional: Depending on the way your web app is set up, set [environment variables](../configuring-metabase/environment-variables.md) to:
-   - [Add your license token](../configuring-metabase/environment-variables.md#mb_premium_embedding_token).
-   - [Embed Metabase in a different domain](#embedding-metabase-in-a-different-domain).
-   - [Secure your interactive embed](#securing-interactive-embeds).
-3. Optional: Enable communication to and from the embedded Metabase using supported [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) messages:
-   - [From Metabase](#supported-postmessage-messages-from-embedded-metabase)
-   - [To Metabase](#supported-postmessage-messages-to-embedded-metabase)
-4. Optional: Set parameters to [show or hide Metabase UI components](#showing-or-hiding-metabase-ui-components).
+۱. یک iframe با ویژگی `src` تنظیم شده روی ایجاد کنید:
+   - [URL](#pointing-an-iframe-to-a-metabase-url) صفحه متابیس که می‌خواهید جاسازی کنید، یا
+   - یک [endpoint احراز هویت](#pointing-an-iframe-to-an-authentication-endpoint) که به URL متابیس شما redirect می‌کند.
+۲. اختیاری: بسته به نحوه راه‌اندازی برنامه وب شما، [متغیرهای محیطی](../configuring-metabase/environment-variables.md) را تنظیم کنید تا:
+   - [توکن مجوز خود را اضافه کنید](../configuring-metabase/environment-variables.md#mb_premium_embedding_token).
+   - [متابیس را در یک دامنه متفاوت جاسازی کنید](#embedding-metabase-in-a-different-domain).
+   - [جاسازی تعاملی خود را ایمن کنید](#securing-interactive-embeds).
+۳. اختیاری: ارتباط به و از متابیس جاسازی شده را با استفاده از پیام‌های [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) پشتیبانی شده فعال کنید:
+   - [از متابیس](#supported-postmessage-messages-from-embedded-metabase)
+   - [به متابیس](#supported-postmessage-messages-to-embedded-metabase)
+۴. اختیاری: پارامترها را برای [نمایش یا مخفی کردن اجزای UI متابیس](#showing-or-hiding-metabase-ui-components) تنظیم کنید.
 
-Once you're ready to roll out your interactive embed, make sure that people **allow** browser cookies from Metabase, otherwise they won't be able to log in.
+هنگامی که آماده راه‌اندازی جاسازی تعاملی خود هستید، مطمئن شوید که افراد کوکی‌های مرورگر از متابیس را **اجازه می‌دهند**، در غیر این صورت نمی‌توانند وارد شوند.
 
-### Pointing an iframe to a Metabase URL
+### اشاره کردن یک iframe به یک URL متابیس
 
-Go to your Metabase and find the page that you want to embed.
+به متابیس خود بروید و صفحه‌ای که می‌خواهید جاسازی کنید را پیدا کنید.
 
-For example, to embed your Metabase home page, set the `src` attribute to your [site URL](../configuring-metabase/settings.md#site-url), such as:
+به عنوان مثال، برای جاسازی صفحه اصلی متابیس خود، ویژگی `src` را روی [site URL](../configuring-metabase/settings.md#site-url) خود تنظیم کنید، مانند:
 
 ```
 src="https://metabase.yourcompany.com/"
 ```
 
-To embed a specific Metabase dashboard, you'll want to use the dashboard's Entity ID URL `/dashboard/entity/[Entity ID]`.
+برای جاسازی یک داشبورد متابیس خاص، می‌خواهید از URL Entity ID داشبورد `/dashboard/entity/[Entity ID]` استفاده کنید.
 
 ```
 src="https://metabase.yourcompany.com/dashboard/entity/[Entity ID]"
 ```
 
-To get a dashboard's Entity ID, visit the dashboard and click on the **info** button. In the **Overview** tab, copy the **Entity ID**. Then in your iframe's `src` attribute to:
+برای دریافت Entity ID یک داشبورد، به داشبورد بروید و روی دکمه **info** کلیک کنید. در تب **Overview**، **Entity ID** را کپی کنید. سپس در ویژگی `src` iframe خود:
 
 ```
 src=https://metabase.yourcompany.com/dashboard/entity/Dc_7X8N7zf4iDK9Ps1M3b
 ```
 
-If your dashboard has more than one tab, select the tab you want people to land on and copy the Tab's ID. Add the tab's ID to the URL:
+اگر داشبورد شما بیش از یک تب دارد، تب مورد نظر برای فرود افراد را انتخاب کنید و ID تب را کپی کنید. ID تب را به URL اضافه کنید:
 
 ```
 src=https://metabase.yourcompany.com/dashboard/entity/Dc_7X8N7zf4iDK9Ps1M3b?tab=YLNdEYtzuSMA0lqO7u3FD
 ```
 
-You _can_ use a dashboard's sequential ID, but you should prefer the Entity ID, as Entity IDs are stable across different Metabase environments (e.g., if you're testing on a staging environment, the Entity IDs will remain the same when [exporting the data and importing it](../installation-and-operation/serialization.md) into a production environment).
+می‌توانید از ID ترتیبی یک داشبورد استفاده کنید، اما باید Entity ID را ترجیح دهید، زیرا Entity IDها در محیط‌های مختلف متابیس پایدار هستند (مثلاً، اگر در یک محیط staging تست می‌کنید، Entity IDها هنگام [صادرات داده و واردات آن](../installation-and-operation/serialization.md) به یک محیط تولید یکسان می‌مانند).
 
-If you want to point to a question, collection, or model, visit the item, click on its info, grab the item's Entity ID and follow the url structure: `/[Item type]/entity/[Entity-Id]`. Examples:
+اگر می‌خواهید به یک سؤال، مجموعه یا مدل اشاره کنید، به مورد بروید، روی info آن کلیک کنید، Entity ID مورد را بگیرید و ساختار URL را دنبال کنید: `/[Item type]/entity/[Entity-Id]`. مثال‌ها:
 
 - `/collection/entity/[Entity ID]`
 - `/model/entity/[Entity ID]`
 - `/question/entity/[Entity ID]`
 
-### Pointing an iframe to an authentication endpoint
+### اشاره کردن یک iframe به یک endpoint احراز هویت
 
-Use this option if you want to send people directly to your SSO login screen (i.e., skip over the Metabase login screen with an SSO button), and redirect to Metabase automatically upon authentication.
+اگر می‌خواهید افراد را مستقیماً به صفحه ورود SSO خود بفرستید (یعنی از صفحه ورود متابیس با دکمه SSO رد شوید) و پس از احراز هویت به طور خودکار به متابیس redirect کنید، از این گزینه استفاده کنید.
 
-You'll need to set the `src` attribute to your auth endpoint, with a `return_to` parameter pointing to the encoded Metabase URL. For example, to send people to your SSO login page and automatically redirect them to `https://metabase.yourcompany.com/dashboard/1`:
+نیاز دارید ویژگی `src` را روی endpoint auth خود تنظیم کنید، با یک پارامتر `return_to` که به URL متابیس encode شده اشاره می‌کند. به عنوان مثال، برای فرستادن افراد به صفحه ورود SSO خود و redirect خودکار آن‌ها به `https://metabase.yourcompany.com/dashboard/1`:
 
 ```
 https://metabase.example.com/auth/sso?return_to=http%3A%2F%2Fmetabase.yourcompany.com%2Fdashboard%2F1
 ```
 
-If you're using [JWT](../people-and-groups/authenticating-with-jwt.md), you can use the relative path for the redirect (i.e., your Metabase URL without the [site URL](../configuring-metabase/settings.md#site-url)). For example, to send people to a Metabase page at `/dashboard/1`:
+اگر از [JWT](../people-and-groups/authenticating-with-jwt.md) استفاده می‌کنید، می‌توانید از مسیر نسبی برای redirect استفاده کنید (یعنی URL متابیس شما بدون [site URL](../configuring-metabase/settings.md#site-url)). به عنوان مثال، برای فرستادن افراد به یک صفحه متابیس در `/dashboard/1`:
 
 ```
 https://metabase.example.com/auth/sso?jwt=<token>&return_to=%2Fdashboard%2F1
 ```
 
-You must URL encode (or double encode, depending on your web setup) all of the parameters in your redirect link, including parameters for filters (e.g., `filter=value`) and [UI settings](#showing-or-hiding-metabase-ui-components) (e.g., `top_nav=true`). For example, if you added two filter parameters to the JWT example shown above, your `src` link would become:
+باید همه پارامترها را در لینک redirect خود URL encode کنید (یا double encode، بسته به تنظیمات وب شما)، از جمله پارامترهای فیلتر (مثلاً، `filter=value`) و [تنظیمات UI](#showing-or-hiding-metabase-ui-components) (مثلاً، `top_nav=true`). به عنوان مثال، اگر دو پارامتر فیلتر به مثال JWT نشان داده شده در بالا اضافه کنید، لینک `src` شما می‌شود:
 
 ```
 https://metabase.example.com/auth/sso?jwt=<token>&redirect=%2Fdashboard%2F1%3Ffilter1%3Dvalue%26filter2%3Dvalue
 ```
 
-## Cross-browser compatibility
+## سازگاری cross-browser
 
-To make sure that your embedded Metabase works in all browsers, put Metabase and the embedding app in the same top-level domain (TLD). The TLD is indicated by the last part of a web address, like `.com` or `.org`.
+برای اطمینان از اینکه متابیس جاسازی شده شما در همه مرورگرها کار می‌کند، متابیس و برنامه جاسازی را در همان دامنه سطح بالا (TLD) قرار دهید. TLD با آخرین بخش یک آدرس وب نشان داده می‌شود، مانند `.com` یا `.org`.
 
-Note that your interactive embed must be compatible with Safari to run on _any_ browser in iOS (such as Chrome on iOS).
+توجه داشته باشید که جاسازی تعاملی شما باید با Safari سازگار باشد تا در _هر_ مرورگری در iOS (مانند Chrome در iOS) اجرا شود.
 
-## Embedding Metabase in a different domain
+## جاسازی متابیس در یک دامنه متفاوت
 
-> Skip this section if your Metabase and embedding app are already in the same top-level domain (TLD).
+> اگر متابیس و برنامه جاسازی شما قبلاً در همان دامنه سطح بالا (TLD) هستند، این بخش را رد کنید.
 
-If you want to embed Metabase in another domain (say, if Metabase is hosted at `metabase.yourcompany.com`, but you want to embed Metabase at `yourcompany.github.io`), you can tell Metabase to set the session cookie's SameSite value to "none".
+اگر می‌خواهید متابیس را در دامنه دیگری جاسازی کنید (مثلاً، اگر متابیس در `metabase.yourcompany.com` میزبانی می‌شود، اما می‌خواهید متابیس را در `yourcompany.github.io` جاسازی کنید)، می‌توانید به متابیس بگویید مقدار SameSite کوکی جلسه را روی "none" تنظیم کند.
 
-You can set session cookie's SameSite value in **Admin settings** > **Embedding** > **Security** > **SameSite cookie setting**.
+می‌توانید مقدار SameSite کوکی جلسه را در **تنظیمات مدیر > جاسازی > امنیت > تنظیم کوکی SameSite** تنظیم کنید.
 
-SameSite values include:
+مقادیر SameSite شامل موارد زیر است:
 
-- **Lax** (default): Allows Metabase session cookies to be shared on the same domain. Used for production instances on the same domain.
-- **None (requires HTTPS)**: Use "None" when your app and Metabase are hosted on different domains. Incompatible with Safari and iOS-based browsers.
-- **Strict** (not recommended): Does not allow Metabase session cookies to be shared with embedded instances. Use this if you do not want to enable session sharing with embedding.
+- **Lax** (پیش‌فرض): به کوکی‌های جلسه متابیس امکان اشتراک‌گذاری در همان دامنه را می‌دهد. برای نمونه‌های تولید در همان دامنه استفاده می‌شود.
+- **None (نیاز به HTTPS)**: از "None" استفاده کنید وقتی برنامه و متابیس شما در دامنه‌های مختلف میزبانی می‌شوند. با Safari و مرورگرهای مبتنی بر iOS ناسازگار است.
+- **Strict** (توصیه نمی‌شود): به کوکی‌های جلسه متابیس امکان اشتراک‌گذاری با نمونه‌های جاسازی شده را نمی‌دهد. اگر نمی‌خواهید اشتراک‌گذاری جلسه با جاسازی را فعال کنید از این استفاده کنید.
 
-You can also set the [`MB_SESSION_COOKIE_SAMESITE` environment variable](../configuring-metabase/environment-variables.md#mb_session_cookie_samesite).
+همچنین می‌توانید [متغیر محیطی `MB_SESSION_COOKIE_SAMESITE`](../configuring-metabase/environment-variables.md#mb_session_cookie_samesite) را تنظیم کنید.
 
-If you're using Safari, you'll need to [allow cross-site tracking](https://support.apple.com/en-tj/guide/safari/sfri40732/mac). Depending on the browser, you may also run into issues when viewing emdedded items in private/incognito tabs.
+اگر از Safari استفاده می‌کنید، باید [ردیابی cross-site را مجاز کنید](https://support.apple.com/en-tj/guide/safari/sfri40732/mac). بسته به مرورگر، ممکن است هنگام مشاهده موارد جاسازی شده در تب‌های خصوصی/ناشناس نیز با مشکلاتی مواجه شوید.
 
-Learn more about [SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite).
+بیشتر در مورد [کوکی‌های SameSite](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite) بیاموزید.
 
-## Securing interactive embeds
+## ایمن‌سازی جاسازی‌های تعاملی
 
-Metabase uses HTTP cookies to authenticate people and keep them signed into your embedded Metabase, even when someone closes their browser session. If you enjoy diagrammed auth flows, check out [Interactive embedding with SSO](./securing-embeds.md).
+متابیس از کوکی‌های HTTP برای احراز هویت افراد و نگه داشتن آن‌ها در متابیس جاسازی شده شما استفاده می‌کند، حتی زمانی که کسی جلسه مرورگر خود را می‌بندد. اگر از جریان‌های auth نموداری لذت می‌برید، [جاسازی تعاملی با SSO](./securing-embeds.md) را بررسی کنید.
 
-To limit the amount of time that a person stays logged in, set [`MAX_SESSION_AGE`](../configuring-metabase/environment-variables.md#max_session_age) to a number in minutes. The default value is 20,160 (two weeks).
+برای محدود کردن مدت زمانی که یک فرد وارد می‌ماند، [`MAX_SESSION_AGE`](../configuring-metabase/environment-variables.md#max_session_age) را روی یک عدد به دقیقه تنظیم کنید. مقدار پیش‌فرض 20,160 (دو هفته) است.
 
-For example, to keep people signed in for 24 hours at most:
+به عنوان مثال، برای نگه داشتن افراد وارد شده برای حداکثر 24 ساعت:
 
 ```sh
 MAX_SESSION_AGE=1440
 ```
 
-To automatically clear a person's login cookies when they end a browser session:
+برای پاک کردن خودکار کوکی‌های ورود یک فرد هنگام پایان جلسه مرورگر:
 
 ```sh
 MB_SESSION_COOKIES=true
 ```
 
-To manually log someone out of Metabase, load the following URL (for example, in a hidden iframe on the logout page of your application):
+برای خارج کردن دستی کسی از متابیس، URL زیر را بارگذاری کنید (به عنوان مثال، در یک iframe مخفی در صفحه خروج برنامه شما):
 
 ```sh
 https://metabase.yourcompany.com/auth/logout
 ```
 
-If you're using [JWT](../people-and-groups/authenticating-with-jwt.md) for SSO, we recommend setting the `exp` (expiration time) property to a short duration (e.g., 1 minute).
+اگر از [JWT](../people-and-groups/authenticating-with-jwt.md) برای SSO استفاده می‌کنید، توصیه می‌کنیم ویژگی `exp` (زمان انقضا) را روی مدت کوتاه تنظیم کنید (مثلاً، 1 دقیقه).
 
-## Supported postMessage messages _from_ embedded Metabase
+## پیام‌های postMessage پشتیبانی شده _از_ متابیس جاسازی شده
 
-To keep up with changes to an embedded Metabase URL (for example, when a filter is applied), set up your app to listen for "location" messages from the embedded Metabase. If you want to use this message for deep-linking, note that "location" mirrors "window.location".
+برای همگام ماندن با تغییرات URL متابیس جاسازی شده (مثلاً، زمانی که یک فیلتر اعمال می‌شود)، برنامه خود را برای گوش دادن به پیام‌های "location" از متابیس جاسازی شده راه‌اندازی کنید. اگر می‌خواهید از این پیام برای deep-linking استفاده کنید، توجه داشته باشید که "location" "window.location" را منعکس می‌کند.
 
 ```json
 {
@@ -181,7 +181,7 @@ To keep up with changes to an embedded Metabase URL (for example, when a filter 
 }
 ```
 
-To make an embedded Metabase page (like a question) fill up the entire iframe in your app, set up your app to listen for a "frame" message with "normal" mode from Metabase:
+برای پر کردن یک صفحه متابیس جاسازی شده (مانند یک سؤال) در کل iframe در برنامه خود، برنامه خود را برای گوش دادن به یک پیام "frame" با حالت "normal" از متابیس راه‌اندازی کنید:
 
 ```json
 {
@@ -194,7 +194,7 @@ To make an embedded Metabase page (like a question) fill up the entire iframe in
 }
 ```
 
-To specify the size of an iframe in your app so that it matches an embedded Metabase page (such as a dashboard), set up your app to listen for a "frame" message with "fit" mode from Metabase:
+برای مشخص کردن اندازه یک iframe در برنامه خود تا با یک صفحه متابیس جاسازی شده (مانند یک داشبورد) مطابقت داشته باشد، برنامه خود را برای گوش دادن به یک پیام "frame" با حالت "fit" از متابیس راه‌اندازی کنید:
 
 ```json
 {
@@ -208,9 +208,9 @@ To specify the size of an iframe in your app so that it matches an embedded Meta
 }
 ```
 
-## Supported postMessage messages _to_ embedded Metabase
+## پیام‌های postMessage پشتیبانی شده _به_ متابیس جاسازی شده
 
-To change an embedding URL, send a "location" message from your app to Metabase:
+برای تغییر URL جاسازی، یک پیام "location" از برنامه خود به متابیس ارسال کنید:
 
 ```json
 {
@@ -221,28 +221,28 @@ To change an embedding URL, send a "location" message from your app to Metabase:
 }
 ```
 
-## Group strategies for row and column security
+## استراتژی‌های گروه برای امنیت ردیف و ستون
 
-If you want multiple people from a single customer account to collaborate on questions and dashboards, you'll need to set up one [group](../people-and-groups/managing.md#groups) per customer account.
+اگر می‌خواهید چندین نفر از یک حساب مشتری واحد روی سؤال‌ها و داشبوردها همکاری کنند، نیاز دارید یک [گروه](../people-and-groups/managing.md#groups) برای هر حساب مشتری راه‌اندازی کنید.
 
-You can handle [row and column security](../permissions/row-and-column-security.md) with a single, separate group. For example, each person could be part of a customer group that sets up data permissions with row and column security via a certain attribute that applies to everyone across all your customer accounts.
+می‌توانید [امنیت ردیف و ستون](../permissions/row-and-column-security.md) را با یک گروه واحد و جداگانه مدیریت کنید. به عنوان مثال، هر فرد می‌تواند بخشی از یک گروه مشتری باشد که مجوزهای داده را با امنیت ردیف و ستون از طریق یک ویژگی خاص که برای همه در همه حساب‌های مشتری شما اعمال می‌شود راه‌اندازی می‌کند.
 
-Additionally, each person within a single customer account could also be a member of a group specific to that customer account. That way they can collaborate on collections with other people in their organization, without seeing stuff created by people from other customers' accounts.
+علاوه بر این، هر فرد درون یک حساب مشتری واحد می‌تواند همچنین عضو یک گروه خاص به آن حساب مشتری باشد. به این ترتیب می‌توانند روی مجموعه‌ها با افراد دیگر در سازمان خود همکاری کنند، بدون اینکه چیزهای ایجاد شده توسط افراد از حساب‌های مشتریان دیگر را ببینند.
 
-## Showing or hiding Metabase UI components
+## نمایش یا مخفی کردن اجزای UI متابیس
 
-See [interactive UI components](./interactive-ui-components.md)
+[اجزای UI تعاملی](./interactive-ui-components.md) را ببینید
 
-## Reference apps
+## برنامه‌های مرجع
 
-To build a sample interactive embed using SSO with JWT, see our reference apps:
+برای ساخت یک جاسازی تعاملی نمونه با استفاده از SSO با JWT، برنامه‌های مرجع ما را ببینید:
 
-- [Node.js + Express](https://github.com/metabase/metabase-nodejs-express-interactive-embedding-sample) (with [quick start guide](./interactive-embedding-quick-start-guide.md))
+- [Node.js + Express](https://github.com/metabase/metabase-nodejs-express-interactive-embedding-sample) (با [راهنمای شروع سریع](./interactive-embedding-quick-start-guide.md))
 - [Node.js + React](https://github.com/metabase/sso-examples/tree/master/app-embed-example)
 
-## Further reading
+## مطالعه بیشتر
 
-- [Interactive embedding quick start](./interactive-embedding-quick-start-guide.md)
-- [Strategies for delivering customer-facing analytics](https://www.metabase.com/learn/metabase-basics/embedding/overview).
-- [Permissions strategies](https://www.metabase.com/learn/metabase-basics/administration/permissions/strategy).
-- [Customizing Metabase's appearance](../configuring-metabase/appearance.md).
+- [شروع سریع جاسازی تعاملی](./interactive-embedding-quick-start-guide.md)
+- [استراتژی‌های ارائه تجزیه و تحلیل مشتری‌محور](https://www.metabase.com/learn/metabase-basics/embedding/overview).
+- [استراتژی‌های مجوزها](https://www.metabase.com/learn/metabase-basics/administration/permissions/strategy).
+- [سفارشی‌سازی ظاهر متابیس](../configuring-metabase/appearance.md).

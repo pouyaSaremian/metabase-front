@@ -1,262 +1,262 @@
 ---
-title: "Interactive embedding quickstart"
+title: "شروع سریع جاسازی تعاملی"
 ---
 
-# Interactive embedding quickstart
+# شروع سریع جاسازی تعاملی
 
-> If you are just starting out with Metabase embedding, consider using [Embedded Analytics JS](./embedded-analytics-js.md) - an improved, more customizable option for embedding interactive Metabase elements. Interactive embedding remains fully supported.
+> اگر تازه با جاسازی متابیس شروع می‌کنید، استفاده از [تجزیه و تحلیل تعبیه‌شده JS](./embedded-analytics-js.md) را در نظر بگیرید - یک گزینه بهبود یافته و قابل سفارشی‌سازی بیشتر برای جاسازی عناصر تعاملی متابیس. جاسازی تعاملی همچنان به طور کامل پشتیبانی می‌شود.
 
-You'll embed the full Metabase application in your app. Once logged in, people can view a Metabase dashboard in your web app, and be able to use the full Metabase application to explore their data, and only their data.
+برنامه کامل متابیس را در برنامه خود جاسازی خواهید کرد. پس از ورود، افراد می‌توانند یک داشبورد متابیس را در برنامه وب شما مشاهده کنند و بتوانند از برنامه کامل متابیس برای کاوش داده‌های خود و فقط داده‌های خود استفاده کنند.
 
 {% include shared/in-page-promo-embedding-workshop.html %}
 
-## Prerequisites
+## پیش‌نیازها
 
-- You have an app that you can embed Metabase in.
-- You have a Pro or Enterprise subscription of Metabase. If you're unsure where to start, sign up for a free trial for [Pro On-Prem](https://store.metabase.com/checkout/embedding). If you have Docker Desktop installed, you can just search for "metabase-enterprise" to find the Docker image and run it. Alternatively, you can follow [these instructions](../installation-and-operation/running-metabase-on-docker.md#pro-or-enterprise-quick-start).
+- یک برنامه دارید که می‌توانید متابیس را در آن جاسازی کنید.
+- یک اشتراک Pro یا Enterprise از متابیس دارید. اگر مطمئن نیستید از کجا شروع کنید، برای [Pro On-Prem](https://store.metabase.com/checkout/embedding) یک آزمایش رایگان ثبت‌نام کنید. اگر Docker Desktop نصب شده است، می‌توانید فقط "metabase-enterprise" را جستجو کنید تا تصویر Docker را پیدا کرده و اجرا کنید. به‌جای آن، می‌توانید [این دستورالعمل‌ها](../installation-and-operation/running-metabase-on-docker.md#pro-or-enterprise-quick-start) را دنبال کنید.
 
-The code featured in this guide can be found in our [sample repo](https://github.com/metabase/metabase-nodejs-express-interactive-embedding-sample).
+کد ارائه شده در این راهنما را می‌توانید در [مخزن نمونه ما](https://github.com/metabase/metabase-nodejs-express-interactive-embedding-sample) پیدا کنید.
 
-## Set up SSO and interactive embedding in Metabase
+## راه‌اندازی SSO و جاسازی تعاملی در متابیس
 
-### Have a dashboard ready to embed
+### آماده کردن یک داشبورد برای جاسازی
 
-You'll first need a dashboard to embed. If you don't have one yet, you can use the Example Dashboard Metabase includes on new instances or you can generate one using x-rays.
+ابتدا به یک داشبورد برای جاسازی نیاز دارید. اگر هنوز یکی ندارید، می‌توانید از داشبورد نمونه‌ای که متابیس در نمونه‌های جدید شامل می‌شود استفاده کنید یا می‌توانید با استفاده از x-rays یکی ایجاد کنید.
 
-Visit that dashboard and make a note of its URL, e.g. `/dashboard/1-e-commerce-insights`. You'll need to put this relative URL in your app, as you'll use the dashboard as the first page that logged-in people will see when they visit the analytics section in your app. It's enough to include the ID only and omit the rest of the URL, e.g. `/dashboard/1`.
+به آن داشبورد بروید و URL آن را یادداشت کنید، مثلاً `/dashboard/1-e-commerce-insights`. باید این URL نسبی را در برنامه خود قرار دهید، زیرا از داشبورد به‌عنوان اولین صفحه‌ای که افراد وارد شده هنگام بازدید از بخش تجزیه و تحلیل در برنامه شما می‌بینند استفاده خواهید کرد. کافی است فقط ID را شامل کنید و بقیه URL را حذف کنید، مثلاً `/dashboard/1`.
 
-You could also use the dashboard's [Entity ID](../installation-and-operation/serialization.md#metabase-uses-entity-ids-to-identify-and-reference-metabase-items). On the dashboard, click on the **info** button. On the **Overview** tab, look for the dashboard's **Entity ID**. Copy that Entity ID. You'll use that Entity ID in the iframe's `src` URL: (e.g., `src=/dashboard/entity/[Entity ID]`).
+همچنین می‌توانید از [Entity ID داشبورد](../installation-and-operation/serialization.md#metabase-uses-entity-ids-to-identify-and-reference-metabase-items) استفاده کنید. در داشبورد، روی دکمه **info** کلیک کنید. در تب **Overview**، به دنبال **Entity ID** داشبورد بگردید. آن Entity ID را کپی کنید. از آن Entity ID در URL `src` iframe استفاده خواهید کرد: (مثلاً، `src=/dashboard/entity/[Entity ID]`).
 
-### Enable interactive embedding
+### فعال کردن جاسازی تعاملی
 
-In Metabase, click on the **gear** icon in the upper right and go to **Admin > Embedding > Interactive Embedding** and toggle on **Enable interactive embedding**.
+در متابیس، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **مدیر > جاسازی > جاسازی تعاملی** بروید و **فعال کردن جاسازی تعاملی** را روشن کنید.
 
-Under **Authorized origins**, add the URL of the website or web app where you want to embed Metabase. If you're running your app locally, you can add localhost and specify the port number, e.g. `http://localhost:8080`.
+در زیر **مبدأهای مجاز**، URL وب‌سایت یا برنامه وب که می‌خواهید متابیس را در آن جاسازی کنید را اضافه کنید. اگر برنامه خود را به صورت محلی اجرا می‌کنید، می‌توانید localhost را اضافه کنید و شماره پورت را مشخص کنید، مثلاً `http://localhost:8080`.
 
-#### SameSite configuration
+#### پیکربندی SameSite
 
-If you're embedding Metabase in a different domain, you may need to [set the session cookie's SameSite value to `none`](./interactive-embedding.md#embedding-metabase-in-a-different-domain)
+اگر متابیس را در یک دامنه متفاوت جاسازی می‌کنید، ممکن است نیاز داشته باشید [مقدار SameSite کوکی جلسه را روی `none` تنظیم کنید](./interactive-embedding.md#embedding-metabase-in-a-different-domain)
 
-### Set up SSO with JWT in your Metabase
+### راه‌اندازی SSO با JWT در متابیس شما
 
-#### Enable authentication with JWT
+#### فعال کردن احراز هویت با JWT
 
-While still in the **Interactive embedding** section, click on **Authentication** under **Related settings**.
+در حالی که هنوز در بخش **جاسازی تعاملی** هستید، روی **احراز هویت** در زیر **تنظیمات مرتبط** کلیک کنید.
 
-On the card that says **JWT**, click the **Setup** button (you may have to scroll down to view the JWT card).
+روی کارتی که می‌گوید **JWT**، دکمه **Setup** را کلیک کنید (ممکن است نیاز داشته باشید به پایین اسکرول کنید تا کارت JWT را ببینید).
 
 ![Admin settings: Authentication > JWT setup.](./images/jwt-setup.png)
 
-#### Set JWT Identity provider URI
+#### تنظیم JWT Identity provider URI
 
-In your app, you'll create a route for SSO at `/sso/metabase`. In the **JWT IDENTITY PROVIDER URI** field, enter the URL of your SSO route. For example, our sample app runs on port 8080, so in that case this JWT IDENTITY PROVIDER URI could be `http://localhost:8080/sso/metabase`.
+در برنامه خود، یک route برای SSO در `/sso/metabase` ایجاد خواهید کرد. در فیلد **JWT IDENTITY PROVIDER URI**، URL route SSO خود را وارد کنید. به عنوان مثال، برنامه نمونه ما روی پورت 8080 اجرا می‌شود، بنابراین در آن صورت این JWT IDENTITY PROVIDER URI می‌تواند `http://localhost:8080/sso/metabase` باشد.
 
-#### Generate a JWT signing key
+#### تولید یک کلید امضای JWT
 
-Click on the **Generate key** button to generate a signing key. Keep this key a secret. You'll use it on your server. If you generate another key, you'll overwrite the existing key, so you'll need to update the key in your app as well.
+روی دکمه **Generate key** کلیک کنید تا یک کلید امضا تولید شود. این کلید را مخفی نگه دارید. از آن در سرور خود استفاده خواهید کرد. اگر کلید دیگری تولید کنید، کلید موجود را بازنویسی می‌کنید، بنابراین باید کلید را در برنامه خود نیز به‌روزرسانی کنید.
 
-Copy this key, as you'll need it in the next section.
+این کلید را کپی کنید، زیرا در بخش بعدی به آن نیاز خواهید داشت.
 
-### Save and enable JWT authentication
+### ذخیره و فعال کردن احراز هویت JWT
 
-We'll set up group synchronization later, but for now, be sure to click the **Save and enable** button to activate JWT authentication.
+بعداً همگام‌سازی گروه را راه‌اندازی خواهیم کرد، اما در حال حاضر، مطمئن شوید که دکمه **Save and enable** را کلیک کنید تا احراز هویت JWT فعال شود.
 
-## Set up SSO with JWT in your app's server
+## راه‌اندازی SSO با JWT در سرور برنامه شما
 
-### Add the signing key and Metabase site URL to your app
+### افزودن کلید امضا و URL سایت متابیس به برنامه
 
-Here you'll need to input some values for your SSO to work.
+در اینجا باید برخی مقادیر را برای کار SSO خود وارد کنید.
 
-You'll want to declare up two constants in your app:
+می‌خواهید دو ثابت در برنامه خود اعلان کنید:
 
-- `METABASE_JWT_SHARED_SECRET`, paste the JWT signing key that you got from your Metabase here.
-- `METABASE_SITE_URL`, which points to your Metabase's root path.
+- `METABASE_JWT_SHARED_SECRET`، کلید امضای JWT که از متابیس خود دریافت کرده‌اید را اینجا جایگذاری کنید.
+- `METABASE_SITE_URL`، که به مسیر ریشه متابیس شما اشاره می‌کند.
 
 ```javascript
 const METABASE_JWT_SHARED_SECRET = "YOURSIGNINGKEY";
 const METABASE_SITE_URL = "https://your-domain.metabaseapp.com";
 ```
 
-The signing key should preferably be setup as an environment variable, to avoid accidentally committing your key to your app's repo.
+کلید امضا ترجیحاً باید به عنوان یک متغیر محیطی راه‌اندازی شود، تا از commit تصادفی کلید به مخزن برنامه خود جلوگیری شود.
 
-### Add a JWT library to your app's server
+### افزودن یک کتابخانه JWT به سرور برنامه
 
-Add a JWT library to your app. For example, if you're using a Node backend with JavaScript, we recommend using [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken).
+یک کتابخانه JWT به برنامه خود اضافه کنید. به عنوان مثال، اگر از یک backend Node با JavaScript استفاده می‌کنید، استفاده از [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) را توصیه می‌کنیم.
 
-In your terminal:
+در ترمینال خود:
 
 ```sh
 npm install jsonwebtoken --save
 ```
 
-And in your app, require the library:
+و در برنامه خود، کتابخانه را require کنید:
 
 ```javascript
 {% include_file "{{ dirname }}/snippets/interactive-embedding-quick-start-guide/sso-with-jwt.ts" snippet="jsonwebtoken-import" %}
 ```
 
-### Restricting access to certain routes
+### محدود کردن دسترسی به routeهای خاص
 
-Presumably, your app already has some way of making sure some routes are only accessible after having signed in. Our examples use a simple helper function named `restrict` that protects these routes:
+احتمالاً برنامه شما قبلاً روشی برای اطمینان از اینکه برخی routeها فقط پس از ورود قابل دسترسی هستند دارد. مثال‌های ما از یک تابع helper ساده به نام `restrict` استفاده می‌کنند که این routeها را محافظت می‌کند:
 
 ```javascript
 {% include_file "{{ dirname }}/snippets/interactive-embedding-quick-start-guide/sso-with-jwt.ts" snippet="restrict-helper" %}
 ```
 
-### Add a function to sign users
+### افزودن یک تابع برای امضای کاربران
 
-We need to write a function to sign user JWTs, using the JWT library.
+نیاز داریم یک تابع برای امضای JWTهای کاربر بنویسیم، با استفاده از کتابخانه JWT.
 
 ```javascript
 {% include_file "{{ dirname }}/snippets/interactive-embedding-quick-start-guide/sso-with-jwt.ts" snippet="sign-user-token-helper" %}
 ```
 
-### Add a `sso/metabase` route
+### افزودن یک route `sso/metabase`
 
-You'll need to add a route to sign people in to your Metabase via SSO using JWT. If the person isn't signed in to your app yet, your app should redirect them through your sign-in flow. In the code below, this check and redirection is handled by the `restrict` function we introduced earlier.
+نیاز دارید یک route برای ورود افراد به متابیس خود از طریق SSO با استفاده از JWT اضافه کنید. اگر فرد هنوز وارد برنامه شما نشده است، برنامه شما باید آن‌ها را از طریق جریان ورود خود هدایت کند. در کد زیر، این بررسی و هدایت مجدد توسط تابع `restrict` که قبلاً معرفی کردیم مدیریت می‌شود.
 
 ```javascript
 {% include_file "{{ dirname }}/snippets/interactive-embedding-quick-start-guide/sso-with-jwt.ts" snippet="sso-route" %}
 ```
 
-If the person has never signed in to Metabase before, Metabase will create an account for them.
+اگر فرد قبلاً هرگز وارد متابیس نشده باشد، متابیس یک حساب برای آن‌ها ایجاد می‌کند.
 
-### CHECKPOINT: sign in to your Metabase using SSO
+### نقطه بررسی: ورود به متابیس خود با استفاده از SSO
 
-Make sure you are signed out of your Metabase. From the Metabase sign-in page, click on "Sign in with SSO". You should be redirected to your app.
+مطمئن شوید که از متابیس خود خارج شده‌اید. از صفحه ورود متابیس، روی "Sign in with SSO" کلیک کنید. باید به برنامه شما هدایت شوید.
 
-Log in to your app. Your app should redirect you to your Metabase welcome page. If the person doesn't yet have a Metabase account, Metabase should create an account for them.
+وارد برنامه خود شوید. برنامه شما باید شما را به صفحه خوش‌آمدگویی متابیس هدایت کند. اگر فرد هنوز حساب متابیس نداشته باشد، متابیس باید یک حساب برای آن‌ها ایجاد کند.
 
-## Embed Metabase in your app
+## جاسازی متابیس در برنامه شما
 
-Now to embed your Metabase in your app. You'll want to set up a route to serve your embedded analytics. Let's call it `/analytics`. Note that we're using the `restrict` helper function (defined above) because this page should only be viewable after people sign in to your app.
+حالا برای جاسازی متابیس خود در برنامه. می‌خواهید یک route برای سرو تجزیه و تحلیل جاسازی شده خود راه‌اندازی کنید. بیایید آن را `/analytics` بنامیم. توجه داشته باشید که از تابع helper `restrict` (تعریف شده در بالا) استفاده می‌کنیم زیرا این صفحه فقط باید پس از ورود افراد به برنامه شما قابل مشاهده باشد.
 
-In this route, we need to render an iframe that will load your Metabase. The `src` attribute of the iframe should point to the relative path of the SSO endpoint of your app. Once the person signs in to your app (and therefore in to your Metabase), we add the query string parameter `return_to` so that the iframe displays the requested dashboard.
+در این route، نیاز داریم یک iframe رندر کنیم که متابیس شما را بارگذاری می‌کند. ویژگی `src` iframe باید به مسیر نسبی endpoint SSO برنامه شما اشاره کند. پس از ورود فرد به برنامه شما (و بنابراین به متابیس شما)، پارامتر query string `return_to` را اضافه می‌کنیم تا iframe داشبورد درخواستی را نمایش دهد.
 
-`METABASE_DASHBOARD_PATH` should be pointing to the relative path of the dashboard you created at the beginning of this guide (`/dashboard/[ID]`, or if you used the dashboard's Entity ID: `/dashboard/entity/[Entity ID]`).
+`METABASE_DASHBOARD_PATH` باید به مسیر نسبی داشبوردی که در ابتدای این راهنما ایجاد کردید اشاره کند (`/dashboard/[ID]`، یا اگر از Entity ID داشبورد استفاده کردید: `/dashboard/entity/[Entity ID]`).
 
 ```javascript
 {% include_file "{{ dirname }}/snippets/interactive-embedding-quick-start-guide/sso-with-jwt.ts" snippet="analytics-route" %}
 ```
 
-The `METABASE_DASHBOARD_PATH` is just the first thing people will see when they log in, but you could set that path to any Metabase URL. And since you're embedding the full Metabase, people will be able to drill through the data and view other questions, dashboards, and collections.
+`METABASE_DASHBOARD_PATH` فقط اولین چیزی است که افراد هنگام ورود می‌بینند، اما می‌توانید آن مسیر را به هر URL متابیس تنظیم کنید. و از آنجایی که برنامه کامل متابیس را جاسازی می‌کنید، افراد می‌توانند از داده حفاری کنند و سؤال‌ها، داشبوردها و مجموعه‌های دیگر را مشاهده کنند.
 
-### CHECKPOINT: view a Metabase dashboard in your app
+### نقطه بررسی: مشاهده یک داشبورد متابیس در برنامه شما
 
-People using your app should now be able to access `/analytics` and view your embedded Metabase dashboard.
+افرادی که از برنامه شما استفاده می‌کنند اکنون باید بتوانند به `/analytics` دسترسی داشته باشند و داشبورد متابیس جاسازی شده شما را مشاهده کنند.
 
-How to test: Sign in to your app and visit the `/analytics` route. You should see the Metabase dashboard.
+نحوه تست: وارد برنامه خود شوید و به route `/analytics` بروید. باید داشبورد متابیس را ببینید.
 
-> If you're using the Safari browser, and you're serving Metabase and your app from different domains, you may need to go to Safari's settings and turn off [Prevent cross-site tracking](https://support.apple.com/guide/safari/prevent-cross-site-tracking-sfri40732/mac).
+> اگر از مرورگر Safari استفاده می‌کنید و متابیس و برنامه خود را از دامنه‌های مختلف سرو می‌دهید، ممکن است نیاز داشته باشید به تنظیمات Safari بروید و [جلوگیری از ردیابی cross-site](https://support.apple.com/guide/safari/prevent-cross-site-tracking-sfri40732/mac) را خاموش کنید.
 
-## Set up a group in Metabase
+## راه‌اندازی یک گروه در متابیس
 
-Now that you have SSO and interactive embedding set up, it's time to set up groups so that you can apply permissions to your embedded Metabase entities (questions, dashboards, collections, and so on).
+حالا که SSO و جاسازی تعاملی را راه‌اندازی کرده‌اید، زمان راه‌اندازی گروه‌ها است تا بتوانید مجوزها را به موجودیت‌های متابیس جاسازی شده خود (سؤال‌ها، داشبوردها، مجموعه‌ها و غیره) اعمال کنید.
 
-### Add a `groups` key to your token
+### افزودن یک کلید `groups` به توکن
 
-Recall the `signUserToken` function used to create the JWTs. Add a `groups` key to the signed token that maps to an array. Metabase will look at the values in that array to see if any of the values map to a group in Metabase (We'll walk through mapping groups in a bit).
+تابع `signUserToken` استفاده شده برای ایجاد JWTها را به یاد بیاورید. یک کلید `groups` به توکن امضا شده اضافه کنید که به یک آرایه نگاشت می‌شود. متابیس به مقادیر در آن آرایه نگاه می‌کند تا ببیند آیا هر یک از مقادیر به یک گروه در متابیس نگاشت می‌شوند (کمی بعد از نگاشت گروه‌ها عبور می‌کنیم).
 
 ```javascript
 {% include_file "{{ dirname }}/snippets/interactive-embedding-quick-start-guide/sso-with-jwt.ts" snippet="user-groups-sign-user-token-helper" %}
 ```
 
-### Create a group in Metabase
+### ایجاد یک گروه در متابیس
 
-In Metabase, click the **gear** icon and go to **Admin settings** > **People** > **Groups**. Click the **Create a group** button. Add a group that corresponds with a group in your app. If you're using the sample app, add a group called `Customer Acme`.
+در متابیس، روی آیکون **چرخ‌دنده** کلیک کنید و به **تنظیمات مدیر > افراد > گروه‌ها** بروید. دکمه **Create a group** را کلیک کنید. یک گروه اضافه کنید که با یک گروه در برنامه شما مطابقت دارد. اگر از برنامه نمونه استفاده می‌کنید، یک گروه به نام `Customer Acme` اضافه کنید.
 
-### Synchronize groups between Metabase and your app
+### همگام‌سازی گروه‌ها بین متابیس و برنامه شما
 
-You'll map this string in the `groups` key to a Metabase group, so that when the person signs in via SSO, Metabase automatically assigns them to the appropriate Metabase group.
+این رشته در کلید `groups` را به یک گروه متابیس نگاشت خواهید کرد، تا زمانی که فرد از طریق SSO وارد می‌شود، متابیس به طور خودکار آن‌ها را به گروه متابیس مناسب اختصاص دهد.
 
-In Metabase's admin section, go to **Authentication > JWT** and click **Edit**.
+در بخش admin متابیس، به **احراز هویت > JWT** بروید و **Edit** را کلیک کنید.
 
-In the **Group schema** section, toggle on **Synchronize group memberships**. If the names of groups in the `groups` array match Metabase group names exactly (e.g. both are `"Customer Acme"`), then the groups will be mapped automatically.
+در بخش **Group schema**، **همگام‌سازی عضویت گروه** را روشن کنید. اگر نام‌های گروه‌ها در آرایه `groups` دقیقاً با نام‌های گروه متابیس مطابقت داشته باشند (مثلاً هر دو `"Customer Acme"` هستند)، سپس گروه‌ها به طور خودکار نگاشت می‌شوند.
 
-If the JWT group names and Metabase group names don't match, then for each group you want to sync, add a group mapping. When you click **New mapping**, enter "Customer-Acme", the string that you included in the `groups` array in your JWT payload. You can then associate that group name with the Metabase group "Customer Acme" that we created earlier.
+اگر نام‌های گروه JWT و نام‌های گروه متابیس مطابقت نداشته باشند، برای هر گروهی که می‌خواهید همگام‌سازی کنید، یک نگاشت گروه اضافه کنید. وقتی **New mapping** را کلیک می‌کنید، "Customer-Acme"، رشته‌ای که در آرایه `groups` در payload JWT خود شامل کرده‌اید را وارد کنید. سپس می‌توانید آن نام گروه را با گروه متابیس "Customer Acme" که قبلاً ایجاد کردیم مرتبط کنید.
 
 ![Mapping user attributes to groups.](./images/sync-groups.png)
 
-Be sure to **Save changes**.
+مطمئن شوید که **Save changes** را کلیک کنید.
 
-### CHECKPOINT: verify that Metabase assigns people to groups when they log in
+### نقطه بررسی: تأیید اینکه متابیس افراد را هنگام ورود به گروه‌ها اختصاص می‌دهد
 
-First, sign out of Metabase and sign in using SSO.
+ابتدا از متابیس خارج شوید و با استفاده از SSO وارد شوید.
 
-Then sign out and sign in to your Metabase as an admin and go to **Admin settings** > **People** section and verify that Metabase added the person to the appropriate group.
+سپس خارج شوید و به عنوان یک مدیر به متابیس خود وارد شوید و به بخش **تنظیمات مدیر > افراد** بروید و تأیید کنید که متابیس فرد را به گروه مناسب اضافه کرده است.
 
-Note: only Metabase admins and group managers are aware of groups. Basic users have no concept of groups, and no way of knowing which groups they're a part of.
+توجه: فقط مدیران متابیس و مدیران گروه از گروه‌ها آگاه هستند. کاربران پایه مفهومی از گروه‌ها ندارند و راهی برای دانستن اینکه در کدام گروه‌ها هستند ندارند.
 
-## Set permissions
+## تنظیم مجوزها
 
-Now to apply permissions to that group so that people only see data specific to their accounts.
+حالا برای اعمال مجوزها به آن گروه تا افراد فقط داده‌های خاص به حساب‌های خود را ببینند.
 
-### Reset permissions for the All Users group
+### بازنشانی مجوزها برای گروه All Users
 
-Metabase ships with two initial groups: "Admins" and "All Users". By default, Metabase gives the "All Users" group access to connected data sources. And since Metabase grants people the privileges of their most permissive group, you'll want to restrict what the "All Users" groups can see before you add them to groups with limited or no access to data sources and collections.
+متابیس با دو گروه اولیه عرضه می‌شود: "Admins" و "All Users". به‌طور پیش‌فرض، متابیس به گروه "All Users" دسترسی به منابع داده متصل شده می‌دهد. و از آنجایی که متابیس امتیازات گروه‌های مجازترین خود را به افراد اعطا می‌کند، می‌خواهید آنچه گروه "All Users" می‌تواند ببیند را قبل از اضافه کردن آن‌ها به گروه‌هایی با دسترسی محدود یا بدون دسترسی به منابع داده و مجموعه‌ها محدود کنید.
 
-To reset permissions for the All users group, click on the **gear** icon and go to **Admin settings** > **Permissions**. Under the **Data** tab, go to **Groups** and select **All Users**. For the **Sample Database** in the **View data** column, select "Blocked". Click **Save changes** and a modal will pop up summarizing what you're changing. Click **Yes**.
+برای بازنشانی مجوزها برای گروه All users، روی آیکون **چرخ‌دنده** کلیک کنید و به **تنظیمات مدیر > مجوزها** بروید. در زیر تب **Data**، به **Groups** بروید و **All Users** را انتخاب کنید. برای **Sample Database** در ستون **View data**، "Blocked" را انتخاب کنید. **Save changes** را کلیک کنید و یک modal ظاهر می‌شود که خلاصه آنچه تغییر می‌دهید را نشان می‌دهد. **Yes** را کلیک کنید.
 
 ![Resetting permissions of the All Users group to](./images/all-users.png)
 
-### Allow view access to the automatically generated dashboards collection
+### اجازه دادن به دسترسی مشاهده به مجموعه داشبوردهای تولید شده خودکار
 
-Still in the **Permissions** tab, click on the **Collections** sub-tab, then on the **Automatically generated dashboards** collection, and set the **Collection access** permissions for the **All Users** group to **View**.
+هنوز در تب **Permissions**، روی زیرتب **Collections** کلیک کنید، سپس روی مجموعه **Automatically generated dashboards**، و مجوزهای **Collection access** را برای گروه **All Users** روی **View** تنظیم کنید.
 
-Click **Save changes**, then **Yes**.
+**Save changes** را کلیک کنید، سپس **Yes**.
 
-### Add a user attribute to the token
+### افزودن یک ویژگی کاربر به توکن
 
-You can include user attributes in the JSON web token. Metabase will pick up any keys from the JWT payload and store them as user attributes. Among other use cases, you can use these user attributes to set row-level permissions on tables, so people can only see results tied to their accounts.
+می‌توانید ویژگی‌های کاربر را در JSON web token شامل کنید. متابیس هر کلیدی را از payload JWT برمی‌دارد و آن‌ها را به عنوان ویژگی‌های کاربر ذخیره می‌کند. در میان موارد استفاده دیگر، می‌توانید از این ویژگی‌های کاربر برای تنظیم مجوزهای سطح ردیف روی جداول استفاده کنید، تا افراد فقط نتایج مرتبط با حساب‌های خود را ببینند.
 
-If you're using our sample app, edit the `signUserToken` function used to create the JWT by adding a key `account_id` with value `28`.
+اگر از برنامه نمونه ما استفاده می‌کنید، تابع `signUserToken` استفاده شده برای ایجاد JWT را با افزودن یک کلید `account_id` با مقدار `28` ویرایش کنید.
 
 ```javascript
 {% include_file "{{ dirname }}/snippets/interactive-embedding-quick-start-guide/sso-with-jwt.ts" snippet="user-attribute-sign-user-token-helper" %}
 ```
 
-That user ID will correspond to the `Account ID` column in the Sample Database's Invoices table. We'll use this `account_id` user attribute for row and column security on the Invoices table, so people will only see rows in that table that contain their account ID.
+آن user ID با ستون `Account ID` در جدول Invoices پایگاه داده نمونه مطابقت خواهد داشت. از این ویژگی کاربر `account_id` برای امنیت ردیف و ستون در جدول Invoices استفاده خواهیم کرد، تا افراد فقط ردیف‌هایی در آن جدول را ببینند که شامل account ID آن‌ها است.
 
-Note that to persist the user attribute in Metabase, you'll need to log in. Log in to your app as a non-admin, and visit the page with your embedded Metabase.
+توجه داشته باشید که برای ماندگار کردن ویژگی کاربر در متابیس، باید وارد شوید. به عنوان یک non-admin وارد برنامه خود شوید و صفحه با متابیس جاسازی شده خود را بازدید کنید.
 
-### Set row-level permissions
+### تنظیم مجوزهای سطح ردیف
 
-In Metabase, go to **Admin settings** > **Permissions**. Under the **Data** tab on the left, click on a group. For "Sample Database", change its **Data access** column to **Granular**.
+در متابیس، به **تنظیمات مدیر > مجوزها** بروید. در زیر تب **Data** در سمت چپ، روی یک گروه کلیک کنید. برای "Sample Database"، ستون **Data access** آن را به **Granular** تغییر دهید.
 
-Metabase will display a list of the tables in the database. Next, change **View data access** for the "Invoices" table to **Row and column security**.
+متابیس فهرستی از جداول در پایگاه داده را نمایش می‌دهد. بعد، **View data access** را برای جدول "Invoices" به **Row and column security** تغییر دهید.
 
 ![Adding row and column security to a table.](./images/secured-invoices-table.png)
 
-Next, Metabase will prompt you with a modal to associate a column in that table with a user attribute.
+بعد، متابیس شما را با یک modal برای مرتبط کردن یک ستون در آن جدول با یک ویژگی کاربر راهنمایی می‌کند.
 
-Leave the **Filter by a column in a table** option checked, and associate the "Account ID" column in the Invoices table with the user attribute `account_id`. (Note that Metabase will only display the user attributes if the user has signed in through SSO before.)
+گزینه **Filter by a column in a table** را بررسی شده بگذارید و ستون "Account ID" در جدول Invoices را با ویژگی کاربر `account_id` مرتبط کنید. (توجه داشته باشید که متابیس فقط ویژگی‌های کاربر را نمایش می‌دهد اگر کاربر قبلاً از طریق SSO وارد شده باشد.)
 
-Click **Save** to confirm your select. Then click the **Save changes** button in the upper right.
+**Save** را کلیک کنید تا انتخاب خود را تأیید کنید. سپس دکمه **Save changes** را در بالا سمت راست کلیک کنید.
 
-Metabase will ask if you're sure you want to do this. You _are_ sure.
+متابیس می‌پرسد که آیا مطمئن هستید که می‌خواهید این کار را انجام دهید. شما _مطمئن_ هستید.
 
-### CHECKPOINT: view secured dashboard
+### نقطه بررسی: مشاهده داشبورد امن
 
-Make sure you've logged out of your previous session.
+مطمئن شوید که از جلسه قبلی خود خارج شده‌اید.
 
-Log in to your app, navigate to `/analytics`. The dashboard will now present different information, since only a subset of the data is visible to this person. Click on **Browse Data** at the bottom of the left nav. View your secured **Invoices** table, and you should only see rows in that table that are associated with the person's account.
+وارد برنامه خود شوید، به `/analytics` بروید. داشبورد اکنون اطلاعات متفاوتی را ارائه می‌دهد، زیرا فقط یک زیرمجموعه از داده برای این فرد قابل مشاهده است. روی **Browse Data** در پایین nav سمت چپ کلیک کنید. جدول امن **Invoices** خود را مشاهده کنید و باید فقط ردیف‌هایی در آن جدول را ببینید که با حساب فرد مرتبط هستند.
 
-## Hiding Metabase elements
+## مخفی کردن عناصر متابیس
 
-You can decide to [show or hide various Metabase elements](./interactive-embedding.md#showing-or-hiding-metabase-ui-components), like whether to show the nav bar, search or the **+New** button, and so on.
+می‌توانید تصمیم بگیرید [نمایش یا مخفی کردن عناصر مختلف متابیس](./interactive-embedding.md#showing-or-hiding-metabase-ui-components)، مانند اینکه آیا نوار nav، جستجو یا دکمه **+New** را نمایش دهید و غیره.
 
-For example, to hide the logo and the top navigation bar of your embedded Metabase, you'd append the query string parameters `?logo=false&top_nav=false` to the `return_to` URL that you include in the SSO redirect.
+به عنوان مثال، برای مخفی کردن لوگو و نوار ناوبری بالای متابیس جاسازی شده خود، پارامترهای query string `?logo=false&top_nav=false` را به URL `return_to` که در redirect SSO شامل می‌کنید اضافه می‌کنید.
 
-In the handler of your `/sso/metabase` path, add the query parameters:
+در handler مسیر `/sso/metabase` خود، پارامترهای query را اضافه کنید:
 
 ```javascript
 {% include_file "{{ dirname }}/snippets/interactive-embedding-quick-start-guide/sso-with-jwt.ts" snippet="hide-metabase-elements" %}
 ```
 
-### CHECKPOINT: verify hidden UI elements
+### نقطه بررسی: تأیید عناصر UI مخفی
 
-Sign out and sign in to your app again and navigate to `/analytics`. Your embedded Metabase should not include the logo or the top navigation.
+از برنامه خود خارج شوید و دوباره وارد شوید و به `/analytics` بروید. متابیس جاسازی شده شما نباید شامل لوگو یا ناوبری بالایی باشد.
 
-## Next steps
+## مراحل بعدی
 
-You can [customize how Metabase looks](../configuring-metabase/appearance.md) in your app: fonts, colors, and logos.
+می‌توانید [نحوه ظاهر متابیس را در برنامه خود سفارشی کنید](../configuring-metabase/appearance.md): فونت‌ها، رنگ‌ها و لوگوها.

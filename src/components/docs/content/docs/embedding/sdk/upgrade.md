@@ -1,85 +1,85 @@
 ---
-title: Upgrading Metabase and the Embedded analytics SDK
-summary: How to upgrade your Metabase and Embedded analytics SDK versions, test the changes, and check for breaking changes that might affect your app.
+title: ارتقای متابیس و SDK تجزیه و تحلیل تعبیه‌شده
+summary: نحوه ارتقای نسخه‌های متابیس و SDK تجزیه و تحلیل تعبیه‌شده، تست تغییرات، و بررسی تغییرات breaking که ممکن است برنامه شما را تحت تأثیر قرار دهند.
 ---
 
-# Upgrading Metabase and the Embedded analytics SDK
+# ارتقای متابیس و SDK تجزیه و تحلیل تعبیه‌شده
 
-Here's a basic overview of the steps you'll want to take when upgrading your SDK.
+در اینجا یک نمای کلی اساسی از مراحلی که می‌خواهید هنگام ارتقای SDK انجام دهید آمده است.
 
-## 1. Read the release post and changelog for Metabase and the Embedded analytics SDK
+## ۱. خواندن پست انتشار و changelog برای متابیس و SDK تجزیه و تحلیل تعبیه‌شده
 
-- [Release posts](https://www.metabase.com/releases) give a good overview of what's in each release, and call out breaking changes (which are rare).
-- [Metabase + Embedding analytics SDK changelogs](https://www.metabase.com/changelog) list Metabase and Embedding analytics SDK changes.
-- [Embedded analytics SDK package changelog](https://github.com/metabase/metabase/blob/release-x.56.x/enterprise/frontend/src/embedding-sdk-bundle/CHANGELOG.md) list changes specific to the SDK lightweight `@metabase/embedding-sdk-react` package.
+- [پست‌های انتشار](https://www.metabase.com/releases) نمای خوبی از آنچه در هر انتشار است ارائه می‌دهند و تغییرات breaking را (که نادر هستند) برجسته می‌کنند.
+- [Changelogهای متابیس + تجزیه و تحلیل تعبیه‌شده](https://www.metabase.com/changelog) تغییرات متابیس و تجزیه و تحلیل تعبیه‌شده را فهرست می‌کنند.
+- [Changelog بسته SDK تجزیه و تحلیل تعبیه‌شده](https://github.com/metabase/metabase/blob/release-x.56.x/enterprise/frontend/src/embedding-sdk-bundle/CHANGELOG.md) تغییرات خاص به بسته سبک `@metabase/embedding-sdk-react` SDK را فهرست می‌کند.
 
-Check for any relevant changes, especially deprecations or breaking changes that require you to update your application's code. If there are deprecation changes, we'll have docs that'll walk you through what changes you'll need to make and why.
+برای هر تغییر مرتبط، به ویژه deprecationها یا تغییرات breaking که نیاز به به‌روزرسانی کد برنامه شما دارند بررسی کنید. اگر تغییرات deprecation وجود داشته باشد، مستنداتی خواهیم داشت که شما را در مورد تغییراتی که نیاز دارید انجام دهید و چرا راهنمایی می‌کند.
 
-## 2. Test the upgrade
+## ۲. تست ارتقا
 
-When upgrading to a new major version, you'll want to upgrade both Metabase and the SDK version in parallel, as having Metabase and the SDK major versions out of sync can cause errors.
+هنگام ارتقا به یک نسخه اصلی جدید، می‌خواهید هم متابیس و هم نسخه SDK را به صورت موازی ارتقا دهید، زیرا داشتن نسخه‌های اصلی متابیس و SDK ناهمگام می‌تواند باعث خطا شود.
 
-### Spin up the new version of Metabase for testing
+### راه‌اندازی نسخه جدید متابیس برای تست
 
-You can do this locally or in a dev instance. If your testing setup involves a lot of test user accounts, getting a [development instance](../../installation-and-operation/development-instance.md) could be more cost-effective.
+می‌توانید این کار را به صورت محلی یا در یک نمونه dev انجام دهید. اگر راه‌اندازی تست شما شامل تعداد زیادی حساب کاربر تست است، دریافت یک [نمونه توسعه](../../installation-and-operation/development-instance.md) می‌تواند مقرون به صرفه‌تر باشد.
 
-See [upgrading Metabase](../../installation-and-operation/upgrading-metabase.md).
+[ارتقای متابیس](../../installation-and-operation/upgrading-metabase.md) را ببینید.
 
-### Upgrade the SDK with npm or Yarn
+### ارتقای SDK با npm یا Yarn
 
-You'll want to test the changes locally first, as there may be breaking changes that require you to upgrade your application code.
+می‌خواهید ابتدا تغییرات را به صورت محلی تست کنید، زیرا ممکن است تغییرات breaking وجود داشته باشد که نیاز به ارتقای کد برنامه شما دارد.
 
-Check out a new branch in your application and install the next stable version, either with npm or Yarn:
+یک branch جدید در برنامه خود checkout کنید و نسخه stable بعدی را نصب کنید، یا با npm یا Yarn:
 
-Via npm:
+از طریق npm:
 
 ```bash
 npm install @metabase/embedding-sdk-react@{next-major-version-number}-stable
 ```
 
-For example, if you were upgrading to version 56 of the SDK:
+به عنوان مثال، اگر به نسخه 56 SDK ارتقا می‌دادید:
 
 ```bash
 npm install @metabase/embedding-sdk-react@56-stable
 ```
 
-If you're using Yarn:
+اگر از Yarn استفاده می‌کنید:
 
 ```bash
 yarn add @metabase/embedding-sdk-react@{next-major-version-number}-stable
 ```
 
-See more on [SDK versions](./version.md).
+بیشتر در مورد [نسخه‌های SDK](./version.md) ببینید.
 
-### If there are deprecations or breaking changes, make the necessary changes to your application code
+### اگر deprecationها یا تغییرات breaking وجود دارند، تغییرات لازم را در کد برنامه انجام دهید
 
-Deprecations or breaking changes are rare, but if you do need to make changes, we'll mention it in the release notes for the new major version and have docs that walk you through the changes.
+Deprecationها یا تغییرات breaking نادر هستند، اما اگر نیاز به ایجاد تغییرات دارید، در یادداشت‌های انتشار برای نسخه اصلی جدید ذکر می‌کنیم و مستنداتی داریم که شما را در مورد تغییرات راهنمایی می‌کند.
 
-Update or add tests for any application code changes that you make.
+تست‌ها را برای هر تغییر کد برنامه که انجام می‌دهید به‌روزرسانی یا اضافه کنید.
 
-In most cases, a deprecated change becomes a breaking change in the release following its deprecation.
-For example, if we plan to remove a prop from an SDK React component, we first mark it as **deprecated**, and then remove it in the next release.
+در بیشتر موارد، یک تغییر deprecation شده در انتشار بعد از deprecation آن به یک تغییر breaking تبدیل می‌شود.
+به عنوان مثال، اگر قصد داریم یک prop را از یک جزء React SDK حذف کنیم، ابتدا آن را به عنوان **deprecation** علامت می‌زنیم، و سپس آن را در انتشار بعدی حذف می‌کنیم.
 
-### Deploy to your staging environment
+### استقرار در محیط staging
 
-Before deploying your app to your staging environment, make sure you've tested your app locally (manually, as well as running any automated tests).
+قبل از استقرار برنامه خود در محیط staging، مطمئن شوید که برنامه را به صورت محلی تست کرده‌اید (دستی، و همچنین اجرای هر تست خودکار).
 
-If all goes well with your local tests, deploy to your staging environment. Check that the Metabase embeds in your staging app are still working as expected, and perform any other testing you normally do with your application with respect to your embedded analytics.
+اگر همه چیز با تست‌های محلی شما خوب پیش رفت، در محیط staging استقرار دهید. بررسی کنید که جاسازی‌های متابیس در برنامه staging شما همچنان همانطور که انتظار می‌رود کار می‌کنند، و هر تست دیگری که معمولاً با برنامه خود در مورد تجزیه و تحلیل جاسازی شده انجام می‌دهید را انجام دهید.
 
-## 3. Deploy to production
+## ۳. استقرار در تولید
 
-If everything is working in staging, you're ready to deploy to production.
+اگر همه چیز در staging کار می‌کند، آماده استقرار در تولید هستید.
 
-Be sure to deploy your application changes and upgrade your Metabase in parallel so that the SDK version and the Metabase version stay in sync.
+مطمئن شوید که تغییرات برنامه و ارتقای متابیس خود را به صورت موازی استقرار دهید تا نسخه SDK و نسخه متابیس همگام بمانند.
 
-### Caching may delay the upgrade by up to a minute
+### Caching ممکن است ارتقا را تا یک دقیقه به تأخیر بیندازد
 
-This is intentional. After upgrading, Metabase may still serve the previous, cached version of the SDK Bundle for up to 60 seconds (`Cache-Control: public, max-age=60`). This short cache window helps ensure fast performance while still allowing updates to propagate quickly.
+این عمدی است. پس از ارتقا، متابیس ممکن است همچنان نسخه قبلی، cached شده SDK Bundle را تا 60 ثانیه سرو کند (`Cache-Control: public, max-age=60`). این پنجره cache کوتاه کمک می‌کند عملکرد سریع را تضمین کند در حالی که همچنان به به‌روزرسانی‌ها اجازه می‌دهد به سرعت منتشر شوند.
 
-If you don’t see your changes immediately, clear your browser's cache or just wait a minute. After that, the SDK Package will load the newly deployed SDK Bundle.
+اگر تغییرات خود را فوراً نمی‌بینید، cache مرورگر خود را پاک کنید یا فقط یک دقیقه صبر کنید. پس از آن، بسته SDK SDK Bundle تازه استقرار شده را بارگذاری می‌کند.
 
-### If your instance is pinned on Metabase Cloud, you'll need to request an upgrade
+### اگر نمونه شما در Metabase Cloud pinned شده است، نیاز دارید یک ارتقا درخواست کنید
 
-If you're on Metabase Cloud, and you've [pinned the version of your Metabase](./version.md#you-can-pin-instances-to-a-version-on-metabase-cloud), you'll need to request an upgrade by [contacting support](https://www.metabase.com/help-premium).
+اگر در Metabase Cloud هستید و [نسخه متابیس خود را pinned کرده‌اید](./version.md#you-can-pin-instances-to-a-version-on-metabase-cloud)، نیاز دارید یک ارتقا را با [تماس با پشتیبانی](https://www.metabase.com/help-premium) درخواست کنید.
 
-We'll coordinate with you so that your instance is upgraded when you deploy the changes to your application.
+ما با شما هماهنگ می‌کنیم تا نمونه شما زمانی که تغییرات را به برنامه خود استقرار می‌دهید ارتقا یابد.

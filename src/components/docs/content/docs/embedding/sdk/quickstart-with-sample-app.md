@@ -1,173 +1,173 @@
 ---
-title: Embedded analytics SDK - quickstart with sample app
+title: SDK تجزیه و تحلیل تعبیه‌شده - شروع سریع با برنامه نمونه
 ---
 
-# Embedded analytics SDK - quickstart with sample app
+# SDK تجزیه و تحلیل تعبیه‌شده - شروع سریع با برنامه نمونه
 
 {% include plans-blockquote.html feature="Embedded analytics SDK" sdk=true convert_pro_link_to_embbedding=true %}
 
-This guide sets up the embedded analytics SDK with a [sample React app](https://github.com/metabase/metabase-nodejs-react-sdk-embedding-sample/tree/{{page.version | remove: "v0."}}-stable), but you can follow along with your own application.
+این راهنما SDK تجزیه و تحلیل تعبیه‌شده را با یک [برنامه نمونه React](https://github.com/metabase/metabase-nodejs-react-sdk-embedding-sample/tree/{{page.version | remove: "v0."}}-stable) راه‌اندازی می‌کند، اما می‌توانید با برنامه خود دنبال کنید.
 
 {% include youtube.html id='AtMn-G-Al80' %}
 
-## Prerequisites
+## پیش‌نیازها
 
-- [Node.js 20.x LTS or higher](https://nodejs.org/en) (for the sample application).
-- [Metabase version v1.52 or higher](https://github.com/metabase/metabase/releases).
-- [A Metabase Pro or Enterprise license](https://www.metabase.com/pricing/) (If you don't have a license, check out [this quickstart](./quickstart.md) that lacks the paid JWT SSO setup.)
-- (Optional): [Docker](https://www.docker.com/)
+- [Node.js 20.x LTS یا بالاتر](https://nodejs.org/en) (برای برنامه نمونه).
+- [نسخه متابیس v1.52 یا بالاتر](https://github.com/metabase/metabase/releases).
+- [یک مجوز متابیس Pro یا Enterprise](https://www.metabase.com/pricing/) (اگر مجوز ندارید، [این شروع سریع](./quickstart.md) را بررسی کنید که راه‌اندازی JWT SSO پولی ندارد.)
+- (اختیاری): [Docker](https://www.docker.com/)
 
-## Two ways to set up the sample app with Metabase
+## دو روش برای راه‌اندازی برنامه نمونه با متابیس
 
-- [Quick setup with Docker](#quick-setup-with-docker) (includes a sample Metabase)
-- [Walkthrough setup](#walkthrough-setup) (bring your own Metabase, or spin up a new one)
+- [راه‌اندازی سریع با Docker](#quick-setup-with-docker) (شامل یک متابیس نمونه)
+- [راه‌اندازی walkthrough](#walkthrough-setup) (متابیس خود را بیاورید، یا یک مورد جدید راه‌اندازی کنید)
 
-## Quick setup with Docker
+## راه‌اندازی سریع با Docker
 
-This quick setup will run a Docker container with the sample app and a sample Metabase.
+این راه‌اندازی سریع یک کانتینر Docker با برنامه نمونه و یک متابیس نمونه را اجرا می‌کند.
 
-1. Copy `.env.docker.example` to `.env.docker`.
-2. In the `.env.docker` file, replace `<your_enterprise_token>` with your premium embedding token.
-3. In the top-level directory, run:
+۱. `.env.docker.example` را به `.env.docker` کپی کنید.
+۲. در فایل `.env.docker`، `<your_enterprise_token>` را با توکن جاسازی premium خود جایگزین کنید.
+۳. در دایرکتوری سطح بالا، اجرا کنید:
    ```bash
    yarn start
    ```
 
-This script will:
+این اسکریپت:
 
-- Pull a Metabase Docker image and run it in a container.
-- Set up JWT SSO in Metabase.
-- Build and run the sample application with an embedded interactive question.
+- یک تصویر Docker متابیس را pull می‌کند و در یک کانتینر اجرا می‌کند.
+- JWT SSO را در متابیس راه‌اندازی می‌کند.
+- برنامه نمونه را با یک سؤال تعاملی جاسازی شده build و اجرا می‌کند.
 
-The app will start on [http://localhost:4400](http://localhost:4400).
+برنامه در [http://localhost:4400](http://localhost:4400) شروع می‌شود.
 
-That's it! You should be [up and running](#at-this-point-you-should-be-up-and-running).
+تمام! باید [در حال اجرا باشید](#at-this-point-you-should-be-up-and-running).
 
-If you want to log in to the sample Metabase this command set up, visit [http://localhost:4300](http://localhost:4300). You can log in with email and password as Rene Descartes:
+اگر می‌خواهید به متابیس نمونه که این دستور راه‌اندازی کرد وارد شوید، [http://localhost:4300](http://localhost:4300) را بازدید کنید. می‌توانید با ایمیل و رمز عبور به عنوان Rene Descartes وارد شوید:
 
 - email: rene@example.com
 - password: foobarbaz
 
-## Walkthrough setup
+## راه‌اندازی walkthrough
 
-We're going to do some setup in Metabase, and then in the sample application. You can also bring your own Metabase, in which case you can skip the installation step.
+ما می‌خواهیم برخی راه‌اندازی در متابیس انجام دهیم، و سپس در برنامه نمونه. همچنین می‌توانید متابیس خود را بیاورید، در این صورت می‌توانید مرحله نصب را رد کنید.
 
-Here's a quick overview of what you'll be doing:
+در اینجا یک نمای کلی سریع از آنچه انجام خواهید داد آمده است:
 
-### Set up Metabase for embedding
+### راه‌اندازی متابیس برای جاسازی
 
-1. [Install Metabase Enterprise Edition](#install-metabase-enterprise-edition) (if you haven't already)
-2. [Activate your license](#activate-your-license)
-3. [Enable embedding](#enable-embedding-in-metabase)
-4. [Enable SSO with JWT](#enable-sso-with-jwt)
+۱. [نصب نسخه Enterprise متابیس](#install-metabase-enterprise-edition) (اگر هنوز نصب نکرده‌اید)
+۲. [فعال کردن مجوز خود](#activate-your-license)
+۳. [فعال کردن جاسازی](#enable-embedding-in-metabase)
+۴. [فعال کردن SSO با JWT](#enable-sso-with-jwt)
 
-### Start up the sample application
+### راه‌اندازی برنامه نمونه
 
-5. [Get the sample application](#set-up-the-sample-application).
-6. [Set up the application environment](#set-up-the-application-environment).
-7. [Run the app server](#set-up-the-application-server) to handle authentication with JWT and serve the embedded Metabase components.
-8. [Run the client application](#set-up-the-client-application) that will contain Metabase components built with the SDK.
+۵. [دریافت برنامه نمونه](#set-up-the-sample-application).
+۶. [راه‌اندازی محیط برنامه](#set-up-the-application-environment).
+۷. [اجرای سرور برنامه](#set-up-the-application-server) برای مدیریت احراز هویت با JWT و سرو دادن اجزای متابیس جاسازی شده.
+۸. [اجرای برنامه کلاینت](#set-up-the-client-application) که شامل اجزای متابیس ساخته شده با SDK خواهد بود.
 
-And then fiddle around with styling.
+و سپس با استایل‌دهی بازی کنید.
 
-Let's go.
+بیایید شروع کنیم.
 
-## Install Metabase Enterprise Edition
+## نصب نسخه Enterprise متابیس
 
-You can run Metabase Pro on a Cloud plan with a [free trial](https://www.metabase.com/pricing/).
+می‌توانید متابیس Pro را در یک پلن Cloud با [آزمایش رایگان](https://www.metabase.com/pricing/) اجرا کنید.
 
-Or run it locally. Here's a docker one-liner:
+یا آن را به صورت محلی اجرا کنید. در اینجا یک docker one-liner آمده است:
 
 ```sh
 docker run -d -p 3000:3000 --name metabase metabase/metabase-enterprise:latest
 ```
 
-You can also [download the JAR](https://downloads.metabase.com/enterprise/latest/metabase.jar), and run it like so:
+همچنین می‌توانید [JAR را دانلود کنید](https://downloads.metabase.com/enterprise/latest/metabase.jar)، و آن را اینگونه اجرا کنید:
 
 ```sh
 java --add-opens java.base/java.nio=ALL-UNNAMED -jar metabase.jar
 ```
 
-By default, Metabase will run at `http://localhost:3000`.
+به‌طور پیش‌فرض، متابیس در `http://localhost:3000` اجرا می‌شود.
 
-If you get stuck, check out our [installation docs](../../installation-and-operation/installing-metabase.md).
+اگر گیر کردید، [مستندات نصب](../../installation-and-operation/installing-metabase.md) ما را بررسی کنید.
 
-## Activate your license
+## فعال کردن مجوز
 
-To enable SSO with JWT when self-hosting, you'll need to [activate your license](../../installation-and-operation/activating-the-enterprise-edition.md). Metabase Pro plans on Cloud take care of this for you.
+برای فعال کردن SSO با JWT هنگام self-hosting، نیاز دارید [مجوز خود را فعال کنید](../../installation-and-operation/activating-the-enterprise-edition.md). پلن‌های متابیس Pro در Cloud این را برای شما انجام می‌دهند.
 
-## Enable embedding in Metabase
+## فعال کردن جاسازی در متابیس
 
-From any Metabase page, click on the **gear** icon in the upper right and select **Admin Settings** > **Embedding**.
+از هر صفحه متابیس، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و **Admin Settings** > **Embedding** را انتخاب کنید.
 
-Turn on:
+روشن کنید:
 
-- Embedded analytics SDK (it's in the **Modular** section)
-- Static embedding
+- SDK تجزیه و تحلیل تعبیه‌شده (در بخش **Modular** است)
+- جاسازی ایستا
 
-Otherwise, this whole thing is hopeless.
+در غیر این صورت، همه این چیزها ناامیدکننده است.
 
-## Enable SSO with JWT
+## فعال کردن SSO با JWT
 
-We'll also need to update our JWT Provider URI in Metabase. By default, this URI is where the SDK will redirect login requests.
+همچنین نیاز داریم JWT Provider URI خود را در متابیس به‌روزرسانی کنیم. به‌طور پیش‌فرض، این URI جایی است که SDK درخواست‌های ورود را redirect می‌کند.
 
-From any Metabase page, click on the **gear** icon in the upper right and select **Admin Settings** > **Settings** > **Authentication**.
+از هر صفحه متابیس، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و **Admin Settings** > **Settings** > **Authentication** را انتخاب کنید.
 
-On the card that says **JWT**, click the **Setup** button.
+روی کارتی که می‌گوید **JWT**، دکمه **Setup** را کلیک کنید.
 
 ### JWT Identity provider URI
 
-In **JWT IDENTITY PROVIDER URI** field, paste
+در فیلد **JWT IDENTITY PROVIDER URI**، جایگذاری کنید
 
 ```txt
 http://localhost:9090/sso/metabase
 ```
 
-Or substitute your Cloud URL for `http://localhost`.
+یا URL Cloud خود را جایگزین `http://localhost` کنید.
 
-### String used by the JWT signing key
+### رشته استفاده شده توسط کلید امضای JWT
 
-Click the **Generate key** button.
+دکمه **Generate key** را کلیک کنید.
 
-Copy the key and paste it in your `.env` file into the env var `METABASE_JWT_SHARED_SECRET`.
+کلید را کپی کنید و در فایل `.env` خود در متغیر env `METABASE_JWT_SHARED_SECRET` جایگذاری کنید.
 
-The application server will use this key to sign tokens so Metabase knows the application's requests for content are authorized.
+سرور برنامه از این کلید برای امضای توکن‌ها استفاده می‌کند تا متابیس بداند درخواست‌های برنامه برای محتوا مجاز هستند.
 
-## Save and enable JWT
+## ذخیره و فعال کردن JWT
 
-Be sure to hit the **Save and enable** button, or all is void.
+مطمئن شوید که دکمه **Save and enable** را فشار دهید، وگرنه همه باطل است.
 
-## Set up the sample application
+## راه‌اندازی برنامه نمونه
 
-Clone the [Metabase Node JS React SDK embedding sample app](https://github.com/metabase/metabase-nodejs-react-sdk-embedding-sample/tree/{{page.version | remove: "v0."}}-stable).
+[برنامه نمونه Metabase Node JS React SDK embedding](https://github.com/metabase/metabase-nodejs-react-sdk-embedding-sample/tree/{{page.version | remove: "v0."}}-stable) را clone کنید.
 
 ```sh
 git clone git@github.com:metabase/metabase-nodejs-react-sdk-embedding-sample.git
 ```
 
-### Check out the branch that corresponds to your Metabase version
+### Checkout کردن branch که با نسخه متابیس شما مطابقت دارد
 
-Check out the branch in the [metabase-nodejs-react-sdk-embedding-sample](https://github.com/metabase/metabase-nodejs-react-sdk-embedding-sample/tree/{{page.version | remove: "v0."}}-stable) repo that corresponds to your Metabase version.
+branch را در [metabase-nodejs-react-sdk-embedding-sample](https://github.com/metabase/metabase-nodejs-react-sdk-embedding-sample/tree/{{page.version | remove: "v0."}}-stable) repo که با نسخه متابیس شما مطابقت دارد checkout کنید.
 
-E.g., if you're running Metabase 1.53, make sure the sample app repo is on the `53-stable` branch. You can find your Metabase version in the Metabase UI by clicking on the gears icon in the upper right and selecting **About Metabase**.
+مثلاً، اگر متابیس 1.53 را اجرا می‌کنید، مطمئن شوید repo برنامه نمونه روی branch `53-stable` است. می‌توانید نسخه متابیس خود را در UI متابیس با کلیک روی آیکون چرخ‌دنده در بالا سمت راست و انتخاب **About Metabase** پیدا کنید.
 
-To switch to another branch, run `git checkout <branch-name>`, e.g.:
+برای تعویض به branch دیگر، `git checkout <branch-name>` را اجرا کنید، مثلاً:
 
 ```
 git checkout 52-stable
 ```
 
-## Set up the application environment
+## راه‌اندازی محیط برنامه
 
-In the sample app's main directory, copy the `.env.example` template to `.env`.
+در دایرکتوری اصلی برنامه نمونه، قالب `.env.example` را به `.env` کپی کنید.
 
 ```sh
 cp .env.example .env
 ```
 
-In `.env`, make sure `VITE_METABASE_INSTANCE_URL` and `METABASE_INSTANCE_URL` point to your Metabase instance URL, e.g., `http://localhost:3000`.
+در `.env`، مطمئن شوید `VITE_METABASE_INSTANCE_URL` و `METABASE_INSTANCE_URL` به URL نمونه متابیس شما اشاره می‌کنند، مثلاً، `http://localhost:3000`.
 
-Your `.env` will look something like:
+`.env` شما چیزی شبیه به این خواهد بود:
 
 ```txt
 # FRONTEND
@@ -180,55 +180,55 @@ METABASE_INSTANCE_URL="http://localhost:3000"
 METABASE_JWT_SHARED_SECRET="TODO"
 ```
 
-## Set up the application server
+## راه‌اندازی سرور برنامه
 
-Change into the `server` directory:
+به دایرکتوری `server` بروید:
 
 ```sh
 cd server
 ```
 
-Install packages:
+بسته‌ها را نصب کنید:
 
 ```sh
 npm install
 ```
 
-Start the server:
+سرور را شروع کنید:
 
 ```sh
 npm start
 ```
 
-## Set up the client application
+## راه‌اندازی برنامه کلاینت
 
-In a different terminal, change into the `client` directory:
+در یک ترمینال دیگر، به دایرکتوری `client` بروید:
 
 ```sh
 cd client
 ```
 
-Install dependencies:
+وابستگی‌ها را نصب کنید:
 
 ```sh
 npm install
 ```
 
-This command will install the [Metabase embedded analytics SDK](https://www.npmjs.com/package/@metabase/embedding-sdk-react), in addition to the application's other dependencies.
+این دستور [SDK تجزیه و تحلیل تعبیه‌شده متابیس](https://www.npmjs.com/package/@metabase/embedding-sdk-react) را نصب می‌کند، علاوه بر وابستگی‌های دیگر برنامه.
 
-You can also install a [different version of the SDK](./version.md). Just make sure that the major version of the SDK matches the major version of the Metabase you're using.
+همچنین می‌توانید یک [نسخه متفاوت از SDK](./version.md) نصب کنید. فقط مطمئن شوید که نسخه اصلی SDK با نسخه اصلی متابیسی که استفاده می‌کنید مطابقت دارد.
 
-Start the client app:
+برنامه کلاینت را شروع کنید:
 
 ```sh
 npm start
 ```
 
-Your browser should automatically open the app. By default, the app runs on [http://localhost:3100](localhost:3100).
+مرورگر شما باید به طور خودکار برنامه را باز کند. به‌طور پیش‌فرض، برنامه در [http://localhost:3100](localhost:3100) اجرا می‌شود.
 
-## At this point, you should be up and running
+## در این نقطه، باید در حال اجرا باشید
 
-In your app, you'll see an embedded `InteractiveQuestion` component.
+در برنامه خود، یک جزء `InteractiveQuestion` جاسازی شده را خواهید دید.
 
 ```javascript
 {% include_file "{{ dirname }}/snippets/quickstart-with-sample-app/example.tsx" snippet="example" %}
@@ -236,6 +236,6 @@ In your app, you'll see an embedded `InteractiveQuestion` component.
 
 ![Embedded Metabase components](../images/interactive-question-sample-app.png)
 
-## Next steps
+## مراحل بعدی
 
-To style the components, try changing some of the `theme` options in the client app at `client/src/App.jsx`. For more on theming, check out [Appearance](./appearance.md).
+برای استایل دادن اجزا، سعی کنید برخی از گزینه‌های `theme` را در برنامه کلاینت در `client/src/App.jsx` تغییر دهید. برای بیشتر در مورد تم‌دهی، [ظاهر](./appearance.md) را بررسی کنید.

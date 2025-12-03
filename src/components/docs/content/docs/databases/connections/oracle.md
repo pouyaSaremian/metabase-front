@@ -6,120 +6,115 @@ redirect_from:
 
 # Oracle
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای اضافه کردن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-## Supported versions
+## نسخه‌های پشتیبانی‌شده
 
-Metabase supports the oldest supported version through the latest stable version. See [Oracle's Release Schedule of Current Database Releases](https://support.oracle.com/knowledge/Oracle%20Database%20Products/742060_1.html).
+متابیس از قدیمی‌ترین نسخهٔ تحت پشتیبانی تا آخرین نسخهٔ پایدار پشتیبانی می‌کند. [Oracle's Release Schedule of Current Database Releases](https://support.oracle.com/knowledge/Oracle%20Database%20Products/742060_1.html) را ببینید.
 
-## Edit connection details
+## ویرایش جزئیات اتصال
 
-You can edit these settings at any time. Just remember to save your changes.
+می‌توانید هر زمان این تنظیمات را ویرایش کنید؛ فقط یادتان باشد تغییرات را ذخیره کنید.
 
 ### Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+می‌توانید یک connection string اینجا paste کنید تا فیلدهای باقی‌مانده به‌طور خودکار پر شوند.
 
 ### Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط کاربری متابیس.
 
 ### Host
 
-Your database's IP address, or its domain name (e.g., esc.mydatabase.com).
+آدرس IP پایگاه‌داده یا نام دامنهٔ آن (مثلاً `esc.mydatabase.com`).
 
 ### Port
 
-The database port. E.g., 1521.
+پورت پایگاه‌داده؛ مثلاً `1521`.
 
 ### Oracle system ID (SID)
 
-Usually something like ORCL or XE. Optional if using service name.
+معمولاً چیزی شبیه `ORCL` یا `XE`. اگر از service name استفاده می‌کنید، این مقدار اختیاری است.
 
 ### Oracle service name
 
-Optional TNS alias.
+یک alias اختیاری TNS.
 
 ### Username
 
-The database username for the account that you want to use to connect to your database. You can set up multiple connections to the same database using different user accounts to connect to the same database, each with different sets of [privileges](../users-roles-privileges.md).
+نام کاربری پایگاه‌داده برای اکانتی که می‌خواهید با آن به دیتابیس وصل شوید. می‌توانید چند اتصال مختلف به همان پایگاه‌داده بسازید که هرکدام از یک کاربر متفاوت با مجموعهٔ متفاوتی از [سطوح دسترسی (privileges)](../users-roles-privileges.md) استفاده می‌کنند.
 
 ### Password
 
-The password for the username that you use to connect to the database.
+رمز عبوری که برای نام کاربری اتصال به پایگاه‌داده استفاده می‌کنید.
 
-### Use a secure connection (SSL)
+### استفاده از اتصال امن (SSL)
 
-You can use both client and server authentication (known as mutual authentication).
+می‌توانید هم احراز هویت سمت کلاینت و هم سمت سرور (mutual authentication) را فعال کنید.
 
-### Connecting to Oracle Cloud Autonomous Database
+### اتصال به Oracle Cloud Autonomous Database
 
-If you've configured your database to require mutual TLS (mTLS), you'll need a [wallet](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/connect-download-wallet.html#GUID-DED75E69-C303-409D-9128-5E10ADD47A35). To download your wallet:
+اگر پایگاه‌دادهٔ خود را طوری پیکربندی کرده‌اید که به mutual TLS (mTLS) نیاز داشته باشد، به یک [wallet](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/connect-download-wallet.html#GUID-DED75E69-C303-409D-9128-5E10ADD47A35) احتیاج دارید. برای دانلود wallet:
 
-1. Go to your Oracle Autonomous Database.
-2. Go to the database's details.
-3. Click on **DB connection**.
-4. Download the wallet.
-5. Create a password for the keyfile.
-6. Copy the `keystore.jks` file to wherever you store your Metabase configuration data.
-7. Use `JAVA_OPTS` to let Metabase know about the keystore's location and password (for more info on keystores, see the next section).
-8. In Metabase, on the data connection page, enter your `host`, `port`, and `service_name`. You can find these values in the `tsnnames.ora` file.
+1. به Oracle Autonomous Database خود بروید.
+2. وارد صفحهٔ جزئیات پایگاه‌داده شوید.
+3. روی **DB connection** کلیک کنید.
+4. wallet را دانلود کنید.
+5. برای keyfile یک رمز عبور بسازید.
+6. فایل `keystore.jks` را به جایی که تنظیمات متابیس را نگه می‌دارید کپی کنید.
+7. با استفاده از `JAVA_OPTS` محل و رمز keystore را به متابیس معرفی کنید (برای اطلاعات بیشتر دربارهٔ keystoreها بخش بعدی را ببینید).
+8. در متابیس و در صفحهٔ اتصال داده، مقادیر `host`، `port` و `service_name` را وارد کنید. این مقادیر را می‌توانید در فایل `tsnnames.ora` پیدا کنید.
 
-#### Client authentication with a keystore
+#### احراز هویت کلاینت با keystore
 
-To configure the server (the Oracle server) to authenticate the identity of the client (Metabase), you need to
-configure a keystore file that includes the client's private key.
+برای این‌که سرور (سرور Oracle) بتواند هویت کلاینت (متابیس) را احراز کند، باید یک فایل keystore پیکربندی کنید که کلید خصوصی کلاینت داخل آن باشد.
 
-You'll import the client's private key into the keystore (rather than a root CA into a truststore file). Add the following JVM options for Metabase:
+شما کلید خصوصی کلاینت را در keystore وارد می‌کنید (به‌جای این‌که یک روت CA را در truststore ایمپورت کنید). گزینه‌های JVM زیر را برای متابیس تنظیم کنید:
 
-```
+```text
 -Djavax.net.ssl.keyStore=/path/to/keystore.jks
 -Djavax.net.ssl.keyStoreType=JKS \
 -Djavax.net.ssl.keyStorePassword=<keyStorePassword>
 ```
 
-You can define these with the `JAVA_OPTS` environment variable, like so:
+می‌توانید این گزینه‌ها را با متغیر محیطی `JAVA_OPTS` تنظیم کنید، مثلاً:
 
 ```sh
 JAVA_OPTS: "-Djavax.net.ssl.keyStore=/scripts/keystore.jks -Djavax.net.ssl.keyStoreType=JKS -Djavax.net.ssl.keyStorePassword=<keyStorePassword>"
 ```
 
-With this done, the Oracle server will authenticate Metabase using the private key when Metabase tries to connect over SSL.
+بعد از انجام این تنظیمات، سرور Oracle هنگام اتصال متابیس از طریق SSL، هویت متابیس را با استفاده از کلید خصوصی احراز می‌کند.
 
-#### Server authentication with a truststore
+#### احراز هویت سرور با truststore
 
-To configure the client (Metabase) to authenticate the identity of the server (the Oracle server), you may need to
-configure a truststore file that includes the server's root CA, so that the JVM running Metabase trusts its
-certificate chain. Refer to the
-[Oracle documentation](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) on using `keytool` to manage key and truststore files, importing certificates, etc.
+برای این‌که کلاینت (متابیس) بتواند هویت سرور (سرور Oracle) را احراز کند، ممکن است لازم باشد یک فایل truststore پیکربندی کنید که روت‌سرتیفیکیت سرور داخل آن باشد تا JVMای که متابیس روی آن اجرا می‌شود به زنجیرهٔ گواهی آن اعتماد کند. برای مدیریت فایل‌های key و truststore، ایمپورت گواهی‌ها و غیره، به [مستندات Oracle دربارهٔ `keytool`](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) مراجعه کنید.
 
-For more information on setting up a truststore for AWS RDS Oracle instances, see the
-[instructions provided by Amazon](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.Options.SSL.html#Appendix.Oracle.Options.SSL.JDBC).
+برای اطلاعات بیشتر دربارهٔ راه‌اندازی truststore برای نمونه‌های Oracle روی AWS RDS، [راهنمای آمازون](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.Options.SSL.html#Appendix.Oracle.Options.SSL.JDBC) را ببینید.
 
-If you need to connect to other databases using SSL, instead of creating a new truststore, you'll probably want to add the RDS CA to your existing truststore file (likely called `cacerts`).
+اگر لازم است با پایگاه‌داده‌های دیگری هم از طریق SSL متصل شوید، به‌جای ساختن یک truststore جدید، احتمالاً بهتر است گواهی CA مربوط به RDS را به truststore موجود خود (که معمولاً نامش `cacerts` است) اضافه کنید.
 
-## Supported Oracle database and Oracle driver versions
+## نسخه‌های پشتیبانی‌شدهٔ پایگاه‌دادهٔ Oracle و درایور Oracle
 
-- **Driver version**: the minimum Oracle driver version should be 19c, regardless of which Java version or Oracle database version you have.
-- **Database version**: the minimum database version should be version 19c, as Oracle [no longer supports database versions before 19](https://endoflife.date/oracle-database).
+- **نسخهٔ درایور**: حداقل نسخهٔ درایور Oracle باید 19c باشد، فارغ از این‌که از چه نسخه‌ای از Java یا Oracle Database استفاده می‌کنید.
+- **نسخهٔ پایگاه‌داده**: حداقل نسخهٔ پایگاه‌داده باید 19c باشد، چون Oracle [نسخه‌های قبل از 19 را دیگر پشتیبانی نمی‌کند](https://endoflife.date/oracle-database).
 
-## Downloading the Oracle JDBC Driver JAR
+## دانلود JAR درایور Oracle JDBC
 
-You can download a JDBC driver from [Oracle's JDBC driver downloads page](https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html).
+می‌توانید درایور JDBC را از [صفحهٔ دانلود درایور JDBC اوراکل](https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) دریافت کنید.
 
-We recommend using the `ojdbc8.jar` JAR.
+پیشنهاد می‌کنیم از فایل `ojdbc8.jar` استفاده کنید.
 
-## Adding the Oracle JDBC Driver JAR to the Metabase plugins directory
+## افزودن JAR درایور Oracle JDBC به پوشهٔ plugins متابیس
 
-In your Metabase directory (the directory where you keep and run your metabase.jar), create a directory called `plugins` (if it doesn't already exist.
+در دایرکتوری متابیس (دایرکتوری‌ای که فایل `metabase.jar` را در آن نگه می‌دارید و اجرا می‌کنید)، یک پوشه با نام `plugins` بسازید (اگر از قبل وجود ندارد).
 
-Move the JAR you just downloaded (`ojdbc8.jar`) into the plugins directory, and restart Metabase. Metabase will automatically make the Oracle driver available when it starts back up.
+فایل JARی که دانلود کرده‌اید (`ojdbc8.jar`) را به پوشهٔ `plugins` منتقل کنید و متابیس را ری‌استارت کنید. متابیس هنگام راه‌اندازی بعدی، به‌صورت خودکار درایور Oracle را شناسایی و فعال می‌کند.
 
-### When running from a JAR
+### زمانی که متابیس را از روی JAR اجرا می‌کنید
 
-By default, the plugins directory is called `plugins`, and lives in the same directory as the Metabase JAR.
+به‌طور پیش‌فرض، پوشهٔ plugins با نام `plugins` و در همان مسیری که فایل JAR متابیس قرار دارد ساخته می‌شود.
 
-For example, if you're running Metabase from a directory called `/app/`, you should move the Oracle JDBC driver JAR to `/app/plugins/`:
+برای مثال، اگر متابیس را از دایرکتوری `/app/` اجرا می‌کنید، باید فایل JAR درایور Oracle را به `/app/plugins/` منتقل کنید:
 
 ```txt
 # example directory structure for running Metabase with Oracle support
@@ -127,17 +122,17 @@ For example, if you're running Metabase from a directory called `/app/`, you sho
 /app/plugins/ojdbc8.jar
 ```
 
-### When running from Docker
+### زمانی که متابیس را با Docker اجرا می‌کنید
 
-The process for adding plugins when running via Docker is similar, but you'll need to mount the `plugins` directory. Refer to instructions [here](../../installation-and-operation/running-metabase-on-docker.md#adding-external-dependencies-or-plugins) for more details.
+فرآیند افزودن پلاگین‌ها در حالت Docker هم مشابه است، با این تفاوت که باید پوشهٔ `plugins` را mount کنید. برای جزئیات بیشتر، [راهنما](../../installation-and-operation/running-metabase-on-docker.md#adding-external-dependencies-or-plugins) را ببینید.
 
-## Danger zone
+## بخش خطر (Danger zone)
 
-See [Danger zone](../danger-zone.md).
+[Danger zone](../danger-zone.md) را ببینید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Managing databases](../../databases/connecting.md)
-- [Metadata editing](../../data-modeling/metadata-editing.md)
-- [Models](../../data-modeling/models.md)
-- [Setting data access permissions](../../permissions/data.md)
+- [مدیریت پایگاه‌داده‌ها](../../databases/connecting.md)
+- [ویرایش متادیتا](../../data-modeling/metadata-editing.md)
+- [مدل‌ها](../../data-modeling/models.md)
+- [تنظیم سطوح دسترسی به داده](../../permissions/data.md)

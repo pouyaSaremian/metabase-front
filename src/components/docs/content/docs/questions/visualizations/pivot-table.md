@@ -7,9 +7,9 @@ redirect_from:
 <!-- markdownlint-disable-next-line MD025 -->
 # Pivot tableها
 
-> Pivot tableها در حال حاضر فقط برای سؤال‌هایی که با [Query builder](../query-builder/editor.md) ساخته شده‌اند پشتیبانی می‌شوند. Pivot table برای پایگاه‌های دادهٔ NoSQL مثل MongoDB در دسترس نیست.
+> Pivot tableها در حال حاضر فقط برای سؤال‌هایی که با [Query builder](../query-builder/editor.md) ساخته شده‌اند پشتیبانی می‌شوند. Pivot table برای پایگاه‌داده‌های NoSQL مثل MongoDB در دسترس نیست.
 
-Pivot tableها به شما اجازه می‌دهند سطرها و ستون‌ها را جابه‌جا کنید، داده‌ها را گروه‌بندی کنید و Subtotalها را در جدول نمایش دهید. می‌توانید یک یا چند Metric را بر اساس یک یا چند Dimension گروه‌بندی کنید.
+Pivot tableها به شما اجازه می‌دهند سطرها و ستون‌ها را جابه‌جا کنید، داده‌ها را Pivot کنید، و Subtotalها را در جدول نمایش دهید. می‌توانید یک یا چند Metric را بر اساس یک یا چند Dimension گروه‌بندی کنید.
 
 {% include youtube.html id='yTRzCQeTmO8' %}
 
@@ -23,84 +23,85 @@ Pivot table جدولی است که در آن Dimensionها هم در سطرها 
 
 ![Pivoted table](../images/pivoted-table.png)
 
-دلیل این‌که به آن‌ها Pivot table گفته می‌شود این است که می‌توانید یک ستون را ۹۰ درجه «بچرخانید» تا مقدارهای آن ستون خودشان به سرستون تبدیل شوند. Pivot کردن مقادیر به سرستون‌ها برای تحلیل داده بر اساس چند Attribute مختلف (مثل زمان، مکان و دسته‌بندی) بسیار مفید است. می‌توانید چند سطر را به ستون Pivot کنید و برعکس، یا اصلاً Pivot نکنید.
+علت این‌که به آن‌ها Pivot table گفته می‌شود این است که می‌توانید یک ستون را ۹۰ درجه «بچرخانید» تا مقدارهای آن ستون خودشان به سرستون تبدیل شوند. Pivot کردن مقادیر به سرستون‌ها برای تحلیل داده بر اساس چند Attribute مختلف (مثل زمان، مکان و دسته‌بندی) بسیار مفید است. می‌توانید چند سطر را به ستون Pivot کنید و برعکس، یا اصلاً Pivot نکنید.
 
 Pivot table تنها نوع Visualization در متابیس (علاوه بر جدول ساده) است که می‌تواند چند Metric را هم‌زمان روی چند Dimension نمایش دهد.
 
-## How to create a pivot table
+## چگونه یک Pivot table بسازیم
 
-To create a pivot table, you'll need to use the query builder. Currently, you can't build pivot tables for questions written in SQL, because Metabase would need to modify your SQL code to calculate subtotals. If you need to use SQL, the workaround here is to create your question in two steps: first do all the complex things you need to do in SQL, save the results as a question, then use that saved SQL question as the starting point for a new query builder question which summarizes that data.
+برای ساخت Pivot table باید از Query builder استفاده کنید. در حال حاضر نمی‌توانید برای سؤال‌هایی که با SQL نوشته‌ شده‌اند، مستقیماً Pivot table بسازید، چون متابیس برای محاسبهٔ Subtotalها مجبور می‌شود SQL شما را تغییر دهد. اگر نیاز دارید از SQL استفاده کنید، راه‌حل این است که سؤال را در دو مرحله بسازید:  
+ابتدا همهٔ منطق پیچیده را در SQL پیاده‌سازی کنید و خروجی را به‌عنوان یک سؤال ذخیره کنید، سپس آن سؤال SQL ذخیره‌شده را به‌عنوان ورودی یک سؤال جدید در Query builder استفاده کنید و روی آن summarize و Pivot انجام دهید.
 
-1. Create a question in the query builder that has a summary with at least one breakout, for example "`Count` of orders by `Category` and `Month`".
-
-   You can have multiple metrics in the query (for example, "`Count` _and `Average of Total` of orders_ by `Category` and `Month`")
+1. در Query builder سؤالی بسازید که یک summary با حداقل یک breakout داشته باشد، مثلاً: «`Count` of orders by `Category` and `Month`».
+2. می‌توانید چند Metric در کوئری داشته باشید (مثلاً: «`Count` و `Average of Total` of orders by `Category` and `Month`»).
 
    ![Pivot table notebook](../images/pivot-table-notebook.png)
 
-2. Click on **Visualize**.
-3. To change the visualization to the pivot table, click on the **Visualization** icon in the bottom left and select **Pivot table** in the sidebar.
-4. To configure fields displayed as rows and columns in the pivot table, click on the **gear** icon and assign fields to one of three "buckets": **rows**, **columns** or **measures**.
+3. روی **Visualize** کلیک کنید.
+4. برای تغییر Visualization به Pivot table، روی آیکون **Visualization** در پایین چپ کلیک کنید و از سایدبار **Pivot table** را انتخاب کنید.
+5. برای تنظیم این‌که کدام فیلدها به‌عنوان سطر و ستون در Pivot table استفاده شوند، روی آیکون **چرخ‌دنده (gear)** کلیک کنید و فیلدها را در یکی از سه بخش قرار دهید: **rows**، **columns** یا **measures**.
 
-   - **Rows** and **Columns** should contain the dimensions, or breakouts - in other words, the fields you're grouping by, like `Category` or `Created at`.
-   - **Measures** should contain your summaries, or metrics - things like `Count` or `Average of Total`.
+   - بخش **Rows** و **Columns** باید شامل Dimensionها یا Breakoutها باشند؛ یعنی فیلدهایی که بر اساس آن‌ها group by انجام می‌دهید، مثل `Category` یا `Created at`.
+   - بخش **Measures** باید شامل summaryها یا Metricها باشد؛ مثل `Count` یا `Average of Total`.
 
    ![Pivot table options](../images/pivot-table-options.png)
 
-   You can put multiple fields in the "rows" and "columns" buckets, but note that the order of the fields changes how Metabase displays the table: each additional field will nest within the previous field.
+   می‌توانید چندین فیلد را در بخش‌های "rows" و "columns" قرار دهید، اما توجه کنید که ترتیب فیلدها روی نحوهٔ نمایش جدول تأثیر می‌گذارد: هر فیلد اضافه‌شده داخل فیلد قبلی تو‌در‌تو (Nested) می‌شود.
 
-Currently, all the dimension and metrics in your query must appear as either rows, columns, or measures in the pivot table (although you can [collapse rows to their totals](#totals-and-grand-totals)). If you don't want to display a breakout or metric in the pivot table, you'll need to remove it from the query - you can't hide it from the pivot table.
+در حال حاضر همهٔ Dimensionها و Metricهایی که در کوئری استفاده شده‌اند باید به‌عنوان row، column یا measure در Pivot table قرار بگیرند (اگرچه می‌توانید [سطرها را فقط روی مجموع‌ها Collapse کنید](#مجموع‌ها-و-جمع-کل-totals-and-grand-totals)). اگر نمی‌خواهید Breakout یا Metric خاصی در Pivot table نمایش داده شود، باید آن را از خودِ کوئری حذف کنید؛ نمی‌توانید فقط در Pivot table پنهانش کنید.
 
-## Totals and grand totals
+## مجموع‌ها و جمع کل (Totals and grand totals)
 
-Where it makes sense, Metabase will automatically include subtotals for grouped rows.
+جایی که منطقی باشد، متابیس به‌طور خودکار Subtotalها را برای سطرهای گروه‌بندی‌شده اضافه می‌کند.
 
 ![Pivot table options](../images/pivot-table-options.png)
 
-For example, as in the image above, because we've grouped our rows first by `Source`, then by `Plan`, Metabase will list each plan for each `Source`, and then aggregate the metric(s) for that source..
+برای مثال، همان‌طور که در تصویر بالا می‌بینید، چون سطرها ابتدا بر اساس `Source` و سپس بر اساس `Plan` گروه‌بندی شده‌اند، متابیس هر Plan را برای هر `Source` لیست می‌کند و سپس Metric(های) مربوط به آن Source را تجمیع می‌کند.
 
-To collapse a group on a pivot table, you can click on the minus (–) button next to the group's heading (or the plus (+) button to expand it). When you save a pivot table, Metabase will remember which groups were expanded and which were collapsed.
+برای جمع‌کردن (Collapse) یک گروه در Pivot table، می‌توانید روی دکمهٔ منفی (–) کنار سرگروه کلیک کنید (و برای بازکردن گروه روی دکمهٔ مثبت (+)). وقتی Pivot table را ذخیره کنید، متابیس به‌خاطر می‌سپارد کدام گروه‌ها باز و کدام بسته بوده‌اند.
 
-You can ask Metabase to hide the totals by going to pivot table settings (**gear** icon) and toggling off "Show row/column totals".
+می‌توانید از طریق تنظیمات Pivot table (آیکون **gear**) و خاموش کردن گزینهٔ «Show row/column totals»، نمایش مجموع سطرها/ستون‌ها را غیرفعال کنید.
 
-## Conditional formatting in pivot tables
+## فرمت‌گذاری شرطی در Pivot tableها
 
-You can add colors to pivot tables based on conditions, or using a range of values:
+می‌توانید براساس شرط‌ها، یا با استفاده از بازهٔ مقادیر، رنگ‌ها را روی Pivot table اعمال کنید:
 
 ![Conditional formatting](../images/pivot-conditional-formatting.png)
 
-Metabase won't format totals or grand totals.
+متابیس روی مجموع‌ها و جمع کل (Totals و Grand totals) فرمت‌گذاری شرطی اعمال نمی‌کند.
 
-Conditional formatting for pivot tables works the same way as for regular tables, so see [Conditional formatting](./table.md#conditional-table-formatting)
+فرمت‌گذاری شرطی برای Pivot tableها دقیقاً مانند جدول‌های معمولی عمل می‌کند؛ بنابراین بخش [Conditional formatting](./table.md#conditional-table-formatting) را ببینید.
 
-## Using pivot tables as heatmaps
+## استفاده از Pivot table به‌عنوان هیت‌مپ (Heatmap)
 
-You can use conditional formatting in pivot tables to mimic a "heat map" of values by dimensions:
+می‌توانید با استفاده از فرمت‌گذاری شرطی، Pivot table را به یک هیت‌مپ مقادیر بر اساس Dimensionها تبدیل کنید:
 
-1. Create a query builder question with a summary block that has:
+1. یک سؤال در Query builder بسازید که در بلوک Summary این ویژگی‌ها را داشته باشد:
+2. یک Metric که شدت/مقدار هر سلول را مشخص ‌کند.
+3. دو Breakout که مؤلفه‌های افقی و عمودی هیت‌مپ را تعیین کنند.
 
-- One metric that defines the intensity of the cells in heatmap
-- Two breakouts to define the horizontal and vertical components of the map
+2. Visualization را روی Pivot table بگذارید.
+3. یک فرمت‌گذاری شرطی از نوع **"Color range"** اضافه کنید.
 
-2. Visualize the query as a pivot table.
-3. Add a **"Color range"** conditional formatting.
-
-For example, to build a heatmap of hourly activity by day of the week, use a query with breakouts by hour of day and day of the week:
+برای مثال، برای ساخت هیت‌مپ از فعالیت ساعتی بر اساس روز هفته، می‌توانید کوئری‌ای بسازید که بر اساس «ساعت روز» و «روز هفته» Breakout داشته باشد:
 
 ![Query for the heatmap](../images/heatmap-query.png)
 
-Use pivot table with conditional formatting:
+سپس Pivot table را با فرمت‌گذاری شرطی استفاده کنید:
 
 ![Pivot table as a heatmap](../images/pivot-table-as-heatmap.png)
 
-## Pivot table exports
+## خروجی گرفتن از Pivot tableها
 
-There are special considerations when exporting pivot tables as XLSX files. See [Exporting pivot tables](../exporting-results.md#exporting-pivot-tables).
+برای خروجی گرفتن Pivot tableها به‌صورت فایل XLSX چند نکتهٔ خاص وجود دارد. بخش [Exporting pivot tables](../exporting-results.md#exporting-pivot-tables) را ببینید.
 
-## Pivot table limitations
+## محدودیت‌های Pivot table
 
-- Pivot tables are only available for SQL databases.
-- All metrics and dimensions specified in the query will be displayed in the pivot table.
-- Pivot tables are only available for questions built with the query builder.
-- The query builder question must have a summary block.
+- Pivot tableها فقط برای دیتابیس‌های SQL در دسترس هستند.
+- همهٔ Metricها و Dimensionهایی که در کوئری تعریف شده‌اند در Pivot table نمایش داده می‌شوند.
+- Pivot tableها فقط برای سؤال‌هایی در دسترس‌اند که با Query builder ساخته شده‌اند.
+- سؤال Query builder باید یک بلوک Summary داشته باشد.
 
-If you must use SQL, and your SQL query doesn't have parameters, you can save that SQL query , then use its [results as the starting point](../native-editor/writing-sql.md#explore-sql-question-results-using-the-query-builder) for a query builder question to build a question. The trick here is to do your aggregation and grouping in the query builder. That is, use the SQL question to grab the raw data you want to work with (maybe [create a model](../../data-modeling/models.md)), then start a new question in the query builder to filter, summarize, and group that data.
+اگر ناچارید از SQL استفاده کنید و کوئری SQL شما پارامتر ندارد، می‌توانید آن کوئری را ذخیره کنید و سپس [نتایج آن را به‌عنوان ورودی](../native-editor/writing-sql.md#explore-sql-question-results-using-the-query-builder) برای یک سؤال Query builder استفاده کنید. نکتهٔ کلیدی این است که عملیات Aggregation و Grouping را در Query builder انجام دهید؛ یعنی از سؤال SQL فقط برای گرفتن دادهٔ خامی که می‌خواهید با آن کار کنید (یا حتی [ساخت یک مدل](../../data-modeling/models.md)) استفاده کنید، و بعد یک سؤال جدید در Query builder بسازید تا روی آن داده‌ها فیلتر، Summary و Group by انجام دهید.
+
+

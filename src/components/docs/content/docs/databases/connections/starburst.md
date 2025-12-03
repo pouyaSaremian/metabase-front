@@ -5,69 +5,69 @@ description: Learn how to connect Metabase to your Starburst or Trino database, 
 
 # Starburst
 
-> This driver also works for connections to a Trino database.
+> این درایور برای اتصال به پایگاه‌داده‌های Trino هم کار می‌کند.
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای اضافه کردن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-You can edit these settings at any time. Just remember to save your changes.
+می‌توانید هر زمان این تنظیمات را ویرایش کنید؛ فقط یادتان باشد تغییرات را ذخیره کنید.
 
-## Connection and Sync
+## Connection و Sync
 
-After connecting to a database, you'll see the "Connection and sync" section that displays the current connection status and options to manage your database connection.
+بعد از اتصال به پایگاه‌داده، بخشی با عنوان «Connection and sync» می‌بینید که وضعیت فعلی اتصال و گزینه‌های مدیریت اتصال پایگاه‌داده را نمایش می‌دهد.
 
-Here you can [sync the database schema and rescan field values](../sync-scan.md), and edit connection details.
+در این بخش می‌توانید [schema پایگاه‌داده را sync کنید و مقادیر فیلدها را دوباره اسکن کنید](../sync-scan.md) و جزئیات اتصال را ویرایش کنید.
 
-## Edit connection details
+## ویرایش جزئیات اتصال
 
-To access or modify your database connection settings, click the **Edit connection details** button.
+برای دیدن یا تغییر تنظیمات اتصال پایگاه‌داده، روی دکمهٔ **Edit connection details** کلیک کنید.
 
 ### Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+می‌توانید یک connection string اینجا paste کنید تا فیلدهای باقی‌مانده به‌طور خودکار پر شوند.
 
 ### Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط کاربری متابیس.
 
 ### Host
 
-Your database's IP address (e.g., `98.137.149.56`) or its domain name (e.g., `name.database.com`).
+آدرس IP پایگاه‌داده (مثلاً `98.137.149.56`) یا نام دامنهٔ آن (مثلاً `name.database.com`).
 
 ### Port
 
-The database port (e.g., `8080`).
+پورت پایگاه‌داده (مثلاً `8080`).
 
 ### Catalog
 
-Starburt catalogs contain schemas and reference data sources via a connector.
+catalogهای Starburst شامل schemaها هستند و از طریق یک connector به منبع‌های داده اشاره می‌کنند.
 
 ### Schema (optional)
 
-Only add tables that come from a specific schema.
+فقط جدول‌هایی را که از یک schema مشخص می‌آیند به متابیس اضافه می‌کند.
 
 ### Username
 
-The database username for the account that you want to use to connect to your database. You can set up multiple connections to the same database using different user accounts to connect to the same database, each with different sets of [privileges](../users-roles-privileges.md).
+نام کاربری پایگاه‌داده برای اکانتی که می‌خواهید با آن به دیتابیس وصل شوید. می‌توانید چند اتصال مختلف به همان پایگاه‌داده بسازید که هرکدام از یک کاربر متفاوت با مجموعهٔ متفاوتی از [سطوح دسترسی (privileges)](../users-roles-privileges.md) استفاده می‌کنند.
 
 ### Password
 
-The password for the username that you use to connect to the database.
+رمز عبوری که برای نام کاربری اتصال به پایگاه‌داده استفاده می‌کنید.
 
 ### Use a secure connection (SSL)
 
-See [SSL certificates](../ssl-certificates.md).
+[SSL certificates](../ssl-certificates.md) را ببینید.
 
 ### Role (optional)
 
-Specify a role to override the database user's default role.
+می‌توانید یک role مشخص کنید تا جایگزین role پیش‌فرض کاربر پایگاه‌داده شود.
 
 ### Optimize prepared statements
 
-Requires Starburst Galaxy, Starburst Enterprise (version 420-e or higher), or Trino (version 418 or higher).
+نیازمند Starburst Galaxy، Starburst Enterprise (نسخهٔ 420-e یا بالاتر) یا Trino (نسخهٔ 418 یا بالاتر) است.
 
 ### Additional JDBC connection string options
 
-You can append options to the JDBC connection string. Separate options with `&`, like so:
+می‌توانید گزینه‌های اضافی را به JDBC connection string اضافه کنید. گزینه‌ها را با `&` از هم جدا کنید، مثلاً:
 
 ```
 connection_timeout=1000&socket_timeout=300000
@@ -75,32 +75,32 @@ connection_timeout=1000&socket_timeout=300000
 
 ### Re-run queries for simple explorations
 
-Turn this option **OFF** if people want to click **Run** (the play button) before applying any [Summarize](../../questions/query-builder/summarizing-and-grouping.md) or filter selections.
+اگر می‌خواهید کاربران قبل از اعمال هر [Summarize](../../questions/query-builder/summarizing-and-grouping.md) یا فیلتر، روی **Run** (دکمهٔ play) کلیک کنند، این گزینه را روی **OFF** قرار دهید.
 
-By default, Metabase will execute a query as soon as you choose an grouping option from the **Summarize** menu or a filter condition from the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through). If your database is slow, you may want to disable re-running to avoid loading data on each click.
+به‌طور پیش‌فرض، متابیس به محض انتخاب یک گزینهٔ گروه‌بندی از منوی **Summarize** یا یک شرط فیلتر از [منوی drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through)، پرس‌وجو را اجرا می‌کند. اگر پایگاه‌دادهٔ شما کند است، بهتر است اجرای خودکار را غیرفعال کنید تا با هر کلیک، کوئری جدید اجرا نشود.
 
 ### Choose when syncs and scans happen
 
-See [syncs and scans](../sync-scan.md#choose-when-syncs-and-scans-happen).
+[sync و scan](../sync-scan.md#choose-when-syncs-and-scans-happen) را ببینید.
 
 ### Periodically refingerprint tables
 
-> Periodic refingerprinting will increase the load on your database.
+> fingerprint دوره‌ای بار روی پایگاه‌دادهٔ شما را افزایش می‌دهد.
 
-Turn this option **ON** to scan a sample of values every time Metabase runs a [sync](../sync-scan.md#how-database-syncs-work).
+این گزینه را روی **ON** قرار دهید تا هر بار متابیس یک [sync](../sync-scan.md#how-database-syncs-work) اجرا می‌کند، یک نمونه از مقادیر را اسکن کند.
 
-A fingerprinting query examines the first 10,000 rows from each column and uses that data to guesstimate how many unique values each column has, what the minimum and maximum values are for numeric and timestamp columns, and so on. If you leave this option **OFF**, Metabase will only fingerprint your columns once during setup.
+پرس‌وجوی fingerprinting اولین ۱۰٬۰۰۰ ردیف هر ستون را بررسی می‌کند و بر اساس آن، تعداد مقادیر یکتا در هر ستون، و حداقل و حداکثر مقادیر ستون‌های عددی و زمانی و غیره را تخمین می‌زند. اگر این گزینه را روی **OFF** بگذارید، متابیس فقط یک‌بار و در زمان راه‌اندازی، برای ستون‌ها fingerprint می‌سازد.
 
 ## Model features
 
-There aren't (yet) any model features for Starburst.
+در حال حاضر هیچ قابلیت مدل خاصی برای Starburst در دسترس نیست.
 
 ## Database routing
 
-With database routing, an admin can build a question once using one database (data catalog), and the question will run its query against a different data catalog with the same schema depending on who is viewing the question.
+با قابلیت database routing، یک ادمین می‌تواند یک سؤال را یک‌بار با استفاده از یک پایگاه‌داده (data catalog) بسازد، و همان سؤال بسته به این‌که چه کسی آن را می‌بیند، پرس‌وجو را روی یک data catalog دیگر با همان schema اجرا کند.
 
-See [Database routing](../../permissions/database-routing.md).
+[مستندات Database routing](../../permissions/database-routing.md) را ببینید.
 
 ## Danger zone
 
-See [Danger zone](../danger-zone.md).
+[بخش Danger zone](../danger-zone.md) را ببینید.

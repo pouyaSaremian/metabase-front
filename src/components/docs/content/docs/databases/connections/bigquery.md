@@ -6,150 +6,145 @@ redirect_from:
 
 # Google BigQuery
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای افزودن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-## Prerequisites
+## پیش‌نیازها
 
-You'll need to have a [Google Cloud Platform](https://cloud.google.com/) account with a [project](https://cloud.google.com/storage/docs/projects) you would like to use in Metabase. Consult the Google Cloud Platform documentation for how to [create and manage a project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This project should have a BigQuery dataset for Metabase to connect to.
+نیاز دارید یک حساب [Google Cloud Platform](https://cloud.google.com/) با یک [پروژه](https://cloud.google.com/storage/docs/projects) داشته باشید که می‌خواهید در متابیس از آن استفاده کنید. برای نحوه [ایجاد و مدیریت پروژه](https://cloud.google.com/resource-manager/docs/creating-managing-projects) به مستندات Google Cloud Platform مراجعه کنید. این پروژه باید یک dataset در BigQuery داشته باشد که متابیس به آن متصل شود.
 
-## Google Cloud Platform: creating a service account and JSON file
+## Google Cloud Platform: ساخت service account و فایل JSON
 
-You'll first need a [service account](https://cloud.google.com/iam/docs/service-account-overview) JSON file that Metabase can use to access your BigQuery dataset. Service accounts are intended for non-human users (such as applications like Metabase) to authenticate (who am I?) and authorize (what can I do?) their API calls.
+ابتدا به یک فایل JSON [service account](https://cloud.google.com/iam/docs/service-account-overview) نیاز دارید که متابیس بتواند با استفاده از آن به dataset بیگ‌کوئری شما دسترسی پیدا کند. Service accountها برای کاربران غیرانسانی (مثل اپلیکیشن‌هایی مانند متابیس) در نظر گرفته شده‌اند تا تماس‌های API خود را احراز هویت (چه کسی هستم؟) و مجازسازی (چه کار می‌توانم بکنم؟) کنند.
 
-To create the service account JSON file, follow Google's documentation on [setting up a service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts) for your BigQuery dataset. Here's the basic flow:
+برای ساخت فایل JSON service account، مستندات گوگل برای [راه‌اندازی service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts) برای dataset بیگ‌کوئری خود را دنبال کنید. جریان کلی به این شکل است:
 
-1. **Create service account**. From your Google Cloud Platform project console, open the main sidebar menu on the left, go to the **IAM & Admin** section, and select **Service account**. The console will list existing service accounts, if any. At the top of the screen, click on **+ CREATE SERVICE ACCOUNT**.
-
-2. **Fill out the service account details**. Name the service account, and add a description (the service account ID will populate once you add a name). Then click the **Create** button.
-
-3. **Grant the service account access to this project**. You'll need to add **roles** to the service account so that Metabase will have permission to view and run queries against your dataset. Make sure you add the following roles to the service account:
-
+1. **ساخت service account**: در کنسول پروژه Google Cloud Platform خود، منوی اصلی سمت چپ را باز کنید، به بخش **IAM & Admin** بروید و **Service account** را انتخاب کنید. کنسول service accountهای موجود را (اگر باشند) فهرست می‌کند. در بالای صفحه روی **+ CREATE SERVICE ACCOUNT** کلیک کنید.
+2. **پر کردن جزئیات service account**: نامی برای service account بگذارید و توضیحی اضافه کنید (به‌محض وارد کردن نام، Service account ID پر می‌شود). سپس روی دکمه **Create** کلیک کنید.
+3. **دادن دسترسی به این پروژه**: باید برای service account **role** اضافه کنید تا متابیس اجازه دیدن و اجرای پرس‌وجو روی dataset شما را داشته باشد. مطمئن شوید roleهای زیر را به این service account اضافه می‌کنید:
    - BigQuery Data Viewer
    - BigQuery Metadata Viewer
-   - BigQuery Job User (distinct from BigQuery User)
+   - BigQuery Job User (متفاوت از BigQuery User)
+برای اطلاعات بیشتر درباره **role**ها در BigQuery، [مستندات Google Cloud Platform](https://cloud.google.com/bigquery/docs/access-control) را ببینید.
+4. **ساخت key**: وقتی roleها را به service account اختصاص دادید، روی دکمه **Create Key** کلیک کنید و برای نوع key گزینه **JSON** را انتخاب کنید. فایل JSON روی کامپیوتر شما دانلود می‌شود.
+> **کلید را فقط یک‌بار می‌توانید دانلود کنید**. اگر کلید را حذف کنید، باید یک service account دیگر با همان roleها بسازید.
 
-For more information on **roles** in BigQuery, see [Google Cloud Platform's documentation](https://cloud.google.com/bigquery/docs/access-control).
+## Connection و sync
 
-4. **Create key**. Once you have assigned roles to the service account, click on the **Create Key** button, and select **JSON** for the **key type**. The JSON file will download to your computer.
+بعد از اتصال به یک پایگاه‌داده، بخشی با عنوان «Connection and sync» می‌بینید که وضعیت فعلی اتصال و گزینه‌های مدیریت اتصال پایگاه‌داده را نشان می‌دهد.
 
-> **You can only download the key once**. If you delete the key, you'll need to create another service account with the same roles.
+در این بخش می‌توانید [schema پایگاه‌داده را sync کنید و مقادیر فیلدها را دوباره اسکن کنید](../sync-scan.md) و جزئیات اتصال را ویرایش کنید.
 
-## Connection and sync
+## ویرایش جزئیات اتصال
 
-After connecting to a database, you'll see the "Connection and sync" section that displays the current connection status and options to manage your database connection.
-
-Here you can [sync the database schema and rescan field values](../sync-scan.md), and edit connection details.
-
-## Edit connection details
-
-You can edit these settings at any time. Just remember to save your changes.
+می‌توانید هر زمان این تنظیمات را ویرایش کنید. فقط یادتان باشد تغییرات را ذخیره کنید.
 
 ### Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+می‌توانید یک connection string اینجا paste کنید تا فیلدهای باقی‌مانده به‌طور خودکار پر شوند.
 
 ### Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط متابیس.
 
 ### Project ID
 
-Each BigQuery dataset will have a **Project ID**. You can find this ID via the [Google Cloud Console](https://console.cloud.google.com/). If you're not sure where to find the **Project ID**, see Google's documentation on [getting information on datasets](https://cloud.google.com/bigquery/docs/dataset-metadata#getting_dataset_information).
+هر dataset در BigQuery یک **Project ID** دارد. می‌توانید این شناسه را در [Google Cloud Console](https://console.cloud.google.com/) پیدا کنید. اگر مطمئن نیستید **Project ID** کجاست، مستندات گوگل درباره [گرفتن اطلاعات روی datasetها](https://cloud.google.com/bigquery/docs/dataset-metadata#getting_dataset_information) را ببینید.
 
-> When entering the **Project ID**, omit the Project ID prefix. For example, if your ID is `project_name:project_id`, only enter `project_id`.
+> هنگام وارد کردن **Project ID**، پیشوند Project ID را نیاورید. مثلاً اگر شناسه شما `project_name:project_id` است، فقط `project_id` را وارد کنید.
 
-### Service account JSON file
+### فایل JSON service account
 
-The JSON file contains the credentials your Metabase application will need to access BigQuery datasets, as defined by the **roles** you added to the service account. If you need to add additional **roles**, you have to create another service account, download the JSON file, and upload the file to Metabase.
+فایل JSON شامل credentialهایی است که اپلیکیشن متابیس برای دسترسی به datasetهای BigQuery، مطابق **role**هایی که به service account داده‌اید، نیاز دارد. اگر لازم شد roleهای بیشتری اضافه کنید، باید یک service account جدید بسازید، فایل JSON را دانلود کنید و فایل را در متابیس آپلود کنید.
 
 ### Datasets
 
-You can specify which BigQuery datasets you want to sync and scan. Options are:
+می‌توانید مشخص کنید کدام datasetهای BigQuery را می‌خواهید sync و scan کنید. گزینه‌ها:
 
 - All
 - Only these...
 - All except...
 
-> A BigQuery dataset is similar to a schema. Make sure to enter your dataset names (like `marketing`), _not_ your table names (`marketing.campaigns`).
+> یک dataset در BigQuery شبیه به schema است. مطمئن شوید نام datasetها (مثل `marketing`) را وارد می‌کنید، نه نام جدول‌ها (`marketing.campaigns`).
 
-Let's say you have three datasets: foo, bar, and baz.
+فرض کنید سه dataset دارید: `foo`، `bar` و `baz`.
 
-To sync all three datasets, select **Only these...** and enter:
+برای sync کردن هر سه dataset، **Only these...** را انتخاب و این مقدار را وارد کنید:
 
-```
+```text
 foo,bar,baz
 ```
 
-To sync datasets based on a string match, use the `*` wildcard:
+برای sync بر اساس match رشته، از wildcard `*` استفاده کنید:
 
-- To sync bar and baz, select **Only these...** and enter the string `b*`.
-- To sync foo only, select **All except...** and enter the string `b*`.
+- برای sync کردن `bar` و `baz`، **Only these...** را انتخاب کرده و رشته `b*` را وارد کنید.
+- برای sync کردن فقط `foo`، **All except...** را انتخاب کرده و رشته `b*` را وارد کنید.
 
-Note that only the `*` wildcard is supported; you can't use other special characters or regexes.
+توجه: فقط wildcard `*` پشتیبانی می‌شود؛ نمی‌توانید از regex یا کاراکترهای ویژه دیگر استفاده کنید.
 
-### Use the Java Virtual Machine (JVM) timezone
+### استفاده از timezone ماشین مجازی جاوا (JVM)
 
-We suggest you leave this off unless you're doing manual [timezone](../../configuring-metabase/timezones.md) casting in many or most of your queries with this data.
+پیشنهاد می‌کنیم این گزینه را خاموش بگذارید مگر اینکه در بسیاری از پرس‌وجوهای خود روی این داده‌ها [تبدیل timezone](../../configuring-metabase/timezones.md) را به‌صورت دستی انجام می‌دهید.
 
-### Include User ID and query hash in queries
+### افزودن User ID و query hash به پرس‌وجوها
 
-This can be useful for [auditing](../../usage-and-performance-tools/usage-analytics.md) and debugging, but prevents BigQuery from caching results and may increase your costs.
+این گزینه برای [ممیزی](../../usage-and-performance-tools/usage-analytics.md) و debug مفید است، اما مانع کش شدن نتایج در BigQuery می‌شود و ممکن است هزینه شما را افزایش دهد.
 
 ### Alternate hostname
 
-If you want to use a different hostname to connect to BigQuery. Format: `https://<hostname>:<port>`. If you're using a proxy service to connect to BigQuery (e.g. a privacy proxy that anonymizes PII), you should configure this field to the proxy hostname or IP. Remember to set the complete URI with protocol and port number.
+اگر می‌خواهید با hostname دیگری به BigQuery متصل شوید، این مقدار را تنظیم کنید. قالب: `https://<hostname>:<port>`. اگر برای اتصال به BigQuery از یک سرویس proxy استفاده می‌کنید (مثلاً پروکسی حریم خصوصی که PII را ناشناس می‌کند)، باید این فیلد را روی hostname یا IP proxy تنظیم کنید. حتماً آدرس کامل شامل پروتکل و شماره پورت را بنویسید.
 
-### Re-run queries for simple explorations
+### اجرای دوباره پرس‌وجوها برای اکتشاف ساده
 
-Turn this option **OFF** if people want to click **Run** (the play button) before applying any [Summarize](../../questions/query-builder/summarizing-and-grouping.md) or filter selections.
+اگر می‌خواهید کاربران قبل از اعمال هر [Summarize](../../questions/query-builder/summarizing-and-grouping.md) یا فیلتر، روی **Run** (دکمه play) کلیک کنند، این گزینه را روی **OFF** بگذارید.
 
-By default, Metabase will execute a query as soon as you choose an grouping option from the **Summarize** menu or a filter condition from the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through). If your database is slow, you may want to disable re-running to avoid loading data on each click.
+به‌طور پیش‌فرض، متابیس به محض انتخاب یک گزینه گروه‌بندی از منوی **Summarize** یا یک شرط فیلتر از [منوی drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) پرس‌وجو را اجرا می‌کند. اگر پایگاه‌داده شما کند است، شاید بخواهید اجرای خودکار را غیرفعال کنید تا با هر کلیک داده بارگذاری نشود.
 
-### Choose when syncs and scans happen
+### انتخاب زمان sync و scan
 
-See [syncs and scans](../sync-scan.md#choose-when-syncs-and-scans-happen).
+[sync و scan](../sync-scan.md#choose-when-syncs-and-scans-happen) را ببینید.
 
-### Periodically refingerprint tables
+### fingerprint دوره‌ای جدول‌ها
 
-> Periodic refingerprinting will increase the load on your database.
+> fingerprint دوره‌ای بار روی پایگاه‌داده شما را افزایش می‌دهد.
 
-Turn this option **ON** to scan a sample of values every time Metabase runs a [sync](../sync-scan.md#how-database-syncs-work).
+این گزینه را روی **ON** بگذارید تا هر بار متابیس [sync](../sync-scan.md#how-database-syncs-work) انجام می‌دهد، یک نمونه از مقادیر را اسکن کند.
 
-A fingerprinting query examines the first 10,000 rows from each column and uses that data to guesstimate how many unique values each column has, what the minimum and maximum values are for numeric and timestamp columns, and so on. If you leave this option **OFF**, Metabase will only fingerprint your columns once during setup.
+یک پرس‌وجوی fingerprinting اولین ۱۰٬۰۰۰ ردیف هر ستون را بررسی می‌کند و از آن داده برای تخمین تعداد مقادیر یکتا در هر ستون، کمینه و بیشینه مقادیر ستون‌های عددی و زمانی و غیره استفاده می‌کند. اگر این گزینه را روی **OFF** بگذارید، متابیس فقط یک‌بار در زمان راه‌اندازی برای هر ستون fingerprint می‌سازد.
 
-## Connecting Metabase to Google Drive data sources
+## اتصال متابیس به منبع‌های داده Google Drive
 
-You can connect Metabase to Google Drive data sources via BigQuery. There is some setup involved, but basically what you'll be doing is creating a dataset in BigQuery and adding an external table to that dataset that points to a Google Sheet. Useful for uploading CSVs to Google Sheets, and then analyzing and visualizing the data with Metabase.
+می‌توانید از طریق BigQuery متابیس را به منبع‌های داده در Google Drive وصل کنید. این کار کمی تنظیمات می‌خواهد، اما به‌طور خلاصه کاری که انجام می‌دهید این است که یک dataset در BigQuery می‌سازید و یک external table به آن dataset اضافه می‌کنید که به یک Google Sheet اشاره می‌کند. این روش برای آپلود CSV در Google Sheets و سپس تحلیل و مصورسازی داده با متابیس مفید است.
 
-To connect to a data source stored in Google Drive (like a Google Sheet), first make sure you've completed the steps above, including:
+برای اتصال به منبع داده‌ای که در Google Drive ذخیره شده (مثل یک Google Sheet)، ابتدا مطمئن شوید مراحل بالا را کامل کرده‌اید، شامل:
 
-- creating a project in Google Cloud Platform,
-- adding a BigQuery dataset, and
-- creating a [service account](#google-cloud-platform-creating-a-service-account-and-json-file).
+- ساخت یک پروژه در Google Cloud Platform،
+- افزودن یک dataset در BigQuery، و
+- ساخت یک [service account](#google-cloud-platform-%D8%B3%D8%A7%D8%AE%D8%AA-service-account-%D9%88-%D9%81%D8%A7%DB%8C%D9%84-json).
 
-### Share your Google Drive source with the service account
+### اشتراک‌گذاری منبع Google Drive با service account
 
-While viewing your Drive file, (e.g., a Google Sheet with an uploaded CSV file), click the **Share** button in the top right. In the text box labeled **Add people or groups**, paste in the email of your service account, which you can find on the [Service Accounts page](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts?supportedpurview=project) in the Google Cloud Console.
+وقتی فایل Drive خود (مثلاً یک Google Sheet که یک CSV در آن آپلود کرده‌اید) را باز کرده‌اید، روی دکمه **Share** در بالا سمت راست کلیک کنید. در کادر متنی **Add people or groups**, ایمیل service account خود را paste کنید که می‌توانید آن را در [صفحه Service Accounts](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts?supportedpurview=project) در Google Cloud Console پیدا کنید.
 
-That email address will look something like `service-account-name@your-project-name.iam.gserviceaccount.com`, with the your service account and project names filled in accordingly.
+این ایمیل شبیه این خواهد بود:  
+`service-account-name@your-project-name.iam.gserviceaccount.com`، با نام service account و نام پروژه شما.
 
-Choose **Viewer** from the dropdown, uncheck the **Notify people** option, and click **Share**.
+از منوی کشویی، **Viewer** را انتخاب کنید، گزینه **Notify people** را غیرفعال کنید و روی **Share** کلیک کنید.
 
-### Create an external table in BigQuery that points to your Google Drive source
+### ساخت یک external table در BigQuery که به منبع Google Drive اشاره می‌کند
 
-If you don't already have a BigQuery dataset, [create one](https://cloud.google.com/bigquery/docs/datasets).
+اگر هنوز dataset در BigQuery ندارید، [یکی بسازید](https://cloud.google.com/bigquery/docs/datasets).
 
-Next, using the Google Cloud Console, [create an external table](https://cloud.google.com/bigquery/external-data-drive?hl=en#creating_and_querying_a_permanent_external_table) within your BigQuery dataset that points to your Google Sheet.
+سپس با استفاده از Google Cloud Console، [یک external table](https://cloud.google.com/bigquery/external-data-drive?hl=en#creating_and_querying_a_permanent_external_table) درون dataset بیگ‌کوئری خود بسازید که به Google Sheet شما اشاره کند.
 
-Be sure to specify the correct **Drive URI** and file format.
+مطمئن شوید **Drive URI** و فرمت فایل را درست تنظیم کرده‌اید.
 
-If you haven't already, [connect your Metabase to your BigQuery](#google-bigquery).
+اگر هنوز این کار را نکرده‌اید، [متابیس خود را به BigQuery](#google-bigquery) وصل کنید.
 
-Once you've completed these steps, you'll be able to ask questions and create dashboards in Metabase using a Google Drive source as your data.
+پس از انجام این مراحل، می‌توانید با استفاده از منبع Google Drive در متابیس سؤال بپرسید و داشبورد بسازید.
 
-## Using Legacy SQL
+## استفاده از Legacy SQL
 
-As of version 0.30.0, Metabase tells BigQuery to interpret SQL queries as [Standard SQL (GoogleSQL)](https://cloud.google.com/bigquery/docs/introduction-sql). If you prefer using [Legacy SQL](https://cloud.google.com/bigquery/docs/reference/legacy-sql) instead, you can tell Metabase to do so by including a `#legacySQL` directive at the beginning of your query, for example:
+از نسخه 0.30.0 به بعد، متابیس به BigQuery می‌گوید که پرس‌وجوهای SQL را به‌صورت [Standard SQL (GoogleSQL)](https://cloud.google.com/bigquery/docs/introduction-sql) تفسیر کند. اگر ترجیح می‌دهید از [Legacy SQL](https://cloud.google.com/bigquery/docs/reference/legacy-sql) استفاده کنید، می‌توانید با اضافه کردن دستور `#legacySQL` در ابتدای پرس‌وجو این کار را انجام دهید، مثلاً:
 
 ```sql
 #legacySQL
@@ -157,29 +152,31 @@ SELECT *
 FROM [my_dataset.my_table]
 ```
 
-## Troubleshooting
+## عیب‌یابی
 
-If you're having trouble with your BigQuery connection, you can check out this [troubleshooting guide](../../troubleshooting-guide/bigquery-drive.md) that covers BigQuery issues, [this one](../../troubleshooting-guide/db-connection.md) on data warehouse connections, or visit [Metabase's discussion forum](https://discourse.metabase.com/search?q=bigquery) to see if someone has encountered and resolved a similar issue.
+اگر در اتصال BigQuery مشکل دارید، می‌توانید این [راهنمای عیب‌یابی](../../troubleshooting-guide/bigquery-drive.md) را که مشکلات BigQuery را پوشش می‌دهد ببینید، یا این [راهنما](../../troubleshooting-guide/db-connection.md) درباره اتصال به انبار داده، یا به [انجمن بحث متابیس](https://discourse.metabase.com/search?q=bigquery) سر بزنید تا ببینید آیا کسی قبلاً با مشکل مشابهی روبه‌رو شده و آن را حل کرده است یا نه.
 
-## Model features
+## امکانات مدل
 
-There aren't (yet) any model features available for BigQuery.
+فعلاً هیچ قابلیت مدل (Model features) برای BigQuery در دسترس نیست.
 
-## Database routing
+## مسیریابی پایگاه‌داده
 
-With database routing, an admin can build a question once using one database, and the question will run its query against a different database with the same schema depending on who is viewing the question.
+با Database routing، یک ادمین می‌تواند یک‌بار با استفاده از یک پایگاه‌داده سؤال بسازد و آن سؤال، بسته به اینکه چه کسی آن را می‌بیند، روی پایگاه‌داده دیگری با همان schema اجرا شود.
 
-Database routing for BigQuery works between BigQuery **projects** with identical schemas.
+مسیریابی پایگاه‌داده برای BigQuery بین **پروژه‌های BigQuery** با schemaهای یکسان کار می‌کند.
 
-See [Database routing](../../permissions/database-routing.md).
+[Database routing](../../permissions/database-routing.md) را ببینید.
 
-## Danger zone
+## بخش خطر (Danger zone)
 
-See [Danger zone](../danger-zone.md).
+[Danger zone](../danger-zone.md) را ببینید.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Managing databases](../../databases/connecting.md)
-- [Metadata editing](../../data-modeling/metadata-editing.md)
-- [Models](../../data-modeling/models.md)
-- [Setting data access permissions](../../permissions/data.md)
+- [مدیریت پایگاه‌داده‌ها](../../databases/connecting.md)
+- [ویرایش متادیتا](../../data-modeling/metadata-editing.md)
+- [مدل‌ها](../../data-modeling/models.md)
+- [تنظیم مجوزهای دسترسی به داده](../../permissions/data.md)
+
+

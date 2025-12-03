@@ -1,22 +1,22 @@
 ---
-title: "Embedded analytics SDK - appearance"
+title: "SDK تجزیه و تحلیل تعبیه‌شده - ظاهر"
 ---
 
-# Embedded analytics SDK - appearance
+# SDK تجزیه و تحلیل تعبیه‌شده - ظاهر
 
 {% include plans-blockquote.html feature="Embedded analytics SDK" sdk=true %}
 
-You can style your embedded Metabase components with a theme.
+می‌توانید اجزای متابیس جاسازی شده خود را با یک تم استایل دهید.
 
-Here's an example that includes the various styling options available:
+در اینجا یک مثال که شامل گزینه‌های استایل‌دهی مختلف موجود است آمده است:
 
 ```ts
 {% include_file "{{ dirname }}/snippets/appearance/theme.ts" %}
 ```
 
-### Customizing loader and error components
+### سفارشی کردن اجزای loader و error
 
-You can provide your own components for loading and error states by specifying `loaderComponent` and `errorComponent` as props to `MetabaseProvider`.
+می‌توانید اجزای خود را برای حالت‌های loading و error با مشخص کردن `loaderComponent` و `errorComponent` به عنوان props به `MetabaseProvider` ارائه دهید.
 
 ```tsx
 {% include_file "{{ dirname }}/snippets/appearance/customizing-loader-and-components.tsx" snippet="imports" %}
@@ -24,7 +24,7 @@ You can provide your own components for loading and error states by specifying `
 {% include_file "{{ dirname }}/snippets/appearance/customizing-loader-and-components.tsx" snippet="example" %}
 ```
 
-## Limitations
+## محدودیت‌ها
 
-- CSS variables aren't yet supported. If you'd like Metabase to support CSS variables, please upvote this [feature request](https://github.com/metabase/metabase/issues/59237).
-- Colors set in the visualization settings for a question will override theme colors.
+- متغیرهای CSS هنوز پشتیبانی نمی‌شوند. اگر می‌خواهید متابیس از متغیرهای CSS پشتیبانی کند، لطفاً این [درخواست ویژگی](https://github.com/metabase/metabase/issues/59237) را upvote کنید.
+- رنگ‌های تنظیم شده در تنظیمات تجسم برای یک سؤال رنگ‌های تم را override می‌کنند.

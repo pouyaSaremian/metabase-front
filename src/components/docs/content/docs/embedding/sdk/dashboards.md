@@ -1,24 +1,24 @@
 ---
-title: "Embedded analytics SDK - dashboards"
+title: "SDK تجزیه و تحلیل تعبیه‌شده - داشبوردها"
 ---
 
-# Embedded analytics SDK - dashboards
+# SDK تجزیه و تحلیل تعبیه‌شده - داشبوردها
 
 {% include plans-blockquote.html feature="Embedded analytics SDK" sdk=true %}
 
-You can embed an interactive, editable, or static dashboard.
+می‌توانید یک داشبورد تعاملی، قابل ویرایش، یا ایستا را جاسازی کنید.
 
-**Keep in mind that embedding multiple instances of dashboards on the same page is not yet supported.**
+**به خاطر داشته باشید که جاسازی چندین نمونه از داشبوردها در همان صفحه هنوز پشتیبانی نمی‌شود.**
 
-## Embedding a dashboard
+## جاسازی یک داشبورد
 
-You can embed a dashboard using the one of the dashboard components:
+می‌توانید یک داشبورد را با استفاده از یکی از اجزای داشبورد جاسازی کنید:
 
 ### `StaticDashboard`
 
-A lightweight dashboard component. Use this component when you want to display results without letting people interact with the data.
+یک جزء داشبورد سبک. از این جزء استفاده کنید وقتی می‌خواهید نتایج را بدون اجازه دادن به افراد برای تعامل با داده نمایش دهید.
 
-#### API Reference
+#### مرجع API
 
 - [Component](./api/StaticDashboard.html)
 - [Props](./api/StaticDashboardProps.html)
@@ -29,9 +29,9 @@ A lightweight dashboard component. Use this component when you want to display r
 
 ### `InteractiveDashboard`
 
-A dashboard component with drill downs, click behaviors, and the ability to view and click into questions. Use this component when you want to allow people to explore their data.
+یک جزء داشبورد با حفاری به پایین، رفتارهای کلیک، و توانایی مشاهده و کلیک به سؤال‌ها. از این جزء استفاده کنید وقتی می‌خواهید به افراد اجازه دهید داده‌های خود را کاوش کنند.
 
-#### API Reference
+#### مرجع API
 
 - [Component](./api/InteractiveDashboard.html)
 - [Props](./api/InteractiveDashboardProps.html)
@@ -42,9 +42,9 @@ A dashboard component with drill downs, click behaviors, and the ability to view
 
 ### `EditableDashboard`
 
-A dashboard component with the features available in the `InteractiveDashboard` component, as well as the ability to add and update questions, layout, and content within your dashboard. Use this component when you want to give people the ability to modify your dashboards, for example in an admin panel in your app.
+یک جزء داشبورد با ویژگی‌های موجود در جزء `InteractiveDashboard`، و همچنین توانایی افزودن و به‌روزرسانی سؤال‌ها، چیدمان، و محتوا درون داشبورد خود. از این جزء استفاده کنید وقتی می‌خواهید به افراد توانایی تغییر داشبوردهای خود را بدهید، مثلاً در یک پنل admin در برنامه خود.
 
-#### API Reference
+#### مرجع API
 
 - [Component](./api/EditableDashboard.html)
 - [Props](./api/EditableDashboardProps.html)
@@ -53,25 +53,25 @@ A dashboard component with the features available in the `InteractiveDashboard` 
 
 {% include_file "{{ dirname }}/api/snippets/EditableDashboardProps.md" snippet="properties" %}
 
-## Example embedded dashboard with `InteractiveDashboard` component
+## مثال داشبورد جاسازی شده با جزء `InteractiveDashboard`
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/dashboards/interactive-dashboard.tsx" %}
 ```
 
-## Customizing dashboard height
+## سفارشی کردن ارتفاع داشبورد
 
-By default, dashboard components take full page height (100vh). You can override this with custom styles passed via `style` or `className` props.
+به‌طور پیش‌فرض، اجزای داشبورد ارتفاع کامل صفحه (100vh) را می‌گیرند. می‌توانید این را با استایل‌های سفارشی ارسال شده از طریق props `style` یا `className` override کنید.
 
 ```tsx
 {% include_file "{{ dirname }}/snippets/dashboards/custom-height.tsx" snippet="example" %}
 ```
 
-## Customizing drill-through question layout
+## سفارشی کردن چیدمان سؤال حفاری
 
-When drilling through or clicking on a question card in the dashboard, you will be taken to the question view. By default, the question is shown in the [default layout](./questions.md#customizing-interactive-questions) for interactive questions.
+هنگام حفاری یا کلیک روی یک کارت سؤال در داشبورد، به نمای سؤال هدایت می‌شوید. به‌طور پیش‌فرض، سؤال در [چیدمان پیش‌فرض](./questions.md#customizing-interactive-questions) برای سؤال‌های تعاملی نمایش داده می‌شود.
 
-To customize the question layout, pass a `renderDrillThroughQuestion` prop to the `InteractiveDashboard` component, with the custom view as the child component.
+برای سفارشی کردن چیدمان سؤال، یک prop `renderDrillThroughQuestion` به جزء `InteractiveDashboard` ارسال کنید، با نمای سفارشی به عنوان جزء فرزند.
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/dashboards/custom-drill-through-question-layout.tsx" snippet="example-1" %}
@@ -79,72 +79,72 @@ To customize the question layout, pass a `renderDrillThroughQuestion` prop to th
 {% include_file "{{ dirname }}/snippets/dashboards/custom-drill-through-question-layout.tsx" snippet="example-2" %}
 ```
 
-The questionView prop accepts a React component that will be rendered in the question view, which you can build with namespaced components within the `InteractiveQuestion` component. See [customizing interactive questions](./questions.md#customizing-interactive-questions) for an example layout.
+prop questionView یک جزء React را می‌پذیرد که در نمای سؤال رندر می‌شود، که می‌توانید با اجزای namespaced درون جزء `InteractiveQuestion` بسازید. برای یک مثال چیدمان، [سفارشی کردن سؤال‌های تعاملی](./questions.md#customizing-interactive-questions) را ببینید.
 
-## Dashboard plugins
+## پلاگین‌های داشبورد
 
 ### `dashboardCardMenu`
 
-This plugin allows you to add, remove, and modify the custom actions on the overflow menu of dashboard cards. The plugin appears as a dropdown menu on the top right corner of the card.
+این پلاگین به شما امکان می‌دهد اقدامات سفارشی را در منوی overflow کارت‌های داشبورد اضافه، حذف و تغییر دهید. پلاگین به عنوان یک منوی dropdown در گوشه بالا سمت راست کارت ظاهر می‌شود.
 
-The plugin's default configuration looks like this:
+پیکربندی پیش‌فرض پلاگین به این شکل است:
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/dashboards/plugins.tsx" snippet="example-base-1" %}
 ```
 
-`dashboardCardMenu`: can be used in the InteractiveDashboard like this:
+`dashboardCardMenu`: می‌تواند در InteractiveDashboard به این شکل استفاده شود:
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/dashboards/plugins.tsx" snippet="example-base-2" %}
 ```
 
-#### Enabling/disabling default actions
+#### فعال/غیرفعال کردن اقدامات پیش‌فرض
 
-To remove the download button from the dashcard menu, set `withDownloads` to `false`. To remove the edit link from the dashcard menu, set `withEditLink` to `false`.
+برای حذف دکمه دانلود از منوی dashcard، `withDownloads` را روی `false` تنظیم کنید. برای حذف لینک ویرایش از منوی dashcard، `withEditLink` را روی `false` تنظیم کنید.
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/dashboards/plugins.tsx" snippet="example-default-actions" %}
 ```
 
-#### Adding custom actions to the existing menu:
+#### افزودن اقدامات سفارشی به منوی موجود:
 
-You can add custom actions to the dashcard menu by adding an object to the `customItems` array. Each element can either be an object or a function that takes in the dashcard's question, and outputs a list of custom items in the form of:
+می‌توانید اقدامات سفارشی را به منوی dashcard با افزودن یک شی به آرایه `customItems` اضافه کنید. هر عنصر می‌تواند یک شی یا یک تابع باشد که سؤال dashcard را می‌گیرد و فهرستی از موارد سفارشی را در فرمت زیر خروجی می‌دهد:
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/dashboards/plugins.tsx" snippet="example-custom-action-type" %}
 ```
 
-Here's an example:
+در اینجا یک مثال آمده است:
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/dashboards/plugins.tsx" snippet="example-custom-actions" %}
 ```
 
-#### Replacing the existing menu with your own component
+#### جایگزینی منوی موجود با جزء خود
 
-If you want to replace the existing menu with your own component, you can do so by providing a function that returns a React component. This function also can receive the question as an argument.
+اگر می‌خواهید منوی موجود را با جزء خود جایگزین کنید، می‌توانید با ارائه یک تابع که یک جزء React برمی‌گرداند این کار را انجام دهید. این تابع همچنین می‌تواند سؤال را به عنوان آرگومان دریافت کند.
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/dashboards/plugins.tsx" snippet="example-custom-actions-menu" %}
 ```
 
-## Creating dashboards
+## ایجاد داشبوردها
 
-Creating a dashboard could be done with `useCreateDashboardApi` hook or `CreateDashboardModal` component.
+ایجاد یک داشبورد می‌تواند با hook `useCreateDashboardApi` یا جزء `CreateDashboardModal` انجام شود.
 
 ### `useCreateDashboardApi`
 
-Use this hook if you'd like to have total control over the UI and settings.
+از این hook استفاده کنید اگر می‌خواهید کنترل کامل بر UI و تنظیمات داشته باشید.
 
-Until the Embedded analytics SDK is fully loaded and initialized, the hook returns `null`.
+تا زمانی که SDK تجزیه و تحلیل تعبیه‌شده به طور کامل بارگذاری و مقداردهی اولیه نشده باشد، hook `null` برمی‌گرداند.
 
-#### API Reference
+#### مرجع API
 
 - [Hook](./api/useCreateDashboardApi.html)
 - [Options](./api/CreateDashboardValues.html)
 
-#### Example
+#### مثال
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/dashboards/create-dashboard.tsx" snippet="example-hook" %}
@@ -156,12 +156,12 @@ Until the Embedded analytics SDK is fully loaded and initialized, the hook retur
 
 ### `CreateDashboardModal`
 
-#### API Refernce
+#### مرجع API
 
 - [Component](./api/CreateDashboardModal.html)
 - [Props](./api/CreateDashboardModalProps.html)
 
-#### Example
+#### مثال
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/dashboards/create-dashboard.tsx" snippet="example-component" %}

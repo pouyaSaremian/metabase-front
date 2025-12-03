@@ -1,25 +1,25 @@
 ---
-title: Embedded analytics SDK - config
+title: SDK تجزیه و تحلیل تعبیه‌شده - پیکربندی
 ---
 
-# Embedded analytics SDK - config
+# SDK تجزیه و تحلیل تعبیه‌شده - پیکربندی
 
 {% include plans-blockquote.html feature="Embedded analytics SDK" sdk=true %}
 
-## Passing a configuration object to `MetabaseProvider`
+## ارسال یک شی پیکربندی به `MetabaseProvider`
 
-To use the SDK in your app, you need to import the `MetabaseProvider` component and provide it with an `authConfig` object.
+برای استفاده از SDK در برنامه خود، نیاز دارید جزء `MetabaseProvider` را import کنید و یک شی `authConfig` به آن ارائه دهید.
 
 ### `MetabaseProvider`
 
-A component that configures the SDK and provides the Metabase SDK's context and theme.
+یک جزء که SDK را پیکربندی می‌کند و context و تم SDK متابیس را ارائه می‌دهد.
 
-#### API Reference
+#### مرجع API
 
 - [Component](./api/MetabaseProvider.html)
 - [Props](./api/MetabaseProviderProps.html)
 
-#### Example
+#### مثال
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/config/config-base.tsx" %}
@@ -29,19 +29,19 @@ A component that configures the SDK and provides the Metabase SDK's context and 
 
 {% include_file "{{ dirname }}/api/snippets/MetabaseProviderProps.md" snippet="properties" %}
 
-## Global event handlers
+## Event handlerهای سراسری
 
-You can listen for events by defining the `eventHandlers` prop for `MetabaseProvider`.
+می‌توانید با تعریف prop `eventHandlers` برای `MetabaseProvider` به رویدادها گوش دهید.
 
 ### `SdkEventHandlersConfig`
 
-Accepts an object where each key is an event type and the corresponding value is the event handler function.
+یک شی را می‌پذیرد که در آن هر کلید یک نوع رویداد و مقدار مربوطه تابع event handler است.
 
-#### API Reference
+#### مرجع API
 
 - [Type](./api/SdkEventHandlersConfig.html)
 
-#### Example
+#### مثال
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/config/config-with-event-handlers.tsx" snippet="example" %}
@@ -51,9 +51,9 @@ Accepts an object where each key is an event type and the corresponding value is
 
 {% include_file "{{ dirname }}/api/snippets/SdkEventHandlersConfig.md" snippet="properties" %}
 
-## Reloading Metabase components
+## بارگذاری مجدد اجزای متابیس
 
-In case you need to reload a Metabase component, for example, your users modify your application data and that data is used to render a question in Metabase. If you embed this question and want to force Metabase to reload the question to show the latest data, you can do so by using the `key` prop to force a component to reload.
+در صورتی که نیاز دارید یک جزء متابیس را بارگذاری مجدد کنید، مثلاً، کاربران شما داده برنامه را تغییر می‌دهند و آن داده برای رندر کردن یک سؤال در متابیس استفاده می‌شود. اگر این سؤال را جاسازی می‌کنید و می‌خواهید متابیس را مجبور کنید سؤال را برای نمایش آخرین داده بارگذاری مجدد کند، می‌توانید با استفاده از prop `key` برای مجبور کردن یک جزء به بارگذاری مجدد این کار را انجام دهید.
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/config/reload-metabase-provider.tsx" snippet="example" %}

@@ -4,106 +4,106 @@ title: Amazon Athena
 
 # Amazon Athena
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای افزودن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-## Connection and sync
+## اتصال و همگام‌سازی
 
-After connecting to a database, you'll see the "Connection and sync" section that displays the current connection status and options to manage your database connection.
+بعد از اتصال به یک پایگاه‌داده، بخشی با عنوان «Connection and sync» را می‌بینید که وضعیت فعلی اتصال و گزینه‌های مدیریت اتصال پایگاه‌داده را نمایش می‌دهد.
 
-Here you can [sync the database schema and rescan field values](../sync-scan.md), and edit connection details.
+در این بخش می‌توانید [schema پایگاه‌داده را sync کنید و مقادیر فیلدها را دوباره اسکن کنید](../sync-scan.md)، و همچنین جزئیات اتصال را ویرایش نمایید.
 
-### Edit connection details
+### ویرایش جزئیات اتصال
 
-You can edit these settings at any time (and remember to save your changes).
+می‌توانید این تنظیمات را هر زمان که خواستید ویرایش کنید (و فراموش نکنید که تغییرات را ذخیره کنید).
 
 ### Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+در اینجا یک connection string قرار دهید تا فیلدهای باقی‌ماندهٔ زیر آن به‌طور خودکار پر شوند.
 
 ### Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط کاربری متابیس.
 
 ### Region
 
-The AWS region where your database is hosted, for Amazon Athena. For example, you might enter `us-east-1`.
+منطقهٔ (Region) سرویس AWS که پایگاه‌دادهٔ شما (برای Amazon Athena) در آن میزبانی شده است. برای نمونه، می‌توانید `us-east-1` را وارد کنید.
 
 ### Workgroup
 
-AWS workgroup. For example: `primary`. See [documentation on workgroups](https://docs.aws.amazon.com/athena/latest/ug/user-created-workgroups.html).
+Workgroup در AWS. برای مثال: `primary`. برای اطلاعات بیشتر [مستندات workgroupها](https://docs.aws.amazon.com/athena/latest/ug/user-created-workgroups.html) را ببینید.
 
 ### S3 Staging directory
 
-This S3 staging directory must be in the same region you specify above.
+این پوشهٔ staging روی S3 باید در همان منطقه‌ای باشد که در بالا تعیین کرده‌اید.
 
 ### Access key
 
-Part of IAM credentials for AWS. Metabase will encrypt these credentials.
+بخشی از اطلاعات احراز هویت IAM در AWS. متابیس این اطلاعات را رمزنگاری می‌کند.
 
-If you're running Metabase on AWS and want to use [AWS Default Credentials Chain](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-default), leave the Access and Secret keys blank.
+اگر متابیس را روی AWS اجرا می‌کنید و می‌خواهید از [زنجیرهٔ پیش‌فرض اعتبارنامه‌های AWS (AWS Default Credentials Chain)](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-default) استفاده کنید، فیلدهای Access و Secret key را خالی بگذارید.
 
-See also our [notes on connecting to Athena](#notes-on-connecting-to-athena).
+همچنین [نکات اتصال به Athena](#نکات-اتصال-به-athena) را ببینید.
 
 ### Secret Key
 
-Part of IAM credentials for AWS. Metabase will encrypt these credentials.
+بخشی دیگر از اطلاعات احراز هویت IAM در AWS. متابیس این اطلاعات را نیز رمزنگاری می‌کند.
 
-### Additional Athena connection string options
+### گزینه‌های اضافی connection string برای Athena
 
-You can specify additional options via a string, e.g., `UseResultsetStreaming=0;LogLevel=6`.
+می‌توانید گزینه‌های اضافی را به‌صورت یک رشته تنظیم کنید؛ مثلاً: `UseResultsetStreaming=0;LogLevel=6`.
 
-### Include User ID and query hash in queries
+### افزودن User ID و query hash به کوئری‌ها
 
-This can be useful for auditing and debugging, but prevents databases from caching results and may increase your costs. Enable this feature if you need to track which users are running specific queries.
+این گزینه می‌تواند برای ممیزی (audit) و عیب‌یابی مفید باشد، اما جلوی cache شدن نتایج در پایگاه‌داده‌ها را می‌گیرد و ممکن است هزینه‌های شما را افزایش دهد. اگر لازم است بدانید کدام کاربران چه کوئری‌هایی اجرا می‌کنند، این قابلیت را فعال کنید.
 
-### Re-run queries for simple explorations
+### اجرای دوبارهٔ کوئری‌ها برای اکتشاف ساده
 
-Turn this option **OFF** if people want to click **Run** (the play button) before applying any [Summarize](../../questions/query-builder/summarizing-and-grouping.md) or filter selections.
+اگر می‌خواهید کاربران قبل از اعمال هر [Summarize](../../questions/query-builder/summarizing-and-grouping.md) یا فیلتر، خودشان روی **Run** (دکمهٔ پخش/اجرای کوئری) کلیک کنند، این گزینه را **خاموش** کنید.
 
-By default, Metabase will execute a query as soon as you choose an grouping option from the **Summarize** menu or a filter condition from the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through). If your database is slow, you may want to disable re-running to avoid loading data on each click.
+به‌طور پیش‌فرض، متابیس به‌محض این‌که یک گزینهٔ گروه‌بندی از منوی **Summarize** یا یک شرط فیلتر از [منوی drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) انتخاب کنید، کوئری را اجرا می‌کند. اگر پایگاه‌دادهٔ شما کند است، شاید بهتر باشد این اجرای خودکار را غیرفعال کنید تا با هر کلیک، بار اضافه روی پایگاه‌داده ایجاد نشود.
 
-### Choose when syncs and scans happen
+### انتخاب زمان اجرای sync و scan
 
-See [syncs and scans](../sync-scan.md#choose-when-syncs-and-scans-happen).
+بخش [sync و scan](../sync-scan.md#choose-when-syncs-and-scans-happen) را ببینید.
 
-### Periodically refingerprint tables
+### fingerprint دوره‌ای جدول‌ها
 
-> Periodic refingerprinting will increase the load on your database.
+> اجرای fingerprint دوره‌ای، بار روی پایگاه‌دادهٔ شما را افزایش می‌دهد.
 
-Turn this option **ON** to scan a sample of values every time Metabase runs a [sync](../sync-scan.md#how-database-syncs-work).
+این گزینه را **روشن** کنید تا هر بار که متابیس یک [sync](../sync-scan.md#how-database-syncs-work) اجرا می‌کند، یک نمونه از مقادیر ستون‌ها را اسکن کند.
 
-A fingerprinting query examines the first 10,000 rows from each column and uses that data to guesstimate how many unique values each column has, what the minimum and maximum values are for numeric and timestamp columns, and so on. If you leave this option **OFF**, Metabase will only fingerprint your columns once during setup.
+یک کوئری fingerprint، ۱۰٬۰۰۰ ردیف اول هر ستون را بررسی می‌کند و از آن داده‌ها برای تخمین تعداد مقادیر منحصربه‌فرد هر ستون، حداقل و حداکثر مقادیر ستون‌های عددی و زمان‌محور و موارد مشابه استفاده می‌کند. اگر این گزینه را **خاموش** بگذارید، متابیس فقط در زمان راه‌اندازی، یک‌بار ستون‌های شما را fingerprint می‌کند.
 
-## Notes on connecting to Athena
+## نکات اتصال به Athena
 
-If you use other AWS services, we recommend that you create a special AWS Service Account that only has the permissions required to run Athena, and input the IAM credentials from that account to connect Metabase to Athena.
+اگر از سرویس‌های دیگر AWS هم استفاده می‌کنید، پیشنهاد می‌کنیم یک AWS Service Account جداگانه بسازید که فقط مجوزهای لازم برای اجرای Athena را داشته باشد، و از اعتبارنامه‌های IAM همان حساب برای اتصال متابیس به Athena استفاده کنید.
 
-See [Identity and access management in Athena](https://docs.aws.amazon.com/athena/latest/ug/security-iam-athena.html).
+برای جزئیات بیشتر، [مستندات Identity and access management در Athena](https://docs.aws.amazon.com/athena/latest/ug/security-iam-athena.html) را ببینید.
 
-### Connecting using AWS Default Credentials Chain
+### اتصال با استفاده از AWS Default Credentials Chain
 
-If you're running Metabase on AWS and want to use [AWS Default Credentials Chain](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-default), leave the Access and Secret keys blank.
+اگر متابیس را روی AWS اجرا می‌کنید و می‌خواهید از [AWS Default Credentials Chain](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-default) استفاده کنید، فیلدهای Access و Secret key را خالی بگذارید.
 
-- For EC2, you can use [instance profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
-- For ECS, you can use [IAM roles for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
+- برای EC2 می‌توانید از [instance profileها](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) استفاده کنید.
+- برای ECS می‌توانید از [IAM roleهای مخصوص taskها](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) استفاده کنید.
 
-In both cases, the Athena driver will automatically fetch session credentials based on which IAM role you've configured.
+در هر دو حالت، درایور Athena به‌طور خودکار بر اساس IAM roleای که پیکربندی کرده‌اید، اعتبارنامه‌های نشست (session credentials) را دریافت می‌کند.
 
-### Permissions and IAM Policies
+### مجوزها و IAM Policyها
 
-Most issues that we see when people attempt to connect to AWS Athena involve permissions. Querying AWS Athena requires permissions to:
+بیشتر مشکلاتی که هنگام اتصال به AWS Athena می‌بینیم، به مجوزها برمی‌گردد. اجرای کوئری روی AWS Athena به این مجوزها نیاز دارد:
 
 - AWS Athena.
 - AWS Glue.
-- The S3 bucket where Athena results are stored.
-- The resources that Athena is querying against (i.e., the S3 bucket(s) Athena is querying).
-- If you're using AWS Lake Formation, then you also need to grant AWS Lake Formation permissions through the AWS Console (AWS Lake Formation > Permissions > Data Lake Permissions > Grant data lake permissions; the role Metabase uses needs SELECT and DESCRIBE table permissions).
+- باکِت S3ای که نتایج Athena در آن ذخیره می‌شود.
+- منابعی که Athena روی آن‌ها کوئری اجرا می‌کند (یعنی همان باکت یا باکت‌های S3ای که Athena از آن‌ها می‌خواند).
+- اگر از AWS Lake Formation استفاده می‌کنید، باید از طریق AWS Console مجوزهای Lake Formation را هم بدهید (مسیر: AWS Lake Formation > Permissions > Data Lake Permissions > Grant data lake permissions؛ IAM roleای که متابیس استفاده می‌کند باید مجوزهای SELECT و DESCRIBE table را داشته باشد).
 
-### Example IAM Policy
+### نمونهٔ IAM Policy
 
-This policy provides read-only permissions for data in S3. You'll need to specify any S3 buckets that you want Metabase to be able to query from _as well as_ the S3 bucket provided as part of the configuration where results are written to.
+این policy مجوزهای فقط‌خواندنی (read-only) برای داده‌های موجود در S3 را فراهم می‌کند. لازم است برای هر باکت S3ای که می‌خواهید متابیس بتواند از آن کوئری بگیرد _و همچنین_ باکتی که در تنظیمات به‌عنوان محل ذخیرهٔ نتایج Athena معرفی کرده‌اید، ARN مربوطه را مشخص کنید.
 
-There may be additional permissions required for other Athena functionality, like federated queries. For details, check out the [Athena docs](https://docs.aws.amazon.com/athena/latest/ug/security-iam-athena).
+ممکن است برای برخی قابلیت‌های دیگر Athena، مانند federated queryها، به مجوزهای بیشتری نیاز داشته باشید. برای جزئیات، [مستندات Athena](https://docs.aws.amazon.com/athena/latest/ug/security-iam-athena.html) را ببینید.
 
 ```json
 {
@@ -179,7 +179,7 @@ There may be additional permissions required for other Athena functionality, lik
 }
 ```
 
-If Metabase also needs to create tables, you'll need additional AWS Glue permissions. The `"Resource": "*"` key-value pair gives the account Delete and Update permissions to any table:
+اگر متابیس لازم است جدول هم بسازد، به مجوزهای بیشتری در AWS Glue نیاز خواهید داشت. جفت کلید-مقدار `"Resource": "*"` به این حساب اجازه می‌دهد روی هر جدولی عملیات حذف (Delete) و به‌روزرسانی (Update) انجام دهد:
 
 ```json
 {
@@ -209,25 +209,27 @@ If Metabase also needs to create tables, you'll need additional AWS Glue permiss
 }
 ```
 
-## Model features
+## قابلیت‌های مدل
 
-There aren't (yet) any model features available for Athena.
+در حال حاضر هیچ قابلیت مدل خاصی برای Athena در دسترس نیست.
 
 ## Database routing
 
-With database routing, an admin can build a question once using a single data connection, and the question will run its query against a different data connection with the same schema depending on who is viewing the question.
+با قابلیت database routing، یک ادمین می‌تواند یک سؤال را یک‌بار با استفاده از یک اتصال داده بسازد، و بعد همان سؤال بسته به این‌که چه کسی آن را مشاهده می‌کند، کوئری‌اش را روی یک اتصال دادهٔ دیگر با همان schema اجرا کند.
 
-Admittedly, the name "database routing" is misleading for Athena, because the term "database" in Athena is closer to "schema" in other databases. You _can't_ use database routing to route queries between different _databases_ in Athena, but you _can_ route between different data _connections_, e.g., different regions or buckets, or different IAM users, or different data sources/catalogs.
+البته نام «database routing» در مورد Athena کمی گمراه‌کننده است، چون واژهٔ «database» در Athena بیشتر شبیه مفهوم «schema» در سایر پایگاه‌داده‌ها است. شما نمی‌توانید از database routing برای مسیردهی بین _database_های مختلف در Athena استفاده کنید، اما می‌توانید بین اتصال‌های دادهٔ مختلف مسیردهی کنید؛ مثلاً regionها یا باکت‌های متفاوت، کاربران IAM متفاوت، یا منبع‌ها/کاتالوگ‌های دادهٔ مختلف.
 
-See [Database routing](../../permissions/database-routing.md).
+[مستندات Database routing](../../permissions/database-routing.md) را ببینید.
 
 ## Danger zone
 
-See [Danger Zone](../danger-zone.md).
+[بخش Danger zone](../danger-zone.md) را ببینید.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Managing databases](../../databases/connecting.md)
-- [Metadata editing](../../data-modeling/metadata-editing.md)
-- [Models](../../data-modeling/models.md)
-- [Setting data access permissions](../../permissions/data.md)
+- [مدیریت پایگاه‌های داده](../../databases/connecting.md)
+- [ویرایش ابرداده (Metadata editing)](../../data-modeling/metadata-editing.md)
+- [مدل‌ها](../../data-modeling/models.md)
+- [تنظیم مجوزهای دسترسی به داده](../../permissions/data.md)
+
+

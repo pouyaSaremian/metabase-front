@@ -1,74 +1,74 @@
 ---
-title: Embedding introduction
+title: مقدمه‌ای بر جاسازی
 redirect_from:
   - /docs/latest/administration-guide/13-embedding
 ---
 
-# Embedding introduction
+# مقدمه‌ای بر جاسازی
 
-You can embed Metabase tables, charts, and dashboards—even Metabase's query builder—in your website or application.
+می‌توانید جداول، نمودارها و داشبوردهای متابیس—حتی سازنده پرس‌وجوی متابیس—را در وب‌سایت یا برنامه خود جاسازی کنید.
 
-Here are the different ways you can embed Metabase.
+در اینجا روش‌های مختلف جاسازی متابیس آمده است.
 
 {% include shared/in-page-promo-embedding-workshop.html %}
 
-## Embedded analytics JS
+## تجزیه و تحلیل تعبیه‌شده JS
 
-With [Embedded analytics JS](./embedded-analytics-js.md), you can embed individual Metabase components in your web app with JavaScript — no React required. Choose from dashboards, questions, or the query builder, and configure per‑component options like drill‑through, parameters, downloads, and theming. Embedded Analytics JS integrates with [SSO](securing-embeds.md) and [data permissions](../permissions/embedding.md).
+با [تجزیه و تحلیل تعبیه‌شده JS](./embedded-analytics-js.md)، می‌توانید اجزای جداگانه متابیس را در برنامه وب خود با JavaScript جاسازی کنید—بدون نیاز به React. از داشبوردها، سؤال‌ها یا سازنده پرس‌وجو انتخاب کنید و گزینه‌های هر جزء مانند حفاری، پارامترها، دانلودها و تم‌دهی را پیکربندی کنید. تجزیه و تحلیل تعبیه‌شده JS با [SSO](securing-embeds.md) و [مجوزهای داده](../permissions/embedding.md) یکپارچه می‌شود.
 
-**When to use Embedded analytics JS**: You want to [offer multi-tenant, self-service analytics](https://www.metabase.com/blog/why-full-app-embedding), you’re not using React (or want a drop‑in script) and want to embed Metabase components with per‑component controls and theming.
+**زمان استفاده از تجزیه و تحلیل تعبیه‌شده JS**: می‌خواهید [تجزیه و تحلیل چندمستأجری و خودخدمت ارائه دهید](https://www.metabase.com/blog/why-full-app-embedding)، از React استفاده نمی‌کنید (یا می‌خواهید یک اسکریپت drop‑in) و می‌خواهید اجزای متابیس را با کنترل‌های هر جزء و تم‌دهی جاسازی کنید.
 
-## Static embedding
+## جاسازی ایستا
 
-Also known as signed embedding, [static embedding](./static-embedding.md) is a secure way to embed charts and dashboards.
+همچنین به‌عنوان جاسازی امضا شده شناخته می‌شود، [جاسازی ایستا](./static-embedding.md) روشی امن برای جاسازی نمودارها و داشبوردها است.
 
-**When to use static embedding**: you don't want to offer ad-hoc querying or chart drill-through. To filter data relevant to the viewer, you can use static embeds with [locked parameters](./static-embedding-parameters.md#locked-parameters-limit-the-values-available-to-other-editable-parameters).
+**زمان استفاده از جاسازی ایستا**: نمی‌خواهید پرس‌وجوی ad-hoc یا حفاری نمودار ارائه دهید. برای فیلتر کردن داده مرتبط با بیننده، می‌توانید از جاسازی‌های ایستا با [پارامترهای قفل شده](./static-embedding-parameters.md#locked-parameters-limit-the-values-available-to-other-editable-parameters) استفاده کنید.
 
-## Public links and embeds
+## لینک‌ها و جاسازی‌های عمومی
 
-If you'd like to share your data with the good people of the internet, admins can create a [public link](./public-links.md) or embed a question or dashboard directly in your website.
+اگر می‌خواهید داده خود را با مردم خوب اینترنت به اشتراک بگذارید، مدیران می‌توانند یک [لینک عمومی](./public-links.md) ایجاد کنند یا یک سؤال یا داشبورد را مستقیماً در وب‌سایت شما جاسازی کنند.
 
-**When to use public links and embeds**: public links and embeds are good for one-off charts and dashboards. Admins can use them when you just need to show someone a chart or dashboard without giving people access to your Metabase. And you don't care who sees the data; you want to make those stats available to everyone.
+**زمان استفاده از لینک‌ها و جاسازی‌های عمومی**: لینک‌ها و جاسازی‌های عمومی برای نمودارها و داشبوردهای یک‌بار مصرف مناسب هستند. مدیران می‌توانند از آن‌ها استفاده کنند وقتی فقط نیاز دارید به کسی یک نمودار یا داشبورد نشان دهید بدون اینکه به افراد دسترسی به متابیس خود بدهید. و برایتان مهم نیست چه کسی داده را می‌بیند؛ می‌خواهید آن آمارها را در دسترس همه قرار دهید.
 
-## Interactive embedding
+## جاسازی تعاملی
 
-[Interactive embedding](./interactive-embedding.md) allows you to embed the entire Metabase app in an iframe, and integrate Metabase SSO with your app's authentication.
+[جاسازی تعاملی](./interactive-embedding.md) به شما امکان می‌دهد برنامه کامل متابیس را در یک iframe جاسازی کنید و SSO متابیس را با احراز هویت برنامه خود یکپارچه کنید.
 
-## Comparison of embedding types
+## مقایسه انواع جاسازی
 
-| Action                                                                                                                          | [React SDK](./sdk/introduction.md) | [JS](./embedded-analytics-js.md) | [Interactive](./interactive-embedding.md) | [Static](./static-embedding.md) | [Public](../embedding/public-links.md) |
+| عمل                                                                                                                              | [React SDK](./sdk/introduction.md) | [JS](./embedded-analytics-js.md) | [تعاملی](./interactive-embedding.md) | [ایستا](./static-embedding.md) | [عمومی](../embedding/public-links.md) |
 | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | -------------------------------- | ----------------------------------------- | ------------------------------- | -------------------------------------- |
-| Display charts and dashboards                                                                                                   | ✅                                 | ✅                               | ✅                                        | ✅                              | ✅                                     |
-| Display interactive [filter widgets](https://www.metabase.com/glossary/filter-widget)                                           | ✅                                 | ✅                               | ✅                                        | ✅                              | ✅                                     |
-| Export results\*                                                                                                                | ✅                                 | ✅                               | ✅                                        | ✅                              | ✅                                     |
-| Restrict data with [locked filters](./static-embedding-parameters.md#restricting-data-in-a-static-embed-with-locked-parameters) | ❌                                 | ❌                               | ❌                                        | ✅                              | ❌                                     |
-| [Data segregation](../permissions/embedding.md)                                                                                 | ✅                                 | ✅                               | ✅                                        | ❌                              | ❌                                     |
-| Use the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through)    | ✅                                 | ✅                               | ✅                                        | ❌                              | ❌                                     |
-| Self-serve via [query builder](../questions/query-builder/editor.md)                                                            | ✅                                 | ✅                               | ✅                                        | ❌                              | ❌                                     |
-| [Basic appearance customization](../configuring-metabase/appearance.md)\*\*                                                     | ✅                                 | ✅                               | ✅                                        | ✅                              | ✅                                     |
-| [Advanced theming](./sdk/appearance.md)                                                                                         | ✅                                 | ✅                               | ❌                                        | ❌                              | ❌                                     |
-| View usage of embeds with [usage analytics](../usage-and-performance-tools/usage-analytics.md)                                  | ✅                                 | ✅                               | ✅                                        | ❌                              | ❌                                     |
-| Embed individual Metabase components                                                                                            | ✅                                 | ✅                               | ❌                                        | ❌                              | ❌                                     |
-| Manage access and interactivity per component                                                                                   | ✅                                 | ✅                               | ❌                                        | ❌                              | ❌                                     |
-| Custom layouts                                                                                                                  | ✅                                 | ❌                               | ❌                                        | ❌                              | ❌                                     |
-| Customize behavior with [plugins](./sdk/plugins.md)                                                                             | ✅                                 | ❌                               | ❌                                        | ❌                              | ❌                                     |
+| نمایش نمودارها و داشبوردها                                                                                                   | ✅                                 | ✅                               | ✅                                        | ✅                              | ✅                                     |
+| نمایش [ویجت‌های فیلتر تعاملی](https://www.metabase.com/glossary/filter-widget)                                           | ✅                                 | ✅                               | ✅                                        | ✅                              | ✅                                     |
+| صادرات نتایج\*                                                                                                                | ✅                                 | ✅                               | ✅                                        | ✅                              | ✅                                     |
+| محدود کردن داده با [فیلترهای قفل شده](./static-embedding-parameters.md#restricting-data-in-a-static-embed-with-locked-parameters) | ❌                                 | ❌                               | ❌                                        | ✅                              | ❌                                     |
+| [جداسازی داده](../permissions/embedding.md)                                                                                 | ✅                                 | ✅                               | ✅                                        | ❌                              | ❌                                     |
+| استفاده از [منوی حفاری](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through)    | ✅                                 | ✅                               | ✅                                        | ❌                              | ❌                                     |
+| خودخدمت از طریق [سازنده پرس‌وجو](../questions/query-builder/editor.md)                                                            | ✅                                 | ✅                               | ✅                                        | ❌                              | ❌                                     |
+| [سفارشی‌سازی ظاهر پایه](../configuring-metabase/appearance.md)\*\*                                                     | ✅                                 | ✅                               | ✅                                        | ✅                              | ✅                                     |
+| [تم‌دهی پیشرفته](./sdk/appearance.md)                                                                                         | ✅                                 | ✅                               | ❌                                        | ❌                              | ❌                                     |
+| مشاهده استفاده از جاسازی‌ها با [تحلیل استفاده](../usage-and-performance-tools/usage-analytics.md)                                  | ✅                                 | ✅                               | ✅                                        | ❌                              | ❌                                     |
+| جاسازی اجزای جداگانه متابیس                                                                                            | ✅                                 | ✅                               | ❌                                        | ❌                              | ❌                                     |
+| مدیریت دسترسی و تعامل برای هر جزء                                                                                   | ✅                                 | ✅                               | ❌                                        | ❌                              | ❌                                     |
+| چیدمان‌های سفارشی                                                                                                                  | ✅                                 | ❌                               | ❌                                        | ❌                              | ❌                                     |
+| سفارشی‌سازی رفتار با [پلاگین‌ها](./sdk/plugins.md)                                                                             | ✅                                 | ❌                               | ❌                                        | ❌                              | ❌                                     |
 
-\* Each embedding type allows data downloads by default, but only [Pro and Enterprise](https://www.metabase.com/pricing/) plans can disable data downloads.
+\* هر نوع جاسازی به‌طور پیش‌فرض دانلود داده را مجاز می‌کند، اما فقط پلن‌های [Pro و Enterprise](https://www.metabase.com/pricing/) می‌توانند دانلود داده را غیرفعال کنند.
 
-\*\* Requires a [Pro and Enterprise](https://www.metabase.com/pricing/) plan for any embedding type.
+\*\* برای هر نوع جاسازی نیاز به پلن [Pro و Enterprise](https://www.metabase.com/pricing/) دارد.
 
-### Embedded analytics SDK vs JS
+### SDK تجزیه و تحلیل تعبیه‌شده در مقابل JS
 
-When deciding between the Embedded analytics SDK and Embedded analytics JS: if your app uses React, you should use the SDK. Otherwise, use the JS library. The JS library uses the SDK under the hood, but you can have more control with React and the SDK.
+هنگام تصمیم‌گیری بین SDK تجزیه و تحلیل تعبیه‌شده و تجزیه و تحلیل تعبیه‌شده JS: اگر برنامه شما از React استفاده می‌کند، باید از SDK استفاده کنید. در غیر این صورت، از کتابخانه JS استفاده کنید. کتابخانه JS از SDK در زیر استفاده می‌کند، اما با React و SDK کنترل بیشتری دارید.
 
-## Switching from static embedding to Embedded Analytics JS
+## تغییر از جاسازی ایستا به تجزیه و تحلیل تعبیه‌شده JS
 
-[Embedded Analytics JS](./embedded-analytics-js.md) requires authentication via single sign-on (SSO), so you'll need to set that up both in your Metabase and in your application's server. Check out our [Modular embedding authentication](../embedding/sdk/authentication.md).
+[تجزیه و تحلیل تعبیه‌شده JS](./embedded-analytics-js.md) نیاز به احراز هویت از طریق single sign-on (SSO) دارد، بنابراین باید آن را هم در متابیس و هم در سرور برنامه خود راه‌اندازی کنید. [احراز هویت جاسازی ماژولار](../embedding/sdk/authentication.md) ما را بررسی کنید.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Strategies for delivering customer-facing analytics](https://www.metabase.com/learn/metabase-basics/embedding/overview).
-- [Publishing data visualizations to the web](https://www.metabase.com/learn/metabase-basics/embedding/charts-and-dashboards).
-- [Multi-tenant self-service analytics](https://www.metabase.com/learn/metabase-basics/embedding/multi-tenant-self-service-analytics).
-- [Customizing Metabase's appearance](../configuring-metabase/appearance.md).
-- [Securing embedded Metabase](./securing-embeds.md)
+- [استراتژی‌های ارائه تجزیه و تحلیل مشتری‌محور](https://www.metabase.com/learn/metabase-basics/embedding/overview).
+- [انتشار تجسم داده‌ها در وب](https://www.metabase.com/learn/metabase-basics/embedding/charts-and-dashboards).
+- [تجزیه و تحلیل خودخدمت چندمستأجری](https://www.metabase.com/learn/metabase-basics/embedding/multi-tenant-self-service-analytics).
+- [سفارشی‌سازی ظاهر متابیس](../configuring-metabase/appearance.md).
+- [ایمن‌سازی متابیس جاسازی‌شده](./securing-embeds.md)

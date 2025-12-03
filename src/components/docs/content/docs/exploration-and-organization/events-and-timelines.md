@@ -1,127 +1,129 @@
 ---
-title: Events and timelines
+title: رویدادها و جدول‌های زمانی
 redirect_from:
   - /docs/latest/users-guide/events-and-timelines
 ---
 
-# Events and timelines
+# رویدادها و جدول‌های زمانی
 
-A lot of discussions around data have a moment when someone has a question related to a specific point in time: "Wait, what's the spike in March again?", or "When did the new widget launch?"
+در بسیاری از گفتگوها دربارهٔ داده، معمولاً لحظه‌ای پیش می‌آید که کسی سؤالی دربارهٔ یک نقطهٔ زمانی خاص می‌پرسد: «صبر کن، این قلهٔ نمودار در ماه مارس برای چی بود؟» یا «دقیقاً کی ویجت جدید لانچ شد؟».
 
-Events and timelines are a way to capture that chronological knowledge and make it available when you need it, in context (that is, when you're viewing a chart). Events are a great way to store institutional knowledge about what happened and when, so people (including yourself three months from now) won't have to figure out (again) why the line chart spiked back in March.
+رویدادها (Events) و جدول‌های زمانی (Timelines) راهی هستند برای ثبت این دانش زمانی و در دسترس گذاشتن آن دقیقاً همان‌جایی که لازم است (یعنی هنگام مشاهدهٔ نمودار). رویدادها راه خیلی خوبی برای ذخیرهٔ دانش سازمانی در مورد این‌که چه اتفاقی چه زمانی افتاده هستند، تا دیگر لازم نباشد (خودتان، سه ماه بعد) دوباره کشف کنید که چرا خط نمودار در ماه مارس ناگهان بالا رفته است.
 
-## Events
+## رویدادها (Events)
 
 ![An event on a time series](./images/event-on-a-time-series.png)
 
-An event is basically a date + a title + a description + an icon. You can add events to Metabase to show important milestones, launches, or anything else, right alongside your data.
+یک Event در اصل ترکیبی است از «تاریخ + عنوان + توضیح + آیکون». می‌توانید در متابیس رویدادهایی اضافه کنید تا نقاط عطف مهم، لانچ‌ها یا هر اتفاق مهم دیگری را دقیقاً کنار داده‌هایتان نمایش دهید.
 
-Metabase will only display events on time series charts when viewing an individual question. Metabase won't display events on charts in dashboard cards.
+متابیس رویدادها را فقط روی نمودارهای سری زمانی، هنگام مشاهدهٔ یک سؤال تکی نمایش می‌دهد. رویدادها روی نمودارهایی که داخل کارت‌های داشبورد هستند نمایش داده نمی‌شوند.
 
-## Timelines
+## جدول‌های زمانی (Timelines)
 
-Timelines are groups of events associated with a [collection](collections.md).
+Timeline مجموعه‌ای از رویدادها است که به یک [کالکشن](collections.md) نسبت داده شده‌اند.
 
 ![Timeline sidebar](./images/timeline-sidebar.png)
 
-For example, you may want to have a timeline that contains important email or sales dates, or an outages timeline that tracks downtime. You can move events between timelines, and move timelines from collection to collection.
+مثلاً ممکن است بخواهید یک timeline بسازید که تاریخ‌های مهم ایمیل‌ها یا کمپین‌های فروش را در خود نگه دارد، یا یک timeline مخصوص outageها برای پایش زمان‌های قطعی سیستم. می‌توانید رویدادها را بین timelineها جابه‌جا کنید و خود timelineها را بین کالکشن‌ها منتقل کنید.
 
-Collections can have timelines, and timelines can contain events. In practice what this means is that events you've added to a timeline will show up on time series questions stored in the same collection as that timeline.
+کالکشن‌ها می‌توانند timeline داشته باشند و timelineها هم می‌توانند رویداد داشته باشند. در عمل یعنی رویدادهایی که به یک timeline اضافه می‌کنید روی نمودارهای سری زمانی‌ای که در همان کالکشن ذخیره شده‌اند نمایش داده می‌شوند.
 
-- If you don't explicitly create a timeline yet, but you do create events, Metabase will automatically create a timeline for you (which acts as the default timeline for the collection).
-- You can have multiple timelines for the same collection.
-- Timelines associated with collections do not apply to that collection's sub-collections.
+- اگر هنوز هیچ timelineای به‌صورت صریح نساخته‌اید، اما Event ایجاد کنید، متابیس به‌طور خودکار یک timeline برایتان می‌سازد (که به‌عنوان timeline پیش‌فرض آن کالکشن عمل می‌کند).
+- می‌توانید برای یک کالکشن چندین timeline داشته باشید.
+- timelineهایی که به یک کالکشن نسبت داده شده‌اند به زیرمجموعه‌های آن کالکشن اعمال نمی‌شوند.
 
-### Adding events when viewing a collection
+### افزودن رویداد هنگام مشاهدهٔ یک کالکشن
 
-When viewing a [collection](collections.md), you can view, add, or edit events by clicking on the **calendar** icon in the upper right.
+وقتی یک [کالکشن](collections.md) را می‌بینید، می‌توانید با کلیک روی آیکون **تقویم** در بالا سمت راست، رویدادها را ببینید، اضافه کنید یا ویرایش کنید.
 
 ![In a collection, view or add events by clicking on the calendar icon](./images/event-calendar.png)
 
-Once you create an event, the event will show up in charts in the collection, provided:
+بعد از ایجاد یک رویداد، آن رویداد روی نمودار‌های داخل آن کالکشن نشان داده می‌شود، به‌شرط این‌که:
 
-- The date of the event falls within the chart's time range.
-- The timeline is visible (more on that [below](#adding-events-when-viewing-a-question)).
+- تاریخ رویداد داخل بازهٔ زمانی نمودار باشد.
+- timeline مربوطه قابل‌نمایش (visible) باشد (بخش [افزودن رویداد هنگام مشاهدهٔ سؤال](#افزودن-رویداد-هنگام-مشاهدهٔ-یک-سؤال) را ببینید).
 
-You'll see an icon along the x-axis that plots the event. A vertical line will extend from the event to show when the data plotted on the chart intersects with the event.
+روی محور x نمودار، آیکونی می‌بینید که محل رویداد را نشان می‌دهد. یک خط عمودی از روی آن آیکون تا منحنی نمودار کشیده می‌شود تا جایی که داده‌های نمودار با آن رویداد تلاقی می‌کنند مشخص شود.
 
 ![An event on a chart](./images/example-event.png)
 
-## Adding events when viewing a question
+## افزودن رویداد هنگام مشاهدهٔ یک سؤال
 
-If your question is a time series, you can click on the **Calendar** in the bottom right of the question, and Metabase will open the timeline sidebar. Metabase will list any timelines and their events that fall in the range of your time series. You can:
+اگر سؤال شما یک نمودار سری زمانی باشد، می‌توانید روی آیکون **تقویم** در پایین سمت راست سؤال کلیک کنید تا نوار کناری timeline باز شود. متابیس همهٔ timelineها و رویدادهایی را که در بازهٔ زمانی نمودار شما قرار می‌گیرند فهرست می‌کند. در این نوار می‌توانید:
 
-- Toggle timeline visibility (including timelines from other collections)
-- Add a new event (even if you haven't saved the question yet).
-- Edit, move, or archive an event.
+- نمایش یا عدم‌نمایش timelineها را (از جمله timelineهای کالکشن‌های دیگر) تغییر دهید،
+- یک رویداد جدید اضافه کنید (حتی اگر خود سؤال را هنوز ذخیره نکرده‌اید)،
+- یک رویداد را ویرایش، جابه‌جا یا آرشیو کنید.
 
-## Viewing events and timelines on a chart from a different collection
+## دیدن رویدادها و timelineها روی نمودارِ یک کالکشن دیگر
 
-If you're viewing a question with a time series chart from a _different_ collection, you can temporarily apply a timeline to the chart by clicking on the **calendar** icon in the bottom right of the question and selecting the timeline and events you want to display.
+اگر سؤال شما یک نمودار سری زمانی باشد و آن را از یک کالکشن _دیگر_ باز کرده باشید، می‌توانید یک timeline را به‌صورت موقت روی آن نمودار اعمال کنید: روی آیکون **تقویم** در پایین سمت راست سؤال کلیک کنید و timeline و رویدادهایی را که می‌خواهید نمایش داده شوند انتخاب کنید.
 
-These selections are temporary; if you reload the question, Metabase will drop the events from the chart.
+این انتخاب‌ها موقتی هستند؛ اگر سؤال را دوباره بارگذاری کنید، متابیس آن رویدادها را از روی نمودار حذف می‌کند.
 
-### To hide the timeline and its events on a chart
+### مخفی کردن timeline و رویدادهای آن روی یک نمودار
 
-To temporarily hide the events from a chart:
+برای مخفی‌کردن موقت رویدادها از روی نمودار:
 
-1. Click on the **calendar** icon in the bottom right.
-2. Uncheck the timeline or event.
+1. روی آیکون **تقویم** در پایین سمت راست کلیک کنید.
+2. تیک timeline یا رویداد مربوطه را بردارید.
 
-Your selections will reset on reload.
+با هر بار رفرش صفحه، این انتخاب‌ها ریست می‌شوند.
 
-To permanently hide the timeline and its events, you'll need to [archive the timeline](#archiving-timelines). Alternatively, you could move the question to a different collection.
+برای مخفی‌کردن دائمی یک timeline و رویدادهای آن، باید [timeline را آرشیو کنید](#آرشیو-کردن-timelineها). یا می‌توانید خود سؤال را به یک کالکشن دیگر منتقل کنید.
 
-## Edit an event
+## ویرایش یک رویداد
 
 ![Edit an event](./images/edit-an-event.png)
 
-To edit an event:
+برای ویرایش یک Event:
 
-1. Click the calendar icon in the top right of a collection.
-2. Go to the timeline that contains the event, click on the event's three-dot menu (**...**).
-3. Select:
-   - **Edit event**: its title, description, and icon.
-   - **Move event**: to another timeline.
-   - **Archive event**: to hide the event from charts.
+1. در صفحهٔ کالکشن روی آیکون تقویم در بالا سمت راست کلیک کنید.
+2. timelineی را که رویداد در آن قرار دارد باز کنید، روی منوی سه‌نقطه‌ای (**...**) رویداد کلیک کنید.
+3. یکی از گزینه‌های زیر را انتخاب کنید:
+   - **Edit event**: ویرایش عنوان، توضیح و آیکون رویداد.
+   - **Move event**: جابه‌جایی رویداد به یک timeline دیگر.
+   - **Archive event**: مخفی‌کردن رویداد از روی نمودارها.
 
-## Archiving timelines
+## آرشیو کردن timelineها
 
-To archive a timeline:
+برای آرشیو کردن یک timeline:
 
-1. Go to the timeline's collection and click on the **calendar** icon in the top right.
-2. Select the timeline, then click on the three-dot menu (**...**). If the collection only has one timeline, click on the three-dot menu (**...**).
-3. Select **Edit timeline details**.
-4. Click on the red **Archive timeline and all events**.
+1. به کالکشن مربوطه بروید و روی آیکون **تقویم** در بالا سمت راست کلیک کنید.
+2. timeline مورد نظر را انتخاب کنید، سپس روی منوی سه‌نقطه‌ای (**...**) کلیک کنید. اگر کالکشن فقط یک timeline دارد، همان منوی سه‌نقطه‌ای را بزنید.
+3. گزینهٔ **Edit timeline details** را انتخاب کنید.
+4. روی دکمهٔ قرمز **Archive timeline and all events** کلیک کنید.
 
-### View archived events and timelines
+### دیدن timelineها و رویدادهای آرشیوشده
 
-> Archived events and timelines can only be viewed from the collection. They don't show up in the [Trash](../exploration-and-organization/delete-and-restore.md).
+> timelineها و رویدادهای آرشیوشده فقط از داخل همان کالکشن قابل‌مشاهده‌اند و در [سطل زباله](../exploration-and-organization/delete-and-restore.md) نمایش داده نمی‌شوند.
 
-To view (and resurrect) archived timelines and events:
+برای دیدن (و برگرداندن) timelineها و رویدادهای آرشیوشده:
 
-1. Click on the **Calendar** icon in the relevant collection.
-2. Click on the three-dot menu **...** menu.
-3. Select **View archived timelines**. Metabase will display archived events or timelines.
-4. If you want to unarchive an item, click on the three-dot menu **...** next to the event or timeline and select the **Unarchive** option.
+1. در کالکشن مرتبط، روی آیکون **تقویم** کلیک کنید.
+2. روی منوی سه‌نقطه‌ای (**...**) کلیک کنید.
+3. گزینهٔ **View archived timelines** را انتخاب کنید. متابیس timelineها و رویدادهای آرشیوشده را نمایش می‌دهد.
+4. اگر می‌خواهید موردی را از آرشیو خارج کنید، روی منوی سه‌نقطه‌ای (**...**) کنار آن رویداد یا timeline کلیک کنید و گزینهٔ **Unarchive** را بزنید.
 
-To permanently delete an archived event or timeline, click on the three-dot menu (**...**) and select **Delete**.
+برای حذف دائمی یک رویداد یا timeline آرشیوشده، روی منوی سه‌نقطه‌ای (**...**) کلیک و گزینهٔ **Delete** را انتخاب کنید.
 
-Then you can delete the archived events from the **View archived events** modal, or timelines from the **View archived timelines** modal.
+بعد از آن، می‌توانید رویدادهای آرشیوشده را از modal **View archived events** و timelineها را از modal **View archived timelines** حذف کنید.
 
-## Event and timeline permissions
+## مجوزهای Event و Timeline
 
-Event and timeline permissions depend on your [collection permissions](../permissions/collections.md).
+مجوزهای مربوط به رویدادها و timelineها وابسته به [مجوزهای کالکشن](../permissions/collections.md) هستند.
 
-- **View access**: you can view the collection's events and timelines. You can also temporarily apply timelines and events to time series in other collections.
-- **Curate access**. Anyone with curate access to a collection can add events and timelines to that collection.
+- **دسترسی View**: می‌توانید رویدادها و timelineهای کالکشن را ببینید و همچنین timelineها و رویدادها را به‌صورت موقت روی نمودارهای سری زمانی در کالکشن‌های دیگر اعمال کنید.
+- **دسترسی Curate**: هر کسی که در کالکشن دسترسی Curate داشته باشد، می‌تواند در آن کالکشن رویداد و timeline اضافه کند.
 
-### Make a timeline and its events available for everyone
+### در دسترس قرار دادن یک timeline و رویدادهای آن برای همه
 
-If you want the event and timeline to be available to everyone, create the timeline in a collection that the [All Users group](../people-and-groups/managing.md#all-users) has access to, as by default everyone is in the All Users group.
+اگر می‌خواهید یک timeline و رویدادهایش برای همهٔ کاربران در دسترس باشد، آن timeline را در کالکشنی بسازید که [گروه All Users](../people-and-groups/managing.md#all-users) به آن دسترسی دارد، چون به‌طور پیش‌فرض همه در گروه All Users عضو هستند.
 
-Note that for questions outside of that collection, you can only temporarily apply those timelines to charts. The timelines won't appear automatically when you reload the chart.
+توجه کنید که برای سؤال‌هایی خارج از آن کالکشن، فقط می‌توانید این timelineها را به‌صورت موقت روی نمودار اعمال کنید. بعد از رفرش، این timelineها دوباره روی نمودار ظاهر نمی‌شوند.
 
-## Further reading
+## مطالعهٔ بیشتر
 
-- [Keeping your Metabase organized](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/same-page)
+- [مرتب و منظم نگه داشتن متابیس](https://www.metabase.com/learn/metabase-basics/administration/administration-and-operation/same-page)
+
+

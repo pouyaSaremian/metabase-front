@@ -1,74 +1,74 @@
 ---
-title: Public sharing
+title: اشتراک‌گذاری عمومی
 redirect_from:
   - /docs/latest/administration-guide/12-public-links
   - /docs/latest/embedding/12-public-links
 ---
 
-# Public sharing
+# اشتراک‌گذاری عمومی
 
-> Only admins can create public links and iframes.
+> فقط مدیران می‌توانند لینک‌های عمومی و iframeها را ایجاد کنند.
 
-Admins can create and share public links (URLs) for questions, dashboards, and documents. People can view them as standalone destinations (URLs) or as embedded iframes in another page or app. Public items display view-only results of your question, dashboard, or document, so visitors won't be able to drill down into the underlying data on their own.
+مدیران می‌توانند لینک‌های عمومی (URLها) برای سؤال‌ها، داشبوردها و اسناد ایجاد و به اشتراک بگذارند. افراد می‌توانند آن‌ها را به عنوان مقاصد مستقل (URLها) یا به عنوان iframeهای جاسازی شده در صفحه یا برنامه دیگری مشاهده کنند. موارد عمومی نتایج فقط-مشاهده سؤال، داشبورد یا سند شما را نمایش می‌دهند، بنابراین بازدیدکنندگان نمی‌توانند به داده‌های زیربنایی به تنهایی حفاری کنند.
 
-## Create a public link for a question
+## ایجاد یک لینک عمومی برای یک سؤال
 
 ![Create a public link for a question](./images/create-a-public-link.png)
 
-To create a public link for a question, admins can click on the **Sharing** icon at the top right of a question and select **Create a public link**. Copy the link and test it out by viewing the link in a private/incognito browser session.
+برای ایجاد یک لینک عمومی برای یک سؤال، مدیران می‌توانند روی آیکون **Sharing** در بالا سمت راست یک سؤال کلیک کنند و **Create a public link** را انتخاب کنند. لینک را کپی کنید و با مشاهده لینک در یک جلسه مرورگر خصوصی/ناشناس آن را تست کنید.
 
-## Public link to export question results in CSV, XLSX, JSON
+## لینک عمومی برای صادرات نتایج سؤال در CSV، XLSX، JSON
 
-This export option is only available for questions, not dashboards.
+این گزینه صادرات فقط برای سؤال‌ها در دسترس است، نه داشبوردها.
 
-To create a public link that people can use to download the results of a question:
+برای ایجاد یک لینک عمومی که افراد می‌توانند از آن برای دانلود نتایج یک سؤال استفاده کنند:
 
-1. Click on the **Sharing** icon for the question.
-2. Select **Create a public link**.
-3. Click on the file format you want (below the **Public link** URL): CSV, XLSX, or JSON.
+۱. روی آیکون **Sharing** برای سؤال کلیک کنید.
+۲. **Create a public link** را انتخاب کنید.
+۳. روی فرمت فایلی که می‌خواهید (زیر URL **Public link**) کلیک کنید: CSV، XLSX، یا JSON.
 
 ![Public export](./images/public-export.png)
 
-Open the public link in a new tab to test the download.
+لینک عمومی را در یک تب جدید باز کنید تا دانلود را تست کنید.
 
-## Create a public link for a dashboard
+## ایجاد یک لینک عمومی برای یک داشبورد
 
-To share a dashboard via a public link, admins can click on the **Sharing** button in the top right menu.
+برای به اشتراک گذاشتن یک داشبورد از طریق یک لینک عمومی، مدیران می‌توانند روی دکمه **Sharing** در منوی بالا سمت راست کلیک کنند.
 
 ![Sharing a dashboard](./images/dashboard-sharing.png)
 
-To embed a dashboard, see [static embedding](./static-embedding.md).
+برای جاسازی یک داشبورد، [جاسازی ایستا](./static-embedding.md) را ببینید.
 
-## Create a public link for a document
+## ایجاد یک لینک عمومی برای یک سند
 
-To share a document via a public link, admins can click on the **Sharing** button in the top right menu and select **Create a public link**.
+برای به اشتراک گذاشتن یک سند از طریق یک لینک عمومی، مدیران می‌توانند روی دکمه **Sharing** در منوی بالا سمت راست کلیک کنند و **Create a public link** را انتخاب کنند.
 
-Public documents are read-only: viewers cannot edit the content or add comments. For charts embedded in the document, viewers can download the results in CSV, XLSX, or JSON format using the **Download results** option in the chart menu.
+اسناد عمومی فقط-خواندنی هستند: بینندگان نمی‌توانند محتوا را ویرایش کنند یا نظرات اضافه کنند. برای نمودارهای جاسازی شده در سند، بینندگان می‌توانند نتایج را در فرمت CSV، XLSX، یا JSON با استفاده از گزینه **Download results** در منوی نمودار دانلود کنند.
 
-## Exporting raw, unformatted question results
+## صادرات نتایج سؤال خام و بدون فرمت
 
-To export the raw, unformatted rows, you'll need to append `?format_rows=false` to the URL Metabase generates. For example, if you create a public link for a CSV download, the URL would look like:
+برای صادرات ردیف‌های خام و بدون فرمت، باید `?format_rows=false` را به URL تولید شده توسط متابیس اضافه کنید. به عنوان مثال، اگر یک لینک عمومی برای دانلود CSV ایجاد کنید، URL به این شکل خواهد بود:
 
 ```html
 https://www.example.com/public/question/cf347ce0-90bb-4669-b73b-56c73edd10cb.csv?format_rows=false
 ```
 
-By default, Metabase will export the results of a question that include any formatting you added (for example, if you formatted a column with floats to display as a percentage (0.42 -> 42%)).
+به‌طور پیش‌فرض، متابیس نتایج یک سؤال را که شامل هر فرمت‌دهی که اضافه کرده‌اید صادر می‌کند (به عنوان مثال، اگر یک ستون را با floatها فرمت کرده‌اید تا به صورت درصد نمایش داده شود (0.42 -> 42%)).
 
-See docs for the [export format endpoint](https://www.metabase.com/docs/latest/api#tag/public/GET/public/card/{uuid}/query/{export-format}).
+مستندات [endpoint فرمت صادرات](https://www.metabase.com/docs/latest/api#tag/public/GET/public/card/{uuid}/query/{export-format}) را ببینید.
 
-## Simulating drill-through with public links
+## شبیه‌سازی حفاری با لینک‌های عمومی
 
-Metabase's automatic [drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) won't work on public dashboards because public links don't give people access to your raw data.
+[حفاری خودکار](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) متابیس در داشبوردهای عمومی کار نمی‌کند زیرا لینک‌های عمومی به افراد دسترسی به داده خام شما را نمی‌دهند.
 
-You can simulate drill-through on a public dashboard by setting up a [custom click behavior](../dashboards/interactive.md) that sends people from one public link to another public link.
+می‌توانید حفاری را در یک داشبورد عمومی با راه‌اندازی یک [رفتار کلیک سفارشی](../dashboards/interactive.md) که افراد را از یک لینک عمومی به لینک عمومی دیگر می‌فرستد شبیه‌سازی کنید.
 
-1. Create a second dashboard to act as the destination dashboard.
-2. [Create a public link](#create-a-public-link-for-a-dashboard) for the destination dashboard.
-3. Copy the destination dashboard's public link.
-4. On your primary dashboard, create a [custom destination](../dashboards/interactive.md#custom-destinations) with type "URL".
-5. Set the custom destination to the destination dashboard's public link.
-6. Optional: pass a filter value from the primary dashboard to the destination dashboard by adding a query parameter to the end of the destination URL:
+۱. یک داشبورد دوم به عنوان داشبورد مقصد ایجاد کنید.
+۲. [یک لینک عمومی ایجاد کنید](#create-a-public-link-for-a-dashboard) برای داشبورد مقصد.
+۳. لینک عمومی داشبورد مقصد را کپی کنید.
+۴. در داشبورد اصلی خود، یک [مقصد سفارشی](../dashboards/interactive.md#custom-destinations) با نوع "URL" ایجاد کنید.
+۵. مقصد سفارشی را روی لینک عمومی داشبورد مقصد تنظیم کنید.
+۶. اختیاری: یک مقدار فیلتر را از داشبورد اصلی به داشبورد مقصد با افزودن یک پارامتر query به انتهای URL مقصد ارسال کنید:
 
 ```
 {% raw %}
@@ -76,122 +76,122 @@ You can simulate drill-through on a public dashboard by setting up a [custom cli
 {% endraw %}
 ```
 
-For example, if you have a primary public dashboard that displays **Invoices** data, you can pass the **Plan** name (on click) to a destination public dashboard that displays **Accounts** data:
+به عنوان مثال، اگر یک داشبورد عمومی اصلی دارید که داده **Invoices** را نمایش می‌دهد، می‌توانید نام **Plan** (با کلیک) را به یک داشبورد عمومی مقصد که داده **Accounts** را نمایش می‌دهد ارسال کنید:
 
 ![Public link with custom destination](./images/public-link-custom-destination.png)
 
-## Public embeds
+## جاسازی‌های عمومی
 
 ![Public embed](./images/public-embed.png)
 
-If you want to embed your question or dashboard as an iframe in a simple web page or app:
+اگر می‌خواهید سؤال یا داشبورد خود را به عنوان یک iframe در یک صفحه وب ساده یا برنامه جاسازی کنید:
 
-1. Click on the **Sharing** icon for your question or dashboard.
-2. Click **Embed**.
-3. In the bottom of the embedding popup, click on **Get embedding code**.
-4. Copy the iframe snippet Metabase generates for you.
-5. Paste the iframe snippet in your destination of choice.
+۱. روی آیکون **Sharing** برای سؤال یا داشبورد خود کلیک کنید.
+۲. **Embed** را کلیک کنید.
+۳. در پایین popup جاسازی، روی **Get embedding code** کلیک کنید.
+۴. قطعه iframe تولید شده توسط متابیس را کپی کنید.
+۵. قطعه iframe را در مقصد انتخابی خود جایگذاری کنید.
 
-To customize the appearance of your question or dashboard, you can update the link in the `src` attribute with [public embed parameters](#public-embed-parameters).
+برای سفارشی کردن ظاهر سؤال یا داشبورد خود، می‌توانید لینک در ویژگی `src` را با [پارامترهای جاسازی عمومی](#public-embed-parameters) به‌روزرسانی کنید.
 
-## Public embed parameters
+## پارامترهای جاسازی عمومی
 
-To apply appearance or filter settings to your public embed, you can add parameters to the end of the link in your iframe's `src` attribute.
+برای اعمال تنظیمات ظاهر یا فیلتر به جاسازی عمومی خود، می‌توانید پارامترها را به انتهای لینک در ویژگی `src` iframe خود اضافه کنید.
 
-Note that it's possible to find the public link URL behind a public embed. If someone gets access to the public link URL, they can remove the parameters from the URL to view the original question or dashboard (that is, without any appearance or filter settings).
+توجه داشته باشید که پیدا کردن URL لینک عمومی پشت یک جاسازی عمومی ممکن است. اگر کسی به URL لینک عمومی دسترسی پیدا کند، می‌تواند پارامترها را از URL حذف کند تا سؤال یا داشبورد اصلی را مشاهده کند (یعنی بدون هیچ تنظیمات ظاهر یا فیلتر).
 
-If you'd like to create a secure embed that prevents people from changing filter names or values, check out [static embedding](./static-embedding.md).
+اگر می‌خواهید یک جاسازی امن ایجاد کنید که از تغییر نام‌ها یا مقادیر فیلتر توسط افراد جلوگیری می‌کند، [جاسازی ایستا](./static-embedding.md) را بررسی کنید.
 
-## Appearance parameters
+## پارامترهای ظاهر
 
-To toggle appearance settings, add _hash_ parameters to the end of the public link in your iframe's `src` attribute.
+برای تغییر تنظیمات ظاهر، پارامترهای _hash_ را به انتهای لینک عمومی در ویژگی `src` iframe خود اضافه کنید.
 
-See [appearance parameters](./static-embedding-parameters.md#customizing-the-appearance-of-a-static-embed).
+[پارامترهای ظاهر](./static-embedding-parameters.md#customizing-the-appearance-of-a-static-embed) را ببینید.
 
-## Filter parameters
+## پارامترهای فیلتر
 
-You can display a filtered view of your question or dashboard in a public embed. Make sure you've set up a [question filter](../questions/query-builder/filters.md) or [dashboard filter](../dashboards/filters.md) first.
+می‌توانید یک نمای فیلتر شده از سؤال یا داشبورد خود را در یک جاسازی عمومی نمایش دهید. مطمئن شوید که ابتدا یک [فیلتر سؤال](../questions/query-builder/filters.md) یا [فیلتر داشبورد](../dashboards/filters.md) راه‌اندازی کرده‌اید.
 
-To apply a filter to your embedded question or dashboard, add a _query_ parameter to the end of the link in your iframe's `src` attribute, like this:
+برای اعمال یک فیلتر به سؤال یا داشبورد جاسازی شده خود، یک پارامتر _query_ به انتهای لینک در ویژگی `src` iframe خود اضافه کنید، مانند این:
 
 ```
 /dashboard/42?filter_name=value
 ```
 
-For example, say that we have a dashboard with an "ID" filter. We can give this filter a value of 7:
+به عنوان مثال، بگویید که یک داشبورد با یک فیلتر "ID" داریم. می‌توانیم به این فیلتر مقدار 7 بدهیم:
 
 ```
 /dashboard/42?id=7
 ```
 
-To set the "ID" filter to a value of 7 _and_ hide the "ID" filter widget from the public embed:
+برای تنظیم فیلتر "ID" روی مقدار 7 _و_ مخفی کردن ویجت فیلتر "ID" از جاسازی عمومی:
 
 ```
 /dashboard/42?id=7#hide_parameters=id
 ```
 
-To specify multiple values for filters, separate the values with ampersands (&), like this:
+برای مشخص کردن چندین مقدار برای فیلترها، مقادیر را با ampersand (&) جدا کنید، مانند این:
 
 ```
 /dashboard/42?id=7&name=janet
 ```
 
-You can hide multiple filter widgets by separating the filter names with commas, like this:
+می‌توانید چندین ویجت فیلتر را با جدا کردن نام‌های فیلتر با کاما مخفی کنید، مانند این:
 
 ```
 /dashboard/42#hide_parameters=id,customer_name
 ```
 
-Note that the name of the filter in the URL should be specified in lower case, and with underscores instead of spaces. If your filter is called "Filter for User ZIP Code", you'd write:
+توجه داشته باشید که نام فیلتر در URL باید با حروف کوچک و با underscore به جای فاصله مشخص شود. اگر فیلتر شما "Filter for User ZIP Code" نام دارد، می‌نویسید:
 
 ```
 /dashboard/42?filter_for_user_zip_code=02116
 ```
 
-## Disable public sharing
+## غیرفعال کردن اشتراک‌گذاری عمومی
 
-Public sharing is enabled by default.
+اشتراک‌گذاری عمومی به‌طور پیش‌فرض فعال است.
 
 ![Enable public sharing](./images/enable-public-sharing.png)
 
-To disable public sharing:
+برای غیرفعال کردن اشتراک‌گذاری عمومی:
 
-1. Click on the **Gear** icon in the upper right.
-2. Select **Admin settings**.
-3. In the **Settings** tab, select **Public sharing**.
-4. Toggle off **Public sharing**.
+۱. روی آیکون **Gear** در بالا سمت راست کلیک کنید.
+۲. **Admin settings** را انتخاب کنید.
+۳. در تب **Settings**، **Public sharing** را انتخاب کنید.
+۴. **Public sharing** را خاموش کنید.
 
-Once toggled on, the **Public sharing** section will display Metabase questions, dashboards, documents, and actions with active public links.
+پس از روشن شدن، بخش **Public sharing** سؤال‌ها، داشبوردها، اسناد و اکشن‌های متابیس با لینک‌های عمومی فعال را نمایش می‌دهد.
 
-If you disable public sharing, then re-enable public sharing, all your previously generated public links will still work (as long as you didn't deactivate them).
+اگر اشتراک‌گذاری عمومی را غیرفعال کنید، سپس دوباره فعال کنید، همه لینک‌های عمومی قبلاً تولید شده شما همچنان کار می‌کنند (تا زمانی که آن‌ها را غیرفعال نکرده باشید).
 
-## Deactivating public links and embeds
+## غیرفعال کردن لینک‌ها و جاسازی‌های عمومی
 
-### Individual question or dashboard links and embeds
+### لینک‌ها و جاسازی‌های سؤال یا داشبورد فردی
 
-1. Visit the question or dashboard.
-2. Click on **Sharing** icon.
-3. Select **Public link** or **Embed**.
-4. Click **Remove public link**.
+۱. به سؤال یا داشبورد بروید.
+۲. روی آیکون **Sharing** کلیک کنید.
+۳. **Public link** یا **Embed** را انتخاب کنید.
+۴. **Remove public link** را کلیک کنید.
 
-## Deactivating multiple public links and embeds
+## غیرفعال کردن چندین لینک و جاسازی عمومی
 
-Admins can view and deactivate all public links for a Metabase.
+مدیران می‌توانند همه لینک‌های عمومی برای یک متابیس را مشاهده و غیرفعال کنند.
 
-1. Click on the **gear** icon in the upper right.
-2. Select **Admin settings**.
-3. Go to the **Settings** tab.
-4. Go to the **Public sharing** tab in the left sidebar.
-5. For each item you want to deactivate, click on the **X** to revoke its public link.
+۱. روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید.
+۲. **Admin settings** را انتخاب کنید.
+۳. به تب **Settings** بروید.
+۴. به تب **Public sharing** در sidebar سمت چپ بروید.
+۵. برای هر موردی که می‌خواهید غیرفعال کنید، روی **X** کلیک کنید تا لینک عمومی آن را لغو کنید.
 
-## See all publicly shared content
+## مشاهده همه محتوای به اشتراک گذاشته شده عمومی
 
-Admins can see all publicly shared questions, dashboards, documents, and actions in **Admin Settings > Public Sharing**.
+مدیران می‌توانند همه سؤال‌ها، داشبوردها، اسناد و اکشن‌های به اشتراک گذاشته شده عمومی را در **Admin Settings > Public Sharing** ببینند.
 
 ![See shared content](./images/see-shared-content.png)
 
-## Further reading
+## مطالعه بیشتر
 
-- [Publishing data visualizations to the web](https://www.metabase.com/learn/metabase-basics/embedding/charts-and-dashboards).
-- [Customizing Metabase's appearance](../configuring-metabase/appearance.md).
-- [Embedding introduction](../embedding/start.md).
+- [انتشار تجسم داده‌ها در وب](https://www.metabase.com/learn/metabase-basics/embedding/charts-and-dashboards).
+- [سفارشی‌سازی ظاهر متابیس](../configuring-metabase/appearance.md).
+- [مقدمه جاسازی](../embedding/start.md).

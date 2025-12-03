@@ -1,48 +1,48 @@
 ---
-title: Translate embedded dashboards and questions
-summary: Upload a translation dictionary to translate questions and dashboards into different languages. Only available for static embeds.
+title: ترجمه داشبوردها و سؤال‌های جاسازی شده
+summary: آپلود یک فرهنگ لغت ترجمه برای ترجمه سؤال‌ها و داشبوردها به زبان‌های مختلف. فقط برای جاسازی‌های ایستا در دسترس است.
 ---
 
-# Translate embedded dashboards and questions
+# ترجمه داشبوردها و سؤال‌های جاسازی شده
 
 {% include plans-blockquote.html feature="Translation of embedded content" convert_pro_link_to_embbedding=true %}
 
-For now, translations are only available for [static embeds](./static-embedding.md), not Interactive embedding or the Embedded analytics JS/SDK.
+در حال حاضر، ترجمه‌ها فقط برای [جاسازی‌های ایستا](./static-embedding.md) در دسترس هستند، نه جاسازی تعاملی یا تجزیه و تحلیل تعبیه‌شده JS/SDK.
 
-You can upload a translation dictionary to translate strings both in Metabase content (like dashboard titles) and in the data itself (like column names and values).
+می‌توانید یک فرهنگ لغت ترجمه را برای ترجمه رشته‌ها هم در محتوای متابیس (مانند عنوان‌های داشبورد) و هم در خود داده (مانند نام‌های ستون و مقادیر) آپلود کنید.
 
-## Add a translation dictionary
+## افزودن یک فرهنگ لغت ترجمه
 
-The dictionary must be a CSV with these columns:
+فرهنگ لغت باید یک CSV با این ستون‌ها باشد:
 
-- **Language** with the locale code
-- **String** with the string to be translated
+- **Language** با کد زبان محلی
+- **String** با رشته برای ترجمه
 - **Translation**
 
-> Don't put any sensitive data in the dictionary, since anyone can see the dictionary—including viewers of public links.
+> هیچ داده حساسی را در فرهنگ لغت قرار ندهید، زیرا هر کسی می‌تواند فرهنگ لغت را ببیند—از جمله بینندگان لینک‌های عمومی.
 
-To add a translation dictionary:
+برای افزودن یک فرهنگ لغت ترجمه:
 
-1. Go to **Admin > Embedding > Static**.
-2. Under **Translate embedded dashboards and question**, click **Upload translation dictionary**.
+۱. به **Admin > Embedding > Static** بروید.
+۲. در زیر **Translate embedded dashboards and question**، روی **Upload translation dictionary** کلیک کنید.
 
-Uploading a new dictionary will replace the existing dictionary.
+آپلود یک فرهنگ لغت جدید فرهنگ لغت موجود را جایگزین می‌کند.
 
-To remove a translation dictionary, upload a blank dictionary.
+برای حذف یک فرهنگ لغت ترجمه، یک فرهنگ لغت خالی آپلود کنید.
 
-## Translate content in static embeds
+## ترجمه محتوا در جاسازی‌های ایستا
 
-To translate content in a static embed using the uploaded dictionary, add the [`locale` parameter](./static-embedding-parameters.md#setting-the-language-for-a-static-embed) to the embed URL:
+برای ترجمه محتوا در یک جاسازی ایستا با استفاده از فرهنگ لغت آپلود شده، پارامتر [`locale`](./static-embedding-parameters.md#setting-the-language-for-a-static-embed) را به URL جاسازی اضافه کنید:
 
 ```
 https://metabase.example.com/public/dashboard/7b6e347b-6928-4aff-a56f-6cfa5b718c6b?category=&city=&state=#locale=ko
 ```
 
-Metabase UI elements (like button labels) will be translated automatically - you don't need to add translations for them to your dictionary.
+عناصر UI متابیس (مانند برچسب‌های دکمه) به طور خودکار ترجمه می‌شوند - نیازی نیست ترجمه‌های آن‌ها را به فرهنگ لغت خود اضافه کنید.
 
-## Example translation dictionary
+## مثال فرهنگ لغت ترجمه
 
-Metabase uses these dictionaries to translate user-generated content, like dashboard names in [static embeds](./static-embedding.md).
+متابیس از این فرهنگ‌لغت‌ها برای ترجمه محتوای تولید شده توسط کاربر استفاده می‌کند، مانند نام‌های داشبورد در [جاسازی‌های ایستا](./static-embedding.md).
 
 | Language | String      | Translation  |
 | -------- | ----------- | ------------ |
@@ -53,31 +53,31 @@ Metabase uses these dictionaries to translate user-generated content, like dashb
 | pt-BR    | Vendor      | Vendedor     |
 | IT       | Examples    | Esempi       |
 
-Prefer hyphens in your `pt-BR` in your translation dictionary. Underscores are also acceptable (if you download the dictionary _after_ uploading it, Metabase will transform `pt-BR` to `pt_BR`), but since the `locale` parameter in static embedding only accepts locales with hyphens (like `pt-BR`), we recommend using hyphens for consistency.
+ترجیح دهید از خط تیره در `pt-BR` در فرهنگ لغت ترجمه خود استفاده کنید. underscore نیز قابل قبول است (اگر فرهنگ لغت را _بعد از_ آپلود آن دانلود کنید، متابیس `pt-BR` را به `pt_BR` تبدیل می‌کند)، اما از آنجایی که پارامتر `locale` در جاسازی ایستا فقط زبان‌های محلی با خط تیره (مانند `pt-BR`) را می‌پذیرد، استفاده از خط تیره را برای سازگاری توصیه می‌کنیم.
 
-[See a list of supported locales](../configuring-metabase/localization.md#supported-languages).
+[فهرست زبان‌های محلی پشتیبانی شده](../configuring-metabase/localization.md#supported-languages) را ببینید.
 
-## Use full phrases in translation dictionaries
+## استفاده از عبارات کامل در فرهنگ‌لغت‌های ترجمه
 
-Currently, Metabase doesn't tokenize strings for translations, so you should include exact phrases in your translation dictionary.
+در حال حاضر، متابیس رشته‌ها را برای ترجمه tokenize نمی‌کند، بنابراین باید عبارات دقیق را در فرهنگ لغت ترجمه خود شامل کنید.
 
-For example, if you have a dashboard called "Monthly Sales", it's not sufficient to have translations of "Monthly" and "Sales" - you also need to include "Monthly Sales" as a full string.
+به عنوان مثال، اگر یک داشبورد به نام "Monthly Sales" دارید، داشتن ترجمه‌های "Monthly" و "Sales" کافی نیست - همچنین باید "Monthly Sales" را به عنوان یک رشته کامل شامل کنید.
 
-Exact translations also apply to strings that use punctuation and special characters. For example, if you have a question title "How many Widgets did we sell this week?", you must include that exact string (with "?") into the translation dictionary. Metabase would treat "How many Widgets did we sell this week" as a different string. Essentially, the strings are keys in a table Metabase looks up, so they must match exactly.
+ترجمه‌های دقیق همچنین برای رشته‌هایی که از علائم نگارشی و کاراکترهای خاص استفاده می‌کنند اعمال می‌شود. به عنوان مثال، اگر یک عنوان سؤال "How many Widgets did we sell this week?" دارید، باید آن رشته دقیق (با "?") را در فرهنگ لغت ترجمه شامل کنید. متابیس "How many Widgets did we sell this week" را به عنوان یک رشته متفاوت در نظر می‌گیرد. اساساً، رشته‌ها کلیدهایی در یک جدول هستند که متابیس جستجو می‌کند، بنابراین باید دقیقاً مطابقت داشته باشند.
 
-## Translations are case-insensitive
+## ترجمه‌ها به حروف حساس نیستند
 
-Translations are case-insensitive. For example, if your translation dictionary has a translation:
+ترجمه‌ها به حروف حساس نیستند. به عنوان مثال، اگر فرهنگ لغت ترجمه شما یک ترجمه دارد:
 
 | Language | String   | Translation |
 | -------- | -------- | ----------- |
 | pt-BR    | Examples | Exemplos    |
 
-`Examples`, `examples`, `EXAMPLES` would all be translated as `Exemplos`. That is, Metabase won't preserve the original case; it will output the exact translation string in the dictionary.
+`Examples`، `examples`، `EXAMPLES` همه به عنوان `Exemplos` ترجمه می‌شوند. یعنی متابیس حالت اصلی را حفظ نمی‌کند؛ دقیقاً رشته ترجمه در فرهنگ لغت را خروجی می‌دهد.
 
-## Include markdown formatting in translation dictionaries
+## شامل کردن فرمت‌دهی markdown در فرهنگ‌لغت‌های ترجمه
 
-If the strings you want to translate include markdown formatting, you'll need to include the formatting in the dictionary. For example:
+اگر رشته‌هایی که می‌خواهید ترجمه کنید شامل فرمت‌دهی markdown هستند، باید فرمت‌دهی را در فرهنگ لغت شامل کنید. به عنوان مثال:
 
 | Language | String         | Translation    |
 | -------- | -------------- | -------------- |
@@ -85,6 +85,6 @@ If the strings you want to translate include markdown formatting, you'll need to
 | pt-BR    | `_Examples_`   | `_Exemplos_`   |
 | pt-BR    | `## Examples`  | `## Exemplos`  |
 
-## Further reading
+## مطالعه بیشتر
 
-- [Static embedding](./static-embedding.md)
+- [جاسازی ایستا](./static-embedding.md)

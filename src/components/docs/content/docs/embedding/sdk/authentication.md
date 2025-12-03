@@ -1,123 +1,123 @@
 ---
-title: Embedded analytics SDK - authentication
+title: SDK تجزیه و تحلیل تعبیه‌شده - احراز هویت
 ---
 
-# Embedded analytics SDK - authentication
+# SDK تجزیه و تحلیل تعبیه‌شده - احراز هویت
 
 {% include plans-blockquote.html feature="Embedded analytics SDK" sdk=true %}
 
-For using the SDK in production, you'll need to set up authentication with SSO.
+برای استفاده از SDK در تولید، نیاز دارید احراز هویت با SSO را راه‌اندازی کنید.
 
-If you're developing locally, you can also set up authentication with [API keys](#authenticating-locally-with-api-keys).
+اگر به صورت محلی در حال توسعه هستید، همچنین می‌توانید احراز هویت با [کلیدهای API](#authenticating-locally-with-api-keys) را راه‌اندازی کنید.
 
-## Setting up JWT SSO
+## راه‌اندازی JWT SSO
 
-To set up JWT SSO, you'll need [a Metabase Pro or Enterprise license](https://www.metabase.com/pricing/) (If you don't have a license, check out [this quickstart](./quickstart.md))
+برای راه‌اندازی JWT SSO، نیاز دارید [یک مجوز متابیس Pro یا Enterprise](https://www.metabase.com/pricing/) (اگر مجوز ندارید، [این شروع سریع](./quickstart.md) را بررسی کنید که راه‌اندازی JWT SSO پولی ندارد)
 
-Here's a high-level overview:
+در اینجا یک نمای کلی سطح بالا آمده است:
 
-1. [Enable JWT SSO in your Metabase](#1-enable-jwt-sso-in-your-metabase)
-2. [Add a new endpoint to your backend to handle authentication](#2-add-a-new-endpoint-to-your-backend-to-handle-authentication)
-3. [Wire the SDK in your frontend to your new endpoint](#3-wire-the-sdk-in-your-frontend-to-your-new-endpoint)
+۱. [فعال کردن JWT SSO در متابیس](#1-enable-jwt-sso-in-your-metabase)
+۲. [افزودن یک endpoint جدید به backend برای مدیریت احراز هویت](#2-add-a-new-endpoint-to-your-backend-to-handle-authentication)
+۳. [متصل کردن SDK در frontend به endpoint جدید](#3-wire-the-sdk-in-your-frontend-to-your-new-endpoint)
 
-### 1. Enable JWT SSO in your Metabase
+### ۱. فعال کردن JWT SSO در متابیس
 
-1. Configure JWT by going to **Admin Settings** > **Settings** > **Authentication** and clicking on **Setup**
-2. Enter the JWT Identity Provider URI, for example `http://localhost:9090/sso/metabase`. This is a new endpoint you will add in your backend to handle authentication.
-3. Generate a key and copy it to your clipboard.
+۱. JWT را با رفتن به **Admin Settings** > **Settings** > **Authentication** و کلیک روی **Setup** پیکربندی کنید
+۲. JWT Identity Provider URI را وارد کنید، مثلاً `http://localhost:9090/sso/metabase`. این یک endpoint جدید است که در backend خود برای مدیریت احراز هویت اضافه خواهید کرد.
+۳. یک کلید تولید کنید و آن را در clipboard خود کپی کنید.
 
-### 2. Add a new endpoint to your backend to handle authentication
+### ۲. افزودن یک endpoint جدید به backend برای مدیریت احراز هویت
 
-You'll need add a library to your backend to sign your JSON Web Tokens.
+نیاز دارید یک کتابخانه به backend خود اضافه کنید تا JSON Web Tokenهای خود را امضا کنید.
 
-For Node.js, we recommend jsonwebtoken:
+برای Node.js، jsonwebtoken را توصیه می‌کنیم:
 
 ```
 npm install jsonwebtoken --save
 ```
 
-Next, set up an endpoint on your backend (e.g., `/sso/metabase`) that uses your Metabase JWT shared secret to generate a JWT for the authenticated user. **This endpoint must return a JSON object with a `jwt` property containing the signed JWT.** For example: `{ "jwt": "your-signed-jwt" }`.
+بعد، یک endpoint در backend خود راه‌اندازی کنید (مثلاً، `/sso/metabase`) که از secret مشترک JWT متابیس شما برای تولید یک JWT برای کاربر احراز هویت شده استفاده می‌کند. **این endpoint باید یک شی JSON با ویژگی `jwt` حاوی JWT امضا شده را برگرداند.** به عنوان مثال: `{ "jwt": "your-signed-jwt" }`.
 
-This example code for Node.js sets up an endpoint using Express:
+این کد نمونه برای Node.js یک endpoint با استفاده از Express راه‌اندازی می‌کند:
 
 ```js
 {% include_file "{{ dirname }}/snippets/authentication/express-server.ts" %}
 ```
 
-Example using Next.js App Router:
+مثال با استفاده از Next.js App Router:
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/next-js/app-router-authentication-api-route.ts" %}
 ```
 
-Example using Next.js Pages Router:
+مثال با استفاده از Next.js Pages Router:
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/next-js/pages-router-authentication-api-route.ts" %}
 ```
 
-#### Handling interactive and SDK embeds with the same endpoint
+#### مدیریت جاسازی‌های تعاملی و SDK با همان endpoint
 
-If you have an existing backend endpoint configured for interactive embedding and want to use the same endpoint for SDK embedding, you can differentiate between the requests by checking for the `response=json` query parameter that the SDK adds to its requests.
+اگر یک endpoint backend موجود پیکربندی شده برای جاسازی تعاملی دارید و می‌خواهید از همان endpoint برای جاسازی SDK استفاده کنید، می‌توانید بین درخواست‌ها با بررسی پارامتر query `response=json` که SDK به درخواست‌های خود اضافه می‌کند تفاوت قائل شوید.
 
-- For SDK requests, you should return a JSON object with the JWT (`{ jwt: string }`).
-- For interactive embedding requests, you would proceed with the redirect.
+- برای درخواست‌های SDK، باید یک شی JSON با JWT (`{ jwt: string }`) برگردانید.
+- برای درخواست‌های جاسازی تعاملی، با redirect ادامه می‌دهید.
 
-Here's an example of an Express.js endpoint that handles both:
+در اینجا یک مثال از یک endpoint Express.js که هر دو را مدیریت می‌کند آمده است:
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/authentication/express-server-interactive-and-sdk.ts" %}
 ```
 
-### 3. Wire the SDK in your frontend to your new endpoint
+### ۳. متصل کردن SDK در frontend به endpoint جدید
 
-Update the SDK config in your frontend code to point your backend's authentication endpoint.
+پیکربندی SDK را در کد frontend خود برای اشاره به endpoint احراز هویت backend به‌روزرسانی کنید.
 
 ```js
 {% include_file "{{ dirname }}/snippets/authentication/auth-config-base.tsx" snippet="example" %}
 ```
 
-(Optional) If you use headers instead of cookies to authenticate calls from your frontend to your backend, you'll need to use a [custom fetch function](#customizing-jwt-authentication).
+(اختیاری) اگر از headerها به جای کوکی‌ها برای احراز هویت تماس‌ها از frontend به backend استفاده می‌کنید، نیاز دارید از [یک تابع fetch سفارشی](#customizing-jwt-authentication) استفاده کنید.
 
-## If your frontend and backend don't share a domain, you need to enable CORS
+## اگر frontend و backend شما دامنه مشترک ندارند، باید CORS را فعال کنید
 
-You can add some middleware in your backend to handle cross-domain requests.
+می‌توانید برخی middleware در backend خود برای مدیریت درخواست‌های cross-domain اضافه کنید.
 
 ```js
 {% include_file "{{ dirname }}/snippets/authentication/express-server-cors.ts" snippet="example" %}
 ```
 
-## Customizing JWT authentication
+## سفارشی کردن احراز هویت JWT
 
-You can customize how the SDK fetches the request token by specifying the `fetchRequestToken` function with the `defineMetabaseAuthConfig` function:
+می‌توانید نحوه دریافت توکن درخواست توسط SDK را با مشخص کردن تابع `fetchRequestToken` با تابع `defineMetabaseAuthConfig` سفارشی کنید:
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/authentication/auth-config-jwt.tsx" snippet="example" %}
 ```
 
-The response should be in the form of `{ jwt: "{JWT_TOKEN}" }`
+پاسخ باید در فرم `{ jwt: "{JWT_TOKEN}" }` باشد
 
-## Authenticating with SAML SSO
+## احراز هویت با SAML SSO
 
 {% include plans-blockquote.html feature="SAML authentication" sdk=true %}
 
-To use SAML single sign-on with the Embedded analytics SDK, you'll need to set up SAML in both your Metabase and your Identity Provider (IdP). See the docs on [SAML-based authentication](../../people-and-groups/authenticating-with-saml.md).
+برای استفاده از single sign-on SAML با SDK تجزیه و تحلیل تعبیه‌شده، نیاز دارید SAML را هم در متابیس و هم در Identity Provider (IdP) خود راه‌اندازی کنید. مستندات [احراز هویت مبتنی بر SAML](../../people-and-groups/authenticating-with-saml.md) را ببینید.
 
-Once SAML is configured in Metabase and your IdP, you can configure the SDK to use SAML by setting the `preferredAuthMethod` in your `MetabaseAuthConfig` to `"saml"`:
+پس از پیکربندی SAML در متابیس و IdP شما، می‌توانید SDK را برای استفاده از SAML با تنظیم `preferredAuthMethod` در `MetabaseAuthConfig` خود روی `"saml"` پیکربندی کنید:
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/authentication/auth-config-saml.tsx" snippet="example" %}
 ```
 
-Using SAML authentication with the Embedded analytics SDK will typically involve redirecting people to a popup with your Identity Provider's login page for authentication. After successful authentication, the person will be redirected back to the embedded content.
+استفاده از احراز هویت SAML با SDK تجزیه و تحلیل تعبیه‌شده معمولاً شامل redirect کردن افراد به یک popup با صفحه ورود Identity Provider شما برای احراز هویت است. پس از احراز هویت موفق، فرد به محتوای جاسازی شده redirect می‌شود.
 
-Due to the nature of redirects and popups involved in the SAML flow, SAML authentication with the SDK may not work seamlessly in all embedding contexts, particularly within iframes, depending on browser security policies and your IdP's configuration. We recommend testing auth flows in your target environments.
+به دلیل ماهیت redirectها و popupهای درگیر در جریان SAML، احراز هویت SAML با SDK ممکن است در همه زمینه‌های جاسازی، به ویژه درون iframeها، بسته به سیاست‌های امنیتی مرورگر و پیکربندی IdP شما به طور یکپارچه کار نکند. توصیه می‌کنیم جریان‌های auth را در محیط‌های هدف خود تست کنید.
 
-Unlike JWT authentication, you won't be able to implement a custom `fetchRequestToken` function on your backend when pairing SAML with the SDK.
+برخلاف احراز هویت JWT، نمی‌توانید یک تابع `fetchRequestToken` سفارشی در backend خود هنگام جفت کردن SAML با SDK پیاده‌سازی کنید.
 
-## If both SAML and JWT are enabled, the SDK will default to SAML
+## اگر هم SAML و هم JWT فعال باشند، SDK به طور پیش‌فرض از SAML استفاده می‌کند
 
-You can override this default behavior to prefer the JWT authentication method by setting `preferredAuthMethod="jwt"` in your authentication config:
+می‌توانید این رفتار پیش‌فرض را با تنظیم `preferredAuthMethod="jwt"` در پیکربندی احراز هویت خود override کنید:
 
 ```typescript
 authConfig: {
@@ -127,92 +127,92 @@ authConfig: {
 }
 ```
 
-## Getting Metabase authentication status
+## دریافت وضعیت احراز هویت متابیس
 
-You can query the Metabase authentication status using the `useMetabaseAuthStatus` hook. This is useful if you want to completely hide Metabase components when the user is not authenticated.
+می‌توانید وضعیت احراز هویت متابیس را با استفاده از hook `useMetabaseAuthStatus` پرس‌وجو کنید. این مفید است اگر می‌خواهید اجزای متابیس را به طور کامل زمانی که کاربر احراز هویت نشده است مخفی کنید.
 
-This hook can only be used within components wrapped by `MetabaseProvider`.
+این hook فقط می‌تواند درون اجزای wrapped شده توسط `MetabaseProvider` استفاده شود.
 
 ```jsx
 {% include_file "{{ dirname }}/snippets/authentication/get-auth-status.tsx" snippet="example" %}
 ```
 
-## Authenticating locally with API keys
+## احراز هویت محلی با کلیدهای API
 
-> The Embedded analytics SDK only supports JWT authentication in production. Authentication with API keys is only supported for local development and evaluation purposes.
+> SDK تجزیه و تحلیل تعبیه‌شده فقط از احراز هویت JWT در تولید پشتیبانی می‌کند. احراز هویت با کلیدهای API فقط برای توسعه محلی و اهداف ارزیابی پشتیبانی می‌شود.
 
-For developing locally to try out the SDK, you can authenticate using an API key.
+برای توسعه محلی برای امتحان SDK، می‌توانید با استفاده از یک کلید API احراز هویت کنید.
 
-First, create an [API key](../../people-and-groups/api-keys.md).
+ابتدا، یک [کلید API](../../people-and-groups/api-keys.md) ایجاد کنید.
 
-Then you can then use the API key to authenticate with Metabase in your application. All you need to do is include your API key in the config object using the key: `apiKey`.
+سپس می‌توانید از کلید API برای احراز هویت با متابیس در برنامه خود استفاده کنید. فقط نیاز دارید کلید API خود را در شی config با کلید: `apiKey` شامل کنید.
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/authentication/auth-config-api-key.tsx" %}
 ```
 
-## Security warning: each end-user _must_ have their own Metabase account
+## هشدار امنیتی: هر کاربر نهایی _باید_ حساب متابیس خود را داشته باشد
 
-Each end-user _must_ have their own Metabase account.
+هر کاربر نهایی _باید_ حساب متابیس خود را داشته باشد.
 
-The problem with having end-users share a Metabase account is that, even if you filter data on the client side via the SDK, all end-users will still have access to the session token, which they could use to access Metabase directly via the API to get data they're not supposed to see.
+مشکل اشتراک‌گذاری یک حساب متابیس بین کاربران نهایی این است که، حتی اگر داده را در سمت کلاینت از طریق SDK فیلتر کنید، همه کاربران نهایی همچنان به توکن جلسه دسترسی خواهند داشت، که می‌توانند از آن برای دسترسی مستقیم به متابیس از طریق API برای دریافت داده‌هایی که نباید ببینند استفاده کنند.
 
-If each end-user has their own Metabase account, however, you can configure permissions in Metabase and everyone will only have access to the data they should.
+با این حال، اگر هر کاربر نهایی حساب متابیس خود را داشته باشد، می‌توانید مجوزها را در متابیس پیکربندی کنید و همه فقط به داده‌هایی که باید دسترسی خواهند داشت.
 
-In addition to this, we consider shared accounts to be unfair usage. Fair usage of the SDK involves giving each end-user of the embedded analytics their own Metabase account.
+علاوه بر این، ما حساب‌های اشتراکی را استفاده ناعادلانه می‌دانیم. استفاده عادلانه از SDK شامل دادن حساب متابیس خود به هر کاربر نهایی تجزیه و تحلیل جاسازی‌شده است.
 
-## Upgrade guide for JWT SSO setups on SDK version 54 or below
+## راهنمای ارتقا برای راه‌اندازی‌های JWT SSO در نسخه SDK 54 یا پایین‌تر
 
-If you're upgrading from an SDK version 1.54.x or below and you're using JWT SSO, you'll need to make the following changes.
+اگر از نسخه SDK 1.54.x یا پایین‌تر ارتقا می‌دهید و از JWT SSO استفاده می‌کنید، نیاز دارید تغییرات زیر را انجام دهید.
 
-**Frontend changes**:
+**تغییرات Frontend**:
 
-- [Remove `authProviderUri` from all `defineMetabaseAuthConfig` calls](#remove-authprovideruri-from-your-auth-config)
-- **If using custom `fetchRequestToken`:** [Update function signature and hardcode authentication endpoint URLs](#update-the-fetchrequesttoken-function-signature)
+- [حذف `authProviderUri` از همه فراخوانی‌های `defineMetabaseAuthConfig`](#remove-authprovideruri-from-your-auth-config)
+- **اگر از `fetchRequestToken` سفارشی استفاده می‌کنید:** [به‌روزرسانی signature تابع و hardcode کردن URLهای endpoint احراز هویت](#update-the-fetchrequesttoken-function-signature)
 
-**Backend changes**:
+**تغییرات Backend**:
 
-- [Update backend endpoint to return `{ jwt: "token" }` JSON response for SDK requests](#update-your-jwt-endpoint-to-handle-sdk-requests).
+- [به‌روزرسانی endpoint backend برای برگرداندن پاسخ JSON `{ jwt: "token" }` برای درخواست‌های SDK](#update-your-jwt-endpoint-to-handle-sdk-requests).
 
-Additionally, if you have SAML set up, but you'd prefer to use JWT SSO, you'll need to set a [preferred authentication method](#if-both-saml-and-jwt-are-enabled-the-sdk-will-default-to-saml).
+علاوه بر این، اگر SAML راه‌اندازی شده است، اما ترجیح می‌دهید از JWT SSO استفاده کنید، نیاز دارید یک [روش احراز هویت ترجیحی](#if-both-saml-and-jwt-are-enabled-the-sdk-will-default-to-saml) تنظیم کنید.
 
-### Remove `authProviderUri` from your auth config
+### حذف `authProviderUri` از پیکربندی auth
 
-`defineMetabaseAuthConfig` no longer accepts an `authProviderUri` parameter, so you'll need to remove it.
+`defineMetabaseAuthConfig` دیگر پارامتر `authProviderUri` را نمی‌پذیرد، بنابراین باید آن را حذف کنید.
 
-**Admin setting changes in Metabase**:
+**تغییرات تنظیمات Admin در متابیس**:
 
-In **Admin Settings** > **Authentication** > **JWT SSO**, set the `JWT Identity Provider URI` to the URL of your JWT SSO endpoint, e.g., `http://localhost:9090/sso/metabase`.
+در **Admin Settings** > **Authentication** > **JWT SSO**، `JWT Identity Provider URI` را روی URL endpoint JWT SSO خود تنظیم کنید، مثلاً، `http://localhost:9090/sso/metabase`.
 
-**Before:**
-
-```jsx
-const authConfig = defineMetabaseAuthConfig({
-  metabaseInstanceUrl: "https://your-metabase.example.com",
-  authProviderUri: "http://localhost:9090/sso/metabase", // Remove this line
-});
-```
-
-**After:**
+**قبل:**
 
 ```jsx
 const authConfig = defineMetabaseAuthConfig({
   metabaseInstanceUrl: "https://your-metabase.example.com",
+  authProviderUri: "http://localhost:9090/sso/metabase", // این خط را حذف کنید
 });
 ```
 
-The SDK now uses the JWT Identity Provider URI setting configured in your Metabase admin settings (Admin > Settings > Authentication > JWT).
+**بعد:**
 
-### Update the `fetchRequestToken` function signature
+```jsx
+const authConfig = defineMetabaseAuthConfig({
+  metabaseInstanceUrl: "https://your-metabase.example.com",
+});
+```
 
-The `fetchRequestToken` function no longer receives a URL parameter. You must now specify your authentication endpoint directly in the function.
+SDK اکنون از تنظیم JWT Identity Provider URI پیکربندی شده در تنظیمات admin متابیس شما استفاده می‌کند (Admin > Settings > Authentication > JWT).
 
-**Before:**
+### به‌روزرسانی signature تابع `fetchRequestToken`
+
+تابع `fetchRequestToken` دیگر پارامتر URL دریافت نمی‌کند. اکنون باید endpoint احراز هویت خود را مستقیماً در تابع مشخص کنید.
+
+**قبل:**
 
 ```jsx
 const authConfig = defineMetabaseAuthConfig({
   fetchRequestToken: async (url) => {
-    // Remove url parameter
+    // پارامتر url را حذف کنید
     const response = await fetch(url, {
       method: "GET",
       headers: { Authorization: `Bearer ${yourToken}` },
@@ -220,18 +220,18 @@ const authConfig = defineMetabaseAuthConfig({
     return await response.json();
   },
   metabaseInstanceUrl: "http://localhost:3000",
-  authProviderUri: "http://localhost:9090/sso/metabase", // Remove this line
+  authProviderUri: "http://localhost:9090/sso/metabase", // این خط را حذف کنید
 });
 ```
 
-**After:**
+**بعد:**
 
 ```jsx
 const authConfig = defineMetabaseAuthConfig({
   fetchRequestToken: async () => {
-    // No parameters
+    // بدون پارامتر
     const response = await fetch("http://localhost:9090/sso/metabase", {
-      // Hardcode your endpoint URL
+      // URL endpoint خود را hardcode کنید
       method: "GET",
       headers: { Authorization: `Bearer ${yourToken}` },
     });
@@ -241,15 +241,15 @@ const authConfig = defineMetabaseAuthConfig({
 });
 ```
 
-### Update your JWT endpoint to handle SDK requests
+### به‌روزرسانی endpoint JWT برای مدیریت درخواست‌های SDK
 
-Your JWT endpoint must now handle both SDK requests and interactive embedding requests. The SDK adds a `response=json` query parameter to distinguish its requests. For SDK requests, return a JSON object with the JWT. For interactive embedding, continue redirecting as before.
+endpoint JWT شما اکنون باید هم درخواست‌های SDK و هم درخواست‌های جاسازی تعاملی را مدیریت کند. SDK یک پارامتر query `response=json` اضافه می‌کند تا درخواست‌های خود را متمایز کند. برای درخواست‌های SDK، یک شی JSON با JWT برگردانید. برای جاسازی تعاملی، همچنان redirect کنید مانند قبل.
 
-If you were using a custom `fetchRequestToken`, you'll need to update the endpoint to detect `req.query.response === "json"` for SDK requests.
+اگر از `fetchRequestToken` سفارشی استفاده می‌کردید، نیاز دارید endpoint را برای تشخیص `req.query.response === "json"` برای درخواست‌های SDK به‌روزرسانی کنید.
 
 ```jsx
 app.get("/sso/metabase", async (req, res) => {
-  // SDK requests include 'response=json' query parameter
+  // درخواست‌های SDK شامل پارامتر query 'response=json' هستند
   const isSdkRequest = req.query.response === "json";
 
   const user = getCurrentUser(req);
@@ -266,10 +266,10 @@ app.get("/sso/metabase", async (req, res) => {
   );
 
   if (isSdkRequest) {
-    // For SDK requests, return JSON object with jwt property
+    // برای درخواست‌های SDK، یک شی JSON با ویژگی jwt برگردانید
     res.status(200).json({ jwt: token });
   } else {
-    // For interactive embedding, redirect as before
+    // برای جاسازی تعاملی، مانند قبل redirect کنید
     const ssoUrl = `${METABASE_INSTANCE_URL}/auth/sso?token=true&jwt=${token}`;
     res.redirect(ssoUrl);
   }

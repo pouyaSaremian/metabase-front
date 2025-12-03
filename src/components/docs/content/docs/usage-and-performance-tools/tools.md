@@ -1,32 +1,33 @@
 ---
-title: Admin tools
+title: ابزارهای ادمین
 redirect_from:
   - /docs/latest/enterprise-guide/tools
 ---
 
-# Admin tools
+# ابزارهای ادمین
 
-The Admin **Tools** tab contains features for troubleshooting. To get to the Admin tools sections, go to the top right of the screen and click on the **gear** icon > **Admin settings** > **Tools**.
+تب **Tools** مخصوص ادمین شامل قابلیت‌هایی برای عیب‌یابی است. برای رفتن به بخش ابزارهای ادمین، به بالا سمت راست صفحه بروید و روی آیکون **چرخ‌دنده** > **Admin settings** > **Tools** کلیک کنید.
 
-## Question error logs
+## لاگ خطاهای سؤال
 
 {% include plans-blockquote.html feature="Question error logs" %}
 
-Metabase will list the questions that returned errors when last run, including the:
+متابیس سؤال‌هایی را که در آخرین اجرا خطا برگردانده‌اند فهرست می‌کند، از جمله:
 
-- Error message,
-- Database that returned the error,
-- Collection that houses the question that errored.
+- پیام خطا،
+- پایگاه‌داده‌ای که خطا را برگردانده،
+- مجموعه‌ای که سؤال خطادار در آن قرار دارد.
 
-You can select and rerun multiple questions at a time while you troubleshoot to see whether you've resolved their errors.
+می‌توانید هنگام عیب‌یابی چند سؤال را هم‌زمان انتخاب و دوباره اجرا کنید تا ببینید آیا خطاهای آن‌ها برطرف شده است یا نه.
 
-## Model caching logs
+## لاگ کش شدن مدل‌ها
 
-Here you can view the:
+در اینجا می‌توانید موارد زیر را ببینید:
 
-- [Models](../data-modeling/models.md) being persisted
-- The status of the last model query refresh
-- When the model was last refreshed
-- And who created the persisted model
+- [مدل‌هایی](../data-modeling/models.md) که persist شده‌اند
+- وضعیت آخرین تازه‌سازی پرس‌وجوی مدل
+- اینکه مدل آخرین‌بار چه زمانی تازه‌سازی شده
+- و اینکه چه کسی مدل persist شده را ایجاد کرده است
 
-You can also click the refresh icon to rerun the model's query to update its results.
+همچنین می‌توانید روی آیکون refresh کلیک کنید تا پرس‌وجوی مدل را دوباره اجرا کرده و نتایج آن را به‌روزرسانی کنید.
+

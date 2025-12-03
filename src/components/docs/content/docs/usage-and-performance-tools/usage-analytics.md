@@ -1,52 +1,52 @@
 ---
-title: Usage analytics
+title: تحلیل استفاده
 ---
 
-# Usage analytics
+# تحلیل استفاده
 
 {% include plans-blockquote.html feature="Usage analytics" %}
 
-The **Usage analytics** collection is a special collection that contains view-only questions, dashboards, and models that help you understand how people are using your Metabase.
+مجموعه **Usage analytics** یک مجموعه ویژه است که شامل سؤال‌ها، داشبوردها و مدل‌های فقط‌خواندنی است که به شما کمک می‌کنند بفهمید افراد چگونه از متابیس شما استفاده می‌کنند.
 
 ![Usage analytics collection](./images/metabase-analytics.png)
 
-You can find the **Usage analytics** collection under **collections** in the left navigation sidebar. You can also create custom reports.
+می‌توانید مجموعه **Usage analytics** را زیر **collections** در نوار کناری ناوبری سمت چپ پیدا کنید. همچنین می‌توانید گزارش‌های سفارشی ایجاد کنید.
 
-These resources are useful for:
+این منابع برای موارد زیر مفید هستند:
 
-- **Understanding Usage**: Understand how people use your Metabase (e.g., new questions, most active people and groups, and so on).
-- **Auditing activity**: Know who viewed or did what and when, including tracking dashboard and question views, queries, downloads, and other activity like changing settings or inviting people to your Metabase.
-- **Improving operations**: Know the slowest dashboards and questions, how your database's are performing, who's consuming the most resources, and so on.
+- **درک الگوی استفاده**: بفهمید افراد چگونه از متابیس شما استفاده می‌کنند (مثلاً سؤال‌های جدید، فعال‌ترین افراد و گروه‌ها و غیره).
+- **ممیزی فعالیت**: بدانید چه کسی چه کاری را چه زمانی انجام داده است، از جمله ردیابی نمایش داشبورد و سؤال، پرس‌وجوها، دانلودها و سایر فعالیت‌ها مانند تغییر تنظیمات یا دعوت افراد به متابیس.
+- **بهبود عملیات**: کندترین داشبوردها و سؤال‌ها، عملکرد پایگاه‌داده‌ها، اینکه چه کسانی بیشترین منابع را مصرف می‌کنند و موارد دیگر را شناسایی کنید.
 
-> Metabase creates some default user accounts that you might see in your usage analytics, like `internal@metabase.com`. See [Default accounts](../people-and-groups/managing.md#default-user-accounts).
+> متابیس چند حساب کاربری پیش‌فرض ایجاد می‌کند که ممکن است در تحلیل استفاده خود ببینید، مانند `internal@metabase.com`. [حساب‌های پیش‌فرض](../people-and-groups/managing.md#default-user-accounts) را ببینید.
 
-## Access to Usage analytics
+## دسترسی به تحلیل استفاده
 
-You can find the **Usage analytics** collection under **collections** in the navigation sidebar. By default, only admins can see the Usage analytics collection, but admins can grant other groups view access to it. You can manage permissions for the collection in **Admin settings** > **Permissions** > **Collections**.
+می‌توانید مجموعه **Usage analytics** را زیر **collections** در نوار ناوبری پیدا کنید. به‌طور پیش‌فرض فقط ادمین‌ها می‌توانند مجموعه Usage analytics را ببینند، اما ادمین‌ها می‌توانند به گروه‌های دیگر دسترسی مشاهده بدهند. می‌توانید مجوزها برای این مجموعه را در **Admin settings** > **Permissions** > **Collections** مدیریت کنید.
 
-There are only two access types for the Usage analytics collection: **View** and **No access**. Even admins can't curate Usage analytics.
+برای مجموعه Usage analytics فقط دو نوع دسترسی وجود دارد: **View** و **No access**. حتی ادمین‌ها هم نمی‌توانند Usage analytics را ویرایش (curate) کنند.
 
-Additionally, this Usage analytics collection has a default sub-collection called "Custom reports" which you can use to save duplicated/modified questions, dashboards, and models. This sub-collection inherits the same permissions, but it's not view-only; admins have curate access by default, and can grant other groups view access.
+علاوه بر این، این مجموعه Usage analytics یک زیرمجموعه پیش‌فرض به نام «Custom reports» دارد که می‌توانید برای ذخیره سؤال‌ها، داشبوردها و مدل‌های کپی‌شده/ویرایش‌شده از آن استفاده کنید. این زیرمجموعه همان مجوزهای مجموعه والد را به ارث می‌برد، اما فقط‌خواندنی نیست؛ ادمین‌ها به‌طور پیش‌فرض دسترسی curate دارند و می‌توانند به گروه‌های دیگر دسترسی مشاهده بدهند.
 
-> If you're upgrading from a version older than 48, people in groups with monitoring access will also get access to the Usage analytics collection. But after that initial grandfathering in, the monitoring access privilege is unrelated to the Usage analytics collection; you'll need to specifically grant groups access to the Usage analytics collection.
+> اگر از نسخه‌ای قدیمی‌تر از 48 ارتقا می‌دهید، افرادی که در گروه‌هایی با دسترسی monitoring هستند نیز به مجموعه Usage analytics دسترسی خواهند داشت. اما پس از آن «به ارث‌رسیدن اولیه»، امتیاز monitoring دیگر به Usage analytics ربطی ندارد؛ باید به‌طور مشخص به گروه‌ها برای مجموعه Usage analytics دسترسی بدهید.
 
-## Viewing usage insights for a question, dashboard, or model
+## مشاهده بینش‌های استفاده برای یک سؤال، داشبورد یا مدل
 
-> Only people in groups with view access to the Usage analytics collection will see this Usage insights option.
+> فقط افرادی در گروه‌هایی با دسترسی مشاهده به مجموعه Usage analytics این گزینه Usage insights را خواهند دید.
 
-To view usage analytics for a question, dashboard, or model:
+برای مشاهده تحلیل استفاده یک سؤال، داشبورد یا مدل:
 
-- Visit the item.
-- Click on the info button in the upper right.
-- Click **Insights**.
+- به مورد مربوطه بروید.
+- روی دکمه info در بالا سمت راست کلیک کنید.
+- روی **Insights** کلیک کنید.
 
-Metabase will take you to the relevant usage dashboard and plug in the item's ID.
+متابیس شما را به داشبورد استفاده مرتبط می‌برد و ID آن مورد را در آن قرار می‌دهد.
 
-## How long Metabase keeps usage data
+## مدت نگهداری داده‌های استفاده در متابیس
 
-By default, Metabase will keep the data about [activity](#activity-log-model), [views](#view-log-model), and [query execution](#query-log-model) for **720 days**. Twice a day, Metabase will delete rows older than this threshold. You can change this limit by adjusting the environment variable [`MB_AUDIT_MAX_RETENTION_DAYS`](../configuring-metabase/environment-variables.md#mb_audit_max_retention_days).
+به‌طور پیش‌فرض، متابیس داده‌های مربوط به [activity](#activity-log-model)، [views](#view-log-model)، و [اجرای پرس‌وجو](#query-log-model) را به مدت **۷۲۰ روز** نگه می‌دارد. دو بار در روز، متابیس ردیف‌های قدیمی‌تر از این آستانه را حذف می‌کند. می‌توانید این حد را با تنظیم متغیر محیطی [`MB_AUDIT_MAX_RETENTION_DAYS`](../configuring-metabase/environment-variables.md#mb_audit_max_retention_days) تغییر دهید.
 
-If you're on the Metabase Open Source Edition, or on the [Metabase Cloud Starter plan](https://www.metabase.com/pricing/), Metabase doesn't collect [Activity](#activity-log-model) and [View](#view-log-model) data. If you upgrade to a Pro or Enterprise plan, either self-hosted or Cloud, you'll only see View and Activity data in Usage Analytics _starting from the time when you upgraded_.
+اگر روی نسخه Open Source متابیس، یا روی [پلن Metabase Cloud Starter](https://www.metabase.com/pricing/) هستید، متابیس داده‌های [Activity](#activity-log-model) و [View](#view-log-model) را جمع‌آوری نمی‌کند. اگر به یک پلن Pro یا Enterprise، چه self-hosted و چه Cloud، ارتقا دهید، فقط داده‌های View و Activity را در Usage Analytics از _زمان ارتقا_ به بعد خواهید دید.
 
 ## Creating custom reports
 

@@ -6,109 +6,109 @@ redirect_from:
 
 # PostgreSQL
 
-> This page covers connecting to PostgreSQL as a _data warehouse_. For using PostgreSQL as Metabase's _application database_, see [Configuring the Metabase application database](../../installation-and-operation/configuring-application-database.md).
+> این صفحه اتصال به PostgreSQL را به‌عنوان یک _انبار داده (data warehouse)_ پوشش می‌دهد. برای استفاده از PostgreSQL به‌عنوان _پایگاه‌داده برنامه متابیس_، [پیکربندی پایگاه‌داده برنامه متابیس](../../installation-and-operation/configuring-application-database.md) را ببینید.
 
-To add a database connection, click on the **gear** icon in the top right, and navigate to **Admin settings** > **Databases** > **Add a database**.
+برای افزودن یک اتصال پایگاه‌داده، روی آیکون **چرخ‌دنده** در بالا سمت راست کلیک کنید و به **Admin settings** > **Databases** > **Add a database** بروید.
 
-Fill out the fields for that database, and click **Save changes** at the bottom.
+فیلدهای پایگاه‌داده را پر کنید و در انتها روی **Save changes** کلیک کنید.
 
-## Supported versions
+## نسخه‌های پشتیبانی‌شده
 
-Metabase supports the oldest supported version of PostgreSQL through the latest stable version. See [PostgreSQL versions](https://www.postgresql.org/support/versioning/).
+متابیس از قدیمی‌ترین نسخه پشتیبانی‌شده PostgreSQL تا آخرین نسخه پایدار پشتیبانی می‌کند. [نسخه‌های PostgreSQL](https://www.postgresql.org/support/versioning/) را ببینید.
 
-## Connect to Supabase
+## اتصال به Supabase
 
-To connect to a Supabase database, select PostgreSQL. For more details, check out the [Supabase docs](https://supabase.com/docs/guides/database/metabase).
+برای اتصال به یک پایگاه‌داده Supabase، نوع پایگاه‌داده PostgreSQL را انتخاب کنید. برای جزئیات بیشتر، [مستندات Supabase](https://supabase.com/docs/guides/database/metabase) را ببینید.
 
-## Connection and sync
+## اتصال و همگام‌سازی (Connection and sync)
 
-After connecting to a database, you'll see the "Connection and sync" section that displays the current connection status and options to manage your database connection.
+بعد از اتصال به پایگاه‌داده، بخشی با عنوان «Connection and sync» می‌بینید که وضعیت فعلی اتصال و گزینه‌های مدیریت اتصال پایگاه‌داده را نمایش می‌دهد.
 
-Here you can [sync the database schema and rescan field values](../sync-scan.md), and edit connection details.
+در این بخش می‌توانید [schema پایگاه‌داده را sync کنید و مقادیر فیلدها را دوباره اسکن کنید](../sync-scan.md) و جزئیات اتصال را ویرایش کنید.
 
-## Edit connection details
+## ویرایش جزئیات اتصال
 
-You can edit these settings at any time. Just remember to save your changes.
+می‌توانید هر زمان این تنظیمات را ویرایش کنید. فقط یادتان باشد تغییرات را ذخیره کنید.
 
 ### Connection string
 
-Paste a connection string here to pre-fill the remaining fields below.
+می‌توانید یک connection string اینجا paste کنید تا فیلدهای باقی‌مانده به‌طور خودکار پر شوند.
 
 ### Display name
 
-The display name for the database in the Metabase interface.
+نام نمایشی پایگاه‌داده در رابط متابیس.
 
 ### Host
 
-Your database's IP address, or its domain name (e.g., esc.mydatabase.com).
+IP پایگاه‌داده یا نام دامنه آن (مثلاً `esc.mydatabase.com`).
 
 ### Port
 
-The database port. E.g., 5432.
+پورت پایگاه‌داده، مثلاً ۵۴۳۲.
 
 ### Database name
 
-The name of the database you're connecting to.
+نام پایگاه‌داده‌ای که به آن متصل می‌شوید.
 
 ### Username
 
-The database username for the account that you want to use to connect to your database. You can set up multiple connections to the same database using different user accounts to connect to the same database, each with different sets of [privileges](../users-roles-privileges.md).
+نام کاربری پایگاه‌داده برای اکانتی که می‌خواهید برای اتصال استفاده کنید. می‌توانید چند اتصال مختلف به یک پایگاه‌داده داشته باشید که هرکدام از اکانت‌های کاربری متفاوتی با مجموعه‌های متفاوت [سطح دسترسی](../users-roles-privileges.md) استفاده کنند.
 
 ### Password
 
-The password for the username that you use to connect to the database.
+رمز عبوری که برای اتصال به پایگاه‌داده همراه با آن username استفاده می‌کنید.
 
-### Use an authentication provider
+### استفاده از provider احراز هویت
 
 {% include plans-blockquote.html feature="Authenticating with a provider" %}
 
-Instead of a password, you can authenticate with a supported provider.
+به‌جای رمز عبور، می‌توانید با یک provider پشتیبانی‌شده احراز هویت کنید.
 
-Only for self-hosted Pro and Enterprise plans.
+این گزینه فقط برای پلن‌های Pro و Enterprise self-hosted در دسترس است.
 
 #### Azure Managed Identity
 
-To use Azure Managed Identity, you'll need to input your [client ID](https://learn.microsoft.com/en-us/previous-versions/azure/postgresql/single-server/how-to-connect-with-managed-identity#retrieving-the-access-token-from-azure-instance-metadata-service).
+برای استفاده از Azure Managed Identity باید [client ID](https://learn.microsoft.com/en-us/previous-versions/azure/postgresql/single-server/how-to-connect-with-managed-identity#retrieving-the-access-token-from-azure-instance-metadata-service) خود را وارد کنید.
 
-#### Oauth
+#### OAuth
 
-To use Oauth as a provider, you'll need to input your:
+برای استفاده از OAuth به‌عنوان provider، باید موارد زیر را وارد کنید:
 
-- Auth token URL
-- Auth token request headers (a JSON map)
+- نشانی Auth token URL
+- هدرهای درخواست Auth token (به‌صورت JSON map)
 
 ### Schemas
 
-You can specify which schemas you want to sync and scan. Options are:
+می‌توانید مشخص کنید کدام schemaها را می‌خواهید sync و scan کنید. گزینه‌ها:
 
 - All
 - Only these...
 - All except...
 
-For the **Only these** and **All except** options, you can input a comma-separated list of values to tell Metabase which schemas you want to include (or exclude). For example:
+برای گزینه‌های **Only these** و **All except** می‌توانید یک فهرست جداشده با کاما وارد کنید تا به متابیس بگویید کدام schemaها را شامل (یا مستثنا) کند. مثلاً:
 
-```
+```text
 foo,bar,baz
 ```
 
-You can use the `*` wildcard to match multiple schemas.
+می‌توانید از wildcard `*` برای match کردن چند schema استفاده کنید.
 
-Let's say you have three schemas: foo, bar, and baz.
+فرض کنید سه schema دارید: `foo`، `bar` و `baz`:
 
-- If you have **Only these...** set, and enter the string `b*`, you'll sync with bar and baz.
-- If you have **All except...** set, and enter the string `b*`, you'll just sync foo.
+- اگر **Only these...** را انتخاب کنید و رشته `b*` را وارد کنید، `bar` و `baz` sync می‌شوند.
+- اگر **All except...** را انتخاب کنید و رشته `b*` را وارد کنید، فقط `foo` sync می‌شود.
 
-Note that only the `*` wildcard is supported; you can't use other special characters or regexes.
+توجه: فقط wildcard `*` پشتیبانی می‌شود؛ نمی‌توانید از regex یا کاراکترهای ویژه دیگر استفاده کنید.
 
-### Use a secure connection (SSL)
+### استفاده از اتصال امن (SSL)
 
-Metabase automatically tries to connect to databases with SSL first, then without if that doesn't work. If it's possible to connect to your database with an SSL connection, Metabase will make that the default setting for your database. If you prefer to connect without this layer of security, you can always change this setting later, but we recommend keeping SSL turned on to keep your data secure.
+متابیس به‌صورت خودکار ابتدا تلاش می‌کند با SSL به پایگاه‌داده متصل شود و اگر موفق نشد، بدون SSL تلاش می‌کند. اگر اتصال با SSL امکان‌پذیر باشد، متابیس آن را به‌عنوان پیش‌فرض برای این پایگاه‌داده تنظیم می‌کند. اگر ترجیح می‌دهید بدون این لایه امنیتی متصل شوید، بعداً می‌توانید این تنظیم را تغییر دهید، اما برای امنیت داده‌ها پیشنهاد می‌کنیم SSL روشن بماند.
 
 #### SSL Mode
 
-PostgreSQL databases support different levels of security with their connections, with different levels of overhead.
+پایگاه‌داده‌های PostgreSQL سطوح مختلفی از امنیت اتصال با overhead متفاوت دارند.
 
-SSL Mode options include:
+گزینه‌های SSL Mode شامل موارد زیر است:
 
 - allow
 - prefer
@@ -116,105 +116,104 @@ SSL Mode options include:
 - verify-ca
 - verify-full
 
-See the PostgreSQL docs for a table about the different [SSL Modes](https://jdbc.postgresql.org/documentation/ssl/#configuring-the-client), and select the option that works for you.
+برای جدول مقایسه سطوح مختلف [SSL Modes](https://jdbc.postgresql.org/documentation/ssl/#configuring-the-client) مستندات PostgreSQL را ببینید و گزینه مناسب خود را انتخاب کنید.
 
 #### SSL root certificate (PEM)
 
-If you set the SSL Mode to either "verify-ca" or "verify-full", you'll need to specify a root certificate (PEM). You have the option of using a **Local file path** or an **Uploaded file path**. If you're on Metabase Cloud, you'll need to select **Uploaded file path** and upload your certificate.
+اگر SSL Mode را روی «verify-ca» یا «verify-full» تنظیم کنید، باید یک روت‌سرتیفیکیت (PEM) مشخص کنید. می‌توانید از **مسیر فایل محلی (Local file path)** یا **مسیر فایل آپلودشده (Uploaded file path)** استفاده کنید. اگر روی Metabase Cloud هستید، باید **Uploaded file path** را انتخاب و سرتیفیکیت خود را آپلود کنید.
 
-#### Authenticate client certificate
+#### احراز هویت با client certificate
 
-Toggle on to bring up client certificate options.
+این گزینه را روشن کنید تا تنظیمات گواهی‌نامه کلاینت نمایش داده شود.
 
 #### SSL Client Certificate (PEM)
 
-You have the option of using a **Local file path** or an **Uploaded file path**. If you're on Metabase Cloud, you'll need to select **Uploaded file path** and upload your certificate.
+می‌توانید از **Local file path** یا **Uploaded file path** استفاده کنید. اگر روی Metabase Cloud هستید، باید **Uploaded file path** را انتخاب کنید و سرتیفیکیت را آپلود کنید.
 
 #### SSL Client Key (PKCS-8/DER)
 
-Again, you have the option of using a **Local file path** or an **Uploaded file path**. If you're on Metabase Cloud, you'll need to select **Uploaded file path** and upload your certificate. You'll also need to input your **SSL Client Key Password**.
+دوباره می‌توانید از **Local file path** یا **Uploaded file path** استفاده کنید. اگر روی Metabase Cloud هستید، باید **Uploaded file path** را انتخاب و کلید را آپلود کنید. همچنین باید **SSL Client Key Password** را وارد کنید.
 
-The private key must be PKCS8 and stored in DER format.
+کلید خصوصی باید در قالب PKCS8 و به صورت DER ذخیره شده باشد.
 
-If you instead have a PEM SSL client key, you can convert that key to the PKCS-8/DER format using [openssl](https://www.openssl.org/). The command would look something like:
+اگر به‌جای آن یک کلید client در قالب PEM دارید، می‌توانید با استفاده از [openssl](https://www.openssl.org/) آن را به فرمت PKCS-8/DER تبدیل کنید. مثلاً:
 
-```
+```bash
 openssl pkcs8 -topk8 -inform PEM -outform DER -in client-key.pem -out client-key.der -nocrypt
 ```
 
-Note: if you're using GCP and you managed to issue client certificates, everything will be given in PEM format, you only need to transform the client-key.pem into a client-key.der for the "SSL Client Key"
+توجه: اگر از GCP استفاده می‌کنید و client certificate صادر کرده‌اید، همه چیز در قالب PEM داده می‌شود؛ فقط لازم است `client-key.pem` را برای «SSL Client Key» به `client-key.der` تبدیل کنید.
 
-### Use an SSH tunnel
+### استفاده از SSH tunnel
 
-See our [guide to SSH tunneling](../ssh-tunnel.md).
+[راهنمای SSH tunneling](../ssh-tunnel.md) ما را ببینید.
 
 ### Unfold JSON Columns
 
-For PostgreSQL databases, Metabase can unfold JSON columns into component fields to yield a table where each JSON key becomes a column. JSON unfolding is on by default, but you can turn off JSON unfolding if performance is slow.
+برای پایگاه‌داده‌های PostgreSQL، متابیس می‌تواند ستون‌های JSON را به فیلدهای جزء باز کند تا جدولی بسازد که در آن هر کلید JSON یک ستون مجزا شود. JSON unfolding به‌طور پیش‌فرض فعال است، اما اگر عملکرد کند شد می‌توانید آن را خاموش کنید.
 
-If you turn on JSON unfolding, you can also toggle the unfolding for individual columns in [table metadata](../../data-modeling/metadata-editing.md#unfold-json).
+اگر JSON unfolding را روشن بگذارید، می‌توانید برای هر ستون به‌صورت جداگانه در [متادیتای جدول](../../data-modeling/metadata-editing.md#unfold-json) این رفتار را کنترل کنید.
 
-### Additional JDBC connection string options
+### گزینه‌های اضافی در connection string JDBC
 
-You can append options to the connection string that Metabase uses to connect to your database. Use the format:
+می‌توانید گزینه‌های بیشتری را به connection string که متابیس برای اتصال به پایگاه‌داده استفاده می‌کند اضافه کنید. قالب:
 
-```
+```text
 options=-c%20key=value
 ```
 
-PostgreSQL connection URIs expect [percent-encoding](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) for whitespaces and symbols.
+URIهای اتصال PostgreSQL برای فاصله‌ها و نمادها از [percent-encoding](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) استفاده می‌کنند.
 
-### Re-run queries for simple explorations
+### اجرای دوباره پرس‌وجوها برای اکتشاف ساده
 
-Turn this option **OFF** if people want to click **Run** (the play button) before applying any [Summarize](../../questions/query-builder/summarizing-and-grouping.md) or filter selections.
+اگر می‌خواهید کاربران قبل از اعمال هر [Summarize](../../questions/query-builder/summarizing-and-grouping.md) یا فیلتر، روی **Run** (دکمه play) کلیک کنند، این گزینه را روی **OFF** بگذارید.
 
-By default, Metabase will execute a query as soon as you choose an grouping option from the **Summarize** menu or a filter condition from the [drill-through menu](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through). If your database is slow, you may want to disable re-running to avoid loading data on each click.
+به‌طور پیش‌فرض، متابیس به محض انتخاب یک گزینه گروه‌بندی از منوی **Summarize** یا یک شرط فیلتر از [منوی drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) پرس‌وجو را اجرا می‌کند. اگر پایگاه‌داده شما کند است، شاید بخواهید اجرای خودکار را غیرفعال کنید تا با هر کلیک داده بارگذاری نشود.
 
-### Choose when syncs and scans happen
+### انتخاب زمان sync و scan
 
-See [syncs and scans](../sync-scan.md#choose-when-syncs-and-scans-happen).
+[sync و scan](../sync-scan.md#choose-when-syncs-and-scans-happen) را ببینید.
 
-### Periodically refingerprint tables
+### fingerprint دوره‌ای جدول‌ها
 
-> Periodic refingerprinting will increase the load on your database.
+> fingerprint دوره‌ای بار روی پایگاه‌داده شما را افزایش می‌دهد.
 
-Turn this option **ON** to scan a sample of values every time Metabase runs a [sync](../sync-scan.md#how-database-syncs-work).
+این گزینه را روی **ON** بگذارید تا هر بار متابیس [sync](../sync-scan.md#how-database-syncs-work) انجام می‌دهد، یک نمونه از مقادیر را اسکن کند.
 
-A fingerprinting query examines the first 10,000 rows from each column and uses that data to guesstimate how many unique values each column has, what the minimum and maximum values are for numeric and timestamp columns, and so on. If you leave this option **OFF**, Metabase will only fingerprint your columns once during setup.
+یک پرس‌وجوی fingerprinting اولین ۱۰٬۰۰۰ ردیف هر ستون را بررسی می‌کند و از آن داده برای تخمین تعداد مقادیر یکتا در هر ستون، کمینه و بیشینه مقادیر ستون‌های عددی و زمانی و غیره استفاده می‌کند. اگر این گزینه را روی **OFF** بگذارید، متابیس فقط یک‌بار در زمان راه‌اندازی برای هر ستون fingerprint می‌سازد.
 
-## Model features
+## امکانات مدل (Model features)
 
-Choose whether to enable features related to [Metabase models](../../data-modeling/models.md). These features will often require that the database user account, the one you use to connect to your database, has both read and write privileges.
+می‌توانید انتخاب کنید آیا امکانات مرتبط با [مدل‌های متابیس](../../data-modeling/models.md) را فعال کنید یا نه. این امکانات معمولاً نیاز دارند اکانت کاربری پایگاه‌داده‌ای که برای اتصال استفاده می‌کنید هم مجوز خواندن و هم نوشتن داشته باشد.
 
 ### Model actions
 
-Turn this setting on to allow [actions](../../actions/introduction.md) from models created from this data to be run. Actions can read, write, and delete data. Your database user will need write permissions.
+این تنظیم را روشن کنید تا [actions](../../actions/introduction.md) قابل اجرا از روی مدل‌های ساخته‌شده روی این داده باشند. اکشن‌ها می‌توانند داده‌ها را بخوانند، بنویسند و حذف کنند. اکانت پایگاه‌داده شما باید مجوز نوشتن داشته باشد.
 
 ### Model persistence
 
-We'll create tables with model data and refresh them on a schedule you define. To enable [model persistence](../../data-modeling/model-persistence.md), you need to grant this connection's credentials read and write permissions on a schema Metabase provides.
+متابیس جداولی با داده‌های مدل ایجاد می‌کند و آن‌ها را بر اساس زمان‌بندی‌ای که تعریف می‌کنید تازه‌سازی می‌کند. برای فعال کردن [model persistence](../../data-modeling/model-persistence.md)، باید به اعتبارنامه‌های این اتصال، مجوز خواندن و نوشتن روی schemaای که متابیس فراهم می‌کند بدهید.
 
-## Editable table data
+## ویرایش دادهٔ جدول (Editable table data)
 
-Turn this setting **ON** to enable editing of table data directly within Metabase. When enabled, Admins can create, update, and delete records in your tables through Metabase's interface.
+این تنظیم را روی **ON** بگذارید تا امکان ویرایش داده جدول‌ها مستقیماً در متابیس فعال شود. وقتی این ویژگی فعال باشد، ادمین‌ها می‌توانند رکوردها را در جدول‌های شما از طریق رابط متابیس ایجاد، به‌روزرسانی و حذف کنند.
 
-Your database connection will need Write permissions to enable this feature. Meaning: the database user account that you use to connect Metabase to your database must have appropriate privileges to modify data in the tables you want to make editable.
+اتصال پایگاه‌داده شما برای فعال شدن این قابلیت باید مجوز نوشتن داشته باشد؛ یعنی اکانت کاربری پایگاه‌داده‌ای که برای اتصال متابیس استفاده می‌کنید باید مجوزهای لازم برای تغییر داده در جدول‌هایی که می‌خواهید قابل ویرایش باشند داشته باشد. [مجوزها](../users-roles-privileges.md) را ببینید.
 
-See [privileges](../users-roles-privileges.md).
+## مسیریابی پایگاه‌داده (Database routing)
 
-## Database routing
+با Database routing، ادمین می‌تواند یک‌بار با استفاده از یک پایگاه‌داده سؤال بسازد و آن سؤال، بسته به اینکه چه کسی آن را می‌بیند، روی پایگاه‌داده دیگری با همان schema اجرا شود.
 
-With database routing, an admin can build a question once using one database, and the question will run its query against a different database with the same schema depending on who is viewing the question.
+[Database routing](../../permissions/database-routing.md) را ببینید.
 
-See [Database routing](../../permissions/database-routing.md).
+## بخش خطر (Danger zone)
 
-## Danger zone
+[Danger zone](../danger-zone.md) را ببینید.
 
-See [Danger zone](../danger-zone.md).
+## مطالعه بیشتر
 
-## Further reading
+- [مدیریت پایگاه‌داده‌ها](../../databases/connecting.md)
+- [ویرایش متادیتا](../../data-modeling/metadata-editing.md)
+- [مدل‌ها](../../data-modeling/models.md)
+- [تنظیم مجوزهای دسترسی به داده](../../permissions/data.md)
 
-- [Managing databases](../../databases/connecting.md)
-- [Metadata editing](../../data-modeling/metadata-editing.md)
-- [Models](../../data-modeling/models.md)
-- [Setting data access permissions](../../permissions/data.md)

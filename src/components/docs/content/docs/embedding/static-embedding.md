@@ -1,111 +1,111 @@
 ---
-title: Static embedding
+title: جاسازی ایستا
 redirect_from:
   - /docs/latest/embedding/signed-embedding
 ---
 
-# Static embedding
+# جاسازی ایستا
 
-Also known as: standalone embedding, or signed embedding.
+همچنین شناخته شده به عنوان: جاسازی مستقل، یا جاسازی امضا شده.
 
 {% include shared/in-page-promo-embedding-workshop.html %}
 
-In general, embedding works by displaying a Metabase URL inside an iframe in your website. A **static embed** (or signed embed) is an iframe that's loading a Metabase URL secured with a signed JSON Web Token (JWT). Metabase will only load the URL if the request supplies a JWT signed with the secret shared between your app and your Metabase. The JWT also includes a reference to the resource to load, e.g., the dashboard ID, and any values for locked parameters.
+به طور کلی، جاسازی با نمایش یک URL متابیس درون یک iframe در وب‌سایت شما کار می‌کند. یک **جاسازی ایستا** (یا جاسازی امضا شده) یک iframe است که یک URL متابیس ایمن شده با یک JSON Web Token (JWT) امضا شده را بارگذاری می‌کند. متابیس فقط URL را بارگذاری می‌کند اگر درخواست یک JWT امضا شده با secret مشترک بین برنامه و متابیس شما ارائه دهد. JWT همچنین شامل یک ارجاع به منبع برای بارگذاری است، مثلاً، ID داشبورد، و هر مقدار برای پارامترهای قفل شده.
 
-You can't use static embeds with [row and column security](../permissions/row-and-column-security.md), [drill-through](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through), and user-specific data isn't captured in [usage analytics](../usage-and-performance-tools/usage-analytics.md) because signed JWTs don't create user sessions (server-side sessions). For those features, check out [Embedded analytics JS](./embedded-analytics-js.md).
+نمی‌توانید از جاسازی‌های ایستا با [امنیت ردیف و ستون](../permissions/row-and-column-security.md)، [حفاری](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through)، و داده خاص کاربر در [تحلیل استفاده](../usage-and-performance-tools/usage-analytics.md) ثبت نمی‌شود زیرا JWTهای امضا شده جلسات کاربر (جلسات سمت سرور) ایجاد نمی‌کنند. برای آن ویژگی‌ها، [تجزیه و تحلیل تعبیه‌شده JS](./embedded-analytics-js.md) را بررسی کنید.
 
-You can, however, restrict data in static embeds for specific people or groups by [locking parameters](./static-embedding-parameters.md#restricting-data-in-a-static-embed-with-locked-parameters).
+با این حال، می‌توانید داده را در جاسازی‌های ایستا برای افراد یا گروه‌های خاص با [قفل کردن پارامترها](./static-embedding-parameters.md#restricting-data-in-a-static-embed-with-locked-parameters) محدود کنید.
 
-## How static embedding works
+## نحوه کار جاسازی ایستا
 
-If you want to set up interactive Metabase filters in your iframe, your web server will need to make requests to Metabase for updated data each time a website visitor updates the filter widget.
+اگر می‌خواهید فیلترهای تعاملی متابیس را در iframe خود راه‌اندازی کنید، سرور وب شما نیاز دارد که هر بار که یک بازدیدکننده وب‌سایت ویجت فیلتر را به‌روزرسانی می‌کند، درخواست‌هایی به متابیس برای داده به‌روزرسانی شده انجام دهد.
 
-To ask for updated data from Metabase, your web server will generate a new Metabase [embedding URL](#adding-the-embedding-url-to-your-website). For example, if a website visitor enters the value "true" in an [embedded filter widget](./static-embedding-parameters.md#adding-a-filter-widget-to-a-static-embed), your web server will generate a new embedding URL with an extra parameter:
+برای درخواست داده به‌روزرسانی شده از متابیس، سرور وب شما یک [URL جاسازی متابیس](#adding-the-embedding-url-to-your-website) جدید تولید می‌کند. به عنوان مثال، اگر یک بازدیدکننده وب‌سایت مقدار "true" را در یک [ویجت فیلتر جاسازی شده](./static-embedding-parameters.md#adding-a-filter-widget-to-a-static-embed) وارد کند، سرور وب شما یک URL جاسازی جدید با یک پارامتر اضافی تولید می‌کند:
 
 ```
 your_metabase_embedding_url?filter=true
 ```
 
-To prevent people from editing the embedding URL to get access to other parts of your Metabase (e.g., by changing the parameter to `filter=company_secrets`), your web server will add a signed JWT to the new embedding URL:
+برای جلوگیری از ویرایش URL جاسازی توسط افراد برای دسترسی به بخش‌های دیگر متابیس شما (مثلاً، با تغییر پارامتر به `filter=company_secrets`)، سرور وب شما یک JWT امضا شده به URL جاسازی جدید اضافه می‌کند:
 
 ```
 your_metabase_embedding_url/your_signed_jwt?filter=true
 ```
 
-The signed JWT is generated using your [Metabase secret key](#regenerating-the-static-embedding-secret-key). The secret key tells Metabase that the request for filtered data can be trusted, so it's safe to display the results at the new embedding URL. Note that this secret key is shared for all static embeds, so whoever has access to that key will have access to all embedded artifacts.
+JWT امضا شده با استفاده از [کلید secret متابیس](#regenerating-the-static-embedding-secret-key) شما تولید می‌شود. کلید secret به متابیس می‌گوید که درخواست برای داده فیلتر شده قابل اعتماد است، بنابراین نمایش نتایج در URL جاسازی جدید ایمن است. توجه داشته باشید که این کلید secret برای همه جاسازی‌های ایستا مشترک است، بنابراین هر کسی که به آن کلید دسترسی دارد به همه آثار جاسازی شده دسترسی خواهد داشت.
 
-If you want to embed charts with additional interactive features, like [drill-down](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) and [self-service querying](../questions/query-builder/editor.md), see [Embedded analytics JS](./embedded-analytics-js.md).
+اگر می‌خواهید نمودارها را با ویژگی‌های تعاملی اضافی جاسازی کنید، مانند [حفاری به پایین](https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/drill-through) و [پرس‌وجوی خودخدمت](../questions/query-builder/editor.md)، [تجزیه و تحلیل تعبیه‌شده JS](./embedded-analytics-js.md) را ببینید.
 
-## Turning on the embedding feature in Metabase
+## روشن کردن ویژگی جاسازی در متابیس
 
-1. Go to **Settings** > **Admin settings** > **Embedding > Static**.
-2. Toggle **Enable static embedding**.
+۱. به **Settings** > **Admin settings** > **Embedding > Static** بروید.
+۲. **Enable static embedding** را روشن کنید.
 
-## Making a question or dashboard embeddable
+## قابل جاسازی کردن یک سؤال یا داشبورد
 
 ![Sharing button to embed dashboard](./images/sharing-embed.png)
 
-To create a static embed:
+برای ایجاد یک جاسازی ایستا:
 
-1. Go to the question or dashboard that you want to embed in your website.
-2. Click on the **sharing icon**.
-3. Select **Embed**.
-4. Select **Static embedding**.
-5. Optional: [customize the appearance of the embed](./static-embedding-parameters.md#customizing-the-appearance-of-a-static-embed)
-6. Optional: [Add parameters to the embed](./static-embedding-parameters.md).
-7. Click **Publish**.
+۱. به سؤال یا داشبوردی که می‌خواهید در وب‌سایت خود جاسازی کنید بروید.
+۲. روی آیکون **sharing** کلیک کنید.
+۳. **Embed** را انتخاب کنید.
+۴. **Static embedding** را انتخاب کنید.
+۵. اختیاری: [ظاهر جاسازی را سفارشی کنید](./static-embedding-parameters.md#customizing-the-appearance-of-a-static-embed)
+۶. اختیاری: [پارامترها را به جاسازی اضافه کنید](./static-embedding-parameters.md).
+۷. **Publish** را کلیک کنید.
 
 ![Preview](./images/04-preview.png)
 
-## Adding the embedding URL to your website
+## افزودن URL جاسازی به وب‌سایت شما
 
-The embedding URL for a question or dashboard is the Metabase URL that'll be displayed in your website's iframe. It's generated by your web server using your [Metabase site URL](../configuring-metabase/settings.md#site-url), [signed JWT](#how-static-embedding-works), and [parameters](./static-embedding-parameters.md):
+URL جاسازی برای یک سؤال یا داشبورد URL متابیس است که در iframe وب‌سایت شما نمایش داده می‌شود. توسط سرور وب شما با استفاده از [site URL متابیس](../configuring-metabase/settings.md#site-url)، [JWT امضا شده](#how-static-embedding-works)، و [پارامترها](./static-embedding-parameters.md) تولید می‌شود:
 
 ```
 metabase_site_url/embed/question/your_jwt_token?parameter_name=value
 ```
 
-Once you've made a question or dashboard [embeddable](#making-a-question-or-dashboard-embeddable), you'll need to put the embedding URL for that question or dashboard on your website:
+پس از اینکه یک سؤال یا داشبورد را [قابل جاسازی](#making-a-question-or-dashboard-embeddable) کردید، نیاز دارید URL جاسازی برای آن سؤال یا داشبورد را در وب‌سایت خود قرار دهید:
 
-1. Go to the question or dashboard > **sharing icon** > **Embed**.
-2. Make any changes and copy the code.
-3. [Preview the code](#previewing-the-code-for-an-embed)
-4. Add the code to the server code that builds your website.
-5. Add the frontend code to the code that generates the page where you want the embedded item to appear.
+۱. به سؤال یا داشبورد > **sharing icon** > **Embed** بروید.
+۲. هر تغییری ایجاد کنید و کد را کپی کنید.
+۳. [کد را پیش‌نمایش کنید](#previewing-the-code-for-an-embed)
+۴. کد را به کد سرور که وب‌سایت شما را می‌سازد اضافه کنید.
+۵. کد frontend را به کدی که صفحه‌ای که می‌خواهید مورد جاسازی شده در آن ظاهر شود را تولید می‌کند اضافه کنید.
 
-For more examples, see our [reference apps repo](https://github.com/metabase/embedding-reference-apps).
+برای مثال‌های بیشتر، [مخزن برنامه‌های مرجع ما](https://github.com/metabase/embedding-reference-apps) را ببینید.
 
-## Previewing the code for an embed
+## پیش‌نمایش کد برای یک جاسازی
 
-1. Go to the question or dashboard > **sharing icon** > **Embed this item in an application**.
-2. Click **Code**.
-3. In the top code block, you'll find the sample code for your web server. You'll also find the iframe snippet to plug into your HTML template or single page app.
+۱. به سؤال یا داشبورد > **sharing icon** > **Embed this item in an application** بروید.
+۲. **Code** را کلیک کنید.
+۳. در بلوک کد بالا، کد نمونه برای سرور وب خود را پیدا خواهید کرد. همچنین قطعه iframe را برای قرار دادن در قالب HTML یا برنامه single page خود پیدا خواهید کرد.
 
-When you make changes to the look and feel or parameter preview settings, Metabase will update the code and highlight the changes. Make sure to copy these changes to your actual server code.
+وقتی تغییراتی در ظاهر و احساس یا تنظیمات پیش‌نمایش پارامتر ایجاد می‌کنید، متابیس کد را به‌روزرسانی می‌کند و تغییرات را برجسته می‌کند. مطمئن شوید که این تغییرات را به کد سرور واقعی خود کپی کنید.
 
 ![Code samples for embedding](./images/05-code.png)
 
-Metabase generates server code for:
+متابیس کد سرور را برای موارد زیر تولید می‌کند:
 
 - Clojure
 - Node.js
 - Python
 - Ruby
 
-For iframe snippets:
+برای قطعه‌های iframe:
 
 - ERB
 - JSX
 - Mustache
 - Pug/Jade
 
-## If you serialize your Metabase, use Entity IDs in your static embeds
+## اگر متابیس خود را serialize می‌کنید، از Entity IDها در جاسازی‌های ایستای خود استفاده کنید
 
-Using [Entity IDs](../installation-and-operation/serialization.md#metabase-uses-entity-ids-to-identify-and-reference-metabase-items) in your static embeds will make sure that the IDs are stable when exporting from one Metabase and importing to another Metabase.
+استفاده از [Entity IDها](../installation-and-operation/serialization.md#metabase-uses-entity-ids-to-identify-and-reference-metabase-items) در جاسازی‌های ایستای شما اطمینان می‌دهد که IDها هنگام صادرات از یک متابیس و واردات به متابیس دیگر پایدار هستند.
 
-To use an Entity ID in a static embed, all you need to do is edit the `resource` map in the `payload` used to sign your token. Replace the item's (autopopulated) ID with its Entity ID and you're done.
+برای استفاده از یک Entity ID در یک جاسازی ایستا، فقط باید map `resource` را در `payload` استفاده شده برای امضای توکن خود ویرایش کنید. ID مورد (autopopulated) را با Entity ID آن جایگزین کنید و تمام.
 
-So, in the code below you'd change the `{ question: <ID> }` to:
+پس، در کد زیر `{ question: <ID> }` را به این تغییر می‌دهید:
 
 ```js
 const payload = {
@@ -115,63 +115,63 @@ const payload = {
 };
 ```
 
-If you don't serialize your Metabase, don't worry about which ID you use; both will work just fine.
+اگر متابیس خود را serialize نمی‌کنید، نگران اینکه از کدام ID استفاده می‌کنید نباشید؛ هر دو به خوبی کار می‌کنند.
 
-## Editing an embedded question or dashboard
+## ویرایش یک سؤال یا داشبورد جاسازی شده
 
-If you change the [parameters](./static-embedding-parameters.md) of your embedded item:
+اگر [پارامترهای](./static-embedding-parameters.md) مورد جاسازی شده خود را تغییر می‌دهید:
 
-1. After making your changes, copy the code Metabase generates.
-1. Click **Publish** again.
-1. [Update the code](#adding-the-embedding-url-to-your-website) on your server so that it matches the code generated by Metabase.
+۱. پس از ایجاد تغییرات، کد تولید شده توسط متابیس را کپی کنید.
+۲. دوباره **Publish** را کلیک کنید.
+۳. [کد را به‌روزرسانی کنید](#adding-the-embedding-url-to-your-website) در سرور خود تا با کد تولید شده توسط متابیس مطابقت داشته باشد.
 
-## Disabling embedding for a question or dashboard
+## غیرفعال کردن جاسازی برای یک سؤال یا داشبورد
 
-You can find a list of all static embeds of questions and dashboards from **Admin settings** > **Embedding** > **Static**.
+می‌توانید فهرستی از همه جاسازی‌های ایستای سؤال‌ها و داشبوردها را از **Admin settings** > **Embedding** > **Static** پیدا کنید.
 
-1. Visit the embeddable question or dashboard.
-2. Click on the **sharing icon** (square with an arrow pointing to the top right).
-3. Select **Embed**.
-4. Select **Static embedding**
-5. Click **Unpublish**.
+۱. به سؤال یا داشبورد قابل جاسازی بروید.
+۲. روی آیکون **sharing** (مربع با یک فلش اشاره به بالا سمت راست) کلیک کنید.
+۳. **Embed** را انتخاب کنید.
+۴. **Static embedding** را انتخاب کنید
+۵. **Unpublish** را کلیک کنید.
 
-## Customizing the appearance of static embeds
+## سفارشی کردن ظاهر جاسازی‌های ایستا
 
-See [Customizing appearance of static embeds](./static-embedding-parameters.md#customizing-the-appearance-of-a-static-embed)
+[سفارشی کردن ظاهر جاسازی‌های ایستا](./static-embedding-parameters.md#customizing-the-appearance-of-a-static-embed) را ببینید
 
-## Auto-refreshing the results of an embedded dashboard
+## تازه‌سازی خودکار نتایج یک داشبورد جاسازی شده
 
-> Auto-refreshing is only available for dashboards, not questions.
+> تازه‌سازی خودکار فقط برای داشبوردها در دسترس است، نه سؤال‌ها.
 
-To refresh the results of a dashboard at a specific cadence, you can parameterize the embedded URL with `refresh`. For example, to set an embedded dashboard to refresh every 60 seconds, you would append `refresh=60` to the URL.
+برای تازه‌سازی نتایج یک داشبورد در یک cadence خاص، می‌توانید URL جاسازی شده را با `refresh` پارامتریزه کنید. به عنوان مثال، برای تنظیم یک داشبورد جاسازی شده برای تازه‌سازی هر 60 ثانیه، `refresh=60` را به URL اضافه می‌کنید.
 
-For example, the following code for generating an iframe URL for a dashboard would display the dashboard's title and refresh its results every 60 seconds.
+به عنوان مثال، کد زیر برای تولید یک URL iframe برای یک داشبورد عنوان داشبورد را نمایش می‌دهد و نتایج آن را هر 60 ثانیه تازه‌سازی می‌کند.
 
 ```js
 var iframeUrl =
   METABASE_SITE_URL + "/embed/dashboard/" + token + "#titled=true&refresh=60";
 ```
 
-For the full list options you can parameterize, see [customizing the appearance of a static embed](./static-embedding-parameters.md#customizing-the-appearance-of-a-static-embed).
+برای فهرست کامل گزینه‌هایی که می‌توانید پارامتریزه کنید، [سفارشی کردن ظاهر یک جاسازی ایستا](./static-embedding-parameters.md#customizing-the-appearance-of-a-static-embed) را ببینید.
 
-## Removing the "Powered by Metabase" banner
+## حذف بنر "Powered by Metabase"
 
 ![Powered by Metabase](./images/powered-by-metabase.png)
 
-The banner appears on static embeds created with Metabase's open-source version. To remove the banner, you'll need to upgrade to a [Pro](https://www.metabase.com/product/pro) or [Enterprise](https://www.metabase.com/product/enterprise) plan.
+بنر روی جاسازی‌های ایستای ایجاد شده با نسخه open-source متابیس ظاهر می‌شود. برای حذف بنر، باید به یک پلن [Pro](https://www.metabase.com/product/pro) یا [Enterprise](https://www.metabase.com/product/enterprise) ارتقا دهید.
 
-## Regenerating the static embedding secret key
+## تولید مجدد کلید secret جاسازی ایستا
 
-Your embedding secret key is used to sign JWTs for all of your [embedding URLs](#adding-the-embedding-url-to-your-website).
+کلید secret جاسازی شما برای امضای JWTها برای همه [URLهای جاسازی](#adding-the-embedding-url-to-your-website) شما استفاده می‌شود.
 
-1. Go to **Admin** > **Embedding** > **Static embedding**.
-2. Under **Regenerate secret key**, click **Regenerate key**.
+۱. به **Admin** > **Embedding** > **Static embedding** بروید.
+۲. در زیر **Regenerate secret key**، **Regenerate key** را کلیک کنید.
 
-This key is shared across all static embeds. Whoever has access to this key could get access to all embedded artifacts, so keep this key secure. If you regenerate this key, you'll need to update your server code with the new key.
+این کلید در همه جاسازی‌های ایستا مشترک است. هر کسی که به این کلید دسترسی دارد می‌تواند به همه آثار جاسازی شده دسترسی پیدا کند، بنابراین این کلید را ایمن نگه دارید. اگر این کلید را تولید مجدد کنید، باید کد سرور خود را با کلید جدید به‌روزرسانی کنید.
 
-## Resizing dashboards to fit their content
+## تغییر اندازه داشبوردها برای مطابقت با محتوای آن‌ها
 
-Dashboards are a fixed aspect ratio, so if you'd like to ensure they're automatically sized vertically to fit their contents you can use the [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer) script. Metabase serves a copy for convenience:
+داشبوردها یک نسبت تصویر ثابت هستند، بنابراین اگر می‌خواهید اطمینان حاصل کنید که به طور خودکار به صورت عمودی برای مطابقت با محتوای آن‌ها اندازه‌گیری می‌شوند می‌توانید از اسکریپت [iFrame Resizer](https://github.com/davidjbradshaw/iframe-resizer) استفاده کنید. متابیس یک کپی برای راحتی سرو می‌دهد:
 
 ```html
 <script src="{your-metabase-url}/app/iframeResizer.js"></script>
@@ -182,22 +182,22 @@ Dashboards are a fixed aspect ratio, so if you'd like to ensure they're automati
 ></iframe>
 ```
 
-Due to iframe-resizer's licensing changes, we recommend that you use iframe-resizer version 4.3.2 or lower.
+به دلیل تغییرات مجوز iframe-resizer، توصیه می‌کنیم که از نسخه 4.3.2 یا پایین‌تر iframe-resizer استفاده کنید.
 
-## Custom destinations on dashboards in static embeds
+## مقاصد سفارشی در داشبوردها در جاسازی‌های ایستا
 
-You can only use the **URL** option for [custom destinations](../dashboards/interactive.md#custom-destinations) on dashboards with static embedding. External URLs will open in a new tab or window.
+فقط می‌توانید از گزینه **URL** برای [مقاصد سفارشی](../dashboards/interactive.md#custom-destinations) در داشبوردها با جاسازی ایستا استفاده کنید. URLهای خارجی در یک تب یا پنجره جدید باز می‌شوند.
 
-You can propagate filter values into the external URL, unless the filter is locked.
+می‌توانید مقادیر فیلتر را به URL خارجی منتقل کنید، مگر اینکه فیلتر قفل شده باشد.
 
-## Translating static embeds
+## ترجمه جاسازی‌های ایستا
 
-See [Translating embedded questions and dashboards](./translations.md).
+[ترجمه سؤال‌ها و داشبوردهای جاسازی شده](./translations.md) را ببینید.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Parameters for static embeds](./static-embedding-parameters.md).
-- [Reference apps repo](https://github.com/metabase/embedding-reference-apps).
-- [Strategies for delivering customer-facing analytics](https://www.metabase.com/learn/metabase-basics/embedding/overview).
-- [Publishing data visualizations to the web](https://www.metabase.com/learn/metabase-basics/embedding/charts-and-dashboards).
-- [Customizing Metabase's appearance](../configuring-metabase/appearance.md).
+- [پارامترها برای جاسازی‌های ایستا](./static-embedding-parameters.md).
+- [مخزن برنامه‌های مرجع](https://github.com/metabase/embedding-reference-apps).
+- [استراتژی‌های ارائه تجزیه و تحلیل مشتری‌محور](https://www.metabase.com/learn/metabase-basics/embedding/overview).
+- [انتشار تجسم داده‌ها در وب](https://www.metabase.com/learn/metabase-basics/embedding/charts-and-dashboards).
+- [سفارشی‌سازی ظاهر متابیس](../configuring-metabase/appearance.md).

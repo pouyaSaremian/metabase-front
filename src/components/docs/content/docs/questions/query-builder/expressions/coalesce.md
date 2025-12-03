@@ -4,20 +4,20 @@ title: Coalesce
 
 # Coalesce
 
-`coalesce` looks at the values in a list (in order), and returns the first non-null value.
+تابع `coalesce` مقدارها را به‌ترتیب بررسی می‌کند و **اولین مقدار غیرتهی (non-null)** را برمی‌گرداند.
 
-This function is useful when you want to:
+این تابع زمانی مفید است که می‌خواهید:
 
-- [fill in missing data](#filling-in-empty-or-null-values),
-- [consolidate data from multiple columns](#consolidating-values-from-different-columns), or
-- [create calculations across multiple columns](#creating-calculations-across-different-columns).
+- [مقادیر خالی یا Null را پر کنید](#پر-کردن-مقادیر-خالی-یا-null-filling-in-empty-or-null-values)،
+- [مقادیر چند ستون را در یک ستون تجمیع کنید](#تجمیع-مقادیر-از-چند-ستون-consolidating-values-from-different-columns)،
+- [محاسباتی روی چند ستون انجام دهید حتی وقتی بعضی ستون‌ها null هستند](#محاسبه-روی-ستون‌های-مختلف-creating-calculations-across-different-columns).
 
 | Syntax                                                  | Example                                         |
 | ------------------------------------------------------- | ----------------------------------------------- |
 | `coalesce(value1, value2, …)`                           | `coalesce("null", "null", "bananas", "null" …)` |
-| Returns the first non-null value from a list of values. | “bananas”                                       |
+| برمی‌گرداند: اولین مقدار غیر-null از بین یک لیست مقادیر | “bananas”                                       |
 
-## Filling in empty or null values
+## پر کردن مقادیر خالی یا Null (Filling in empty or null values)
 
 | left_table_col | right_table_col | `coalesce([right_table_col], 0)` |
 | -------------- | --------------- | -------------------------------- |
@@ -26,23 +26,23 @@ This function is useful when you want to:
 | 3              | `null`          | 0                                |
 | 4              | 4               | 4                                |
 
-You may want to fill in empty or null values if you have:
+ممکن است بخواهید مقادیر null را پر کنید اگر:
 
-- Sparse data.
-- `null` values created by a left join (the example shown above).
+- داده‌ها تنک (Sparse) هستند،
+- یا `null`ها در نتیجهٔ یک left join ایجاد شده‌اند (مثل مثال بالا).
 
-For a more detailed example, see [Filling in data for missing report dates][missing-dates].
+برای مثالِ کامل‌تر، بخش [Filling in data for missing report dates][missing-dates] را ببینید.
 
-## Consolidating values from different columns
+## تجمیع مقادیر از چند ستون (Consolidating values from different columns)
 
-| Notes          | Comments          | `coalesce([Notes], [Comments] "No notes or comments.")` |
-| -------------- | ----------------- | ------------------------------------------------------- |
-| I have a note. | I have a comment. | I have a note.                                          |
-|                | I have a comment. | I have a comment.                                       |
-| I have a note. |                   | I have a note.                                          |
-|                |                   | No notes or comments.                                   |
+| Notes          | Comments          | `coalesce([Notes], [Comments], "No notes or comments.")` |
+| -------------- | ----------------- | -------------------------------------------------------- |
+| I have a note. | I have a comment. | I have a note.                                           |
+|                | I have a comment. | I have a comment.                                        |
+| I have a note. |                   | I have a note.                                           |
+|                |                   | No notes or comments.                                    |
 
-## Creating calculations across different columns
+## محاسبه روی ستون‌های مختلف (Creating calculations across different columns)
 
 | Subtotal | Discount | `coalesce([Subtotal], 0) - coalesce([Discount], 0)` |
 | -------- | -------- | --------------------------------------------------- |
@@ -51,13 +51,13 @@ For a more detailed example, see [Filling in data for missing report dates][miss
 | 16.00    | 1.60     | 14.40                                               |
 | 4.00     |          | 4.00                                                |
 
-Calculations in Metabase will return `null` if any of the input columns are `null`. This is because `null` values in your data represent "missing" or "unknown" information, which isn't necessarily the same as an amount of "0". That is, adding 1 + "unknown" = "unknown".
+در متابیس، اگر در یک محاسبه یکی از ستون‌ها `null` باشد، نتیجه هم `null` می‌شود. دلیلش این است که `null` نمایندهٔ «نامشخص» یا «ناموجود» است، نه لزوماً صفر؛ یعنی ۱ + "unknown" = "unknown".
 
-If you want to treat "unknown" values as zeroes (or some other value that means "nothing" in your data), we recommend using `coalesce` to wrap the columns used in your calculations.
+اگر می‌خواهید «نامشخص» را به‌معنای صفر (یا هر مقدار دیگری که در دامنهٔ شما معادل «هیچ» است) در نظر بگیرید، بهتر است ستون‌هایی را که در محاسبات استفاده می‌کنید با `coalesce` بپیچید.
 
-## Accepted data types
+## انواع دادهٔ پذیرفته‌شده
 
-| [Data type][data-types] | Works with `coalesce` |
+| [Data type][data-types] | سازگار با `coalesce` |
 | ----------------------- | --------------------- |
 | String                  | ✅                    |
 | Number                  | ✅                    |
@@ -65,119 +65,121 @@ If you want to treat "unknown" values as zeroes (or some other value that means 
 | Boolean                 | ✅                    |
 | JSON                    | ❌                    |
 
-## Limitations
+## محدودیت‌ها
 
-Use the same data types within a single `coalesce` function. If you want to coalesce values that have different data types:
+در یک فراخوانی `coalesce` بهتر است همهٔ مقادیر از یک نوع داده باشند. اگر می‌خواهید بین نوع‌های مختلف `coalesce` انجام دهید:
 
-- Use the SQL `CAST` operator.
-- [Change the data type from the Table Metadata page][cast-data-type].
+- در SQL از `CAST` استفاده کنید.
+- یا نوع داده را از صفحهٔ Table Metadata تغییر دهید: [تغییر نوع داده][cast-data-type].
 
-If you want to use `coalesce` with JSON or JSONB data types, you'll need to flatten the JSON objects first. For more information, look up the JSON functions that are available in your SQL dialect. You can find some [common SQL reference guides here][sql-reference-guide].
+اگر می‌خواهید روی JSON یا JSONB از `coalesce` استفاده کنید، ابتدا باید JSON را به سطح ستون‌های ساده «باز» کنید. برای این کار باید از توابع JSON مربوط به dialect دیتابیس خودتان استفاده کنید. چند [راهنمای مرجع SQL][sql-reference-guide] در انتهای صفحه آمده است.
 
-## Related functions
+## توابع مرتبط
 
-This section covers functions and formulas that can be used interchangeably with the Metabase `coalesce` expression, with notes on how to choose the best option for your use case.
+این بخش توابع و الگوهایی را نشان می‌دهد که می‌توانید به‌جای `coalesce` (یا در کنار آن) استفاده کنید:
 
-**Metabase expressions**
+**تعبیرهای متابیس**
 
 - [case](#case)
 
-**Other tools**
+**ابزارهای دیگر**
 
 - [SQL](#sql)
 - [Spreadsheets](#spreadsheets)
 - [Python](#python)
 
-All examples use the custom expression and sample data from the [Consolidating values](#consolidating-values-from-different-columns) example:
+در مثال‌ها از همان دادهٔ نمونهٔ [بخش تجمیع مقادیر](#تجمیع-مقادیر-از-چند-ستون-consolidating-values-from-different-columns) استفاده می‌کنیم:
 
-| Notes          | Comments          | `coalesce([Notes], [Comments] "No notes or comments.")` |
-| -------------- | ----------------- | ------------------------------------------------------- |
-| I have a note. | I have a comment. | I have a note.                                          |
-|                | I have a comment. | I have a comment.                                       |
-| I have a note. |                   | I have a note.                                          |
-|                |                   | No notes or comments.                                   |
+| Notes          | Comments          | `coalesce([Notes], [Comments], "No notes or comments.")` |
+| -------------- | ----------------- | -------------------------------------------------------- |
+| I have a note. | I have a comment. | I have a note.                                           |
+|                | I have a comment. | I have a comment.                                        |
+| I have a note. |                   | I have a note.                                           |
+|                |                   | No notes or comments.                                    |
 
 ### Case
 
-The [Metabase `case` expression](./case.md)
+تابع [`case` در متابیس](./case.md):
 
-```
+```text
 case(ISBLANK([Notes]) = FALSE AND ISBLANK([Comments]) = FALSE, [Notes],
-     ISBLANK([Notes]) = TRUE  AND ISBLANK([Comments]) = False, [Comments],
+     ISBLANK([Notes]) = TRUE  AND ISBLANK([Comments]) = FALSE, [Comments],
      ISBLANK([Notes]) = FALSE AND ISBLANK([Comments]) = TRUE,  [Notes],
      ISBLANK([Notes]) = TRUE  AND ISBLANK([Comments]) = TRUE,  "No notes or comments")
 ```
 
-is equivalent to the Metabase `coalesce` expression:
+معادل این عبارت با `coalesce` است:
 
-```
-coalesce([Notes], [Comments] "No notes or comments.")
+```text
+coalesce([Notes], [Comments], "No notes or comments.")
 ```
 
-`coalesce` is much nicer to write if you don't mind taking the first value when both of your columns are non-blank. [Use `case` if you want to define a specific output][case-to-coalesce] (e.g., if you want to return "I have a note _and_ a comment" instead of "I have a note".).
+نوشتن `coalesce` معمولاً خیلی ساده‌تر است، به‌شرطی که در حالتی که هر دو ستون مقدار داشته باشند، **اولین مقدار** برای شما کافی باشد. اگر می‌خواهید در این حالت خروجیِ خاصی داشته باشید (مثلاً «I have a note _and_ a comment»)، [بهتر است از `case` استفاده کنید][case-to-coalesce].
 
 ### SQL
 
-In most cases (unless you're using a NoSQL database), questions created from the [notebook editor][notebook-editor-def] are converted into SQL queries that run against your database or data warehouse.
+در اغلب موارد، سؤال‌هایی که از [notebook editor][notebook-editor-def] ساخته می‌شوند به SQL تبدیل و روی دیتابیس اجرا می‌شوند.
 
-The SQL `coalesce` function
+تابع `coalesce` در SQL:
 
 ```sql
 SELECT
-    COALESCE(notes, comments, "no notes or comments")
+    COALESCE(notes, comments, 'No notes or comments.')
 FROM
     sample_table;
 ```
 
-is equivalent to the Metabase `coalesce` expression:
+معادل این عبارت در متابیس است:
 
-```
-coalesce([Notes], [Comments] "No notes or comments.")
+```text
+coalesce([Notes], [Comments], "No notes or comments.")
 ```
 
 ### Spreadsheets
 
-If your [notes and comments table](#consolidating-values-from-different-columns) is in a spreadsheet where "Notes" is in column A, and "Comments" is in column B, then the formula
+اگر جدول Notes و Comments در یک Spreadsheet باشد و ستون "Notes" در ستون A و "Comments" در ستون B باشد، می‌توانید از فرمول زیر استفاده کنید:
 
-```
-=IF(ISBLANK($A2),$B2,IF(ISBLANK($B2),$A2,"No notes or comments."))
-```
-
-is equivalent to the Metabase `coalesce` expression:
-
-```
-coalesce([Notes], [Comments] "No notes or comments.")
+```text
+=IF(ISBLANK($A2), $B2, IF(ISBLANK($B2), $A2, "No notes or comments."))
 ```
 
-Alternatively, you may be used to working with a INDEX and MATCH in an array formula if you’re “coalescing” data across three or more columns in a spreadsheet.
+که معادل این عبارت در متابیس است:
+
+```text
+coalesce([Notes], [Comments], "No notes or comments.")
+```
+
+در Spreadsheetها ممکن است برای «coalesce کردن» مقادیر روی سه ستون یا بیشتر از ترکیب INDEX و MATCH در فرمول‌های Array استفاده کنید.
 
 ### Python
 
-Assuming the [notes and comments table](#consolidating-values-from-different-columns) is in a dataframe called `df`, the combination of `pandas` functions `combine_first()` and `fillna()`
+اگر جدول Notes و Comments در یک DataFrame پانداس به نام `df` ذخیره شده باشد، ترکیب توابع `combine_first()` و `fillna()`:
 
-```
-df['custom_column'] = df['notes'].combine_first(df['comments'])\
-                                 .fillna('No notes or comments.')
-```
-
-are equivalent to the Metabase `coalesce` expression:
-
-```
-coalesce([Notes], [Comments] "No notes or comments.")
+```python
+df["custom_column"] = df["notes"].combine_first(df["comments"])\
+                                 .fillna("No notes or comments.")
 ```
 
-## Further reading
+معادل این عبارت در متابیس است:
 
-- [Custom expressions documentation][custom-expressions-doc]
-- [Custom expressions tutorial][custom-expressions-learn]
+```text
+coalesce([Notes], [Comments], "No notes or comments.")
+```
 
-[case-to-coalesce]: ./case.md#coalesce
-[cast-data-type]: ../../../data-modeling/metadata-editing.md#cast-to-a-specific-data-type
-[custom-expressions-doc]: ../expressions.md
-[custom-expressions-learn]: https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/custom-expressions
-[data-types]: https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview#examples-of-data-types
-[missing-dates]: https://www.metabase.com/learn/sql/debugging-sql/sql-logic-missing-data#how-to-fill-in-data-for-missing-report-dates
-[notebook-editor-def]: https://www.metabase.com/glossary/notebook-editor
-[numpy]: https://numpy.org/doc/
-[pandas]: https://pandas.pydata.org/pandas-docs/stable/
+## مطالعهٔ بیشتر
+
+- [مستندات تعبیرهای سفارشی][custom-expressions-doc]
+- [آموزش تعبیرهای سفارشی][custom-expressions-learn]
+
+[case-to-coalesce]: ./case.md#coalesce  
+[cast-data-type]: ../../../data-modeling/metadata-editing.md#cast-to-a-specific-data-type  
+[custom-expressions-doc]: ../expressions.md  
+[custom-expressions-learn]: https://www.metabase.com/learn/metabase-basics/querying-and-dashboards/questions/custom-expressions  
+[data-types]: https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/data-types-overview#examples-of-data-types  
+[missing-dates]: https://www.metabase.com/learn/sql/debugging-sql/sql-logic-missing-data#how-to-fill-in-data-for-missing-report-dates  
+[notebook-editor-def]: https://www.metabase.com/glossary/notebook-editor  
+[numpy]: https://numpy.org/doc/  
+[pandas]: https://pandas.pydata.org/pandas-docs/stable/  
 [sql-reference-guide]: https://www.metabase.com/learn/sql/debugging-sql/sql-syntax#common-sql-reference-guides
+
+

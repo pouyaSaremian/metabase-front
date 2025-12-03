@@ -1,15 +1,15 @@
 ---
-title: Interactive embedding UI components
-description: Customize the UI components in your interactive Metabase embed by adding parameters to the embedding URL.
+title: اجزای UI جاسازی تعاملی
+description: سفارشی کردن اجزای UI در جاسازی تعاملی متابیس با افزودن پارامترها به URL جاسازی.
 ---
 
-# Interactive embedding UI components
+# اجزای UI جاسازی تعاملی
 
-To change the interface of your interactive embed, you can add parameters to the end of your embedding URL. If you want to change the colors or fonts in your embed, see [Customizing appearance](../configuring-metabase/appearance.md).
+برای تغییر رابط جاسازی تعاملی خود، می‌توانید پارامترها را به انتهای URL جاسازی خود اضافه کنید. اگر می‌خواهید رنگ‌ها یا فونت‌ها را در جاسازی خود تغییر دهید، [سفارشی‌سازی ظاهر](../configuring-metabase/appearance.md) را ببینید.
 
-> If you are just starting out with Metabase embedding, consider using [Embedded Analytics JS](./embedded-analytics-js.md) instead of interactive embedding - it's an improved, more customizable option for embedding interactive Metabase elements. Interactive embedding remains fully supported.
+> اگر تازه با جاسازی متابیس شروع می‌کنید، استفاده از [تجزیه و تحلیل تعبیه‌شده JS](./embedded-analytics-js.md) را به جای جاسازی تعاملی در نظر بگیرید - این یک گزینه بهبود یافته و قابل سفارشی‌سازی بیشتر برای جاسازی عناصر تعاملی متابیس است. جاسازی تعاملی همچنان به طور کامل پشتیبانی می‌شود.
 
-For example, you can disable Metabase's [top nav bar](#top_nav) and [side nav menu](#side_nav) like this:
+به عنوان مثال، می‌توانید [نوار nav بالایی](#top_nav) و [منوی nav کناری](#side_nav) متابیس را اینگونه غیرفعال کنید:
 
 ```
 your_embedding_url?top_nav=false&side_nav=false
@@ -17,7 +17,7 @@ your_embedding_url?top_nav=false&side_nav=false
 
 ![Top nav and side nav disabled](./images/no-top-no-side.png)
 
-Here's an example using the URL constructor to add parameters to the URL for the iframe:
+در اینجا یک مثال با استفاده از constructor URL برای افزودن پارامترها به URL برای iframe آمده است:
 
 ```tsx
 const mods = "logo=false&top_nav=true&search=true&new_button=true";
@@ -31,27 +31,27 @@ app.get("/sso/metabase", restrict, (req, res) => {
 });
 ```
 
-Parameters include:
+پارامترها شامل موارد زیر هستند:
 
-- [Action buttons](#action_buttons)
-- [Additional info](#additional_info)
-- [Breadcrumbs](#breadcrumbs)
-- [Entity types](#entity_types)
-- [Header](#header)
-- [Locale](#locale)
-- [Logo](#logo)
-- [New button](#new_button)
-- [Search](#search)
-- [Side nav](#side_nav)
-- [Top nav](#top_nav)
+- [دکمه‌های عمل](#action_buttons)
+- [اطلاعات اضافی](#additional_info)
+- [مسیرهای breadcrumb](#breadcrumbs)
+- [انواع موجودیت](#entity_types)
+- [هدر](#header)
+- [زبان محلی](#locale)
+- [لوگو](#logo)
+- [دکمه جدید](#new_button)
+- [جستجو](#search)
+- [Nav کناری](#side_nav)
+- [Nav بالایی](#top_nav)
 
-> To make sure that query parameters are preserved when using [click behavior](../dashboards/interactive.md#customizing-click-behavior), configure the [Site URL](../configuring-metabase/settings.md#site-url) Admin setting to be your Metabase server URL.
+> برای اطمینان از اینکه پارامترهای query هنگام استفاده از [رفتار کلیک](../dashboards/interactive.md#customizing-click-behavior) حفظ می‌شوند، تنظیم [Site URL](../configuring-metabase/settings.md#site-url) Admin را روی URL سرور متابیس خود پیکربندی کنید.
 
 ## `action_buttons`
 
-Visible by default on question pages when the [header](#header) is enabled.
+به‌طور پیش‌فرض در صفحات سؤال زمانی که [هدر](#header) فعال است قابل مشاهده است.
 
-To hide the action buttons such as **Filter**, **Summarize**, the query builder button, and so on:
+برای مخفی کردن دکمه‌های عمل مانند **Filter**، **Summarize**، دکمه سازنده پرس‌وجو و غیره:
 
 ```
 header=false&action_buttons=false
@@ -61,9 +61,9 @@ header=false&action_buttons=false
 
 ## `additional_info`
 
-Visible by default on question and dashboard pages when the [header](#header) is enabled.
+به‌طور پیش‌فرض در صفحات سؤال و داشبورد زمانی که [هدر](#header) فعال است قابل مشاهده است.
 
-To hide the gray text "Edited X days ago by FirstName LastName", as well as the breadcrumbs with collection, database, and table names:
+برای مخفی کردن متن خاکستری "Edited X days ago by FirstName LastName"، و همچنین breadcrumbها با نام‌های مجموعه، پایگاه داده و جدول:
 
 ```
 header=false&additional_info=false
@@ -73,7 +73,7 @@ header=false&additional_info=false
 
 ## `breadcrumbs`
 
-Shown by default in the top nav bar. Collection breadcrumbs show the path to the item (i.e., the collection(s) the item is in). This does not effect Data breadcrumbs if the user has Query Builder permissions. To hide the breadcrumbs:
+به‌طور پیش‌فرض در نوار nav بالایی نمایش داده می‌شود. Breadcrumbهای مجموعه مسیر به مورد را نشان می‌دهند (یعنی مجموعه(های) که مورد در آن است). این روی Breadcrumbهای Data تأثیر نمی‌گذارد اگر کاربر مجوزهای Query Builder داشته باشد. برای مخفی کردن breadcrumbها:
 
 ```
 breadcrumbs=false
@@ -81,21 +81,21 @@ breadcrumbs=false
 
 ## `data_picker`
 
-`data_picker` controls the menu for selecting data sources in questions.
+`data_picker` منوی انتخاب منابع داده در سؤال‌ها را کنترل می‌کند.
 
 ![Simple data picker](./images/data-picker.png)
 
-The default behavior for the data picker is:
+رفتار پیش‌فرض برای data picker این است:
 
-- Show tables and models.
-- Exclude metrics and questions.
-- Display a simple dropdown menu. If there are 100 or more items, Metabase will display a souped-up data picker.
+- نمایش جداول و مدل‌ها.
+- حذف متریک‌ها و سؤال‌ها.
+- نمایش یک منوی dropdown ساده. اگر 100 مورد یا بیشتر وجود داشته باشد، متابیس یک data picker پیشرفته نمایش می‌دهد.
 
-You can opt for the full data picker by setting `data_picker=staged`:
+می‌توانید data picker کامل را با تنظیم `data_picker=staged` انتخاب کنید:
 
 ![Full data picker](./images/full-data-picker.png)
 
-The above data picker has three entity types selected:
+data picker بالا سه نوع موجودیت انتخاب شده دارد:
 
 ```
 data_picker=staged&entity_types=table,model,question
@@ -103,23 +103,23 @@ data_picker=staged&entity_types=table,model,question
 
 ## `entity_types`
 
-You can show or hide different entity types in the data picker, sidebar, and the New button menu. For example, you may only want to show tables:
+می‌توانید انواع موجودیت مختلف را در data picker، sidebar و منوی دکمه New نمایش دهید یا مخفی کنید. به عنوان مثال، ممکن است فقط بخواهید جداول را نمایش دهید:
 
 ```
 entity_types=table
 ```
 
-If only tables are allowed, the sidebar won't show models:
+اگر فقط جداول مجاز باشند، sidebar مدل‌ها را نمایش نمی‌دهد:
 
 ![Sidebar without models](./images/sidebar-without-models.png)
 
-Available entity types are:
+انواع موجودیت موجود عبارتند از:
 
 - `table`
 - `model`
-- `question` (only works with `data_picker=staged`)
+- `question` (فقط با `data_picker=staged` کار می‌کند)
 
-You can separate entity types with a comma:
+می‌توانید انواع موجودیت را با کاما جدا کنید:
 
 ```
 entity_types=table,model
@@ -127,9 +127,9 @@ entity_types=table,model
 
 ## `header`
 
-Visible by default on question and dashboard pages.
+به‌طور پیش‌فرض در صفحات سؤال و داشبورد قابل مشاهده است.
 
-To hide a question or dashboard's title, [additional info](#additional_info), and [action buttons](#action_buttons):
+برای مخفی کردن عنوان یک سؤال یا داشبورد، [اطلاعات اضافی](#additional_info)، و [دکمه‌های عمل](#action_buttons):
 
 ```
 header=false
@@ -137,28 +137,28 @@ header=false
 
 ## `locale`
 
-You can change the language of the user interface via a parameter. For example, to set the locale to Spanish:
+می‌توانید زبان رابط کاربری را از طریق یک پارامتر تغییر دهید. به عنوان مثال، برای تنظیم زبان محلی روی اسپانیایی:
 
 ```
 locale=es
 ```
 
-Read more about [localization](../configuring-metabase/localization.md).
+بیشتر در مورد [بومی‌سازی](../configuring-metabase/localization.md) بخوانید.
 
 ## `logo`
 
-Whether to show the logo that opens and closes the sidebar nav. Default is true. The logo's behavior depends on the `side_nav` setting:
+آیا لوگویی که sidebar nav را باز و بسته می‌کند نمایش داده شود. پیش‌فرض true است. رفتار لوگو بستگی به تنظیم `side_nav` دارد:
 
-| `logo` | `side_nav` | Result                                                                |
+| `logo` | `side_nav` | نتیجه                                                                |
 | ------ | ---------- | --------------------------------------------------------------------- |
-| true   | true       | Shows your configured logo in the sidebar                             |
-| true   | false      | No sidebar or logo functionality                                      |
-| false  | true       | Shows a generic sidebar icon (gray when normal, brand color on hover) |
-| false  | false      | No sidebar or logo, with breadcrumbs aligned to the left edge         |
+| true   | true       | لوگوی پیکربندی شده شما را در sidebar نمایش می‌دهد                             |
+| true   | false      | هیچ sidebar یا عملکرد لوگو                                      |
+| false  | true       | یک آیکون sidebar عمومی نمایش می‌دهد (خاکستری در حالت عادی، رنگ برند در hover) |
+| false  | false      | بدون sidebar یا لوگو، با breadcrumbها تراز شده به لبه چپ         |
 
 ## `new_button`
 
-Hidden by default. To show the **+ New** button used to create queries or dashboards:
+به‌طور پیش‌فرض مخفی است. برای نمایش دکمه **+ New** استفاده شده برای ایجاد پرس‌وجوها یا داشبوردها:
 
 ```
 top_nav=true&new_button=true
@@ -166,7 +166,7 @@ top_nav=true&new_button=true
 
 ## `search`
 
-Hidden by default. To show the search box in the top nav:
+به‌طور پیش‌فرض مخفی است. برای نمایش جعبه جستجو در nav بالایی:
 
 ```
 top_nav=true&search=true
@@ -174,9 +174,9 @@ top_nav=true&search=true
 
 ## `side_nav`
 
-The navigation sidebar is shown on `/collection` and home page routes, and hidden everywhere else by default.
+sidebar ناوبری در routeهای `/collection` و صفحه اصلی نمایش داده می‌شود و در همه جاهای دیگر به‌طور پیش‌فرض مخفی است.
 
-To allow people to minimize the sidebar:
+برای اجازه دادن به افراد برای کوچک کردن sidebar:
 
 ```
 top_nav=true&side_nav=true
@@ -186,7 +186,7 @@ top_nav=true&side_nav=true
 
 ## `top_nav`
 
-Shown by default. To hide the top navigation bar:
+به‌طور پیش‌فرض نمایش داده می‌شود. برای مخفی کردن نوار ناوبری بالایی:
 
 ```
 top_nav=false
@@ -194,4 +194,4 @@ top_nav=false
 
 ![Top nav bar](./images/top-nav.png)
 
-The `top_nav` parameter controls the visibility of the entire top navigation bar. When `top_nav` is set to `false`, all child elements (`search`, `new_button`, and `breadcrumbs`) are automatically hidden. When `top_nav` is set to `true`, you can individually control the visibility of these child elements.
+پارامتر `top_nav` قابلیت مشاهده کل نوار ناوبری بالایی را کنترل می‌کند. وقتی `top_nav` روی `false` تنظیم می‌شود، همه عناصر فرزند (`search`، `new_button`، و `breadcrumbs`) به طور خودکار مخفی می‌شوند. وقتی `top_nav` روی `true` تنظیم می‌شود، می‌توانید قابلیت مشاهده این عناصر فرزند را به صورت جداگانه کنترل کنید.

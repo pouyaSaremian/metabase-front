@@ -1,36 +1,36 @@
 ---
-title: "Embedded analytics SDK - questions"
-description: How to embed charts in your app with the Embedded analytics SDK.
+title: "SDK تجزیه و تحلیل تعبیه‌شده - سؤال‌ها"
+description: نحوه جاسازی نمودارها در برنامه خود با SDK تجزیه و تحلیل تعبیه‌شده.
 ---
 
-# Embedded analytics SDK - questions
+# SDK تجزیه و تحلیل تعبیه‌شده - سؤال‌ها
 
 {% include plans-blockquote.html feature="Embedded analytics SDK" sdk=true %}
 
-There are different ways you can embed questions:
+روش‌های مختلفی برای جاسازی سؤال‌ها وجود دارد:
 
-- [Static question](#staticquestion). Embeds a chart. Clicking on the chart doesn't do anything.
-- [Interactive question](#interactivequestion). Clicking on the chart gives you the drill-through menu.
-- [Query builder](#embedding-the-query-builder-for-creating-new-questions). Embeds the graphical query builder without a pre-defined query.
+- [سؤال ایستا](#staticquestion). یک نمودار را جاسازی می‌کند. کلیک روی نمودار هیچ کاری انجام نمی‌دهد.
+- [سؤال تعاملی](#interactivequestion). کلیک روی نمودار منوی حفاری را به شما می‌دهد.
+- [سازنده پرس‌وجو](#embedding-the-query-builder-for-creating-new-questions). سازنده پرس‌وجوی گرافیکی را بدون یک پرس‌وجوی از پیش تعریف شده جاسازی می‌کند.
 
-## Embedding a question
+## جاسازی یک سؤال
 
-You can embed a question using the one of the question components:
+می‌توانید یک سؤال را با استفاده از یکی از اجزای سؤال جاسازی کنید:
 
 ### `StaticQuestion`
 
-A lightweight question component. Use this component when you want to display results without letting people interact with the data.
+یک جزء سؤال سبک. از این جزء استفاده کنید وقتی می‌خواهید نتایج را بدون اجازه دادن به افراد برای تعامل با داده نمایش دهید.
 
 ![Static question](../images/static-question.png)
 
-The component has a default height, which can be customized by using the `height` prop. To inherit the height from the parent container, you can pass `100%` to the height prop.
+جزء یک ارتفاع پیش‌فرض دارد، که می‌تواند با استفاده از prop `height` سفارشی شود. برای به ارث بردن ارتفاع از کانتینر والد، می‌توانید `100%` را به prop height ارسال کنید.
 
-#### API Reference
+#### مرجع API
 
 - [Component](./api/StaticQuestion.html)
 - [Props](./api/StaticQuestionProps.html)
 
-#### Example
+#### مثال
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/questions/static-question.tsx" %}
@@ -42,16 +42,16 @@ The component has a default height, which can be customized by using the `height
 
 ### `InteractiveQuestion`
 
-Use this component when you want to allow people to explore their data and customize question layout.
+از این جزء استفاده کنید وقتی می‌خواهید به افراد اجازه دهید داده‌های خود را کاوش کنند و چیدمان سؤال را سفارشی کنند.
 
 ![Interactive question](../images/interactive-question.png)
 
-#### API Reference
+#### مرجع API
 
 - [Component](./api/InteractiveQuestion.html)
 - [Props](./api/InteractiveQuestionProps.html)
 
-#### Example
+#### مثال
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/questions/interactive-question.tsx" %}
@@ -61,41 +61,41 @@ Use this component when you want to allow people to explore their data and custo
 
 {% include_file "{{ dirname }}/api/snippets/InteractiveQuestionProps.md" snippet="properties" %}
 
-## Pass SQL parameters to SQL questions with `initialSqlParameters`
+## ارسال پارامترهای SQL به سؤال‌های SQL با `initialSqlParameters`
 
-You can pass parameter values to questions defined with SQL via the `initialSqlParameters` prop, in the format of `{parameter_name: parameter_value}`. Learn more about [SQL parameters](../../questions/native-editor/sql-parameters.md).
+می‌توانید مقادیر پارامتر را به سؤال‌های تعریف شده با SQL از طریق prop `initialSqlParameters`، در فرمت `{parameter_name: parameter_value}` ارسال کنید. بیشتر در مورد [پارامترهای SQL](../../questions/native-editor/sql-parameters.md) بیاموزید.
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/questions/initial-sql-parameters.tsx" snippet="example" %}
 ```
 
-`initialSqlParameters` can't be used with questions built using the query builder.
+`initialSqlParameters` نمی‌تواند با سؤال‌های ساخته شده با استفاده از سازنده پرس‌وجو استفاده شود.
 
-## Questions with natural language
+## سؤال‌ها با زبان طبیعی
 
-See [AI chat](./ai-chat.md).
+[چت هوش مصنوعی](./ai-chat.md) را ببینید.
 
-## Customizing interactive questions
+## سفارشی کردن سؤال‌های تعاملی
 
-By default, the Embedded analytics SDK provides a default layout for interactive questions that allows you to view your questions, apply filters and aggregations, and access functionality within the query builder.
+به‌طور پیش‌فرض، SDK تجزیه و تحلیل تعبیه‌شده یک چیدمان پیش‌فرض برای سؤال‌های تعاملی ارائه می‌دهد که به شما امکان می‌دهد سؤال‌های خود را مشاهده کنید، فیلترها و تجمیع‌ها را اعمال کنید و عملکرد درون سازنده پرس‌وجو را دسترسی داشته باشید.
 
-Here's an example of using the `InteractiveQuestion` component with its default layout:
+در اینجا یک مثال از استفاده از جزء `InteractiveQuestion` با چیدمان پیش‌فرض آن آمده است:
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/questions/customize-interactive-question.tsx" snippet="example-default-interactive-question" %}
 ```
 
-To customize the layout, use namespaced components within the `InteractiveQuestion` component. For example:
+برای سفارشی کردن چیدمان، از اجزای namespaced درون جزء `InteractiveQuestion` استفاده کنید. به عنوان مثال:
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/questions/customize-interactive-question.tsx" snippet="example-customized-interactive-question" %}
 ```
 
-### Interactive question components
+### اجزای سؤال تعاملی
 
-These components are available via the `InteractiveQuestion` namespace (e.g., `<InteractiveQuestion.Filter />`).
+این اجزا از طریق namespace `InteractiveQuestion` در دسترس هستند (مثلاً، `<InteractiveQuestion.Filter />`).
 
-#### API Reference:
+#### مرجع API:
 
 - [InteractiveQuestion.BackButton](./api/InteractiveQuestion.html#backbutton)
 - [InteractiveQuestion.Breakout](./api/InteractiveQuestion.html#breakout)
@@ -118,35 +118,34 @@ These components are available via the `InteractiveQuestion` namespace (e.g., `<
 - [InteractiveQuestion.DownloadWidgetDropdown](./api/InteractiveQuestion.html#downloadwidgetdropdown)
 - [InteractiveQuestion.Title](./api/InteractiveQuestion.html#title)
 
-## Interactive question plugins
+## پلاگین‌های سؤال تعاملی
 
-You can use [plugins](./plugins.md) to add custom functionality to your questions.
+می‌توانید از [پلاگین‌ها](./plugins.md) برای افزودن عملکرد سفارشی به سؤال‌های خود استفاده کنید.
 
 ### `mapQuestionClickActions`
 
-This plugin allows you to add custom actions to the click-through menu of an interactive question. You can add and
-customize the appearance and behavior of the custom actions.
+این پلاگین به شما امکان می‌دهد اقدامات سفارشی به منوی click-through یک سؤال تعاملی اضافه کنید. می‌توانید ظاهر و رفتار اقدامات سفارشی را اضافه و سفارشی کنید.
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/questions/interactive-question-plugins.tsx" snippet="example" %}
 ```
 
-## Prevent people from saving changes to an `InteractiveQuestion`
+## جلوگیری از ذخیره تغییرات به یک `InteractiveQuestion` توسط افراد
 
-To prevent people from saving changes to an interactive question, or from saving changes as a new question, you can set `isSaveEnabled={false}`:
+برای جلوگیری از ذخیره تغییرات به یک سؤال تعاملی توسط افراد، یا از ذخیره تغییرات به عنوان یک سؤال جدید، می‌توانید `isSaveEnabled={false}` را تنظیم کنید:
 
 ```tsx
 {% include_file "{{ dirname }}/snippets/questions/disable-question-save.tsx" %}
 ```
 
-## Embedding the query builder for creating new questions
+## جاسازی سازنده پرس‌وجو برای ایجاد سؤال‌های جدید
 
 ![Query builder](../images/query-builder.png)
 
-You can embed the query builder for creating new questions by passing the `questionId="new"` prop to the `InteractiveQuestion` component. You can use the [`children` prop](#customizing-interactive-questions) to customize the layout for creating new questions.
+می‌توانید سازنده پرس‌وجو را برای ایجاد سؤال‌های جدید با ارسال prop `questionId="new"` به جزء `InteractiveQuestion` جاسازی کنید. می‌توانید از [prop `children`](#customizing-interactive-questions) برای سفارشی کردن چیدمان برای ایجاد سؤال‌های جدید استفاده کنید.
 
 ```tsx
 {% include_file "{{ dirname }}/snippets/questions/new-question.tsx" %}
 ```
 
-To customize the question editor's layout, use the `InteractiveQuestion` component [directly with a custom `children` prop](#customizing-interactive-questions).
+برای سفارشی کردن چیدمان ویرایشگر سؤال، از جزء `InteractiveQuestion` [مستقیماً با یک prop `children` سفارشی](#customizing-interactive-questions) استفاده کنید.

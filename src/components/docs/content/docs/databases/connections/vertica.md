@@ -4,32 +4,32 @@ redirect_from:
   - /docs/latest/administration-guide/databases/vertica
 ---
 
-# Working with Vertica in Metabase
+# کار با Vertica در متابیس
 
-Starting in v0.20.0, Metabase provides a driver for connecting to Vertica databases. Under the hood, Metabase uses Vertica's JDBC driver;
-due to licensing restrictions, we can't include it as part of Metabase. Luckily, downloading it yourself and making it available to Metabase
-is straightforward and only takes a few minutes.
+از نسخهٔ v0.20.0 به بعد، متابیس یک درایور برای اتصال به پایگاه‌داده‌های Vertica فراهم می‌کند. در پس‌زمینه، متابیس از درایور JDBC خود Vertica استفاده می‌کند؛
+به‌دلیل محدودیت‌های مجوز (licensing)، نمی‌توانیم این درایور را به‌صورت پیش‌فرض همراه متابیس ارائه کنیم. خوشبختانه دانلود کردن این درایور و در دسترس قرار دادن آن برای متابیس
+بسیار ساده است و فقط چند دقیقه زمان می‌برد.
 
-## Downloading the Vertica JDBC Driver JAR
+## دانلود JAR درایور Vertica JDBC
 
-You can download the JDBC driver from [Vertica's JDBC driver downloads page](https://my.vertica.com/download/vertica/client-drivers/).
-Head to this page, log in to your account, accept the license agreement, and download `vertica-jdbc-8.0.0-0.jar` (for Vertica DB version 8.0)
-or whatever driver version most closely matches the version of Vertica you're running.
+می‌توانید درایور JDBC را از [صفحهٔ دانلود درایور JDBC ورتیکا](https://my.vertica.com/download/vertica/client-drivers/) دریافت کنید.
+به این صفحه بروید، وارد حساب کاربری خود شوید، توافق‌نامهٔ مجوز را بپذیرید و فایل `vertica-jdbc-8.0.0-0.jar` (برای Vertica نسخهٔ 8.0)
+یا هر نسخه‌ای که بیشترین تطبیق را با نسخهٔ Vertica شما دارد دانلود کنید.
 
-It's important to make sure you use the correct version of the JDBC driver; version
-8.0 of the driver won't work with Vertica version 7.2; version 7.2 of the driver won't work with Vertica version 7.1, and so forth. If in doubt,
-consult Vertica's documentation to find the correct version of the JDBC driver for your version of Vertica.
+مهم است مطمئن شوید نسخهٔ درست درایور JDBC را استفاده می‌کنید؛ نسخهٔ
+8.0 این درایور با Vertica نسخهٔ 7.2 کار نمی‌کند؛ نسخهٔ 7.2 درایور هم با Vertica نسخهٔ 7.1 کار نمی‌کند و به همین شکل در سایر نسخه‌ها. اگر مطمئن نیستید،
+مستندات Vertica را ببینید تا نسخهٔ صحیح درایور JDBC متناسب با نسخهٔ Vertica خود را پیدا کنید.
 
-## Adding the Vertica JDBC Driver JAR to the Metabase Plugins Directory
+## افزودن JAR درایور Vertica JDBC به پوشهٔ Plugins متابیس
 
-Metabase will automatically make the Vertica driver available if it finds the Vertica JDBC driver JAR in the Metabase plugins directory when it starts up.
-All you need to do is create the directory, move the JAR you just downloaded into it, and restart Metabase.
+اگر متابیس هنگام راه‌اندازی، فایل JAR درایور Vertica JDBC را در پوشهٔ plugins پیدا کند، به‌صورت خودکار درایور Vertica را فعال می‌کند.
+کافی است این پوشه را ایجاد کنید، فایل JARی که همین الان دانلود کرده‌اید را در آن قرار دهید و متابیس را ری‌استارت کنید.
 
-### When running from a JAR
+### زمانی که متابیس را از روی JAR اجرا می‌کنید
 
-By default, the plugins directory is called `plugins`, and lives in the same directory as the Metabase JAR.
+به‌طور پیش‌فرض، پوشهٔ plugins با نام `plugins` و در همان مسیری که فایل JAR متابیس قرار دارد ساخته می‌شود.
 
-For example, if you're running Metabase from a directory called `/app/`, you should move the Vertica JDBC driver JAR to `/app/plugins/`:
+برای مثال، اگر متابیس را از دایرکتوری `/app/` اجرا می‌کنید، باید فایل JAR درایور Vertica را به `/app/plugins/` منتقل کنید:
 
 ```txt
 # example directory structure for running Metabase with Vertica support
@@ -37,14 +37,14 @@ For example, if you're running Metabase from a directory called `/app/`, you sho
 /app/plugins/vertica-jdbc-8.0.0-0.jar
 ```
 
-### When running from Docker
+### زمانی که متابیس را با Docker اجرا می‌کنید
 
-The process for adding plugins when running via Docker is similar, but you'll need to mount the `plugins` directory. Refer to instructions [here](../../installation-and-operation/running-metabase-on-docker.md#adding-external-dependencies-or-plugins) for more details.
+فرآیند افزودن پلاگین‌ها در حالت Docker هم مشابه است، با این تفاوت که باید پوشهٔ `plugins` را mount کنید. برای جزئیات بیشتر، [راهنما](../../installation-and-operation/running-metabase-on-docker.md#adding-external-dependencies-or-plugins) را ببینید.
 
-## Model features
+## امکانات مدل (Model features)
 
-There aren't (yet) any model features for Vertica.
+در حال حاضر هیچ قابلیت مدل خاصی برای Vertica در دسترس نیست.
 
-## Danger zone
+## بخش خطر (Danger zone)
 
-See [Danger zone](../danger-zone.md).
+[Danger zone](../danger-zone.md) را ببینید.
