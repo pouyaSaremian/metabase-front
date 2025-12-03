@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { DocsContent } from "@/components/docs/DocsContent";
+import { DocsContent } from "@/content/docs/DocsContent";
 
 interface DocsPageProps {
   params: Promise<{ slug: string[] }>;

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { DocsContent } from "@/components/docs/DocsContent";
+import { DocsContent } from "@/content/docs/DocsContent";
 import Link from "next/link";
 import Image from "next/image";
 

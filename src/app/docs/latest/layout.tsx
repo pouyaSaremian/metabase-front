@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { DocsLayout } from "@/components/docs/DocsLayout";
+import { DocsLayout } from "@/content/docs/DocsLayout";
 import { docsLatestNavigationSections } from "@/data/docsLatestNavigation";
 import type { TOCItem } from "@/types/docs";
 
