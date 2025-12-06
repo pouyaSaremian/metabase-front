@@ -10,8 +10,28 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { load } from "cheerio";
 
-const LEARN_MARKDOWN_ROOT = path.join(process.cwd(), "src", "content", "learn");
+/**
+ * Get the project root directory by finding the directory that contains package.json.
+ * This works regardless of where the script is run from.
+ */
+const getProjectRoot = () => {
+    // Get the directory where this script is located
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+
+    // Script is in scripts/, so go up one level to get project root
+    const scriptDir = __dirname;
+    const projectRoot = path.resolve(scriptDir, "..");
+
+    return projectRoot;
+};
+
+const PROJECT_ROOT = getProjectRoot();
+const LEARN_MARKDOWN_ROOT = path.join(PROJECT_ROOT, "src", "content", "learn");
+const LEARN_STATIC_ROOT = path.join(PROJECT_ROOT, "static", "learn");
 
 const isMarkdownFile = (fileName) => fileName.toLowerCase().endsWith(".md");
 
@@ -117,6 +137,37 @@ const extractTocFromBody = (body) => {
     return toc;
 };
 
+/**
+ * Convert markdown file path to corresponding HTML file path.
+ * Example: src/content/learn/metabase-basics/index.md -> static/learn/metabase-basics/index.html
+ */
+const markdownPathToHtmlPath = (markdownPath) => {
+    const relativePath = path.relative(LEARN_MARKDOWN_ROOT, markdownPath);
+    // Remove _redirect suffix if present
+    const withoutRedirect = relativePath.replace(/_redirect\.md$/i, ".md");
+    // Replace .md with .html
+    const htmlRelativePath = withoutRedirect.replace(/\.md$/i, ".html");
+    return path.join(LEARN_STATIC_ROOT, htmlRelativePath);
+};
+
+/**
+ * Check if the HTML file contains the sub-navigation-content div.
+ * This div indicates that the page should have a TOC generated.
+ */
+const hasSubNavigationContent = async (htmlFilePath) => {
+    try {
+        const raw = await fs.readFile(htmlFilePath, "utf8");
+        const $ = load(raw);
+        return $("#sub-navigation-content").length > 0;
+    } catch (error) {
+        // If HTML file doesn't exist, return false
+        if (error.code === "ENOENT") {
+            return false;
+        }
+        throw error;
+    }
+};
+
 const injectTocIntoFrontmatter = (frontmatterBlock, toc) => {
     if (!frontmatterBlock) {
         return null;
@@ -177,6 +228,7 @@ const main = async () => {
     const mdFiles = await walkDir(LEARN_MARKDOWN_ROOT);
 
     let updatedCount = 0;
+    let skippedCount = 0;
 
     for (const filePath of mdFiles) {
         // Only touch files that already have our learn-style frontmatter (title).
@@ -188,16 +240,29 @@ const main = async () => {
             continue;
         }
 
+        // Check if the corresponding HTML file has sub-navigation-content div
+        const htmlPath = markdownPathToHtmlPath(filePath);
+        const hasSubNav = await hasSubNavigationContent(htmlPath);
+
+        if (!hasSubNav) {
+            const relativePath = path.relative(LEARN_MARKDOWN_ROOT, filePath);
+            console.log(`Skipping (no sub-navigation-content): ${relativePath}`);
+            skippedCount += 1;
+            continue;
+        }
+
         await processMarkdownFile(filePath);
         updatedCount += 1;
     }
 
-    console.log(`\nDone. Processed ${updatedCount} markdown file(s) under ${LEARN_MARKDOWN_ROOT}.`);
+    console.log(`\nDone. Processed ${updatedCount} markdown file(s), skipped ${skippedCount} file(s) under ${LEARN_MARKDOWN_ROOT}.`);
 };
 
 main().catch((error) => {
     console.error("Failed to add TOC to learn markdown files:", error);
     process.exit(1);
 });
+
+
 
 

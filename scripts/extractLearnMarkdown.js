@@ -10,10 +10,28 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 
-const LEARN_STATIC_ROOT = path.join(process.cwd(), "static", "learn");
-const LEARN_CONTENT_ROOT = path.join(process.cwd(), "src", "content", "learn");
+/**
+ * Get the project root directory by finding the directory that contains package.json.
+ * This works regardless of where the script is run from.
+ */
+const getProjectRoot = () => {
+    // Get the directory where this script is located
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+
+    // Script is in scripts/, so go up one level to get project root
+    const scriptDir = __dirname;
+    const projectRoot = path.resolve(scriptDir, "..");
+
+    return projectRoot;
+};
+
+const PROJECT_ROOT = getProjectRoot();
+const LEARN_STATIC_ROOT = path.join(PROJECT_ROOT, "static", "learn");
+const LEARN_CONTENT_ROOT = path.join(PROJECT_ROOT, "src", "content", "learn");
 
 const isHtmlFile = (fileName) => fileName.toLowerCase().endsWith(".html");
 
@@ -68,6 +86,19 @@ const extractHtmlFileInfo = async (filePath) => {
     const raw = await fs.readFile(filePath, "utf8");
     const $ = load(raw);
 
+    /**
+     * Check for error/404 pages with "We're a little lost..." heading.
+     * These pages indicate missing/broken content and should be ignored
+     * during markdown generation.
+     *
+     * The error page has the structure:
+     *   <h1 class="fs-5 m-0 mt-3">We're a little lost...</h1>
+     */
+    const errorHeading = $('h1.fs-5.m-0.mt-3').filter((_, el) => {
+        return $(el).text().trim() === "We're a little lost...";
+    });
+    const isErrorPage = errorHeading.length > 0;
+
     // Treat pages that have main content wrapped in `body > .bootstrap`
     // as real learn content pages. Redirect stubs and utility pages
     // generally won't include this structure.
@@ -87,6 +118,7 @@ const extractHtmlFileInfo = async (filePath) => {
         relativePath,
         hasArticle,
         canonicalPath,
+        isErrorPage,
     };
 };
 
@@ -230,28 +262,156 @@ const convertInlineNodes = ($, node) => {
     return parts.join("");
 };
 
+/**
+ * Convert HTML table to Markdown table format.
+ * Handles tables with thead/tbody structure and converts them to markdown tables.
+ * Supports both semantic table structure (thead/tbody) and simple table structures.
+ */
+const convertTable = ($, tableNode) => {
+    const rows = [];
+    const thead = $(tableNode).find("thead").first();
+    const tbody = $(tableNode).find("tbody").first();
+    const allRows = $(tableNode).find("tr");
+
+    let hasHeader = false;
+
+    // If there's a thead, use it for header row
+    if (thead.length) {
+        const headerRow = [];
+        thead.find("th").each((_, th) => {
+            const text = $(th).text().trim();
+            headerRow.push(text);
+        });
+        if (headerRow.length > 0) {
+            rows.push(headerRow);
+            // Add separator row for markdown table
+            rows.push(headerRow.map(() => "---"));
+            hasHeader = true;
+        }
+    }
+
+    // Process tbody rows, or all rows if no thead/tbody structure
+    const dataRows = tbody.length ? tbody.find("tr") : allRows;
+    let isFirstRow = !hasHeader;
+
+    dataRows.each((_, tr) => {
+        // Skip if this is a header row (already processed from thead)
+        if ($(tr).closest("thead").length) return;
+
+        const row = [];
+        const hasThCells = $(tr).find("th").length > 0;
+
+        // If first row has th cells and we haven't added a header yet, treat it as header
+        if (isFirstRow && hasThCells && !hasHeader) {
+            $(tr)
+                .find("th, td")
+                .each((_, cell) => {
+                    const text = $(cell).text().trim();
+                    row.push(text);
+                });
+            if (row.length > 0) {
+                rows.push(row);
+                rows.push(row.map(() => "---"));
+                hasHeader = true;
+            }
+            isFirstRow = false;
+            return;
+        }
+
+        // Regular data row
+        $(tr)
+            .find("td, th")
+            .each((_, cell) => {
+                const text = $(cell).text().trim();
+                row.push(text);
+            });
+        if (row.length > 0) {
+            rows.push(row);
+        }
+        isFirstRow = false;
+    });
+
+    if (rows.length === 0) return "";
+
+    // Convert to markdown table format
+    return rows
+        .map((row) => {
+            // Escape pipe characters in cell content
+            const escapedRow = row.map((cell) => cell.replace(/\|/g, "\\|"));
+            return `| ${escapedRow.join(" | ")} |`;
+        })
+        .join("\n");
+};
+
 const convertBlockNode = ($, node, listDepth) => {
     const tagName = (node && node.name ? node.name.toLowerCase() : "") || "";
 
     if (tagName === "p") {
         const parts = [];
+        const hasImage = $(node).find("img").length > 0;
+        const textContent = $(node).text().trim();
+
+        // If paragraph contains only an image (no text), extract it as a block-level image
+        if (hasImage && textContent === "") {
+            const img = $(node).find("img").first();
+            const alt = img.attr("alt") ?? "";
+            const src = img.attr("src") ?? "";
+            if (src) {
+                return `![${alt.trim()}](${src})`;
+            }
+        }
+
+        // Process paragraph contents - handle images as block-level, other elements as inline
         $(node)
             .contents()
             .toArray()
             .forEach((child) => {
                 if (child.type === "text") {
-                    parts.push(escapeMarkdown(child.data ?? ""));
+                    const text = child.data ?? "";
+                    if (text.trim()) {
+                        parts.push(escapeMarkdown(text));
+                    }
                 } else if (child.type === "tag") {
-                    parts.push(convertInlineNodes($, child));
+                    const childTag = (child.name || "").toLowerCase();
+                    // Skip SVG elements (decorative, text content is extracted via .text())
+                    if (childTag === "svg") {
+                        // SVG is decorative, text content will be extracted from parent
+                        return;
+                    }
+                    // Handle images inside paragraphs - they should be block-level in markdown
+                    if (childTag === "img") {
+                        const alt = $(child).attr("alt") ?? "";
+                        const src = $(child).attr("src") ?? "";
+                        if (src) {
+                            // If there's content before the image, add newline before image
+                            if (parts.length > 0 && parts[parts.length - 1].trim()) {
+                                parts.push("\n");
+                            }
+                            parts.push(`![${alt.trim()}](${src})`);
+                        }
+                    } else {
+                        parts.push(convertInlineNodes($, child));
+                    }
                 }
             });
-        return parts.join("").trim();
+        const result = parts.join("").trim();
+        return result;
     }
 
     if (tagName === "h1" || tagName === "h2" || tagName === "h3") {
         const level = tagName === "h1" ? 1 : tagName === "h2" ? 2 : 3;
         const hashes = "#".repeat(level);
         const text = $(node).text().trim();
+
+        // Check if heading is inside a link (parent or ancestor is an <a> tag)
+        const parentLink = $(node).closest("a").first();
+        if (parentLink.length) {
+            const href = parentLink.attr("href") ?? "";
+            if (href) {
+                return `${hashes} [${text}](${href})`;
+            }
+        }
+
         return `${hashes} ${text}`;
     }
 
@@ -259,6 +419,16 @@ const convertBlockNode = ($, node, listDepth) => {
         const level = tagName === "h4" ? 4 : tagName === "h5" ? 5 : 6;
         const hashes = "#".repeat(level);
         const text = $(node).text().trim();
+
+        // Check if heading is inside a link (parent or ancestor is an <a> tag)
+        const parentLink = $(node).closest("a").first();
+        if (parentLink.length) {
+            const href = parentLink.attr("href") ?? "";
+            if (href) {
+                return `${hashes} [${text}](${href})`;
+            }
+        }
+
         return `${hashes} ${text}`;
     }
 
@@ -390,6 +560,61 @@ ${fence}`;
         return `![${safeAlt}](${src})`;
     }
 
+    // Handle HTML tables
+    if (tagName === "table") {
+        return convertTable($, node);
+    }
+
+    // Handle anchor tags that contain block-level elements (like learn__category__link)
+    // These are links that wrap headings and paragraphs, acting as card-like navigation elements
+    if (tagName === "a") {
+        const hasBlockChildren = $(node).children("h1, h2, h3, h4, h5, h6, p, div, ul, ol").length > 0;
+
+        if (hasBlockChildren) {
+            // This is a block-level link (like learn__category__link), process its children
+            const children = $(node).contents().toArray();
+            const childLines = [];
+
+            for (const child of children) {
+                if (child.type === "text") {
+                    const text = child.data?.trim();
+                    if (text) childLines.push(text);
+                } else if (child.type === "tag") {
+                    const line = convertBlockNode($, child, listDepth);
+                    if (line) childLines.push(line);
+                }
+            }
+
+            return childLines.join("\n");
+        }
+
+        // Regular inline link - fall through to inline conversion
+        return convertInlineNodes($, node);
+    }
+
+    // Handle divs - process their children, especially for buttons/links
+    if (tagName === "div") {
+        const children = $(node).contents().toArray();
+        const childLines = [];
+        for (const child of children) {
+            if (child.type === "text") {
+                const text = child.data?.trim();
+                if (text) childLines.push(text);
+            } else if (child.type === "tag") {
+                const childTag = (child.name || "").toLowerCase();
+                // If it's an inline element at block level (like a button link), convert it inline
+                if (isInlineElement(childTag)) {
+                    const inlineResult = convertInlineNodes($, child);
+                    if (inlineResult) childLines.push(inlineResult);
+                } else {
+                    const line = convertBlockNode($, child, listDepth);
+                    if (line) childLines.push(line);
+                }
+            }
+        }
+        return childLines.join("\n");
+    }
+
     const children = $(node).contents().toArray();
     const childLines = [];
     for (const child of children) {
@@ -447,7 +672,7 @@ const extractArticleMarkdown = ($) => {
                 return;
             }
 
-            if (tagName === "iframe" || tagName === "script" || tagName === "style") {
+            if (tagName === "iframe" || tagName === "script" || tagName === "style" || tagName === "svg") {
                 return;
             }
 
@@ -482,10 +707,19 @@ const buildMarkdownFileContent = (frontmatter, body) => {
     return lines.join("\n");
 };
 
-const writeMarkdownFile = async (relativeHtmlPath, content) => {
+/**
+ * Write markdown file to the output directory.
+ * @param {string} relativeHtmlPath - Relative path to the source HTML file
+ * @param {string} content - Markdown content to write
+ * @param {boolean} isRedirect - If true, adds "_redirect" to the filename before .md extension
+ */
+const writeMarkdownFile = async (relativeHtmlPath, content, isRedirect = false) => {
     const normalized = relativeHtmlPath.replace(/\\/g, "/");
-    const withoutExt = normalized.replace(/\.html$/i, ".md");
-    const outputPath = path.join(LEARN_CONTENT_ROOT, withoutExt);
+    const withoutExt = normalized.replace(/\.html$/i, "");
+
+    // Add "_redirect" suffix before the .md extension for redirect files
+    const filename = isRedirect ? `${withoutExt}_redirect.md` : `${withoutExt}.md`;
+    const outputPath = path.join(LEARN_CONTENT_ROOT, filename);
     const outputDir = path.dirname(outputPath);
 
     await fs.mkdir(outputDir, { recursive: true });
@@ -526,6 +760,19 @@ const main = async () => {
     const ignoredFiles = [];
 
     for (const info of fileInfos) {
+        // Skip error/404 pages with "We're a little lost..." heading
+        if (info.isErrorPage) {
+            const reason = "error page (We're a little lost...)";
+            console.log(`Ignoring ${reason}: ${info.relativePath}`);
+            ignoredFiles.push({
+                relativePath: info.relativePath,
+                reason,
+                type: "error-page",
+            });
+            skippedCount += 1;
+            continue;
+        }
+
         // Full article pages.
         if (info.hasArticle) {
             const raw = await fs.readFile(info.filePath, "utf8");
@@ -571,7 +818,7 @@ const main = async () => {
                 sourceSlug,
                 targetSlug,
             );
-            await writeMarkdownFile(info.relativePath, markdownContent);
+            await writeMarkdownFile(info.relativePath, markdownContent, true);
             redirectCount += 1;
             console.log(
                 `Generated redirect markdown for: ${info.relativePath} -> ${targetSlug}`,
@@ -596,7 +843,7 @@ const main = async () => {
                     sourceSlug,
                     targetSlug,
                 );
-                await writeMarkdownFile(info.relativePath, markdownContent);
+                await writeMarkdownFile(info.relativePath, markdownContent, true);
                 redirectCount += 1;
                 console.log(
                     `Generated redirect markdown (body redirect) for: ${info.relativePath} -> ${targetSlug}`,
