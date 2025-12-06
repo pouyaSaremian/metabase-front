@@ -1,262 +1,260 @@
 ---
-
-
-title: "How to run Metabase in production"
-description: "If you're self-hosting Metabase, here are some benchmarks and best practices."
+title: "نحوه اجرای متابیس در production"
+description: "اگر متابیس را self-host می‌کنید، در اینجا برخی benchmarkها و بهترین روش‌ها هستند."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/metabase-in-production
   - /learn/administration/metabase-in-production
 toc:
   - id: "how-to-run-metabase-in-production"
-    title: "How to run Metabase in production"
+    title: "نحوه اجرای متابیس در production"
     level: 1
     href: "#how-to-run-metabase-in-production"
   - id: "what-s-in-the-metabase-jar"
-    title: "What’s in the Metabase JAR"
+    title: "چه چیزی در JAR متابیس است"
     level: 2
     href: "#what-s-in-the-metabase-jar"
   - id: "a-jar-and-a-database-are-all-you-need"
-    title: "A JAR and a database are all you need"
+    title: "یک JAR و یک پایگاه داده تمام چیزی است که نیاز دارید"
     level: 2
     href: "#a-jar-and-a-database-are-all-you-need"
   - id: "why-you-need-to-use-a-separate-application-database"
-    title: "Why you need to use a separate application database"
+    title: "چرا باید از یک پایگاه داده برنامه جداگانه استفاده کنید"
     level: 2
     href: "#why-you-need-to-use-a-separate-application-database"
   - id: "if-you-ve-already-started-using-the-default-h2-database"
-    title: "If you’ve already started using the default H2 database"
+    title: "اگر قبلاً از پایگاه داده پیش‌فرض H2 استفاده کرده‌اید"
     level: 2
     href: "#if-you-ve-already-started-using-the-default-h2-database"
   - id: "metabase-application-and-database-servers-and-their-sizing"
-    title: "Metabase application and database servers and their sizing"
+    title: "سرورهای برنامه و پایگاه داده متابیس و اندازه‌بندی آن‌ها"
     level: 2
     href: "#metabase-application-and-database-servers-and-their-sizing"
   - id: "metabase-application-server-size"
-    title: "Metabase application server size"
+    title: "اندازه سرور برنامه متابیس"
     level: 3
     href: "#metabase-application-server-size"
   - id: "metabase-application-database-server-size"
-    title: "Metabase application database server size"
+    title: "اندازه سرور پایگاه داده برنامه متابیس"
     level: 3
     href: "#metabase-application-database-server-size"
   - id: "each-metabase-environment-must-have-its-own-dedicated-application-database"
-    title: "Each Metabase environment must have its own dedicated application database"
+    title: "هر محیط متابیس باید پایگاه داده برنامه اختصاصی خود را داشته باشد"
     level: 2
     href: "#each-metabase-environment-must-have-its-own-dedicated-application-database"
   - id: "maintenance"
-    title: "Maintenance"
+    title: "نگهداری"
     level: 2
     href: "#maintenance"
   - id: "metabase-server-maintenance"
-    title: "Metabase server maintenance"
+    title: "نگهداری سرور متابیس"
     level: 3
     href: "#metabase-server-maintenance"
   - id: "metabase-application-database-maintenance"
-    title: "Metabase application database maintenance"
+    title: "نگهداری پایگاه داده برنامه متابیس"
     level: 3
     href: "#metabase-application-database-maintenance"
   - id: "data-warehouse-server-maintenance"
-    title: "Data warehouse server maintenance"
+    title: "نگهداری سرور انبار داده"
     level: 3
     href: "#data-warehouse-server-maintenance"
   - id: "example-load-test"
-    title: "Example load test"
+    title: "مثال تست بار"
     level: 2
     href: "#example-load-test"
   - id: "async-processes"
-    title: "Async processes"
+    title: "فرآیندهای ناهمزمان"
     level: 2
     href: "#async-processes"
   - id: "observability-and-some-metrics-to-monitor"
-    title: "Observability and some metrics to monitor"
+    title: "قابلیت مشاهده و برخی معیارهای نظارت"
     level: 2
     href: "#observability-and-some-metrics-to-monitor"
   - id: "metabase-application"
-    title: "Metabase application"
+    title: "برنامه متابیس"
     level: 3
     href: "#metabase-application"
   - id: "metabase-application-database"
-    title: "Metabase application database"
+    title: "پایگاه داده برنامه متابیس"
     level: 3
     href: "#metabase-application-database"
   - id: "when-to-increase-the-connection-pool-size"
-    title: "When to increase the connection pool size"
+    title: "چه زمانی اندازه pool اتصال را افزایش دهیم"
     level: 3
     href: "#when-to-increase-the-connection-pool-size"
   - id: "using-a-load-balancer"
-    title: "Using a load balancer"
+    title: "استفاده از load balancer"
     level: 2
     href: "#using-a-load-balancer"
   - id: "logs"
-    title: "Logs"
+    title: "لاگ‌ها"
     level: 2
     href: "#logs"
   - id: "metabase-over-https"
-    title: "Metabase over HTTPS"
+    title: "متابیس از طریق HTTPS"
     level: 2
     href: "#metabase-over-https"
   - id: "pitfalls-to-avoid"
-    title: "Pitfalls to avoid"
+    title: "دام‌هایی که باید از آن‌ها اجتناب کرد"
     level: 2
     href: "#pitfalls-to-avoid"
   - id: "we-recommend-that-you-avoid-services-that-claim-to-scale-automagically"
-    title: "We recommend that you avoid services that claim to scale automagically"
+    title: "توصیه می‌کنیم از سرویس‌هایی که ادعا می‌کنند به طور خودکار مقیاس‌پذیر هستند، اجتناب کنید"
     level: 3
     href: "#we-recommend-that-you-avoid-services-that-claim-to-scale-automagically"
   - id: "avoid-services-that-shut-down-servers-when-they-re-not-in-use"
-    title: "Avoid services that shut down servers when they’re not in use"
+    title: "از سرویس‌هایی که سرورها را در صورت عدم استفاده خاموش می‌کنند، اجتناب کنید"
     level: 3
     href: "#avoid-services-that-shut-down-servers-when-they-re-not-in-use"
   - id: "issues-with-running-on-other-cloud-providers"
-    title: "Issues with running on other cloud providers"
+    title: "مشکلات اجرای روی سایر ارائه‌دهندگان ابری"
     level: 3
     href: "#issues-with-running-on-other-cloud-providers"
   - id: "upgrading-to-a-new-major-version-of-metabase"
-    title: "Upgrading to a new major version of Metabase"
+    title: "ارتقا به یک نسخه اصلی جدید متابیس"
     level: 2
     href: "#upgrading-to-a-new-major-version-of-metabase"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# How to run Metabase in production
+# نحوه اجرای متابیس در production
 
-If you're self-hosting Metabase, here are some benchmarks and best practices.
+اگر متابیس را self-host می‌کنید، در اینجا برخی benchmarkها و بهترین روش‌ها هستند.
 
-This article describes what a production\-ready setup of Metabase looks like, including server sizing, best practices, and pitfalls to avoid. This article is for people who are interested in self\-hosting Metabase. If you want us to run Metabase for you, just [sign up for a free trial](../../../../pricing/index.html).
+این مقاله آنچه یک راه‌اندازی production-ready متابیس به نظر می‌رسد را توصیف می‌کند، از جمله اندازه‌بندی سرور، بهترین روش‌ها، و دام‌هایی که باید از آن‌ها اجتناب کرد. این مقاله برای افرادی است که علاقه‌مند به self-hosting متابیس هستند. اگر می‌خواهید ما متابیس را برای شما اجرا کنیم، فقط [برای یک آزمایش رایگان ثبت‌نام کنید](../../../../pricing/index.html).
 
-## What’s in the Metabase JAR
+## چه چیزی در JAR متابیس است
 
-For context, Metabase is a web application. Its backend is written in Clojure, and its frontend is written in JavaScript, TypeScript, and ClojureScript using the React framework.
+برای context، متابیس یک برنامه وب است. بک‌اند آن در Clojure نوشته شده است، و frontend آن در JavaScript، TypeScript، و ClojureScript با استفاده از فریم‌ورک React نوشته شده است.
 
-By default, the entire application is self contained: the backend and the web server that serves the frontend are shipped in the same bundle. The bundle is a JAR file, which can be run anywhere a Java runtime environment is installed.
+به طور پیش‌فرض، کل برنامه self-contained است: بک‌اند و وب سروری که frontend را سرو می‌کند در همان bundle ship می‌شوند. bundle یک فایل JAR است، که می‌تواند در هر جایی که یک محیط runtime Java نصب شده است اجرا شود.
 
-Metabase also ships a container image that packages up the JRE and Metabase JAR \(which you can also run with Podman\).
+متابیس همچنین یک image container که JRE و JAR متابیس را package می‌کند ship می‌کند (که همچنین می‌توانید با Podman اجرا کنید).
 
-## A JAR and a database are all you need
+## یک JAR و یک پایگاه داده تمام چیزی است که نیاز دارید
 
-![Metabase JAR running in a container, saving its application data in a Postgres database.](../../../images/metabase-in-production/metabase-and-app-db.png)
+![JAR متابیس در حال اجرا در یک container، ذخیره داده برنامه خود در یک پایگاه داده Postgres.](../../../images/metabase-in-production/metabase-and-app-db.png)
 
-To run Metabase in production, you need two things:
+برای اجرای متابیس در production، به دو چیز نیاز دارید:
 
-1. Either a Metabase JAR or the container image.
-2. A dedicated PostgreSQL database to store Metabase’s application database
+1. یا یک JAR متابیس یا image container.
+2. یک پایگاه داده PostgreSQL اختصاصی برای ذخیره پایگاه داده برنامه متابیس
 
-You can also use MySQL/MariaDB to store Metabase’s application database, but we emphatically recommend Postgres.
+همچنین می‌توانید از MySQL/MariaDB برای ذخیره پایگاه داده برنامه متابیس استفاده کنید، اما به شدت Postgres را توصیه می‌کنیم.
 
-## Why you need to use a separate application database
+## چرا باید از یک پایگاه داده برنامه جداگانه استفاده کنید
 
-Metabase saves all its entities \(dashboards, questions, accounts, configurations\) in its application database.
+متابیس همه entityهای خود (داشبوردها، سؤال‌ها، حساب‌ها، پیکربندی‌ها) را در پایگاه داده برنامه خود ذخیره می‌کند.
 
-> If you stick with the default, file\-based application database, your database will eventually become irrevocably corrupted, and you’ll have to start over from scratch \(after losing all your work: all of your questions, dashboards, and so on\)\*\*.
+> اگر با پایگاه داده برنامه پیش‌فرض مبتنی بر فایل بمانید، پایگاه داده شما در نهایت به طور غیرقابل برگشت corrupted می‌شود، و باید از ابتدا شروع کنید (بعد از از دست دادن همه کار خود: همه سؤال‌ها، داشبوردها، و غیره)**.
 
-So the one thing you want to avoid doing is using the default application database that ships with the Metabase JAR. That embedded database is intended for local use only. We include that embedded database as a kind of party favor for people who just want to try out Metabase on their machine. That embedded H2 database also houses some sample data that people can play with. It’s NOT meant for production.
+پس یک چیز که می‌خواهید از انجام آن اجتناب کنید استفاده از پایگاه داده برنامه پیش‌فرض است که با JAR متابیس ship می‌شود. آن پایگاه داده embedded فقط برای استفاده محلی در نظر گرفته شده است. آن پایگاه داده embedded را به عنوان نوعی party favor برای افرادی که فقط می‌خواهند متابیس را روی ماشین خود امتحان کنند شامل می‌کنیم. آن پایگاه داده H2 embedded همچنین برخی داده نمونه را house می‌کند که مردم می‌توانند با آن بازی کنند. برای production در نظر گرفته نشده است.
 
-Similarly, if you’re running Metabase in a container, you’ll lose your all of your work whenever your container is replaced with a new version. Containers are meant to be ephemeral, so don’t keep your data inside them.
+به طور مشابه، اگر متابیس را در یک container اجرا می‌کنید، همه کار خود را هر بار که container شما با یک نسخه جدید جایگزین می‌شود از دست می‌دهید. containerها ephemeral هستند، پس داده خود را در آن‌ها نگه ندارید.
 
-You can avoid all of these problems by using a [dedicated PostgreSQL application database](../../../../docs/latest/installation-and-operation/configuring-application-database.html).
+می‌توانید از همه این مشکلات با استفاده از یک [پایگاه داده برنامه PostgreSQL اختصاصی](../../../../docs/latest/installation-and-operation/configuring-application-database.html) اجتناب کنید.
 
-## If you’ve already started using the default H2 database
+## اگر قبلاً از پایگاه داده پیش‌فرض H2 استفاده کرده‌اید
 
-That’s okay. But you should [migrate to a production database](../../../../docs/latest/installation-and-operation/migrating-from-h2.html) as soon as possible.
+مشکلی نیست. اما باید [به یک پایگاه داده production migrate کنید](../../../../docs/latest/installation-and-operation/migrating-from-h2.html) در اسرع وقت.
 
-## Metabase application and database servers and their sizing
+## سرورهای برنامه و پایگاه داده متابیس و اندازه‌بندی آن‌ها
 
-We recommend that you run at least two instances \(ideally on the same network\):
+توصیه می‌کنیم حداقل دو instance (ایده‌آل روی همان شبکه) اجرا کنید:
 
-- [One or more instance for the Metabase application](#metabase-application-server-size) .
-- [One database instance for the Postgres or MySQL Metabase application database](#metabase-application-database-server-size) where Metabase will store its application data. We recommend that the database instance not be used for any other purpose than the Metabase application database.
+- [یک یا چند instance برای برنامه متابیس](#metabase-application-server-size).
+- [یک instance پایگاه داده برای پایگاه داده برنامه Postgres یا MySQL متابیس](#metabase-application-database-server-size) جایی که متابیس داده برنامه خود را ذخیره می‌کند. توصیه می‌کنیم instance پایگاه داده برای هیچ هدف دیگری جز پایگاه داده برنامه متابیس استفاده نشود.
 
-The reason you want to run these instances on the same network is to reduce the time it takes for Metabase \(the application\) to get a response from the database storing its application data. The vast majority of Metabase operations require a call to Metabase’s API, which uses the application database to retrieve information about questions, dashboard, table metadata, and so on.
+دلیل اینکه می‌خواهید این instanceها را روی همان شبکه اجرا کنید کاهش زمان لازم برای متابیس (برنامه) برای دریافت پاسخ از پایگاه داده ذخیره‌کننده داده برنامه آن است. اکثریت قریب به اتفاق عملیات متابیس نیاز به فراخوانی API متابیس دارد، که از پایگاه داده برنامه برای retrieve کردن اطلاعات درباره سؤال‌ها، داشبورد، فراداده جدول، و غیره استفاده می‌کند.
 
-### Metabase application server size
+### اندازه سرور برنامه متابیس
 
-Metabase needs at least 1 core and 1GB of RAM as the baseline. On top of that, for every 20 concurrent people using your Metabase, Metabase will need 1 CPU and 2GB of RAM. These system recommendations apply whether you’re running Metabase as a JAR or as a container image. As an example, if you have 40 concurrent users, you’ll need a total of 3 CPU cores and 5GB of RAM.
+متابیس حداقل به 1 هسته و 1GB RAM به عنوان baseline نیاز دارد. علاوه بر آن، برای هر 20 نفر همزمان استفاده‌کننده از متابیس شما، متابیس به 1 CPU و 2GB RAM نیاز دارد. این توصیه‌های سیستم اعمال می‌شوند چه متابیس را به عنوان JAR یا به عنوان image container اجرا می‌کنید. به عنوان مثال، اگر 40 کاربر همزمان دارید، در مجموع به 3 هسته CPU و 5GB RAM نیاز دارید.
 
-NOTE: before v52 we recommended only 1GB of memory per 20 concurrent users, but we raised this requirement in newer versions to be on the safe side.
+توجه: قبل از v52 فقط 1GB حافظه برای هر 20 کاربر همزمان توصیه می‌کردیم، اما این نیاز را در نسخه‌های جدیدتر برای اطمینان افزایش دادیم.
 
-### Metabase application database server size
+### اندازه سرور پایگاه داده برنامه متابیس
 
-The application database is probably the most important component of the entire architecture: it’s the single point of failure, and the faster the app db can return queries to the Metabase application server, the better.
-As a starting point, allocate 1 CPU core and 2GB of RAM the server running your application database. As a general rule, for every 40 concurrent people using your Metabase, a PostgreSQL application database will need 1 CPU core and 1 GB of RAM.
+پایگاه داده برنامه احتمالاً مهم‌ترین کامپوننت کل معماری است: نقطه شکست واحد است، و هر چه سریع‌تر app db بتواند پرس‌وجوها را به سرور برنامه متابیس برگرداند، بهتر است.
+به عنوان نقطه شروع، 1 هسته CPU و 2GB RAM را به سرور در حال اجرای پایگاه داده برنامه خود اختصاص دهید. به عنوان یک قانون کلی، برای هر 40 نفر همزمان استفاده‌کننده از متابیس شما، یک پایگاه داده برنامه PostgreSQL به 1 هسته CPU و 1 GB RAM نیاز دارد.
 
-## Each Metabase environment must have its own dedicated application database
+## هر محیط متابیس باید پایگاه داده برنامه اختصاصی خود را داشته باشد
 
-By environment, we mean one or more Metabase jars \(or container images\), and one application database. If you’re running multiple environments, you can run multiple application databases, one for each environment, on the same application database server, but each environment must have its own dedicated application database.
+با محیط، منظورمان یک یا چند jar متابیس (یا imageهای container)، و یک پایگاه داده برنامه است. اگر چندین محیط اجرا می‌کنید، می‌توانید چندین پایگاه داده برنامه، یکی برای هر محیط، روی همان سرور پایگاه داده برنامه اجرا کنید، اما هر محیط باید پایگاه داده برنامه اختصاصی خود را داشته باشد.
 
-## Maintenance
+## نگهداری
 
-Keeping things running smoothly.
+نگه داشتن همه چیز در حال اجرای روان.
 
-- [Metabase server maintenance](#metabase-server-maintenance)
-- [Metabase application database maintenance](#metabase-application-database-maintenance)
-- [Data warehouse server maintenance](#data-warehouse-server-maintenance)
+- [نگهداری سرور متابیس](#metabase-server-maintenance)
+- [نگهداری پایگاه داده برنامه متابیس](#metabase-application-database-maintenance)
+- [نگهداری سرور انبار داده](#data-warehouse-server-maintenance)
 
-### Metabase server maintenance
+### نگهداری سرور متابیس
 
-You don’t need to do anything. It should just work.
+نیازی به انجام کاری ندارید. باید فقط کار کند.
 
-### Metabase application database maintenance
+### نگهداری پایگاه داده برنامه متابیس
 
-All databases require maintenance for optimal performance, and PostgreSQL and MySQL are no exception. Follow PostgreSQL’s best practices for maintenance\(https://www.postgresql.org/docs/current/maintenance.html\) \(especially backups:
+همه پایگاه‌های داده نیاز به نگهداری برای عملکرد بهینه دارند، و PostgreSQL و MySQL استثنا نیستند. بهترین روش‌های PostgreSQL را برای نگهداری(https://www.postgresql.org/docs/current/maintenance.html) (به خصوص backupها) دنبال کنید:
 
 - [Postgres](https://www.postgresql.org/docs/current/backup.html)
 - [MySQL](https://dev.mysql.com/doc/refman/8.0/en/backup-and-recovery.html)
 
-This application database should be:
+این پایگاه داده برنامه باید:
 
-- Backed up on a daily basis.
-- Vacuumed and analyzed on a weekly basis.
+- به صورت روزانه backup شود.
+- به صورت هفتگی vacuum و analyze شود.
 
-Additionally, cards and dashboards that are no longer needed should be periodically archived and deleted.
+علاوه بر این، cardها و داشبوردهایی که دیگر نیاز نیستند باید به طور دوره‌ای archive و delete شوند.
 
-### Data warehouse server maintenance
+### نگهداری سرور انبار داده
 
-Maintenance of your data warehouse depends on which data warehouse you’re using. See the database’s documentation for guidance.
+نگهداری data warehouse شما به اینکه از کدام data warehouse استفاده می‌کنید بستگی دارد. مستندات پایگاه داده را برای راهنمایی ببینید.
 
-## Example load test
+## مثال تست بار
 
-On this simple [load test](https://github.com/paoliniluis/metabase-load-test-k6), the Metabase API clocked the following metrics on K6.
+در این [تست بار](https://github.com/paoliniluis/metabase-load-test-k6) ساده، API متابیس معیارهای زیر را روی K6 clock کرد.
 
-- Red : Poor performance
-- Green : Good performance
+- قرمز: عملکرد ضعیف
+- سبز: عملکرد خوب
 
-| Metrics / Systems | 2 Cores / 2GB RAM | 3 Cores / 3GB RAM | 4 Cores / 4GB RAM | 8 Cores / 8GB RAM | 16 Cores / 16GB RAM |
+| معیارها / سیستم‌ها | 2 هسته / 2GB RAM | 3 هسته / 3GB RAM | 4 هسته / 4GB RAM | 8 هسته / 8GB RAM | 16 هسته / 16GB RAM |
 | --- | --- | --- | --- | --- | --- |
-| Total Requests ProcessedTotal number of successful web requests handled | 278,303 | 303,420 | 311,740 | 311,350 | 313,625 |
-| Requests Per SecondHow many requests the system can process every second (higher is better) | 121.3 req/s | 132.0 req/s | 136.2 req/s | 135.8 req/s | 136.1 req/s |
-| Avg Response TimeHow long, on average, it takes to get a response (lower is better) | 78.59ms | 38.89ms | 26.82ms | 27.45ms | 24.46ms |
-| Slowest 10% (p90)The slowest 10% of requests took at least this long | 204.97ms | 88.58ms | 66.00ms | 66.73ms | 65.78ms |
-| Slowest 5% (p95)The slowest 5% of requests took even longer than this | 389.85ms | 118.88ms | 81.79ms | 83.01ms | 76.72ms |
-| Time to Receive DataTime to receive data after sending a request | 6.16ms | 2.54ms | 1.56ms | 1.52ms | 1.62ms |
-| Time to Send DataThe time spent sending a request to the server (usually very fast) | 16.74µs | 17.46µs | 15.07µs | 16.04µs | 17.79µs |
-| Time Waiting for ResponseThe delay between sending a request and getting a response | 72.41ms | 36.32ms | 25.24ms | 25.90ms | 22.82ms |
-| Test Duration per IterationThe total time for one test iteration to complete | 30.92s | 28.36s | 27.57s | 27.62s | 27.42s |
-| Total IterationsNumber of times the test was fully completed | 4,273 | 4,666 | 4,796 | 4,790 | 4,825 |
-| Total Data ReceivedHow much data was downloaded during the test | 16GB | 17GB | 17GB | 17GB | 17GB |
-| Total Data SentHow much data was uploaded during the test | 103MB | 112MB | 115MB | 115MB | 116MB |
+| Total Requests Processedتعداد کل درخواست‌های وب موفق handle شده | 278,303 | 303,420 | 311,740 | 311,350 | 313,625 |
+| Requests Per Secondچند درخواست سیستم می‌تواند هر ثانیه پردازش کند (بالاتر بهتر است) | 121.3 req/s | 132.0 req/s | 136.2 req/s | 135.8 req/s | 136.1 req/s |
+| Avg Response Timeچقدر طول می‌کشد، به طور متوسط، برای دریافت پاسخ (پایین‌تر بهتر است) | 78.59ms | 38.89ms | 26.82ms | 27.45ms | 24.46ms |
+| Slowest 10% (p90)کندترین 10% درخواست‌ها حداقل این مدت طول کشید | 204.97ms | 88.58ms | 66.00ms | 66.73ms | 65.78ms |
+| Slowest 5% (p95)کندترین 5% درخواست‌ها حتی بیشتر از این طول کشید | 389.85ms | 118.88ms | 81.79ms | 83.01ms | 76.72ms |
+| Time to Receive Dataزمان دریافت داده بعد از ارسال درخواست | 6.16ms | 2.54ms | 1.56ms | 1.52ms | 1.62ms |
+| Time to Send Dataزمان صرف شده برای ارسال درخواست به سرور (معمولاً بسیار سریع) | 16.74µs | 17.46µs | 15.07µs | 16.04µs | 17.79µs |
+| Time Waiting for Responseتأخیر بین ارسال درخواست و دریافت پاسخ | 72.41ms | 36.32ms | 25.24ms | 25.90ms | 22.82ms |
+| Test Duration per Iterationزمان کل برای یک iteration تست برای کامل شدن | 30.92s | 28.36s | 27.57s | 27.62s | 27.42s |
+| Total Iterationsتعداد دفعاتی که تست به طور کامل تکمیل شد | 4,273 | 4,666 | 4,796 | 4,790 | 4,825 |
+| Total Data Receivedچقدر داده در طول تست دانلود شد | 16GB | 17GB | 17GB | 17GB | 17GB |
+| Total Data Sentچقدر داده در طول تست آپلود شد | 103MB | 112MB | 115MB | 115MB | 116MB |
 
-Some context on the load test:
+برخی context درباره تست بار:
 
-- This load test ran with Metabase v53.5 on a laptop with \(Ryzen 7840HS\) changing the assigned CPU cores and RAM to the Metabase container and setting the highest power profile.
-- To leave some space for the non\-heap memory, we configured Metabase with the environment variable `JAVA_TOOL_OPTIONS: -Xmx<80% of total RAM>m` .
-- The application database was Postgres version 17 with 2 cores and 8GB of RAM.
-- No HTTPS.
-- We performed this specific load test with fewer resources than what we recommend \(for 100 concurrent users, we would recommend 6 cores and 11GB of RAM\). We used fewer resources on purpose to show that the app can withstand traffic spikes without significantly degrading performance when it has enough cores and memory available.
-- Although this load test checked several API endpoints, it *didn’t* test for CPU/memory intensive operations like X\-Rays, or asynchronous operations like subscriptions, alerts, database syncs or database scans/fingerprinting.
+- این تست بار با متابیس v53.5 روی یک لپ‌تاپ با (Ryzen 7840HS) با تغییر هسته‌های CPU و RAM اختصاص داده شده به container متابیس و تنظیم بالاترین پروفایل power اجرا شد.
+- برای باقی گذاشتن مقداری فضا برای حافظه non-heap، متابیس را با متغیر محیطی `JAVA_TOOL_OPTIONS: -Xmx<80% of total RAM>m` پیکربندی کردیم.
+- پایگاه داده برنامه Postgres نسخه 17 با 2 هسته و 8GB RAM بود.
+- بدون HTTPS.
+- این تست بار خاص را با منابع کمتر از آنچه توصیه می‌کنیم انجام دادیم (برای 100 کاربر همزمان، 6 هسته و 11GB RAM را توصیه می‌کنیم). عمداً از منابع کمتر استفاده کردیم تا نشان دهیم برنامه می‌تواند spikeهای ترافیک را بدون تخریب قابل توجه عملکرد handle کند وقتی هسته‌ها و حافظه کافی در دسترس دارد.
+- اگرچه این تست بار چندین endpoint API را بررسی کرد، *برای* عملیات CPU/حافظه فشرده مثل X-Rays، یا عملیات ناهمزمان مثل اشتراک‌ها، هشدارها، syncهای پایگاه داده یا scan/fingerprinting پایگاه داده تست نکرد.
 
-Load tests, however, can’t mimic real\-life usage. People’s activity in your Metabase will generate different a variety of API call patterns. You’ll also have asynchronous processes running in the background. If Metabase lacks sufficient CPU resources, it’ll queue operations and start consuming more memory. If the queue overflows, Metabase may crash trying to deal with all the requests. In which case, you’ll need to allocate more cores and more memory.
+تست‌های بار، با این حال، نمی‌توانند استفاده واقعی را تقلید کنند. فعالیت مردم در متابیس شما الگوهای مختلف فراخوانی API را ایجاد می‌کند. همچنین فرآیندهای ناهمزمان در پس‌زمینه در حال اجرا خواهید داشت. اگر متابیس منابع CPU کافی نداشته باشد، عملیات را queue می‌کند و شروع به مصرف حافظه بیشتر می‌کند. اگر queue overflow شود، متابیس ممکن است crash کند در تلاش برای deal کردن با همه درخواست‌ها. در آن صورت، نیاز دارید هسته‌ها و حافظه بیشتری اختصاص دهید.
 
-## Async processes
+## فرآیندهای ناهمزمان
 
-Metabase will run asynchronous processes periodically that will use CPU and RAM depending on the amount of tables and amount of columns on your tables.
+متابیس فرآیندهای ناهمزمان را به طور دوره‌ای اجرا می‌کند که CPU و RAM را بسته به تعداد جداول و تعداد ستون‌ها روی جداول شما استفاده می‌کنند.
 
-These processes are:
+این فرآیندها:
 
 - sync
 - scan
@@ -265,83 +263,85 @@ These processes are:
 - model caching
 - question metadata
 
-If you see Metabase using a lot of CPU on a certain period of time, check the logs to see if Metabase is running any of these processes. If so, you can schedule these tasks to run whenever people aren’t using your Metabase.
+اگر می‌بینید متابیس CPU زیادی در یک دوره زمانی خاص استفاده می‌کند، logها را بررسی کنید تا ببینید آیا متابیس هر یک از این فرآیندها را اجرا می‌کند. اگر چنین است، می‌توانید این کارها را schedule کنید تا هر زمان که مردم از متابیس شما استفاده نمی‌کنند اجرا شوند.
 
-Metabase will assign each of these tasks to a single core. If your server has four cores, the maximum number of async processes that Metabase will run is three, as one core should be available for serving people’s requests \(one core should be able to serve requests to ~10 people using Metabase concurrently\).
+متابیس هر یک از این کارها را به یک هسته واحد اختصاص می‌دهد. اگر سرور شما چهار هسته دارد، حداکثر تعداد فرآیندهای async که متابیس اجرا می‌کند سه است، چون یک هسته باید برای سرو کردن درخواست‌های مردم در دسترس باشد (یک هسته باید بتواند درخواست‌ها را به ~10 نفر استفاده‌کننده از متابیس به طور همزمان سرو کند).
 
-## Observability and some metrics to monitor
+## قابلیت مشاهده و برخی معیارهای نظارت
 
-Metabase exposes a [metrics endpoint that can be scraped by Prometheus](../../../../docs/latest/installation-and-operation/observability-with-prometheus.html). Ideally you have some alarms set up so you can take action if any of these numbers cross one of these thresholds.
+متابیس یک [endpoint معیار که می‌تواند توسط Prometheus scrape شود](../../../../docs/latest/installation-and-operation/observability-with-prometheus.html) را expose می‌کند. ایده‌آل این است که برخی alarmها تنظیم کنید تا بتوانید اقدام کنید اگر هر یک از این اعداد از یکی از این آستانه‌ها عبور کند.
 
-### Metabase application
+### برنامه متابیس
 
-- API Response time
-- CPU: 80%\-90% max
-- RAM: 80% max
+- زمان پاسخ API
+- CPU: حداکثر 80%-90%
+- RAM: حداکثر 80%
 
-### Metabase application database
+### پایگاه داده برنامه متابیس
 
-- CPU: 90% max
-- RAM: 80% max
-- Disk usage: 80% max.
-- Disk IOPS: Check your disk’s IOPS support. If the disk you’re using to run your app db exceeds the IOPS the disk claims to support, then your disk will queue operations, which will affect performance.
+- CPU: حداکثر 90%
+- RAM: حداکثر 80%
+- استفاده دیسک: حداکثر 80%.
+- IOPS دیسک: پشتیبانی IOPS دیسک خود را بررسی کنید. اگر دیسکی که برای اجرای app db استفاده می‌کنید از IOPS که دیسک ادعا می‌کند پشتیبانی می‌کند تجاوز کند، سپس دیسک شما عملیات را queue می‌کند، که بر عملکرد تأثیر می‌گذارد.
 
-### When to increase the connection pool size
+### چه زمانی اندازه pool اتصال را افزایش دهیم
 
-By default, Metabase’s connection pool size is limited to 15 connections. Metabase will manage one pool per connected database, including one pool for the application database, with each pool limited to 15 connections.
+به طور پیش‌فرض، اندازه pool اتصال متابیس به 15 اتصال محدود شده است. متابیس یک pool برای هر پایگاه داده متصل مدیریت می‌کند، از جمله یک pool برای پایگاه داده برنامه، با هر pool محدود به 15 اتصال.
 
-To handle more people using your Metabase concurrently, you can override the connection limit to the application database with the `MB_APPLICATION_DB_MAX_CONNECTION_POOL_SIZE` environment variable. If you increase this limit, you may need to give your application database more RAM, so you should monitor your app db’s RAM usage. If the database lacks free RAM, the database will queue connections, which means that some people will find Metabase unresponsive while it waits for RAM to free up.
+برای handle کردن مردم بیشتر استفاده‌کننده از متابیس به طور همزمان، می‌توانید محدودیت اتصال به پایگاه داده برنامه را با متغیر محیطی `MB_APPLICATION_DB_MAX_CONNECTION_POOL_SIZE` override کنید. اگر این محدودیت را افزایش دهید، ممکن است نیاز داشته باشید RAM بیشتری به پایگاه داده برنامه خود بدهید، پس باید استفاده RAM از app db خود را نظارت کنید. اگر پایگاه داده RAM آزاد نداشته باشد، پایگاه داده اتصال‌ها را queue می‌کند، که به معنای این است که برخی مردم متابیس را unresponsive می‌یابند در حالی که منتظر آزاد شدن RAM است.
 
-Metabase only uses the connections it needs at any given time. But some requests can tie up many of these connections. For example, if someone loads a dashboard with 20 cards on it, Metabase will use its 15 available connections to retrieve results, and load the remaining five cards as connections become available.
+متابیس فقط از اتصال‌هایی که در هر زمان معین نیاز دارد استفاده می‌کند. اما برخی درخواست‌ها می‌توانند بسیاری از این اتصال‌ها را tie up کنند. به عنوان مثال، اگر کسی یک داشبورد با 20 card روی آن load کند، متابیس از 15 اتصال در دسترس خود برای retrieve کردن نتایج استفاده می‌کند، و پنج card باقی‌مانده را همانطور که اتصال‌ها در دسترس می‌شوند load می‌کند.
 
-## Using a load balancer
+## استفاده از load balancer
 
-![A Metabase setup with a load balancer.](../../../images/metabase-in-production/metabase-with-load-balancer.png)
+![یک راه‌اندازی متابیس با یک load balancer.](../../../images/metabase-in-production/metabase-with-load-balancer.png)
 
-A good architectural practice is to use a load balancer on top of Metabase, even if you only have one server running, and you’re not doing any horizontal scaling. Deploying a load balancer later can be trickier to implement, and the load balancer can also perform TLS termination \(a.k.a. encrypting and decrypting HTTP traffic\), WAF \(web application firewall\), redirections, and other common tasks.
+یک روش معماری خوب استفاده از یک load balancer روی متابیس است، حتی اگر فقط یک سرور در حال اجرا دارید، و هیچ scale کردن افقی انجام نمی‌دهید. استقرار یک load balancer بعداً می‌تواند پیاده‌سازی trickier باشد، و load balancer همچنین می‌تواند TLS termination (a.k.a. encrypting و decrypting ترافیک HTTP)، WAF (web application firewall)، redirectها، و سایر کارهای رایج را انجام دهد.
 
-See [Straightforward load balancing](metabase-at-scale.html#straightforward-load-balancing).
+[Load balancing ساده](metabase-at-scale.html#straightforward-load-balancing) را ببینید.
 
-## Logs
+## لاگ‌ها
 
-Metabase generates application logs that you should keep. These logs are useful for debugging and for auditing. Check out our docs on [log configuration](../../../../docs/latest/configuring-metabase/log-configuration.html).
+متابیس logهای برنامه تولید می‌کند که باید نگه دارید. این logها برای debugging و auditing مفید هستند. مستندات ما درباره [پیکربندی log](../../../../docs/latest/configuring-metabase/log-configuration.html) را بررسی کنید.
 
-If you’ve also deployed a load balancer, or reverse proxy, on top of Metabase, we recommend you save those logs to a log aggregator. These logs will help you identify patterns and conduct investigations if needed.
+اگر همچنین یک load balancer، یا reverse proxy، روی متابیس استقرار داده‌اید، توصیه می‌کنیم آن logها را به یک log aggregator ذخیره کنید. این logها به شما کمک می‌کنند الگوها را شناسایی کنید و در صورت نیاز تحقیقات انجام دهید.
 
-## Metabase over HTTPS
+## متابیس از طریق HTTPS
 
-You can [serve Metabase over HTTPS](../../../../docs/latest/configuring-metabase/customizing-jetty-webserver.html#using-https-with-metabase) without using a load balancer or a reverse proxy.
+می‌توانید [متابیس را از طریق HTTPS سرو کنید](../../../../docs/latest/configuring-metabase/customizing-jetty-webserver.html#using-https-with-metabase) بدون استفاده از load balancer یا reverse proxy.
 
-Just note that if you use the same server to run both Metabase and the TLS termination \(a.k.a. HTTPS\), Metabase will lose valuable CPU resources that are spent on encrypting/decrypting traffic. So you may want to [use a load balancer](#using-a-load-balancer).
+فقط توجه کنید که اگر از همان سرور برای اجرای هم متابیس و هم TLS termination (a.k.a. HTTPS) استفاده می‌کنید، متابیس منابع CPU ارزشمندی را که صرف encrypting/decrypting ترافیک می‌شود از دست می‌دهد. پس ممکن است بخواهید [از یک load balancer استفاده کنید](#using-a-load-balancer).
 
-## Pitfalls to avoid
+## دام‌هایی که باید از آن‌ها اجتناب کرد
 
-Learn from the trials of others.
+از آزمایش‌های دیگران یاد بگیرید.
 
-### We recommend that you avoid services that claim to scale automagically
+### توصیه می‌کنیم از سرویس‌هایی که ادعا می‌کنند به طور خودکار مقیاس‌پذیر هستند، اجتناب کنید
 
-Based on our experience, many services that claim that scale to automagically are, well, not magical. We instead recommend that you put some observability metrics in place, monitor them, and make the scaling changes you need to make based on those observations, as your Metabase usage will grow as your company grows.
+بر اساس تجربه ما، بسیاری از سرویس‌هایی که ادعا می‌کنند به طور خودکار scale می‌شوند، خوب، جادویی نیستند. به جای آن توصیه می‌کنیم برخی معیارهای observability را در جای خود قرار دهید، آن‌ها را نظارت کنید، و تغییرات scaling مورد نیاز را بر اساس آن مشاهدات انجام دهید، چون استفاده متابیس شما همانطور که شرکت شما رشد می‌کند رشد خواهد کرد.
 
-### Avoid services that shut down servers when they’re not in use
+### از سرویس‌هایی که سرورها را در صورت عدم استفاده خاموش می‌کنند، اجتناب کنید
 
-If you must go with a auto\-scaling service, avoid any service that periodically turns off servers when they’re not in use.
+اگر باید با یک سرویس auto-scaling بروید، از هر سرویسی که به طور دوره‌ای سرورها را وقتی استفاده نمی‌شوند خاموش می‌کند اجتناب کنید.
 
-The reason is twofold:
+دلیل دوگانه است:
 
-1. **Async processes** . Metabase runs some async processes, for example to get metadata for your tables, or refresh models, or get filter values. If these processes can’t run, people won’t see many of the features that Metabase offers.
-2. **Startup time** The first people to log into your application the next will suffer a massive performance penalty, as the server will have to spin up from a complete cold start.
+1. **فرآیندهای async**. متابیس برخی فرآیندهای async اجرا می‌کند، مثلاً برای دریافت فراداده برای جداول شما، یا refresh کردن مدل‌ها، یا دریافت مقادیر فیلتر. اگر این فرآیندها نتوانند اجرا شوند، مردم بسیاری از ویژگی‌هایی که متابیس ارائه می‌دهد را نمی‌بینند.
+2. **زمان startup** اولین افرادی که به برنامه شما وارد می‌شوند بعدی جریمه عملکرد عظیمی را متحمل می‌شوند، چون سرور باید از یک cold start کامل spin up شود.
 
-### Issues with running on other cloud providers
+### مشکلات اجرای روی سایر ارائه‌دهندگان ابری
 
-Just something to be aware of: many cloud service providers will host you on shared infrastructure. In this case, tenants share access to CPUs. Multi\-tenant servers can be cheaper to rent, and they can offer decent performance, provided your CPU usage stays under 100%. If your Metabase server uses 100% of CPU for a certain amount of time, the provider may throttle the performance of your assigned CPUs, and your performance will significantly degrade. The same throttling can happens with disk IOPS in shared infrastructure.
+فقط چیزی برای آگاهی: بسیاری از ارائه‌دهندگان سرویس کلود شما را روی زیرساخت مشترک میزبانی می‌کنند. در این مورد، مستأجران دسترسی به CPUها را share می‌کنند. سرورهای multi-tenant می‌توانند برای اجاره ارزان‌تر باشند، و می‌توانند عملکرد مناسبی ارائه دهند، به شرط اینکه استفاده CPU شما زیر 100% بماند. اگر سرور متابیس شما 100% CPU را برای مدت معینی استفاده کند، ارائه‌دهنده ممکن است عملکرد CPUهای اختصاص داده شده شما را throttle کند، و عملکرد شما به طور قابل توجهی تخریب می‌شود. همان throttling می‌تواند با IOPS دیسک در زیرساخت مشترک اتفاق بیفتد.
 
-## Upgrading to a new major version of Metabase
+## ارتقا به یک نسخه اصلی جدید متابیس
 
-Normally, we don’t make any changes to the schema of the application database across minor versions \(e.g., 1.51.1 to 1.51.2\), so you can upgrade and downgrade between minor version without issues.
+به طور معمول، هیچ تغییری به schema پایگاه داده برنامه در نسخه‌های minor (مثلاً، 1.51.1 به 1.51.2) ایجاد نمی‌کنیم، پس می‌توانید بین نسخه‌های minor بدون مشکل upgrade و downgrade کنید.
 
-When upgrading to a major version, \(e.g., 1.50.9 to 1.51.3\), you should expect some downtime, as Metabase may need to handle schema changes to the application database. How long the schema changes will take depends on the size of your application database.
+وقتی به یک نسخه اصلی upgrade می‌کنید، (مثلاً، 1.50.9 به 1.51.3)، باید انتظار مقداری downtime داشته باشید، چون متابیس ممکن است نیاز به handle کردن تغییرات schema به پایگاه داده برنامه داشته باشد. چقدر طول می‌کشد تغییرات schema بستگی به اندازه پایگاه داده برنامه شما دارد.
 
 [
+      
+        
       
         
 
@@ -352,6 +352,8 @@ When upgrading to a major version, \(e.g., 1.50.9 to 1.51.3\), you should expect
       
     ](metabase-and-your-db.html)
 [
+      
+        
       
         
         

@@ -1,192 +1,190 @@
 ---
-
-
-title: "Period-over-period comparisons for time series"
-description: "How to measure the change in a metric over time by comparing two or more time periods."
+title: "مقایسه‌های دوره‌ای برای سری‌های زمانی"
+description: "نحوه اندازه‌گیری تغییر در یک معیار در طول زمان با مقایسه دو یا چند دوره زمانی."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/time-series/time-series-comparisons
   - /learn/questions/time-series-comparisons
 toc:
   - id: "period-over-period-comparisons-for-time-series"
-    title: "Period-over-period comparisons for time series"
+    title: "مقایسه‌های دوره‌ای برای سری‌های زمانی"
     level: 1
     href: "#period-over-period-comparisons-for-time-series"
   - id: "introduction"
-    title: "Introduction"
+    title: "مقدمه"
     level: 2
     href: "#introduction"
   - id: "setup"
-    title: "Setup"
+    title: "راه‌اندازی"
     level: 2
     href: "#setup"
   - id: "comparing-the-latest-period-using-a-trend-chart"
-    title: "Comparing the latest period using a trend chart"
+    title: "مقایسه آخرین دوره با استفاده از نمودار روند"
     level: 2
     href: "#comparing-the-latest-period-using-a-trend-chart"
   - id: "year-over-year-comparison"
-    title: "Year-over-year comparison"
+    title: "مقایسه سال به سال"
     level: 2
     href: "#year-over-year-comparison"
   - id: "using-the-offset-function-to-get-previous-periods"
-    title: "Using the Offset function to get previous periods"
+    title: "استفاده از تابع Offset برای دریافت دوره‌های قبلی"
     level: 3
     href: "#using-the-offset-function-to-get-previous-periods"
   - id: "visualizing-yoy-data-as-a-bar-chart"
-    title: "Visualizing YoY data as a bar chart"
+    title: "تجسم داده YoY به عنوان نمودار میله‌ای"
     level: 3
     href: "#visualizing-yoy-data-as-a-bar-chart"
   - id: "add-a-comparison-to-2-years-ago"
-    title: "Add a comparison to 2 years ago"
+    title: "افزودن یک مقایسه به 2 سال پیش"
     level: 3
     href: "#add-a-comparison-to-2-years-ago"
   - id: "measuring-difference-and-change"
-    title: "Measuring difference and change"
+    title: "اندازه‌گیری تفاوت و تغییر"
     level: 2
     href: "#measuring-difference-and-change"
   - id: "notes-for-sql-experts"
-    title: "Notes for SQL experts"
+    title: "یادداشت‌هایی برای متخصصان SQL"
     level: 2
     href: "#notes-for-sql-experts"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Time series analysis"
+  - title: "تحلیل سری زمانی"
     href: "../time-series.html"
 ---
 
-# Period-over-period comparisons for time series
+# مقایسه‌های دوره‌ای برای سری‌های زمانی
 
-How to measure the change in a metric over time by comparing two or more time periods.
+نحوه اندازه‌گیری تغییر در یک معیار در طول زمان با مقایسه دو یا چند دوره زمانی.
 
-## Introduction
+## مقدمه
 
-This tutorial will show you how to compare data over two or more time periods. Here are the charts we’re going to make:
+این آموزش به شما نشان می‌دهد چگونه داده را در دو یا چند دوره زمانی مقایسه کنید. در اینجا نمودارهایی که می‌خواهیم بسازیم:
 
-![A dashboard with a monthly trend chat, a YoY chart, and a percentage change chart](../../../images/time-series-comparisons/period-comparison-dashboard.png)
+![یک داشبورد با یک نمودار روند ماهانه، یک نمودار YoY، و یک نمودار تغییر درصد](../../../images/time-series-comparisons/period-comparison-dashboard.png)
 
-We’ll give you step by step instructions that you can follow along in your Metabase.
+دستورالعمل‌های گام به گام ارائه می‌دهیم که می‌توانید در متابیس خود همراه باشید.
 
-## Setup
+## راه‌اندازی
 
-We’ll work with the Orders table from the Sample Database that comes with every fresh Metabase instance.
+با جدول Orders از پایگاه داده نمونه که با هر instance تازه متابیس می‌آید کار می‌کنیم.
 
-We’ll use a question that computes the revenue – sum of order totals – by month.
+از یک سؤال که درآمد را محاسبه می‌کند – مجموع کل سفارش‌ها – بر اساس ماه استفاده می‌کنیم.
 
-To create the question:
+برای ایجاد سؤال:
 
-1. Start a New question from the `Orders` table;
-2. Add a summary: `Sum of...` the `Total` column, grouped by `Created At: Month` ;
-3. Save the question.
+1. یک سؤال جدید از جدول `Orders` شروع کنید؛
+2. یک خلاصه اضافه کنید: `Sum of...` ستون `Total`، group شده بر اساس `Created At: Month`؛
+3. سؤال را ذخیره کنید.
 
-## Comparing the latest period using a trend chart
+## مقایسه آخرین دوره با استفاده از نمودار روند
 
-If you just want to track performance of a metric in the *latest* time period vs the previous one \(or a few previous periods\), the trend chart is the way to go. A trend chart looks like this:
+اگر فقط می‌خواهید عملکرد یک معیار را در *آخرین* دوره زمانی در مقابل قبلی (یا چند دوره قبلی) ردیابی کنید، نمودار روند راه است. یک نمودار روند شبیه این است:
 
-![Trend chart](../../../images/time-series-comparisons/trend-chart.png)
+![نمودار روند](../../../images/time-series-comparisons/trend-chart.png)
 
-To build this chart, starting from the “Revenue by month” question you created in [the setup section](#setup):
+برای ساخت این نمودار، شروع از سؤال "Revenue by month" که در [بخش راه‌اندازی](#setup) ایجاد کردید:
 
-1. If you are in the query builder, **click “Visualize” to create a chart**. Metabase will create a time series chart by default because the breakout variable is a date. Let’s change the visualization to a *trend chart*.
-  - Click on the **Visualization** button in the bottom left of the screen;
-  - Pick “Trend”.
-2. **Change the visualization to Trend:** Metabase will show the latest value in the data, and how the value compares to the same metric in previous period. You can also choose to compare to static values \(like to a goal you’ve set\), or to several periods.
-  - From the trend chart, open the visualization settings by clicking on the gear icon in the bottom left;
-  - In the **Data** tab, click **Add comparison** ;
-  - Pick **12 months ago** .
-3. **Add another comparison to the value 12 months ago**
+1. اگر در query builder هستید، **روی "Visualize" کلیک کنید تا یک نمودار ایجاد شود**. متابیس به طور پیش‌فرض یک نمودار سری زمانی ایجاد می‌کند چون متغیر breakout یک تاریخ است. بیایید تجسم را به یک *نمودار روند* تغییر دهیم.
+  - روی دکمه **Visualization** در پایین سمت چپ صفحه کلیک کنید؛
+  - "Trend" را انتخاب کنید.
+2. **تجسم را به Trend تغییر دهید:** متابیس آخرین مقدار در داده را نشان می‌دهد، و نحوه مقایسه مقدار با همان معیار در دوره قبلی. همچنین می‌توانید انتخاب کنید با مقادیر static (مثل به یک هدفی که تنظیم کرده‌اید) یا به چندین دوره مقایسه کنید.
+  - از نمودار روند، تنظیمات تجسم را با کلیک روی آیکون چرخ‌دنده در پایین سمت چپ باز کنید؛
+  - در تب **Data**، روی **Add comparison** کلیک کنید؛
+  - **12 months ago** را انتخاب کنید.
+3. **یک مقایسه دیگر با مقدار 12 ماه پیش اضافه کنید**
 
-Your trend chart will now contain two comparisons: one comparison with the previous month, and one with the same month a year ago.
+نمودار روند شما حالا شامل دو مقایسه خواهد بود: یک مقایسه با ماه قبلی، و یکی با همان ماه یک سال پیش.
 
-![A trend chart with two comparisons](../../../images/time-series-comparisons/multiple-periods-trend.png)
+![یک نمودار روند با دو مقایسه](../../../images/time-series-comparisons/multiple-periods-trend.png)
 
-> 💡 **Tip**: Check out other trend visualization settings in the Display tab. For example, you could add a $ sign to the display of revenue, or change the colors used for comparison.
+> 💡 **نکته**: سایر تنظیمات تجسم روند را در تب Display بررسی کنید. به عنوان مثال، می‌توانید یک علامت $ به نمایش درآمد اضافه کنید، یا رنگ‌های استفاده شده برای مقایسه را تغییر دهید.
 
-## Year-over-year comparison
+## مقایسه سال به سال
 
-Often you want to look not just at the latest month, but at performance in *all months* this year, and how they compare to *all months* last year. Rather than make 12 trend charts, we’re going to collect this information in a bar chart like this:
+اغلب می‌خواهید نه فقط به آخرین ماه، بلکه به عملکرد در *همه ماه‌ها* امسال، و نحوه مقایسه آن‌ها با *همه ماه‌ها* سال گذشته نگاه کنید. به جای ساخت 12 نمودار روند، این اطلاعات را در یک نمودار میله‌ای مثل این جمع‌آوری می‌کنیم:
 
-![A bar chart grouped by month containing bars for the current and last year](../../../images/time-series-comparisons/yoy-one-year.png)
+![یک نمودار میله‌ای group شده بر اساس ماه شامل میله‌ها برای سال فعلی و سال گذشته](../../../images/time-series-comparisons/yoy-one-year.png)
 
-### Using the Offset function to get previous periods
+### استفاده از تابع Offset برای دریافت دوره‌های قبلی
 
-We’ll use a handy custom expression function [Offset](../../../../docs/latest/questions/query-builder/expressions/offset.html) that returns a value in a different row, specified by offset \(for example, 1 row after or 5 rows before\). If you’ve never used custom expressions before, you can check out our tutorial [Custom expressions in the notebook editor](../questions/custom-expressions.html).
+از یک تابع عبارت سفارشی مفید [Offset](../../../../docs/latest/questions/query-builder/expressions/offset.html) استفاده می‌کنیم که یک مقدار در یک ردیف مختلف، مشخص شده توسط offset (مثلاً، 1 ردیف بعد یا 5 ردیف قبل) برمی‌گرداند. اگر قبلاً از عبارات سفارشی استفاده نکرده‌اید، می‌توانید آموزش ما [عبارات سفارشی در ویرایشگر notebook](../questions/custom-expressions.html) را بررسی کنید.
 
-We’ll again start with the “Total order revenue per month” question from our [Setup](#setup).
+دوباره با سؤال "Total order revenue per month" از [راه‌اندازی](#setup) شروع می‌کنیم.
 
-First, we’ll replicate what the trend chart did — compare the month’s result to the previous month — but for *all* months in the data rather than just the last one.
+ابتدا، آنچه نمودار روند انجام داد را replicate می‌کنیم — مقایسه نتیجه ماه با ماه قبلی — اما برای *همه* ماه‌ها در داده به جای فقط آخرین.
 
-1. In the query builder, **add a new Offset expression in the Summarize section**: ```mbql Offset( Sum([Total]), -1) ``` You can name the column something like `"Previous month"` \(your data should still be grouped by `Created At: Month`\). For every month, this expression will return the sum of total from the previous \(*offset* by \-1\) month.
-2. **Preview the data** by clicking on the play button to the right of the Summarize block. You should see three columns: the month, the sum of total for that month, and the sum of total from the previous month. ![Table view with the total column and the same column offset by -1](../../../images/time-series-comparisons/previous-month.png) With `Offset`, you can easily compare monthly performance for each month to the previous month by looking at a single row.
+1. در query builder، **یک عبارت Offset جدید در بخش Summarize اضافه کنید**: ```mbql Offset( Sum([Total]), -1) ``` می‌توانید ستون را چیزی مثل `"Previous month"` نامگذاری کنید (داده شما باید هنوز بر اساس `Created At: Month` group شده باشد). برای هر ماه، این عبارت مجموع total از ماه قبلی (*offset* شده با -1) را برمی‌گرداند.
+2. **داده را پیش‌نمایش کنید** با کلیک روی دکمه play در سمت راست بلوک Summarize. باید سه ستون ببینید: ماه، مجموع total برای آن ماه، و مجموع total از ماه قبلی. ![نمای جدول با ستون total و همان ستون offset شده با -1](../../../images/time-series-comparisons/previous-month.png) با `Offset`، می‌توانید به راحتی عملکرد ماهانه برای هر ماه را با ماه قبلی با نگاه به یک ردیف واحد مقایسه کنید.
 
-### Visualizing YoY data as a bar chart
+### تجسم داده YoY به عنوان نمودار میله‌ای
 
-If we want to compare the data each month to the *same month in the previous year*, we can use the `Offset` function to return data from 12 month ago by specifying \-12 offset. We can also present the data as a bar chart instead of a table for easier visual comparison.
+اگر می‌خواهیم داده هر ماه را با *همان ماه در سال قبلی* مقایسه کنیم، می‌توانیم از تابع `Offset` برای برگرداندن داده از 12 ماه پیش با مشخص کردن offset -12 استفاده کنیم. همچنین می‌توانیم داده را به عنوان یک نمودار میله‌ای به جای جدول برای مقایسه بصری آسان‌تر ارائه دهیم.
 
-From the question in the previous section, or from the [Setup question](#setup):
+از سؤال در بخش قبلی، یا از [سؤال راه‌اندازی](#setup):
 
-1. In the query builder, **add a new Offset custom expression** \(or change the existing one\) in the Summarize section : ```mbql Offset( Sum([Total]), -12) ``` You can name the new column `"1 year ago"`. If you’re editing the column from the previous section, remember to rename the column to reflect the new time period! For every month, this expression will return the sum of total from the current month offset by 12 months – so, from the month a year ago.
-  - Add a filter for `Created At` after the Summarize block
-  - Use **Relative dates** filter option and pick **Current \> Year** .
-2. **Add a filter for the current year after the Summarize block**. Your results include all the data from the beginning of time. In a YoY chart, we want to see only the months of the current year and how they compare to the same months in the previous year, so we’ll need to filter the data. It’s important to add the filter *after* summarizing the data, not before. If you add a filter for the current year before computing the sum, the data for the last year won’t be in the result, so you won’t be able to offset it.
-3. **Preview the data**. Now you should see just the months from the current year.
-4. **Visualize the result as a stacked bar chart.** You might need to change the type of visualization: click on “Visualize” button at the bottom left of the screen, and select “bar chart”.
-  - Click on the “gear” icon at the bottom left of the screen
-  - Switch to the Axes tab
-  - Toggle **off** “Split y\-axis when necessary”
-5. **Turn off split y\-axis to compare data on the same scale** Depending on your data, Metabase might create a split Y\-axes for the bar chart. Because we want to compare the yearly results on the same scale, our chart should have only a single y\-axis. While viewing the visualization:
-  - Click on the “gear” icon at the bottom left of the screen
-  - In the Data tab, drag the rows for the series to arrange them in the correct order.
-6. **Change the order of bars** so that the previous year bar is to the left of the current year. Metabase will order the bars in a stacked bar chart using the order of expressions in the Summarize block, so the bar for the previous year will be to the right of the bars for the current year. Let’s arrange the bars in chronological order instead. While viewing the visualization:
+1. در query builder، **یک عبارت Offset سفارشی جدید اضافه کنید** (یا موجود را تغییر دهید) در بخش Summarize: ```mbql Offset( Sum([Total]), -12) ``` می‌توانید ستون جدید را `"1 year ago"` نامگذاری کنید. اگر ستون از بخش قبلی را ویرایش می‌کنید، یادتان باشد ستون را برای reflect کردن دوره زمانی جدید rename کنید! برای هر ماه، این عبارت مجموع total از ماه فعلی offset شده با 12 ماه – پس، از ماه یک سال پیش – را برمی‌گرداند.
+  - یک فیلتر برای `Created At` بعد از بلوک Summarize اضافه کنید
+  - از گزینه فیلتر **Relative dates** استفاده کنید و **Current > Year** را انتخاب کنید.
+2. **یک فیلتر برای سال فعلی بعد از بلوک Summarize اضافه کنید**. نتایج شما شامل همه داده از ابتدای زمان است. در یک نمودار YoY، می‌خواهیم فقط ماه‌های سال فعلی و نحوه مقایسه آن‌ها با همان ماه‌ها در سال گذشته را ببینیم، پس نیاز به فیلتر کردن داده داریم. مهم است فیلتر را *بعد از* خلاصه کردن داده اضافه کنید، نه قبل. اگر یک فیلتر برای سال فعلی قبل از محاسبه sum اضافه کنید، داده برای سال گذشته در نتیجه نخواهد بود، پس قادر به offset کردن آن نخواهید بود.
+3. **داده را پیش‌نمایش کنید**. حالا باید فقط ماه‌ها از سال فعلی را ببینید.
+4. **نتیجه را به عنوان یک نمودار میله‌ای stacked تجسم کنید.** ممکن است نیاز به تغییر نوع تجسم داشته باشید: روی دکمه "Visualize" در پایین سمت چپ صفحه کلیک کنید و "bar chart" را انتخاب کنید.
+  - روی آیکون "چرخ‌دنده" در پایین سمت چپ صفحه کلیک کنید
+  - به تب Axes تغییر دهید
+  - **"Split y-axis when necessary"** را toggle **off** کنید
+5. **split y-axis را خاموش کنید تا داده را روی همان scale مقایسه کنید** بسته به داده شما، متابیس ممکن است split Y-axes برای نمودار میله‌ای ایجاد کند. چون می‌خواهیم نتایج سالانه را روی همان scale مقایسه کنیم، نمودار ما باید فقط یک y-axis داشته باشد. در حال مشاهده تجسم:
+  - روی آیکون "چرخ‌دنده" در پایین سمت چپ صفحه کلیک کنید
+  - در تب Data، ردیف‌ها برای سری را drag کنید تا به ترتیب صحیح مرتب شوند.
+6. **ترتیب میله‌ها را تغییر دهید** تا میله سال گذشته در سمت چپ سال فعلی باشد. متابیس میله‌ها را در یک نمودار میله‌ای stacked با استفاده از ترتیب عبارات در بلوک Summarize مرتب می‌کند، پس میله برای سال گذشته در سمت راست میله‌ها برای سال فعلی خواهد بود. بیایید میله‌ها را به ترتیب زمانی مرتب کنیم. در حال مشاهده تجسم:
 
-Your chart should look something like this:
+نمودار شما باید چیزی شبیه این باشد:
 
-![YoY bar chart](../../../images/time-series-comparisons/yoy-one-year.png)
+![نمودار میله‌ای YoY](../../../images/time-series-comparisons/yoy-one-year.png)
 
-### Add a comparison to 2 years ago
+### افزودن یک مقایسه به 2 سال پیش
 
-Now try it out yourself: follow the same steps to add another comparison to the data **2 years ago** from the current year.
+حالا خودتان امتحان کنید: همان مراحل را دنبال کنید تا یک مقایسه دیگر با داده **2 سال پیش** از سال فعلی اضافه کنید.
 
-1. **Add a new Offset expression**, with offset by 24 months : ```mbql Offset( Sum([Total]), -24) ``` You can name it something like “2 years ago”.
-2. **Reorder** expressions in the Summarize block by dragging them \(or reorder the bars on the bar chart\). Since Metabase uses the order of expressions in the Summarize block for the order of bars on the chart, when you add a new 2\-year offset, Metabase will include that offset column at the end. To position the 2\-year offset before the 1\-year offset, you’ll need to either reorder the bars in the visualization \(like we’ve done before\), or reorder the expressions themselves by dragging them around in the Summarize block in the editor.
-3. **Visualize** the chart.
+1. **یک عبارت Offset جدید اضافه کنید**، با offset با 24 ماه: ```mbql Offset( Sum([Total]), -24) ``` می‌توانید آن را چیزی مثل "2 years ago" نامگذاری کنید.
+2. **عبارات را در بلوک Summarize با drag کردن آن‌ها reorder کنید** (یا میله‌ها را در نمودار میله‌ای reorder کنید). چون متابیس از ترتیب عبارات در بلوک Summarize برای ترتیب میله‌ها در نمودار استفاده می‌کند، وقتی یک offset 2 ساله جدید اضافه می‌کنید، متابیس آن ستون offset را در انتها شامل می‌کند. برای قرار دادن offset 2 ساله قبل از offset 1 ساله، نیاز دارید یا میله‌ها را در تجسم reorder کنید (مثل قبل)، یا عبارات خود را با drag کردن آن‌ها در بلوک Summarize در ویرایشگر reorder کنید.
+3. نمودار را **تجسم** کنید.
 
-Your chart should look something like this:
+نمودار شما باید چیزی شبیه این باشد:
 
-![YoY bar chart with comparisons to the last 2 years](../../../images/time-series-comparisons/yoy-two-years.png)
+![نمودار میله‌ای YoY با مقایسه‌ها با 2 سال گذشته](../../../images/time-series-comparisons/yoy-two-years.png)
 
-## Measuring difference and change
+## اندازه‌گیری تفاوت و تغییر
 
-You can use the `Offset` function with some math to compute the change from one period to another – in value or in percentage, to get data like this:
+می‌توانید از تابع `Offset` با مقداری ریاضی برای محاسبه تغییر از یک دوره به دوره دیگر – در مقدار یا در درصد، برای دریافت داده مثل این استفاده کنید:
 
-![Table that shows the month, current year revenue, revenue 1 year ago, the difference between the two, and the difference in %](../../../images/time-series-comparisons/measuring-change.png)
+![جدولی که ماه، درآمد سال فعلی، درآمد 1 سال پیش، تفاوت بین دو، و تفاوت در % را نشان می‌دهد](../../../images/time-series-comparisons/measuring-change.png)
 
-Assuming you have already built a YoY chart using the instructions in the previous section:
+با فرض اینکه از قبل یک نمودار YoY با استفاده از دستورالعمل‌های بخش قبلی ساخته‌اید:
 
-1. In the query builder, **add a new summary for the YoY change in revenue**: ```mbql Sum([Total]) - Offset(Sum([Total]), -12) ``` For each month, this expression will compute the revenue for that month in `Sum([Total])`, and then subtract the revenue from the previous month in `Offset(Sum([Total]), -12)`. You can preview the data to see the result.
-2. **Add a new summary for change in revenue as a percentage**: To compute the percentage that the YoY change makes of the previous year’s value, add the custom expression: ```mbql ( Sum([Total]) - Offset(Sum([Total]), -12) ) / Offset(Sum([Total]), -12) ``` Here we’re dividing the difference between current and previous years values by the previous year value.
-3. **Visualize results as a table**. If you started from the YoY bar chart, change the visualization type to a table: click on the “Visualization” button at the bottom left of the screen and pick “Table”.
-  - Click on the column header to open the column action menu
-  - Click on the gear icon to open column format settings
-  - Select **Style \> Percentage**
-4. **Format the percentage change column as percent**. By default, Metabase will display the column as a decimal, but you can change the column formatting to display it as a percentage:
+1. در query builder، **یک خلاصه جدید برای تغییر YoY در درآمد اضافه کنید**: ```mbql Sum([Total]) - Offset(Sum([Total]), -12) ``` برای هر ماه، این عبارت درآمد برای آن ماه را در `Sum([Total])` محاسبه می‌کند، و سپس درآمد از ماه قبلی را در `Offset(Sum([Total]), -12)` کم می‌کند. می‌توانید داده را پیش‌نمایش کنید تا نتیجه را ببینید.
+2. **یک خلاصه جدید برای تغییر در درآمد به عنوان درصد اضافه کنید**: برای محاسبه درصدی که تغییر YoY از مقدار سال گذشته می‌سازد، عبارت سفارشی را اضافه کنید: ```mbql ( Sum([Total]) - Offset(Sum([Total]), -12) ) / Offset(Sum([Total]), -12) ``` اینجا تفاوت بین مقادیر سال فعلی و سال گذشته را بر مقدار سال گذشته تقسیم می‌کنیم.
+3. **نتایج را به عنوان جدول تجسم کنید**. اگر از نمودار میله‌ای YoY شروع کردید، نوع تجسم را به جدول تغییر دهید: روی دکمه "Visualization" در پایین سمت چپ صفحه کلیک کنید و "Table" را انتخاب کنید.
+  - روی header ستون کلیک کنید تا منوی action ستون باز شود
+  - روی آیکون چرخ‌دنده کلیک کنید تا تنظیمات فرمت ستون باز شود
+  - **Style > Percentage** را انتخاب کنید
+4. **ستون تغییر درصد را به عنوان درصد فرمت کنید**. به طور پیش‌فرض، متابیس ستون را به عنوان اعشار نمایش می‌دهد، اما می‌توانید فرمت ستون را برای نمایش آن به عنوان درصد تغییر دهید:
 
-> 💡 **Tip**: You can use *conditional formatting* on the table to make it easier for people to read your chart. For example, you can color positive changes green and negative change red, with different intensities based on the magnitude of the change. Learn more about [Conditional formatting](../../../../docs/latest/questions/visualizations/table.html#conditional-table-formatting).
+> 💡 **نکته**: می‌توانید از *فرمت شرطی* روی جدول برای آسان‌تر کردن خواندن نمودار برای مردم استفاده کنید. به عنوان مثال، می‌توانید تغییرات مثبت را سبز و تغییرات منفی را قرمز رنگ کنید، با شدت‌های مختلف بر اساس بزرگی تغییر. بیشتر درباره [فرمت شرطی](../../../../docs/latest/questions/visualizations/table.html#conditional-table-formatting) یاد بگیرید.
 
-## Notes for SQL experts
+## یادداشت‌هایی برای متخصصان SQL
 
-Metabase translates all the queries created in the query builder into SQL. The `Offset` custom expression that we used to create the period\-over\-period comparison translates to `LAG` and `LEAD` SQL window functions.
+متابیس همه پرس‌وجوهای ایجاد شده در query builder را به SQL ترجمه می‌کند. عبارت سفارشی `Offset` که برای ایجاد مقایسه period-over-period استفاده کردیم به توابع window SQL `LAG` و `LEAD` ترجمه می‌شود.
 
-You can see the SQL that Metabase generates by clicking on “View SQL” button at the top right corner of the query builder.
+می‌توانید SQL تولید شده توسط متابیس را با کلیک روی دکمه "View SQL" در گوشه بالا سمت راست query builder ببینید.
 
-For example, here’s the SQL for the question we created in [Visualizing YoY data as a bar chart](#visualizing-yoy-data-as-a-bar-chart):
+به عنوان مثال، در اینجا SQL برای سؤالی که در [تجسم داده YoY به عنوان نمودار میله‌ای](#visualizing-yoy-data-as-a-bar-chart) ایجاد کردیم:
 
-```
+```sql
 SELECT
   "source"."CREATED_AT" AS "CREATED_AT",
   "source"."sum" AS "sum",
@@ -216,15 +214,14 @@ WHERE
   ("source"."CREATED_AT" >= DATE_TRUNC('year', NOW()))
    AND (
     "source"."CREATED_AT" < DATE_TRUNC('year', DATEADD('year', 1, NOW())) );
-
 ```
 
-## Further reading
+## مطالعه بیشتر
 
-- [Offset function](../../../../docs/master/questions/query-builder/expressions/offset.html)
-- [Visualizing trends](compare-times.html)
-- [Dates in SQL](../../../sql/working-with-sql/dates-in-sql.html)
-- [Calculating LTV](../../../../blog/calculating-ltv.html)
+- [تابع Offset](../../../../docs/master/questions/query-builder/expressions/offset.html)
+- [تجسم روندها](compare-times.html)
+- [تاریخ‌ها در SQL](../../../sql/working-with-sql/dates-in-sql.html)
+- [محاسبه LTV](../../../../blog/calculating-ltv.html)
 
 [
       
@@ -234,14 +231,17 @@ WHERE
       
         
         
+
       
     ](start.html)
 [
       
         
         
+
       
       
+        
         
 
       

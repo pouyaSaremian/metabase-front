@@ -1,60 +1,58 @@
 ---
-
-
-title: "Tutorial: Cleaning and formatting text"
-description: "How to use custom expressions to clean up text that's inconsistent, unstructured, or blank."
+title: "آموزش: تمیز و فرمت کردن متن"
+description: "نحوه استفاده از عبارات سفارشی برای تمیز کردن متنی که ناسازگار، بدون ساختار، یا خالی است."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/questions/formatting
   - /learn/visualization/formatting
 toc:
   - id: "tutorial-cleaning-and-formatting-text"
-    title: "Tutorial: Cleaning and formatting text"
+    title: "آموزش: تمیز و فرمت کردن متن"
     level: 1
     href: "#tutorial-cleaning-and-formatting-text"
   - id: "searching-and-extracting-text"
-    title: "Searching and extracting text"
+    title: "جستجو و استخراج متن"
     level: 2
     href: "#searching-and-extracting-text"
   - id: "consolidating-values-from-different-columns"
-    title: "Consolidating values from different columns"
+    title: "یکپارچه کردن مقادیر از ستون‌های مختلف"
     level: 2
     href: "#consolidating-values-from-different-columns"
   - id: "extracting-text-and-consolidating-the-results"
-    title: "Extracting text and consolidating the results"
+    title: "استخراج متن و یکپارچه کردن نتایج"
     level: 2
     href: "#extracting-text-and-consolidating-the-results"
   - id: "combining-values-from-different-columns"
-    title: "Combining values from different columns"
+    title: "ترکیب مقادیر از ستون‌های مختلف"
     level: 2
     href: "#combining-values-from-different-columns"
   - id: "labeling-rows-with-blank-values"
-    title: "Labeling rows with blank values"
+    title: "برچسب زدن ردیف‌ها با مقادیر خالی"
     level: 2
     href: "#labeling-rows-with-blank-values"
   - id: "best-practices-and-tips"
-    title: "Best practices and tips"
+    title: "بهترین روش‌ها و نکات"
     level: 2
     href: "#best-practices-and-tips"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Asking questions"
+  - title: "پرسیدن سؤال‌ها"
     href: "../questions.html"
 ---
 
-# Tutorial: Cleaning and formatting text
+# آموزش: تمیز و فرمت کردن متن
 
-How to use custom expressions to clean up text that's inconsistent, unstructured, or blank.
+نحوه استفاده از عبارات سفارشی برای تمیز کردن متنی که ناسازگار، بدون ساختار، یا خالی است.
 
-Let’s say that Metabase wants to host a dinner party for our lovely community. For the mains, we have the option of beef tibs or chickpea stew, and for the sides, we have injera or grilled vegetables. We’ve sent out a survey with the menu options so everyone can let us know what they’d like to eat.
+بگویید متابیس می‌خواهد یک مهمانی شام برای جامعه دوست‌داشتنی ما برگزار کند. برای غذای اصلی، گزینه beef tibs یا chickpea stew داریم، و برای غذای فرعی، injera یا grilled vegetables داریم. یک نظرسنجی با گزینه‌های منو ارسال کرده‌ایم تا همه بتوانند به ما بگویند چه می‌خواهند بخورند.
 
-Unfortunately, we forgot to set up data validation on our form, so the responses have come in looking like this:
+متأسفانه، فراموش کردیم اعتبارسنجی داده را روی فرم خود تنظیم کنیم، پس پاسخ‌ها به این شکل آمده‌اند:
 
 ```
 | Response ID | Main                                | Side                    |
@@ -64,16 +62,15 @@ Unfortunately, we forgot to set up data validation on our form, so the responses
 | 3           | BEEF TIBS WITH CHICKPEA STEW PLEASE |                         |
 | 4           |                                     | Grilled Vegetables      |
 | 5           | Surprise me.                        |                         |
-
 ```
 
-We want to:
+می‌خواهیم:
 
-1. Clean up and combine the main and side values so that we can count the most popular meals.
-2. Deal with responses that are invalid in some way \(such as multiple mains, or mains that don’t exist on our menu\).
-3. Keep track of guests who submitted a response with missing information.
+1. مقادیر main و side را تمیز و ترکیب کنیم تا بتوانیم محبوب‌ترین وعده‌ها را بشماریم.
+2. با پاسخ‌هایی که به نوعی نامعتبر هستند (مثل چندین main، یا mainهایی که در منوی ما وجود ندارند) برخورد کنیم.
+3. مهمانانی که پاسخ با اطلاعات ناقص ارسال کرده‌اند را ردیابی کنیم.
 
-Overall, we’re hoping to end up with a table that looks like this \(scroll right to view the full table\):
+به طور کلی، امیدواریم به جدولی که شبیه این است برسیم (به راست اسکرول کنید تا جدول کامل را ببینید):
 
 ```
 | Response ID | Main                                | Side                    | Order                                 | Follow up? |
@@ -83,23 +80,23 @@ Overall, we’re hoping to end up with a table that looks like this \(scroll rig
 | 3           | BEEF TIBS WITH CHICKPEA STEW PLEASE |                         | beef tibs only                        | yes        |
 | 4           |                                     | Grilled Vegetables      | grilled vegetables only               | yes        |
 | 5           | Surprise me.                        |                         |                                       | yes        |
-
 ```
 
-## Searching and extracting text
+## جستجو و استخراج متن
 
-Let’s assume that the only valid main options are beef tibs and chickpea stew. We can use the [`regexextract` function](../../../../docs/latest/questions/query-builder/expressions/regexextract.html) to check for valid menu options inside each response.
+فرض کنیم تنها گزینه‌های main معتبر beef tibs و chickpea stew هستند. می‌توانیم از [تابع `regexextract`](../../../../docs/latest/questions/query-builder/expressions/regexextract.html) برای بررسی گزینه‌های منوی معتبر در داخل هر پاسخ استفاده کنیم.
 
-To search values in the **Main** column for “beef tibs”, we’ll create a [custom column](custom-expressions.html#custom-columns) with the regex pattern `(?i)(beef tibs)`. This regex pattern does a case\-insensitive check to see if “beef tibs” appears anywhere in the response.
+برای جستجوی مقادیر در ستون **Main** برای "beef tibs"، یک [ستون سفارشی](custom-expressions.html#custom-columns) با الگوی regex `(?i)(beef tibs)` ایجاد می‌کنیم. این الگوی regex یک بررسی case-insensitive انجام می‌دهد تا ببیند آیا "beef tibs" در هر جای پاسخ ظاهر می‌شود.
 
-Create the **Beef** custom column using:
+ستون سفارشی **Beef** را با استفاده از:
 
 ```mbql
 regexextract([Main], "(?i)(beef tibs)")
-
 ```
 
-You should get the output:
+ایجاد کنید.
+
+باید خروجی زیر را دریافت کنید:
 
 ```
 | Response ID | Main                                | Beef      |
@@ -109,19 +106,17 @@ You should get the output:
 | 3           | BEEF TIBS WITH CHICKPEA STEW PLEASE | BEEF TIBS |
 | 4           |                                     |           |
 | 5           | Surprise me.                        |           |
-
 ```
 
-Then, we want to search the **Main** column for the valid value “chickpea stew”.
+سپس، می‌خواهیم ستون **Main** را برای مقدار معتبر "chickpea stew" جستجو کنیم.
 
-Create the **Chickpea** column:
+ستون **Chickpea** را ایجاد کنید:
 
 ```mbql
 regexextract([Main], "(?i)(chickpea stew)")
-
 ```
 
-with the output:
+با خروجی:
 
 ```
 | Response ID | Main                                | Chickpea      |
@@ -131,25 +126,23 @@ with the output:
 | 3           | BEEF TIBS WITH CHICKPEA STEW PLEASE | CHICKPEA STEW |
 | 4           |                                     |               |
 | 5           | Surprise me.                        |               |
-
 ```
 
-## Consolidating values from different columns
+## یکپارچه کردن مقادیر از ستون‌های مختلف
 
-Next, we’ll create a column called **Main \(Clean\)** that’ll consolidate the valid mains for each guest’s response. We want to set up some logic so that if **Main** contains:
+بعد، ستونی به نام **Main (Clean)** ایجاد می‌کنیم که mainهای معتبر برای پاسخ هر مهمان را یکپارچه می‌کند. می‌خواهیم منطقی تنظیم کنیم تا اگر **Main** شامل:
 
-- A single valid option \(beef tibs or chickpea stew\), then fill **Main \(Clean\)** with that option.
-- Multiple valid options, then put the first \(leftmost\) valid option in **Main \(Clean\)** .
-- No valid options, then fill **Main \(Clean\)** with a blank value \(empty string\).
+- یک گزینه معتبر واحد (beef tibs یا chickpea stew)، سپس **Main (Clean)** را با آن گزینه پر کنیم.
+- چندین گزینه معتبر، سپس اولین (چپ‌ترین) گزینه معتبر را در **Main (Clean)** قرار دهیم.
+- هیچ گزینه معتبری، سپس **Main (Clean)** را با یک مقدار خالی (رشته خالی) پر کنیم.
 
-To create **Main \(Clean\)**, we’ll use the [`coalesce` function](../../../../docs/latest/questions/query-builder/expressions/coalesce.html) to handle the three cases listed above, and wrap the whole thing in a [`lower` function](../../../../docs/latest/questions/query-builder/expressions-list.html#lower) to standardize everything in lowercase.
+برای ایجاد **Main (Clean)**، از [تابع `coalesce`](../../../../docs/latest/questions/query-builder/expressions/coalesce.html) برای handle کردن سه مورد فهرست شده بالا استفاده می‌کنیم، و همه چیز را در یک [تابع `lower`](../../../../docs/latest/questions/query-builder/expressions-list.html#lower) wrap می‌کنیم تا همه چیز را به lowercase استاندارد کنیم.
 
 ```mbql
 lower(coalesce([Beef],[Chickpea],""))
-
 ```
 
-which should give us the output \(scroll right to view the full table\):
+که باید خروجی زیر را به ما بدهد (به راست اسکرول کنید تا جدول کامل را ببینید):
 
 ```
 | Response ID | Main                                | Beef      | Chickpea      | Main (Clean)   |
@@ -159,28 +152,25 @@ which should give us the output \(scroll right to view the full table\):
 | 3           | BEEF TIBS WITH CHICKPEA STEW PLEASE | BEEF TIBS | CHICKPEA STEW | beef tibs      |
 | 4           |                                     |           |               |                |
 | 5           | Surprise me.                        |           |               |                |
-
 ```
 
-## Extracting text and consolidating the results
+## استخراج متن و یکپارچه کردن نتایج
 
-We’ll handle the **Side** column the same way as the **Main** column. First, use [`regexextract` function](../../../../docs/latest/questions/query-builder/expressions/regexextract.html) to search and return valid values from the **Side** column.
+ستون **Side** را همانطور که ستون **Main** را handle کردیم handle می‌کنیم. ابتدا، از [تابع `regexextract`](../../../../docs/latest/questions/query-builder/expressions/regexextract.html) برای جستجو و برگرداندن مقادیر معتبر از ستون **Side** استفاده کنید.
 
-Create the **Injera** custom column:
+ستون سفارشی **Injera** را ایجاد کنید:
 
 ```mbql
 regexextract([Side], "(?i)injera")
-
 ```
 
-and the **Vegetables** custom column:
+و ستون سفارشی **Vegetables**:
 
 ```mbql
 regexextract([Side], "(?i)(grilled vegetables)")
-
 ```
 
-to get the output:
+برای دریافت خروجی:
 
 ```
 | Response ID | Side               | Injera | Vegetables         |
@@ -190,19 +180,17 @@ to get the output:
 | 3           |                    |        |                    |
 | 4           | Grilled Vegetables |        | Grilled Vegetables |
 | 5           |                    |        |                    |
-
 ```
 
-Then, use the [`coalesce` function](../../../../docs/latest/questions/query-builder/expressions/coalesce.html) with the [`lower` function](../../../../docs/latest/questions/query-builder/expressions-list.html#lower) to handle cases where people have put partial, multiple, or no valid side options, and convert all the values to lowercase:
+سپس، از [تابع `coalesce`](../../../../docs/latest/questions/query-builder/expressions/coalesce.html) با [تابع `lower`](../../../../docs/latest/questions/query-builder/expressions-list.html#lower) برای handle کردن مواردی که مردم گزینه‌های side جزئی، چندگانه، یا بدون گزینه معتبر قرار داده‌اند، و تبدیل همه مقادیر به lowercase استفاده کنید:
 
-Create the **Side \(Clean\)** custom column:
+ستون سفارشی **Side (Clean)** را ایجاد کنید:
 
 ```mbql
 lower(coalesce([Injera],[Vegetables], ""))
-
 ```
 
-to get:
+برای دریافت:
 
 ```
 | Response ID | Side               | Injera | Vegetables         | Side (Clean)       |
@@ -212,34 +200,31 @@ to get:
 | 3           |                    |        |                    |                    |
 | 4           | Grilled Vegetables |        | Grilled Vegetables | grilled vegetables |
 | 5           |                    |        |                    |                    |
-
 ```
 
-## Combining values from different columns
+## ترکیب مقادیر از ستون‌های مختلف
 
-Finally, we want to generate complete orders by checking each scenario:
+در نهایت، می‌خواهیم سفارش‌های کامل را با بررسی هر سناریو تولید کنیم:
 
-- If **Main \(Clean\)** and **Side \(Clean\)** both contain a valid option, then return “main with side”.
-- If there’s only one valid option, then return “main only” or “side only”.
-- If there’s no valid options, leave the order blank \(return an empty string\).
+- اگر **Main (Clean)** و **Side (Clean)** هر دو شامل یک گزینه معتبر هستند، سپس "main with side" را برگردانید.
+- اگر فقط یک گزینه معتبر وجود دارد، سپس "main only" یا "side only" را برگردانید.
+- اگر هیچ گزینه معتبری وجود ندارد، سفارش را خالی بگذارید (یک رشته خالی برگردانید).
 
-To check whether a column is non\-empty, we’ll use the [`isempty` function](../../../../docs/latest/questions/query-builder/expressions/isempty.html).
+برای بررسی اینکه آیا یک ستون non-empty است، از [تابع `isempty`](../../../../docs/latest/questions/query-builder/expressions/isempty.html) استفاده می‌کنیم.
 
-For example, to check if **Main \(Clean\)** is blank:
+به عنوان مثال، برای بررسی اینکه آیا **Main (Clean)** خالی است:
 
 ```mbql
 isempty([Main (Clean)])
-
 ```
 
-To check if **Main \(Clean\)** and **Side \(Clean\)** are *both* blank, you can combine the expressions using `AND`:
+برای بررسی اینکه آیا **Main (Clean)** و **Side (Clean)** *هر دو* خالی هستند، می‌توانید عبارات را با استفاده از `AND` ترکیب کنید:
 
 ```mbql
 isempty([Main (Clean)]) AND isempty([Side (Clean)])
-
 ```
 
-`isempty` currently [only works inside another function](../../../../docs/latest/questions/query-builder/expressions/isempty.html#limitations), so we’ll need to put each of our checks inside a [`case` function](../../../../docs/latest/questions/query-builder/expressions/case.html). We’ll put placeholder text as the output for now:
+`isempty` در حال حاضر [فقط در داخل تابع دیگر کار می‌کند](../../../../docs/latest/questions/query-builder/expressions/isempty.html#limitations)، پس نیاز داریم هر یک از بررسی‌های خود را در داخل یک [تابع `case`](../../../../docs/latest/questions/query-builder/expressions/case.html) قرار دهیم. برای حالا متن placeholder را به عنوان خروجی قرار می‌دهیم:
 
 ```mbql
 case(
@@ -248,17 +233,16 @@ case(
     isempty([Main (Clean)]), "side only",
     "main with side"
 )
-
 ```
 
-Note that the order of the cases matters, because:
+توجه کنید که ترتیب caseها مهم است، چون:
 
-- The `case` function evaluates each expression in order, and stops as soon as the *first* valid case is found.
-- If you swapped the first case with the second case, the expression would confirm that **Side \(Clean\)** is empty and return “main only” right away, without getting to check whether **Main \(Clean\)** is also empty.
+- تابع `case` هر عبارت را به ترتیب ارزیابی می‌کند، و به محض پیدا شدن *اولین* case معتبر متوقف می‌شود.
+- اگر اولین case را با دومین case عوض کنید، عبارت تأیید می‌کند که **Side (Clean)** خالی است و فوراً "main only" را برمی‌گرداند، بدون اینکه بررسی کند آیا **Main (Clean)** نیز خالی است.
 
-Finally, to fill in the final order for each guest, we’ll use the [`concat` function](../../../../docs/latest/questions/query-builder/expressions/concat.html) to link the values from **Main \(Clean\)** and **Side \(Clean\)** with other words \(including whitespaces\).
+در نهایت، برای پر کردن سفارش نهایی برای هر مهمان، از [تابع `concat`](../../../../docs/latest/questions/query-builder/expressions/concat.html) برای لینک کردن مقادیر از **Main (Clean)** و **Side (Clean)** با کلمات دیگر (شامل whitespaceها) استفاده می‌کنیم.
 
-Create the **Order** column using:
+ستون **Order** را با استفاده از:
 
 ```mbql
 case(
@@ -267,10 +251,11 @@ case(
     isempty([Main (Clean)]), concat([Side (Clean)], " only"),
     concat([Main (Clean)], " with ", [Side (Clean)])
 )
-
 ```
 
-Overall, this will give us a set of formatted columns like this \(scroll right to view the full table\):
+ایجاد کنید.
+
+به طور کلی، این مجموعه‌ای از ستون‌های فرمت شده مثل این به ما می‌دهد (به راست اسکرول کنید تا جدول کامل را ببینید):
 
 ```
 | Response ID | Main                                | Side               | Main (Clean)    | Side (Clean)       | Order                                 |
@@ -280,25 +265,25 @@ Overall, this will give us a set of formatted columns like this \(scroll right t
 | 3           | BEEF TIBS WITH CHICKPEA STEW PLEASE |                    | beef tibs       |                    | beef tibs only                        |
 | 4           |                                     | Grilled Vegetables |                 | grilled vegetables | grilled vegetables only               |
 | 5           | Surprise me.                        |                    |                 |                    |                                       |
-
 ```
 
-## Labeling rows with blank values
+## برچسب زدن ردیف‌ها با مقادیر خالی
 
-Let’s say we want to add a column called **Follow up?** to keep track of orders that are missing a valid main, a side, or both. This means we’ll need to check whether any of **Order**, **Main \(Clean\)**, or **Side \(Clean\)** are blank.
+بگویید می‌خواهیم ستونی به نام **Follow up?** اضافه کنیم تا سفارش‌هایی که main معتبر، side، یا هر دو را ندارند را ردیابی کنیم. این یعنی نیاز داریم بررسی کنیم آیا هر یک از **Order**، **Main (Clean)**، یا **Side (Clean)** خالی هستند.
 
-We can combine the [`isempty` function](../../../../docs/latest/questions/query-builder/expressions/isempty.html) with the `OR`[operator](../../../../docs/latest/questions/query-builder/expressions.html#conditional-operators) to return “yes” if any of the three columns are blank, and “no” if all of the columns are filled out with valid data.
+می‌توانیم [تابع `isempty`](../../../../docs/latest/questions/query-builder/expressions/isempty.html) را با عملگر `OR`[](../../../../docs/latest/questions/query-builder/expressions.html#conditional-operators) ترکیب کنیم تا "yes" را اگر هر یک از سه ستون خالی است برگردانیم، و "no" را اگر همه ستون‌ها با داده معتبر پر شده‌اند.
 
-Create **Follow up?** using:
+**Follow up?** را با استفاده از:
 
 ```mbql
 case(( isempty([Order])
     OR isempty([Main (Clean)])
     OR isempty([Side (Clean)])), "yes", "no")
-
 ```
 
-The final result \(scroll right to view the full table\):
+ایجاد کنید.
+
+نتیجه نهایی (به راست اسکرول کنید تا جدول کامل را ببینید):
 
 ```
 | Response ID | Main                                | Side                    | Order                                 | Follow up? |
@@ -308,23 +293,22 @@ The final result \(scroll right to view the full table\):
 | 3           | BEEF TIBS WITH CHICKPEA STEW PLEASE |                         | beef tibs                             | yes        |
 | 4           |                                     | vegetables              | grilled vegetables                    | yes        |
 | 5           | Surprise me.                        |                         |                                       | yes        |
-
 ```
 
-## Best practices and tips
+## بهترین روش‌ها و نکات
 
-In this tutorial, we created a new custom column each time we needed to extract, combine, or label our text data. We also combined simpler functions \(such as `lower` and `isempty`\) with other functions. In general, we recommend creating a new custom column each time you use a function with multiple parameters \(like `case`, `regexextract`, and `coalesce`\), because:
+در این آموزش، هر بار که نیاز به استخراج، ترکیب، یا برچسب زدن داده متنی خود داشتیم یک ستون سفارشی جدید ایجاد کردیم. همچنین توابع ساده‌تر (مثل `lower` و `isempty`) را با توابع دیگر ترکیب کردیم. به طور کلی، توصیه می‌کنیم هر بار که از تابعی با چندین پارامتر (مثل `case`، `regexextract`، و `coalesce`) استفاده می‌کنید یک ستون سفارشی جدید ایجاد کنید، چون:
 
-- You can confirm whether your expressions are working as expected.
-- The logic is easier to read and update.
+- می‌توانید تأیید کنید آیا عبارات شما همانطور که انتظار می‌رود کار می‌کنند.
+- منطق راحت‌تر خوانده و به‌روزرسانی می‌شود.
 
-And, if you’re used to working with functions in other tools, like SQL, spreadsheets, or Python, check out the **Related functions** section in the custom expressions docs. For example, you can learn how to convert if\-then logic to a Metabase expression using the [related functions for `case`](../../../../docs/latest/questions/query-builder/expressions/case.html#related-functions).
+و، اگر به کار با توابع در ابزارهای دیگر، مثل SQL، spreadsheetها، یا Python عادت دارید، بخش **Related functions** در مستندات عبارات سفارشی را بررسی کنید. به عنوان مثال، می‌توانید یاد بگیرید چگونه منطق if-then را به یک عبارت متابیس با استفاده از [توابع مرتبط برای `case`](../../../../docs/latest/questions/query-builder/expressions/case.html#related-functions) تبدیل کنید.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Tutorial: Custom expressions in the query builder](custom-expressions.html)
-- [Docs: Custom expressions](../../../../docs/latest/questions/query-builder/expressions.html)
-- [List of custom expressions](../../../../docs/latest/questions/query-builder/expressions-list.html)
+- [آموزش: عبارات سفارشی در query builder](custom-expressions.html)
+- [مستندات: عبارات سفارشی](../../../../docs/latest/questions/query-builder/expressions.html)
+- [فهرست عبارات سفارشی](../../../../docs/latest/questions/query-builder/expressions-list.html)
 
 [
       
@@ -334,5 +318,6 @@ And, if you’re used to working with functions in other tools, like SQL, spread
       
         
         
+
       
     ](searching-tables.html)

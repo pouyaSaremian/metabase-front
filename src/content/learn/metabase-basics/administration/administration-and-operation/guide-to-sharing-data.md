@@ -1,235 +1,237 @@
 ---
-
-
-title: "Guide to sharing data"
-description: "Inside or outside your organization, what are your options for sharing your data or analysis, and when should you use one method over another?"
+title: "راهنمای اشتراک‌گذاری داده"
+description: "داخل یا خارج سازمان شما، گزینه‌های شما برای اشتراک‌گذاری داده یا تحلیل چیست، و چه زمانی باید از یک روش نسبت به دیگری استفاده کنید؟"
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/guide-to-sharing-data
 toc:
   - id: "guide-to-sharing-data"
-    title: "Guide to sharing data"
+    title: "راهنمای اشتراک‌گذاری داده"
     level: 1
     href: "#guide-to-sharing-data"
   - id: "whom-are-you-sharing-your-data-with"
-    title: "Whom are you sharing your data with?"
+    title: "با چه کسی داده خود را به اشتراک می‌گذارید؟"
     level: 2
     href: "#whom-are-you-sharing-your-data-with"
   - id: "inside-the-organization"
-    title: "Inside the organization"
+    title: "داخل سازمان"
     level: 2
     href: "#inside-the-organization"
   - id: "lightweight-data-inside-the-org"
-    title: "Lightweight data inside the org"
+    title: "داده سبک داخل سازمان"
     level: 3
     href: "#lightweight-data-inside-the-org"
   - id: "link"
-    title: "Link"
+    title: "لینک"
     level: 4
     href: "#link"
   - id: "export-and-send"
-    title: "Export and send"
+    title: "Export و ارسال"
     level: 4
     href: "#export-and-send"
   - id: "dashboard-subscriptions"
-    title: "Dashboard subscriptions"
+    title: "اشتراک‌های داشبورد"
     level: 4
     href: "#dashboard-subscriptions"
   - id: "embedded-iframe"
-    title: "Embedded iframe"
+    title: "iframe جاسازی شده"
     level: 4
     href: "#embedded-iframe"
   - id: "heavyweight-data-inside-the-org"
-    title: "Heavyweight data inside the org"
+    title: "داده سنگین داخل سازمان"
     level: 3
     href: "#heavyweight-data-inside-the-org"
   - id: "selectively-grant-access-to-collections"
-    title: "Selectively grant access to collections"
+    title: "اعطای انتخابی دسترسی به مجموعه‌ها"
     level: 4
     href: "#selectively-grant-access-to-collections"
   - id: "selectively-grant-access-to-tables-and-databases"
-    title: "Selectively grant access to tables and databases"
+    title: "اعطای انتخابی دسترسی به جداول و پایگاه‌های داده"
     level: 4
     href: "#selectively-grant-access-to-tables-and-databases"
   - id: "outside-the-organization"
-    title: "Outside the organization"
+    title: "خارج از سازمان"
     level: 2
     href: "#outside-the-organization"
   - id: "lightweight-data-outside-the-org"
-    title: "Lightweight data outside the org"
+    title: "داده سبک خارج از سازمان"
     level: 3
     href: "#lightweight-data-outside-the-org"
   - id: "public-link"
-    title: "Public link"
+    title: "لینک عمومی"
     level: 4
     href: "#public-link"
   - id: "exported-files"
-    title: "Exported files"
+    title: "فایل‌های export شده"
     level: 4
     href: "#exported-files"
   - id: "secure-embeds"
-    title: "Secure embeds"
+    title: "جاسازی‌های امن"
     level: 4
     href: "#secure-embeds"
   - id: "heavyweight-data-outside-the-org"
-    title: "Heavyweight data outside the org"
+    title: "داده سنگین خارج از سازمان"
     level: 3
     href: "#heavyweight-data-outside-the-org"
   - id: "embedded-analytics-js"
-    title: "Embedded analytics JS"
+    title: "تحلیل‌های جاسازی شده JS"
     level: 4
     href: "#embedded-analytics-js"
   - id: "data-room"
-    title: "Data room"
+    title: "اتاق داده"
     level: 4
     href: "#data-room"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# Guide to sharing data
+# راهنمای اشتراک‌گذاری داده
 
-Inside or outside your organization, what are your options for sharing your data or analysis, and when should you use one method over another?
+داخل یا خارج سازمان شما، گزینه‌های شما برای اشتراک‌گذاری داده یا تحلیل چیست، و چه زمانی باید از یک روش نسبت به دیگری استفاده کنید؟
 
-You’ve got data, and you’d like \(or are required\) to share it. Whether that data is a single question or a full [data room](#data-room) with access to multiple databases, we’ll walk through the different ways you can share data with Metabase.
+شما داده دارید، و می‌خواهید (یا ملزم هستید) آن را به اشتراک بگذارید. چه آن داده یک سؤال واحد باشد یا یک [اتاق داده](#data-room) کامل با دسترسی به چندین پایگاه داده، ما روش‌های مختلفی که می‌توانید داده را با متابیس به اشتراک بگذارید را طی می‌کنیم.
 
-## Whom are you sharing your data with?
+## با چه کسی داده خود را به اشتراک می‌گذارید؟
 
-To determine how to share the data, there are fundamentally two questions you need to ask:
+برای تعیین نحوه اشتراک‌گذاری داده، اساساً دو سؤال وجود دارد که باید بپرسید:
 
-- *whom* you’re sharing the data with
-- and how *heavy* that data is.
+- *با چه کسی* داده را به اشتراک می‌گذارید
+- و چقدر *سنگین* آن داده است.
 
-Whom you’re sharing data with breaks down into two realms: inside your organization, and outside your organization. Data weight in this context refers to how much data you’re sharing: are you sharing a single question, or do you need to share a collection, which could include a curated set of questions and dashboards? For more privileged access, you may need to share entire tables or databases.
+با چه کسی داده را به اشتراک می‌گذارید به دو قلمرو تقسیم می‌شود: داخل سازمان شما، و خارج از سازمان شما. وزن داده در این زمینه به مقدار داده‌ای که به اشتراک می‌گذارید اشاره دارد: آیا یک سؤال واحد را به اشتراک می‌گذارید، یا نیاز به اشتراک‌گذاری یک مجموعه دارید، که می‌تواند شامل مجموعه‌ای از سؤال‌ها و داشبوردها باشد؟ برای دسترسی ممتازتر، ممکن است نیاز به اشتراک‌گذاری کل جداول یا پایگاه‌های داده داشته باشید.
 
-We’ll walk through options for all cases, but here’s an overview \(figure 1\).
+ما گزینه‌هایی برای همه موارد را طی می‌کنیم، اما در اینجا یک نمای کلی (شکل 1) است.
 
-![Options grid for sharing data.](../../../images/guide-to-sharing/data-sharing-grid.png)
+![شبکه گزینه‌ها برای اشتراک‌گذاری داده.](../../../images/guide-to-sharing/data-sharing-grid.png)
 
-## Inside the organization
+## داخل سازمان
 
-Sharing with team members who have access to Metabase is as simple as messaging or emailing someone a link to a saved question, dashboard, or collection.
+اشتراک‌گذاری با اعضای تیم که به متابیس دسترسی دارند به سادگی پیام دادن یا ایمیل کردن یک لینک به یک سؤال ذخیره شده، داشبورد، یا مجموعه به کسی است.
 
-### Lightweight data inside the org
+### داده سبک داخل سازمان
 
-You have a lot of options for sharing data internally.
+گزینه‌های زیادی برای اشتراک‌گذاری داده به صورت داخلی دارید.
 
-#### Link
+#### لینک
 
-The simplest \(and most frequently overlooked\) option is that you can just copy the URL of a saved question from the browser bar and send it to a colleague. For question \#123, the URL would look something like:
+ساده‌ترین (و اغلب نادیده گرفته شده) گزینه این است که می‌توانید فقط URL یک سؤال ذخیره شده را از نوار مرورگر کپی کنید و به یک همکار بفرستید. برای سؤال #123، URL چیزی شبیه این خواهد بود:
 
 ```url
 https://www.website-name.com/question/123
 
 ```
 
-You can also throw together a dashboard with a set of questions and send them a link to that. The dashboard doesn’t need to be persistent, i.e., something you’d look at regularly. It can be just a one\-off report capturing the data around an incident or a particularly successful campaign.
+همچنین می‌توانید یک داشبورد با مجموعه‌ای از سؤال‌ها بسازید و یک لینک به آن برای آن‌ها بفرستید. داشبورد نیازی به persistent بودن ندارد، یعنی چیزی که به طور منظم به آن نگاه می‌کنید. می‌تواند فقط یک گزارش one-off باشد که داده‌های اطراف یک حادثه یا یک کمپین به خصوص موفق را ثبت می‌کند.
 
-#### Export and send
+#### Export و ارسال
 
-You can email or message someone a link, but you can also export the results of a question to CSV, XLSX, or JSON, then email those files, or upload them to a shared drive.
+می‌توانید یک لینک را ایمیل یا پیام کنید، اما همچنین می‌توانید نتایج یک سؤال را به CSV، XLSX، یا JSON export کنید، سپس آن فایل‌ها را ایمیل کنید، یا آن‌ها را به یک drive مشترک آپلود کنید.
 
-#### Dashboard subscriptions
+#### اشتراک‌های داشبورد
 
-For an automated approach, you can also set up a [dashboard subscription](../../../../docs/latest/dashboards/subscriptions.html) via email or Slack.
+برای یک رویکرد خودکار، همچنین می‌توانید یک [اشتراک داشبورد](../../../../docs/latest/dashboards/subscriptions.html) از طریق ایمیل یا Slack تنظیم کنید.
 
-![Options to set up a dashboard subscription.](../../../images/guide-to-sharing/dashboard-subscription.png)
+![گزینه‌هایی برای تنظیم یک اشتراک داشبورد.](../../../images/guide-to-sharing/dashboard-subscription.png)
 
-You can send scheduled emails or Slack messages that include all of the questions on a dashboard \(minus the text cards\). You can email a dashboard subscription to any Metabase user or to any email address, so even folks who don’t have accounts on your Metabase can receive the data—they just won’t be able to click on a chart in their email to view it in Metabase.
+می‌توانید ایمیل‌ها یا پیام‌های Slack زمان‌بندی شده ارسال کنید که شامل همه سؤال‌های روی یک داشبورد (منهای کارت‌های متنی) است. می‌توانید یک اشتراک داشبورد را به هر کاربر متابیس یا به هر آدرس ایمیل ایمیل کنید، پس حتی افرادی که حساب در متابیس شما ندارند می‌توانند داده را دریافت کنند—فقط نمی‌توانند روی یک نمودار در ایمیل خود کلیک کنند تا آن را در متابیس مشاهده کنند.
 
-#### Embedded iframe
+#### iframe جاسازی شده
 
-If you want more control, you can situate your questions and dashboards in a narrative context by [embedding them](../../../../docs/latest/embedding/start.html) in a web page. This could be in a blog, company wiki, or your web application.
+اگر کنترل بیشتری می‌خواهید، می‌توانید سؤال‌ها و داشبوردهای خود را در یک زمینه روایی با [جاسازی آن‌ها](../../../../docs/latest/embedding/start.html) در یک صفحه وب قرار دهید. این می‌تواند در یک وبلاگ، ویکی شرکت، یا برنامه وب شما باشد.
 
-For non\-sensitive data, you can use a [public embed](../../../../docs/latest/embedding/public-links.html#public-embeds). Metabase will provide you with HTML code for an iframe \(an inline frame element\) that you can just drop in your site, or anywhere else that renders HTML.
+برای داده‌های غیرحساس، می‌توانید از یک [جاسازی عمومی](../../../../docs/latest/embedding/public-links.html#public-embeds) استفاده کنید. متابیس کد HTML برای یک iframe (یک عنصر inline frame) به شما ارائه می‌دهد که می‌توانید فقط در سایت خود، یا هر جای دیگری که HTML را render می‌کند قرار دهید.
 
-If all you really need to do is just add some narration, you can even skip the embed. You could use [text cards on a dashboard](../../querying-and-dashboards/dashboards/markdown.html) \(which support Markdown\) to frame the questions on your dashboard in a narrative context.
+اگر همه آنچه واقعاً نیاز دارید فقط افزودن مقداری روایت است، حتی می‌توانید از جاسازی صرف نظر کنید. می‌توانید از [کارت‌های متنی روی یک داشبورد](../../querying-and-dashboards/dashboards/markdown.html) (که Markdown را پشتیبانی می‌کنند) برای قاب کردن سؤال‌ها روی داشبورد خود در یک زمینه روایی استفاده کنید.
 
-### Heavyweight data inside the org
+### داده سنگین داخل سازمان
 
-If sharing all your data would be too big a load, you have lots of options sharing different slices of it.
+اگر اشتراک‌گذاری همه داده شما بار زیادی باشد، گزینه‌های زیادی برای اشتراک‌گذاری sliceهای مختلف آن دارید.
 
-#### Selectively grant access to collections
+#### اعطای انتخابی دسترسی به مجموعه‌ها
 
-Here’s where we get into permissions. You can create questions and dashboards and organize them in collections. You can organize your collections by department, data, or project, and [set permissions on those collections](../permissions/collection-permissions.html).
+اینجا جایی است که به مجوزها می‌رسیم. می‌توانید سؤال‌ها و داشبوردها را ایجاد کنید و آن‌ها را در مجموعه‌ها سازماندهی کنید. می‌توانید مجموعه‌های خود را بر اساس بخش، داده، یا پروژه سازماندهی کنید، و [مجوزها را روی آن مجموعه‌ها تنظیم کنید](../permissions/collection-permissions.html).
 
-Note that collections and permissions can also come in handy once people fill up your Metabase with questions and dashboards. See our guide to [keeping your analytics organized](same-page.html).
+توجه کنید که مجموعه‌ها و مجوزها همچنین می‌توانند مفید باشند وقتی مردم متابیس شما را با سؤال‌ها و داشبوردها پر می‌کنند. راهنمای ما به [منظم نگه داشتن تحلیل شما](same-page.html) را ببینید.
 
-#### Selectively grant access to tables and databases
+#### اعطای انتخابی دسترسی به جداول و پایگاه‌های داده
 
-If you need to restrict access to tables or even entire databases, you can also [set permissions on databases](../permissions/data-permissions.html).
+اگر نیاز به محدود کردن دسترسی به جداول یا حتی کل پایگاه‌های داده دارید، همچنین می‌توانید [مجوزها را روی پایگاه‌های داده تنظیم کنید](../permissions/data-permissions.html).
 
-## Outside the organization
+## خارج از سازمان
 
-When you need to share data outside of your organization, the game changes. And how you share may depend on how far outside the organization people are. Are they contractors? Customers? Investors? Auditors?
+وقتی نیاز به اشتراک‌گذاری داده خارج از سازمان خود دارید، بازی تغییر می‌کند. و نحوه اشتراک‌گذاری شما ممکن است به این بستگی داشته باشد که مردم چقدر خارج از سازمان هستند. آیا آن‌ها پیمانکار هستند؟ مشتریان؟ سرمایه‌گذاران؟ حسابرسان؟
 
-### Lightweight data outside the org
+### داده سبک خارج از سازمان
 
-For sharing lightweight data outside of your organization, you once again have a few options.
+برای اشتراک‌گذاری داده سبک خارج از سازمان خود، دوباره چند گزینه دارید.
 
-#### Public link
+#### لینک عمومی
 
-If the person lacks an account on your Metabase, and if the data isn’t sensitive, you can send a [public link to a question or dashboard](../../embedding/charts-and-dashboards.html). From a dashboard, you’ll click on the **Sharing icon** \(arrow pointing up and to the right\) to get your public link.
+اگر شخص فاقد حساب در متابیس شما است، و اگر داده حساس نیست، می‌توانید یک [لینک عمومی به یک سؤال یا داشبورد](../../embedding/charts-and-dashboards.html) بفرستید. از یک داشبورد، روی **آیکون اشتراک‌گذاری** (فلش به بالا و راست) کلیک می‌کنید تا لینک عمومی خود را دریافت کنید.
 
-![To get the public link for a dashboard, click on the sharing icon and select Sharing and embedding.](../../../images/guide-to-sharing/sharing-and-embedding.png)
+![برای دریافت لینک عمومی برای یک داشبورد، روی آیکون اشتراک‌گذاری کلیک کنید و Sharing and embedding را انتخاب کنید.](../../../images/guide-to-sharing/sharing-and-embedding.png)
 
-The public link would look something like:
+لینک عمومی چیزی شبیه این خواهد بود:
 
 ```url
 https://www.website-name.com/public/dashboard/07f68133-46e0-4bb5-97b5-88d65581dfcz
 
 ```
 
-Public links are visible to anyone who has the unique link. Viewers of public links will also be able to update the question’s filters \(if any\), so you can’t depend on filters to conceal data. You can disable a public link at any time. If you want to share that item again, Metabase will generate a different link to share \(any previously generated links will remain invalid\).
+لینک‌های عمومی برای هر کسی که لینک منحصر به فرد را دارد قابل مشاهده است. بینندگان لینک‌های عمومی همچنین می‌توانند فیلترهای سؤال را (در صورت وجود) به‌روزرسانی کنند، پس نمی‌توانید به فیلترها برای پنهان کردن داده تکیه کنید. می‌توانید یک لینک عمومی را در هر زمان غیرفعال کنید. اگر می‌خواهید آن آیتم را دوباره به اشتراک بگذارید، متابیس یک لینک متفاوت برای اشتراک‌گذاری ایجاد می‌کند (هر لینک قبلاً ایجاد شده نامعتبر باقی می‌ماند).
 
-#### Exported files
+#### فایل‌های export شده
 
-You can export data to CSV, XLSX and JSON file formats, and email those files to people or share the files on a drive.
+می‌توانید داده را به فرمت‌های فایل CSV، XLSX و JSON export کنید، و آن فایل‌ها را به مردم ایمیل کنید یا فایل‌ها را روی یک drive به اشتراک بگذارید.
 
-#### Secure embeds
+#### جاسازی‌های امن
 
-For more sensitive data, or if you want to lock a parameter to filter the results, you’ll need to use a [secure embed](../../../../docs/latest/embedding/static-embedding.html). In that case, you’d need to give your viewers access to the web app where you’re embedding the chart or dashboard \(not your Metabase\), so that you can sign the token they’ll need to view it with the parameters you’ve set. Learn more about [embedding charts and dashboards](../../embedding/charts-and-dashboards.html) with the open source edition of Metabase.
+برای داده‌های حساس‌تر، یا اگر می‌خواهید یک پارامتر را برای فیلتر کردن نتایج قفل کنید، نیاز به استفاده از یک [جاسازی امن](../../../../docs/latest/embedding/static-embedding.html) دارید. در آن مورد، نیاز دارید دسترسی بینندگان خود را به برنامه وب جایی که نمودار یا داشبورد را جاسازی می‌کنید (نه متابیس شما) بدهید، تا بتوانید token مورد نیاز آن‌ها برای مشاهده آن با پارامترهایی که تنظیم کرده‌اید را امضا کنید. درباره [جاسازی نمودارها و داشبوردها](../../embedding/charts-and-dashboards.html) با نسخه open source متابیس بیشتر بیاموزید.
 
-### Heavyweight data outside the org
+### داده سنگین خارج از سازمان
 
-For more sensitive, customer\-specific data, or for large amounts of data, you have a couple of options for sharing outside of your organization.
+برای داده‌های حساس‌تر، خاص مشتری، یا برای مقادیر زیاد داده، چند گزینه برای اشتراک‌گذاری خارج از سازمان خود دارید.
 
-#### Embedded analytics JS
+#### تحلیل‌های جاسازی شده JS
 
-For a more curated experience that still gives people the freedom to analyze the data on their own, you can embed interactive Metabase components like questions and dashboards in your app, which allows you to set up [multi\-tenant, self\-service analytics](../../embedding/multi-tenant-self-service-analytics.html) to share data with customers or vendors in your web app. You can create custom access to both [rows](../permissions/row-permissions.html) and [columns](../permissions/data-permissions.html) of your tables, which allows people to explore the data via the [drill\-through menu](../../querying-and-dashboards/questions/drill-through.html) without being able to see any data they shouldn’t \(like the records of another customer, for example\).
+برای یک تجربه curate شده‌تر که هنوز به مردم آزادی تحلیل داده به تنهایی را می‌دهد، می‌توانید کامپوننت‌های تعاملی متابیس مثل سؤال‌ها و داشبوردها را در برنامه خود جاسازی کنید، که به شما اجازه می‌دهد [تحلیل‌های چند مستأجره، self-service](../../embedding/multi-tenant-self-service-analytics.html) را برای اشتراک‌گذاری داده با مشتریان یا فروشندگان در برنامه وب خود تنظیم کنید. می‌توانید دسترسی سفارشی به هر دو [ردیف‌ها](../permissions/row-permissions.html) و [ستون‌ها](../permissions/data-permissions.html) جداول خود ایجاد کنید، که به مردم اجازه می‌دهد داده را از طریق [منوی drill-through](../../querying-and-dashboards/questions/drill-through.html) کاوش کنند بدون اینکه بتوانند هیچ داده‌ای را که نباید ببینند (مثل رکوردهای مشتری دیگر، به عنوان مثال) ببینند.
 
-#### Data room
+#### اتاق داده
 
-If we’re talking about fundraising, acquisition, getting audited, or litigation, data sharing can be *invasive*. If you’re looking to raise funding, you can present a curated set of dashboards that tell a tidy story, but these potential investors will also want to slice the data to vet your story from different angles. And the best way to share that kind of data is via a data room.
+اگر درباره fundraising، acquisition، audit شدن، یا litigacy صحبت می‌کنیم، اشتراک‌گذاری داده می‌تواند *تهاجمی* باشد. اگر به دنبال جمع‌آوری بودجه هستید، می‌توانید مجموعه‌ای از داشبوردهای curate شده که داستانی مرتب می‌گویند ارائه دهید، اما این سرمایه‌گذاران بالقوه همچنین می‌خواهند داده را slice کنند تا داستان شما را از زوایای مختلف بررسی کنند. و بهترین راه برای اشتراک‌گذاری آن نوع داده از طریق یک اتاق داده است.
 
-A data room is a virtual space created to provide privileged, read\-only access to a significant amount of data. This data room could include all your data, or a bounded set of data with fairly low\-level access. You can include [interactive dashboards](../../querying-and-dashboards/dashboards/custom-destinations.html) to give a custom tour of the data, but the idea with a data room is that people with access to it should be able to perform their own analysis.
+یک اتاق داده یک فضای مجازی ایجاد شده برای ارائه دسترسی ممتاز، فقط خواندنی به مقدار قابل توجهی از داده است. این اتاق داده می‌تواند شامل همه داده شما، یا یک مجموعه محدود از داده با دسترسی نسبتاً سطح پایین باشد. می‌توانید [داشبوردهای تعاملی](../../querying-and-dashboards/dashboards/custom-destinations.html) را برای دادن یک تور سفارشی از داده شامل کنید، اما ایده با یک اتاق داده این است که مردم با دسترسی به آن باید بتوانند تحلیل خود را انجام دهند.
 
-To create a data room with Metabase, you have essentially two options: create a group in your existing Metabase, or set up a new Metabase instance.
+برای ایجاد یک اتاق داده با متابیس، اساساً دو گزینه دارید: ایجاد یک گروه در متابیس موجود خود، یا تنظیم یک instance متابیس جدید.
 
-The first option is simply to [create a new group](../../../../docs/latest/people-and-groups/managing.html) in your existing Metabase, and [give that group access](../../../../docs/latest/permissions/introduction.html) to the requested datasets—and only those datasets—as well as any relevant collections of dashboards and questions for that data. Effectively, that group’s permissions define the “dimensions” of that data room.
+گزینه اول به سادگی [ایجاد یک گروه جدید](../../../../docs/latest/people-and-groups/managing.html) در متابیس موجود خود، و [دادن دسترسی به آن گروه](../../../../docs/latest/permissions/introduction.html) به مجموعه داده‌های درخواست شده—و فقط آن مجموعه داده‌ها—و همچنین هر مجموعه مرتبط از داشبوردها و سؤال‌ها برای آن داده است. به طور مؤثر، مجوزهای آن گروه "ابعاد" آن اتاق داده را تعریف می‌کند.
 
-The second option entails setting up a new, standalone Metabase instance and connecting it to the relevant databases. Metabase is [trivial to set up](../../../../docs/latest/installation-and-operation/installing-metabase.html), so it’s not much more work than creating a group. Once it’s up, you’ll need to recreate any collections, dashboards, and questions that you’d want to include for your audience, in addition to giving the people you want to share the data with access to the raw tables. If you already have these collections and dashboards in your “mothership” Metabase instance, you could use the [serialization feature](serialization.html) to dump the application data relevant to the data room, and load those items into the data room instance.
+گزینه دوم شامل تنظیم یک instance متابیس جدید، standalone و اتصال آن به پایگاه‌های داده مرتبط است. متابیس [trivial برای تنظیم](../../../../docs/latest/installation-and-operation/installing-metabase.html) است، پس کار زیادی بیشتر از ایجاد یک گروه نیست. وقتی راه‌اندازی شد، نیاز دارید هر مجموعه، داشبورد، و سؤالی که می‌خواهید برای مخاطبان خود شامل کنید را دوباره ایجاد کنید، علاوه بر دادن دسترسی مردم که می‌خواهید داده را با آن‌ها به اشتراک بگذارید به جداول خام. اگر قبلاً این مجموعه‌ها و داشبوردها را در instance متابیس "mothership" خود دارید، می‌توانید از [ویژگی serialization](serialization.html) برای dump کردن داده برنامه مرتبط با اتاق داده استفاده کنید، و آن آیتم‌ها را به instance اتاق داده load کنید.
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](managing-people.html)
 [
       
         
         
+
       
       
+        
         
 
       

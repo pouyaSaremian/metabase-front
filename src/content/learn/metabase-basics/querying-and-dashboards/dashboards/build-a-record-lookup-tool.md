@@ -1,121 +1,119 @@
 ---
-
-
-title: "Build a record lookup tool with Metabase"
-description: "How to use Metabase to build an internal lookup tool to quickly find details about your customers, orders, or other data."
+title: "ساخت یک ابزار lookup رکورد با متابیس"
+description: "نحوه استفاده از متابیس برای ساخت یک ابزار lookup داخلی برای پیدا کردن سریع جزئیات درباره مشتریان، سفارش‌ها، یا سایر داده‌های خود."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/dashboards/build-a-record-lookup-tool
 toc:
   - id: "build-a-record-lookup-tool-with-metabase"
-    title: "Build a record lookup tool with Metabase"
+    title: "ساخت یک ابزار lookup رکورد با متابیس"
     level: 1
     href: "#build-a-record-lookup-tool-with-metabase"
   - id: "goals-for-the-customer-lookup-tool"
-    title: "Goals for the customer lookup tool"
+    title: "اهداف برای ابزار lookup مشتری"
     level: 2
     href: "#goals-for-the-customer-lookup-tool"
   - id: "create-our-list"
-    title: "Create our list"
+    title: "ایجاد فهرست ما"
     level: 2
     href: "#create-our-list"
   - id: "add-our-question-to-a-dashboard"
-    title: "Add our question to a dashboard"
+    title: "افزودن سؤال ما به یک داشبورد"
     level: 2
     href: "#add-our-question-to-a-dashboard"
   - id: "add-filters-to-the-dashboard"
-    title: "Add filters to the dashboard"
+    title: "افزودن فیلترها به داشبورد"
     level: 2
     href: "#add-filters-to-the-dashboard"
   - id: "customize-click-behavior"
-    title: "Customize click behavior"
+    title: "سفارشی کردن رفتار کلیک"
     level: 2
     href: "#customize-click-behavior"
   - id: "embed-the-tool-in-your-wiki-or-app"
-    title: "Embed the tool in your wiki or app"
+    title: "جاسازی ابزار در wiki یا اپلیکیشن خود"
     level: 2
     href: "#embed-the-tool-in-your-wiki-or-app"
   - id: "and-that-s-it"
-    title: "And that’s it!"
+    title: "و تمام!"
     level: 2
     href: "#and-that-s-it"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Building dashboards"
+  - title: "ساخت داشبوردها"
     href: "../dashboards.html"
 ---
 
-# Build a record lookup tool with Metabase
+# ساخت یک ابزار lookup رکورد با متابیس
 
-How to use Metabase to build an internal lookup tool to quickly find details about your customers, orders, or other data.
+نحوه استفاده از متابیس برای ساخت یک ابزار lookup داخلی برای پیدا کردن سریع جزئیات درباره مشتریان، سفارش‌ها، یا سایر داده‌های خود.
 
-We’ve written about [some of the interesting ways people use Metabase](../../overview/beyond-bi.html), and one of those is using Metabase as a solution for internal or back office apps, like a customer lookup tool. Rather than building custom pages to look up customer information, order info, or other records important to your organization, you can simply spin up a Metabase instance and build a dashboard that allows people to quickly pull up information related to an order number, SKU, name, or other field.
+درباره [برخی از راه‌های جالب استفاده مردم از متابیس](../../overview/beyond-bi.html) نوشتیم، و یکی از آن‌ها استفاده از متابیس به عنوان یک راه‌حل برای اپلیکیشن‌های داخلی یا back office، مثل یک ابزار lookup مشتری است. به جای ساخت صفحه‌های سفارشی برای lookup اطلاعات مشتری، اطلاعات سفارش، یا سایر رکوردهای مهم برای سازمان خود، می‌توانید به سادگی یک instance متابیس spin up کنید و یک داشبورد بسازید که به مردم اجازه pull up سریع اطلاعات مرتبط با یک شماره سفارش، SKU، نام، یا فیلد دیگر را می‌دهد.
 
-In this article, we’ll walk you through how to build a simple customer lookup tool using the [Sample Database](../../../../glossary/sample-database.html) included with Metabase. We’ll show you some of the features Metabase gives you out of the box, as well as some things you can do to customize your lookup tool. The data in the Sample Database is pretty basic, but we’ll try to put together a dashboard that approximates the kind of tool you’d actually build and use in the wild. You can [get Metabase](../../../../pricing/index.html) and follow along, or just read through to get some ideas for building your own tools.
+در این مقاله، نحوه ساخت یک ابزار lookup مشتری ساده با استفاده از [پایگاه داده نمونه](../../../../glossary/sample-database.html) شامل شده با متابیس را مرور می‌کنیم. برخی از ویژگی‌هایی که متابیس out of the box به شما می‌دهد، و همچنین برخی چیزهایی که می‌توانید برای سفارشی کردن ابزار lookup خود انجام دهید را نشان می‌دهیم. داده در پایگاه داده نمونه نسبتاً پایه است، اما سعی می‌کنیم یک داشبورد که تقریباً نوع ابزاری که واقعاً در wild می‌سازید و استفاده می‌کنید را کنار هم بگذاریم. می‌توانید [متابیس را دریافت کنید](../../../../pricing/index.html) و همراه باشید، یا فقط بخوانید تا ایده‌هایی برای ساخت ابزارهای خود دریافت کنید.
 
-Here’s our finished lookup tool in action:
+در اینجا ابزار lookup تمام شده ما در عمل:
 
-![Our customer lookup tool in action.](../../../images/customer-lookup-tool/lookup-customer.gif)
+![ابزار lookup مشتری ما در عمل.](../../../images/customer-lookup-tool/lookup-customer.gif)
 
-## Goals for the customer lookup tool
+## اهداف برای ابزار lookup مشتری
 
-Our goal here is to have an interactive list of our customers that will be handy when we’re going through help tickets or other customer\-related tasks. Clicking on the ID to bring up details about that customer, and then pulling up the orders placed by that customer.
+هدف ما اینجا داشتن یک فهرست تعاملی از مشتریان ما است که وقتی از ticketهای کمک یا سایر کارهای مرتبط با مشتری می‌گذریم مفید خواهد بود. کلیک روی ID برای آوردن جزئیات درباره آن مشتری، و سپس pull up سفارش‌های قرار داده شده توسط آن مشتری.
 
-To that end, we’ll want to make our list sortable and filterable, and we’ll want to be able to drill down to see individual records. Here are some things we want to know about our customers:
+برای آن هدف، می‌خواهیم فهرست خود را قابل مرتب‌سازی و فیلترپذیر کنیم، و می‌خواهیم قادر به drill down برای دیدن رکوردهای فردی باشیم. در اینجا برخی چیزهایی که می‌خواهیم درباره مشتریان خود بدانیم:
 
-- Name, email, city, and state
-- How much money they’ve spent with us
-- The total amount of discounts we’ve given them
+- نام، ایمیل، شهر، و state
+- چقدر پول با ما خرج کرده‌اند
+- مقدار کل تخفیف‌هایی که به آن‌ها داده‌ایم
 
-We also want to be able to look up customers by their `name` or `ID`.
+همچنین می‌خواهیم قادر به lookup مشتریان بر اساس `name` یا `ID` آن‌ها باشیم.
 
-So here’s the high\-level plan for building our tool:
+پس در اینجا برنامه سطح بالا برای ساخت ابزار ما:
 
-- [Goals for the customer lookup tool](#goals-for-the-customer-lookup-tool)
-- [Create our list](#create-our-list)
-- [Add our question to a dashboard](#add-our-question-to-a-dashboard)
-- [Add filters to the dashboard](#add-filters-to-the-dashboard)
-- [Customize click behavior](#customize-click-behavior)
-- [Embed the tool in your wiki or app](#embed-the-tool-in-your-wiki-or-app)
-- [And that’s it!](#and-thats-it)
+- [اهداف برای ابزار lookup مشتری](#goals-for-the-customer-lookup-tool)
+- [ایجاد فهرست ما](#create-our-list)
+- [افزودن سؤال ما به یک داشبورد](#add-our-question-to-a-dashboard)
+- [افزودن فیلترها به داشبورد](#add-filters-to-the-dashboard)
+- [سفارشی کردن رفتار کلیک](#customize-click-behavior)
+- [جاسازی ابزار در wiki یا اپلیکیشن خود](#embed-the-tool-in-your-wiki-or-app)
+- [و تمام!](#and-thats-it)
 
-## Create our list
+## ایجاد فهرست ما
 
-From the main navigation bar, we’ll select **\+ New** followed by **Question** \> **Raw Data** \> **Sample Database** \> **People** table \(since we’re interested in customer information\). If we click **Visualize**, Metabase will do some science, and we’ll get a nice little table visualization of the records in the `People` table.
+از نوار ناوبری اصلی، **+ New** را انتخاب می‌کنیم و به دنبال آن **Question** > **Raw Data** > **Sample Database** > جدول **People** (از آنجایی که به اطلاعات مشتری علاقه‌مندیم). اگر روی **Visualize** کلیک کنیم، متابیس مقداری علم انجام می‌دهد، و یک تجسم جدول کوچک خوب از رکوردها در جدول `People` دریافت می‌کنیم.
 
-![The People table in the Sample Database.](../../../images/customer-lookup-tool/people-table.png)
+![جدول People در پایگاه داده نمونه.](../../../images/customer-lookup-tool/people-table.png)
 
-Metabase has already done some work for us. For example, clicking on the ID in a row will bring us to a detail page.
+متابیس از قبل مقداری کار برای ما انجام داده است. به عنوان مثال، کلیک روی ID در یک ردیف ما را به یک صفحه جزئیات می‌برد.
 
-![Clicking on an ID will bring up a detail view of the customer.](../../../images/customer-lookup-tool/detail-view.gif)
+![کلیک روی یک ID یک view جزئیات مشتری را می‌آورد.](../../../images/customer-lookup-tool/detail-view.gif)
 
-It’s nothing special, but it’s nice to have, as it makes the info easier to read. Actually, it’s a little special. The `ID` field we clicked on is an [entity key](../../../../glossary/entity-key.html), which is a field in a table that uniquely identifies each table row, in this case a row in the `People` table. \(Check out our [docs](../../../../docs/latest/data-modeling/metadata-editing.html) to learn more about how to customize your data model.\) Metabase knows that it’s an entity key, and that’s how it knew to link to this detail view. Notice that on the detail page for this customer, Hudson Borer, we 1\) see every field from the `People` table, not just the fields we included in our question, and 2\) in the upper right, a link to orders associated with Hudson Borer’s user `ID`. If one table includes an entity key as a [foreign key](../../../../glossary/foreign-key.html) in another table, Metabase will make that data available to explore on this detail page.
+چیز خاصی نیست، اما خوب است که داشته باشیم، چون خواندن اطلاعات را آسان‌تر می‌کند. در واقع، کمی خاص است. فیلد `ID` که روی آن کلیک کردیم یک [entity key](../../../../glossary/entity-key.html) است، که یک فیلد در یک جدول است که هر ردیف جدول را به طور یکتا شناسایی می‌کند، در این مورد یک ردیف در جدول `People`. ([مستندات](../../../../docs/latest/data-modeling/metadata-editing.html) ما را برای یادگیری بیشتر درباره نحوه سفارشی کردن مدل داده خود بررسی کنید.) متابیس می‌داند که یک entity key است، و اینطور می‌دانست به این view جزئیات لینک کند. توجه کنید که در صفحه جزئیات برای این مشتری، Hudson Borer، ما 1) هر فیلد از جدول `People` را می‌بینیم، نه فقط فیلدهایی که در سؤال خود شامل کردیم، و 2) در بالا سمت راست، یک لینک به سفارش‌های مرتبط با `ID` کاربر Hudson Borer. اگر یک جدول شامل یک entity key به عنوان [foreign key](../../../../glossary/foreign-key.html) در جدول دیگر باشد، متابیس آن داده را برای کاوش در این صفحه جزئیات در دسترس می‌کند.
 
-![Metabase will show data associated with an entity key, in this case: orders associated with a user](../../../images/customer-lookup-tool/link-to-orders.gif)
+![متابیس داده مرتبط با یک entity key را نشان می‌دهد، در این مورد: سفارش‌های مرتبط با یک کاربر](../../../images/customer-lookup-tool/link-to-orders.gif)
 
-We’ve done basically nothing so far, and we’re already off to a pretty good start. To calculate how much money each customer has spent with the company, we’ll need to include order information in our list. And that requires us to join the `People` table to the `Orders` table. We’ll click on the **editor icon** to bring up the **Query Builder\*\***.
+تا اینجا اساساً هیچ کاری نکرده‌ایم، و از قبل شروع خوبی داریم. برای محاسبه چقدر پول هر مشتری با شرکت خرج کرده است، نیاز به شامل کردن اطلاعات سفارش در فهرست خود داریم. و آن نیاز به join کردن جدول `People` به جدول `Orders` دارد. روی **آیکون ویرایشگر** کلیک می‌کنیم تا **Query Builder** را بیاوریم.
 
-![Clicking on the editor icon will open up the Query Builder.](../../../images/customer-lookup-tool/show-editor.png)
+![کلیک روی آیکون ویرایشگر Query Builder را باز می‌کند.](../../../images/customer-lookup-tool/show-editor.png)
 
-Next, we’ll click on the `Join data` option, and connect the `People` table to the `Orders` table by telling Metabase that it should link the entity key `ID` in the `People` table to the Foreign Key `User_ID` in the `Orders` table. \(If you’re new to joining tables, check out our [article on joins in Metabase](../questions/joins-in-metabase.html)\).
+بعد، روی گزینه `Join data` کلیک می‌کنیم، و جدول `People` را به جدول `Orders` با گفتن به متابیس که باید entity key `ID` در جدول `People` را به Foreign Key `User_ID` در جدول `Orders` لینک کند متصل می‌کنیم. (اگر به join کردن جداول جدید هستید، [مقاله ما درباره joinها در متابیس](../questions/joins-in-metabase.html) را بررسی کنید).
 
-![Joining the People table to the Orders table on People.ID = Orders.User_ID.](../../../images/customer-lookup-tool/join-tables.png)
+![Join کردن جدول People به جدول Orders روی People.ID = Orders.User_ID.](../../../images/customer-lookup-tool/join-tables.png)
 
-Joining the `People` and `Orders` tables will produce the table shown below, where the customer information is repeated for each order they placed.
+Join کردن جداول `People` و `Orders` جدول نشان داده شده زیر را تولید می‌کند، جایی که اطلاعات مشتری برای هر سفارشی که قرار دادند تکرار می‌شود.
 
-![Joined People and Orders table.](../../../images/customer-lookup-tool/people-and-orders.png)
+![جدول People و Orders join شده.](../../../images/customer-lookup-tool/people-and-orders.png)
 
-That’s not ideal: we don’t want a customer to be listed more than once in this lookup tool. If we want to see their orders, we can just click on the customers’ `ID` to view their detail pages, but now we have their order information to work with.
+ایده‌آل نیست: نمی‌خواهیم یک مشتری بیش از یک بار در این ابزار lookup فهرست شود. اگر می‌خواهیم سفارش‌های آن‌ها را ببینیم، می‌توانیم فقط روی `ID` مشتریان کلیک کنیم تا صفحه‌های جزئیات آن‌ها را مشاهده کنیم، اما حالا اطلاعات سفارش آن‌ها را برای کار داریم.
 
-Let’s try to find the total amount of money they’ve spent with us to date. Returning to the **Query Builder**, we’ll select **Summarize**, and select `Sum of`. Under the joined `Orders` table, we’ll select `Total`. And since we want to see the sum for each user, we’ll group by each user’s `ID`.
+بیایید سعی کنیم مقدار کل پولی که تا به امروز با ما خرج کرده‌اند را پیدا کنیم. برگشت به **Query Builder**، **Summarize** را انتخاب می‌کنیم، و `Sum of` را انتخاب می‌کنیم. زیر جدول join شده `Orders`، `Total` را انتخاب می‌کنیم. و از آنجایی که می‌خواهیم sum را برای هر کاربر ببینیم، بر اساس `ID` هر کاربر group می‌کنیم.
 
-![Previewing the sum of order totals, grouped by ID](../../../images/customer-lookup-tool/sum-of-order-total.png)
+![پیش‌نمایش sum از order totals، group شده بر اساس ID](../../../images/customer-lookup-tool/sum-of-order-total.png)
 
-A preview shows us an updated table with just two columns: `ID` and our new column, `Sum of Orders → Total($)`. We’ll also sum the discounts \(`Sum of Orders → Discount($)`\), just like we did with the order totals.
+یک پیش‌نمایش جدول به‌روزرسانی شده با فقط دو ستون به ما نشان می‌دهد: `ID` و ستون جدید ما، `Sum of Orders → Total($)`. همچنین تخفیف‌ها را sum می‌کنیم (`Sum of Orders → Discount($)`)، درست مثل order totals.
 
-Next, we’ll add the columns we want to include in our table by adding them to the **Group by** box of the **Summarize** section. Here’s our full list of columns:
+بعد، ستون‌هایی که می‌خواهیم در جدول خود شامل کنیم را با افزودن آن‌ها به جعبه **Group by** بخش **Summarize** اضافه می‌کنیم. در اینجا فهرست کامل ستون‌های ما:
 
 - `ID`
 - `Email`
@@ -127,74 +125,73 @@ Next, we’ll add the columns we want to include in our table by adding them to 
 - `Sum of Orders → Total`
 - `Sum of Orders → Discount`
 
-![Our finished notebook.](../../../images/customer-lookup-tool/full-notebook.png)
+![Notebook تمام شده ما.](../../../images/customer-lookup-tool/full-notebook.png)
 
-With our notebook filled out, let’s click on the **Visualize button**, and Metabase will present us with our list.
+با notebook پر شده ما، بیایید روی دکمه **Visualize** کلیک کنیم، و متابیس فهرست ما را ارائه می‌دهد.
 
-![Our basic customer list.](../../../images/customer-lookup-tool/customer-list.png)
+![فهرست مشتری پایه ما.](../../../images/customer-lookup-tool/customer-list.png)
 
-So far so good, but let’s see if we can spruce it up a bit. Let’s change the formatting for our aggregate columns, which we can do by clicking on the heading for that column, then clicking on the **gears icon**.
+تا اینجا خوب است، اما بیایید ببینیم آیا می‌توانیم کمی آن را تزئین کنیم. بیایید فرمت را برای ستون‌های aggregate خود تغییر دهیم، که می‌توانیم با کلیک روی heading برای آن ستون، سپس کلیک روی **آیکون چرخ‌دنده** انجام دهیم.
 
-![Changing the formatting of a column.](../../../images/customer-lookup-tool/column-formatting.png)
+![تغییر فرمت یک ستون.](../../../images/customer-lookup-tool/column-formatting.png)
 
-We’ll change `Column title` to “Total money spent”, toggle `Show a mini bar chart`, and set `Where to display the unit of currency` to every cell.
+`Column title` را به "Total money spent" تغییر می‌دهیم، `Show a mini bar chart` را toggle می‌کنیم، و `Where to display the unit of currency` را به every cell تنظیم می‌کنیم.
 
-![Adding a mini bar chart to a column to display the cells](../../../images/customer-lookup-tool/mini-bar-chart.png)
+![افزودن یک نمودار میله‌ای کوچک به یک ستون برای نمایش سلول‌ها](../../../images/customer-lookup-tool/mini-bar-chart.png)
 
-The **mini bar chart** will show the cell’s value relative to the range of values in the column, which makes it easy to see how much money our customers spend compared with other customers.
+**نمودار میله‌ای کوچک** مقدار سلول را نسبت به محدوده مقادیر در ستون نشان می‌دهد، که دیدن چقدر پول مشتریان ما نسبت به سایر مشتریان خرج می‌کنند را آسان می‌کند.
 
-We’ll do the same for the discount total column: add mini bar chart, rename heading, show currency in every cell.
+همان کار را برای ستون discount total انجام می‌دهیم: افزودن نمودار میله‌ای کوچک، تغییر نام heading، نمایش currency در every cell.
 
-![Our table with the two aggregate columns, Total money spent and Discount total, each with a mini bar chart.](../../../images/customer-lookup-tool/list-with-bar-charts.png)
+![جدول ما با دو ستون aggregate، Total money spent و Discount total، هر کدام با یک نمودار میله‌ای کوچک.](../../../images/customer-lookup-tool/list-with-bar-charts.png)
 
-We can also throw in some conditional formatting for the table as a whole. In the bottom left of our screen, we’ll click on the **Settings button** for the question, and Metabase will slide out the **Settings sidebar**. At the top of the sidebar, we’ll select the **Conditional formatting tab**. For example, we can highlight the row in blue for big spenders \(customers who’ve dropped more than $1,000 on our products\), and highlight rows in red if we’ve given them more than $30 in discounts \(so we know we should probably cool it on the discounts for that customer\).
+همچنین می‌توانیم مقداری فرمت شرطی برای جدول به عنوان یک کل اضافه کنیم. در پایین سمت چپ صفحه خود، روی **دکمه Settings** برای سؤال کلیک می‌کنیم، و متابیس **Sidebar Settings** را slide می‌کند. در بالای sidebar، تب **Conditional formatting** را انتخاب می‌کنیم. به عنوان مثال، می‌توانیم ردیف را برای خرج‌کنندگان بزرگ (مشتریانی که بیش از 1000 دلار روی محصولات ما خرج کرده‌اند) با آبی highlight کنیم، و ردیف‌ها را با قرمز highlight کنیم اگر بیش از 30 دلار تخفیف به آن‌ها داده‌ایم (پس می‌دانیم احتمالاً باید روی تخفیف‌ها برای آن مشتری cool کنیم).
 
-![We added a rule to highlight big spenders (>$1,000). Now we](../../../images/customer-lookup-tool/add-conditional-formatting.png)
+![یک قانون برای highlight کردن خرج‌کنندگان بزرگ (>$1,000) اضافه کردیم. حالا ما](../../../images/customer-lookup-tool/add-conditional-formatting.png)
 
-With our list all dressed up, let’s save it as `Customer list`.
+با فهرست ما همه تزئین شده، بیایید آن را به عنوان `Customer list` ذخیره کنیم.
 
-## Add our question to a dashboard
+## افزودن سؤال ما به یک داشبورد
 
-To be able to look up a customer, we’ll need to be able to filter this table by ID and name. We *could* filter at the question level, but in this case it’s better to have our list be in a dashboard: it gives us more options, like being able to have a filter widget that can filter additional lists or charts we might want to add in the future, or allowing us to customize what happens when people click on a value in a column.
+برای قادر بودن به lookup یک مشتری، نیاز به قادر بودن به فیلتر کردن این جدول بر اساس ID و name داریم. می‌*توانستیم* در سطح سؤال فیلتر کنیم، اما در این مورد بهتر است فهرست ما در یک داشبورد باشد: گزینه‌های بیشتری به ما می‌دهد، مثل قادر بودن به داشتن یک widget فیلتر که می‌تواند فهرست‌ها یا نمودارهای اضافی که ممکن است در آینده بخواهیم اضافه کنیم را فیلتر کند، یا اجازه دادن به ما برای سفارشی کردن آنچه وقتی مردم روی یک مقدار در یک ستون کلیک می‌کنند اتفاق می‌افتد.
 
-We’ll [create a new dashboard](../../../../docs/latest/dashboards/introduction.html#how-to-create-a-dashboard) and title it \(literally\) “Customer lookup tool.” Next, we’ll add our `Customer list` question to our new dashboard.
+یک [داشبورد جدید ایجاد می‌کنیم](../../../../docs/latest/dashboards/introduction.html#how-to-create-a-dashboard) و آن را (به معنای واقعی کلمه) "Customer lookup tool" عنوان می‌کنیم. بعد، سؤال `Customer list` خود را به داشبورد جدید خود اضافه می‌کنیم.
 
-## Add filters to the dashboard
+## افزودن فیلترها به داشبورد
 
-Since we want people to be able to look up customers by either their `ID` or `Name`, we’ll need to add a filter widget for each lookup method. To add filters, we’ll click on the **pencil icon** to edit the dashboard, then click on the **filter icon**. We’ll add an `ID` filter for the `ID` filter widget, and a `Category` filter for the `Name` filter widget.
+از آنجایی که می‌خواهیم مردم قادر به lookup مشتریان بر اساس `ID` یا `Name` آن‌ها باشند، نیاز به افزودن یک widget فیلتر برای هر روش lookup داریم. برای افزودن فیلترها، روی **آیکون مداد** کلیک می‌کنیم تا داشبورد را ویرایش کنیم، سپس روی **آیکون فیلتر** کلیک می‌کنیم. یک فیلتر `ID` برای widget فیلتر `ID` اضافه می‌کنیم، و یک فیلتر `Category` برای widget فیلتر `Name` اضافه می‌کنیم.
 
-![Adding an ID filter to a dashboard.](../../../images/customer-lookup-tool/add-id-filter.png)
+![افزودن یک فیلتر ID به یک داشبورد.](../../../images/customer-lookup-tool/add-id-filter.png)
 
-We’ll connect each filter to the `Customer list` card \(the “ID” filter to `Person.ID` and the `Category` filter to `Person.Name`\). To make it clear for our users what each filter does, we’ll change the filters’ labels to `Customer ID` and `Customer name`. Check out our docs on [dashboard filters](../../../../docs/latest/dashboards/filters.html) to learn more about how to wire these up.
+هر فیلتر را به کارت `Customer list` متصل می‌کنیم (فیلتر "ID" به `Person.ID` و فیلتر `Category` به `Person.Name`). برای واضح کردن برای کاربران ما هر فیلتر چه می‌کند، برچسب‌های فیلترها را به `Customer ID` و `Customer name` تغییر می‌دهیم. مستندات ما درباره [فیلترهای داشبورد](../../../../docs/latest/dashboards/filters.html) را برای یادگیری بیشتر درباره نحوه wire کردن این‌ها بررسی کنید.
 
-![Adding an ID filter to a dashboard.](../../../images/customer-lookup-tool/connecting-filter-to-card.png)
+![افزودن یک فیلتر ID به یک داشبورد.](../../../images/customer-lookup-tool/connecting-filter-to-card.png)
 
-If the filter doesn’t behave like you expect, you may need to change the field type in the data model. Check out our docs on [editing metadata](../../../../docs/latest/data-modeling/metadata-editing.html), which shows you how you can choose whether to have the filter display a list of all available values, or as a search box.
+اگر فیلتر مثل انتظار شما رفتار نمی‌کند، ممکن است نیاز به تغییر نوع فیلد در مدل داده داشته باشید. مستندات ما درباره [ویرایش متادیتا](../../../../docs/latest/data-modeling/metadata-editing.html) را بررسی کنید، که به شما نشان می‌دهد چگونه می‌توانید انتخاب کنید آیا فیلتر یک فهرست از همه مقادیر موجود را نمایش دهد، یا به عنوان یک جعبه جستجو.
 
-## Customize click behavior
+## سفارشی کردن رفتار کلیک
 
-When you’re building a customer lookup tool, you may want to set up your list so that clicking on a value like a customer name or ID or whatever will take you to a different dashbooard, third\-party app, or even your own app. To do this, you can customize click behavior on a dashboard card and set up a [custom destination](../../../../docs/latest/dashboards/interactive.html#custom-destinations). Just to demo the feature, we’ll set it up so that when people click on the person’s address, it’ll open up Google Maps with that address pre\-loaded.
+وقتی در حال ساخت یک ابزار lookup مشتری هستید، ممکن است بخواهید فهرست خود را تنظیم کنید تا کلیک روی یک مقدار مثل نام مشتری یا ID یا هر چیز دیگری شما را به داشبورد متفاوت، اپلیکیشن third-party، یا حتی اپلیکیشن خود ببرد. برای انجام این کار، می‌توانید رفتار کلیک روی یک کارت داشبورد را سفارشی کنید و یک [مقصد سفارشی](../../../../docs/latest/dashboards/interactive.html#custom-destinations) تنظیم کنید. فقط برای demo کردن ویژگی، آن را تنظیم می‌کنیم تا وقتی مردم روی آدرس شخص کلیک می‌کنند، Google Maps با آن آدرس از پیش load شده باز شود.
 
-![Setting up the click behavior for the address column to send people to an external URL.](../../../images/customer-lookup-tool/click-behavior-for-address.png)
+![تنظیم رفتار کلیک برای ستون آدرس برای ارسال مردم به یک URL خارجی.](../../../images/customer-lookup-tool/click-behavior-for-address.png)
 
-We can click on the **Values you can reference** dropdown to see which values we can plug in as parameters. Based on [Google Maps API documentation](https://developers.google.com/maps/documentation/urls/get-started), we’ll format the URL as follows:
+می‌توانیم روی dropdown **Values you can reference** کلیک کنیم تا ببینیم کدام مقادیر می‌توانیم به عنوان پارامتر plug کنیم. بر اساس [مستندات Google Maps API](https://developers.google.com/maps/documentation/urls/get-started)، URL را به صورت زیر فرمت می‌کنیم:
 
 ```url
 https://www.google.com/maps/search/?api=1&query={{address}},{{city}},{{state}},{{zip}}
-
 ```
 
-The parameters we pass are enclosed in double braces: `address`, `city`, `state`, and `zip`, and Metabase will escape the commas for us. Once we save the custom destination, we can now click on an address and Metabase will open the address in Google Maps.
+پارامترهایی که pass می‌کنیم در براکت‌های دوتایی محصور می‌شوند: `address`، `city`، `state`، و `zip`، و متابیس کاماها را برای ما escape می‌کند. وقتی مقصد سفارشی را ذخیره می‌کنیم، حالا می‌توانیم روی یک آدرس کلیک کنیم و متابیس آدرس را در Google Maps باز می‌کند.
 
-![Custom destination: clicking on an address opens up Google Maps to that address.](../../../images/customer-lookup-tool/metabase-to-map.gif)
+![مقصد سفارشی: کلیک روی یک آدرس Google Maps را به آن آدرس باز می‌کند.](../../../images/customer-lookup-tool/metabase-to-map.gif)
 
-## Embed the tool in your wiki or app
+## جاسازی ابزار در wiki یا اپلیکیشن خود
 
-You can leave the lookup tool in your Metabase instance, but you can also embed the tool in other apps, like your organization’s wiki or homegrown app. Check out our article on [embedding charts and dashboards](../../embedding/charts-and-dashboards.html).
+می‌توانید ابزار lookup را در instance متابیس خود بگذارید، اما همچنین می‌توانید ابزار را در اپلیکیشن‌های دیگر، مثل wiki سازمان خود یا اپلیکیشن homegrown جاسازی کنید. مقاله ما درباره [جاسازی نمودارها و داشبوردها](../../embedding/charts-and-dashboards.html) را بررسی کنید.
 
-## And that’s it!
+## و تمام!
 
-Or is it? We now have a decent customer lookup tool to work with, and we can extend the dashboard as we go. We can add other questions and other filters to our dashboard, or set up more custom destinations to link to additional dashboards and tools. We hope this article gave you some ideas for some tools you can build—or for upgrading your existing dashboards.
+یا اینطور است؟ حالا یک ابزار lookup مشتری مناسب برای کار داریم، و می‌توانیم داشبورد را همانطور که پیش می‌رویم گسترش دهیم. می‌توانیم سؤال‌ها و فیلترهای دیگر به داشبورد خود اضافه کنیم، یا مقصدهای سفارشی بیشتری برای لینک به داشبوردها و ابزارهای اضافی تنظیم کنیم. امیدواریم این مقاله ایده‌هایی برای برخی ابزارهایی که می‌توانید بسازید—یا برای ارتقای داشبوردهای موجود خود—به شما داده باشد.
 
 [
       
@@ -204,5 +201,6 @@ Or is it? We now have a decent customer lookup tool to work with, and we can ext
       
         
         
+
       
     ](markdown.html)

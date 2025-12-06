@@ -1,164 +1,166 @@
 ---
-
-
-title: "How Metabase works with your database"
-description: "Metabase doesn't store your data. Learn how Metabase queries data in your database, uses metadata to make some magic happen, and gives you options to cache queries and persist models to speed things up."
+title: "نحوه کار متابیس با پایگاه داده شما"
+description: "متابیس داده شما را ذخیره نمی‌کند. یاد بگیرید متابیس چگونه داده را در پایگاه داده شما پرس‌وجو می‌کند، از فراداده برای انجام برخی جادو استفاده می‌کند، و گزینه‌هایی برای cache کردن پرس‌وجوها و persist کردن مدل‌ها برای سریع‌تر کردن چیزها به شما می‌دهد."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/metabase-and-your-db
 toc:
   - id: "how-metabase-works-with-your-database"
-    title: "How Metabase works with your database"
+    title: "نحوه کار متابیس با پایگاه داده شما"
     level: 1
     href: "#how-metabase-works-with-your-database"
   - id: "metabase-doesn-t-store-your-data"
-    title: "Metabase doesn’t store your data"
+    title: "متابیس داده شما را ذخیره نمی‌کند"
     level: 2
     href: "#metabase-doesn-t-store-your-data"
   - id: "querying-your-database-with-metabase"
-    title: "Querying your database with Metabase"
+    title: "پرس‌وجو از پایگاه داده خود با متابیس"
     level: 2
     href: "#querying-your-database-with-metabase"
   - id: "native-queries"
-    title: "Native queries"
+    title: "پرس‌وجوهای بومی"
     level: 3
     href: "#native-queries"
   - id: "query-builder"
-    title: "Query builder"
+    title: "سازنده کوئری"
     level: 3
     href: "#query-builder"
   - id: "how-metabase-knows-about-your-data"
-    title: "How Metabase knows about your data"
+    title: "متابیس چگونه درباره داده شما می‌داند"
     level: 2
     href: "#how-metabase-knows-about-your-data"
   - id: "metabase-application-database"
-    title: "Metabase application database"
+    title: "پایگاه داده برنامه متابیس"
     level: 2
     href: "#metabase-application-database"
   - id: "caching-query-results"
-    title: "Caching query results"
+    title: "Cache کردن نتایج پرس‌وجو"
     level: 2
     href: "#caching-query-results"
   - id: "persisting-models-back-to-your-database"
-    title: "Persisting models back to your database"
+    title: "Persist کردن مدل‌ها به پایگاه داده شما"
     level: 2
     href: "#persisting-models-back-to-your-database"
   - id: "next-steps"
-    title: "Next steps"
+    title: "مراحل بعدی"
     level: 2
     href: "#next-steps"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# How Metabase works with your database
+# نحوه کار متابیس با پایگاه داده شما
 
-Metabase doesn't store your data. Learn how Metabase queries data in your database, uses metadata to make some magic happen, and gives you options to cache queries and persist models to speed things up.
+متابیس داده شما را ذخیره نمی‌کند. یاد بگیرید متابیس چگونه داده را در پایگاه داده شما پرس‌وجو می‌کند، از فراداده برای انجام برخی جادو استفاده می‌کند، و گزینه‌هایی برای cache کردن پرس‌وجوها و persist کردن مدل‌ها برای سریع‌تر کردن چیزها به شما می‌دهد.
 
-![Metabase and your database](../../../images/metabase-and-your-db/db-diagram.png)
+![متابیس و پایگاه داده شما](../../../images/metabase-and-your-db/db-diagram.png)
 
-## Metabase doesn’t store your data
+## متابیس داده شما را ذخیره نمی‌کند
 
-Metabase is a tool for querying data in a database and visualizing the results \(Metabase is also many [other things](../../overview/tour-of-metabase.html), but that’s not our focus right now\). But it’s not like some other BI tools that store your data. With Metabase, the basic set up is:
+متابیس یک ابزار برای پرس‌وجو از داده در یک پایگاه داده و بصری‌سازی نتایج است (متابیس همچنین [چیزهای دیگری](../../overview/tour-of-metabase.html) است، اما این تمرکز ما در حال حاضر نیست). اما مثل برخی ابزارهای BI دیگر که داده شما را ذخیره می‌کنند نیست. با متابیس، راه‌اندازی پایه این است:
 
-- You connect Metabase to your database.
-- You write a query in Metabase \(either in the query builder or native code editor\)
-- Metabase sends the SQL over to the database.
-- Your database processes the query, then sends the results back to Metabase.
-- Metabase turns your data into pretty colors \(a chart on a dashboard\).
+- متابیس را به پایگاه داده خود متصل می‌کنید.
+- یک پرس‌وجو در متابیس می‌نویسید (یا در سازنده کوئری یا ویرایشگر کد بومی)
+- متابیس SQL را به پایگاه داده می‌فرستد.
+- پایگاه داده شما پرس‌وجو را پردازش می‌کند، سپس نتایج را به متابیس برمی‌گرداند.
+- متابیس داده شما را به رنگ‌های زیبا تبدیل می‌کند (یک نمودار در یک داشبورد).
 
-Metabase itself doesn’t pull your data out of your database to process your query \- all that processing happens *inside* your database. All that Metabase sees is the query that you write, and the results that the query returns.
+متابیس خودش داده شما را از پایگاه داده شما بیرون نمی‌کشد تا پرس‌وجوی شما را پردازش کند - همه آن پردازش *داخل* پایگاه داده شما اتفاق می‌افتد. همه آنچه متابیس می‌بیند پرس‌وجویی است که می‌نویسید، و نتایجی که پرس‌وجو برمی‌گرداند.
 
-There are a couple of nuances to this, as Metabase does do some lightweight querying of your database’s metadata so that it knows how to handle the results the database returns to it. So let’s go through it.
+چند nuance به این وجود دارد، چون متابیس مقداری پرس‌وجوی سبک از فراداده پایگاه داده شما انجام می‌دهد تا بداند چگونه نتایجی که پایگاه داده به آن برمی‌گرداند را handle کند. پس بیایید آن را طی کنیم.
 
-## Querying your database with Metabase
+## پرس‌وجو از پایگاه داده خود با متابیس
 
-There are two ways to create queries in Metabase: using SQL \(or if you’re connecting to MongoDB, the MongoDB query language\), and using the graphical query builder.
+دو راه برای ایجاد پرس‌وجوها در متابیس وجود دارد: استفاده از SQL (یا اگر به MongoDB متصل می‌شوید، زبان پرس‌وجوی MongoDB)، و استفاده از سازنده کوئری گرافیکی.
 
-### Native queries
+### پرس‌وجوهای بومی
 
-When you write a query in SQL \(or in MongoDB query language\), Metabase just sends that query on its merry way to your database.
+وقتی یک پرس‌وجو در SQL (یا در زبان پرس‌وجوی MongoDB) می‌نویسید، متابیس فقط آن پرس‌وجو را به پایگاه داده شما می‌فرستد.
 
-The code that you write in the native editor is like a black box: Metabase doesn’t parse your SQL, so it doesn’t know about what’s actually going on in your query, like which tables you’re joining, which columns you’re selecting, or how you filter and aggregate your data. And because the query is a black box, Metabase can’t know much about the results either, so it can’t offer things like breakouts, drill\-down, or automatic charts.
+کدی که در ویرایشگر بومی می‌نویسید مثل یک جعبه سیاه است: متابیس SQL شما را parse نمی‌کند، پس نمی‌داند چه اتفاقی در پرس‌وجوی شما می‌افتد، مثل اینکه کدام جداول را join می‌کنید، کدام ستون‌ها را انتخاب می‌کنید، یا چگونه داده را فیلتر و تجمیع می‌کنید. و چون پرس‌وجو یک جعبه سیاه است، متابیس نمی‌تواند چیز زیادی درباره نتایج بداند، پس نمی‌تواند چیزهایی مثل breakouts، drill-down، یا نمودارهای خودکار ارائه دهد.
 
-### Query builder
+### سازنده کوئری
 
-In the [query builder](../../getting-started/ask-a-question.html), you assemble a query from building blocks like joins, filters, or summaries.
+در [سازنده کوئری](../../getting-started/ask-a-question.html)، یک پرس‌وجو را از بلوک‌های ساختمانی مثل joins، filters، یا summaries می‌سازید.
 
-![Query builder](../../../images/metabase-and-your-db/query-builder.png)
+![سازنده کوئری](../../../images/metabase-and-your-db/query-builder.png)
 
-If you use the query builder, however, then Metabase knows exactly what’s going on in your query \- what tables are involved, what are the column types, what operations you perform and which order \- and it can use that info to give you more functionality. For example, if Metabase knows that you have an aggregation in your query, it can give you an option to disaggregate the results \- so, to [drill down](../../querying-and-dashboards/questions/drill-through.html) to individual records; or, if Metabase sees that you’re filtering on a date column, it can give you a calendar widget; if it notices that you’re grouping by a categorical variable, it can automatically build a bar chart with those categories.
+اگر از سازنده کوئری استفاده کنید، با این حال، متابیس دقیقاً می‌داند چه اتفاقی در پرس‌وجوی شما می‌افتد - کدام جداول درگیر هستند، انواع ستون چیست، چه عملیاتی انجام می‌دهید و کدام ترتیب - و می‌تواند از آن اطلاعات برای دادن عملکرد بیشتر به شما استفاده کند. به عنوان مثال، اگر متابیس بداند که یک تجمیع در پرس‌وجوی شما دارید، می‌تواند گزینه‌ای برای disaggregate کردن نتایج به شما بدهد - پس، برای [drill down](../../querying-and-dashboards/questions/drill-through.html) به رکوردهای فردی؛ یا، اگر متابیس ببیند که روی یک ستون تاریخ فیلتر می‌کنید، می‌تواند یک widget تقویم به شما بدهد؛ اگر متوجه شود که بر اساس یک متغیر دسته‌ای گروه‌بندی می‌کنید، می‌تواند به طور خودکار یک نمودار میله‌ای با آن دسته‌ها بسازد.
 
-![Bar chart with categories, and a calendar filter widget](../../../images/metabase-and-your-db/bar-chart-and-filter.png)
+![نمودار میله‌ای با دسته‌ها، و یک widget فیلتر تقویم](../../../images/metabase-and-your-db/bar-chart-and-filter.png)
 
-All these button clicks in the query builder translate into SQL that’s sent to your database \(and you can [see the SQL that it generates](../../../../docs/latest/questions/query-builder/editor.html#viewing-the-native-query-that-powers-your-question)\) but having access to each individual query element is what makes much of the Metabase magic happen.
+همه این کلیک‌های دکمه در سازنده کوئری به SQL ترجمه می‌شوند که به پایگاه داده شما فرستاده می‌شود (و می‌توانید [SQL تولید شده را ببینید](../../../../docs/latest/questions/query-builder/editor.html#viewing-the-native-query-that-powers-your-question)) اما داشتن دسترسی به هر عنصر پرس‌وجوی فردی چیزی است که بسیاری از جادوی متابیس را ممکن می‌کند.
 
-But now you might ask: but if Metabase doesn’t store my data, how does it *know* that I have a date column, or what categories I have?
+اما حالا ممکن است بپرسید: اما اگر متابیس داده من را ذخیره نمی‌کند، چگونه *می‌داند* که یک ستون تاریخ دارم، یا چه دسته‌هایی دارم؟
 
-## How Metabase knows about your data
+## متابیس چگونه درباره داده شما می‌داند
 
-Metabase uses [syncs](../../../../docs/latest/databases/sync-scan.html#how-database-syncs-work) to learn about your database schema: stuff like what tables are in the db, what are their columns and types, etc. Syncs are still, down on the basic level, queries that Metabase sends and your database executes, but it’s a special kind of query: instead of returning the data itself, these queries return metadata.
+متابیس از [syncs](../../../../docs/latest/databases/sync-scan.html#how-database-syncs-work) برای یادگیری درباره schema پایگاه داده شما استفاده می‌کند: چیزهایی مثل اینکه چه جداولی در db هستند، ستون‌ها و انواع آن‌ها چیست، و غیره. Syncs هنوز، در سطح پایه، پرس‌وجوهایی هستند که متابیس می‌فرستد و پایگاه داده شما اجرا می‌کند، اما نوع خاصی از پرس‌وجو است: به جای برگرداندن خود داده، این پرس‌وجوها فراداده را برمی‌گردانند.
 
-Metabase also runs [scans](../../../../docs/latest/databases/sync-scan.html#how-database-scans-work) to take samples of values in columns. This allows Metabase to give you stuff like dropdown options in filters.
+متابیس همچنین [scans](../../../../docs/latest/databases/sync-scan.html#how-database-scans-work) را اجرا می‌کند تا نمونه‌هایی از مقادیر در ستون‌ها بگیرد. این به متابیس اجازه می‌دهد چیزهایی مثل گزینه‌های dropdown در فیلترها را به شما بدهد.
 
-![Filter dropdown](../../../images/metabase-and-your-db/filter-dropdown.png)
+![فیلتر dropdown](../../../images/metabase-and-your-db/filter-dropdown.png)
 
-Worth noting that Metabase only takes *samples* from columns, it doesn’t store complete columns \- they stay in your database. And it only scans fields that people use \(e.g., the values for a field used in a filter on a dashboard\). You can also turn these syncs off.
+قابل توجه است که متابیس فقط *نمونه‌هایی* از ستون‌ها می‌گیرد، ستون‌های کامل را ذخیره نمی‌کند - آن‌ها در پایگاه داده شما می‌مانند. و فقط فیلدهایی را scan می‌کند که مردم استفاده می‌کنند (مثلاً، مقادیر برای یک فیلد استفاده شده در یک فیلتر روی یک داشبورد). همچنین می‌توانید این syncs را خاموش کنید.
 
-Because Metabase needs to know information about your data *before* you send a query to your database query \(so that it could give you a calendar widget for a date column\), it needs to store this info somewhere and update it periodically. That place is the Metabase *application database*.
+چون متابیس نیاز دارد اطلاعات درباره داده شما را *قبل از* فرستادن یک پرس‌وجو به پایگاه داده شما بداند (تا بتواند یک widget تقویم برای یک ستون تاریخ به شما بدهد)، نیاز دارد این اطلاعات را جایی ذخیره کند و به طور دوره‌ای به‌روزرسانی کند. آن مکان پایگاه داده *برنامه متابیس* است.
 
-## Metabase application database
+## پایگاه داده برنامه متابیس
 
-Metabase’s [application database](../../../../docs/latest/installation-and-operation/configuring-application-database.html) is a database \(separate from the databases you connect Metabase to\) where Metabase keeps all of its app data: people’s accounts, settings, saved questions, logs \- as well as the metadata about your connected databases \(like columns and their types\).
+[پایگاه داده برنامه](../../../../docs/latest/installation-and-operation/configuring-application-database.html) متابیس یک پایگاه داده (جدا از پایگاه‌های داده‌ای که متابیس را به آن‌ها متصل می‌کنید) است که متابیس همه داده‌های برنامه خود را در آن نگه می‌دارد: حساب‌های مردم، تنظیمات، سؤال‌های ذخیره شده، لاگ‌ها - و همچنین فراداده درباره پایگاه‌های داده متصل شما (مثل ستون‌ها و انواع آن‌ها).
 
-When you build a query the query builder, Metabase can look up the information about your data in the application database, use that information to give you filter widgets, charts types, and drill downs.
+وقتی یک پرس‌وجو در سازنده کوئری می‌سازید، متابیس می‌تواند اطلاعات درباره داده شما را در پایگاه داده برنامه جستجو کند، از آن اطلاعات برای دادن widgetهای فیلتر، انواع نمودار، و drill downs استفاده کند.
 
-\(If you’re on Metabase Cloud, you never have to think about the application database \- Metabase Cloud handles it for you. But if you’re self\-hosting, you’ll need to provision a separate database to serve as an application database.\)
+(اگر در متابیس کلود هستید، هرگز نیاز به فکر کردن درباره پایگاه داده برنامه ندارید - متابیس کلود آن را برای شما handle می‌کند. اما اگر self-hosting می‌کنید، نیاز دارید یک پایگاه داده جداگانه برای خدمت به عنوان یک پایگاه داده برنامه provision کنید.)
 
-## Caching query results
+## Cache کردن نتایج پرس‌وجو
 
-Maybe there’s a dashboard that everyone on your team looks at regularly, like a dashboard with company metrics. Each time someone opens the dashboard, Metabase will send the queries to database, make the database execute them, and retrieve the results. But if the results don’t change frequently \- for example, maybe you’re displaying quarterly metrics that only change once every three months \- there’s no need to make the database recompute these numbers every day.
+شاید یک داشبورد وجود دارد که همه در تیم شما به طور منظم به آن نگاه می‌کنند، مثل یک داشبورد با معیارهای شرکت. هر بار که کسی داشبورد را باز می‌کند، متابیس پرس‌وجوها را به پایگاه داده می‌فرستد، پایگاه داده را وادار به اجرای آن‌ها می‌کند، و نتایج را بازیابی می‌کند. اما اگر نتایج به طور مکرر تغییر نمی‌کنند - به عنوان مثال، شاید معیارهای سه‌ماهه را نمایش می‌دهید که فقط هر سه ماه یک بار تغییر می‌کنند - نیازی نیست پایگاه داده این اعداد را هر روز دوباره محاسبه کند.
 
-You can tell Metabase to [cache results](../../../../docs/latest/configuring-metabase/caching.html) in its application database \(not your connected database\). This way, when someone goes to the cached dashboard, the dashboard will load faster because your database will just return the pre\-computed results to Metabase.
+می‌توانید به متابیس بگویید [نتایج را cache کند](../../../../docs/latest/configuring-metabase/caching.html) در پایگاه داده برنامه خود (نه پایگاه داده متصل شما). به این ترتیب، وقتی کسی به داشبورد cache شده می‌رود، داشبورد سریع‌تر بارگذاری می‌شود چون پایگاه داده شما فقط نتایج از پیش محاسبه شده را به متابیس برمی‌گرداند.
 
-Metabase will cache *results only*. So for example, if you query computes the number of items sold last month, Metabase will cache only *that number*, and not data about the items. Your data is still in your database.
+متابیس فقط *نتایج* را cache می‌کند. پس به عنوان مثال، اگر پرس‌وجوی شما تعداد آیتم‌های فروخته شده ماه گذشته را محاسبه می‌کند، متابیس فقط *آن عدد* را cache می‌کند، و نه داده درباره آیتم‌ها. داده شما هنوز در پایگاه داده شما است.
 
-## Persisting models back to your database
+## Persist کردن مدل‌ها به پایگاه داده شما
 
-Metabase has [models](../../getting-started/models.html) \- derived datasets that you build inside Metabase to make it easier for people to ask questions. To build a model, you write a query \(either in SQL or using the query builder\), and then people can use that model as a data source as if it were a table.
+متابیس [مدل‌ها](../../getting-started/models.html) دارد - مجموعه داده‌های مشتق شده که در داخل متابیس می‌سازید تا آسان‌تر کردن پرسیدن سؤال برای مردم. برای ساخت یک مدل، یک پرس‌وجو می‌نویسید (یا در SQL یا با استفاده از سازنده کوئری)، و سپس مردم می‌توانند از آن مدل به عنوان یک منبع داده استفاده کنند گویی که یک جدول است.
 
-Because models are built from queries, Metabase needs to do some additional processing whenever someone asks a question based on a model. For example, if someone asks for the count of orders in the Orders model, the query that’s sent to the database is more complicated than just `SELECT COUNT(*) FROM orders` because the Orders model is itself defined by a query.
+چون مدل‌ها از پرس‌وجوها ساخته می‌شوند، متابیس نیاز دارد مقداری پردازش اضافی انجام دهد هر زمان که کسی سؤالی بر اساس یک مدل می‌پرسد. به عنوان مثال، اگر کسی تعداد سفارش‌ها در مدل Orders را بپرسد، پرس‌وجویی که به پایگاه داده فرستاده می‌شود پیچیده‌تر از فقط `SELECT COUNT(*) FROM orders` است چون مدل Orders خودش با یک پرس‌وجو تعریف شده است.
 
-This can get expensive and time\-consuming for large models, so for some databases, you can turn on [model persistence](../../../../docs/latest/data-modeling/model-persistence.html), which is where Metabase stores these models in your database as real tables. So for example, if you persist your Orders model, then Metabase will create an actual `orders` table in your database \(well, it won’t be called `orders` exactly, but you get the point\) and whenever someone asks for the count of orders in the Orders model, your database can just return that pre\-computed table.
+این می‌تواند برای مدل‌های بزرگ گران و زمان‌بر شود، پس برای برخی پایگاه‌های داده، می‌توانید [persist مدل](../../../../docs/latest/data-modeling/model-persistence.html) را روشن کنید، که جایی است که متابیس این مدل‌ها را در پایگاه داده شما به عنوان جداول واقعی ذخیره می‌کند. پس به عنوان مثال، اگر مدل Orders خود را persist کنید، سپس متابیس یک جدول واقعی `orders` در پایگاه داده شما ایجاد می‌کند (خوب، دقیقاً `orders` نامیده نمی‌شود، اما نکته را می‌گیرید) و هر زمان که کسی تعداد سفارش‌ها در مدل Orders را بپرسد، پایگاه داده شما می‌تواند فقط آن جدول از پیش محاسبه شده را برگرداند.
 
-## Next steps
+## مراحل بعدی
 
-- [Adding and managing database](../../../../docs/latest/databases/connecting.html)
-- [Syncing and scanning databases](../../../../docs/latest/databases/sync-scan.html)
-- [Configuring Metabase application database](../../../../docs/latest/installation-and-operation/configuring-application-database.html)
-- [Caching query results](../../../../docs/latest/configuring-metabase/caching.html)
-- [Model persistence](../../../../docs/latest/data-modeling/model-persistence.html)
+- [افزودن و مدیریت پایگاه داده](../../../../docs/latest/databases/connecting.html)
+- [Sync و scan کردن پایگاه‌های داده](../../../../docs/latest/databases/sync-scan.html)
+- [پیکربندی پایگاه داده برنامه متابیس](../../../../docs/latest/installation-and-operation/configuring-application-database.html)
+- [Cache کردن نتایج پرس‌وجو](../../../../docs/latest/configuring-metabase/caching.html)
+- [Persist مدل](../../../../docs/latest/data-modeling/model-persistence.html)
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](guide.html)
 [
       
         
         
+
       
       
+        
         
 
       

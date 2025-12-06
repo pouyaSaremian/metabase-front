@@ -1,43 +1,41 @@
 ---
-
-
-title: "Ordering bars in a chart"
-description: "A simple trick to preserve the order you want the bars to appear in a chart."
+title: "مرتب‌سازی میله‌ها در یک نمودار"
+description: "یک ترفند ساده برای حفظ ترتیبی که می‌خواهید میله‌ها در یک نمودار ظاهر شوند."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/sql-in-metabase/sql-tricks-ordering-charts
   - /learn/sql-questions/sql-tricks-ordering-charts
 toc:
   - id: "ordering-bars-in-a-chart"
-    title: "Ordering bars in a chart"
+    title: "مرتب‌سازی میله‌ها در یک نمودار"
     level: 1
     href: "#ordering-bars-in-a-chart"
   - id: "example-of-sorting-using-a-case-expression"
-    title: "Example of sorting using a CASE expression"
+    title: "مثال مرتب‌سازی با استفاده از یک عبارت CASE"
     level: 2
     href: "#example-of-sorting-using-a-case-expression"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Visualizing data"
+  - title: "تجسم داده"
     href: "../visualization.html"
 ---
 
-# Ordering bars in a chart
+# مرتب‌سازی میله‌ها در یک نمودار
 
-A simple trick to preserve the order you want the bars to appear in a chart.
+یک ترفند ساده برای حفظ ترتیبی که می‌خواهید میله‌ها در یک نمودار ظاهر شوند.
 
-Here’s the problem: you’re writing a query, and you want to keep the results sorted on a bar or funnel chart, but the values the query returns screw up the ordering.
+مشکل اینجا: یک پرس‌وجو می‌نویسید، و می‌خواهید نتایج را روی یک نمودار میله یا funnel مرتب نگه دارید، اما مقادیری که پرس‌وجو برمی‌گرداند ترتیب را به هم می‌زند.
 
-For example, let’s say you want to order something that doesn’t sort very well, like if you had four different steps labeled “First”, “Second”, “Third”, “Fourth” and wanted to sort those in their semantic order, regardless of whatever their corresponding values are. Metabase \(or whatever tool you’re using\) would sort those values as strings \(i.e., they would get sorted alphabetically, not semantically, which wouldn’t make much sense: “First”, “Fourth”, “Second”, “Third”\).
+به عنوان مثال، بگویید می‌خواهید چیزی که خیلی خوب مرتب نمی‌شود را مرتب کنید، مثل اگر چهار مرحله مختلف با برچسب "First"، "Second"، "Third"، "Fourth" داشتید و می‌خواستید آن‌ها را به ترتیب معنایی مرتب کنید، بدون توجه به هر مقدار متناظری که دارند. متابیس (یا هر ابزاری که استفاده می‌کنید) آن مقادیر را به عنوان رشته مرتب می‌کند (یعنی، به ترتیب حروف الفبا مرتب می‌شوند، نه معنایی، که خیلی منطقی نیست: "First"، "Fourth"، "Second"، "Third").
 
-Here’s a trick for rearranging the chart to specify the order you want.
+در اینجا یک ترفند برای rearranging نمودار برای مشخص کردن ترتیبی که می‌خواهید.
 
-1. Write your query however you’re going to write it \(following [best practices](../../../sql/working-with-sql/sql-best-practices.html) , of course\).
-2. Assuming you want to order by the values in a column called `step` , at the end of the query, use a `CASE` expression to define the order for the values in the `step` column.
+1. پرس‌وجوی خود را هر طور که می‌خواهید بنویسید (طبیعتاً [بهترین روش‌ها](../../../sql/working-with-sql/sql-best-practices.html) را دنبال کنید).
+2. با فرض اینکه می‌خواهید بر اساس مقادیر در یک ستون به نام `step` مرتب کنید، در انتهای پرس‌وجو، از یک عبارت `CASE` برای تعریف ترتیب مقادیر در ستون `step` استفاده کنید.
 
-```
+```sql
 ORDER BY
     CASE
         WHEN step = 'First' THEN 1
@@ -45,42 +43,42 @@ ORDER BY
         WHEN step = 'Third' THEN 3
         WHEN step = 'Fourth' THEN  4
     END
-
 ```
 
-## Example of sorting using a CASE expression
+## مثال مرتب‌سازی با استفاده از یک عبارت CASE
 
-![Using a CASE expression to enforce the order of bars on a chart.](../../../images/sql-case/case-expression.png)
+![استفاده از یک عبارت CASE برای enforce کردن ترتیب میله‌ها روی یک نمودار.](../../../images/sql-case/case-expression.png)
 
-Here’s an example that uses the Sample Database included with Metabase that you can try out for yourself. Let’s say we want to see the number of orders per product category, but we need to sort them like so: Widget, Gizmo, Gadget, Doohickey. Here’s the code with the case statement:
+در اینجا مثالی که از پایگاه داده نمونه شامل شده با متابیس استفاده می‌کند که می‌توانید خودتان امتحان کنید. بگویید می‌خواهیم تعداد سفارش‌ها در هر دسته محصول را ببینیم، اما نیاز داریم آن‌ها را مثل این مرتب کنیم: Widget، Gizmo، Gadget، Doohickey. در اینجا کد با statement case:
 
-```
--- We want to return two columns, ordered by products.category
+```sql
+-- می‌خواهیم دو ستون برگردانیم، مرتب شده بر اساس products.category
 SELECT products.category,
        Count(*)
 FROM   orders
        LEFT JOIN products
               ON orders.product_id = products.id
 GROUP  BY products.category
--- The CASE statement will assign a new value to sort by
+-- عبارت CASE یک مقدار جدید برای مرتب‌سازی assign می‌کند
 ORDER  BY CASE
             WHEN products.category = 'Widget' THEN 1
             WHEN products.category = 'Gizmo' THEN 2
             WHEN products.category = 'Gadget' THEN 3
             WHEN products.category = 'Doohickey' THEN 4
           END
-
 ```
 
-This trick is especially useful with [funnel charts](../../../../docs/v0.54/questions/visualizations/funnel.html) when you need to preserve the sequence.
+این ترفند به خصوص با [نمودارهای funnel](../../../../docs/v0.54/questions/visualizations/funnel.html) زمانی که نیاز به حفظ sequence دارید مفید است.
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](../visualization/histograms.html)

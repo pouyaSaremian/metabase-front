@@ -1,226 +1,223 @@
 ---
-
-
-title: "Tutorial: Joins in Metabase"
-description: "How to join tables in Metabase using the notebook editor in simple and custom questions."
+title: "آموزش: Joinها در متابیس"
+description: "نحوه join کردن جداول در متابیس با استفاده از ویرایشگر notebook در سؤال‌های ساده و سفارشی."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/questions/joins-in-metabase
   - /learn/questions/joins-in-metabase
 toc:
   - id: "tutorial-joins-in-metabase"
-    title: "Tutorial: Joins in Metabase"
+    title: "آموزش: Joinها در متابیس"
     level: 1
     href: "#tutorial-joins-in-metabase"
   - id: "automatic-joins"
-    title: "Automatic joins"
+    title: "Joinهای خودکار"
     level: 2
     href: "#automatic-joins"
   - id: "example-explicit-join"
-    title: "Example explicit join"
+    title: "مثال join صریح"
     level: 2
     href: "#example-explicit-join"
   - id: "relational-databases"
-    title: "Relational databases"
+    title: "پایگاه‌های داده رابطه‌ای"
     level: 2
     href: "#relational-databases"
   - id: "the-keys-to-joins"
-    title: "The keys to joins"
+    title: "کلیدهای join"
     level: 2
     href: "#the-keys-to-joins"
   - id: "multiple-joins"
-    title: "Multiple joins"
+    title: "Joinهای چندگانه"
     level: 2
     href: "#multiple-joins"
   - id: "joins-with-multiple-conditions"
-    title: "Joins with multiple conditions"
+    title: "Joinها با چندین شرط"
     level: 3
     href: "#joins-with-multiple-conditions"
   - id: "column-selection"
-    title: "Column selection"
+    title: "انتخاب ستون"
     level: 2
     href: "#column-selection"
   - id: "related-reading"
-    title: "Related reading"
+    title: "مطالعه مرتبط"
     level: 2
     href: "#related-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Asking questions"
+  - title: "پرسیدن سؤال‌ها"
     href: "../questions.html"
 ---
 
-# Tutorial: Joins in Metabase
+# آموزش: Joinها در متابیس
 
-How to join tables in Metabase using the notebook editor in simple and custom questions.
+نحوه join کردن جداول در متابیس با استفاده از ویرایشگر notebook در سؤال‌های ساده و سفارشی.
 
-Joins are a fact of life when it comes to analyzing data, and with Metabase we try to make getting the answers to your questions as easy possible—even if that requires some more complex tactics. In this article, we’ll cover how to join tables in Metabase using the query builder, and give some context on relational databases, tables, and keys, to give you a better understanding of how joins work.
+Joinها یک واقعیت زندگی وقتی نوبت به تحلیل داده می‌رسد هستند، و با متابیس سعی می‌کنیم دریافت پاسخ‌ها به سؤال‌های شما را تا حد ممکن آسان کنیم—حتی اگر نیاز به تاکتیک‌های پیچیده‌تر داشته باشد. در این مقاله، نحوه join کردن جداول در متابیس با استفاده از query builder را پوشش می‌دهیم، و مقداری زمینه درباره پایگاه‌های داده رابطه‌ای، جداول، و کلیدها ارائه می‌دهیم، تا درک بهتری از نحوه کار joinها به شما بدهیم.
 
-## Automatic joins
+## Joinهای خودکار
 
-Joins allow you to combine data from multiple tables. Where possible, Metabase makes those connections for you, making it easy for people to work with data across multiple tables. You have to have [foreign key](../../../../glossary/foreign-key.html) relationships defined in your [data model](../../../../glossary/data-model.html) to allow Metabase to detect those relationships and connect those tables in the data model. If those foreign keys are not configured, administrators can always use the [Data Model](../../../../docs/latest/data-modeling/metadata-editing.html) section to specify those relationships.
+Joinها به شما اجازه ترکیب داده از چندین جدول را می‌دهند. جایی که ممکن است، متابیس آن اتصال‌ها را برای شما انجام می‌دهد، که کار با داده در چندین جدول را برای مردم آسان می‌کند. باید روابط [foreign key](../../../../glossary/foreign-key.html) در [مدل داده](../../../../glossary/data-model.html) خود تعریف شده باشند تا متابیس بتواند آن روابط را تشخیص دهد و آن جداول را در مدل داده متصل کند. اگر آن foreign keyها پیکربندی نشده باشند، adminها همیشه می‌توانند از بخش [Data Model](../../../../docs/latest/data-modeling/metadata-editing.html) برای مشخص کردن آن روابط استفاده کنند.
 
-We’ll cover keys in depth below, but for now, let’s see an implicit join in action. We’ll use the [Sample Database](../../../../glossary/sample-database.html) included with Metabase as our data so you can try it out for yourself.
+در زیر به عمق کلیدها می‌پردازیم، اما برای حالا، بیایید یک join ضمنی را در عمل ببینیم. از [پایگاه داده نمونه](../../../../glossary/sample-database.html) شامل شده با متابیس به عنوان داده خود استفاده می‌کنیم تا بتوانید خودتان امتحان کنید.
 
-- From the top navigation bar, select **\+ New** .
-- Choose **Question** .
-- Select **Raw data** \> **Sample Database** as your data source.
-- Then choose the `Orders` table.
-- Select **Visualize** , and Metabase will display a list of orders from the `Orders` table.
-- Click on the **Settings button** at the bottom left of the screen. Metabase will slide out a sidebar of **Table options** and present you with a list of columns to choose from.
+- از نوار ناوبری بالا، **+ New** را انتخاب کنید.
+- **Question** را انتخاب کنید.
+- **Raw data** > **Sample Database** را به عنوان منبع داده خود انتخاب کنید.
+- سپس جدول `Orders` را انتخاب کنید.
+- **Visualize** را انتخاب کنید، و متابیس فهرستی از سفارش‌ها از جدول `Orders` را نمایش می‌دهد.
+- روی **دکمه Settings** در پایین سمت چپ صفحه کلیک کنید. متابیس یک sidebar از **گزینه‌های Table** را slide می‌کند و فهرستی از ستون‌ها برای انتخاب به شما ارائه می‌دهد.
 
-![Orders table with the Settings sidebar open to the Table options section. You can add, remove, and edit columns, including More columns from tables that Metabase can automatically join to the Orders table.](../../../images/joins-in-metabase/add-column-join-table.png)
+![جدول Orders با sidebar Settings باز به بخش Table options. می‌توانید ستون‌ها را اضافه، حذف، و ویرایش کنید، شامل ستون‌های بیشتر از جداولی که متابیس می‌تواند به طور خودکار به جدول Orders join کند.](../../../images/joins-in-metabase/add-column-join-table.png)
 
-The **Visible columns** are the columns currently in the query of the question, which in this case includes all the columns from the `Orders` table. You can add and remove columns, and change column settings \(which differ depending on the column’s field type\).
+**ستون‌های Visible** ستون‌های فعلی در پرس‌وجوی سؤال هستند، که در این مورد شامل همه ستون‌ها از جدول `Orders` است. می‌توانید ستون‌ها را اضافه و حذف کنید، و تنظیمات ستون را تغییر دهید (که بسته به نوع فیلد ستون متفاوت است).
 
-In addition to the **Visible columns** you’ll see a section called **More columns**. This section will include columns from two other tables: `Products` and `People`. \(We’ll get to why the `Reviews` table is conspicuously absent later in the article\).
+علاوه بر **ستون‌های Visible** بخشی به نام **More columns** را می‌بینید. این بخش شامل ستون‌ها از دو جدول دیگر خواهد بود: `Products` و `People`. (بعداً در مقاله به اینکه چرا جدول `Reviews` به طور برجسته غایب است می‌پردازیم).
 
-Metabase has already “joined” the `Orders` table to the `Products` and `People` table, which allows you to add columns from these tables.
+متابیس از قبل جدول `Orders` را به جداول `Products` و `People` "join" کرده است، که به شما اجازه افزودن ستون‌ها از این جداول را می‌دهد.
 
-For example, from this **Settings sidebar**, scroll down to find the `Products` table, and click on the `+` next to the `CATEGORY` column to add it to **Visible columns**. You’ll see a new column, `Products → Category`, in the visible columns, with the `PRODUCT →` prefix indicating that the column is not native to the `Orders` table.
+به عنوان مثال، از این **Sidebar Settings**، پایین اسکرول کنید تا جدول `Products` را پیدا کنید، و روی `+` کنار ستون `CATEGORY` کلیک کنید تا آن را به **ستون‌های Visible** اضافه کنید. یک ستون جدید، `Products → Category`، در ستون‌های visible، با پیشوند `PRODUCT →` که نشان می‌دهد ستون native به جدول `Orders` نیست، می‌بینید.
 
-By clicking on a value in an ID column and selecting **View details**, you can check to see which tables are connected to that data. For example, from the `Orders` table, you can view the details on an entry in the `Product ID` column. Metabase tells us that the product, “Lightweight Wool Computer” \(ID: 146\), is connected to the `Orders` table and the `Reviews` table.
+با کلیک روی یک مقدار در یک ستون ID و انتخاب **View details**، می‌توانید بررسی کنید کدام جداول به آن داده متصل هستند. به عنوان مثال، از جدول `Orders`، می‌توانید جزئیات یک ورودی در ستون `Product ID` را مشاهده کنید. متابیس به ما می‌گوید که محصول، "Lightweight Wool Computer" (ID: 146)، به جدول `Orders` و جدول `Reviews` متصل است.
 
-![Clicking on a value in an ID column and selecting View details will show you, among other data, which tables the record is connected to.](../../../images/joins-in-metabase/lightweight-wool-computer.png)
+![کلیک روی یک مقدار در یک ستون ID و انتخاب View details به شما، در میان سایر داده، نشان می‌دهد کدام جداول رکورد به آن‌ها متصل است.](../../../images/joins-in-metabase/lightweight-wool-computer.png)
 
-Note that the actual product ID value is 146, not “Lightweight Wool Computer.” Metabase allows administrators to [change how column values are displayed](../../../../docs/latest/data-modeling/metadata-editing.html#display-values).
+توجه کنید که مقدار واقعی product ID 146 است، نه "Lightweight Wool Computer." متابیس به adminها اجازه [تغییر نحوه نمایش مقادیر ستون](../../../../docs/latest/data-modeling/metadata-editing.html#display-values) را می‌دهد.
 
-![The field settings for the PRODUCT_ID field in the Orders table. Admins can use the Display values setting to display a human-readable title instead of an ID.](../../../images/joins-in-metabase/display-values.png)
+![تنظیمات فیلد برای فیلد PRODUCT_ID در جدول Orders. Adminها می‌توانند از تنظیم Display values برای نمایش یک عنوان قابل خواندن انسان به جای ID استفاده کنند.](../../../images/joins-in-metabase/display-values.png)
 
-When viewing the `Orders` table, the foreign key, `PRODUCT_ID`, displays the value from the `TITLE` column of the `Products` table.
+وقتی جدول `Orders` را مشاهده می‌کنید، foreign key، `PRODUCT_ID`، مقدار از ستون `TITLE` جدول `Products` را نمایش می‌دهد.
 
-We’ll [dig into keys below](#the-keys-to-joins), but first let’s take a look at an explicit join.
+[در زیر به کلیدها می‌پردازیم](#the-keys-to-joins)، اما ابتدا بیایید یک join صریح را ببینیم.
 
-## Example explicit join
+## مثال join صریح
 
-Let’s try a simple join. We’ll create a new question by clicking on **\+ New** \> **Question** \> **Raw Data** \> **Sample Database**. We’ll select the `Orders` table. In the **Data section**, click on the **join icon** to add another table.
+بیایید یک join ساده امتحان کنیم. یک سؤال جدید با کلیک روی **+ New** > **Question** > **Raw Data** > **Sample Database** ایجاد می‌کنیم. جدول `Orders` را انتخاب می‌کنیم. در بخش **Data**، روی **آیکون join** کلیک می‌کنیم تا جدول دیگری اضافه کنیم.
 
-![To add tables to your question, click on the join icon (the Venn Diagram).](../../../images/joins-in-metabase/join-icon.png)
+![برای افزودن جداول به سؤال خود، روی آیکون join (نمودار Venn) کلیک کنید.](../../../images/joins-in-metabase/join-icon.png)
 
-If we add the `Products` table, Metabase will automatically fill in the foreign key relationship, since it knows that the field, `PRODUCT_ID`, contains foreign keys that reference values in the `ID` column \(the [entity key](../../../../glossary/entity-key.html)\) of the `Products` table.
+اگر جدول `Products` را اضافه کنیم، متابیس به طور خودکار رابطه foreign key را پر می‌کند، چون می‌داند که فیلد، `PRODUCT_ID`، شامل foreign keyهایی است که به مقادیر در ستون `ID` ( [entity key](../../../../glossary/entity-key.html)) جدول `Products` ارجاع می‌دهند.
 
-![Joining the Orders table to the Products table by linking the foreign key (PRODUCT_ID) in the Orders table to the entity key (ID) in the Products table.](../../../images/joins-in-metabase/orders-and-products.png)
+![Join کردن جدول Orders به جدول Products با لینک کردن foreign key (PRODUCT_ID) در جدول Orders به entity key (ID) در جدول Products.](../../../images/joins-in-metabase/orders-and-products.png)
 
-For each row in the `Orders` table, use the value in the `PRODUCT_ID` column to find the corresponding row\(s\) with the same value in the `ID` column of the `Products` table, and return a new row with the values from the columns in both the `Orders` and `Products` tables.
+برای هر ردیف در جدول `Orders`، از مقدار در ستون `PRODUCT_ID` برای پیدا کردن ردیف(های) متناظر با همان مقدار در ستون `ID` جدول `Products` استفاده کنید، و یک ردیف جدید با مقادیر از ستون‌ها در هر دو جدول `Orders` و `Products` برگردانید.
 
-If you’re interested, here’s the basic SQL at work under the hood:
+اگر علاقه‌مند هستید، در اینجا SQL پایه در کار زیر hood:
 
-```
+```sql
 SELECT
   *
 FROM
   Orders
   LEFT JOIN Products ON Orders.PRODUCT_ID = Products.ID
-
 ```
 
-\(Note that if you convert the question to SQL, you’ll get a much more involved SQL query, but both queries return the same data.\)
+(توجه کنید که اگر سؤال را به SQL تبدیل کنید، یک پرس‌وجوی SQL بسیار پیچیده‌تر دریافت می‌کنید، اما هر دو پرس‌وجو همان داده را برمی‌گردانند.)
 
-You may have noticed in the question mode above that you couldn’t add columns from one of the tables in the Sample Database, the `Reviews` table. To understand why, we’ll need some background on relational databases.
+ممکن است در حالت سؤال بالا متوجه شده باشید که نمی‌توانستید ستون‌ها از یکی از جداول در پایگاه داده نمونه، جدول `Reviews` را اضافه کنید. برای فهمیدن چرا، نیاز به مقداری پس‌زمینه درباره پایگاه‌های داده رابطه‌ای داریم.
 
-## Relational databases
+## پایگاه‌های داده رابطه‌ای
 
-*Relational databases* \(like PostgreSQL and MySQL\) store data in tables \(relations\) that generally represent an entity of some kind, like orders or products. These tables comprise columns \(attributes of the entity\) and rows \(sometimes called records\). If you’ve ever worked with spreadsheet software before, a table is akin to a sheet with columns and rows.
+*پایگاه‌های داده رابطه‌ای* (مثل PostgreSQL و MySQL) داده را در جداول (روابط) ذخیره می‌کنند که به طور کلی یک entity از نوعی را نشان می‌دهند، مثل سفارش‌ها یا محصولات. این جداول شامل ستون‌ها (attributeهای entity) و ردیف‌ها (گاهی رکوردها نامیده می‌شوند) هستند. اگر قبلاً با نرم‌افزار spreadsheet کار کرده‌اید، یک جدول شبیه یک sheet با ستون‌ها و ردیف‌ها است.
 
 | Term | Description | Examples |
 | --- | --- | --- |
 | Table | Entity | Person, Order, Product |
 | Column | Attribute of that entity | Address, Description, ID |
-| Row | Instance of that attribute | CA, 7, “Lightweight Wool Computer” |
+| Row | Instance of that attribute | CA, 7, "Lightweight Wool Computer" |
 
-Some of these columns contain special attributes, called keys.
+برخی از این ستون‌ها شامل attributeهای خاص، به نام کلیدها هستند.
 
-## The keys to joins
+## کلیدهای join
 
-Each table has a special column that contains distinct keys, known as *entity keys* or *primary keys*, that uniquely identifies each row in the table. These columns typically contain ID numbers, and they can be automatically generated by the database, or by an application \(e.g., an employee ID\).
+هر جدول یک ستون خاص دارد که شامل کلیدهای متمایز، به نام *entity keyها* یا *primary keyها*، است که هر ردیف در جدول را به طور یکتا شناسایی می‌کند. این ستون‌ها به طور معمول شامل شماره‌های ID هستند، و می‌توانند به طور خودکار توسط پایگاه داده، یا توسط یک اپلیکیشن (مثلاً، یک employee ID) تولید شوند.
 
-A second type of key, known as a *foreign key*, stores a reference to the entity key of a row in another table. To join tables, you will use foreign and entity keys to tell the database how to combine data from multiple tables.
+نوع دوم کلید، به نام *foreign key*، یک ارجاع به entity key یک ردیف در جدول دیگر ذخیره می‌کند. برای join کردن جداول، از foreign keyها و entity keyها برای گفتن به پایگاه داده نحوه ترکیب داده از چندین جدول استفاده می‌کنید.
 
-Let’s use Metabase’s **Data Browser** to look at some keys with an example table in the Sample Database. From the top navigation bar in Metabase, go to **Browse Data**, and click on the Sample Database. You’ll see cards for each table. Hover over a card to see additional options, and click on the **book icon** that appears next to **Learn about this table**.
+بیایید از **Data Browser** متابیس برای نگاه کردن به برخی کلیدها با یک جدول نمونه در پایگاه داده نمونه استفاده کنیم. از نوار ناوبری بالا در متابیس، به **Browse Data** بروید، و روی پایگاه داده نمونه کلیک کنید. کارت‌هایی برای هر جدول می‌بینید. روی یک کارت hover کنید تا گزینه‌های اضافی را ببینید، و روی **آیکون کتاب** که کنار **Learn about this table** ظاهر می‌شود کلیک کنید.
 
-![Go to Browse Data from the top navigation bar, select Sample Database, and click on the book icon to learn about this table.](../../../images/joins-in-metabase/learn-about-this-table.png)
+![به Browse Data از نوار ناوبری بالا بروید، پایگاه داده نمونه را انتخاب کنید، و روی آیکون کتاب کلیک کنید تا درباره این جدول یاد بگیرید.](../../../images/joins-in-metabase/learn-about-this-table.png)
 
-This table reference page contains several tabs:
+این صفحه مرجع جدول شامل چندین تب است:
 
 - Details
 - Fields in this table
 - Questions about this table
-- X\-ray this table
+- X-ray this table
 
-Select the **Fields in this table tab** to view the field name, field type, and data type for each field in the table.
+تب **Fields in this table** را انتخاب کنید تا نام فیلد، نوع فیلد، و نوع داده برای هر فیلد در جدول را مشاهده کنید.
 
-![Select Fields in this table tab to view the field name, field type, and data type. The Orders table contains an entity key (ID) and two foreign keys, USER_ID and PRODUCT_ID.](../../../images/joins-in-metabase/fields-in-this-table.png)
+![تب Fields in this table را انتخاب کنید تا نام فیلد، نوع فیلد، و نوع داده را مشاهده کنید. جدول Orders شامل یک entity key (ID) و دو foreign key، USER_ID و PRODUCT_ID است.](../../../images/joins-in-metabase/fields-in-this-table.png)
 
-The `Orders` table contains one entity key \(a.k.a. primary key\), `ID`, and two foreign keys: `USER_ID` and `PRODUCT_ID`:
+جدول `Orders` شامل یک entity key (a.k.a. primary key)، `ID`، و دو foreign key: `USER_ID` و `PRODUCT_ID` است:
 
-- The foreign key `USER_ID` is associated with the entity key `ID` of the `People` table.
-- The foreign key `PRODUCT_ID` is associated with the entity key `ID` of the `Products` table.
+- Foreign key `USER_ID` با entity key `ID` جدول `People` مرتبط است.
+- Foreign key `PRODUCT_ID` با entity key `ID` جدول `Products` مرتبط است.
 
-We can combine data from `Orders`, `People`, `Products` by joining on these keys. Joining simply directs Metabase to line up the records from one table, and use the foreign key values in each row to combine data from the other table by finding the corresponding row \(or rows\) with the matching entity key value.
+می‌توانیم داده از `Orders`، `People`، `Products` را با join کردن روی این کلیدها ترکیب کنیم. Join کردن به سادگی متابیس را هدایت می‌کند تا رکوردها از یک جدول را line up کند، و از مقادیر foreign key در هر ردیف برای ترکیب داده از جدول دیگر با پیدا کردن ردیف (یا ردیف‌های) متناظر با مقدار entity key matching استفاده کند.
 
-Metabase defaults to [left joins](../../../sql/working-with-sql/sql-join-types.html#which-sql-join-type-to-use).
+متابیس به طور پیش‌فرض به [left joinها](../../../sql/working-with-sql/sql-join-types.html#which-sql-join-type-to-use) می‌رود.
 
-## Multiple joins
+## Joinهای چندگانه
 
-With that context on tables, keys, and joins, let’s see if we can link the `Orders` table to the `Reviews` table. Stated generally: if our starting table \(the left table\) doesn’t contain a foreign key that references the table we want to join to, how would we go about joining them?
+با آن زمینه درباره جداول، کلیدها، و joinها، بیایید ببینیم آیا می‌توانیم جدول `Orders` را به جدول `Reviews` لینک کنیم. به طور کلی بیان شده: اگر جدول شروع ما (جدول چپ) شامل یک foreign key که به جدولی که می‌خواهیم join کنیم ارجاع می‌دهد نیست، چگونه به join کردن آن‌ها می‌پردازیم؟
 
-If we try to join the `Orders` table to the `Reviews` tables, Metabase won’t know what to do.
+اگر سعی کنیم جدول `Orders` را به جداول `Reviews` join کنیم، متابیس نمی‌داند چه کند.
 
-![If there is no foreign key relationship, Metabase won](../../../images/joins-in-metabase/orders-and-reviews.png)
+![اگر هیچ رابطه foreign key وجود نداشته باشد، متابیس نمی‌داند](../../../images/joins-in-metabase/orders-and-reviews.png)
 
-The `Orders` table lacks a foreign key for the `Reviews` table, which is why Metabase didn’t automatically connect the two tables.
+جدول `Orders` فاقد یک foreign key برای جدول `Reviews` است، که دلیل اینکه متابیس به طور خودکار دو جدول را متصل نکرد است.
 
-Let’s turn to the data browser to find out which foreign keys the `Reviews` table includes.
+بیایید به data browser برگردیم تا بفهمیم جدول `Reviews` کدام foreign keyها را شامل می‌شود.
 
-![The only foreign key in the Reviews table is PRODUCT_ID.](../../../images/joins-in-metabase/fields-in-reviews.png)
+![تنها foreign key در جدول Reviews PRODUCT_ID است.](../../../images/joins-in-metabase/fields-in-reviews.png)
 
-So, here’s our situation:
+پس، در اینجا وضعیت ما:
 
-- The `Orders` table has foreign keys to the `Products` and `People` tables.
-- The `Reviews` table has a foreign key to the `Products` table.
+- جدول `Orders` foreign keyهایی به جداول `Products` و `People` دارد.
+- جدول `Reviews` یک foreign key به جدول `Products` دارد.
 
-To connect the `Orders` table to the `Reviews` table, we’ll need to join them via the `Products` table. We’ll use a query builder question to specify the joins. Here’s our question:
+برای اتصال جدول `Orders` به جدول `Reviews`، نیاز به join کردن آن‌ها از طریق جدول `Products` داریم. از یک سؤال query builder برای مشخص کردن joinها استفاده می‌کنیم. در اینجا سؤال ما:
 
-![Joining the Orders table to the Reviews table via the Products table.](../../../images/joins-in-metabase/orders-products-reviews.png)
+![Join کردن جدول Orders به جدول Reviews از طریق جدول Products.](../../../images/joins-in-metabase/orders-products-reviews.png)
 
-Note that Metabase will show “Previous results” as the left table to join until you specify the keys. Once you tell Metabase to join the previous results on `Products.ID = Reviews.Product_ID`, Metabase will show the Products table left\-joined to the reviews table in the Join data section.
+توجه کنید که متابیس "Previous results" را به عنوان جدول چپ برای join نشان می‌دهد تا زمانی که کلیدها را مشخص کنید. وقتی به متابیس می‌گویید previous results را روی `Products.ID = Reviews.Product_ID` join کند، متابیس جدول Products را left-joined به جدول reviews در بخش Join data نشان می‌دهد.
 
-If you visualize the results, you’ll see a table of all of the columns from all three tables: `Orders`, `Products`, and `Reviews`. Note that because a single product can have multiple reviews, we’ll see multiple rows for the same product and order, one for each review.
+اگر نتایج را تجسم کنید، جدولی از همه ستون‌ها از هر سه جدول می‌بینید: `Orders`، `Products`، و `Reviews`. توجه کنید که چون یک محصول واحد می‌تواند چندین review داشته باشد، چندین ردیف برای همان محصول و سفارش می‌بینیم، یکی برای هر review.
 
-### Joins with multiple conditions
+### Joinها با چندین شرط
 
-Now let’s try adding multiple conditions to a join. This could be useful if you want to cut down on duplicate rows or express things about your data that a single condition join can’t. Let’s say we wanted to see all the orders for products that were placed in the same month we added that product to our inventory.
+حالا بیایید افزودن چندین شرط به یک join را امتحان کنیم. این می‌تواند مفید باشد اگر می‌خواهید ردیف‌های تکراری را کاهش دهید یا چیزهایی درباره داده خود بیان کنید که یک join شرط واحد نمی‌تواند. بگویید می‌خواستیم همه سفارش‌ها برای محصولاتی که در همان ماهی که آن محصول را به موجودی خود اضافه کردیم قرار داده شدند را ببینیم.
 
-Using the same example as above as a starting point, click the blue **\+** button next to your first condition to add another in the same join. You’ll want to use an [inner join](../../../sql/working-with-sql/sql-join-types.html#which-sql-join-type-to-use) here, as that will only return values that match in both tables.
+با استفاده از همان مثال بالا به عنوان نقطه شروع، روی دکمه **+** آبی کنار اولین شرط خود کلیک کنید تا دیگری در همان join اضافه کنید. می‌خواهید از یک [inner join](../../../sql/working-with-sql/sql-join-types.html#which-sql-join-type-to-use) اینجا استفاده کنید، چون فقط مقادیری که در هر دو جدول match می‌کنند را برمی‌گرداند.
 
-As you can see below, we’ve joined the `Orders` and `Products` tables on two columns, Product ID and creation date, so now we can see all of the orders placed in the same month that the product ordered was added to our inventory.
+همانطور که در زیر می‌بینید، جداول `Orders` و `Products` را روی دو ستون، Product ID و تاریخ ایجاد، join کردیم، پس حالا می‌توانیم همه سفارش‌های قرار داده شده در همان ماهی که محصول سفارش داده شده به موجودی ما اضافه شد را ببینیم.
 
-Note that while the `CREATED_AT` fields include full date and time information, these results indicate where the *months* match, rather than the exact timestamp.
+توجه کنید که در حالی که فیلدهای `CREATED_AT` شامل اطلاعات کامل تاریخ و زمان هستند، این نتایج نشان می‌دهند جایی که *ماه‌ها* match می‌کنند، نه timestamp دقیق.
 
-![Joining the Orders table to the Products table by linking the foreign key (PRODUCT_ID) in the Orders table to the entity key (ID) in the Products table <em>and</em> by creation date.](../../../images/joins-in-metabase/multiple-join-conditions.png)
+![Join کردن جدول Orders به جدول Products با لینک کردن foreign key (PRODUCT_ID) در جدول Orders به entity key (ID) در جدول Products <em>و</em> بر اساس تاریخ ایجاد.](../../../images/joins-in-metabase/multiple-join-conditions.png)
 
-## Column selection
+## انتخاب ستون
 
-In addition to joining our tables, we can be selective about which columns are visible in our question’s results. In the **Query Builder**, you can select the columns Metabase displays.
+علاوه بر join کردن جداول ما، می‌توانیم انتخابی درباره اینکه کدام ستون‌ها در نتایج سؤال ما visible هستند باشیم. در **Query Builder**، می‌توانید ستون‌هایی که متابیس نمایش می‌دهد را انتخاب کنید.
 
-![Selecting columns in the Query Builder.](../../../images/joins-in-metabase/select-columns-notebook-editor.png)
+![انتخاب ستون‌ها در Query Builder.](../../../images/joins-in-metabase/select-columns-notebook-editor.png)
 
-Once you’ve saved your question, you can also select the visible columns from the **Settings sidebar** as we did above.
+وقتی سؤال خود را ذخیره کردید، همچنین می‌توانید ستون‌های visible را از **Sidebar Settings** همانطور که در بالا انجام دادیم انتخاب کنید.
 
-![Click the Settings button to add or remove columns from your question.](../../../images/joins-in-metabase/column-options.png)
+![روی دکمه Settings کلیک کنید تا ستون‌ها را به سؤال خود اضافه یا حذف کنید.](../../../images/joins-in-metabase/column-options.png)
 
-You’ll notice that Metabase helpfully makes columns from the `People` table available to add as well, so you now have the full Sample Database at your disposal.
+متوجه می‌شوید که متابیس مفیدانه ستون‌ها از جدول `People` را نیز برای افزودن در دسترس می‌کند، پس حالا کل پایگاه داده نمونه در اختیار شماست.
 
-Have fun joining tables in your own datasets, and remember: if you get stuck, be sure to consult the data browser to learn which tables have the foreign keys you need to join them.
+از join کردن جداول در مجموعه داده خود لذت ببرید، و یادتان باشد: اگر گیر کردید، مطمئن شوید data browser را برای یادگیری اینکه کدام جداول foreign keyهایی که نیاز دارید برای join کردن آن‌ها دارید مشورت کنید.
 
-## Related reading
+## مطالعه مرتبط
 
-- [Docs: Asking questions](../../../../docs/latest/questions/introduction.html)
-- [Docs: Query builder](../../../../docs/latest/questions/introduction.html#query-builder)
-- [Tutorial: Custom expressions](custom-expressions.html)
-- [Docs: Metadata editing](../../../../docs/latest/data-modeling/metadata-editing.html)
+- [مستندات: پرسیدن سؤال](../../../../docs/latest/questions/introduction.html)
+- [مستندات: Query builder](../../../../docs/latest/questions/introduction.html#query-builder)
+- [آموزش: عبارات سفارشی](custom-expressions.html)
+- [مستندات: ویرایش متادیتا](../../../../docs/latest/data-modeling/metadata-editing.html)
 
 [
       
@@ -230,14 +227,17 @@ Have fun joining tables in your own datasets, and remember: if you get stuck, be
       
         
         
+
       
     ](custom-expressions.html)
 [
       
         
         
+
       
       
+        
         
 
       

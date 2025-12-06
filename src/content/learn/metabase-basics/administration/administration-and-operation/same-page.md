@@ -1,58 +1,56 @@
 ---
-
-
-title: "Keeping your analytics organized"
-description: "How to keep your analytics organized as the numbers of users, questions, and dashboards inevitably increases."
+title: "منظم نگه داشتن تحلیل شما"
+description: "نحوه منظم نگه داشتن تحلیل شما همانطور که تعداد کاربران، سؤال‌ها، و داشبوردها به طور اجتناب‌ناپذیری افزایش می‌یابد."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/same-page
   - /learn/administration/same-page
 toc:
   - id: "keeping-your-analytics-organized"
-    title: "Keeping your analytics organized"
+    title: "منظم نگه داشتن تحلیل شما"
     level: 1
     href: "#keeping-your-analytics-organized"
   - id: "the-problems-with-democratizing-analytics"
-    title: "The problems with democratizing analytics"
+    title: "مشکلات دموکراتیک کردن تحلیل"
     level: 2
     href: "#the-problems-with-democratizing-analytics"
   - id: "where-do-people-find-specific-definitions"
-    title: "Where do people find specific definitions?"
+    title: "مردم تعاریف خاص را کجا پیدا می‌کنند؟"
     level: 3
     href: "#where-do-people-find-specific-definitions"
   - id: "conflicting-definitions"
-    title: "Conflicting definitions"
+    title: "تعاریف متضاد"
     level: 3
     href: "#conflicting-definitions"
   - id: "re-definitions-or-which-is-the-canonical-definition"
-    title: "Re-definitions, or which is the canonical definition?"
+    title: "تعریف مجدد، یا کدام تعریف canonical است؟"
     level: 3
     href: "#re-definitions-or-which-is-the-canonical-definition"
   - id: "changing-definitions"
-    title: "Changing definitions"
+    title: "تعاریف در حال تغییر"
     level: 3
     href: "#changing-definitions"
   - id: "strategies-to-tame-the-chaos"
-    title: "Strategies to tame the chaos"
+    title: "استراتژی‌ها برای رام کردن هرج و مرج"
     level: 2
     href: "#strategies-to-tame-the-chaos"
   - id: "features"
-    title: "Features"
+    title: "ویژگی‌ها"
     level: 2
     href: "#features"
   - id: "models"
-    title: "Models"
+    title: "مدل‌ها"
     level: 3
     href: "#models"
   - id: "data-reference-and-descriptions"
-    title: "Data reference and descriptions"
+    title: "مرجع داده و توضیحات"
     level: 3
     href: "#data-reference-and-descriptions"
   - id: "events-and-timelines"
-    title: "Events and timelines"
+    title: "رویدادها و خطوط زمانی"
     level: 3
     href: "#events-and-timelines"
   - id: "segments-and-metrics"
-    title: "Segments and Metrics"
+    title: "بخش‌ها و معیارها"
     level: 3
     href: "#segments-and-metrics"
   - id: "snippets"
@@ -60,209 +58,216 @@ toc:
     level: 3
     href: "#snippets"
   - id: "collections"
-    title: "Collections"
+    title: "مجموعه‌ها"
     level: 3
     href: "#collections"
   - id: "official-collections"
-    title: "Official Collections"
+    title: "مجموعه‌های رسمی"
     level: 4
     href: "#official-collections"
   - id: "verified-items"
-    title: "Verified items"
+    title: "آیتم‌های تأیید شده"
     level: 3
     href: "#verified-items"
   - id: "processes"
-    title: "Processes"
+    title: "فرآیندها"
     level: 2
     href: "#processes"
   - id: "create-collections-for-each-department"
-    title: "Create collections for each department"
+    title: "ایجاد مجموعه‌ها برای هر بخش"
     level: 3
     href: "#create-collections-for-each-department"
   - id: "snippets-folders"
-    title: "Snippets folders"
+    title: "پوشه‌های snippets"
     level: 3
     href: "#snippets-folders"
   - id: "adopt-a-naming-convention"
-    title: "Adopt a naming convention"
+    title: "اتخاذ یک قرارداد نام‌گذاری"
     level: 3
     href: "#adopt-a-naming-convention"
   - id: "designate-collections-for-experimentation-and-works-in-progress"
-    title: "Designate collections for experimentation and works in progress"
+    title: "تعیین مجموعه‌ها برای آزمایش و کارهای در حال انجام"
     level: 3
     href: "#designate-collections-for-experimentation-and-works-in-progress"
   - id: "have-a-policy-on-when-to-archive-items"
-    title: "Have a policy on when to archive items"
+    title: "داشتن یک سیاست برای زمان بایگانی کردن آیتم‌ها"
     level: 3
     href: "#have-a-policy-on-when-to-archive-items"
   - id: "other-ideas-for-taming-chaos"
-    title: "Other ideas for taming chaos?"
+    title: "ایده‌های دیگر برای رام کردن هرج و مرج؟"
     level: 2
     href: "#other-ideas-for-taming-chaos"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# Keeping your analytics organized
+# منظم نگه داشتن تحلیل شما
 
-How to keep your analytics organized as the numbers of users, questions, and dashboards inevitably increases.
+نحوه منظم نگه داشتن تحلیل شما همانطور که تعداد کاربران، سؤال‌ها، و داشبوردها به طور اجتناب‌ناپذیری افزایش می‌یابد.
 
-If you want to stay competitive, you need to give people in your organization access to the data they need to make better decisions. The cost of this democratization of data, however, is the inevitable flood of analysis — which can make it difficult to know which analyses you can trust.
+اگر می‌خواهید رقابتی بمانید، نیاز دارید به مردم در سازمان خود دسترسی به داده‌ای که برای تصمیم‌گیری بهتر نیاز دارند بدهید. هزینه این دموکراتیک کردن داده، با این حال، سیل اجتناب‌ناپذیر تحلیل است — که می‌تواند دانستن اینکه کدام تحلیل‌ها قابل اعتماد هستند را دشوار کند.
 
-It’s important to understand that there is no cure to this problem. There will always be some level of analytical entropy to tame, but with the right tools and processes in place, you’ll be able to keep the inevitable chaos in check.
+مهم است که درک کنید هیچ درمانی برای این مشکل وجود ندارد. همیشه مقداری آنتروپی تحلیلی برای رام کردن وجود خواهد داشت، اما با ابزارها و فرآیندهای مناسب در جای خود، می‌توانید هرج و مرج اجتناب‌ناپذیر را تحت کنترل نگه دارید.
 
-## The problems with democratizing analytics
+## مشکلات دموکراتیک کردن تحلیل
 
-The core of these problems center on definitions: how exactly do we define business logic like revenue, lifetime value, churn, and so on? And by “definitions,” we mean generally any quantifiable concept that’s important to your organization. Not just *what* is X, but how do we *calculate* X? These are the terms by which you’ll measure your organization, and the more specifically \(and consistently\) you define them, the better.
+هسته این مشکلات بر تعاریف متمرکز است: چگونه دقیقاً منطق تجاری مثل درآمد، ارزش طول عمر، ریزش، و غیره را تعریف می‌کنیم؟ و با "تعاریف"، به طور کلی هر مفهوم قابل اندازه‌گیری که برای سازمان شما مهم است را می‌گوییم. نه فقط *چیست* X، بلکه چگونه X را *محاسبه* می‌کنیم؟ این‌ها اصطلاحاتی هستند که با آن‌ها سازمان خود را اندازه می‌گیرید، و هر چه آن‌ها را خاص‌تر (و سازگارتر) تعریف کنید، بهتر است.
 
-Here are some of the problems with definitions that we’ll need to guard against:
+در اینجا برخی از مشکلات با تعاریف که باید از آن‌ها محافظت کنیم:
 
-### Where do people find specific definitions?
+### مردم تعاریف خاص را کجا پیدا می‌کنند؟
 
-Once you start slicing your data to look at your organization from different angles, definitions will proliferate: revenue, churn rate, expected lifetime value, and so on. If we want to understand why our customers are churning, which definitions should we consult? Which *new* definitions do we need to define? And \(literally\) where can I find these official definitions in Metabase?
+وقتی شروع به slice کردن داده خود برای نگاه به سازمان از زوایای مختلف می‌کنید، تعاریف تکثیر می‌شوند: درآمد، نرخ ریزش، ارزش طول عمر مورد انتظار، و غیره. اگر می‌خواهیم بفهمیم چرا مشتریان ما در حال ریزش هستند، باید کدام تعاریف را مشورت کنیم؟ کدام تعاریف *جدید* نیاز به تعریف داریم؟ و (به معنای واقعی کلمه) کجا می‌توانم این تعاریف رسمی را در متابیس پیدا کنم؟
 
-### Conflicting definitions
+### تعاریف متضاد
 
-By conflicting we mean: are we even talking about the same thing? Consider revenue, for example. For the Sales team, revenue could mean bookings, but the Accounting folks mean recognized revenue accrual, while the Marketing team is talking about lifetime revenue.
+با متضاد منظورمان این است: آیا حتی درباره همان چیز صحبت می‌کنیم؟ درآمد را در نظر بگیرید، به عنوان مثال. برای تیم فروش، درآمد می‌تواند به معنای bookings باشد، اما مردم حسابداری درآمد تعهدی recognized را می‌گویند، در حالی که تیم بازاریابی درباره درآمد طول عمر صحبت می‌کند.
 
-### Re-definitions, or which is the canonical definition?
+### تعریف مجدد، یا کدام تعریف canonical است؟
 
-What if we find multiple definitions for the same concept? How do we know which to trust? Are they all off the mark? Even if multiple groups agree that we should track week\-over\-week bookings, how those bookings are tallied could differ from query to query: one query could be accurate, another inaccurate and unvetted, created by an analyst who wasn’t aware that the official query to calculate bookings already existed; or forgot to omit test data, or failed to account for discounts, or simply created a new query to slice bookings in a different way.
+اگر چندین تعریف برای همان مفهوم پیدا کنیم چه؟ چگونه می‌دانیم کدام را اعتماد کنیم؟ آیا همه آن‌ها از نشانه خارج هستند؟ حتی اگر چندین گروه موافق باشند که باید bookings هفته به هفته را ردیابی کنیم، نحوه شمارش آن bookings می‌تواند از پرس‌وجو به پرس‌وجو متفاوت باشد: یک پرس‌وجو می‌تواند دقیق باشد، دیگری نادرست و unvetted، ایجاد شده توسط یک تحلیل‌گر که نمی‌دانست پرس‌وجوی رسمی برای محاسبه bookings از قبل وجود دارد؛ یا فراموش کرد داده تست را حذف کند، یا در نظر نگرفت تخفیف‌ها، یا به سادگی یک پرس‌وجوی جدید برای slice کردن bookings به روشی متفاوت ایجاد کرد.
 
-### Changing definitions
+### تعاریف در حال تغییر
 
-Calculations to monthly revenue will likely change as some revenue streams are sunsetted and other streams are added. If we have different departments using that same definition in multiple questions, models, and dashboards, how should we manage changes to definitions?
+محاسبات به درآمد ماهانه احتمالاً تغییر می‌کند چون برخی جریان‌های درآمد sunset می‌شوند و جریان‌های دیگر اضافه می‌شوند. اگر بخش‌های مختلف داریم که از همان تعریف در چندین سؤال، مدل، و داشبورد استفاده می‌کنند، چگونه باید تغییرات به تعاریف را مدیریت کنیم؟
 
-## Strategies to tame the chaos
+## استراتژی‌ها برای رام کردن هرج و مرج
 
-With our problems identified, let’s talk about how we can mitigate them. We’ll divide this discussion into two categories: the [features](#features) Metabase provides, and the organizational [processes](#processes) we recommend you adopt.
+با شناسایی مشکلات خود، بیایید درباره نحوه کاهش آن‌ها صحبت کنیم. این بحث را به دو دسته تقسیم می‌کنیم: [ویژگی‌های](#features) ارائه شده توسط متابیس، و [فرآیندهای](#processes) سازمانی که توصیه می‌کنیم اتخاذ کنید.
 
-## Features
+## ویژگی‌ها
 
-Here are some tools that ship with Metabase that will help keep you organized. You’re likely already aware of the questions, dashboards, and collections, but they’re worth itemizing here to get a full picture of the toolkit.
+در اینجا برخی ابزارها که با متابیس ship می‌شوند و به شما کمک می‌کنند منظم بمانید. احتمالاً از قبل از سؤال‌ها، داشبوردها، و مجموعه‌ها آگاه هستید، اما ارزش itemize کردن در اینجا را دارند تا تصویر کاملی از toolkit دریافت کنید.
 
-### Models
+### مدل‌ها
 
-[Models](../../../../docs/latest/data-modeling/models.html) allow you to codify those frequently\-used concepts as a starting point for new questions that can be easily referenced again and again. Questions built via the query builder *and* SQL questions can be converted to models, and they’ll show up higher in search results to encourage their use across your organization. You can customize model metadata too, allowing you to specify column types so you can [drill\-through](../../querying-and-dashboards/questions/drill-through.html) even on SQL questions.
+[مدل‌ها](../../../../docs/latest/data-modeling/models.html) به شما اجازه می‌دهند آن مفاهیم مکرراً استفاده شده را به عنوان نقطه شروع برای سؤال‌های جدید که می‌توانند به راحتی بارها و بارها ارجاع داده شوند codify کنید. سؤال‌های ساخته شده از طریق سازنده کوئری *و* سؤال‌های SQL می‌توانند به مدل تبدیل شوند، و آن‌ها در نتایج جستجو بالاتر ظاهر می‌شوند تا استفاده از آن‌ها در سراسر سازمان شما را تشویق کنند. همچنین می‌توانید فراداده مدل را سفارشی کنید، که به شما اجازه می‌دهد انواع ستون را مشخص کنید تا بتوانید [drill-through](../../querying-and-dashboards/questions/drill-through.html) حتی روی سؤال‌های SQL انجام دهید.
 
-For example, you could write a question that pulls together and calculates info on “Active users” \(however you define a person as “active”\), and then convert that question to a model so people know where to go when they have questions about active users.
+به عنوان مثال، می‌توانید یک سؤال بنویسید که اطلاعات "کاربران فعال" را (هر طور که یک شخص را "فعال" تعریف می‌کنید) جمع‌آوری و محاسبه می‌کند، و سپس آن سؤال را به یک مدل تبدیل کنید تا مردم بدانند کجا بروند وقتی سؤال درباره کاربران فعال دارند.
 
-### Data reference and descriptions
+### مرجع داده و توضیحات
 
-Metabase provides places for you to include helpful text that contextualizes a particular item, whether that item is a database, table, model, question, dashboard, or whatever. You don’t have to describe *everything*, but the more description you include, the less time people will spend figuring out “is this the right data?” and the better their analysis will be. Documenting exceptions with data is especially important \(for example, whether a table includes test data or employee accounts or other exceptions that analysts should be aware of\).
+متابیس مکان‌هایی برای شما فراهم می‌کند تا متن مفیدی که یک آیتم خاص را contextualize می‌کند شامل کنید، چه آن آیتم یک پایگاه داده، جدول، مدل، سؤال، داشبورد، یا هر چیز دیگری باشد. نیازی به توصیف *همه چیز* ندارید، اما هر چه توضیحات بیشتری شامل کنید، مردم زمان کمتری را صرف فهمیدن "آیا این داده درست است؟" می‌کنند و تحلیل آن‌ها بهتر خواهد بود. مستندسازی استثناها با داده به خصوص مهم است (مثلاً، آیا یک جدول شامل داده تست یا حساب‌های کارمند یا استثناهای دیگری است که تحلیل‌گران باید از آن آگاه باشند).
 
-![You can include helpful context for tables in the data reference section.](../../../images/same-page/orders-table-details.png)
+![می‌توانید زمینه مفیدی برای جداول در بخش مرجع داده شامل کنید.](../../../images/same-page/orders-table-details.png)
 
-For “official” databases, dashboards, models, and questions, you should require owners to maintain their documentation. And don’t get lazy with your titles; you can do a lot with a few extra words. Compare “Customer orders” with something like: “OFFICIAL: Rolling 7\-day average daily orders \- North America”.
+برای پایگاه‌های داده، داشبوردها، مدل‌ها، و سؤال‌های "رسمی"، باید از مالکان بخواهید مستندات خود را نگهداری کنند. و با عنوان‌های خود تنبل نشوید؛ می‌توانید با چند کلمه اضافی کارهای زیادی انجام دهید. "سفارش‌های مشتری" را با چیزی مثل: "رسمی: میانگین متحرک 7 روزه سفارش‌های روزانه - آمریکای شمالی" مقایسه کنید.
 
-For more about the reference tooling in Metabase, check out [Exploring data with Metabase’s data browser](../../querying-and-dashboards/data-browser.html).
+برای بیشتر درباره ابزارهای مرجع در متابیس، [کاوش داده با مرورگر داده متابیس](../../querying-and-dashboards/data-browser.html) را بررسی کنید.
 
-### Events and timelines
+### رویدادها و خطوط زمانی
 
-[Events](../../../../docs/latest/exploration-and-organization/events-and-timelines.html) allow teams to capture context, and make that context available when people view their data. So for example you could add an event to mark the start of a sale, or email campaign, or new release. That way, people can see what effect those events have on the data \(if any\). You can also ward off all those questions around why numbers went up or down in April or whatever.
+[رویدادها](../../../../docs/latest/exploration-and-organization/events-and-timelines.html) به تیم‌ها اجازه می‌دهند زمینه را ثبت کنند، و آن زمینه را در دسترس قرار دهند وقتی مردم داده خود را مشاهده می‌کنند. پس به عنوان مثال می‌توانید یک رویداد برای علامت‌گذاری شروع یک فروش، یا کمپین ایمیل، یا انتشار جدید اضافه کنید. به این ترتیب، مردم می‌توانند ببینند آن رویدادها چه تأثیری روی داده دارند (در صورت وجود). همچنین می‌توانید همه آن سؤال‌ها درباره اینکه چرا اعداد در آوریل یا هر چیز دیگری بالا یا پایین رفت را دفع کنید.
 
-You can organize these events into timelines, which are associated with collections, so teams can group events into coherent timelines. Different timelines can group different sets of events that impact your business: lunar cycles, meteorological phenomena, occult rituals, and so on.
+می‌توانید این رویدادها را در خطوط زمانی سازماندهی کنید، که با مجموعه‌ها مرتبط هستند، پس تیم‌ها می‌توانند رویدادها را در خطوط زمانی منسجم گروه‌بندی کنند. خطوط زمانی مختلف می‌توانند مجموعه‌های مختلف رویدادهایی که بر کسب و کار شما تأثیر می‌گذارند را گروه‌بندی کنند: چرخه‌های قمری، پدیده‌های هواشناسی، آیین‌های مخفی، و غیره.
 
-### Segments and Metrics
+### بخش‌ها و معیارها
 
-Administrators can define official filters \(or sets of filters\) known as [Segments](../../../../docs/latest/data-modeling/metrics.html) that can be used in Metabase’s query builder. For example, you could officially define what an “active user” is via a Segment. “Active Users” would then appear in the **Filter sidebar**, so anyone can filter their queries by Active Users to see what kind of products those specific users buy, how long items sit in their carts, and so on.
+مدیران می‌توانند فیلترهای رسمی (یا مجموعه‌های فیلتر) معروف به [بخش‌ها](../../../../docs/latest/data-modeling/metrics.html) تعریف کنند که می‌توانند در سازنده کوئری متابیس استفاده شوند. به عنوان مثال، می‌توانید به طور رسمی تعریف کنید یک "کاربر فعال" چیست از طریق یک بخش. "کاربران فعال" سپس در **sidebar فیلتر** ظاهر می‌شود، پس هر کسی می‌تواند پرس‌وجوهای خود را با کاربران فعال فیلتر کند تا ببیند آن کاربران خاص چه نوع محصولاتی می‌خرند، آیتم‌ها چقدر در سبد خرید آن‌ها می‌مانند، و غیره.
 
-![People can select Segments as preset filters when composing simple (and custom) questions. In this example, people can select from the New Products, Top rated, and High margin Segments created by administrators.](../../../images/same-page/segments.png)
+![مردم می‌توانند بخش‌ها را به عنوان فیلترهای از پیش تنظیم شده هنگام compose کردن سؤال‌های ساده (و سفارشی) انتخاب کنند. در این مثال، مردم می‌توانند از بخش‌های محصولات جدید، بالاترین امتیاز، و حاشیه بالا ایجاد شده توسط مدیران انتخاب کنند.](../../../images/same-page/segments.png)
 
-Similarly, [Metrics](../../../../docs/latest/data-modeling/metrics.html) codify calculations. For example, Admins can set up an official Metric for “Average Order Total” so that everyone knows \(and can use\) the official calculation of that Metric, which includes tax but omits applied discounts.
+به طور مشابه، [معیارها](../../../../docs/latest/data-modeling/metrics.html) محاسبات را codify می‌کنند. به عنوان مثال، مدیران می‌توانند یک معیار رسمی برای "میانگین کل سفارش" تنظیم کنند تا همه بدانند (و بتوانند استفاده کنند) محاسبه رسمی آن معیار، که شامل مالیات است اما تخفیف‌های اعمال شده را حذف می‌کند.
 
-Both Segments and Metrics are versioned. To learn more, check out [Segments and Metrics](../../../../docs/latest/data-modeling/metrics.html).
+هم بخش‌ها و هم معیارها versioned هستند. برای یادگیری بیشتر، [بخش‌ها و معیارها](../../../../docs/latest/data-modeling/metrics.html) را بررسی کنید.
 
 ### Snippets
 
-[Snippets](../../../../docs/latest/questions/native-editor/snippets.html) are the SQL counterpart to GUI\-based Segments and Metrics. You can use them to capture and replicate bite\-sized SQL code. These snippets could capture Segments, Metrics, complicated joins, or any other bit of SQL that you might want to reuse in many queries.
+[Snippets](../../../../docs/latest/questions/native-editor/snippets.html) همتای SQL بخش‌ها و معیارهای مبتنی بر GUI هستند. می‌توانید از آن‌ها برای ثبت و تکثیر کد SQL bite-sized استفاده کنید. این snippets می‌توانند بخش‌ها، معیارها، joinهای پیچیده، یا هر bit دیگر SQL که ممکن است بخواهید در بسیاری از پرس‌وجوها reuse کنید را ثبت کنند.
 
-![Capture and share important SQL code using Snippets.](../../../images/same-page/snippet-example.png)
+![کد SQL مهم را با استفاده از Snippets ثبت و به اشتراک بگذارید.](../../../images/same-page/snippet-example.png)
 
-The idea with Segments, Metrics, and snippets is to codify definitions and make them easy to change as you refine your definitions over time. When you update a snippet, each question that employs that snippet benefits from the updated definition in a consistent way. To learn more, check out [Snippets: reuse and share SQL code](../../querying-and-dashboards/sql-in-metabase/snippets.html).
+ایده با بخش‌ها، معیارها، و snippets این است که تعاریف را codify کنید و آن‌ها را آسان برای تغییر کنید همانطور که تعاریف خود را در طول زمان refine می‌کنید. وقتی یک snippet را به‌روزرسانی می‌کنید، هر سؤالی که از آن snippet استفاده می‌کند از تعریف به‌روزرسانی شده به روشی سازگار بهره می‌برد. برای یادگیری بیشتر، [Snippets: reuse و share کردن کد SQL](../../querying-and-dashboards/sql-in-metabase/snippets.html) را بررسی کنید.
 
-### Collections
+### مجموعه‌ها
 
-Collections group questions, models, and dashboards \(and other collections\). Additionally, you can pin the most important items to the top of your collection, especially the root collection Our Analytics, for those pinned dashboards to show up on the home page. To learn more, check out [Working with collection permissions](../permissions/collection-permissions.html).
+مجموعه‌ها سؤال‌ها، مدل‌ها، و داشبوردها (و مجموعه‌های دیگر) را گروه‌بندی می‌کنند. علاوه بر این، می‌توانید مهم‌ترین آیتم‌ها را به بالای مجموعه خود pin کنید، به خصوص مجموعه ریشه Our Analytics، برای آن داشبوردهای pin شده تا در صفحه اصلی ظاهر شوند. برای یادگیری بیشتر، [کار با مجوزهای مجموعه](../permissions/collection-permissions.html) را بررسی کنید.
 
-#### Official Collections
+#### مجموعه‌های رسمی
 
-> Official collections is only available on
-      [Pro](../../../../product/pro.html) and
+> مجموعه‌های رسمی فقط در
+      [Pro](../../../../product/pro.html) و
       [Enterprise](../../../../product/enterprise.html)
-      plans  \(both self\-hosted and on Metabase Cloud\).
+      (هم self-hosted و هم در متابیس کلود)
+      در دسترس است.
 
-The [Official Collections](../../../../docs/latest/exploration-and-organization/collections.html#official-collections) feature lets you designate specific collections as important. When an administrator marks a collection as official, it gets a badge and will appear near the top of your search results, making it easy for users to find it.
+ویژگی [مجموعه‌های رسمی](../../../../docs/latest/exploration-and-organization/collections.html#official-collections) به شما اجازه می‌دهد مجموعه‌های خاص را به عنوان مهم تعیین کنید. وقتی یک مدیر یک مجموعه را به عنوان رسمی علامت می‌زند، یک badge دریافت می‌کند و در نزدیکی بالای نتایج جستجوی شما ظاهر می‌شود، که پیدا کردن آن را برای کاربران آسان می‌کند.
 
-### Verified items
+### آیتم‌های تأیید شده
 
-> Verified items is only available on
-      [Pro](../../../../product/pro.html) and
+> آیتم‌های تأیید شده فقط در
+      [Pro](../../../../product/pro.html) و
       [Enterprise](../../../../product/enterprise.html)
-      plans  \(both self\-hosted and on Metabase Cloud\).
+      (هم self-hosted و هم در متابیس کلود)
+      در دسترس است.
 
-Administrators can [verify](../../../../docs/latest/exploration-and-organization/content-verification.html) questions and models to signal they’ve taken a look at and approved them. These verified items are identified by a checkmark next to their name, so users can easily identify which questions their admins have deemed trustworthy.
+مدیران می‌توانند سؤال‌ها و مدل‌ها را [تأیید کنند](../../../../docs/latest/exploration-and-organization/content-verification.html) تا نشان دهند آن‌ها را بررسی و تأیید کرده‌اند. این آیتم‌های تأیید شده با یک checkmark کنار نام آن‌ها شناسایی می‌شوند، پس کاربران می‌توانند به راحتی شناسایی کنند کدام سؤال‌ها مدیران آن‌ها قابل اعتماد دانسته‌اند.
 
-If you want to learn more about verification features, check out our post on [building trust](../../../../blog/official-collections-and-verification.html).
+اگر می‌خواهید درباره ویژگی‌های تأیید بیشتر بیاموزید، پست ما درباره [ساخت اعتماد](../../../../blog/official-collections-and-verification.html) را بررسی کنید.
 
-## Processes
+## فرآیندها
 
-Knowing what tools can do is half the battle; the other half is knowing when and how to use them.
+دانستن اینکه ابزارها چه کاری می‌توانند انجام دهند نیمی از نبرد است؛ نیم دیگر دانستن زمان و نحوه استفاده از آن‌ها است.
 
-### Create collections for each department
+### ایجاد مجموعه‌ها برای هر بخش
 
-For each department, create a collection and make it editable by only a small group of people. This group should curate that collection, and only pin questions, models, and dashboards they have vetted, decorated with useful descriptions, and actively maintain.
+برای هر بخش، یک مجموعه ایجاد کنید و آن را فقط توسط یک گروه کوچک از مردم قابل ویرایش کنید. این گروه باید آن مجموعه را curate کند، و فقط سؤال‌ها، مدل‌ها، و داشبوردهایی را pin کند که بررسی کرده‌اند، با توضیحات مفید تزئین شده‌اند، و به طور فعال نگهداری می‌کنند.
 
-### Snippets folders
+### پوشه‌های snippets
 
-> Snippet folders is only available on
-      [Pro](../../../../product/pro.html) and
+> پوشه‌های snippet فقط در
+      [Pro](../../../../product/pro.html) و
       [Enterprise](../../../../product/enterprise.html)
-      plans  \(both self\-hosted and on Metabase Cloud\).
+      (هم self-hosted و هم در متابیس کلود)
+      در دسترس است.
 
-[Snippets folders](../../../../docs/latest/permissions/snippets.html) let you organize folders by department, assign owners to those folders, and take advantage of folder permissions.
+[پوشه‌های snippets](../../../../docs/latest/permissions/snippets.html) به شما اجازه می‌دهند پوشه‌ها را بر اساس بخش سازماندهی کنید، مالکان را به آن پوشه‌ها اختصاص دهید، و از مجوزهای پوشه استفاده کنید.
 
-### Adopt a naming convention
+### اتخاذ یک قرارداد نام‌گذاری
 
-Set a standard naming convention across your dashboards, collections, models, and questions so that it’s obvious which items are official. How you define that convention is less important than having a convention at all. When in doubt: even a simple prefix like “Certified” or “Official” \(e.g., “OFFICIAL: Email opens per 1000 users”\) can help people sift through search results and know which items have been vetted.
+یک قرارداد نام‌گذاری استاندارد در سراسر داشبوردها، مجموعه‌ها، مدل‌ها، و سؤال‌های خود تنظیم کنید تا واضح باشد کدام آیتم‌ها رسمی هستند. نحوه تعریف آن قرارداد کمتر از داشتن یک قرارداد مهم است. وقتی شک دارید: حتی یک پیشوند ساده مثل "Certified" یا "Official" (مثلاً، "رسمی: باز شدن ایمیل به ازای هر 1000 کاربر") می‌تواند به مردم کمک کند از نتایج جستجو غربال کنند و بدانند کدام آیتم‌ها بررسی شده‌اند.
 
-### Designate collections for experimentation and works in progress
+### تعیین مجموعه‌ها برای آزمایش و کارهای در حال انجام
 
-Create designated places for people to store works in progress \(sometimes called scratch or playground collections\). People can and should use personal collections for experimentation, but it’s also important to have public places where people can share their work with others to get feedback on their analysis in progress.
+مکان‌های تعیین شده برای مردم ایجاد کنید تا کارهای در حال انجام را ذخیره کنند (گاهی اوقات مجموعه‌های scratch یا playground نامیده می‌شوند). مردم می‌توانند و باید از مجموعه‌های شخصی برای آزمایش استفاده کنند، اما همچنین مهم است مکان‌های عمومی داشته باشید که مردم می‌توانند کار خود را با دیگران به اشتراک بگذارند تا بازخورد درباره تحلیل در حال انجام خود دریافت کنند.
 
-Anyone can duplicate the official questions and dashboards, but you should encourage people to save those items to their personal collections, or to a collection designated for experimentation. If one of the dashboards in these areas takes off, you can relocate it to the relevant “official” collection. You can [set permissions](../permissions/collection-permissions.html) on these official collections so that everyone can view them, but only a select few can edit them \- ensuring that everything in that collection is correct and actively maintained.
+هر کسی می‌تواند سؤال‌ها و داشبوردهای رسمی را duplicate کند، اما باید مردم را تشویق کنید آن آیتم‌ها را به مجموعه‌های شخصی خود، یا به مجموعه‌ای تعیین شده برای آزمایش ذخیره کنند. اگر یکی از داشبوردها در این مناطق take off کند، می‌توانید آن را به مجموعه "رسمی" مرتبط relocate کنید. می‌توانید [مجوزها را روی این مجموعه‌های رسمی تنظیم کنید](../permissions/collection-permissions.html) تا همه بتوانند آن‌ها را مشاهده کنند، اما فقط تعداد کمی می‌توانند آن‌ها را ویرایش کنند - اطمینان حاصل کنید که همه چیز در آن مجموعه صحیح است و به طور فعال نگهداری می‌شود.
 
-### Have a policy on when to archive items
+### داشتن یک سیاست برای زمان بایگانی کردن آیتم‌ها
 
-For these ephemeral items, set clear expectations for when people should archive them so that these playgrounds don’t fill with clutter. If you’re managing your department’s collections, and only pinning vetted items, clutter becomes less of an issue, but keeping the scratch collections relatively fresh will improve search results.
+برای این آیتم‌های ephemeral، انتظارات واضح برای زمان بایگانی کردن آن‌ها توسط مردم تنظیم کنید تا این playgroundها با clutter پر نشوند. اگر مجموعه‌های بخش خود را مدیریت می‌کنید، و فقط آیتم‌های بررسی شده را pin می‌کنید، clutter کمتر یک مسئله می‌شود، اما نگه داشتن مجموعه‌های scratch نسبتاً تازه نتایج جستجو را بهبود می‌بخشد.
 
-And don’t stress about archiving, since you can resurrect items at any time.
+و درباره بایگانی استرس نداشته باشید، چون می‌توانید آیتم‌ها را در هر زمان resurrect کنید.
 
-## Other ideas for taming chaos?
+## ایده‌های دیگر برای رام کردن هرج و مرج؟
 
-If you have any tips to share, or ideas for changes or improvements to Metabase, let us know on [our forum](https://discourse.metabase.com/).
+اگر نکاتی برای به اشتراک گذاشتن دارید، یا ایده‌هایی برای تغییرات یا بهبودهای متابیس، به ما در [انجمن ما](https://discourse.metabase.com/) اطلاع دهید.
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](guide-to-sharing-data.html)
 [
       
         
         
+
       
       
+        
         
 
       

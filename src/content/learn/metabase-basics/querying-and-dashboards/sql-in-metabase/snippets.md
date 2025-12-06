@@ -1,8 +1,6 @@
 ---
-
-
-title: "Tutorials: Use SQL Snippets to reuse and share code"
-description: "Learn everything you need to know about using snippets in native code."
+title: "آموزشها: استفاده از SQL Snippetها برای استفاده مجدد و اشتراک کد"
+description: "همه آنچه نیاز دارید درباره استفاده از snippetها در کد بومی بدانید."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/sql-in-metabase/snippets
   - /learn/building-analytics/sql-templates/sql-snippets
@@ -10,203 +8,203 @@ redirect_from:
   - /learn/sql-questions/sql-snippets
 toc:
   - id: "tutorials-use-sql-snippets-to-reuse-and-share-code"
-    title: "Tutorials: Use SQL Snippets to reuse and share code"
+    title: "آموزشها: استفاده از SQL Snippetها برای استفاده مجدد و اشتراک کد"
     level: 1
     href: "#tutorials-use-sql-snippets-to-reuse-and-share-code"
   - id: "first-a-simple-snippet-example"
-    title: "First, a simple Snippet example"
+    title: "ابتدا، یک مثال Snippet ساده"
     level: 2
     href: "#first-a-simple-snippet-example"
   - id: "why-use-snippets"
-    title: "Why use Snippets?"
+    title: "چرا از Snippetها استفاده کنیم؟"
     level: 2
     href: "#why-use-snippets"
   - id: "using-snippets"
-    title: "Using Snippets"
+    title: "استفاده از Snippetها"
     level: 2
     href: "#using-snippets"
   - id: "snippet-sidebar"
-    title: "Snippet sidebar"
+    title: "Sidebar Snippet"
     level: 3
     href: "#snippet-sidebar"
   - id: "editing-snippets"
-    title: "Editing Snippets"
+    title: "ویرایش Snippetها"
     level: 3
     href: "#editing-snippets"
   - id: "snippets-and-aliases"
-    title: "Snippets and aliases"
+    title: "Snippetها و aliasها"
     level: 3
     href: "#snippets-and-aliases"
   - id: "archiving-snippets"
-    title: "Archiving Snippets"
+    title: "بایگانی کردن Snippetها"
     level: 3
     href: "#archiving-snippets"
   - id: "snippet-folders"
-    title: "Snippet folders"
+    title: "پوشه‌های Snippet"
     level: 2
     href: "#snippet-folders"
   - id: "when-to-use-snippets-vs-a-saved-question"
-    title: "When to use snippets vs a saved question"
+    title: "چه زمانی از snippetها در مقابل یک سؤال ذخیره شده استفاده کنیم"
     level: 2
     href: "#when-to-use-snippets-vs-a-saved-question"
   - id: "more-info-on-using-snippets"
-    title: "More info on using Snippets"
+    title: "اطلاعات بیشتر درباره استفاده از Snippetها"
     level: 2
     href: "#more-info-on-using-snippets"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "SQL in Metabase"
+  - title: "SQL در متابیس"
     href: "index.html"
 ---
 
-# Tutorials: Use SQL Snippets to reuse and share code
+# آموزشها: استفاده از SQL Snippetها برای استفاده مجدد و اشتراک کد
 
-Learn everything you need to know about using snippets in native code.
+همه آنچه نیاز دارید درباره استفاده از snippetها در کد بومی بدانید.
 
-Snippets allow you to save SQL code as a snippet, and then you or other SQL authors can refer to that snippet in different SQL queries. If you ever need to update that code, you can edit the snippet, and those changes will propagate to all questions\) that use that snippet. Anyone with SQL editor permissions for at least one database can use, create, and edit snippets.
+Snippetها به شما اجازه ذخیره کد SQL به عنوان snippet را می‌دهند، و سپس شما یا نویسندگان SQL دیگر می‌توانند به آن snippet در پرس‌وجوهای SQL مختلف ارجاع دهند. اگر هرگز نیاز به به‌روزرسانی آن کد دارید، می‌توانید snippet را ویرایش کنید، و آن تغییرات به همه سؤال‌ها) که از آن snippet استفاده می‌کنند propagate می‌شوند. هر کسی با مجوزهای ویرایشگر SQL برای حداقل یک پایگاه داده می‌تواند از snippetها استفاده کند، ایجاد کند، و ویرایش کند.
 
-![Highlight SQL code and save it as a snippet.](../../../images/sql-snippets-reuse-and-share-sql-code/highlight-and-save-as-snippet.gif)
+![کد SQL را highlight کنید و به عنوان snippet ذخیره کنید.](../../../images/sql-snippets-reuse-and-share-sql-code/highlight-and-save-as-snippet.gif)
 
-Snippets are a simple but powerful feature, so let’s unpack them. We’ll also cover a feature exclusive to [Pro and Enterprise plans](../../../../pricing/index.html) in Metabase: Snippet Folders. These folders and their permissions help you keep your snippets organized, e.g. by database or by type of snippet, and let you grant or deny access to specific folders or subfolders.
+Snippetها یک ویژگی ساده اما قدرتمند هستند، پس بیایید آن‌ها را unpack کنیم. همچنین یک ویژگی انحصاری به [طرح‌های Pro و Enterprise](../../../../pricing/index.html) در متابیس را پوشش می‌دهیم: پوشه‌های Snippet. این پوشه‌ها و مجوزهای آن‌ها به شما کمک می‌کنند snippetهای خود را سازماندهی کنید، مثلاً بر اساس پایگاه داده یا نوع snippet، و به شما اجازه grant یا deny کردن دسترسی به پوشه‌ها یا زیرپوشه‌های خاص را می‌دهند.
 
-## First, a simple Snippet example
+## ابتدا، یک مثال Snippet ساده
 
-Take this short join statement:
+این statement join کوتاه را بگیرید:
 
-```
+```sql
 orders AS o
 LEFT JOIN products AS p
 ON o.product_id = p.id
-
 ```
 
-You can highlight that code, name the snippet `Orders and products`, add a helpful description, and summon that snippet in any SQL query using the `snippet:` tag, like so:
+می‌توانید آن کد را highlight کنید، snippet را `Orders and products` نامگذاری کنید، یک توضیح مفید اضافه کنید، و آن snippet را در هر پرس‌وجوی SQL با استفاده از تگ `snippet:` فراخوانی کنید، مثل این:
 
-```
+```sql
 SELECT
     *
 FROM
     {{snippet: Orders and products}}
-
 ```
 
-You can also use snippets for common metrics like average order total that take into account quirks of the database. As a trivial example, let’s say we know that the account with ID = 1 is a test account, and we don’t want that data to skew our average. We can encapsulate that exception in a snippet that we’ll call `average order total`.
+همچنین می‌توانید از snippetها برای معیارهای رایج مثل میانگین کل سفارش که quirks پایگاه داده را در نظر می‌گیرد استفاده کنید. به عنوان یک مثال trivial، بگویید می‌دانیم حساب با ID = 1 یک حساب تست است، و نمی‌خواهیم آن داده میانگین ما را skew کند. می‌توانیم آن exception را در یک snippet که آن را `average order total` می‌نامیم encapsulate کنیم.
 
-```
+```sql
 (SELECT
     AVG(total)
     FROM
     orders
     WHERE
     id > 1)
-
 ```
 
-Then we can use that snippet in a different query where we’re looking for products in orders with totals less than the average order total:
+سپس می‌توانیم از آن snippet در یک پرس‌وجوی متفاوت که به دنبال محصولات در سفارش‌ها با total کمتر از میانگین کل سفارش هستیم استفاده کنیم:
 
-```
+```sql
 SELECT
     product_id
 FROM
     orders
 WHERE
     total < {{snippet: average order total}}
-
 ```
 
-That’s all it takes to create and use a snippet. Now let’s dig in to why they’re so useful.
+این همه آن چیزی است که برای ایجاد و استفاده از یک snippet نیاز است. حالا بیایید به عمق بپردازیم که چرا آن‌ها بسیار مفید هستند.
 
-## Why use Snippets?
+## چرا از Snippetها استفاده کنیم؟
 
-There are three main use cases for Snippets:
+سه مورد استفاده اصلی برای Snippetها وجود دارد:
 
-- Standardization: how does your organization define a popular product? Is it by number of units sold? Or by reviews with an average rating greater than 4? You can define those qualifications for a popular product and codify them in a Snippet, `{{snippet: popular products}}` , and have that code populate in every question that uses that snippet. If down the line this definition needs to change, simply update the snippet’s SQL, and the change will propagate to all questions that use that snippet. Similar to how [segments](../../../../docs/latest/data-modeling/segments.html#creating-a-segment) \(a named filter or set of filters\) and [metrics](../../../../docs/latest/data-modeling/metrics.html#creating-a-metric) \(a named computation\) can standardize analytics in your organization, Snippets offer another way to ensure correctness and consistency across teams.
-- Efficiency: Do you find yourself copying and pasting SQL code often? Don’t want to bother remembering which foreign keys map to which tables? Write that complicated join once, save it as a snippet, and summon the snippet as needed.
-- Education: snippets can level up folks who are new to SQL \(or even experienced analysts\) by exposing them to your organization’s “canonical SQL,” or to more efficient or more complex queries. Reading, copying, and building upon quality code is one of the best ways to develop skills. It can also save your organization time: people can copy a snippet’s code, modify it to obtain different results, and save that code as a new snippet for others to use.
+- Standardization: سازمان شما چگونه یک محصول محبوب را تعریف می‌کند؟ بر اساس تعداد واحدهای فروخته شده؟ یا بر اساس reviewهایی با رتبه‌بندی میانگین بیشتر از 4؟ می‌توانید آن qualifications را برای یک محصول محبوب تعریف کنید و آن‌ها را در یک Snippet، `{{snippet: popular products}}`، codify کنید، و آن کد در هر سؤالی که از آن snippet استفاده می‌کند populate شود. اگر در خط پایین این تعریف نیاز به تغییر دارد، به سادگی SQL snippet را به‌روزرسانی کنید، و تغییر به همه سؤال‌هایی که از آن snippet استفاده می‌کنند propagate می‌شود. مشابه نحوه [بخش‌ها](../../../../docs/latest/data-modeling/segments.html#creating-a-segment) (یک فیلتر نامگذاری شده یا مجموعه‌ای از فیلترها) و [معیارها](../../../../docs/latest/data-modeling/metrics.html#creating-a-metric) (یک محاسبه نامگذاری شده) می‌توانند analytics را در سازمان شما standardize کنند، Snippetها راه دیگری برای اطمینان از صحت و سازگاری در تیم‌ها ارائه می‌دهند.
+- Efficiency: آیا خود را اغلب در حال copy و paste کردن کد SQL می‌بینید؟ نمی‌خواهید به یاد داشته باشید کدام foreign keyها به کدام جداول map می‌شوند؟ آن join پیچیده را یک بار بنویسید، به عنوان snippet ذخیره کنید، و snippet را در صورت نیاز فراخوانی کنید.
+- Education: snippetها می‌توانند افرادی که تازه به SQL وارد شده‌اند (یا حتی تحلیل‌گران با تجربه) را با exposing کردن آن‌ها به "SQL canonical" سازمان شما، یا به پرس‌وجوهای کارآمدتر یا پیچیده‌تر level up کنند. خواندن، کپی کردن، و build کردن روی کد با کیفیت یکی از بهترین راه‌ها برای توسعه مهارت‌ها است. همچنین می‌تواند زمان سازمان شما را صرفه‌جویی کند: مردم می‌توانند کد یک snippet را کپی کنند، آن را برای دریافت نتایج مختلف تغییر دهند، و آن کد را به عنوان snippet جدید برای دیگران برای استفاده ذخیره کنند.
 
-## Using Snippets
+## استفاده از Snippetها
 
-### Snippet sidebar
+### Sidebar Snippet
 
-Metabase’s **SQL Editor** has a **snippet sidebar** for viewing, creating, and editing snippets, which you can access by mousing over to the right side of the editor and clicking on the **snippet icon** \(three uneven horizontal lines\).
+**ویرایشگر SQL** متابیس یک **sidebar snippet** برای مشاهده، ایجاد، و ویرایش snippetها دارد، که می‌توانید با mouse over کردن به سمت راست ویرایشگر و کلیک روی **آیکون snippet** (سه خط افقی ناهموار) به آن دسترسی داشته باشید.
 
-![Access the Snippets sidebar by clicking on the snippet icon to the right of the SQL editor.](../../../images/sql-snippets-reuse-and-share-sql-code/snippet-sidebar.gif)
+![دسترسی به Sidebar Snippets با کلیک روی آیکون snippet در سمت راست ویرایشگر SQL.](../../../images/sql-snippets-reuse-and-share-sql-code/snippet-sidebar.gif)
 
-Once you create snippets, you can insert them in the editor using the snippet tag `{{snippet: Orders and products}}`, or by selecting them from the snippet sidebar:
+وقتی snippetها را ایجاد کردید، می‌توانید آن‌ها را در ویرایشگر با استفاده از تگ snippet `{{snippet: Orders and products}}`، یا با انتخاب آن‌ها از sidebar snippet insert کنید:
 
-![Previewing and inserting a snippet from the Snippets sidebar.](../../../images/sql-snippets-reuse-and-share-sql-code/insert-snippet-from-sidebar.gif)
+![پیش‌نمایش و insert کردن یک snippet از Sidebar Snippets.](../../../images/sql-snippets-reuse-and-share-sql-code/insert-snippet-from-sidebar.gif)
 
-Clicking on a snippet’s name in the **snippet sidebar** will insert it at your cursor’s current location in the query.
+کلیک روی نام یک snippet در **sidebar snippet** آن را در موقعیت فعلی cursor شما در پرس‌وجو insert می‌کند.
 
-### Editing Snippets
+### ویرایش Snippetها
 
-Updating the SQL code of a snippet will update every query that uses that snippet, so make sure to test your code before saving it to avoid breaking people’s questions. Of course, if you make a mistake and cause chaos, you can simply correct the code, save the snippet again, and restore order to the universe.
+به‌روزرسانی کد SQL یک snippet هر پرس‌وجویی که از آن snippet استفاده می‌کند را به‌روزرسانی می‌کند، پس مطمئن شوید کد خود را قبل از ذخیره کردن تست کنید تا از breaking کردن سؤال‌های مردم جلوگیری کنید. البته، اگر اشتباه کردید و chaos ایجاد کردید، می‌توانید به سادگی کد را اصلاح کنید، snippet را دوباره ذخیره کنید، و order را به universe restore کنید.
 
-### Snippets and aliases
+### Snippetها و aliasها
 
-Note that if you use aliases *in* your snippet \(e.g., `orders AS o`\), you’ll need to use those aliases *outside* of the snippet to refer to that data in your query. We recommend that your team has a policy for aliases: either everyone should use tables aliases in their code, or everyone uses the full table names. When in doubt, just use the full table names.
+توجه کنید که اگر از aliasها *در* snippet خود استفاده می‌کنید (مثلاً، `orders AS o`)، نیاز به استفاده از آن aliasها *خارج* از snippet برای ارجاع به آن داده در پرس‌وجوی خود دارید. توصیه می‌کنیم تیم شما یک policy برای aliasها داشته باشد: یا همه باید از aliasهای جدول در کد خود استفاده کنند، یا همه از نام‌های کامل جدول استفاده می‌کنند. وقتی در شک هستید، فقط از نام‌های کامل جدول استفاده کنید.
 
-### Archiving Snippets
+### بایگانی کردن Snippetها
 
-![You can archive a snippet via the Snippet Edit modal.](../../../images/sql-snippets-reuse-and-share-sql-code/archiving-a-snippet.gif)
+![می‌توانید یک snippet را از طریق modal ویرایش Snippet بایگانی کنید.](../../../images/sql-snippets-reuse-and-share-sql-code/archiving-a-snippet.gif)
 
-Snippets are indestructible: you cannot delete them, but you can archive \(and unarchive\) them. Archiving a snippet will keep your **snippet sidebar** tidy, as archived snippets do not populate the sidebar. It will also prevent the archived snippet from appearing in the typeahead results in the **SQL Editor**, i.e., the archived snippet won’t show up as an autocomplete option when you type `{{snippet:`. Archiving a snippet does not affect questions that use that snippet, so you can safely archive a snippet without breaking anyone’s questions.
+Snippetها indestructible هستند: نمی‌توانید آن‌ها را حذف کنید، اما می‌توانید آن‌ها را بایگانی (و unarchive) کنید. بایگانی کردن یک snippet **sidebar snippet** شما را tidy نگه می‌دارد، چون snippetهای بایگانی شده sidebar را populate نمی‌کنند. همچنین از ظاهر شدن snippet بایگانی شده در نتایج typeahead در **ویرایشگر SQL** جلوگیری می‌کند، یعنی snippet بایگانی شده به عنوان گزینه autocomplete ظاهر نمی‌شود وقتی `{{snippet:` تایپ می‌کنید. بایگانی کردن یک snippet سؤال‌هایی که از آن snippet استفاده می‌کنند را تحت تأثیر قرار نمی‌دهد، پس می‌توانید با خیال راحت یک snippet را بدون breaking کردن سؤال‌های هر کسی بایگانی کنید.
 
-## Snippet folders
+## پوشه‌های Snippet
 
-> Snippet controls is only available on
-      [Pro](../../../../product/pro.html) and
+> کنترل Snippet فقط در
+      [Pro](../../../../product/pro.html) و
       [Enterprise](../../../../product/enterprise.html)
-      plans  \(both self\-hosted and on Metabase Cloud\).
+      plans (هم self-hosted و هم در Metabase Cloud) در دسترس است.
 
-[Pro and Enterprise plans](../../../../pricing/index.html) in Metabase include snippet folders and permissions to help keep large numbers of snippets organized. Admins can add snippets to folders and place folders within folders. All snippets will appear in the **snippet sidebar**, including those for other databases \(as you might snippetize a string that could be used in multiple databases\). You can collect useful snippets for each database in their own folder, and additionally create folders to store snippets relevant to different teams or projects.
+[طرح‌های Pro و Enterprise](../../../../pricing/index.html) در متابیس شامل پوشه‌های snippet و مجوزها برای کمک به سازماندهی تعداد زیادی snippet هستند. Adminها می‌توانند snippetها را به پوشه‌ها اضافه کنند و پوشه‌ها را در داخل پوشه‌ها قرار دهند. همه snippetها در **sidebar snippet** ظاهر می‌شوند، شامل آن‌هایی برای پایگاه‌های داده دیگر (چون ممکن است یک string را snippetize کنید که می‌تواند در چندین پایگاه داده استفاده شود). می‌توانید snippetهای مفید برای هر پایگاه داده را در پوشه خود جمع‌آوری کنید، و علاوه بر آن پوشه‌هایی برای ذخیره snippetهای مرتبط با تیم‌ها یا پروژه‌های مختلف ایجاد کنید.
 
-![Saving a snippet to a folder.](../../../images/sql-snippets-reuse-and-share-sql-code/save-snippet-to-folder.gif)
+![ذخیره یک snippet در یک پوشه.](../../../images/sql-snippets-reuse-and-share-sql-code/save-snippet-to-folder.gif)
 
-Additionally, admins can add permissions to those folders, which control who can view or edit snippets located there:
+علاوه بر این، adminها می‌توانند مجوزها را به آن پوشه‌ها اضافه کنند، که کنترل می‌کند چه کسی می‌تواند snippetهای واقع در آنجا را مشاهده یا ویرایش کند:
 
-![Changing a folder](../../../images/sql-snippets-reuse-and-share-sql-code/change-folder-permissions.gif)
+![تغییر یک پوشه](../../../images/sql-snippets-reuse-and-share-sql-code/change-folder-permissions.gif)
 
-Permissions are granted to [groups](../../../../docs/latest/people-and-groups/managing.html#groups) for each folder, with three permission levels:
+مجوزها به [گروه‌ها](../../../../docs/latest/people-and-groups/managing.html#groups) برای هر پوشه اعطا می‌شوند، با سه سطح مجوز:
 
-- Edit access: view, edit, archive/unarchive snippets.
-- View access: view and run snippets.
-- No access: cannot view snippets in the sidebar and autocomplete menus. People without access can, however, run queries that include these snippets.
+- دسترسی Edit: مشاهده، ویرایش، بایگانی/unarchive کردن snippetها.
+- دسترسی View: مشاهده و اجرای snippetها.
+- بدون دسترسی: نمی‌تواند snippetها را در sidebar و منوهای autocomplete مشاهده کند. مردم بدون دسترسی، با این حال، می‌توانند پرس‌وجوهایی که شامل این snippetها هستند را اجرا کنند.
 
-Archiving and unarchiving snippets has no affect on permissions, though you’ll need edit access to the folder to archive and unarchive its snippets.
+بایگانی و unarchive کردن snippetها تأثیری روی مجوزها ندارد، اگرچه نیاز به دسترسی edit به پوشه برای بایگانی و unarchive کردن snippetهای آن دارید.
 
-Use folders to keep snippets organized and standardized among and between teams, as well as to keep sensitive snippets visible only to the appropriate groups.
+از پوشه‌ها برای نگه داشتن snippetها سازماندهی شده و standardized در بین و بین تیم‌ها استفاده کنید، و همچنین برای نگه داشتن snippetهای حساس visible فقط برای گروه‌های مناسب.
 
-## When to use snippets vs a saved question
+## چه زمانی از snippetها در مقابل یک سؤال ذخیره شده استفاده کنیم
 
-How large can a snippet be? In general, if a snippet can be run independently \(i.e., you could run it as a query on its own\) consider storing that SQL query as a saved question. Reserve snippets for *dependent* pieces of code. Snippets are also useful for saving strings that are commonly used in queries. For more on when to use snippets, check out [Snippets vs. Saved Questions vs Views](organizing-sql.html).
+یک snippet چقدر می‌تواند بزرگ باشد؟ به طور کلی، اگر یک snippet می‌تواند به طور مستقل اجرا شود (یعنی، می‌توانستید آن را به عنوان یک پرس‌وجو به خودی خود اجرا کنید) در نظر بگیرید آن پرس‌وجوی SQL را به عنوان یک سؤال ذخیره شده ذخیره کنید. snippetها را برای قطعات کد *وابسته* رزرو کنید. Snippetها همچنین برای ذخیره stringهایی که معمولاً در پرس‌وجوها استفاده می‌شوند مفید هستند. برای بیشتر درباره زمانی که باید از snippetها استفاده کنید، [Snippetها در مقابل سؤال‌های ذخیره شده در مقابل Viewها](organizing-sql.html) را بررسی کنید.
 
-## More info on using Snippets
+## اطلاعات بیشتر درباره استفاده از Snippetها
 
-To learn more about Snippets, check out our detailed documentation:
+برای یادگیری بیشتر درباره Snippetها، مستندات دقیق ما را بررسی کنید:
 
-- [Using Snippets](../../../../docs/latest/questions/native-editor/snippets.html)
-- [Organizing and securing snippets in folders](../../../../docs/latest/permissions/snippets.html)
+- [استفاده از Snippetها](../../../../docs/latest/questions/native-editor/snippets.html)
+- [سازماندهی و امن کردن snippetها در پوشه‌ها](../../../../docs/latest/permissions/snippets.html)
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](field-filters.html)
 [
       
         
         
+
       
       
+        
         
 
       

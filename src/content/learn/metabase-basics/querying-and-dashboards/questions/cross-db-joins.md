@@ -1,180 +1,178 @@
 ---
-
-
-title: "Combining data from different databases"
-description: "How to join tables from different databases in Metabase."
+title: "ترکیب داده از پایگاه‌های داده مختلف"
+description: "نحوه join کردن جداول از پایگاه‌های داده مختلف در متابیس."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/questions/cross-db-joins
 toc:
   - id: "combining-data-from-different-databases"
-    title: "Combining data from different databases"
+    title: "ترکیب داده از پایگاه‌های داده مختلف"
     level: 1
     href: "#combining-data-from-different-databases"
   - id: "why-doesn-t-metabase-do-cross-database-joins"
-    title: "Why doesn’t Metabase do cross-database joins?"
+    title: "چرا متابیس joinهای cross-database انجام نمی‌دهد؟"
     level: 2
     href: "#why-doesn-t-metabase-do-cross-database-joins"
   - id: "best-solution-use-a-data-warehouse"
-    title: "Best solution: use a data warehouse"
+    title: "بهترین راه‌حل: استفاده از یک data warehouse"
     level: 2
     href: "#best-solution-use-a-data-warehouse"
   - id: "combine-series-on-dashboard-cards"
-    title: "Combine series on dashboard cards"
+    title: "ترکیب سری‌ها روی کارت‌های داشبورد"
     level: 2
     href: "#combine-series-on-dashboard-cards"
   - id: "postgresql-use-foreign-data-wrappers"
-    title: "PostgreSQL: use Foreign Data Wrappers"
+    title: "PostgreSQL: استفاده از Foreign Data Wrapperها"
     level: 2
     href: "#postgresql-use-foreign-data-wrappers"
   - id: "mysql-create-a-view"
-    title: "MySQL: create a view"
+    title: "MySQL: ایجاد یک view"
     level: 2
     href: "#mysql-create-a-view"
   - id: "snowflake-create-a-view"
-    title: "Snowflake: create a view"
+    title: "Snowflake: ایجاد یک view"
     level: 2
     href: "#snowflake-create-a-view"
   - id: "use-a-federated-query-engine"
-    title: "Use a federated query engine"
+    title: "استفاده از یک موتور پرس‌وجوی federated"
     level: 2
     href: "#use-a-federated-query-engine"
   - id: "check-your-database-functionality"
-    title: "Check your database functionality"
+    title: "بررسی عملکرد پایگاه داده خود"
     level: 2
     href: "#check-your-database-functionality"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Asking questions"
+  - title: "پرسیدن سؤال‌ها"
     href: "../questions.html"
 ---
 
-# Combining data from different databases
+# ترکیب داده از پایگاه‌های داده مختلف
 
-How to join tables from different databases in Metabase.
+نحوه join کردن جداول از پایگاه‌های داده مختلف در متابیس.
 
-Let’s talk about why we at Metabase don’t allow people to join data from multiple databases \(and give you a few ideas and workarounds if you absolutely have to do this\).
+بیایید درباره اینکه چرا ما در متابیس به مردم اجازه join کردن داده از چندین پایگاه داده را نمی‌دهیم (و چند ایده و راه‌حل به شما می‌دهیم اگر واقعاً باید این کار را انجام دهید) صحبت کنیم.
 
-![Combining data from different database](../../../images/cross-db-joins/combining-data.png)
+![ترکیب داده از پایگاه داده مختلف](../../../images/cross-db-joins/combining-data.png)
 
-## Why doesn’t Metabase do cross-database joins?
+## چرا متابیس joinهای cross-database انجام نمی‌دهد؟
 
-Metabase isn’t a storage engine or a query engine. Metabase connects to your database, sends queries to the database; then the database itself executes the queries, and Metabase pulls the results and visualizes them. Your data stays in your database, and all the processing happens inside your database.
+متابیس یک موتور ذخیره‌سازی یا موتور پرس‌وجو نیست. متابیس به پایگاه داده شما متصل می‌شود، پرس‌وجوها را به پایگاه داده ارسال می‌کند؛ سپس خود پایگاه داده پرس‌وجوها را اجرا می‌کند، و متابیس نتایج را می‌کشد و آن‌ها را تجسم می‌کند. داده شما در پایگاه داده شما می‌ماند، و همه پردازش در داخل پایگاه داده شما اتفاق می‌افتد.
 
-Most databases are optimized to process queries on their own data efficiently, but they have no native way to communicate with other databases. To join data from two different databases, Metabase would need to pull data from multiple databases into its own memory or write it on disk, run the queries on that data. This *could* work for small tables, but it wouldn’t scale well \(not to mention the downside that Metabase would need to store your data *outside* of your database\).
+بیشتر پایگاه‌های داده برای پردازش کارآمد پرس‌وجوها روی داده خود بهینه شده‌اند، اما راه بومی برای ارتباط با پایگاه‌های داده دیگر ندارند. برای join کردن داده از دو پایگاه داده مختلف، متابیس نیاز به کشیدن داده از چندین پایگاه داده به حافظه خود یا نوشتن آن روی دیسک، اجرای پرس‌وجوها روی آن داده دارد. این *می‌تواند* برای جداول کوچک کار کند، اما به خوبی scale نمی‌شود (بدون ذکر این نکته که متابیس نیاز به ذخیره داده شما *خارج* از پایگاه داده شما دارد).
 
-Imagine hundreds of people running queries that require joins from several databases, each with a ton of rows, putting all that data into memory of your Metabase, and running unoptimized queries against that joined data. That would get very slow \(and very expensive\).
+تصور کنید صدها نفر پرس‌وجوهایی را اجرا می‌کنند که نیاز به join از چندین پایگاه داده دارند، هر کدام با یک تن ردیف، قرار دادن همه آن داده در حافظه متابیس شما، و اجرای پرس‌وجوهای بهینه نشده روی آن داده join شده. این بسیار کند (و بسیار گران) می‌شود.
 
-Some other BI tools work around this problem by creating an intermediate layer between your database and BI to store data, which often means requiring large, complicated \- and *pricey* \- deployments.
+برخی ابزارهای BI دیگر با ایجاد یک لایه میانی بین پایگاه داده شما و BI برای ذخیره داده این مشکل را دور می‌زنند، که اغلب به معنای نیاز به deploymentهای بزرگ، پیچیده - و *گران* - است.
 
-To keep Metabase light and simple, we haven’t built that functionality directly into our product \(yet! Never say never – check in on the [Metabase product roadmap](../../../../roadmap.html) every now and then\). But here are some ways you can set up your data to allow for queries involving multiple databases, while remaining performance\-conscious and in control of your data.
+برای نگه داشتن متابیس سبک و ساده، آن عملکرد را مستقیماً در محصول خود نساخته‌ایم (هنوز! هرگز نگو هرگز - هر از گاهی روی [roadmap محصول متابیس](../../../../roadmap.html) بررسی کن). اما در اینجا برخی راه‌هایی که می‌توانید داده خود را برای اجازه پرس‌وجوهای شامل چندین پایگاه داده تنظیم کنید، در حالی که performance-conscious و در کنترل داده خود باقی می‌مانید.
 
-## Best solution: use a data warehouse
+## بهترین راه‌حل: استفاده از یک data warehouse
 
-\([Or a data lake](../../../grow-your-data-skills/data-landscape/data-mart-data-warehouse-data-lake.html). Or a data lakehouse. The world is your oyster.\)
+([یا یک data lake](../../../grow-your-data-skills/data-landscape/data-mart-data-warehouse-data-lake.html). یا یک data lakehouse. جهان صدف شماست.)
 
-![Diagram of a data warehouse](../../../images/cross-db-joins/data-warehouse.png)
+![نمودار یک data warehouse](../../../images/cross-db-joins/data-warehouse.png)
 
-The gist is: you set up an [ETL](../../../grow-your-data-skills/data-landscape/etl-landscape.html) \(or ELT, or ELTL, you get the idea\) process to regularly bring data from all the different databases and third\-party systems that you’re using, house that data it in a single place \- a data warehouse \- and use that data warehouse to support all your analytical needs.
+نکته این است: یک فرآیند [ETL](../../../grow-your-data-skills/data-landscape/etl-landscape.html) (یا ELT، یا ELTL، ایده را می‌گیرید) تنظیم می‌کنید تا به طور منظم داده را از همه پایگاه‌های داده مختلف و سیستم‌های third-party که استفاده می‌کنید بیاورد، آن داده را در یک مکان واحد - یک data warehouse - house کند، و از آن data warehouse برای پشتیبانی از همه نیازهای تحلیلی خود استفاده کنید.
 
-The upsides are:
+مزایا:
 
-- All the data is already in one place, you don’t need to send data over the network to and from another database.
-- The architecture of modern data warehouses is optimized for analytical queries.
-- You are in full control of your data.
+- همه داده از قبل در یک مکان است، نیاز به ارسال داده از طریق شبکه به و از پایگاه داده دیگر ندارید.
+- معماری data warehouseهای مدرن برای پرس‌وجوهای تحلیلی بهینه شده است.
+- شما در کنترل کامل داده خود هستید.
 
-Metabase can connect to all the most popular data warehouses like [Snowflake](../../../../data-sources/snowflake.html), [Redshift](../../../../data-sources/amazon-redshift.html), [BigQuery](../../../../data-sources/bigquery.html), [Databricks](../../../../data-sources/amazon-redshift.html) and others. Check out [Which data warehouse should I use?](../../../grow-your-data-skills/data-landscape/which-data-warehouse.html).
+متابیس می‌تواند به همه محبوب‌ترین data warehouseها مثل [Snowflake](../../../../data-sources/snowflake.html)، [Redshift](../../../../data-sources/amazon-redshift.html)، [BigQuery](../../../../data-sources/bigquery.html)، [Databricks](../../../../data-sources/amazon-redshift.html) و سایرین متصل شود. [کدام data warehouse باید استفاده کنم؟](../../../grow-your-data-skills/data-landscape/which-data-warehouse.html) را بررسی کنید.
 
-To build a data warehouse, you’d need, at minimum, to set up the infrastructure, build a pipeline to copy the data, and model the data into shapes appropriate for analytics \- a nontrivial upfront investment. But it creates a consistent, performant, and scalable environment to support your analytics, so it will pay off in the future.
+برای ساخت یک data warehouse، نیاز دارید، حداقل، زیرساخت را تنظیم کنید، یک pipeline برای کپی داده بسازید، و داده را به شکل‌های مناسب برای تحلیل model کنید - یک سرمایه‌گذاری اولیه غیربدیهی. اما یک محیط سازگار، performant، و scalable برای پشتیبانی از تحلیل شما ایجاد می‌کند، پس در آینده جواب می‌دهد.
 
-If you can’t invest in building a data warehouse just yet, there are some alternatives:
+اگر نمی‌توانید در ساخت یک data warehouse سرمایه‌گذاری کنید، برخی جایگزین‌ها وجود دارند:
 
-## Combine series on dashboard cards
+## ترکیب سری‌ها روی کارت‌های داشبورد
 
-If all you need to do is to combine two series on a single chart, and each series is built on a data from a single database, you can add both series to a dashboard card.
+اگر همه آنچه نیاز دارید ترکیب دو سری روی یک نمودار واحد است، و هر سری بر اساس داده از یک پایگاه داده واحد ساخته شده است، می‌توانید هر دو سری را به یک کارت داشبورد اضافه کنید.
 
-For example, say you want to show number of users by month, taken from your Users database, on the same charts and average payment amount by month from your Finance database together. All you need to do is add those series to a single dashboard card—no cross\-database join needed.
+به عنوان مثال، بگویید می‌خواهید تعداد کاربران بر اساس ماه، گرفته شده از پایگاه داده Users خود، را روی همان نمودارها و میانگین مقدار پرداخت بر اساس ماه از پایگاه داده Finance خود با هم نشان دهید. همه آنچه نیاز دارید افزودن آن سری‌ها به یک کارت داشبورد واحد است—هیچ join cross-database نیاز نیست.
 
-See our docs for [combining saved questions](../../../../docs/latest/dashboards/multiple-series.html#combining-multiple-questions-on-one-dashboard-card).
+مستندات ما را برای [ترکیب سؤال‌های ذخیره شده](../../../../docs/latest/dashboards/multiple-series.html#combining-multiple-questions-on-one-dashboard-card) ببینید.
 
-![Combine two series on a dashboard](../../../images/cross-db-joins/combine-series.png)
+![ترکیب دو سری روی یک داشبورد](../../../images/cross-db-joins/combine-series.png)
 
-## PostgreSQL: use Foreign Data Wrappers
+## PostgreSQL: استفاده از Foreign Data Wrapperها
 
-If you want to combine data from two Postgres databases \(or a Postgres database and some other databases\), and you don’t want to build a data warehouse, you can use a [Foreign Data Wrapper \(FDW\)](https://wiki.postgresql.org/wiki/Foreign_data_wrappers). Foreign Data Wrappers allow your Postgres database to read data from remote data stores, including other databases.
+اگر می‌خواهید داده از دو پایگاه داده Postgres (یا یک پایگاه داده Postgres و برخی پایگاه‌های داده دیگر) را ترکیب کنید، و نمی‌خواهید یک data warehouse بسازید، می‌توانید از یک [Foreign Data Wrapper (FDW)](https://wiki.postgresql.org/wiki/Foreign_data_wrappers) استفاده کنید. Foreign Data Wrapperها به پایگاه داده Postgres شما اجازه خواندن داده از data storeهای remote، شامل پایگاه‌های داده دیگر را می‌دهند.
 
-![Diagram of a postgres foreign data wrappers](../../../images/cross-db-joins/fdw.png)
+![نمودار یک postgres foreign data wrappers](../../../images/cross-db-joins/fdw.png)
 
-To query one Postgres database from another you can use the [`postgres_fdw` extension](https://www.postgresql.org/docs/current/postgres-fdw.html) that’s part of the official PostgreSQL distribution.
+برای پرس‌وجو از یک پایگاه داده Postgres از دیگری می‌توانید از [extension `postgres_fdw`](https://www.postgresql.org/docs/current/postgres-fdw.html) که بخشی از توزیع رسمی PostgreSQL است استفاده کنید.
 
-Let’s assume we have:
+فرض کنیم داریم:
 
-1. A database `db1` with table `table1` in `public` schema,
-2. A database `db2` with table `table2` in `public` schema
+1. یک پایگاه داده `db1` با جدول `table1` در schema `public`،
+2. یک پایگاه داده `db2` با جدول `table2` در schema `public`
 
-and we want to query data from `table1` and `table2` together.
+و می‌خواهیم داده از `table1` و `table2` را با هم پرس‌وجو کنیم.
 
-We’ll mirror the tables from `db2` into a schema in `db1`, so it’ll be possible connect to `db1` \(for example, with Metabase\) and run queries to access data from `db2`.
+جداول از `db2` را در یک schema در `db1` mirror می‌کنیم، پس ممکن است به `db1` متصل شویم (مثلاً، با متابیس) و پرس‌وجوهایی برای دسترسی به داده از `db2` اجرا کنیم.
 
-1. In your database admin tool \(not in Metabase\), run this script on `db1`. Make sure to substitute your own names and passwords. ``` ------ Run on DB1: ------ -- Add the postgres_fdw extension CREATE EXTENSION postgres_fdw; -- Create a server object to represent the foreign database -- Specify the connection information for DB2 in OPTIONS -- In this script we're connecting to a database inside the same server and that's why we use 'localhost' CREATE SERVER db2_server FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host 'localhost', dbname 'db2'); -- Create a user mapping for the foreign server -- It maps the user accessing DB1 (for example, metabase_user) to a user accessing DB2 (your_db2_user) -- The user in DB1 will use that role to access the remote DB2 server CREATE USER MAPPING FOR metabase_user SERVER db2_server OPTIONS (user 'your_db2_user', password 'your_db2_password'); -- Import public.table2 from DB2 into public schema of DB1. -- You can use other schemas or create a new schema specifically for the foreign tables IMPORT FOREIGN SCHEMA public LIMIT TO (table2) FROM SERVER db2_server INTO public; -- You should be able to query table2 from DB1 now SELECT * FROM table2; ``` If you run into any problems, take a look at [the docs for postgres\_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html)
-2. Connect Metabase to your PostgreSQL database `db1` \(the one that you mirrored foreign tables *into*\). Once the connection is established, you should see the foreign table `table2` show up in `db1` \(along with `table1`\) in “Browse data” in the Metabase nav sidebar.
-3. Now that you can query both `table1` and `table2` from a connection to `db1`, you should be able to create queries joining data from `table1` and `table2` using either the query builder or SQL.
+1. در ابزار admin پایگاه داده خود (نه در متابیس)، این اسکریپت را روی `db1` اجرا کنید. مطمئن شوید نام‌ها و رمزهای خود را جایگزین کنید. ``` ------ Run on DB1: ------ -- Add the postgres_fdw extension CREATE EXTENSION postgres_fdw; -- Create a server object to represent the foreign database -- Specify the connection information for DB2 in OPTIONS -- In this script we're connecting to a database inside the same server and that's why we use 'localhost' CREATE SERVER db2_server FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host 'localhost', dbname 'db2'); -- Create a user mapping for the foreign server -- It maps the user accessing DB1 (for example, metabase_user) to a user accessing DB2 (your_db2_user) -- The user in DB1 will use that role to access the remote DB2 server CREATE USER MAPPING FOR metabase_user SERVER db2_server OPTIONS (user 'your_db2_user', password 'your_db2_password'); -- Import public.table2 from DB2 into public schema of DB1. -- You can use other schemas or create a new schema specifically for the foreign tables IMPORT FOREIGN SCHEMA public LIMIT TO (table2) FROM SERVER db2_server INTO public; -- You should be able to query table2 from DB1 now SELECT * FROM table2; ``` اگر با مشکلی مواجه شدید، [مستندات postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) را بررسی کنید
+2. متابیس را به پایگاه داده PostgreSQL خود `db1` (آن که جداول foreign را *در* آن mirror کردید) متصل کنید. وقتی اتصال برقرار شد، باید جدول foreign `table2` در `db1` (همراه با `table1`) در "Browse data" در sidebar nav متابیس ظاهر شود.
+3. حالا که می‌توانید هم `table1` و هم `table2` را از یک اتصال به `db1` پرس‌وجو کنید، باید قادر به ایجاد پرس‌وجوهایی که داده از `table1` و `table2` را با استفاده از query builder یا SQL join می‌کنند باشید.
 
-There are other foreign data wrappers \- for example a FDW to query Oracle ot MySQL databases from Postgres \- available as third\-party tools, but if you decide to use third\-party FDW, check that they’re still being actively maintained. Check the [list of foreign data wrappers on the PostgreSQL wiki](https://wiki.postgresql.org/wiki/Foreign_data_wrappers).
+Foreign data wrapperهای دیگری وجود دارند - مثلاً یک FDW برای پرس‌وجو از پایگاه‌های داده Oracle یا MySQL از Postgres - به عنوان ابزارهای third-party در دسترس هستند، اما اگر تصمیم به استفاده از FDW third-party گرفتید، بررسی کنید که هنوز به طور فعال maintain می‌شوند. [فهرست foreign data wrapperها در wiki PostgreSQL](https://wiki.postgresql.org/wiki/Foreign_data_wrappers) را بررسی کنید.
 
-## MySQL: create a view
+## MySQL: ایجاد یک view
 
-MySQL provides a native way to query data from a different database on the same server using syntax like `database.schema.table.field`. But in Metabase, when you connect to one database \(let’s call it `db1`\), Metabase won’t know that another database `db2` exists on the same server, so you won’t be able to run queries on `db1` that reference `db2`.
+MySQL یک راه بومی برای پرس‌وجوی داده از یک پایگاه داده مختلف روی همان سرور با استفاده از syntax مثل `database.schema.table.field` ارائه می‌دهد. اما در متابیس، وقتی به یک پایگاه داده (بیایید آن را `db1` بنامیم) متصل می‌شوید، متابیس نمی‌داند پایگاه داده دیگری `db2` روی همان سرور وجود دارد، پس قادر به اجرای پرس‌وجوها روی `db1` که به `db2` ارجاع می‌دهند نخواهید بود.
 
-The workaround is to create a view mirroring data from `db2` inside `db1`.
+راه‌حل ایجاد یک view mirror کردن داده از `db2` در داخل `db1` است.
 
-![Diagram of a MySQL view used to "mirror" a table](../../../images/cross-db-joins/mysql-view.png)
+![نمودار یک MySQL view استفاده شده برای "mirror" کردن یک جدول](../../../images/cross-db-joins/mysql-view.png)
 
-So let’s say you have:
+پس بگویید دارید:
 
-1. A database `db1` with table `table1` ,
-2. A database `db2` with table `table2` ,
+1. یک پایگاه داده `db1` با جدول `table1`،
+2. یک پایگاه داده `db2` با جدول `table2`،
 
-and you want to join data from `table1` and `table2`.
+و می‌خواهید داده از `table1` و `table2` را join کنید.
 
-1. In your database admin tool \(not in Metabase\), create a view in `db1` that selects `table2` from `db2`: ``` ------ Run on DB1: ------ -- Create a view for db2.table2 inside db1. CREATE VIEW table2 AS SELECT * FROM db2.table2; ```
-2. Connect Metabase to your MySQL database `db1` \(the one where created a view\). Once the connection is established, you should see the view `table2` show up in `db1` \(along with `table1`\) in “Browse data” in metabase navigation sidebar.
-3. Now that you can access both `table1` and `table2` from a connection to `db1`, you should be able to create queries joining data from `table1` and `table2` using either the query builder or SQL.
+1. در ابزار admin پایگاه داده خود (نه در متابیس)، یک view در `db1` ایجاد کنید که `table2` را از `db2` انتخاب می‌کند: ``` ------ Run on DB1: ------ -- Create a view for db2.table2 inside db1. CREATE VIEW table2 AS SELECT * FROM db2.table2; ```
+2. متابیس را به پایگاه داده MySQL خود `db1` (آن که view را در آن ایجاد کردید) متصل کنید. وقتی اتصال برقرار شد، باید view `table2` در `db1` (همراه با `table1`) در "Browse data" در sidebar nav متابیس ظاهر شود.
+3. حالا که می‌توانید هم `table1` و هم `table2` را از یک اتصال به `db1` دسترسی داشته باشید، باید قادر به ایجاد پرس‌وجوهایی که داده از `table1` و `table2` را با استفاده از query builder یا SQL join می‌کنند باشید.
 
-## Snowflake: create a view
+## Snowflake: ایجاد یک view
 
-Just like MySQL, Snowflake provides a native way to query data from a different database using syntax like `database.schema.table`. But in Metabase, when you connect to one database \(let’s call it `db1`\), Metabase won’t know that another database `db2` exists , so you won’t be able to run queries on `db1` that reference `db2`.
+درست مثل MySQL، Snowflake یک راه بومی برای پرس‌وجوی داده از یک پایگاه داده مختلف با استفاده از syntax مثل `database.schema.table` ارائه می‌دهد. اما در متابیس، وقتی به یک پایگاه داده (بیایید آن را `db1` بنامیم) متصل می‌شوید، متابیس نمی‌داند پایگاه داده دیگری `db2` وجود دارد، پس قادر به اجرای پرس‌وجوها روی `db1` که به `db2` ارجاع می‌دهند نخواهید بود.
 
-The workaround is to create a view mirroring data from `db2` inside `db1`. So let’s say you have:
+راه‌حل ایجاد یک view mirror کردن داده از `db2` در داخل `db1` است. پس بگویید دارید:
 
-1. A database `db1` with table `table1` in `public` schema,
-2. A database `db2` with table `table2` in `public` schema,
+1. یک پایگاه داده `db1` با جدول `table1` در schema `public`،
+2. یک پایگاه داده `db2` با جدول `table2` در schema `public`،
 
-and you want to join data from `table1` and `table2`.
+و می‌خواهید داده از `table1` و `table2` را join کنید.
 
-1. In your database admin tool \(not in Metabase\), create a view in `db1` that selects `table2` from `db2`: ``` ------ Run on DB1: ------ -- Create a view for db2.public.table2 inside db1. CREATE VIEW table2 AS SELECT * FROM db2.public.table2; ```
-2. Connect Metabase to your Snowflake database `db1` \(the one where created a view\). Once the connection is established, you should see the view `table2` show up in `db1` \(along with `table1`\) in “Browse data” in metabase navigation sidebar.
-3. Now that you can access both `table1` and `table2` from a connection to `db1`, you should be able to create queries joining data from `table1` and `table2` using either the query builder or SQL.
+1. در ابزار admin پایگاه داده خود (نه در متابیس)، یک view در `db1` ایجاد کنید که `table2` را از `db2` انتخاب می‌کند: ``` ------ Run on DB1: ------ -- Create a view for db2.public.table2 inside db1. CREATE VIEW table2 AS SELECT * FROM db2.public.table2; ```
+2. متابیس را به پایگاه داده Snowflake خود `db1` (آن که view را در آن ایجاد کردید) متصل کنید. وقتی اتصال برقرار شد، باید view `table2` در `db1` (همراه با `table1`) در "Browse data" در sidebar nav متابیس ظاهر شود.
+3. حالا که می‌توانید هم `table1` و هم `table2` را از یک اتصال به `db1` دسترسی داشته باشید، باید قادر به ایجاد پرس‌وجوهایی که داده از `table1` و `table2` را با استفاده از query builder یا SQL join می‌کنند باشید.
 
-## Use a federated query engine
+## استفاده از یک موتور پرس‌وجوی federated
 
-The job of a federated query engine is to give you a single interface to query and analyze data from different data sources. You can connect your federated query engine to multiple databases, then connect your Metabase to the federated engine, and query all the data through it as if it was in a single database.
+کار یک موتور پرس‌وجوی federated دادن یک رابط واحد به شما برای پرس‌وجو و تحلیل داده از منابع داده مختلف است. می‌توانید موتور پرس‌وجوی federated خود را به چندین پایگاه داده متصل کنید، سپس متابیس خود را به موتور federated متصل کنید، و همه داده را از طریق آن پرس‌وجو کنید گویی در یک پایگاه داده واحد است.
 
-![Diagram of a federated query engine](../../../images/cross-db-joins/federated-query-engine.png)
+![نمودار یک موتور پرس‌وجوی federated](../../../images/cross-db-joins/federated-query-engine.png)
 
-It’s not going to be as fast as a dedicated data warehouse, because data warehouses can store data more efficiently and optimize queries, but it can be a good intermediate solution.
+به سرعت یک data warehouse اختصاصی نخواهد بود، چون data warehouseها می‌توانند داده را به طور کارآمدتر ذخیره کنند و پرس‌وجوها را بهینه کنند، اما می‌تواند یک راه‌حل میانی خوب باشد.
 
-Metabase can connect to several popular federated query engines: [Presto](../../../../data-sources/presto.html), [Trino and Starburst](../../../../data-sources/starburst.html), and [Athena](../../../../data-sources/amazon-athena.html).
+متابیس می‌تواند به چندین موتور پرس‌وجوی federated محبوب متصل شود: [Presto](../../../../data-sources/presto.html)، [Trino و Starburst](../../../../data-sources/starburst.html)، و [Athena](../../../../data-sources/amazon-athena.html).
 
-## Check your database functionality
+## بررسی عملکرد پایگاه داده خود
 
-If you’re using a database other than PostgresSQL or MySQL, and you can’t use a federated query engine or build a data warehouse, check with your specific database \- it might already have the functionality you need to resolve your specific use case.
+اگر از پایگاه داده دیگری غیر از PostgresSQL یا MySQL استفاده می‌کنید، و نمی‌توانید از یک موتور پرس‌وجوی federated استفاده کنید یا یک data warehouse بسازید، با پایگاه داده خاص خود بررسی کنید - ممکن است از قبل عملکردی که نیاز دارید برای حل مورد استفاده خاص خود دارید.
 
-The idea: if your database has a way to read data from other databases, then you can use that functionality to get data from `db2` into `db1`, then connect your Metabase to `db1`, and have the data from `db2` show up in `db1` ready for querying \(and joining\).
+ایده: اگر پایگاه داده شما راهی برای خواندن داده از پایگاه‌های داده دیگر دارد، سپس می‌توانید از آن عملکرد برای دریافت داده از `db2` به `db1` استفاده کنید، سپس متابیس خود را به `db1` متصل کنید، و داده از `db2` در `db1` آماده برای پرس‌وجو (و join) ظاهر شود.
 
-For example, [BigQuery external tables](https://cloud.google.com/bigquery/docs/external-tables), or [Redshift federated queries](https://docs.aws.amazon.com/redshift/latest/dg/federated-overview.html) might work for some use cases. [Databricks](https://docs.databricks.com/aws/en/query-federation/) and [ClickHouse](https://clickhouse.com/docs/integrations/index) provide similar functionality as well.
+به عنوان مثال، [جداول خارجی BigQuery](https://cloud.google.com/bigquery/docs/external-tables)، یا [پرس‌وجوهای federated Redshift](https://docs.aws.amazon.com/redshift/latest/dg/federated-overview.html) ممکن است برای برخی موارد استفاده کار کنند. [Databricks](https://docs.databricks.com/aws/en/query-federation/) و [ClickHouse](https://clickhouse.com/docs/integrations/index) نیز عملکرد مشابه ارائه می‌دهند.
 
 [
       
@@ -184,14 +182,17 @@ For example, [BigQuery external tables](https://cloud.google.com/bigquery/docs/e
       
         
         
+
       
     ](joins-in-metabase.html)
 [
       
         
         
+
       
       
+        
         
 
       

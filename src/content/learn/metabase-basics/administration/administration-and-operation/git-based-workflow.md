@@ -1,270 +1,269 @@
 ---
-
-
-title: "Tutorial: Setting up a git-based workflow"
-description: "Create models, questions, and dashboards in a staging Metabase, commit your changes to a repository, and push those changes to your production Metabase."
+title: "آموزش: تنظیم یک workflow مبتنی بر git"
+description: "مدل‌ها، سؤال‌ها، و داشبوردها را در یک متابیس staging ایجاد کنید، تغییرات خود را به یک repository commit کنید، و آن تغییرات را به متابیس production خود push کنید."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/git-based-workflow
   - /learn/administration/git-based-workflow
 toc:
   - id: "tutorial-setting-up-a-git-based-workflow"
-    title: "Tutorial: Setting up a git-based workflow"
+    title: "آموزش: تنظیم یک workflow مبتنی بر git"
     level: 1
     href: "#tutorial-setting-up-a-git-based-workflow"
   - id: "first-set-up-your-staging-metabase"
-    title: "First, set up your staging Metabase"
+    title: "ابتدا، متابیس staging خود را تنظیم کنید"
     level: 2
     href: "#first-set-up-your-staging-metabase"
   - id: "create-your-metabase-application-database-for-your-staging-metabase"
-    title: "Create your Metabase application database for your staging Metabase"
+    title: "پایگاه داده برنامه متابیس خود را برای متابیس staging خود ایجاد کنید"
     level: 3
     href: "#create-your-metabase-application-database-for-your-staging-metabase"
   - id: "your-staging-and-production-databases-must-share-the-same-display-name-database-engine-and-schema"
-    title: "Your staging and production databases must share the same display name, database engine, and schema"
+    title: "پایگاه‌های داده staging و production شما باید نام نمایش، موتور پایگاه داده، و schema یکسان داشته باشند"
     level: 3
     href: "#your-staging-and-production-databases-must-share-the-same-display-name-database-engine-and-schema"
   - id: "define-which-collections-to-check-into-version-control"
-    title: "Define which collections to check into version control"
+    title: "تعریف کدام مجموعه‌ها را در کنترل نسخه check in کنید"
     level: 3
     href: "#define-which-collections-to-check-into-version-control"
   - id: "things-to-avoid-in-your-staging-environment"
-    title: "Things to avoid in your staging environment"
+    title: "چیزهایی که باید در محیط staging خود از آن‌ها اجتناب کنید"
     level: 3
     href: "#things-to-avoid-in-your-staging-environment"
   - id: "set-up-your-git-repo-and-ci-your-workflows"
-    title: "Set up your Git repo and CI (your workflows)"
+    title: "repository Git و CI خود را تنظیم کنید (workflowهای شما)"
     level: 3
     href: "#set-up-your-git-repo-and-ci-your-workflows"
   - id: "there-are-two-basic-staging-to-production-setups"
-    title: "There are two basic staging-to-production setups"
+    title: "دو راه‌اندازی پایه staging-to-production وجود دارد"
     level: 2
     href: "#there-are-two-basic-staging-to-production-setups"
   - id: "when-to-use-the-setup-with-sync-on"
-    title: "When to use the setup with sync ON"
+    title: "چه زمانی از راه‌اندازی با sync ON استفاده کنیم"
     level: 3
     href: "#when-to-use-the-setup-with-sync-on"
   - id: "when-to-use-the-setup-with-sync-off"
-    title: "When to use the setup with sync OFF"
+    title: "چه زمانی از راه‌اندازی با sync OFF استفاده کنیم"
     level: 3
     href: "#when-to-use-the-setup-with-sync-off"
   - id: "metabase-staging-to-production-setup-with-sync-on"
-    title: "Metabase staging-to-production setup with sync ON"
+    title: "راه‌اندازی متابیس staging-to-production با sync ON"
     level: 2
     href: "#metabase-staging-to-production-setup-with-sync-on"
   - id: "develop-your-content-in-your-staging-metabase"
-    title: "Develop your content in your staging Metabase"
+    title: "توسعه محتوای خود در متابیس staging خود"
     level: 3
     href: "#develop-your-content-in-your-staging-metabase"
   - id: "serialize-the-changes-you-made-in-your-staging-metabase"
-    title: "Serialize the changes you made in your staging Metabase"
+    title: "serialize کردن تغییراتی که در متابیس staging خود ایجاد کردید"
     level: 3
     href: "#serialize-the-changes-you-made-in-your-staging-metabase"
   - id: "create-a-github-action-workflow-yaml-file"
-    title: "Create a GitHub Action Workflow YAML file"
+    title: "ایجاد یک فایل YAML workflow GitHub Action"
     level: 3
     href: "#create-a-github-action-workflow-yaml-file"
   - id: "metabase-staging-to-production-setup-with-sync-off"
-    title: "Metabase staging-to-production setup with sync OFF"
+    title: "راه‌اندازی متابیس staging-to-production با sync OFF"
     level: 2
     href: "#metabase-staging-to-production-setup-with-sync-off"
   - id: "make-sure-you-ve-turned-off-sync"
-    title: "Make sure you’ve turned off sync"
+    title: "اطمینان حاصل کنید که sync را خاموش کرده‌اید"
     level: 3
     href: "#make-sure-you-ve-turned-off-sync"
   - id: "set-up-multiple-staging-environments-with-a-config-file"
-    title: "Set up multiple staging environments with a config file"
+    title: "تنظیم چندین محیط staging با یک فایل config"
     level: 3
     href: "#set-up-multiple-staging-environments-with-a-config-file"
   - id: "export-the-table-metadata-from-your-production-metabase"
-    title: "Export the table metadata from your production Metabase"
+    title: "export کردن فراداده جدول از متابیس production خود"
     level: 3
     href: "#export-the-table-metadata-from-your-production-metabase"
   - id: "import-content-from-your-production-metabase-to-your-staging-metabase-s"
-    title: "Import content from your production Metabase to your staging Metabase(s)"
+    title: "import کردن محتوا از متابیس production خود به متابیس staging خود"
     level: 3
     href: "#import-content-from-your-production-metabase-to-your-staging-metabase-s"
   - id: "develop-your-content-in-your-staging-metabase-s"
-    title: "Develop your content in your staging Metabase(s)"
+    title: "توسعه محتوای خود در متابیس staging خود"
     level: 3
     href: "#develop-your-content-in-your-staging-metabase-s"
   - id: "export-the-changes-you-made-in-your-staging-metabase-to-your-production-metabase"
-    title: "Export the changes you made in your staging Metabase to your production Metabase"
+    title: "export کردن تغییراتی که در متابیس staging خود ایجاد کردید به متابیس production خود"
     level: 3
     href: "#export-the-changes-you-made-in-your-staging-metabase-to-your-production-metabase"
   - id: "example-workflow-yaml-files-for-sync-off-setup"
-    title: "Example workflow YAML files for sync off setup"
+    title: "فایل‌های YAML workflow نمونه برای راه‌اندازی sync off"
     level: 3
     href: "#example-workflow-yaml-files-for-sync-off-setup"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# Tutorial: Setting up a git-based workflow
+# آموزش: تنظیم یک workflow مبتنی بر git
 
-Create models, questions, and dashboards in a staging Metabase, commit your changes to a repository, and push those changes to your production Metabase.
+مدل‌ها، سؤال‌ها، و داشبوردها را در یک متابیس staging ایجاد کنید، تغییرات خود را به یک repository commit کنید، و آن تغییرات را به متابیس production خود push کنید.
 
-> Serialization is only available on
-      [Pro](../../../../product/pro.html) and
+> Serialization فقط در
+      [Pro](../../../../product/pro.html) و
       [Enterprise](../../../../product/enterprise.html)
-      plans  \(both self\-hosted and on Metabase Cloud\).
+      (هم self-hosted و هم در متابیس کلود)
+      در دسترس است.
 
-This article will cover how to use Metabase’s [serialization](../../../../docs/latest/installation-and-operation/serialization.html) feature to keep staging and production Metabases in sync.
+این مقاله نحوه استفاده از ویژگی [serialization](../../../../docs/latest/installation-and-operation/serialization.html) متابیس برای نگه داشتن متابیس‌های staging و production در sync را پوشش می‌دهد.
 
-With this setup, you can fine\-tune your questions, models, and dashboards in your staging Metabase. Then, when you’re satisfied with your work, you can commit those changes to a git repo, and push those changes to your production Metabase.
+با این راه‌اندازی، می‌توانید سؤال‌ها، مدل‌ها، و داشبوردهای خود را در متابیس staging خود fine-tune کنید. سپس، وقتی از کار خود راضی شدید، می‌توانید آن تغییرات را به یک repo git commit کنید، و آن تغییرات را به متابیس production خود push کنید.
 
-## First, set up your staging Metabase
+## ابتدا، متابیس staging خود را تنظیم کنید
 
-> This setup only applies to self\-hosted Metabases, both for staging and production.
+> این راه‌اندازی فقط برای متابیس‌های self-hosted اعمال می‌شود، هم برای staging و هم production.
 
-We’re assuming you already have a production Metabase in play, and that you want to set up another Metabase to stage the development of questions, models, and dashboards.
+فرض می‌کنیم از قبل یک متابیس production در play دارید، و می‌خواهید متابیس دیگری برای stage کردن توسعه سؤال‌ها، مدل‌ها، و داشبوردها تنظیم کنید.
 
-Set up your staging Metabase on a server, either on your on\-prem servers, or with your preferred cloud provider. The staging Metabase must be the same version as your production Metabase. Each time you upgrade your production Metabase, remember to upgrade your staging Metabase as well.
+متابیس staging خود را روی یک سرور تنظیم کنید، یا روی سرورهای on-prem خود، یا با ارائه‌دهنده کلود ترجیحی خود. متابیس staging باید همان نسخه متابیس production شما باشد. هر بار که متابیس production خود را upgrade می‌کنید، به یاد داشته باشید متابیس staging خود را نیز upgrade کنید.
 
-### Create your Metabase application database for your staging Metabase
+### پایگاه داده برنامه متابیس خود را برای متابیس staging خود ایجاد کنید
 
-You’ll also need to set up a separate [application database](../../../../docs/latest/installation-and-operation/configuring-application-database.html) for each additional Metabase that you want to use for staging. Use PostgreSQL to store all of your models, questions, collections, and so on. \(Or MySQL, if that’s what your production Metabase uses\).
+همچنین نیاز دارید یک [پایگاه داده برنامه](../../../../docs/latest/installation-and-operation/configuring-application-database.html) جداگانه برای هر متابیس اضافی که می‌خواهید برای staging استفاده کنید تنظیم کنید. از PostgreSQL برای ذخیره همه مدل‌ها، سؤال‌ها، مجموعه‌ها، و غیره استفاده کنید. (یا MySQL، اگر متابیس production شما از آن استفاده می‌کند).
 
-### Your staging and production databases must share the same display name, database engine, and schema
+### پایگاه‌های داده staging و production شما باید نام نمایش، موتور پایگاه داده، و schema یکسان داشته باشند
 
-To repeat, your staging and production databases must:
+برای تکرار، پایگاه‌های داده staging و production شما باید:
 
-- Be the same type/engine. For example, if one is Postgres, the other must also be Postgres. The same version is ideal, but usually not important.
-- Have the same schema.
-- Have the same display name in Metabase \(the **Display name** field when filling out your database connection details, not the database name itself\).
+- همان نوع/موتور باشند. به عنوان مثال، اگر یکی Postgres است، دیگری نیز باید Postgres باشد. همان نسخه ایده‌آل است، اما معمولاً مهم نیست.
+- همان schema را داشته باشند.
+- همان نام نمایش در متابیس داشته باشند (فیلد **نام نمایش** هنگام پر کردن جزئیات اتصال پایگاه داده، نه نام پایگاه داده خود).
 
-Once you enter your connection information, you’ll need to wait until Metabase finishes syncing.
+وقتی اطلاعات اتصال خود را وارد کردید، نیاز دارید تا متابیس sync را تمام کند صبر کنید.
 
-### Define which collections to check into version control
+### تعریف کدام مجموعه‌ها را در کنترل نسخه check in کنید
 
-You can serialize all collections, or \(preferably\) specify a subset of those collections. The idea is to be deliberate about which collections you include. It can be handy to have collections for experimentation in your staging Metabase that you can exclude from production.
+می‌توانید همه مجموعه‌ها را serialize کنید، یا (ترجیحاً) زیرمجموعه‌ای از آن مجموعه‌ها را مشخص کنید. ایده این است که deliberate باشید درباره کدام مجموعه‌ها شامل می‌کنید. می‌تواند مفید باشد مجموعه‌هایی برای آزمایش در متابیس staging خود داشته باشید که می‌توانید از production حذف کنید.
 
-If you only specify a few collections, we recommend that you mark those as [official collections](../../../../docs/latest/exploration-and-organization/collections.html#official-collections).
+اگر فقط چند مجموعه مشخص می‌کنید، توصیه می‌کنیم آن‌ها را به عنوان [مجموعه‌های رسمی](../../../../docs/latest/exploration-and-organization/collections.html#official-collections) علامت بزنید.
 
-### Things to avoid in your staging environment
+### چیزهایی که باید در محیط staging خود از آن‌ها اجتناب کنید
 
-- Avoid dashboard subscriptions and alerts. These items are specific to people’s accounts, and therefore Metabase excludes them from serialization.
-- Avoid [model caching](../../../../docs/latest/data-modeling/model-persistence.html) in your staging Metabase, as model caching will conflict with your production Metabase.
+- از اشتراک‌های داشبورد و هشدارها اجتناب کنید. این آیتم‌ها خاص به حساب‌های مردم هستند، و بنابراین متابیس آن‌ها را از serialization حذف می‌کند.
+- از [cache کردن مدل](../../../../docs/latest/data-modeling/model-persistence.html) در متابیس staging خود اجتناب کنید، چون cache کردن مدل با متابیس production شما conflict خواهد کرد.
 
-### Set up your Git repo and CI (your workflows)
+### repository Git و CI خود را تنظیم کنید (workflowهای شما)
 
-Once you have your staging and production Metabases up and running, you need to create a repo to store your serialized Metabase content, which Metabase will export as a set of YAML files.
+وقتی متابیس‌های staging و production خود را راه‌اندازی کردید، نیاز دارید یک repo برای ذخیره محتوای serialize شده متابیس خود ایجاد کنید، که متابیس به عنوان مجموعه‌ای از فایل‌های YAML export می‌کند.
 
-For this article, we’ll be using GitHub Actions to automate the pulling and pushing of that serialized data between staging and production Metabases. Your CI tool \(in this case GitHub Actions\) must have read/write access to this application database.
+برای این مقاله، از GitHub Actions برای خودکار کردن pull و push آن داده serialize شده بین متابیس‌های staging و production استفاده خواهیم کرد. ابزار CI شما (در این مورد GitHub Actions) باید دسترسی read/write به این پایگاه داده برنامه داشته باشد.
 
-You’ll also add one or more GitHub Actions workflow YAML files to automate the serialization process. Optionally, you can turn on branch protection to require PR approvals before merging to your `main` branch.
+همچنین یک یا چند فایل YAML workflow GitHub Actions برای خودکار کردن فرآیند serialization اضافه خواهید کرد. به طور اختیاری، می‌توانید محافظت شاخه را برای نیاز به تأیید PR قبل از merge به شاخه `main` خود روشن کنید.
 
-## There are two basic staging-to-production setups
+## دو راه‌اندازی پایه staging-to-production وجود دارد
 
-The setups are:
+راه‌اندازی‌ها:
 
-- Staging Metabase with sync on
-- Staging Metabase\(s\) with sync off
+- متابیس staging با sync روشن
+- متابیس‌های staging با sync خاموش
 
-By default, Metabase runs some queries in the background to provide you with metadata:
+به طور پیش‌فرض، متابیس برخی پرس‌وجوها را در پس‌زمینه اجرا می‌کند تا فراداده را به شما ارائه دهد:
 
-- **Syncs** get updated schemas.
-- **Scans** take samples of column values to populate filter dropdown menus.
-- **Fingerprinting** samples additional column values to help with smart behavior, such as auto\-binning for bar charts.
+- **Syncs** schemaهای به‌روزرسانی شده را دریافت می‌کنند.
+- **Scans** نمونه‌هایی از مقادیر ستون می‌گیرند تا منوهای dropdown فیلتر را populate کنند.
+- **Fingerprinting** نمونه‌های اضافی از مقادیر ستون می‌گیرد تا به رفتار هوشمند کمک کند، مثل auto-binning برای نمودارهای میله‌ای.
 
-If these scheduled queries put too much strain on your database \(usually only the case if your data warehouse is massive\), you can turn them off. For more on how Metabase updates metadata, check out our [docs](../../../../docs/latest/databases/sync-scan.html).
+اگر این پرس‌وجوهای زمان‌بندی شده فشار زیادی روی پایگاه داده شما وارد کنند (معمولاً فقط اگر data warehouse شما عظیم باشد)، می‌توانید آن‌ها را خاموش کنید. برای بیشتر درباره نحوه به‌روزرسانی فراداده توسط متابیس، [مستندات](../../../../docs/latest/databases/sync-scan.html) ما را بررسی کنید.
 
-### When to use the setup with sync ON
+### چه زمانی از راه‌اندازی با sync ON استفاده کنیم
 
-- You have a single staging Metabase.
-- Your connected data source is small.
-- The data flow is unidirectional, from development to production \(that is, you don’t need to pull metadata or content from production\).
+- یک متابیس staging واحد دارید.
+- منبع داده متصل شما کوچک است.
+- جریان داده یک‌طرفه است، از توسعه به production (یعنی، نیاز به pull کردن فراداده یا محتوا از production ندارید).
 
-### When to use the setup with sync OFF
+### چه زمانی از راه‌اندازی با sync OFF استفاده کنیم
 
-- You have \(or want to have\) multiple development Metabases.
-- Your underlying data source is large.
-- Data flow is bidirectional: one or more staging Metabases push and pull to one production Metabase.
+- چندین متابیس توسعه دارید (یا می‌خواهید داشته باشید).
+- منبع داده زیربنایی شما بزرگ است.
+- جریان داده دوطرفه است: یک یا چند متابیس staging push و pull به یک متابیس production می‌کنند.
 
-## Metabase staging-to-production setup with sync ON
+## راه‌اندازی متابیس staging-to-production با sync ON
 
-In this setup, the staging Metabase has sync on. This setup is unidirectional.
+در این راه‌اندازی، متابیس staging sync روشن دارد. این راه‌اندازی یک‌طرفه است.
 
-- Make changes in one staging Metabase.
-- Export those changes in serialized format \(YAML files\).
-- Commit those YAML files to a repository.
-- Import those changes into your production Metabase.
+- تغییرات را در یک متابیس staging ایجاد کنید.
+- آن تغییرات را در فرمت serialize شده (فایل‌های YAML) export کنید.
+- آن فایل‌های YAML را به یک repository commit کنید.
+- آن تغییرات را به متابیس production خود import کنید.
 
-![One staging Metabase (with sync on) is used to development content, which you can export, commit to a repo, then import into your production Metabase.](../../../images/git-workflow/flowchart-sync-on.png)
+![یک متابیس staging (با sync روشن) برای توسعه محتوا استفاده می‌شود، که می‌توانید export کنید، به یک repo commit کنید، سپس به متابیس production خود import کنید.](../../../images/git-workflow/flowchart-sync-on.png)
 
-### Develop your content in your staging Metabase
+### توسعه محتوای خود در متابیس staging خود
 
-Create your content: your models, questions, dashboards, collections, and so on in your staging Metabase.
+محتوای خود را ایجاد کنید: مدل‌ها، سؤال‌ها، داشبوردها، مجموعه‌ها، و غیره در متابیس staging خود.
 
-### Serialize the changes you made in your staging Metabase
+### serialize کردن تغییراتی که در متابیس staging خود ایجاد کردید
 
-Once you’re happy with your changes, you’ll serialize your changes so that you can commit them to your repository.
+وقتی از تغییرات خود راضی شدید، تغییرات خود را serialize می‌کنید تا بتوانید آن‌ها را به repository خود commit کنید.
 
-To serialize your changes, you’ll run Metabase’s `export` command.
+برای serialize کردن تغییرات خود، دستور `export` متابیس را اجرا خواهید کرد.
 
-For example, if you are only exporting collections 2, 3, and 4, you could run:
+به عنوان مثال، اگر فقط مجموعه‌های 2، 3، و 4 را export می‌کنید، می‌توانید اجرا کنید:
 
 ```
 java -jar metabase.jar export repo_path --collection 2,3,4 --no-data-model --no-settings
 
 ```
 
-By default, Metabase will exclude nested collections. To include nested collections, you’ll need to specify their IDs as well, just like for any top\-level collection.
+به طور پیش‌فرض، متابیس مجموعه‌های nested را حذف می‌کند. برای شامل کردن مجموعه‌های nested، نیاز دارید IDهای آن‌ها را نیز مشخص کنید، درست مثل هر مجموعه top-level.
 
-Metabase will serialize your staging Metabase with the changes you’ve made. You might also want to put this command in a bash script that you check into your repo, so you don’t need to type it out each time, and can tweak it as you develop.
+متابیس متابیس staging شما را با تغییراتی که ایجاد کرده‌اید serialize می‌کند. همچنین ممکن است بخواهید این دستور را در یک اسکریپت bash که به repo خود check in می‌کنید قرار دهید، تا نیازی به تایپ کردن آن هر بار نباشد، و بتوانید آن را همانطور که توسعه می‌دهید tweak کنید.
 
-Commit those changes to your working branch. Once you merge your working branch into your main branch, the GitHub workflow will run and import those changes into your production Metabase.
+آن تغییرات را به شاخه working خود commit کنید. وقتی شاخه working خود را به شاخه main خود merge می‌کنید، workflow GitHub اجرا می‌شود و آن تغییرات را به متابیس production خود import می‌کند.
 
-### Create a GitHub Action Workflow YAML file
+### ایجاد یک فایل YAML workflow GitHub Action
 
-You can configure your repo so that when you merge your serialized changes into your main branch, the workflow will import those serialized changes into your production Metabase.
+می‌توانید repo خود را پیکربندی کنید تا وقتی تغییرات serialize شده خود را به شاخه main خود merge می‌کنید، workflow آن تغییرات serialize شده را به متابیس production خود import کند.
 
-Here’s an example [workflow with sync ON](https://github.com/metabase/git-workflow-sync), or follow along here.
+در اینجا یک [workflow نمونه با sync ON](https://github.com/metabase/git-workflow-sync)، یا دنبال کردن اینجا.
 
-## Metabase staging-to-production setup with sync OFF
+## راه‌اندازی متابیس staging-to-production با sync OFF
 
-In this setup, one or more staging Metabases have syncing turned off. This setup is bidirectional:
+در این راه‌اندازی، یک یا چند متابیس staging sync را خاموش کرده‌اند. این راه‌اندازی دوطرفه است:
 
-- Export your production data to update all of your staging Metabases.
-- Commit those serialized YAML files changes to a repository.
-- Import those changes into one or more staging Metabases.
-- Develop new content in those staging Metabases: dashboards, models, etc.
-- Export those changes from the staging Metabase\(s\) and commit the exported YAML files.
-- Import that content into production.
-- If you’re running multiple Metabases, you’ll need to update them with the new changes.
+- داده production خود را export کنید تا همه متابیس‌های staging خود را به‌روزرسانی کنید.
+- آن تغییرات فایل‌های YAML serialize شده را به یک repository commit کنید.
+- آن تغییرات را به یک یا چند متابیس staging import کنید.
+- محتوای جدید را در آن متابیس‌های staging توسعه دهید: داشبوردها، مدل‌ها، و غیره.
+- آن تغییرات را از متابیس staging export کنید و فایل‌های YAML export شده را commit کنید.
+- آن محتوا را به production import کنید.
+- اگر چندین متابیس اجرا می‌کنید، نیاز دارید آن‌ها را با تغییرات جدید به‌روزرسانی کنید.
 
-![One or more staging Metabase(s) (with sync off) is used to development content, which you can export, commit to a repo, then import into your production Metabase. To keep all of the staging Metabases up to date, you](../../../images/git-workflow/flowchart-sync-off.png)
+![یک یا چند متابیس staging (با sync خاموش) برای توسعه محتوا استفاده می‌شود، که می‌توانید export کنید، به یک repo commit کنید، سپس به متابیس production خود import کنید. برای نگه داشتن همه متابیس‌های staging به‌روز، شما](../../../images/git-workflow/flowchart-sync-off.png)
 
-### Make sure you’ve turned off sync
+### اطمینان حاصل کنید که sync را خاموش کرده‌اید
 
-Disable the Metabase scheduler using the environment variable `MB_DISABLE_SCHEDULER=true`.
+scheduler متابیس را با استفاده از متغیر محیطی `MB_DISABLE_SCHEDULER=true` غیرفعال کنید.
 
-Disabling scheduling will turn off Metabase’s scheduled jobs, which include syncs, fingerprinting, and scanning, as well as dashboard subscriptions, alerts, and model caching.
+غیرفعال کردن scheduling، کارهای زمان‌بندی شده متابیس را خاموش می‌کند، که شامل syncs، fingerprinting، و scanning، و همچنین اشتراک‌های داشبورد، هشدارها، و cache کردن مدل است.
 
-### Set up multiple staging environments with a config file
+### تنظیم چندین محیط staging با یک فایل config
 
-You only need one staging environment for this setup, but if you’d prefer to have multiple staging enviroments, you can use a [config file](../../../../docs/latest/configuring-metabase/config-file.html) to set up multiple staging Metabases.
+فقط به یک محیط staging برای این راه‌اندازی نیاز دارید، اما اگر ترجیح می‌دهید چندین محیط staging داشته باشید، می‌توانید از یک [فایل config](../../../../docs/latest/configuring-metabase/config-file.html) برای تنظیم چندین متابیس staging استفاده کنید.
 
-### Export the table metadata from your production Metabase
+### export کردن فراداده جدول از متابیس production خود
 
-Since sync is off, you’ll need to get your table metadata from your production Metabase and import it into your staging Metabases.
+چون sync خاموش است، نیاز دارید فراداده جدول خود را از متابیس production خود دریافت کنید و آن را به متابیس‌های staging خود import کنید.
 
-The following command will export the collections you specify, as well as the table metadata.
+دستور زیر مجموعه‌هایی که مشخص می‌کنید، و همچنین فراداده جدول را export می‌کند.
 
 ```
 java -jar metabase.jar export --collections COLLECTIONS_TO_SYNC --no-settings
 
 ```
 
-If you want to export all collections from production Metabase, simply omit the `--collections` flag and its arguments.
+اگر می‌خواهید همه مجموعه‌ها را از متابیس production export کنید، به سادگی flag `--collections` و آرگومان‌های آن را حذف کنید.
 
-We recommend setting up a workflow that exports this data automatically at a regular cadence.
+توصیه می‌کنیم یک workflow تنظیم کنید که این داده را به طور خودکار در یک cadence منظم export کند.
 
-Here’s an example workflow:
+در اینجا یک workflow نمونه:
 
 ```
 name: export-datamodel-from-prod
@@ -305,55 +304,59 @@ jobs:
 
 ```
 
-### Import content from your production Metabase to your staging Metabase(s)
+### import کردن محتوا از متابیس production خود به متابیس staging خود
 
-Since Metabase sync processes are off, you’ll need to pull content from production to “sync” your staging Metabases, including the table metadata. If you’re running multiple staging Metabases, you’ll need to update them each time there are any changes to the production table metadata, as well as any time you push changes from any one of your staging Metabases to your production Metabase.
+چون فرآیندهای sync متابیس خاموش هستند، نیاز دارید محتوا را از production pull کنید تا متابیس‌های staging خود را "sync" کنید، از جمله فراداده جدول. اگر چندین متابیس staging اجرا می‌کنید، نیاز دارید آن‌ها را هر بار که تغییراتی به فراداده جدول production وجود دارد، و همچنین هر بار که تغییراتی از هر یک از متابیس‌های staging خود به متابیس production خود push می‌کنید به‌روزرسانی کنید.
 
-Manually keeping your Metabases in sync is impractical, so we recommend creating and an action, like [this action](https://github.com/metabase/git-workflow-no-sync/blob/main/.github/workflows/export-from-prod.yaml), that runs either every six hours, or daily, to keep your staging Metabases up to date with the changes in your production Metabase.
+نگه داشتن دستی متابیس‌های خود در sync غیرعملی است، پس توصیه می‌کنیم یک action ایجاد کنید، مثل [این action](https://github.com/metabase/git-workflow-no-sync/blob/main/.github/workflows/export-from-prod.yaml)، که یا هر شش ساعت، یا روزانه اجرا می‌شود، تا متابیس‌های staging خود را با تغییرات در متابیس production خود به‌روز نگه دارد.
 
-1. Clone the repo where you exported your production data.
-2. Change into the directory that contains the Metabase jar for your staging Metabase.
-3. Import the table metadata and curated collections by running: ``` java -jar metabase.jar import /PATH/TO/REPO ``` With `/PATH/TO/REPO` being the path where you stored your serialized data from your production Metabase. This command will load the updated table metadata, as well as any other changes to the repo. You need to run this command every time anyone updates your local repo.
+1. repo جایی که داده production خود را export کردید clone کنید.
+2. به دایرکتوری که jar متابیس را برای متابیس staging خود شامل می‌شود تغییر دهید.
+3. فراداده جدول و مجموعه‌های curate شده را با اجرای: ``` java -jar metabase.jar import /PATH/TO/REPO ``` import کنید. با `/PATH/TO/REPO` مسیری که داده serialize شده خود را از متابیس production ذخیره کردید. این دستور فراداده جدول به‌روزرسانی شده، و همچنین هر تغییر دیگری به repo را load می‌کند. نیاز دارید این دستور را هر بار که کسی repo محلی شما را به‌روزرسانی می‌کند اجرا کنید.
 
-### Develop your content in your staging Metabase(s)
+### توسعه محتوای خود در متابیس staging خود
 
-Log into your staging Metabase and create whatever content you want to push to production: models, questions, dashboards, and so on. Make sure to save these items in those Official collections that you marked for exporting to your production Metabase.
+به متابیس staging خود وارد شوید و هر محتوایی که می‌خواهید به production push کنید ایجاد کنید: مدل‌ها، سؤال‌ها، داشبوردها، و غیره. مطمئن شوید این آیتم‌ها را در آن مجموعه‌های رسمی که برای export به متابیس production خود علامت زده‌اید ذخیره می‌کنید.
 
-### Export the changes you made in your staging Metabase to your production Metabase
+### export کردن تغییراتی که در متابیس staging خود ایجاد کردید به متابیس production خود
 
-For example, let’s say you want to export only collections 1,2,3.
+به عنوان مثال، بگویید می‌خواهید فقط مجموعه‌های 1،2،3 را export کنید.
 
 ```
 java -jar metabase.jar export /PATH/TO/REPO --collection 1,2,3 --no-data-model --no-settings
 
 ```
 
-Replace `/PATH/TO/REPO` with the path to your repo that contains your serialized Metabase data. And replace `1,2,3` with the ID numbers of the collections that you want to export, separating each collection ID with a comma.
+`/PATH/TO/REPO` را با مسیر به repo خود که داده serialize شده متابیس را شامل می‌شود جایگزین کنید. و `1,2,3` را با شماره‌های ID مجموعه‌هایی که می‌خواهید export کنید جایگزین کنید، هر ID مجموعه را با کاما جدا کنید.
 
-The export command will serialize the changes you made in your development Metabase and save them to your repo.
+دستور export تغییراتی که در متابیس توسعه خود ایجاد کردید را serialize می‌کند و آن‌ها را به repo خود ذخیره می‌کند.
 
-Commit your changes to a branch and merge that branch into your main branch. The GitHub workflow that you set up will run and import those serialized changes into your production Metabase.
+تغییرات خود را به یک شاخه commit کنید و آن شاخه را به شاخه main خود merge کنید. workflow GitHub که تنظیم کردید اجرا می‌شود و آن تغییرات serialize شده را به متابیس production خود import می‌کند.
 
-### Example workflow YAML files for sync off setup
+### فایل‌های YAML workflow نمونه برای راه‌اندازی sync off
 
-[Git workflow example with sync OFF](https://github.com/metabase/git-workflow-no-sync).
+[مثال workflow Git با sync OFF](https://github.com/metabase/git-workflow-no-sync).
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](serialization.html)
 [
       
         
         
+
       
       
+        
         
 
       

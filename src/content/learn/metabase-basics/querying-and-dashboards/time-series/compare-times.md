@@ -1,211 +1,208 @@
 ---
-
-
-title: "Best practices for visualizing time series"
-description: "Tell a story by organizing time series charts on the same dashboard."
+title: "بهترین روش‌ها برای تجسم سری‌های زمانی"
+description: "با سازماندهی نمودارهای سری زمانی در یک داشبورد، داستانی را روایت کنید."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/time-series/compare-times
 toc:
   - id: "best-practices-for-visualizing-time-series"
-    title: "Best practices for visualizing time series"
+    title: "بهترین روش‌ها برای تجسم سری‌های زمانی"
     level: 1
     href: "#best-practices-for-visualizing-time-series"
   - id: "comparing-time-periods-side-by-side-on-a-dashboard"
-    title: "Comparing time periods side by side on a dashboard"
+    title: "مقایسه دوره‌های زمانی کنار هم روی یک داشبورد"
     level: 2
     href: "#comparing-time-periods-side-by-side-on-a-dashboard"
   - id: "tips-for-side-by-side-comparisons"
-    title: "Tips for side-by-side comparisons"
+    title: "نکات برای مقایسه‌های کنار هم"
     level: 2
     href: "#tips-for-side-by-side-comparisons"
   - id: "use-the-same-question-for-each-column"
-    title: "Use the same question for each column"
+    title: "از همان سؤال برای هر ستون استفاده کنید"
     level: 3
     href: "#use-the-same-question-for-each-column"
   - id: "make-sure-the-axes-are-the-same-across-the-two-cards"
-    title: "Make sure the axes are the same across the two cards"
+    title: "مطمئن شوید محورها در دو کارت یکسان هستند"
     level: 3
     href: "#make-sure-the-axes-are-the-same-across-the-two-cards"
   - id: "using-a-goal-line-and-or-trend-line"
-    title: "Using a goal line and/or trend line"
+    title: "استفاده از خط هدف و/یا خط روند"
     level: 3
     href: "#using-a-goal-line-and-or-trend-line"
   - id: "add-text-cards-to-group-related-cards"
-    title: "Add text cards to group related cards"
+    title: "افزودن کارت‌های متنی برای گروه‌بندی کارت‌های مرتبط"
     level: 3
     href: "#add-text-cards-to-group-related-cards"
   - id: "use-colors-to-distinguish-columns"
-    title: "Use colors to distinguish columns"
+    title: "استفاده از رنگ‌ها برای تمایز ستون‌ها"
     level: 3
     href: "#use-colors-to-distinguish-columns"
   - id: "overlaying-two-time-series-on-the-same-chart"
-    title: "Overlaying two time series on the same chart"
+    title: "overlay کردن دو سری زمانی روی همان نمودار"
     level: 2
     href: "#overlaying-two-time-series-on-the-same-chart"
   - id: "using-a-custom-column-to-group-static-date-ranges"
-    title: "Using a custom column to group static date ranges"
+    title: "استفاده از یک ستون سفارشی برای group کردن محدوده‌های تاریخ static"
     level: 3
     href: "#using-a-custom-column-to-group-static-date-ranges"
   - id: "using-custom-expressions-to-compare-last-week-to-the-previous-week"
-    title: "Using custom expressions to compare last week to the previous week"
+    title: "استفاده از عبارات سفارشی برای مقایسه هفته گذشته با هفته قبل"
     level: 2
     href: "#using-custom-expressions-to-compare-last-week-to-the-previous-week"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Time series analysis"
+  - title: "تحلیل سری زمانی"
     href: "../time-series.html"
 ---
 
-# Best practices for visualizing time series
+# بهترین روش‌ها برای تجسم سری‌های زمانی
 
-Tell a story by organizing time series charts on the same dashboard.
+با سازماندهی نمودارهای سری زمانی در یک داشبورد، داستانی را روایت کنید.
 
-We’re going to look at different strategies for comparing a metric between two different periods of time, like comparing this week to last week, or last year versus the previous. We’ll use the Sample Database included with Metabase so you can follow along. This Sample Database includes order information for a completely real, not\-at\-all\-made\-up company that existed from 2015 to 2020. And for flexing our query builder skills, we’re interested in how the orders placed in 2018 compare with those in 2019.
+به استراتژی‌های مختلف برای مقایسه یک معیار بین دو دوره زمانی مختلف، مثل مقایسه این هفته با هفته گذشته، یا سال گذشته در مقابل قبلی می‌پردازیم. از پایگاه داده نمونه شامل شده با متابیس استفاده می‌کنیم تا بتوانید همراه باشید. این پایگاه داده نمونه شامل اطلاعات سفارش برای یک شرکت کاملاً واقعی، اصلاً ساختگی نیست که از 2015 تا 2020 وجود داشت. و برای flex کردن مهارت‌های query builder خود، به نحوه مقایسه سفارش‌های قرار داده شده در 2018 با آن‌ها در 2019 علاقه‌مندیم.
 
-This article builds on a previous article on [Time series comparisons](time-series-comparisons.html), but here we’re covering two different strategies:
+این مقاله بر روی مقاله قبلی درباره [مقایسه‌های سری زمانی](time-series-comparisons.html) بنا می‌شود، اما اینجا دو استراتژی مختلف را پوشش می‌دهیم:
 
-- [Comparing time periods side by side on a dashboard](#comparing-time-periods-side-by-side-on-a-dashboard)
-  - [Use the same question for each column](#use-the-same-question-for-each-column)
-  - [Make sure the axes are the same across the two cards](#make-sure-the-axes-are-the-same-across-the-two-cards)
-  - [Using a goal line and/or trend line](#using-a-goal-line-andor-trend-line)
-  - [Add text cards to group related cards](#add-text-cards-to-group-related-cards)
-  - [Use colors to distinguish columns](#use-colors-to-distinguish-columns)
-- [Tips for side\-by\-side comparisons](#tips-for-side-by-side-comparisons)
-  - [Using a custom column to group static date ranges](#using-a-custom-column-to-group-static-date-ranges)
-- [Overlaying two time series on the same chart](#overlaying-two-time-series-on-the-same-chart)
-- [Using custom expressions to compare last week to the previous week](#using-custom-expressions-to-compare-last-week-to-the-previous-week)
-- [Further reading](#further-reading)
+- [مقایسه دوره‌های زمانی کنار هم روی یک داشبورد](#comparing-time-periods-side-by-side-on-a-dashboard)
+  - [از همان سؤال برای هر ستون استفاده کنید](#use-the-same-question-for-each-column)
+  - [مطمئن شوید محورها در دو کارت یکسان هستند](#make-sure-the-axes-are-the-same-across-the-two-cards)
+  - [استفاده از خط هدف و/یا خط روند](#using-a-goal-line-and-or-trend-line)
+  - [افزودن کارت‌های متنی برای گروه‌بندی کارت‌های مرتبط](#add-text-cards-to-group-related-cards)
+  - [استفاده از رنگ‌ها برای تمایز ستون‌ها](#use-colors-to-distinguish-columns)
+- [نکات برای مقایسه‌های کنار هم](#tips-for-side-by-side-comparisons)
+  - [استفاده از یک ستون سفارشی برای group کردن محدوده‌های تاریخ static](#using-a-custom-column-to-group-static-date-ranges)
+- [overlay کردن دو سری زمانی روی همان نمودار](#overlaying-two-time-series-on-the-same-chart)
+- [استفاده از عبارات سفارشی برای مقایسه هفته گذشته با هفته قبل](#using-custom-expressions-to-compare-last-week-to-the-previous-week)
+- [مطالعه بیشتر](#further-reading)
 
-## Comparing time periods side by side on a dashboard
+## مقایسه دوره‌های زمانی کنار هم روی یک داشبورد
 
-![A dashboard with two columns, Date 1 on the left, Date 2 on the right, each with cards connected to their respective filter widget. A third widget is connected to cards in both columns to filter for product category.](../../../images/compare-times/side-by-side-dashboard.png)
+![یک داشبورد با دو ستون، Date 1 در سمت چپ، Date 2 در سمت راست، هر کدام با کارت‌هایی متصل به widget فیلتر مربوطه. یک widget سوم به کارت‌ها در هر دو ستون متصل است تا بر اساس دسته محصول فیلتر کند.](../../../images/compare-times/side-by-side-dashboard.png)
 
-This pattern is easy to maintain and easy to extend \(either by modifying cards or adding new cards\), and it’s especially useful when you want to compare multiple metrics.
+این الگو نگهداری آسان و گسترش آسان دارد (یا با تغییر کارت‌ها یا افزودن کارت‌های جدید)، و به خصوص زمانی که می‌خواهید چندین معیار را مقایسه کنید مفید است.
 
-The first step here is to [ask a question](../../../../docs/latest/questions/introduction.html). For our data, we’ll select the `Orders` table. We’ll summarize the count of orders, and group by month. Then we’ll save the question as “Orders per month”.
+اولین گام اینجا [پرسیدن یک سؤال](../../../../docs/latest/questions/introduction.html) است. برای داده خود، جدول `Orders` را انتخاب می‌کنیم. تعداد سفارش‌ها را خلاصه می‌کنیم، و بر اساس ماه group می‌کنیم. سپس سؤال را به عنوان "Orders per month" ذخیره می‌کنیم.
 
-![Notebook view of our question that summarizes the count of orders grouped by month](../../../images/compare-times/orders-per-month.png)
+![نمای notebook سؤال ما که تعداد سفارش‌ها را group شده بر اساس ماه خلاصه می‌کند](../../../images/compare-times/orders-per-month.png)
 
-Next, we’ll add our “Orders per month” question to a new [dashboard](../../../../docs/latest/dashboards/introduction.html), and call that dashboard “Side\-by\-side comparison”, or whatever. We’ll then add that same question, “Orders per month”, to the dashboard again \(that is, as a second card\), which we’ll place to the right of the original question.
+بعد، سؤال "Orders per month" خود را به یک [داشبورد](../../../../docs/latest/dashboards/introduction.html) جدید اضافه می‌کنیم، و آن داشبورد را "Side-by-side comparison" یا هر چیزی می‌نامیم. سپس همان سؤال، "Orders per month"، را دوباره به داشبورد اضافه می‌کنیم (یعنی، به عنوان یک کارت دوم)، که آن را در سمت راست سؤال اصلی قرار می‌دهیم.
 
-What we’re doing here is creating two columns in our dashboard: the left column will have one date range, and the right column will have a second date range. We’ll [attach a filter](../../../../docs/latest/dashboards/filters.html) to control the date range for cards the left column, and another filter that will control the date range for the right column.
+آنچه اینجا انجام می‌دهیم ایجاد دو ستون در داشبورد است: ستون چپ یک محدوده تاریخ خواهد داشت، و ستون راست یک محدوده تاریخ دوم خواهد داشت. یک [فیلتر](../../../../docs/latest/dashboards/filters.html) برای کنترل محدوده تاریخ برای کارت‌های ستون چپ، و فیلتر دیگری که محدوده تاریخ را برای ستون راست کنترل می‌کند attach می‌کنیم.
 
-We’ll set default date ranges using the “Between” option for each filter \(you can type out the dates instead of clicking through the calendar\).
+محدوده‌های تاریخ پیش‌فرض را با استفاده از گزینه "Between" برای هر فیلتر تنظیم می‌کنیم (می‌توانید تاریخ‌ها را تایپ کنید به جای کلیک از طریق تقویم).
 
-- Date 1 range: `01/01/2018` to `12/31/2018`
-- Date 2 range: `01/01/2019` to `12/31/2019`
+- محدوده Date 1: `01/01/2018` تا `12/31/2018`
+- محدوده Date 2: `01/01/2019` تا `12/31/2019`
 
-![Attaching the Date 1 filter to each card on the left column (but not the right column).](../../../images/compare-times/filter-for-left-column.png)
+![اتصال فیلتر Date 1 به هر کارت در ستون چپ (اما نه ستون راست).](../../../images/compare-times/filter-for-left-column.png)
 
-Save your changes, and **refresh the page to update the results**. We can also attach additional filters to the dashboard that we can wire up to cards in both columns, for example if we want to filter orders by a certain category.
+تغییرات خود را ذخیره کنید، و **صفحه را refresh کنید تا نتایج به‌روزرسانی شوند**. همچنین می‌توانیم فیلترهای اضافی به داشبورد attach کنیم که می‌توانیم به کارت‌ها در هر دو ستون wire کنیم، مثلاً اگر می‌خواهیم سفارش‌ها را بر اساس یک دسته خاص فیلتر کنیم.
 
-You can add additional cards with time series, and wire them up to the corresponding filter for that column.
+می‌توانید کارت‌های اضافی با سری زمانی اضافه کنید، و آن‌ها را به فیلتر مربوطه برای آن ستون wire کنید.
 
-## Tips for side-by-side comparisons
+## نکات برای مقایسه‌های کنار هم
 
-Keep in mind that this pattern breaks down when viewed a phone, as Metabase will collapse each card into a single column. You can still make sense of the dashboard, but it requires you to look closely at the dates for each card.
+به خاطر داشته باشید که این الگو وقتی روی تلفن مشاهده می‌شود breakdown می‌شود، چون متابیس هر کارت را به یک ستون واحد collapse می‌کند. هنوز می‌توانید از داشبورد سر در بیاورید، اما نیاز به نگاه دقیق به تاریخ‌ها برای هر کارت دارید.
 
-### Use the same question for each column
+### از همان سؤال برای هر ستون استفاده کنید
 
-That way if you want to modify the question, you only need to update one question, and both columns will get the update.
+به این ترتیب اگر می‌خواهید سؤال را تغییر دهید، فقط نیاز به به‌روزرسانی یک سؤال دارید، و هر دو ستون به‌روزرسانی دریافت می‌کنند.
 
-### Make sure the axes are the same across the two cards
+### مطمئن شوید محورها در دو کارت یکسان هستند
 
-Metabase defaults to auto\-adjusting the y\-axis to account for the values, but it can make it hard to see the difference between two cards if one card tops out at 500, and the other at 1000. While in dashboard edit mode, hover over a card and click on the palette icon to edit the visualization settings. Click on the **Axes** tab, turn off the **Auto y\-axis range** and set the **y\-axis Max** \(you should leave the Min as 0\).
+متابیس به طور پیش‌فرض به auto-adjust کردن y-axis برای account کردن مقادیر می‌رود، اما می‌تواند دیدن تفاوت بین دو کارت را سخت کند اگر یک کارت در 500 به پایان برسد، و دیگری در 1000. در حالی که در حالت ویرایش داشبورد هستید، روی یک کارت hover کنید و روی آیکون palette کلیک کنید تا تنظیمات تجسم را ویرایش کنید. روی تب **Axes** کلیک کنید، **Auto y-axis range** را خاموش کنید و **y-axis Max** را تنظیم کنید (باید Min را 0 بگذارید).
 
-![Setting the y-axis Max value to 600.](../../../images/compare-times/set-y-axis.png)
+![تنظیم مقدار y-axis Max به 600.](../../../images/compare-times/set-y-axis.png)
 
-### Using a goal line and/or trend line
+### استفاده از خط هدف و/یا خط روند
 
-Adding lines can make it easier for people to differentiate metric performance across charts. It’s clear that orders in 2019 exceeded the goal more often than in 2018.
+افزودن خط‌ها می‌تواند تمایز عملکرد معیار در نمودارها را برای مردم آسان‌تر کند. واضح است که سفارش‌ها در 2019 بیشتر از 2018 هدف را exceeded کردند.
 
-### Add text cards to group related cards
+### افزودن کارت‌های متنی برای گروه‌بندی کارت‌های مرتبط
 
-To make it easier for people to understand the split setup, we can add text cards that signal that each column corresponds to one of the filters: the left column to Date 1 and the right column to Date 2. When in dashboard edit mode, you can edit the visualization settings for the text cards by hovering over the card and clicking on the **Palette icon**. For example, for the card with `## Date 1`, we’ve set the **Vertical alignment** to “Top”, the **Horizontal alignnment** to “Center”, and toggled off the **Show background** setting.
+برای آسان‌تر کردن درک setup split برای مردم، می‌توانیم کارت‌های متنی اضافه کنیم که نشان می‌دهند هر ستون با یکی از فیلترها مطابقت دارد: ستون چپ با Date 1 و ستون راست با Date 2. وقتی در حالت ویرایش داشبورد هستید، می‌توانید تنظیمات تجسم را برای کارت‌های متنی با hover روی کارت و کلیک روی **آیکون Palette** ویرایش کنید. به عنوان مثال، برای کارت با `## Date 1`، **Vertical alignment** را به "Top"، **Horizontal alignment** را به "Center" تنظیم کرده‌ایم، و تنظیم **Show background** را toggle off کرده‌ایم.
 
-### Use colors to distinguish columns
+### استفاده از رنگ‌ها برای تمایز ستون‌ها
 
-You can use different colors to distinguish cards in each column. Hover over a card and click on the **Palette icon** to update the card’s visualization settings.
+می‌توانید از رنگ‌های مختلف برای تمایز کارت‌ها در هر ستون استفاده کنید. روی یک کارت hover کنید و روی **آیکون Palette** کلیک کنید تا تنظیمات تجسم کارت را به‌روزرسانی کنید.
 
-For more tips on dashboards, check out [BI dashboard best practices](../dashboards/bi-dashboard-best-practices.html).
+برای نکات بیشتر درباره داشبوردها، [بهترین روش‌های داشبورد BI](../dashboards/bi-dashboard-best-practices.html) را بررسی کنید.
 
-## Overlaying two time series on the same chart
+## overlay کردن دو سری زمانی روی همان نمودار
 
-Now on to a fundamentally different approach. Here we’re going to cover two patterns:
+حالا به یک رویکرد اساساً متفاوت. اینجا دو الگو را پوشش می‌دهیم:
 
-- [Using a custom column to group static date ranges](#using-a-custom-column-to-group-static-date-ranges)
-- [Using custom expressions to compare last week to the previous week](#using-custom-expressions-to-compare-last-week-to-the-previous-week)
+- [استفاده از یک ستون سفارشی برای group کردن محدوده‌های تاریخ static](#using-a-custom-column-to-group-static-date-ranges)
+- [استفاده از عبارات سفارشی برای مقایسه هفته گذشته با هفته قبل](#using-custom-expressions-to-compare-last-week-to-the-previous-week)
 
-### Using a custom column to group static date ranges
+### استفاده از یک ستون سفارشی برای group کردن محدوده‌های تاریخ static
 
-Here we’ll use a [`case`](../../../../docs/latest/questions/query-builder/expressions-list.html#case) statement to create a custom column. We can use the **between** expression. Here, we’ll create a new column using a [custom expression](../questions/custom-expressions.html).
+اینجا از یک statement [`case`](../../../../docs/latest/questions/query-builder/expressions-list.html#case) برای ایجاد یک ستون سفارشی استفاده می‌کنیم. می‌توانیم از عبارت **between** استفاده کنیم. اینجا، یک ستون جدید با استفاده از یک [عبارت سفارشی](../questions/custom-expressions.html) ایجاد می‌کنیم.
 
 ```mbql
 case(between([Created At], "2018-01-01", "2018-12-31"), "2018", between([Created At], "2019-01-01", "2019-12-31"), "2019")
-
 ```
 
-What this expression is saying is that for each record \(row\) in the results, add a new column. In the case that the `Created At` field is between January 1st of 2018 and December 31st of 2018, put the value “2018” in the Year column for that record. In the case that the `Created At` date falls between that 2019 range, put “2019” instead. Otherwise, leave it empty. Next, we want to filter for all the records where the “Year” column we created is not empty.
+این عبارت می‌گوید که برای هر رکورد (ردیف) در نتایج، یک ستون جدید اضافه کنید. در حالتی که فیلد `Created At` بین 1 ژانویه 2018 و 31 دسامبر 2018 است، مقدار "2018" را در ستون Year برای آن رکورد قرار دهید. در حالتی که تاریخ `Created At` در آن محدوده 2019 می‌افتد، به جای آن "2019" قرار دهید. در غیر این صورت، آن را خالی بگذارید. بعد، می‌خواهیم برای همه رکوردهایی که ستون "Year" ایجاد شده خالی نیست فیلتر کنیم.
 
-![The query builder contains a custom column called year, filters out years that are empty, and counts the orders, and groups by year and Created at by month of year.](../../../images/compare-times/custom-column-year.png)
+![query builder شامل یک ستون سفارشی به نام year، سال‌هایی که خالی هستند را فیلتر می‌کند، و سفارش‌ها را می‌شمارد، و بر اساس year و Created at بر اساس ماه سال group می‌کند.](../../../images/compare-times/custom-column-year.png)
 
-And here we have two time series, 2018 vs 2019, on the same chart:
+و اینجا دو سری زمانی، 2018 در مقابل 2019، روی همان نمودار داریم:
 
-![Two time series on the same chart.](../../../images/compare-times/time-series-overlay.png)
+![دو سری زمانی روی همان نمودار.](../../../images/compare-times/time-series-overlay.png)
 
-Which you could also visualize as a bar chart:
+که همچنین می‌توانید به عنوان یک نمودار میله‌ای تجسم کنید:
 
-![The same series, but as bar chart.](../../../images/compare-times/bar-chart.png)
+![همان سری، اما به عنوان نمودار میله‌ای.](../../../images/compare-times/bar-chart.png)
 
-Now, if you want to compare dates relative to the current date, you can use the [`interval`](../../../../docs/latest/questions/query-builder/expressions-list.html#interval) function in a [`case`](../../../../docs/latest/questions/query-builder/expressions-list.html#case) statement, but we’re going to cover a different use case for `interval` next.
+حالا، اگر می‌خواهید تاریخ‌ها را نسبت به تاریخ فعلی مقایسه کنید، می‌توانید از تابع [`interval`](../../../../docs/latest/questions/query-builder/expressions-list.html#interval) در یک statement [`case`](../../../../docs/latest/questions/query-builder/expressions-list.html#case) استفاده کنید، اما بعداً یک مورد استفاده متفاوت برای `interval` را پوشش می‌دهیم.
 
-## Using custom expressions to compare last week to the previous week
+## استفاده از عبارات سفارشی برای مقایسه هفته گذشته با هفته قبل
 
-We’ve covered one way to compare time periods in a previous article on [Time series comparisons](time-series-comparisons.html)[`CountIf`](../../../../docs/latest/questions/query-builder/expressions-list.html#countif) aggregation and the [`between`](../../../../docs/latest/questions/query-builder/expressions-list.html#between) function. This time we’re going to use the [`interval`](../../../../docs/latest/questions/query-builder/expressions-list.html#interval) function, which lets us specify a duration relative to the current date.
+یک راه برای مقایسه دوره‌های زمانی در مقاله قبلی درباره [مقایسه‌های سری زمانی](time-series-comparisons.html) پوشش دادیم. این بار از تابع [`interval`](../../../../docs/latest/questions/query-builder/expressions-list.html#interval) استفاده می‌کنیم، که به ما اجازه مشخص کردن یک مدت زمان نسبت به تاریخ فعلی را می‌دهد.
 
-The Sample Database only has data up until 2020 \(not sure what happened to the company\), so you’ll need to try this out on your own data, but here’s how it would work:
+پایگاه داده نمونه فقط داده تا 2020 دارد (مطمئن نیستم چه اتفاقی برای شرکت افتاد)، پس نیاز دارید این را روی داده خود امتحان کنید، اما در اینجا نحوه کار آن:
 
-With the `Orders` table as our starting data, we’ll add two summaries \(metrics\). In the **Summarize** section, we’ll define one summary using a custom expression that we’ll name “Last week”:
+با جدول `Orders` به عنوان داده شروع، دو خلاصه (معیار) اضافه می‌کنیم. در بخش **Summarize**، یک خلاصه را با استفاده از یک عبارت سفارشی که آن را "Last week" نامگذاری می‌کنیم تعریف می‌کنیم:
 
 ```mbql
 CountIf(interval([Created At], -1, "week"))
-
 ```
 
-In interval\-speak, 0 means current week, so we write \-1 to only count an order if the `Created At` for that row is a date from last week. We could also change “week” to “day”, “month”, “year”, or other intervals; check your database’s documentation to see which intervals it supports.
+در interval-speak، 0 به معنای هفته فعلی است، پس -1 می‌نویسیم تا فقط یک سفارش را بشماریم اگر `Created At` برای آن ردیف تاریخی از هفته گذشته باشد. همچنین می‌توانیم "week" را به "day"، "month"، "year"، یا intervalهای دیگر تغییر دهیم؛ مستندات پایگاه داده خود را بررسی کنید تا ببینید کدام intervalها را پشتیبانی می‌کند.
 
-Next, we’ll define a second summary for “Previous week”.
+بعد، یک خلاصه دوم برای "Previous week" تعریف می‌کنیم.
 
 ```mbql
 CountIf(interval([Created At], -2, "week") AND NOT interval([Created At], -1, "week"))
-
 ```
 
-Here we’re saying only count all orders from the previous two weeks except \(`AND NOT`\) the orders from last week.
+اینجا می‌گوییم فقط همه سفارش‌ها از دو هفته قبل را بشمارید به جز (`AND NOT`) سفارش‌ها از هفته گذشته.
 
-Finally, we need to group the summaries. Since we want to see how last Monday performed against the previous Monday \(and every other day of the week\), we’ll want to group `Created At` by **Day of week**.
+در نهایت، نیاز به group کردن خلاصه‌ها داریم. چون می‌خواهیم ببینیم دوشنبه گذشته در مقابل دوشنبه قبل (و هر روز دیگر هفته) چگونه عمل کرد، می‌خواهیم `Created At` را بر اساس **Day of week** group کنیم.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Time series comparisons](time-series-comparisons.html)
-- [Custom expressions in the query builder](../questions/custom-expressions.html)
-- [Dashboard filters](../../../../docs/latest/dashboards/filters.html)
-- [BI dashboard best practices](../dashboards/bi-dashboard-best-practices.html)
+- [مقایسه‌های سری زمانی](time-series-comparisons.html)
+- [عبارات سفارشی در query builder](../questions/custom-expressions.html)
+- [فیلترهای داشبورد](../../../../docs/latest/dashboards/filters.html)
+- [بهترین روش‌های داشبورد BI](../dashboards/bi-dashboard-best-practices.html)
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](time-series-comparisons.html)

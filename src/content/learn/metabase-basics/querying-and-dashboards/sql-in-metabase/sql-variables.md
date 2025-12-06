@@ -1,247 +1,242 @@
 ---
-
-
-title: "Tutorial: Create filters using SQL variables"
-description: "How to create filter widgets in native SQL queries using basic input variables for text, numbers, and dates."
+title: "آموزش: ایجاد فیلترها با استفاده از متغیرهای SQL"
+description: "نحوه ایجاد widgetهای فیلتر در پرس‌وجوهای SQL بومی با استفاده از متغیرهای ورودی پایه برای متن، اعداد، و تاریخ‌ها."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/sql-in-metabase/sql-variables
   - /learn/grow-your-data-skills/learn-sql/working-with-sql/sql-variables
   - /learn/sql-questions/sql-variables
 toc:
   - id: "tutorial-create-filters-using-sql-variables"
-    title: "Tutorial: Create filters using SQL variables"
+    title: "آموزش: ایجاد فیلترها با استفاده از متغیرهای SQL"
     level: 1
     href: "#tutorial-create-filters-using-sql-variables"
   - id: "introduction-to-sql-variables-and-filter-widgets"
-    title: "Introduction to SQL variables and filter widgets"
+    title: "مقدمه‌ای بر متغیرهای SQL و widgetهای فیلتر"
     level: 2
     href: "#introduction-to-sql-variables-and-filter-widgets"
   - id: "sql-questions-versus-query-builder-questions"
-    title: "SQL questions versus query builder questions"
+    title: "سؤال‌های SQL در مقابل سؤال‌های query builder"
     level: 2
     href: "#sql-questions-versus-query-builder-questions"
   - id: "the-different-types-of-variables-available-for-native-sql-queries"
-    title: "The different types of variables available for native SQL queries"
+    title: "انواع مختلف متغیرهای در دسترس برای پرس‌وجوهای SQL بومی"
     level: 2
     href: "#the-different-types-of-variables-available-for-native-sql-queries"
   - id: "field-filters-or-basic-input-variables"
-    title: "Field filters or basic input variables?"
+    title: "فیلترهای فیلد یا متغیرهای ورودی پایه؟"
     level: 2
     href: "#field-filters-or-basic-input-variables"
   - id: "when-to-use-basic-input-variables"
-    title: "When to use basic input variables"
+    title: "چه زمانی از متغیرهای ورودی پایه استفاده کنیم"
     level: 3
     href: "#when-to-use-basic-input-variables"
   - id: "when-to-use-field-filters"
-    title: "When to use field filters"
+    title: "چه زمانی از فیلترهای فیلد استفاده کنیم"
     level: 3
     href: "#when-to-use-field-filters"
   - id: "basic-input-variables"
-    title: "Basic input variables"
+    title: "متغیرهای ورودی پایه"
     level: 2
     href: "#basic-input-variables"
   - id: "basic-input-variable-number"
-    title: "Basic input variable: Number"
+    title: "متغیر ورودی پایه: Number"
     level: 3
     href: "#basic-input-variable-number"
   - id: "making-a-basic-input-variable-optional"
-    title: "Making a basic input variable optional"
+    title: "اختیاری کردن یک متغیر ورودی پایه"
     level: 3
     href: "#making-a-basic-input-variable-optional"
   - id: "adding-multiple-filters"
-    title: "Adding multiple filters"
+    title: "افزودن چندین فیلتر"
     level: 3
     href: "#adding-multiple-filters"
   - id: "basic-input-variable-text"
-    title: "Basic input variable: Text"
+    title: "متغیر ورودی پایه: Text"
     level: 3
     href: "#basic-input-variable-text"
   - id: "basic-input-variable-date"
-    title: "Basic input variable: Date"
+    title: "متغیر ورودی پایه: Date"
     level: 3
     href: "#basic-input-variable-date"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "SQL in Metabase"
+  - title: "SQL در متابیس"
     href: "index.html"
 ---
 
-# Tutorial: Create filters using SQL variables
+# آموزش: ایجاد فیلترها با استفاده از متغیرهای SQL
 
-How to create filter widgets in native SQL queries using basic input variables for text, numbers, and dates.
+نحوه ایجاد widgetهای فیلتر در پرس‌وجوهای SQL بومی با استفاده از متغیرهای ورودی پایه برای متن، اعداد، و تاریخ‌ها.
 
-> Looking for docs on SQL parameters? See [Docs: SQL parameters](../../../../docs/latest/questions/native-editor/sql-parameters.html).
+> به دنبال مستندات درباره پارامترهای SQL هستید؟ [مستندات: پارامترهای SQL](../../../../docs/latest/questions/native-editor/sql-parameters.html) را ببینید.
 
-This article walks through how to create questions in Metabase using native SQL queries so that viewers of our questions can plug in values and filter the results. While Metabase makes it easy to summarize and visualize data without SQL, data analysts sometimes need to dig into complicated queries, which they can write using Metabase’s [SQL editor](../../../../docs/latest/questions/native-editor/writing-sql.html).
+این مقاله نحوه ایجاد سؤال‌ها در متابیس با استفاده از پرس‌وجوهای SQL بومی را مرور می‌کند تا بینندگان سؤال‌های ما بتوانند مقادیر را plug in کنند و نتایج را فیلتر کنند. در حالی که متابیس خلاصه و تجسم داده را بدون SQL آسان می‌کند، تحلیل‌گران داده گاهی نیاز به dig کردن به پرس‌وجوهای پیچیده دارند، که می‌توانند با استفاده از [ویرایشگر SQL](../../../../docs/latest/questions/native-editor/writing-sql.html) متابیس بنویسند.
 
-## Introduction to SQL variables and filter widgets
+## مقدمه‌ای بر متغیرهای SQL و widgetهای فیلتر
 
-For example, using the [Sample Database](../../../../glossary/sample-database.html) included with Metabase, we might write a question in SQL that pulls product information about our orders, but we want viewers of that question to specify the category of products that they want to view. To give people the option to input values on saved SQL questions, we can write SQL queries with variables, and Metabase will automatically create filter widgets that people can use to enter values.
+به عنوان مثال، با استفاده از [پایگاه داده نمونه](../../../../glossary/sample-database.html) شامل شده با متابیس، ممکن است یک سؤال در SQL بنویسیم که اطلاعات محصول درباره سفارش‌های ما را می‌کشد، اما می‌خواهیم بینندگان آن سؤال دسته محصولاتی که می‌خواهند مشاهده کنند را مشخص کنند. برای دادن گزینه به مردم برای ورود مقادیر روی سؤال‌های SQL ذخیره شده، می‌توانیم پرس‌وجوهای SQL با متغیرها بنویسیم، و متابیس به طور خودکار widgetهای فیلتر ایجاد می‌کند که مردم می‌توانند برای ورود مقادیر استفاده کنند.
 
-![An example question, written in SQL, that uses a basic text variable to power a filter widget. The widget allows people to enter text to filter records for product titles containing that text.](../../../images/create-filter-widgets-for-charts-using-sql-variables/basic-text-filter.png)
+![یک سؤال نمونه، نوشته شده در SQL، که از یک متغیر متنی پایه برای power کردن یک widget فیلتر استفاده می‌کند. Widget به مردم اجازه ورود متن برای فیلتر کردن رکوردها برای عنوان‌های محصول حاوی آن متن را می‌دهد.](../../../images/create-filter-widgets-for-charts-using-sql-variables/basic-text-filter.png)
 
-For now, we’ll just be focusing on filters applied to questions written in SQL. For filters on dashboards, check out [Adding filters to dashboards with SQL questions](filters.html).
+برای حالا، فقط روی فیلترهای اعمال شده به سؤال‌های نوشته شده در SQL تمرکز می‌کنیم. برای فیلترها روی داشبوردها، [افزودن فیلترها به داشبوردها با سؤال‌های SQL](filters.html) را بررسی کنید.
 
-But first: do you want to write your question using SQL, or would query builder better suit your use case?
+اما ابتدا: می‌خواهید سؤال خود را با استفاده از SQL بنویسید، یا query builder بهتر با مورد استفاده شما match می‌کند؟
 
-## SQL questions versus query builder questions
+## سؤال‌های SQL در مقابل سؤال‌های query builder
 
-Before we dig into adding filter widgets, it’s worth considering how people will use our question. If we just want to give people the option to plug in values to simple filter widgets on dashboards, writing a question in the **Query Builder** and adding variables to our SQL code makes sense.
+قبل از dig کردن به افزودن widgetهای فیلتر، ارزش دارد در نظر بگیریم مردم چگونه از سؤال ما استفاده خواهند کرد. اگر فقط می‌خواهیم به مردم گزینه plug in کردن مقادیر به widgetهای فیلتر ساده روی داشبوردها را بدهیم، نوشتن یک سؤال در **Query Builder** و افزودن متغیرها به کد SQL ما منطقی است.
 
-If, instead, we compose a question using the **Query Builder**, filter widgets are unnecessary, as viewers of our question will have the full suite of query building primitives available to slice and dice the data however they like by [joining](../../../../docs/latest/questions/query-builder/join.html), [filtering](../../../../docs/latest/questions/query-builder/filters.html), and [summarizing](../../../../docs/latest/questions/query-builder/summarizing-and-grouping.html) the data. For more sophisticated questions, they’ll also have [custom expressions](../../../../docs/latest/questions/query-builder/expressions.html) at their disposal, as well as have the ability to [drill\-through the data](../questions/drill-through.html) to zoom in on orders, or click on values to view individual records – functionality that does not apply to questions written in SQL.
+اگر، به جای آن، یک سؤال با استفاده از **Query Builder** compose کنیم، widgetهای فیلتر غیرضروری هستند، چون بینندگان سؤال ما مجموعه کامل primitiveهای query building را برای slice و dice کردن داده به هر روشی که دوست دارند با [join کردن](../../../../docs/latest/questions/query-builder/join.html)، [فیلتر کردن](../../../../docs/latest/questions/query-builder/filters.html)، و [خلاصه کردن](../../../../docs/latest/questions/query-builder/summarizing-and-grouping.html) داده در دسترس خواهند داشت. برای سؤال‌های پیچیده‌تر، همچنین [عبارات سفارشی](../../../../docs/latest/questions/query-builder/expressions.html) در اختیار آن‌ها خواهد بود، و همچنین توانایی [drill-through داده](../questions/drill-through.html) برای zoom in روی سفارش‌ها، یا کلیک روی مقادیر برای مشاهده رکوردهای فردی – عملکردی که به سؤال‌های نوشته شده در SQL اعمال نمی‌شود.
 
-![The query builder interface for composing questions. You can join, filter, summarize, sort, use custom expressions, and more.](../../../images/create-filter-widgets-for-charts-using-sql-variables/notebook-editor.png)
+![رابط query builder برای compose کردن سؤال‌ها. می‌توانید join، filter، summarize، sort، از عبارات سفارشی استفاده کنید، و بیشتر.](../../../images/create-filter-widgets-for-charts-using-sql-variables/notebook-editor.png)
 
-If you can answer your question using the functionality in the query builder, we recommend you use those. If, however, you need custom SQL commands or functions, and you want your users to be able to filter the results of those questions, read on.
+اگر می‌توانید سؤال خود را با استفاده از عملکرد در query builder پاسخ دهید، توصیه می‌کنیم از آن‌ها استفاده کنید. اگر، با این حال، نیاز به دستورات یا توابع SQL سفارشی دارید، و می‌خواهید کاربران شما قادر به فیلتر کردن نتایج آن سؤال‌ها باشند، ادامه دهید.
 
-## The different types of variables available for native SQL queries
+## انواع مختلف متغیرهای در دسترس برای پرس‌وجوهای SQL بومی
 
-![A SQL question with a basic input variable of type Date. The Variable type dropdown menu shows the four variable types you can include in your queries: Text, Number, and Date, as well as a special variable type called a Field Filter.](../../../images/create-filter-widgets-for-charts-using-sql-variables/variable-types.png)
+![یک سؤال SQL با یک متغیر ورودی پایه از نوع Date. منوی dropdown نوع متغیر چهار نوع متغیری که می‌توانید در پرس‌وجوهای خود شامل کنید را نشان می‌دهد: Text، Number، و Date، و همچنین یک نوع متغیر خاص به نام Field Filter.](../../../images/create-filter-widgets-for-charts-using-sql-variables/variable-types.png)
 
-For questions composed using Metabase’s [native SQL query editor](../../../../docs/latest/questions/native-editor/writing-sql.html), there are four types of variables you can select:
+برای سؤال‌های composed شده با استفاده از [ویرایشگر پرس‌وجوی SQL بومی](../../../../docs/latest/questions/native-editor/writing-sql.html) متابیس، چهار نوع متغیر وجود دارد که می‌توانید انتخاب کنید:
 
 - Text
 - Number
 - Date
 - Field filter
 
-One of these types, **field filters**, is unlike the others. In fact, it’s better to think of the variable types falling into two main categories: basic input variables and field filters.
+یکی از این انواع، **field filterها**، برخلاف بقیه است. در واقع، بهتر است فکر کنیم انواع متغیرها به دو دسته اصلی می‌افتند: متغیرهای ورودی پایه و فیلترهای فیلد.
 
+- *متغیرهای ورودی پایه* widgetهای فیلتر ساده ایجاد می‌کنند جایی که مردم می‌توانند مقادیر را plug in کنند تا نتایج سؤال را فیلتر کنند. متغیرهای ورودی پایه شامل:
   - [Number](#basic-input-variable-number)
   - [Text](#basic-input-variable-text)
   - [Date](#basic-input-variable-date)
-- *Basic input variables* create simple filter widgets where people can plug in values to filter the question’s results. Basic input variables comprise:
-- *Field filter variables* are special input variables. They are more sophisticated than basic input variables, and they behave differently. Field filters are “wired up” to columns, and can provide dropdown menus for people to select one or more values.
+- *متغیرهای فیلتر فیلد* متغیرهای ورودی خاص هستند. آن‌ها پیچیده‌تر از متغیرهای ورودی پایه هستند، و متفاوت رفتار می‌کنند. فیلترهای فیلد به ستون‌ها "wire up" می‌شوند، و می‌توانند منوهای dropdown برای مردم برای انتخاب یک یا چند مقدار ارائه دهند.
 
-We’ll cover the three basic input variables—Text, Number, and Date—below, and field filters in [another article](field-filters.html). But first let’s get a sense of when to reach for one type of variable over the other.
+سه متغیر ورودی پایه—Text، Number، و Date—را در زیر پوشش می‌دهیم، و فیلترهای فیلد را در [مقاله دیگر](field-filters.html). اما ابتدا بیایید حس کنیم چه زمانی باید به یک نوع متغیر به جای دیگری برسیم.
 
-## Field filters or basic input variables?
+## فیلترهای فیلد یا متغیرهای ورودی پایه؟
 
-### When to use basic input variables
+### چه زمانی از متغیرهای ورودی پایه استفاده کنیم
 
-- For simple text, number, and date filtering. For more flexible date filtering, use a field filter.
-- In general, for innumerable values that would not make sense to include in a dropdown \(which would require a field filter\).
-- For cases where you may need to do some data wrangling/munging on the input variable in your SQL.
+- برای فیلتر کردن ساده متن، عدد، و تاریخ. برای فیلتر کردن تاریخ انعطاف‌پذیرتر، از یک فیلتر فیلد استفاده کنید.
+- به طور کلی، برای مقادیر بی‌شمار که منطقی نیست در یک dropdown شامل شوند (که نیاز به فیلتر فیلد دارد).
+- برای مواردی که ممکن است نیاز به انجام مقداری data wrangling/munging روی متغیر ورودی در SQL خود داشته باشید.
 
-### When to use field filters
+### چه زمانی از فیلترهای فیلد استفاده کنیم
 
-- To provide a dropdown menu for people to select from defined values.
-- To give multiple ways to filter by date.
-- To hook up a variable to a filter widget on a dashboard.
+- برای ارائه یک منوی dropdown برای مردم برای انتخاب از مقادیر تعریف شده.
+- برای دادن چندین راه برای فیلتر کردن بر اساس تاریخ.
+- برای hook up کردن یک متغیر به یک widget فیلتر روی یک داشبورد.
 
-## Basic input variables
+## متغیرهای ورودی پایه
 
-Basic input variables take input like text, number, or dates. Basic input variables are good for when values are not predefined, or range widely, like order subtotals. Dates are a special case: Metabase provides widgets that allow people to select dates and times rather than typing values in.
+متغیرهای ورودی پایه ورودی مثل متن، عدد، یا تاریخ می‌گیرند. متغیرهای ورودی پایه برای زمانی که مقادیر از قبل تعریف نشده‌اند، یا به طور گسترده range می‌کنند، مثل subtotalهای سفارش خوب هستند. تاریخ‌ها یک مورد خاص هستند: متابیس widgetهایی ارائه می‌دهد که به مردم اجازه انتخاب تاریخ و زمان به جای تایپ کردن مقادیر را می‌دهد.
 
-### Basic input variable: Number
+### متغیر ورودی پایه: Number
 
-Let’s use a basic input variable of type Number. Say we want to create a question that returns all of the records from the `Orders` table, but we want to give people the option to filter out orders based on the order `subtotal`.
+بیایید از یک متغیر ورودی پایه از نوع Number استفاده کنیم. بگویید می‌خواهیم یک سؤال ایجاد کنیم که همه رکوردها از جدول `Orders` را برمی‌گرداند، اما می‌خواهیم به مردم گزینه فیلتر کردن سفارش‌ها بر اساس `subtotal` سفارش را بدهیم.
 
-Let’s keep it simple and just give people the option to input a number so that the question will return records for orders with a subtotal *greater than* that number.
+بیایید آن را ساده نگه داریم و فقط به مردم گزینه ورود یک عدد بدهیم تا سؤال رکوردهایی برای سفارش‌ها با subtotal *بزرگتر از* آن عدد برگرداند.
 
-To include a variable in your query, simply wrap the variable name in double braces, like this: `{{ variable }}`. In this example, we’ll call our variable, `{{subtotal_var}}`. Here’s the SQL:
+برای شامل کردن یک متغیر در پرس‌وجوی خود، به سادگی نام متغیر را در براکت‌های دوتایی wrap کنید، مثل این: `{{ variable }}`. در این مثال، متغیر خود را، `{{subtotal_var}}` می‌نامیم. در اینجا SQL:
 
-```
+```sql
 SELECT *
 FROM orders
 WHERE subtotal > {{subtotal_var}}
-
 ```
 
-When we add a variable to a SQL query, Metabase will add a filter widget at the top of the question, and slide out a sidebar to present options for the variable.
+وقتی یک متغیر به یک پرس‌وجوی SQL اضافه می‌کنیم، متابیس یک widget فیلتر در بالای سؤال اضافه می‌کند، و یک sidebar را slide می‌کند تا گزینه‌هایی برای متغیر ارائه دهد.
 
-![A question using a basic variable of type Number, subtotal_var, that will add a filter widget, allowing people to filter for orders greater than the value they plug in.](../../../images/create-filter-widgets-for-charts-using-sql-variables/subtotal-var.png)
+![یک سؤال با استفاده از یک متغیر پایه از نوع Number، subtotal_var، که یک widget فیلتر اضافه می‌کند، اجازه فیلتر کردن سفارش‌ها بزرگتر از مقداری که plug in می‌کنند را می‌دهد.](../../../images/create-filter-widgets-for-charts-using-sql-variables/subtotal-var.png)
 
-Here are the options in the **Variables sidebar**:
+در اینجا گزینه‌ها در **Sidebar Variables**:
 
-- *Variable type:* Types can be `Text` , `Number` , `Date` , or `Field filter` . The variable type determines the input interface for variable’s widget \(e.g., for `Date` , the widget will present a date picker\).
-- *Filter widget label:* The name of your variable as presented in the widget, which defaults to the variable name in the SQL query.
-- *Required?* When you make a variable required, Metabase will prompt you for a default filter widget value to plug into the variable when the question first loads. If you *don’t* provide a default, Metabase won’t execute the query until a value is supplied.
+- *نوع متغیر:* انواع می‌توانند `Text`، `Number`، `Date`، یا `Field filter` باشند. نوع متغیر رابط ورودی برای widget متغیر را تعیین می‌کند (مثلاً، برای `Date`، widget یک date picker ارائه می‌دهد).
+- *برچسب widget فیلتر:* نام متغیر شما همانطور که در widget ارائه می‌شود، که به طور پیش‌فرض به نام متغیر در پرس‌وجوی SQL می‌رود.
+- *الزامی؟* وقتی یک متغیر را الزامی می‌کنید، متابیس از شما یک مقدار widget فیلتر پیش‌فرض برای plug in کردن به متغیر وقتی سؤال برای اولین بار load می‌شود می‌خواهد. اگر *نمی‌دهید* یک پیش‌فرض، متابیس پرس‌وجو را تا زمانی که یک مقدار ارائه شود اجرا نمی‌کند.
 
-In the case of `subtotal_var`, we want to:
+در مورد `subtotal_var`، می‌خواهیم:
 
-- Set the `Variable type` to be `Number` \(since we’re dealing with subtotals\).
-- Change the `Filter widget label` from `subtotal_var` to `Subtotal` \(just to make it easier to read\).
-- Toggle `Required?` to be true.
-- Set the `Default filter widget value` to `0` . That way, when a question runs, it will return all results automatically; people can enter a higher subtotal if they wish to filter the results.
+- `نوع متغیر` را `Number` تنظیم کنیم (چون با subtotalها سروکار داریم).
+- `برچسب widget فیلتر` را از `subtotal_var` به `Subtotal` تغییر دهیم (فقط برای خوانا‌تر کردن).
+- `الزامی؟` را true toggle کنیم.
+- `مقدار widget فیلتر پیش‌فرض` را `0` تنظیم کنیم. به این ترتیب، وقتی یک سؤال اجرا می‌شود، به طور خودکار همه نتایج را برمی‌گرداند؛ مردم می‌توانند یک subtotal بالاتر وارد کنند اگر می‌خواهند نتایج را فیلتر کنند.
 
-Now we’re ready to plug in values into our Subtotal widget, and filter for orders with Subtotals greater than that value:
+حالا آماده plug in کردن مقادیر به widget Subtotal خود هستیم، و فیلتر کردن سفارش‌ها با Subtotal بزرگتر از آن مقدار:
 
-![Minimizing the SQL editor, and entering 100 into the Subtotal filter widget to filter for orders with Subtotals greater than 100.](../../../images/create-filter-widgets-for-charts-using-sql-variables/subtotal-greater-than-100.gif)
+![Minimize کردن ویرایشگر SQL، و وارد کردن 100 به widget فیلتر Subtotal برای فیلتر کردن سفارش‌ها با Subtotal بزرگتر از 100.](../../../images/create-filter-widgets-for-charts-using-sql-variables/subtotal-greater-than-100.gif)
 
-### Making a basic input variable optional
+### اختیاری کردن یک متغیر ورودی پایه
 
-If we want to make the filter widget optional, we can enclose the `WHERE` clause in double brackets:
+اگر می‌خواهیم widget فیلتر را اختیاری کنیم، می‌توانیم بند `WHERE` را در براکت‌های دوتایی enclose کنیم:
 
-```
+```sql
 SELECT *
 FROM orders
 [[WHERE subtotal > {{subtotal_var}}]]
-
 ```
 
-With the `WHERE` clause in brackets, if the viewer does not enter a subtotal, and no default is set, the query would simply return all records from the `Orders` table \(i.e., Metabase would only run `SELECT * FROM orders`\).
+با بند `WHERE` در براکت‌ها، اگر بیننده subtotal وارد نکند، و هیچ پیش‌فرضی تنظیم نشود، پرس‌وجو به سادگی همه رکوردها از جدول `Orders` را برمی‌گرداند (یعنی، متابیس فقط `SELECT * FROM orders` را اجرا می‌کند).
 
-### Adding multiple filters
+### افزودن چندین فیلتر
 
-We can use multiple filters as well. If, for example, we’d prefer people filter the results by inputting a range of subtotal values, we can add two variables for lower and upper bounds:
+همچنین می‌توانیم از چندین فیلتر استفاده کنیم. اگر، به عنوان مثال، ترجیح می‌دهیم مردم نتایج را با وارد کردن یک محدوده مقادیر subtotal فیلتر کنند، می‌توانیم دو متغیر برای حد پایین و بالا اضافه کنیم:
 
-```
+```sql
 SELECT *
 FROM orders
 WHERE subtotal BETWEEN {{subtotal_min}} AND {{subtotal_max}}
-
 ```
 
-In this case, two widgets will appear, one for each variable.
+در این مورد، دو widget ظاهر می‌شوند، یکی برای هر متغیر.
 
-![Question with multiple widgets: one for Subtotal Min, and one for Subtotal Max. Both values are toggled as required, with a default filter widget value set to 0.](../../../images/create-filter-widgets-for-charts-using-sql-variables/multiple-widgets.png)
+![سؤال با چندین widget: یکی برای Subtotal Min، و یکی برای Subtotal Max. هر دو مقدار به عنوان الزامی toggle شده‌اند، با مقدار widget فیلتر پیش‌فرض تنظیم شده به 0.](../../../images/create-filter-widgets-for-charts-using-sql-variables/multiple-widgets.png)
 
-### Basic input variable: Text
+### متغیر ورودی پایه: Text
 
-Let’s try an example using a simple text input variable. In this case, we want to create a question with a filter widget that allows people to search for product titles that contain the text they enter into the widget.
+بیایید مثالی با استفاده از یک متغیر ورودی متنی ساده امتحان کنیم. در این مورد، می‌خواهیم یک سؤال با یک widget فیلتر ایجاد کنیم که به مردم اجازه جستجوی عنوان‌های محصول حاوی متنی که در widget وارد می‌کنند را می‌دهد.
 
-Here’s the code:
+در اینجا کد:
 
-```
+```sql
 SELECT *
 FROM products
 [[WHERE UPPER(title) LIKE UPPER(CONCAT('%', {{search_term}},'%'))]]
-
 ```
 
-We enclose the `WHERE` clause in brackets to make the widget input optional. We bookend the variable with the wildcard character `%` to indicate that the term could have zero or more characters to the left or right of the variable. Additionally, we guard against case sensitivity by using the `UPPER` function on both the `title` column and the `{{search_term}}`.
+بند `WHERE` را در براکت‌ها enclose می‌کنیم تا ورودی widget اختیاری شود. متغیر را با کاراکتر wildcard `%` bookend می‌کنیم تا نشان دهیم عبارت می‌تواند صفر یا بیشتر کاراکتر در سمت چپ یا راست متغیر داشته باشد. علاوه بر این، با استفاده از تابع `UPPER` روی هر دو ستون `title` و `{{search_term}}` در برابر case sensitivity guard می‌کنیم.
 
-And here’s our filter:
+و در اینجا فیلتر ما:
 
-![A basic text filter widget, filtering for titles that contain the word](../../../images/create-filter-widgets-for-charts-using-sql-variables/text-filter-widget.png)
+![یک widget فیلتر متنی پایه، فیلتر کردن برای عنوان‌هایی که شامل کلمه](../../../images/create-filter-widgets-for-charts-using-sql-variables/text-filter-widget.png)
 
-### Basic input variable: Date
+### متغیر ورودی پایه: Date
 
-When you select the Date variable type, the filter widget will present a simple date picker. Here’s a question with two basic date variables so that users can input a start and end date to return orders placed between those dates.
+وقتی نوع متغیر Date را انتخاب می‌کنید، widget فیلتر یک date picker ساده ارائه می‌دهد. در اینجا یک سؤال با دو متغیر تاریخ پایه تا کاربران بتوانند یک تاریخ شروع و پایان وارد کنند تا سفارش‌های قرار داده شده بین آن تاریخ‌ها برگردانده شوند.
 
-```
+```sql
 SELECT *
 FROM orders
 [[WHERE created_at BETWEEN {{start_date}} AND {{end_date}}]]
-
 ```
 
-![Basic date widgets, with simple date pickers connected to the start_date and end_date variables in the optional WHERE clause.](../../../images/create-filter-widgets-for-charts-using-sql-variables/basic-date-picker.png)
+![Widgetهای تاریخ پایه، با date pickerهای ساده متصل به متغیرهای start_date و end_date در بند WHERE اختیاری.](../../../images/create-filter-widgets-for-charts-using-sql-variables/basic-date-picker.png)
 
-Note that people need to select dates for *both* widgets in order for the filter to activate, which can lead to unexpected behavior. For example, someone might leave the end date blank and expect the orders to be filtered from the start date up to today, when in fact no filter would be applied.
+توجه کنید که مردم نیاز به انتخاب تاریخ برای *هر دو* widget دارند تا فیلتر فعال شود، که می‌تواند به رفتار غیرمنتظره منجر شود. به عنوان مثال، کسی ممکن است تاریخ پایان را خالی بگذارد و انتظار داشته باشد سفارش‌ها از تاریخ شروع تا امروز فیلتر شوند، وقتی در واقع هیچ فیلتری اعمال نمی‌شود.
 
-For dates, consider instead using a [field filter](field-filters.html), which offers a lot more flexibility.
+برای تاریخ‌ها، در عوض استفاده از یک [فیلتر فیلد](field-filters.html) را در نظر بگیرید، که انعطاف‌پذیری بسیار بیشتری ارائه می‌دهد.
 
 [
       
         
         
+
       
       
+        
         
 
       

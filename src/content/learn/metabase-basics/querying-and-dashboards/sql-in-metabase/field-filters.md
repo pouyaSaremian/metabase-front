@@ -1,82 +1,80 @@
 ---
-
-
-title: "Tutorial: Field filters for SQL questions"
-description: "Learn how to use Metabase Field Filters in SQL queries to build smarter filter widgets."
+title: "آموزش: فیلترهای فیلد برای سؤال‌های SQL"
+description: "یاد بگیرید چگونه از فیلترهای فیلد متابیس در پرس‌وجوهای SQL برای ساخت widgetهای فیلتر هوشمندتر استفاده کنید."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/sql-in-metabase/field-filters
   - /learn/building-analytics/sql-templates/field-filters
   - /learn/sql-questions/field-filters
 toc:
   - id: "tutorial-field-filters-for-sql-questions"
-    title: "Tutorial: Field filters for SQL questions"
+    title: "آموزش: فیلترهای فیلد برای سؤال‌های SQL"
     level: 1
     href: "#tutorial-field-filters-for-sql-questions"
   - id: "introduction-to-field-filters"
-    title: "Introduction to Field Filters"
+    title: "مقدمه‌ای بر فیلترهای فیلد"
     level: 2
     href: "#introduction-to-field-filters"
   - id: "distinguishing-field-filters-from-simple-text-number-and-date-variables"
-    title: "Distinguishing Field Filters from simple Text, Number, and Date variables"
+    title: "تمایز فیلترهای فیلد از متغیرهای ساده Text، Number، و Date"
     level: 2
     href: "#distinguishing-field-filters-from-simple-text-number-and-date-variables"
   - id: "creating-a-sql-filter-widget-with-a-dropdown-menu"
-    title: "Creating a SQL filter widget with a dropdown menu"
+    title: "ایجاد یک widget فیلتر SQL با منوی dropdown"
     level: 2
     href: "#creating-a-sql-filter-widget-with-a-dropdown-menu"
   - id: "creating-sophisticated-sql-filter-widgets-for-date-fields"
-    title: "Creating sophisticated SQL filter widgets for date fields"
+    title: "ایجاد widgetهای فیلتر SQL پیشرفته برای فیلدهای تاریخ"
     level: 2
     href: "#creating-sophisticated-sql-filter-widgets-for-date-fields"
   - id: "field-filter-gotchas"
-    title: "Field Filter gotchas"
+    title: "نکات مهم فیلتر فیلد"
     level: 2
     href: "#field-filter-gotchas"
   - id: "omit-the-direct-assignment-in-the-where-clause"
-    title: "Omit the direct assignment in the WHERE clause"
+    title: "حذف انتساب مستقیم در بند WHERE"
     level: 3
     href: "#omit-the-direct-assignment-in-the-where-clause"
   - id: "learn-more-about-sql-filters-and-variables"
-    title: "Learn more about SQL filters and variables"
+    title: "یادگیری بیشتر درباره فیلترها و متغیرهای SQL"
     level: 2
     href: "#learn-more-about-sql-filters-and-variables"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "SQL in Metabase"
+  - title: "SQL در متابیس"
     href: "index.html"
 ---
 
-# Tutorial: Field filters for SQL questions
+# آموزش: فیلترهای فیلد برای سؤال‌های SQL
 
-Learn how to use Metabase Field Filters in SQL queries to build smarter filter widgets.
+یاد بگیرید چگونه از فیلترهای فیلد متابیس در پرس‌وجوهای SQL برای ساخت widgetهای فیلتر هوشمندتر استفاده کنید.
 
-> Looking for docs on field filters? See [Docs: field filters](../../../../docs/latest/questions/native-editor/field-filters.html).
+> به دنبال مستندات درباره فیلترهای فیلد هستید؟ [مستندات: فیلترهای فیلد](../../../../docs/latest/questions/native-editor/field-filters.html) را ببینید.
 
-This article shows how to add smart SQL filter widgets to your SQL queries in Metabase using a special type of variable called a **field filter**.
+این مقاله نشان می‌دهد چگونه widgetهای فیلتر SQL هوشمند را به پرس‌وجوهای SQL خود در متابیس با استفاده از نوع خاصی از متغیر به نام **فیلتر فیلد** اضافه کنید.
 
-## Introduction to Field Filters
+## مقدمه‌ای بر فیلترهای فیلد
 
-![A Field Filter is a special type of variable that can wire up a variable in your SQL code to a field (column) in a table, which enables it to create a](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/example-field-filter-powering-filter-widget.gif)
+![یک فیلتر فیلد نوع خاصی از متغیر است که می‌تواند یک متغیر در کد SQL شما را به یک فیلد (ستون) در یک جدول متصل کند، که به آن امکان ایجاد یک](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/example-field-filter-powering-filter-widget.gif)
 
-For Metabase questions written in SQL, we can use [basic variable types](sql-variables.html)—Text, Number, and Date—to create simple SQL filter widgets. To create “smarter” filter widgets that can display options specific to the data in the filtered columns, such as to create a dropdown menu of values, we can use a special variable type called a [field filter](../../../../docs/latest/questions/native-editor/field-filters.html).
+برای سؤال‌های متابیس نوشته شده در SQL، می‌توانیم از [انواع متغیر پایه](sql-variables.html)—Text، Number، و Date—برای ایجاد widgetهای فیلتر SQL ساده استفاده کنیم. برای ایجاد widgetهای فیلتر "هوشمندتر" که می‌توانند گزینه‌های خاص به داده‌های ستون‌های فیلتر شده را نمایش دهند، مثل ایجاد یک منوی dropdown از مقادیر، می‌توانیم از نوع متغیر خاصی به نام [فیلتر فیلد](../../../../docs/latest/questions/native-editor/field-filters.html) استفاده کنیم.
 
-![To create a Field Filter, add a variable to your SQL code by enclosing the variable in double braces (Mustache style), and select Field Filter as the Variable type from the Variables sidebar.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/field-filter-selection.png)
+![برای ایجاد یک فیلتر فیلد، یک متغیر را به کد SQL خود با enclose کردن متغیر در براکت‌های دوتایی (سبک Mustache) اضافه کنید، و فیلتر فیلد را به عنوان نوع متغیر از sidebar متغیرها انتخاب کنید.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/field-filter-selection.png)
 
-Field filters can initially confuse some people, because people expect them to behave like basic input variables \(which they don’t\). However, Field Filters are well worth learning, as you can use them to create much more sophisticated filter widgets. This article will go through Field Filters in depth, but first let’s discuss the main differences between Field Filter variables and basic Text, Number, and Date variables.
+فیلترهای فیلد می‌توانند در ابتدا برخی افراد را گیج کنند، چون مردم انتظار دارند مانند متغیرهای ورودی پایه رفتار کنند (که نمی‌کنند). با این حال، فیلترهای فیلد ارزش یادگیری دارند، چون می‌توانید از آن‌ها برای ایجاد widgetهای فیلتر بسیار پیشرفته‌تر استفاده کنید. این مقاله فیلترهای فیلد را به عمق پوشش می‌دهد، اما ابتدا بیایید تفاوت‌های اصلی بین متغیرهای فیلتر فیلد و متغیرهای Text، Number، و Date ساده را بحث کنیم.
 
-## Distinguishing Field Filters from simple Text, Number, and Date variables
+## تمایز فیلترهای فیلد از متغیرهای ساده Text، Number، و Date
 
-1. *Field Filters are optional by default.* If no value is given, the SQL query will run as if the Field Filter didn’t exist. You do, however, have the option to require a value.
-2. *Field Filters use a special syntax so they can handle SQL code behind the scenes.* You simply supply a Field Filter to a `WHERE` clause \(without a column or operator\) and the Field Filter will manage the SQL code for you. This allows the code to account for multiple selections people make in the filter widget.
+1. *فیلترهای فیلد به طور پیش‌فرض اختیاری هستند.* اگر هیچ مقداری داده نشود، پرس‌وجوی SQL به گونه‌ای اجرا می‌شود که گویی فیلتر فیلد وجود نداشت. با این حال، شما گزینه الزامی کردن یک مقدار را دارید.
+2. *فیلترهای فیلد از syntax خاصی استفاده می‌کنند تا بتوانند کد SQL را در پشت صحنه مدیریت کنند.* شما به سادگی یک فیلتر فیلد را به یک بند `WHERE` (بدون ستون یا عملگر) می‌دهید و فیلتر فیلد کد SQL را برای شما مدیریت می‌کند. این به کد اجازه می‌دهد تا انتخاب‌های چندگانه‌ای که مردم در widget فیلتر انجام می‌دهند را در نظر بگیرد.
 
-The second point can be especially confusing, so let’s unpack it with an example.
+نکته دوم می‌تواند به خصوص گیج‌کننده باشد، پس بیایید آن را با یک مثال باز کنیم.
 
-## Creating a SQL filter widget with a dropdown menu
+## ایجاد یک widget فیلتر SQL با منوی dropdown
 
-We’ll use the [Sample Database](../../../../glossary/sample-database.html) included with Metabase to add a filter widget with a dropdown menu to a question written in SQL. Let’s say we want to create a SQL question that grabs all the orders from the `Orders` table, but we want to give people the option to filter the results by category in the `Products` table. We *could* create a `Products.category` filter with a basic input variable, like so:
+ما از [پایگاه داده نمونه](../../../../glossary/sample-database.html) شامل شده با متابیس برای افزودن یک widget فیلتر با منوی dropdown به یک سؤال نوشته شده در SQL استفاده خواهیم کرد. بگویید می‌خواهیم یک سؤال SQL ایجاد کنیم که همه سفارش‌ها را از جدول `Orders` می‌گیرد، اما می‌خواهیم به مردم گزینه فیلتر کردن نتایج بر اساس دسته در جدول `Products` را بدهیم. ما *می‌توانستیم* یک فیلتر `Products.category` با یک متغیر ورودی پایه ایجاد کنیم، مثل این:
 
 ```
 SELECT *
@@ -87,22 +85,22 @@ ON Orders.product_id = Products.id
 
 ```
 
-In this case, we enclose the `WHERE` clause in double brackets to make the input optional, and use the **Variables sidebar** to set the variable type to `Text` and the filter widget label to `Category`. This approach works, but it’s not ideal:
+در این مورد، بند `WHERE` را در براکت‌های دوتایی enclose می‌کنیم تا ورودی اختیاری شود، و از **sidebar متغیرها** برای تنظیم نوع متغیر به `Text` و برچسب widget فیلتر به `Category` استفاده می‌کنیم. این رویکرد کار می‌کند، اما ایده‌آل نیست:
 
-- In order to filter the data, people would have to know which categories exist \(and spell them correctly when they input them\).
-- Plus, they can’t select multiple categories at a time, as the `{{category}}` variable only accepts a single value.
+- برای فیلتر کردن داده، مردم باید بدانند کدام دسته‌ها وجود دارند (و آن‌ها را به درستی هنگام ورود هجی کنند).
+- علاوه بر این، آن‌ها نمی‌توانند چندین دسته را همزمان انتخاب کنند، چون متغیر `{{category}}` فقط یک مقدار واحد می‌پذیرد.
 
-By contrast, a Field Filter will map the variable to the actual column data. The filter widget connected to the variable then “knows” which categories are available, and can present a dropdown menu of those categories, like so:
+در مقابل، یک فیلتر فیلد متغیر را به داده‌های ستون واقعی map می‌کند. widget فیلتر متصل به متغیر سپس "می‌داند" کدام دسته‌ها در دسترس هستند، و می‌تواند یک منوی dropdown از آن دسته‌ها ارائه دهد، مثل این:
 
-![A filter widget created by a Field Filter that](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/field-filter-dropdown.png)
+![یک widget فیلتر ایجاد شده توسط یک فیلتر فیلد که](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/field-filter-dropdown.png)
 
-A word on the widget: the dropdown menu is just one of the options available. In the case of fields of type `Category`, like our `category` field in the `Products` table, we could also set the filter widget as a search box or a plain input box. Admins can configure field settings in the **Data Model tab** of the **Admin Panel**.
+یک کلمه درباره widget: منوی dropdown فقط یکی از گزینه‌های در دسترس است. در مورد فیلدهای نوع `Category`، مثل فیلد `category` ما در جدول `Products`، می‌توانستیم widget فیلتر را به عنوان یک جعبه جستجو یا یک جعبه ورودی ساده تنظیم کنیم. مدیران می‌توانند تنظیمات فیلد را در **تب مدل داده** از **پنل ادمین** پیکربندی کنند.
 
-![In the Data Model tab of the Admin Panel, Admins can edit the field settings. For fields of type Category, Admins can select three options for field widgets: Search box, A list of all values (dropdown), or Plain input box.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/data-model-field-settings.png)
+![در تب مدل داده از پنل ادمین، مدیران می‌توانند تنظیمات فیلد را ویرایش کنند. برای فیلدهای نوع Category، مدیران می‌توانند سه گزینه برای widgetهای فیلد انتخاب کنند: جعبه جستجو، لیستی از همه مقادیر (dropdown)، یا جعبه ورودی ساده.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/data-model-field-settings.png)
 
-Note that Metabase will automatically use a search box if the number of distinct values in the column is greater than 300, even if you select the dropdown option. Learn more about [editing metadata](../../../../docs/latest/data-modeling/metadata-editing.html) in our documentation.
+توجه کنید که متابیس به طور خودکار از یک جعبه جستجو استفاده می‌کند اگر تعداد مقادیر متمایز در ستون بیشتر از 300 باشد، حتی اگر گزینه dropdown را انتخاب کنید. درباره [ویرایش فراداده](../../../../docs/latest/data-modeling/metadata-editing.html) در مستندات ما بیشتر بیاموزید.
 
-Now, let’s get back to our question. Here’s the syntax for the `Products.category` Field Filter. Note the omission of the column and operator before the variable in the `WHERE` clause—we’ll talk more about Field Filter syntax below:
+حالا، بیایید به سؤال خود برگردیم. در اینجا syntax برای فیلتر فیلد `Products.category` است. توجه کنید حذف ستون و عملگر قبل از متغیر در بند `WHERE`—ما در زیر بیشتر درباره syntax فیلتر فیلد صحبت خواهیم کرد:
 
 ```
 SELECT *
@@ -113,22 +111,22 @@ WHERE {{category}};
 
 ```
 
-With our variable in place in the `WHERE` clause, we can use the **Variables sidebar** to wire up our variable as a Field Filter. We’ll set:
+با متغیر ما در جای خود در بند `WHERE`، می‌توانیم از **sidebar متغیرها** برای wire up کردن متغیر خود به عنوان یک فیلتر فیلد استفاده کنیم. تنظیم می‌کنیم:
 
-- `Variable type` to `Field Filter` .
-- `Field to map to` to `Products → Category` . This setting tells Metabase to connect the variable in our SQL code to the `category` column of the `Products` table.
-- `Field widget type` to `category` .
-- `Field widget label` to `category` .
+- `نوع متغیر` را به `فیلتر فیلد` .
+- `فیلد برای map کردن` را به `Products → Category` . این تنظیم به متابیس می‌گوید متغیر در کد SQL ما را به ستون `category` جدول `Products` متصل کند.
+- `نوع widget فیلد` را به `category` .
+- `برچسب widget فیلد` را به `category` .
 
-![Setting a variable](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/product-category-field-filter.gif)
+![تنظیم یک متغیر](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/product-category-field-filter.gif)
 
-We won’t require the variable, so no default value is necessary. If the query runs without a specified value in the filter widget, the query will return records from all categories.
+متغیر را الزامی نمی‌کنیم، پس هیچ مقدار پیش‌فرضی لازم نیست. اگر پرس‌وجو بدون مقدار مشخص شده در widget فیلتر اجرا شود، پرس‌وجو رکوردها از همه دسته‌ها را برمی‌گرداند.
 
-Note that the `WHERE` clause does not specify which column the variable should be equal to. This implicit syntax \(the hidden SQL code\) allows the Field Filter to handle the SQL code behind the scenes to accommodate multiple selections.
+توجه کنید که بند `WHERE` مشخص نمی‌کند متغیر باید برابر با کدام ستون باشد. این syntax ضمنی (کد SQL پنهان) به فیلتر فیلد اجازه می‌دهد کد SQL را در پشت صحنه برای تطبیق با انتخاب‌های چندگانه مدیریت کند.
 
-## Creating sophisticated SQL filter widgets for date fields
+## ایجاد widgetهای فیلتر SQL پیشرفته برای فیلدهای تاریخ
 
-We can create a basic input variable of type Date, which will add a SQL filter widget with a simple date filter. If, instead, we use a Field Filter variable, we can connect that variable to a field \(column\) that contains dates, which unlocks a lot more options for configuring our filter widget. Here’s the SQL:
+می‌توانیم یک متغیر ورودی پایه از نوع Date ایجاد کنیم، که یک widget فیلتر SQL با یک فیلتر تاریخ ساده اضافه می‌کند. اگر، به جای آن، از یک متغیر فیلتر فیلد استفاده کنیم، می‌توانیم آن متغیر را به یک فیلد (ستون) که شامل تاریخ‌ها است متصل کنیم، که گزینه‌های بسیار بیشتری برای پیکربندی widget فیلتر ما باز می‌کند. در اینجا SQL:
 
 ```
 SELECT *
@@ -137,75 +135,79 @@ WHERE {{created_at}}
 
 ```
 
-![Setting the Field to map to option to a field containing dates will open up a range of Filter widget types: Month and Year, Quarter and Year, Single Date, Date Range, Relative Date, and Date Filter.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/filter-widget-type.png)
+![تنظیم گزینه فیلد برای map کردن به یک فیلد حاوی تاریخ‌ها، طیف وسیعی از انواع widget فیلتر را باز می‌کند: ماه و سال، سه‌ماهه و سال، تاریخ واحد، محدوده تاریخ، تاریخ نسبی، و فیلتر تاریخ.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/filter-widget-type.png)
 
-Here are the different widget types for Field Filters mapped to Date fields:
+در اینجا انواع مختلف widget برای فیلترهای فیلد map شده به فیلدهای تاریخ:
 
-- Month and Year
-- Quarter and Year
-- Single Date
-- Date Range
-- Relative Date
-- Date Filter
+- ماه و سال
+- سه‌ماهه و سال
+- تاریخ واحد
+- محدوده تاریخ
+- تاریخ نسبی
+- فیلتر تاریخ
 
-Each widget type offers different ways for people to filter the results. Here are three SQL field filter examples:
+هر نوع widget راه‌های مختلفی برای مردم برای فیلتر کردن نتایج ارائه می‌دهد. در اینجا سه مثال فیلتر فیلد SQL:
 
-![The Month and Year widget type.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/month-and-year.png)
+![نوع widget ماه و سال.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/month-and-year.png)
 
-![The Relative Date widget type.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/relative-date.png)
+![نوع widget تاریخ نسبی.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/relative-date.png)
 
-![The Date Filter widget type.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/date-filter.gif)
+![نوع widget فیلتر تاریخ.](../../../images/field-filters-create-smart-filter-widgets-for-sql-questions/date-filter.gif)
 
-The Date Filter widget type offers the most flexibility, allowing people to filter by relative dates and ranges.
+نوع widget فیلتر تاریخ بیشترین انعطاف‌پذیری را ارائه می‌دهد، اجازه فیلتر کردن بر اساس تاریخ‌های نسبی و محدوده‌ها را می‌دهد.
 
-## Field Filter gotchas
+## نکات مهم فیلتر فیلد
 
-There are a few places that people typically get stuck when trying to implement Field Filters.
+چند جا وجود دارد که مردم معمولاً هنگام تلاش برای پیاده‌سازی فیلترهای فیلد گیر می‌کنند.
 
-### Omit the direct assignment in the WHERE clause
+### حذف انتساب مستقیم در بند WHERE
 
-As stated above, the SQL code around Field Filters is not exactly street legal. You may be tempted to write:
+همانطور که در بالا گفته شد، کد SQL اطراف فیلترهای فیلد دقیقاً street legal نیست. ممکن است وسوسه شوید بنویسید:
 
 ```
--- DON'T DO THIS
+-- این کار را نکنید
 WHERE category = {{ category }}
 
 ```
 
-because that is the correct syntax for a `WHERE` clause in standard SQL. But that syntax won’t work for Field Filters. The correct syntax for Field Filters omits the `=` operator:
+چون این syntax صحیح برای یک بند `WHERE` در SQL استاندارد است. اما آن syntax برای فیلترهای فیلد کار نمی‌کند. syntax صحیح برای فیلترهای فیلد عملگر `=` را حذف می‌کند:
 
 ```
 WHERE {{ category }}
 
 ```
 
-The reason for this shorthand is so that Metabase can, behind the scenes, insert the SQL code for situations like multiple selections, e.g., when a user selects multiple categories from a dropdown.
+دلیل این shorthand این است که متابیس می‌تواند، در پشت صحنه، کد SQL را برای موقعیت‌هایی مثل انتخاب‌های چندگانه insert کند، مثلاً وقتی یک کاربر چندین دسته را از یک dropdown انتخاب می‌کند.
 
-## Learn more about SQL filters and variables
+## یادگیری بیشتر درباره فیلترها و متغیرهای SQL
 
-Check out our guide to [basic SQL input variables \- Text, Number, and Date](sql-variables.html).
+راهنمای ما به [متغیرهای ورودی SQL پایه - Text، Number، و Date](sql-variables.html) را بررسی کنید.
 
-You can also read our documentation on:
+همچنین می‌توانید مستندات ما را درباره بخوانید:
 
-- [Basic input variables](../../../../docs/latest/questions/native-editor/sql-parameters.html)
-- [Field Filters](../../../../docs/latest/questions/native-editor/field-filters.html)
+- [متغیرهای ورودی پایه](../../../../docs/latest/questions/native-editor/sql-parameters.html)
+- [فیلترهای فیلد](../../../../docs/latest/questions/native-editor/field-filters.html)
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](sql-variables.html)
 [
       
         
         
+
       
       
+        
         
 
       

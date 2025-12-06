@@ -1,135 +1,134 @@
 ---
-
-
-title: "Snippets vs. Saved Questions vs. Views"
-description: "Learn about the Metabase features you can use to keep your SQL code organized."
+title: "Snippetها در مقابل سؤال‌های ذخیره شده در مقابل Viewها"
+description: "درباره ویژگی‌های متابیس که می‌توانید برای سازماندهی کد SQL خود استفاده کنید یاد بگیرید."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/sql-in-metabase/organizing-sql
   - /learn/building-analytics/sql-templates/organizing-sql
 toc:
   - id: "snippets-vs-saved-questions-vs-views"
-    title: "Snippets vs. Saved Questions vs. Views"
+    title: "Snippetها در مقابل سؤال‌های ذخیره شده در مقابل Viewها"
     level: 1
     href: "#snippets-vs-saved-questions-vs-views"
   - id: "snippets-and-folders"
-    title: "Snippets and folders"
+    title: "Snippetها و پوشه‌ها"
     level: 2
     href: "#snippets-and-folders"
   - id: "saved-questions-as-building-blocks"
-    title: "Saved questions as building blocks"
+    title: "سؤال‌های ذخیره شده به عنوان بلوک‌های ساختمانی"
     level: 2
     href: "#saved-questions-as-building-blocks"
   - id: "database-views"
-    title: "Database views"
+    title: "Viewهای پایگاه داده"
     level: 2
     href: "#database-views"
   - id: "as-you-grow-push-business-logic-further-up-the-pipeline"
-    title: "As you grow, push business logic further up the pipeline"
+    title: "همانطور که رشد می‌کنید، منطق کسب‌وکار را بیشتر در pipeline بالا ببرید"
     level: 2
     href: "#as-you-grow-push-business-logic-further-up-the-pipeline"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "SQL in Metabase"
+  - title: "SQL در متابیس"
     href: "index.html"
 ---
 
-# Snippets vs. Saved Questions vs. Views
+# Snippetها در مقابل سؤال‌های ذخیره شده در مقابل Viewها
 
-Learn about the Metabase features you can use to keep your SQL code organized.
+درباره ویژگی‌های متابیس که می‌توانید برای سازماندهی کد SQL خود استفاده کنید یاد بگیرید.
 
-This article gives an overview of the tools Metabase provides to keep your SQL code organized, and provides some guidance for when to reach for one tool over another.
+این مقاله نمای کلی از ابزارهایی که متابیس برای سازماندهی کد SQL شما ارائه می‌دهد ارائه می‌دهد، و برخی راهنمایی برای زمانی که باید به یک ابزار به جای دیگری برسید ارائه می‌دهد.
 
-There are two main tools to organize your SQL code: snippets and saved questions. We’ll also talk about database views to distinguish their use from saved questions in Metabase, though views are specific to your database \(i.e., they are not part of Metabase\).
+دو ابزار اصلی برای سازماندهی کد SQL شما وجود دارند: snippetها و سؤال‌های ذخیره شده. همچنین درباره viewهای پایگاه داده برای تمایز استفاده آن‌ها از سؤال‌های ذخیره شده در متابیس صحبت می‌کنیم، اگرچه viewها خاص به پایگاه داده شما هستند (یعنی، بخشی از متابیس نیستند).
 
-Both snippets and saved questions serve as templates that you can inject into other SQL questions. As for which to use and when, the rule of thumb is this: use snippets for small, commonly used fragments of SQL, and use saved SQL questions for any code that you’d want to execute by itself.
+هم snippetها و هم سؤال‌های ذخیره شده به عنوان templateهایی عمل می‌کنند که می‌توانید در سؤال‌های SQL دیگر inject کنید. در مورد اینکه کدام را استفاده کنید و چه زمانی، قاعده سرانگشتی این است: از snippetها برای fragmentهای کوچک، معمولاً استفاده شده SQL استفاده کنید، و از سؤال‌های SQL ذخیره شده برای هر کدی که می‌خواهید به تنهایی اجرا شود استفاده کنید.
 
-## Snippets and folders
+## Snippetها و پوشه‌ها
 
-Use [Snippets](snippets.html) for critical or frequently\-used SQL code. Snippets should be short, reusable lines of SQL.
+از [Snippetها](snippets.html) برای کد SQL بحرانی یا مکرراً استفاده شده استفاده کنید. Snippetها باید خطوط کوتاه، قابل استفاده مجدد SQL باشند.
 
-![Example snippet using the Sample Database included with Metabase.](../../../images/organizing-sql/snippet-example.png)
+![مثال snippet با استفاده از پایگاه داده نمونه شامل شده با متابیس.](../../../images/organizing-sql/snippet-example.png)
 
-Just as you can define official aggregations and filters as [metrics and segments](../../../../docs/latest/data-modeling/metrics.html) using the **Query Builder**, you can use Snippets to codify KPIs and filters. For example, you may want to store exactly how you calculate revenue, or what constitutes an active user. Save that SQL code as a snippet, add a description \(you could even include your contact info in case anyone has questions\), and everyone on your team will now be able to reference that crystallized SQL in your snippet:
+همانطور که می‌توانید aggregationها و فیلترهای رسمی را به عنوان [معیارها و بخش‌ها](../../../../docs/latest/data-modeling/metrics.html) با استفاده از **Query Builder** تعریف کنید، می‌توانید از Snippetها برای codify کردن KPIها و فیلترها استفاده کنید. به عنوان مثال، ممکن است بخواهید دقیقاً نحوه محاسبه درآمد، یا آنچه یک کاربر فعال را تشکیل می‌دهد ذخیره کنید. آن کد SQL را به عنوان snippet ذخیره کنید، یک توضیح اضافه کنید (حتی می‌توانید اطلاعات تماس خود را در صورت داشتن سؤال توسط هر کسی شامل کنید)، و همه در تیم شما حالا قادر به ارجاع به آن SQL crystallized در snippet شما خواهند بود:
 
-```
+```sql
 SELECT *
 FROM users
 WHERE {{ snippet: Active Users }} AND {{ snippet: Adults }}
-
 ```
 
-Snippets can be crucial to consolidating and standardizing your code. If at any point you refine what constitutes an active user, you only need to update the `Active Users` snippet, and the change will propagate to every question that uses that snippet.
+Snippetها می‌توانند برای consolidating و standardizing کردن کد شما حیاتی باشند. اگر در هر نقطه تعریف آنچه یک کاربر فعال را تشکیل می‌دهد را refine کنید، فقط نیاز به به‌روزرسانی snippet `Active Users` دارید، و تغییر به هر سؤالی که از آن snippet استفاده می‌کند propagate می‌شود.
 
-Metabase Enterprise Edition additionally allows you to [organize Snippets into folders](../../../../docs/latest/permissions/snippets.html) much like collections organize questions and dashboards. You can set permissions on these folders to restrict access to sensitive SQL, or simply to ensure that users don’t have to wade through folders irrelevant to their domain.
+Metabase Enterprise Edition علاوه بر این به شما اجازه [سازماندهی Snippetها در پوشه‌ها](../../../../docs/latest/permissions/snippets.html) را می‌دهد، بسیار شبیه collectionها سؤال‌ها و داشبوردها را سازماندهی می‌کنند. می‌توانید مجوزها را روی این پوشه‌ها تنظیم کنید تا دسترسی به SQL حساس را محدود کنید، یا به سادگی اطمینان حاصل کنید که کاربران نیاز به wade کردن از طریق پوشه‌های نامرتبط به domain خود ندارند.
 
-![Creating a snippet folder in Metabase Enterprise Edition.](../../../images/organizing-sql/snippet-folder.png)
+![ایجاد یک پوشه snippet در Metabase Enterprise Edition.](../../../images/organizing-sql/snippet-folder.png)
 
-If you find yourself writing a long snippet, and that snippet returns a set of a results \(i.e., the snippet isn’t just a `WHERE` clause—it’s a query in its own right\), consider saving the query as a question for others to reference in their queries.
+اگر متوجه شدید snippet طولانی می‌نویسید، و آن snippet مجموعه‌ای از نتایج را برمی‌گرداند (یعنی، snippet فقط یک بند `WHERE` نیست—یک پرس‌وجو به خودی خود است)، در نظر بگیرید پرس‌وجو را به عنوان یک سؤال برای دیگران برای ارجاع در پرس‌وجوهای خود ذخیره کنید.
 
-## Saved questions as building blocks
+## سؤال‌های ذخیره شده به عنوان بلوک‌های ساختمانی
 
-For larger chunks of SQL code that are of interest by themselves, consider saving that code as a question. That is, after all, what most people do with Metabase: they ask questions.
+برای chunkهای بزرگتر کد SQL که به خودی خود مورد علاقه هستند، در نظر بگیرید آن کد را به عنوان یک سؤال ذخیره کنید. این، پس از همه، همان چیزی است که بیشتر مردم با متابیس انجام می‌دهند: آن‌ها سؤال می‌پرسند.
 
-Questions can be grouped together in dashboards, but they can also be used as building blocks for bigger queries, just like you could pull together multiple snippets in a query.
+سؤال‌ها می‌توانند با هم در داشبوردها group شوند، اما همچنین می‌توانند به عنوان بلوک‌های ساختمانی برای پرس‌وجوهای بزرگتر استفاده شوند، درست مثل اینکه می‌توانستید چندین snippet را در یک پرس‌وجو کنار هم بگذارید.
 
-Suppose you write a query and save it as a question. You can inject it in another query like this:
+فرض کنید یک پرس‌وجو می‌نویسید و آن را به عنوان یک سؤال ذخیره می‌کنید. می‌توانید آن را در پرس‌وجوی دیگر مثل این inject کنید:
 
-```
+```sql
 SELECT *
 FROM {{#123}}
-
 ```
 
-where the `123` is the question’s ID. You could also use the question as a Common Table Expression \(CTE\):
+جایی که `123` ID سؤال است. همچنین می‌توانید از سؤال به عنوان یک Common Table Expression (CTE) استفاده کنید:
 
-```
+```sql
 WITH active_users AS {{#123}}
 SELECT *
 FROM Active Users
-
 ```
 
-Saved questions are a low\-effort way to modularize your analysis. The biggest advantage of modularizing your queries via saved questions \(as opposed to Snippets\) is that you can run saved questions independently and see their results, which makes questions much easier to debug than snippets.
+سؤال‌های ذخیره شده راهی کم‌تلاش برای modularize کردن تحلیل شما هستند. بزرگترین مزیت modularizing کردن پرس‌وجوهای خود از طریق سؤال‌های ذخیره شده (در مقابل Snippetها) این است که می‌توانید سؤال‌های ذخیره شده را به طور مستقل اجرا کنید و نتایج آن‌ها را ببینید، که سؤال‌ها را بسیار آسان‌تر از snippetها برای debug می‌کند.
 
-You could, alternatively, simply duplicate a question and build from the previous question, but this duplication comes at a cost. You now have the same code in two questions; if you later find an error in one question, you’ll also have to correct the error in the other question \- assuming you remember that they share the same code. By simply referring to a saved question, you’d only need to update the code in one place.
+به طور جایگزین، می‌توانستید به سادگی یک سؤال را duplicate کنید و از سؤال قبلی build کنید، اما این duplication با هزینه همراه است. حالا همان کد را در دو سؤال دارید؛ اگر بعداً یک خطا در یک سؤال پیدا کردید، همچنین باید خطا را در سؤال دیگر اصلاح کنید - با فرض اینکه یادتان باشد که آن‌ها همان کد را share می‌کنند. با به سادگی ارجاع به یک سؤال ذخیره شده، فقط نیاز به به‌روزرسانی کد در یک مکان دارید.
 
-For example, if you’re a startup, you’ll likely have data on users scattered across normalized tables. In Metabase, you can join those tables in various ways to create a set of questions that your users will be interested in, which allows them to build off those results, referencing those questions in their own queries to slice the data in a particular way.
+به عنوان مثال، اگر یک startup هستید، احتمالاً داده درباره کاربران scattered در جداول normalized دارید. در متابیس، می‌توانید آن جداول را به روش‌های مختلف join کنید تا مجموعه‌ای از سؤال‌ها که کاربران شما به آن‌ها علاقه‌مند خواهند بود ایجاد کنید، که به آن‌ها اجازه build کردن روی آن نتایج، ارجاع به آن سؤال‌ها در پرس‌وجوهای خود برای slice کردن داده به روش خاص را می‌دهد.
 
-## Database views
+## Viewهای پایگاه داده
 
-If you’re thinking that saved questions seem a lot like views in a database, you’re right. The advantage with a question is that you don’t need to be an admin to create them, and you can create questions on the fly and nest them in other questions. The disadvantage is that a question is a Metabase construct, and you won’t get the performance optimizations of a view native to your database \(if there are any\). Also, when referring to another question in your SQL code, keep in mind that you can only access the results of the question: you can’t access the query itself, meaning you can’t reference any variables that might be present in it.
+اگر فکر می‌کنید سؤال‌های ذخیره شده خیلی شبیه viewها در یک پایگاه داده به نظر می‌رسند، درست می‌گویید. مزیت با یک سؤال این است که نیاز به admin بودن برای ایجاد آن‌ها ندارید، و می‌توانید سؤال‌ها را on the fly ایجاد کنید و آن‌ها را در سؤال‌های دیگر nest کنید. عیب این است که یک سؤال یک construct متابیس است، و بهینه‌سازی‌های performance یک view native به پایگاه داده خود را دریافت نمی‌کنید (اگر وجود داشته باشند). همچنین، هنگام ارجاع به سؤال دیگر در کد SQL خود، به خاطر داشته باشید که فقط می‌توانید به نتایج سؤال دسترسی داشته باشید: نمی‌توانید به پرس‌وجو خود دسترسی داشته باشید، یعنی نمی‌توانید به هیچ متغیری که ممکن است در آن وجود داشته باشد ارجاع دهید.
 
-If you find that people are often referring to a question in Metabase as the foundation for their queries, consider talking to your database admin about creating a materialized view that returns the same result set as that saved question. The advantage of a materialized view is that the database won’t have to recompute the results each time; the materialized view will behave a lot like an actual table in a database.
+اگر متوجه شدید که مردم اغلب به یک سؤال در متابیس به عنوان foundation برای پرس‌وجوهای خود ارجاع می‌دهند، در نظر بگیرید با admin پایگاه داده خود درباره ایجاد یک materialized view که همان مجموعه نتیجه را به عنوان آن سؤال ذخیره شده برمی‌گرداند صحبت کنید. مزیت یک materialized view این است که پایگاه داده نیاز به recompute کردن نتایج هر بار ندارد؛ materialized view خیلی شبیه یک جدول واقعی در یک پایگاه داده رفتار می‌کند.
 
-Using other saved questions in SQL templates is great for when you don’t have access to create views in the database, or if you’re just exploring your data and don’t want to create views.
+استفاده از سؤال‌های ذخیره شده دیگر در templateهای SQL عالی است برای زمانی که دسترسی به ایجاد viewها در پایگاه داده ندارید، یا اگر فقط در حال کاوش داده خود هستید و نمی‌خواهید view ایجاد کنید.
 
-## As you grow, push business logic further up the pipeline
+## همانطور که رشد می‌کنید، منطق کسب‌وکار را بیشتر در pipeline بالا ببرید
 
-Much of analytics is simply slicing the data in different ways to get a better feel for the stories it can tell. As you find your analytics footing, you won’t necessarily know which slices of the data are going to help you make the best decisions for your company.
+بسیاری از تحلیل‌ها به سادگی slice کردن داده به روش‌های مختلف برای دریافت حس بهتری از داستان‌هایی که می‌تواند بگوید است. همانطور که analytics footing خود را پیدا می‌کنید، لزوماً نمی‌دانید کدام sliceهای داده به شما کمک می‌کنند بهترین تصمیمات را برای شرکت خود بگیرید.
 
-As your organization’s analytics setup matures, you’ll want to push business logic further up the pipeline, so that the tables that people find in Metabase group together logical units of your business. Curating and building on a core set of saved questions is an easy way to sort out which data matters the most to your organization.
+همانطور که setup analytics سازمان شما mature می‌شود، می‌خواهید منطق کسب‌وکار را بیشتر در pipeline بالا ببرید، تا جداولی که مردم در متابیس پیدا می‌کنند واحدهای منطقی کسب‌وکار شما را group کنند. curating و build کردن روی یک مجموعه core از سؤال‌های ذخیره شده راهی آسان برای sort کردن اینکه کدام داده بیشترین اهمیت را برای سازمان شما دارد.
 
-In general, the easier it is for people to analyze your data, the more productive of an organization you’ll be. See [Common data model mistakes startups make](../../../grow-your-data-skills/analytics/data-model-mistakes.html) to learn more.
+به طور کلی، هر چه آسان‌تر برای مردم تحلیل داده شما باشد، سازمان productiveتری خواهید بود. [اشتباهات رایج مدل داده که startupها مرتکب می‌شوند](../../../grow-your-data-skills/analytics/data-model-mistakes.html) را برای یادگیری بیشتر ببینید.
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](snippets.html)
 [
       
         
         
+
       
       
+        
         
 
       

@@ -1,170 +1,168 @@
 ---
-
-
-title: "Guide to line charts"
-description: "What we talk about when we talk about line charts: time series, trend lines, alerts, and more."
+title: "راهنمای نمودارهای خطی"
+description: "آنچه در مورد نمودارهای خطی صحبت می‌کنیم: سری‌های زمانی، خطوط روند، هشدارها و موارد دیگر."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/visualization/line-charts
   - /learn/basics/visualizing-data/line-charts
   - /learn/visualization/line-charts
 toc:
   - id: "guide-to-line-charts"
-    title: "Guide to line charts"
+    title: "راهنمای نمودارهای خطی"
     level: 1
     href: "#guide-to-line-charts"
   - id: "how-to-create-a-line-chart"
-    title: "How to create a line chart"
+    title: "نحوه ایجاد یک نمودار خطی"
     level: 2
     href: "#how-to-create-a-line-chart"
   - id: "customizing-your-line-chart"
-    title: "Customizing your line chart"
+    title: "سفارشی کردن نمودار خطی خود"
     level: 2
     href: "#customizing-your-line-chart"
   - id: "data-tab-line-area-or-bar-chart"
-    title: "Data tab: line, area, or bar chart?"
+    title: "تب Data: نمودار خطی، area، یا میله‌ای؟"
     level: 3
     href: "#data-tab-line-area-or-bar-chart"
   - id: "display-tab-trend-lines-and-goal-lines"
-    title: "Display tab: trend lines and goal lines"
+    title: "تب Display: خطوط روند و خطوط هدف"
     level: 3
     href: "#display-tab-trend-lines-and-goal-lines"
   - id: "axes-tab-scales-and-axis-labels"
-    title: "Axes tab: scales and axis labels"
+    title: "تب Axes: scaleها و برچسب‌های محور"
     level: 3
     href: "#axes-tab-scales-and-axis-labels"
   - id: "line-chart-tips"
-    title: "Line chart tips"
+    title: "نکات نمودار خطی"
     level: 2
     href: "#line-chart-tips"
   - id: "pair-a-line-chart-with-a-trend-chart"
-    title: "Pair a line chart with a trend chart"
+    title: "جفت کردن یک نمودار خطی با یک نمودار روند"
     level: 3
     href: "#pair-a-line-chart-with-a-trend-chart"
   - id: "hover-over-a-label-to-highlight-a-line"
-    title: "Hover over a label to highlight a line"
+    title: "Hover روی یک برچسب برای highlight کردن یک خط"
     level: 3
     href: "#hover-over-a-label-to-highlight-a-line"
   - id: "for-time-series-filter-out-any-time-period-still-in-progress"
-    title: "For time series, filter out any time period still in progress"
+    title: "برای سری زمانی، هر دوره زمانی که هنوز در حال پیشرفت است را فیلتر کنید"
     level: 3
     href: "#for-time-series-filter-out-any-time-period-still-in-progress"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Visualizing data"
+  - title: "تجسم داده"
     href: "../visualization.html"
 ---
 
-# Guide to line charts
+# راهنمای نمودارهای خطی
 
-What we talk about when we talk about line charts: time series, trend lines, alerts, and more.
+آنچه در مورد نمودارهای خطی صحبت می‌کنیم: سری‌های زمانی، خطوط روند، هشدارها و موارد دیگر.
 
-Line charts are good for plotting data captured in a sequence, whether that sequence is the passage of time, or steps in a process or flow. These charts are typically used to plot a time series \(also known as a run chart\): a set of markers connected by lines, with the x axis showing the passage of time and the y axis plotting the value of a metric at each moment.
+نمودارهای خطی برای رسم داده captured در یک sequence خوب هستند، چه آن sequence گذر زمان باشد، یا مراحل در یک فرآیند یا flow. این نمودارها به طور معمول برای رسم یک سری زمانی (همچنین run chart نامیده می‌شود) استفاده می‌شوند: مجموعه‌ای از markerها متصل شده با خطوط، با محور x نشان دادن گذر زمان و محور y رسم مقدار یک معیار در هر لحظه.
 
-## How to create a line chart
+## نحوه ایجاد یک نمودار خطی
 
-Let’s take a look at the `Orders` table in the [Sample Database](../../../../glossary/sample-database.html) that ships with Metabase. From the main navigation bar, click on **\+ New** \> **Question**, which will take you to Metabase’s query builder. Choose **Raw Data** \> **Sample Database**, then pick the `Orders` table. Click **Visualize**, then click the **Visualization button** in the bottom right to bring up the **Visualization sidebar**.
+بیایید نگاهی به جدول `Orders` در [پایگاه داده نمونه](../../../../glossary/sample-database.html) که با متابیس ship می‌شود بیندازیم. از نوار ناوبری اصلی، روی **+ New** > **Question** کلیک کنید، که شما را به query builder متابیس می‌برد. **Raw Data** > **Sample Database** را انتخاب کنید، سپس جدول `Orders` را انتخاب کنید. روی **Visualize** کلیک کنید، سپس روی دکمه **Visualization** در پایین سمت راست کلیک کنید تا **Sidebar Visualization** باز شود.
 
-![The orders table](../../../images/line-charts/orders-table.png)
+![جدول سفارش‌ها](../../../images/line-charts/orders-table.png)
 
-Let’s start with how *not* to create a line chart. If you select **line chart**, Metabase will present you with an empty chart.
+بیایید با نحوه *نکردن* ایجاد یک نمودار خطی شروع کنیم. اگر **line chart** را انتخاب کنید، متابیس یک نمودار خالی به شما ارائه می‌دهد.
 
-![An empty line chart, before setting the x and y axes.](../../../images/line-charts/empty-line-chart.png)
+![یک نمودار خطی خالی، قبل از تنظیم محورهای x و y.](../../../images/line-charts/empty-line-chart.png)
 
-Metabase can’t read minds \(yet\), so it doesn’t know which columns from the `Orders` table to use for the x and y axes. To create a line chart, you’ll need to pick a metric for Metabase to plot over time. For example, you could show order totals over time by setting the x axis to `created_at` and the y axis to `total`. Metabase will automatically plot the line chart:
+متابیس نمی‌تواند ذهن بخواند (هنوز)، پس نمی‌داند کدام ستون‌ها از جدول `Orders` برای محورهای x و y استفاده کند. برای ایجاد یک نمودار خطی، نیاز به انتخاب یک معیار برای متابیس برای رسم در طول زمان دارید. به عنوان مثال، می‌توانستید کل سفارش‌ها را در طول زمان با تنظیم محور x به `created_at` و محور y به `total` نشان دهید. متابیس به طور خودکار نمودار خطی را رسم می‌کند:
 
-![A noisy line chart after setting the x and y axes, without first summarizing the data.](../../../images/line-charts/created-at-total.png)
+![یک نمودار خطی noisy بعد از تنظیم محورهای x و y، بدون خلاصه کردن داده در ابتدا.](../../../images/line-charts/created-at-total.png)
 
-That’s technically a line chart, but it looks more like the cardiograph of a startled hummingbird, and that’s even after Metabase has truncated the results shown. \(If you hover over the gray warning triangle in the upper right, you’ll see that Metabase has only plotted 2,000 rows.\)
+این از نظر فنی یک نمودار خطی است، اما بیشتر شبیه cardiograph یک مرغ مگس‌خوار startled به نظر می‌رسد، و این حتی بعد از اینکه متابیس نتایج نشان داده شده را truncate کرده است. (اگر روی مثلث هشدار خاکستری در بالا سمت راست hover کنید، می‌بینید که متابیس فقط 2,000 ردیف را رسم کرده است.)
 
-To make the chart more legible, we can summarize the data, so each point on the line chart is an aggregate of rows—“buckets” of records. \(It’s much more common to plot unaggregated rows in visualizations like [pin maps](../../../../docs/latest/questions/visualizations/map.html), or a [scatterplot](../../../../docs/latest/questions/visualizations/visualizing-results.html#scatterplots-and-bubble-charts), e.g., to show each product plotted by price and rating.\)
+برای خوانا‌تر کردن نمودار، می‌توانیم داده را خلاصه کنیم، پس هر نقطه روی نمودار خطی یک aggregate از ردیف‌ها است—"bucket"های رکوردها. (رسم ردیف‌های unaggregated در تجسم‌هایی مثل [نقشه‌های pin](../../../../docs/latest/questions/visualizations/map.html)، یا یک [scatterplot](../../../../docs/latest/questions/visualizations/visualizing-results.html#scatterplots-and-bubble-charts)، مثلاً، برای نشان دادن هر محصول رسم شده بر اساس قیمت و رتبه‌بندی بسیار رایج‌تر است.)
 
-As an example of an aggregated metric, let’s plot the sum of order totals for each month. Click on the green **Summarize button** to pull up the **Summarize sidebar**. Metabase defaults to counting the records, but we’re not interested in the number of orders, so we’ll click on `Count` and change it to `Sum of` and select the `Total` column from `Order`.
+به عنوان مثال یک معیار aggregated، بیایید مجموع کل سفارش‌ها را برای هر ماه رسم کنیم. روی دکمه **Summarize** سبز کلیک کنید تا **Sidebar Summarize** باز شود. متابیس به طور پیش‌فرض به شمارش رکوردها می‌رود، اما به تعداد سفارش‌ها علاقه‌مند نیستیم، پس روی `Count` کلیک می‌کنیم و آن را به `Sum of` تغییر می‌دهیم و ستون `Total` را از `Order` انتخاب می‌کنیم.
 
-Next, we’ll want to group our order totals by month. In the **Group by** section, under `Order`, mouse over the `Created At` field click on the `+` button to add the grouping.
+بعد، می‌خواهیم کل سفارش‌ها را بر اساس ماه group کنیم. در بخش **Group by**، زیر `Order`، روی فیلد `Created At` mouse over کنید و روی دکمه `+` کلیک کنید تا grouping اضافه شود.
 
-![Hover over Created At and click on the plus button to add a grouping by month. You can select other time intervals (day, week, year) by clicking on by month.](../../../images/line-charts/add-grouping.png)
+![روی Created At hover کنید و روی دکمه plus کلیک کنید تا یک grouping بر اساس ماه اضافه شود. می‌توانید سایر بازه‌های زمانی (روز، هفته، سال) را با کلیک روی by month انتخاب کنید.](../../../images/line-charts/add-grouping.png)
 
-As soon as you add the grouping, Metabase updates the chart:
+به محض افزودن grouping، متابیس نمودار را به‌روزرسانی می‌کند:
 
-![The sum of order totals by month.](../../../images/line-charts/sum-total-by-month.png)
+![مجموع کل سفارش‌ها بر اساس ماه.](../../../images/line-charts/sum-total-by-month.png)
 
-This chart is a lot easier to read. And, of course, we can always select a section of the line to filter the results for that time period, and drill through to see those individual, unaggregated records.
+این نمودار خیلی راحت‌تر خوانده می‌شود. و، البته، همیشه می‌توانیم یک بخش از خط را انتخاب کنیم تا نتایج را برای آن دوره زمانی فیلتر کنیم، و drill through کنیم تا آن رکوردهای فردی، unaggregated را ببینیم.
 
-![Zooming in and drilling through a line chart to view individual records.](../../../images/line-charts/drill-through.gif)
+![Zoom کردن و drill through یک نمودار خطی برای مشاهده رکوردهای فردی.](../../../images/line-charts/drill-through.gif)
 
-## Customizing your line chart
+## سفارشی کردن نمودار خطی خود
 
-To customize your line chart, you can click on the **Settings** button \(the gear icon\) in the bottom left. There are too many settings to cover here without boring you, so we’ll just give you some highlights.
+برای سفارشی کردن نمودار خطی خود، می‌توانید روی دکمه **Settings** (آیکون چرخ‌دنده) در پایین سمت چپ کلیک کنید. تنظیمات زیادی برای پوشش اینجا بدون خسته کردن شما وجود دارد، پس فقط برخی highlights به شما می‌دهیم.
 
-### Data tab: line, area, or bar chart?
+### تب Data: نمودار خطی، area، یا میله‌ای؟
 
-The **Data tab** is where you select options for your lines by clicking the three\-dot button, and even change the chart type.
+تب **Data** جایی است که گزینه‌هایی برای خطوط خود را با کلیک روی دکمه سه‌نقطه انتخاب می‌کنید، و حتی نوع نمودار را تغییر می‌دهید.
 
-We’ve been talking strictly about line charts so far, but [bar charts](bar-charts.html) and area charts are similar, and there are good reasons to choose them instead of a line chart, depending on what you’re trying to communicate:
+تا اینجا به طور strict درباره نمودارهای خطی صحبت کرده‌ایم، اما [نمودارهای میله‌ای](bar-charts.html) و نمودارهای area مشابه هستند، و دلایل خوبی برای انتخاب آن‌ها به جای یک نمودار خطی، بسته به آنچه می‌خواهید communicate کنید وجود دارد:
 
-![An area chart.](../../../images/line-charts/area-chart.png)
+![یک نمودار area.](../../../images/line-charts/area-chart.png)
 
-Area charts are typically used to compare values over time. If you don’t have that many values plotted over time, consider a bar chart. If you want to see the composition of values over time, use a stacked bar chart.
+نمودارهای area به طور معمول برای مقایسه مقادیر در طول زمان استفاده می‌شوند. اگر آن مقدار مقادیر زیادی رسم شده در طول زمان ندارید، یک نمودار میله‌ای را در نظر بگیرید. اگر می‌خواهید ترکیب مقادیر را در طول زمان ببینید، از یک نمودار میله‌ای stacked استفاده کنید.
 
-You can also combine line and area charts in a [combo chart](../../../../docs/latest/questions/visualizations/combo-chart.html) to visualize different aggregations, like the count and sum of order totals shown below. We discuss combo charts in more detail [here](../../../../docs/latest/questions/visualizations/visualizing-results.html#combo-charts).
+همچنین می‌توانید نمودارهای خطی و area را در یک [نمودار combo](../../../../docs/latest/questions/visualizations/combo-chart.html) برای تجسم aggregationهای مختلف، مثل تعداد و مجموع کل سفارش‌ها نشان داده شده در زیر ترکیب کنید. نمودارهای combo را با جزئیات بیشتر [اینجا](../../../../docs/latest/questions/visualizations/visualizing-results.html#combo-charts) بحث می‌کنیم.
 
-![The count of orders as a blue line, set against the green area chart plotting the sum of order totals.](../../../images/line-charts/total-and-count.png)
+![تعداد سفارش‌ها به عنوان یک خط آبی، set شده در مقابل نمودار area سبز رسم شده مجموع کل سفارش‌ها.](../../../images/line-charts/total-and-count.png)
 
-### Display tab: trend lines and goal lines
+### تب Display: خطوط روند و خطوط هدف
 
-The **Display tab** lets you change the line color and style, handle missing values, and so on. If you plan on embedding your chart in your app, check out our [white labeling option](../../../../docs/latest/configuring-metabase/appearance.html) for even more customization.
+تب **Display** به شما اجازه تغییر رنگ خط و style، handle کردن مقادیر missing، و غیره را می‌دهد. اگر قصد جاسازی نمودار خود را در اپلیکیشن خود دارید، گزینه [white labeling](../../../../docs/latest/configuring-metabase/appearance.html) ما را برای سفارشی‌سازی حتی بیشتر بررسی کنید.
 
-You can add a trend line from the display settings of a time series chart. You’ll see the toggle if you’ve chosen exactly one time field from **Summarize** \> **Group by**. In the example below, we’ve chosen the grouping field “Created At: Month”:
+می‌توانید یک خط روند از تنظیمات display یک نمودار سری زمانی اضافه کنید. toggle را می‌بینید اگر دقیقاً یک فیلد زمانی از **Summarize** > **Group by** انتخاب کرده‌اید. در مثال زیر، فیلد grouping "Created At: Month" را انتخاب کرده‌ایم:
 
-![Line chart with goal and trend lines.](../../../images/line-charts/goal-and-trend-line.png)
+![نمودار خطی با خطوط هدف و روند.](../../../images/line-charts/goal-and-trend-line.png)
 
-You can also add a goal line to plot a horizontal line at your goal value. Goal lines are especially useful when paired with alerts. For example, if you’re monitoring sales, and you only want to get notified if a metric dips below a certain threshold, you can add a goal line to specify that threshold and get an email or have a Slack message sent when the line goes under it.
+همچنین می‌توانید یک خط هدف برای رسم یک خط افقی در مقدار هدف خود اضافه کنید. خطوط هدف به خصوص زمانی که با هشدارها جفت می‌شوند مفید هستند. به عنوان مثال، اگر در حال monitoring فروش هستید، و فقط می‌خواهید notify شوید اگر یک معیار زیر یک threshold خاص dip کند، می‌توانید یک خط هدف برای مشخص کردن آن threshold اضافه کنید و یک ایمیل دریافت کنید یا یک پیام Slack ارسال شود وقتی خط زیر آن می‌رود.
 
-### Axes tab: scales and axis labels
+### تب Axes: scaleها و برچسب‌های محور
 
-Here you can adjust the scale of the x and y axes. For the x axis, you can select either time series or ordinal scales. Time series will limit the number of values displayed, whereas the ordinal scale will list each value in the series along the x axis. Use an ordinal scale if you’re plotting steps in a sequence.
+اینجا می‌توانید scale محورهای x و y را تنظیم کنید. برای محور x، می‌توانید scale سری زمانی یا ordinal را انتخاب کنید. سری زمانی تعداد مقادیر نمایش داده شده را محدود می‌کند، در حالی که scale ordinal هر مقدار در سری را در امتداد محور x فهرست می‌کند. از یک scale ordinal استفاده کنید اگر مراحل در یک sequence را رسم می‌کنید.
 
-For the y axis, you can select linear \(the default\), or power or log scales. Logarithmic scales are great for showing the rate of change over time, especially when your data has an exponential rise or decay.
+برای محور y، می‌توانید linear (پیش‌فرض)، یا power یا log scaleها را انتخاب کنید. Logarithmic scaleها عالی برای نشان دادن نرخ تغییر در طول زمان هستند، به خصوص وقتی داده شما یک افزایش یا decay نمایی دارد.
 
-![The log scale view of the sum of order totals by month shows us that the growth in totals has flattened out over time.](../../../images/line-charts/log-scale.png)
+![نمای log scale از مجموع کل سفارش‌ها بر اساس ماه به ما نشان می‌دهد که رشد در totalها در طول زمان flattened شده است.](../../../images/line-charts/log-scale.png)
 
-And you can probably just ignore power scales, as no one really uses them.
+و احتمالاً می‌توانید power scaleها را نادیده بگیرید، چون هیچ کس واقعاً از آن‌ها استفاده نمی‌کند.
 
-## Line chart tips
+## نکات نمودار خطی
 
-Metabase takes care of a lot of the best practices for visualizing data for you, but here are some tips to keep in mind when creating line charts.
+متابیس بسیاری از بهترین روش‌ها برای تجسم داده را برای شما handle می‌کند، اما در اینجا برخی نکات برای به خاطر سپردن هنگام ایجاد نمودارهای خطی.
 
-### Pair a line chart with a trend chart
+### جفت کردن یک نمودار خطی با یک نمودار روند
 
-When creating a dashboard, you can pair a line chart with a [Trend](../../../../docs/latest/questions/visualizations/visualizing-results.html#trends) chart to make the latest value easy to read.
+وقتی یک داشبورد ایجاد می‌کنید، می‌توانید یک نمودار خطی را با یک نمودار [Trend](../../../../docs/latest/questions/visualizations/visualizing-results.html#trends) جفت کنید تا آخرین مقدار را آسان‌تر بخوانید.
 
-![Pair a line chart with a trend chart to show the latest number.](../../../images/line-charts/dashboard-with-trend-and-line-charts.png)
+![جفت کردن یک نمودار خطی با یک نمودار روند برای نشان دادن آخرین عدد.](../../../images/line-charts/dashboard-with-trend-and-line-charts.png)
 
-### Hover over a label to highlight a line
+### Hover روی یک برچسب برای highlight کردن یک خط
 
-You can hover over the name of one of your series in the legend to highlight it and make the others fade out. You can also click on a series to hide \(or unhide\) it.
+می‌توانید روی نام یکی از سری‌های خود در legend hover کنید تا آن را highlight کنید و بقیه را fade out کنید. همچنین می‌توانید روی یک سری کلیک کنید تا آن را مخفی (یا آشکار) کنید.
 
-![Hovering over labels in the legend hill highlight the corresponding line.](../../../images/line-charts/hover-to-highlight-line.gif)
+![Hover کردن روی برچسب‌ها در legend خط مربوطه را highlight می‌کند.](../../../images/line-charts/hover-to-highlight-line.gif)
 
-### For time series, filter out any time period still in progress
+### برای سری زمانی، هر دوره زمانی که هنوز در حال پیشرفت است را فیلتر کنید
 
-When dealing with time series, your charts can look nicer if you add a filter to exclude the day, week, or month that’s currently in progress; otherwise your chart will have a huge drop on the far right because of the partial or incomplete time period. Just uncheck the **Include this day** or week, month, or whatever time scale you’re working with.
+وقتی با سری زمانی سروکار دارید، نمودارهای شما می‌توانند بهتر به نظر برسند اگر یک فیلتر برای exclude کردن روز، هفته، یا ماهی که در حال حاضر در حال پیشرفت است اضافه کنید؛ در غیر این صورت نمودار شما یک drop بزرگ در سمت راست دور خواهد داشت به دلیل دوره زمانی جزئی یا ناقص. فقط **Include this day** یا هفته، ماه، یا هر scale زمانی که با آن کار می‌کنید را uncheck کنید.
 
-![Unless you really need the most recent (and potentially incomplete) period of time, make sure the Include this... option isn](../../../images/line-charts/filter-include.png)
+![مگر اینکه واقعاً نیاز به آخرین (و احتمالاً ناقص) دوره زمانی دارید، مطمئن شوید گزینه Include this... نیست](../../../images/line-charts/filter-include.png)
 
-## Further reading
+## مطالعه بیشتر
 
-- [Multi\-series charting](../../../../docs/latest/dashboards/multiple-series.html)
-- [Line charts documentation](../../../../docs/latest/questions/visualizations/visualizing-results.html#line-charts)
-- [Time series comparisons](../time-series/time-series-comparisons.html)
-- [Which chart should you use?](chart-guide.html)
+- [نمودار چندسری](../../../../docs/latest/dashboards/multiple-series.html)
+- [مستندات نمودارهای خطی](../../../../docs/latest/questions/visualizations/visualizing-results.html#line-charts)
+- [مقایسه‌های سری زمانی](../time-series/time-series-comparisons.html)
+- [کدام نمودار باید استفاده کنید؟](chart-guide.html)
 
 [
       
@@ -174,14 +172,17 @@ When dealing with time series, your charts can look nicer if you add a filter to
       
         
         
+
       
     ](chart-guide.html)
 [
       
         
         
+
       
       
+        
         
 
       

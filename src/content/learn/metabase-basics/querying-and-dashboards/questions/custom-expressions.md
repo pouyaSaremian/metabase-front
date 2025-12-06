@@ -1,214 +1,211 @@
 ---
-
-
-title: "Tutorial: Custom expressions"
-description: "When you should use custom expressions and why you should take advantage of them in Metabase's notebook editor."
+title: "آموزش: عبارات سفارشی"
+description: "چه زمانی باید از عبارات سفارشی استفاده کنید و چرا باید از آن‌ها در ویرایشگر notebook متابیس استفاده کنید."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/questions/custom-expressions
   - /learn/questions/custom-expressions
 toc:
   - id: "tutorial-custom-expressions"
-    title: "Tutorial: Custom expressions"
+    title: "آموزش: عبارات سفارشی"
     level: 1
     href: "#tutorial-custom-expressions"
   - id: "custom-columns"
-    title: "Custom columns"
+    title: "ستون‌های سفارشی"
     level: 2
     href: "#custom-columns"
   - id: "custom-filters"
-    title: "Custom filters"
+    title: "فیلترهای سفارشی"
     level: 2
     href: "#custom-filters"
   - id: "custom-summaries"
-    title: "Custom summaries"
+    title: "خلاصه‌های سفارشی"
     level: 2
     href: "#custom-summaries"
   - id: "putting-it-all-together"
-    title: "Putting it all together"
+    title: "کنار هم گذاشتن همه"
     level: 2
     href: "#putting-it-all-together"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Asking questions"
+  - title: "پرسیدن سؤال‌ها"
     href: "../questions.html"
 ---
 
-# Tutorial: Custom expressions
+# آموزش: عبارات سفارشی
 
-When you should use custom expressions and why you should take advantage of them in Metabase's notebook editor.
+چه زمانی باید از عبارات سفارشی استفاده کنید و چرا باید از آن‌ها در ویرایشگر notebook متابیس استفاده کنید.
 
-> Looking for docs on custom expressions? See [Docs: field filters](../../../../docs/latest/questions/query-builder/expressions.html).
+> به دنبال مستندات درباره عبارات سفارشی هستید؟ [مستندات: فیلترهای فیلد](../../../../docs/latest/questions/query-builder/expressions.html) را ببینید.
 
-In mathematics, expressions are collections of symbols that together express a value. If you’ve ever worked with spreadsheet software before, expressions are formulas, like `=SUM(A1, B1)`.
+در ریاضیات، عبارات مجموعه‌هایی از نمادها هستند که با هم یک مقدار را بیان می‌کنند. اگر قبلاً با نرم‌افزار spreadsheet کار کرده‌اید، عبارات فرمول‌ها هستند، مثل `=SUM(A1, B1)`.
 
-Custom expressions in Metabase’s **query builder** are powerful tools that can cover the vast majority of analytics use cases without the need to take SQL out of the toolbox. In fact, there are big advantages to using the query builder that you don’t get when you use SQL:
+عبارات سفارشی در **query builder** متابیس ابزارهای قدرتمندی هستند که می‌توانند اکثریت قریب به اتفاق موارد استفاده تحلیل را بدون نیاز به بیرون آوردن SQL از toolbox پوشش دهند. در واقع، مزایای بزرگی برای استفاده از query builder وجود دارد که وقتی از SQL استفاده می‌کنید دریافت نمی‌کنید:
 
-- *Extensibility* : Using the **query builder** to build queries allows people to learn from and build on your questions without needing to know any SQL.
-- [*Drill\-through*](drill-through.html) allows people to break out records by category, zoom in, drill down to unaggregated records, or x\-ray the data on click. Questions built with the Metabase query builder will give users the full power of drill\-through, but questions built using SQL will only show limited options like filtering by a value.
+- *Extensibility*: استفاده از **query builder** برای ساخت پرس‌وجوها به مردم اجازه یادگیری از و ساخت روی سؤال‌های شما بدون نیاز به دانستن هیچ SQL را می‌دهد.
+- [*Drill-through*](drill-through.html) به مردم اجازه break out رکوردها بر اساس دسته، zoom in، drill down به رکوردهای unaggregated، یا x-ray داده روی کلیک را می‌دهد. سؤال‌های ساخته شده با query builder متابیس قدرت کامل drill-through را به کاربران می‌دهند، اما سؤال‌های ساخته شده با استفاده از SQL فقط گزینه‌های محدود مثل فیلتر کردن بر اساس یک مقدار را نشان می‌دهند.
 
-And you can always switch to SQL at any point during your development by [converting an existing question to a native SQL question](../../../../docs/latest/questions/query-builder/editor.html#viewing-the-native-query-that-powers-your-question).
+و همیشه می‌توانید در هر نقطه در طول توسعه خود با [تبدیل یک سؤال موجود به یک سؤال SQL بومی](../../../../docs/latest/questions/query-builder/editor.html#viewing-the-native-query-that-powers-your-question) به SQL تغییر دهید.
 
-There are three places in the **query builder** where we can use custom expressions:
+سه مکان در **query builder** وجود دارد که می‌توانیم از عبارات سفارشی استفاده کنیم:
 
-- [Custom columns](#custom-columns) use functions to compute values \(like `+` to add numbers\) or manipulate text \(like `lower` to change text to lowercase\).
-- [Custom filters](#custom-filters) use functions like `contains` that evaluate to either true or false.
-- [Custom summaries](#custom-summaries) use functions like `count` or `sum` to aggregate records.
+- [ستون‌های سفارشی](#custom-columns) از توابع برای محاسبه مقادیر (مثل `+` برای افزودن اعداد) یا دستکاری متن (مثل `lower` برای تغییر متن به lowercase) استفاده می‌کنند.
+- [فیلترهای سفارشی](#custom-filters) از توابع مثل `contains` که به true یا false ارزیابی می‌شوند استفاده می‌کنند.
+- [خلاصه‌های سفارشی](#custom-summaries) از توابع مثل `count` یا `sum` برای aggregate کردن رکوردها استفاده می‌کنند.
 
-## Custom columns
+## ستون‌های سفارشی
 
-We can add a custom column to our data using an expression to compute a new column. Let’s see an expression in action. Here is the **Orders** table from the [Sample database](../../../../glossary/sample-database.html) included with Metabase.
+می‌توانیم یک ستون سفارشی به داده خود با استفاده از یک عبارت برای محاسبه یک ستون جدید اضافه کنیم. بیایید یک عبارت را در عمل ببینیم. در اینجا جدول **Orders** از [پایگاه داده نمونه](../../../../glossary/sample-database.html) شامل شده با متابیس است.
 
-![The Orders table in the Sample Database included with Metabase.](../../../images/custom-expressions-in-the-notebook-editor/sample_database_orders.png)
+![جدول Orders در پایگاه داده نمونه شامل شده با متابیس.](../../../images/custom-expressions-in-the-notebook-editor/sample_database_orders.png)
 
-Let’s say we want to know the discount percentage applied to orders based on the pre\-tax subtotal. For example, if we gave a $1 discount on a $10 order, we’d want to see a column show that we had discounted that order by 10%.
+بگویید می‌خواهیم درصد تخفیف اعمال شده به سفارش‌ها بر اساس subtotal قبل از مالیات را بدانیم. به عنوان مثال، اگر یک تخفیف 1 دلاری روی یک سفارش 10 دلاری دادیم، می‌خواهیم یک ستون ببینیم که نشان دهد آن سفارش را 10% تخفیف دادیم.
 
-Unfortunately, a quick scan of the columns in the preview tells us that the database does not store that computation \(i.e. there is no “discount percentage” column\). We only have the subtotal of the order, and the discount total.
+متأسفانه، یک اسکن سریع از ستون‌ها در پیش‌نمایش به ما می‌گوید که پایگاه داده آن محاسبه را ذخیره نمی‌کند (یعنی ستون "discount percentage" وجود ندارد). فقط subtotal سفارش، و discount total را داریم.
 
-Thanks to math, however, we can use the discount total and order subtotal to compute the percentage. Here’s where expressions come into play: we can use an expression to compute the discount percentage for each row, and store that computed value in a new column.
+با این حال، به لطف ریاضی، می‌توانیم از discount total و order subtotal برای محاسبه درصد استفاده کنیم. اینجا جایی است که عبارات وارد بازی می‌شوند: می‌توانیم از یک عبارت برای محاسبه درصد تخفیف برای هر ردیف استفاده کنیم، و آن مقدار محاسبه شده را در یک ستون جدید ذخیره کنیم.
 
-Let’s walk through how to create a custom column.
+بیایید نحوه ایجاد یک ستون سفارشی را مرور کنیم.
 
-When in the **query builder**, we select **Custom column** in the **Data section**.
+وقتی در **query builder** هستیم، **Custom column** را در بخش **Data** انتخاب می‌کنیم.
 
-To calculate the discount percentage, we’ll need we’ll need to divide the discount by the original total \(the `Subtotal`\) to get the discount percentage.
+برای محاسبه درصد تخفیف، نیاز داریم تخفیف را بر total اصلی (`Subtotal`) تقسیم کنیم تا درصد تخفیف را دریافت کنیم.
 
-In expressions, we reference columns using brackets. For example, we can refer to the Discount column in the **Orders** table as `[Discount]`. If we need to reference a column from another table linked by a [foreign key](../../../../glossary/foreign-key.html), we can use a `.` between the table and the column, as in `[Table.Column]` \(alternatively you can select `[Table → Column]` from the dropdown menu that appears when you type an open bracket \(`[`\). For example, we could enter `[Products.Category]` which will resolve to: `[Products → Category]`.
+در عبارات، از براکت‌ها برای ارجاع به ستون‌ها استفاده می‌کنیم. به عنوان مثال، می‌توانیم به ستون Discount در جدول **Orders** به عنوان `[Discount]` ارجاع دهیم. اگر نیاز به ارجاع به ستون از جدول دیگر لینک شده توسط یک [foreign key](../../../../glossary/foreign-key.html) داریم، می‌توانیم از `.` بین جدول و ستون استفاده کنیم، مثل `[Table.Column]` (به طور جایگزین می‌توانید `[Table → Column]` را از منوی dropdown که وقتی یک براکت باز (`[`) تایپ می‌کنید ظاهر می‌شود انتخاب کنید). به عنوان مثال، می‌توانستیم `[Products.Category]` را وارد کنیم که به: `[Products → Category]` resolve می‌شود.
 
-For now, we’re just interested in columns in the Orders table, so there’s no need to reference another table. Here’s the expression \(or formula\), we’ll use to compute our custom discount percentage column:
+برای حالا، فقط به ستون‌ها در جدول Orders علاقه‌مندیم، پس نیاز به ارجاع به جدول دیگر نیست. در اینجا عبارت (یا فرمول) که برای محاسبه ستون درصد تخفیف سفارشی خود استفاده می‌کنیم:
 
 ```mbql
 [Discount] / [Subtotal]
-
 ```
 
-Enter that expression in the **Expression** field, then give the new column a name: `Discount percentage`.
+آن عبارت را در فیلد **Expression** وارد کنید، سپس به ستون جدید یک نام بدهید: `Discount percentage`.
 
-![Entering a field formula to create a custom column.](../../../images/custom-expressions-in-the-notebook-editor/field-formula.png)
+![وارد کردن یک فرمول فیلد برای ایجاد یک ستون سفارشی.](../../../images/custom-expressions-in-the-notebook-editor/field-formula.png)
 
-Click done, then click the **Visualization button** to see your new column.
+Done را کلیک کنید، سپس روی دکمه **Visualization** کلیک کنید تا ستون جدید خود را ببینید.
 
-Since the value in our new `Discount percentage` column concerns discounts, let’s move the column next to the `Discount` column. You can move columns around on tables by clicking on the column header and dragging the column to your target location, like so:
+از آنجایی که مقدار در ستون جدید `Discount percentage` مربوط به تخفیف‌ها است، بیایید ستون را کنار ستون `Discount` حرکت دهیم. می‌توانید ستون‌ها را روی جداول با کلیک روی header ستون و drag کردن ستون به مکان هدف خود حرکت دهید، مثل این:
 
-![Dragging a column to change its position in the table visualization.](../../../images/custom-expressions-in-the-notebook-editor/change-column-order.gif)
+![Drag کردن یک ستون برای تغییر موقعیت آن در تجسم جدول.](../../../images/custom-expressions-in-the-notebook-editor/change-column-order.gif)
 
-Since we’re computing a percentage, let’s fix the formatting so it’s easier to read. Click on the `Discount percentage` heading to bring up the **Action Menu** for the column, then click on the **gears icon** to format the column.
+از آنجایی که یک درصد محاسبه می‌کنیم، بیایید فرمت را اصلاح کنیم تا خواندن راحت‌تر شود. روی heading `Discount percentage` کلیک کنید تا **Action Menu** برای ستون باز شود، سپس روی **آیکون چرخ‌دنده** کلیک کنید تا ستون را فرمت کنید.
 
-Metabase will slide out a **Formatting sidebar** with options. Let’s change the style to **Percent**, and bump up the number of decimal places to **2**. And since the title `Discount percentage` takes up a lot of space, let’s rename the column to `Discount %`.
+متابیس یک **Sidebar Formatting** با گزینه‌ها slide می‌کند. بیایید style را به **Percent** تغییر دهیم، و تعداد مکان‌های اعشار را به **2** bump up کنیم. و از آنجایی که عنوان `Discount percentage` فضای زیادی می‌گیرد، بیایید ستون را به `Discount %` rename کنیم.
 
-There’s an option to add a **mini bar chart** as well. This bar chart won’t show the percentage with respect to 100%; instead the mini bar chart will show us the discount percentage relative to the discount percentage given to other orders. Let’s leave the mini bar chart off for now.
+گزینه‌ای برای افزودن یک **نمودار میله‌ای کوچک** نیز وجود دارد. این نمودار میله‌ای درصد را نسبت به 100% نشان نمی‌دهد؛ در عوض نمودار میله‌ای کوچک درصد تخفیف را نسبت به درصد تخفیف داده شده به سفارش‌های دیگر به ما نشان می‌دهد. بیایید نمودار میله‌ای کوچک را برای حالا خاموش بگذاریم.
 
-Here’s the finished question with the added `Discount %` column:
+در اینجا سؤال تمام شده ما با ستون `Discount %` اضافه شده:
 
-![Our finished Discount % column.](../../../images/custom-expressions-in-the-notebook-editor/finished-discount-percentage.png)
+![ستون Discount % تمام شده ما.](../../../images/custom-expressions-in-the-notebook-editor/finished-discount-percentage.png)
 
-## Custom filters
+## فیلترهای سفارشی
 
-Metabase comes with a lot of filtering options out of the box, but you can design more sophisticated filters using custom filter expressions. These are particularly useful for creating filters that use `OR` statements, and that’s what we’ll be covering here.
+متابیس با گزینه‌های فیلتر زیادی out of the box می‌آید، اما می‌توانید فیلترهای پیچیده‌تر با استفاده از عبارات فیلتر سفارشی طراحی کنید. این‌ها به خصوص برای ایجاد فیلترهایی که از statementهای `OR` استفاده می‌کنند مفید هستند، و این چیزی است که اینجا پوشش می‌دهیم.
 
-Normally in the query builder, when we add multiple filters to our question, Metabase implicitly combines the filters with an `AND` operator. For example, if we add a filter for products that start with `Enormous` and a filter for products that ends with `Computer`, our question will only return products that both start with `Enormous` AND end with `Computer`, which do not exist in Metabase’s Sample Database.
+به طور معمول در query builder، وقتی چندین فیلتر به سؤال خود اضافه می‌کنیم، متابیس به طور ضمنی فیلترها را با یک عملگر `AND` ترکیب می‌کند. به عنوان مثال، اگر یک فیلتر برای محصولاتی که با `Enormous` شروع می‌شوند و یک فیلتر برای محصولاتی که با `Computer` پایان می‌یابند اضافه کنیم، سؤال ما فقط محصولاتی که هم با `Enormous` شروع می‌شوند *و* با `Computer` پایان می‌یابند را برمی‌گرداند، که در پایگاه داده نمونه متابیس وجود ندارند.
 
-To filter for products that either start with `Enormous` OR end with `Computer`, we’ll select **Custom Expression** from the **Filter** dropdown, and use the `startsWith` and `endsWith` functions:
+برای فیلتر کردن محصولاتی که یا با `Enormous` شروع می‌شوند *یا* با `Computer` پایان می‌یابند، **Custom Expression** را از dropdown **Filter** انتخاب می‌کنیم، و از توابع `startsWith` و `endsWith` استفاده می‌کنیم:
 
 ```mbql
 startsWith(string1, string2)
 endsWith(string1, string2)
-
 ```
 
-Functions `startsWith` and `endsWith` check to see if `string1` starts with/ends with `string2`. So `string1` is the string to check \(the haystack\), and `string2` is the text to look for \(the needle\). And since we want to look for products that either start with `Enormous` OR end with `Computer`, we can use `startsWith` and `endsWith` expressions with an OR operator in between:
+توابع `startsWith` و `endsWith` بررسی می‌کنند ببینند آیا `string1` با/با `string2` شروع/پایان می‌یابد. پس `string1` رشته‌ای است که باید بررسی شود (haystack)، و `string2` متنی است که باید جستجو شود (needle). و از آنجایی که می‌خواهیم محصولاتی که یا با `Enormous` شروع می‌شوند *یا* با `Computer` پایان می‌یابند را جستجو کنیم، می‌توانیم از عبارات `startsWith` و `endsWith` با یک عملگر OR در بین آن‌ها استفاده کنیم:
 
 ```mbql
 startsWith([Title], "Enormous") OR endsWith([Title], "Computer")
-
 ```
 
-The resulting data set will contain products that either start with `Enormous` or end with `Computer`:
+مجموعه داده حاصل شامل محصولاتی که یا با `Enormous` شروع می‌شوند یا با `Computer` پایان می‌یابند خواهد بود:
 
-![Products that are either enormous or aerodynamic.](../../../images/custom-expressions-in-the-notebook-editor/filter-expression.png)
+![محصولاتی که یا enormous هستند یا aerodynamic.](../../../images/custom-expressions-in-the-notebook-editor/filter-expression.png)
 
-Note that custom filter expressions must always resolve to either true or false. You can, however, nest expressions that do not resolve to true or false within statements, like:
+توجه کنید که عبارات فیلتر سفارشی باید همیشه به true یا false resolve شوند. با این حال، می‌توانید عباراتی که به true یا false resolve نمی‌شوند را در statementها nest کنید، مثل:
 
 ```mbql
 contains(concat([First Name], [Last Name]), "Wizard")
-
 ```
 
-because the outermost function \(`contains`\) resolves to either true or false. Whereas you couldn’t use `concat([First Name], [Last Name])` as a filter, as it would resolve to a string of text \(though you could use concat to create a custom column like `Full Name`\).
+چون بیرونی‌ترین تابع (`contains`) به true یا false resolve می‌شود. در حالی که نمی‌توانستید `concat([First Name], [Last Name])` را به عنوان یک فیلتر استفاده کنید، چون به یک رشته متن resolve می‌شد (اگرچه می‌توانستید از concat برای ایجاد یک ستون سفارشی مثل `Full Name` استفاده کنید).
 
-## Custom summaries
+## خلاصه‌های سفارشی
 
-Custom expressions unlock many different ways to aggregate our data. Let’s consider the `Share` function, which returns the percent of rows in the data that match the condition, as a decimal. For example, say we want to know the total percentage of paper products in our product line, i.e. what share of our product line is composed of paper products?
+عبارات سفارشی راه‌های مختلف زیادی برای aggregate کردن داده ما باز می‌کنند. بیایید تابع `Share` را در نظر بگیریم، که درصد ردیف‌ها در داده که با شرط match می‌کنند را به عنوان یک اعشار برمی‌گرداند. به عنوان مثال، بگویید می‌خواهیم درصد کل محصولات کاغذی در خط محصول خود را بدانیم، یعنی چه share از خط محصول ما از محصولات کاغذی تشکیل شده است؟
 
-To start, we’ll select the **Products** table from the Sample Database. Next, we’ll click the **Summarize button** in the query builder and select **Custom Expression**. Then, we’ll select `Share` from the dropdown menu, which will prompt us for a condition. In this case, we want to know which products have “Paper” in their title, so we’ll use the `contains` function to search through `Title`.
+برای شروع، جدول **Products** را از پایگاه داده نمونه انتخاب می‌کنیم. بعد، روی دکمه **Summarize** در query builder کلیک می‌کنیم و **Custom Expression** را انتخاب می‌کنیم. سپس، `Share` را از منوی dropdown انتخاب می‌کنیم، که از ما یک شرط می‌خواهد. در این مورد، می‌خواهیم بدانیم کدام محصولات "Paper" در عنوان آن‌ها دارند، پس از تابع `contains` برای جستجو از طریق `Title` استفاده می‌کنیم.
 
 ```mbql
 Share(contains([Title], "Paper"))
-
 ```
 
-![Calculating the share of paper products.](../../../images/custom-expressions-in-the-notebook-editor/paper_products.png)
+![محاسبه share محصولات کاغذی.](../../../images/custom-expressions-in-the-notebook-editor/paper_products.png)
 
-Then we name our expression \(e.g., `Percentage of paper products`\) and click **Done**. Click the **Visualize button** and Metabase will compute the share of paper products.
+سپس عبارت خود را نامگذاری می‌کنیم (مثلاً، `Percentage of paper products`) و روی **Done** کلیک می‌کنیم. روی دکمه **Visualize** کلیک کنید و متابیس share محصولات کاغذی را محاسبه می‌کند.
 
-To change the formatting, select the **Settings button** in the bottom\-left to bring up the **Settings sidebar** and change **Number options → Style** to **Percent**.
+برای تغییر فرمت، دکمه **Settings** در پایین-چپ را انتخاب کنید تا **Sidebar Settings** باز شود و **Number options → Style** را به **Percent** تغییر دهید.
 
-![The share of paper products, formatted as a percentage.](../../../images/custom-expressions-in-the-notebook-editor/paper_percentage.png)
+![Share محصولات کاغذی، فرمت شده به عنوان یک درصد.](../../../images/custom-expressions-in-the-notebook-editor/paper_percentage.png)
 
-## Putting it all together
+## کنار هم گذاشتن همه
 
-Let’s create a fairly complex \(contrived\) question using expressions. Say we’ve been tasked to find the average net inflow for wool and cotton products by month in 2019, with net inflow being the selling price minus the cost we paid for the product. In other words: for each wool and cotton product unit sold, how much money on average did we make \(or lose\) per unit each month in 2019?
+بیایید یک سؤال نسبتاً پیچیده (ساختگی) با استفاده از عبارات ایجاد کنیم. بگویید به ما تکلیف شده است میانگین net inflow برای محصولات پشمی و پنبه‌ای بر اساس ماه در 2019 را پیدا کنیم، با net inflow که قیمت فروش منهای هزینه‌ای است که برای محصول پرداخت کردیم. به عبارت دیگر: برای هر واحد محصول پشمی و پنبه‌ای فروخته شده، به طور میانگین چقدر پول در هر واحد هر ماه در 2019 درآمد (یا از دست) دادیم؟
 
-To the get these fascinating numbers, we’ll need to use expressions to:
+برای دریافت این اعداد جذاب، نیاز به استفاده از عبارات برای:
 
-- Compute the selling price per unit \(custom column\).
-- Filter results to only include wool or cotton products \(custom filter\), and limit those results to 2019.
-- Compute the average net inflow \(custom summary\), and group by month.
+- محاسبه قیمت فروش هر واحد (ستون سفارشی).
+- فیلتر کردن نتایج تا فقط شامل محصولات پشمی یا پنبه‌ای (فیلتر سفارشی)، و محدود کردن آن نتایج به 2019.
+- محاسبه میانگین net inflow (خلاصه سفارشی)، و group بر اساس ماه.
 
-Let’s go:
+بیایید برویم:
 
-1. We create a custom column named `Unit price`. To compute the `Unit price`, we’ll use an expression to divide the subtotal by the number of units sold \(`Quantity`\): ```mbql [Subtotal] / [Quantity] ```
-2. Next, we’ll use a custom filter expression to filter for orders of `Wool` and `Cotton` products \(i.e. for products that contain “Wool” or “Cotton” somewhere in their `Product.Title`\). ```mbql contains([Products → Title], "Wool") OR contains([Products → Title], "Cotton") ```
-3. We’ll also filter for orders between `01/01/2019` and `12/31/2019`.
-4. We’ll use a custom expression to create a custom summary. Let’s assume the standard retail markup of 50% \(the keystone markup\). So if the `Product.Price` is $2, we’ll assume the product cost us $1 to acquire per unit. Given this assumption, we can simply define net inflow per unit sold to be the `Unit price` minus half of the `Product.Price`. Then we’ll summarize that data by taking the average of those numbers for each order. ```mbql Average([Unit price] - [Products → Price] / 2) ```
-5. Lastly, we’ll group those orders by `Orders.Created_At` by month.
+1. یک ستون سفارشی به نام `Unit price` ایجاد می‌کنیم. برای محاسبه `Unit price`، از یک عبارت برای تقسیم subtotal بر تعداد واحدهای فروخته شده (`Quantity`) استفاده می‌کنیم: ```mbql [Subtotal] / [Quantity] ```
+2. بعد، از یک عبارت فیلتر سفارشی برای فیلتر کردن سفارش‌های محصولات `Wool` و `Cotton` استفاده می‌کنیم (یعنی برای محصولاتی که شامل "Wool" یا "Cotton" در جایی در `Product.Title` آن‌ها هستند). ```mbql contains([Products → Title], "Wool") OR contains([Products → Title], "Cotton") ```
+3. همچنین برای سفارش‌ها بین `01/01/2019` و `12/31/2019` فیلتر می‌کنیم.
+4. از یک عبارت سفارشی برای ایجاد یک خلاصه سفارشی استفاده می‌کنیم. فرض کنیم markup خرده‌فروشی استاندارد 50% (markup keystone). پس اگر `Product.Price` 2 دلار است، فرض می‌کنیم محصول برای ما 1 دلار در هر واحد هزینه داشته است. با این فرض، می‌توانیم به سادگی net inflow در هر واحد فروخته شده را به عنوان `Unit price` منهای نصف `Product.Price` تعریف کنیم. سپس آن داده را با گرفتن میانگین آن اعداد برای هر سفارش خلاصه می‌کنیم. ```mbql Average([Unit price] - [Products → Price] / 2) ```
+5. در نهایت، آن سفارش‌ها را بر اساس `Orders.Created_At` بر اساس ماه group می‌کنیم.
 
-Here’s our notebook:
+در اینجا notebook ما:
 
-![Our wool and cotton notebook.](../../../images/custom-expressions-in-the-notebook-editor/wool-cotton-notebook.png)
+![Notebook پشمی و پنبه‌ای ما.](../../../images/custom-expressions-in-the-notebook-editor/wool-cotton-notebook.png)
 
-We’ll choose to visualize our data as a line chart, which we can click on to drill through our data:
+انتخاب می‌کنیم داده خود را به عنوان یک نمودار خطی تجسم کنیم، که می‌توانیم روی آن کلیک کنیم تا از طریق داده خود drill through کنیم:
 
-![Drilling through fabrics to view individual orders.](../../../images/custom-expressions-in-the-notebook-editor/drill-through-wool.gif)
+![Drill through کردن پارچه‌ها برای مشاهده سفارش‌های فردی.](../../../images/custom-expressions-in-the-notebook-editor/drill-through-wool.gif)
 
-## Further reading
+## مطالعه بیشتر
 
-- [Docs: Custom expressions in the **query builder**](../../../../docs/latest/questions/query-builder/expressions.html) . There are a lot more functions that you can use in expressions that we didn’t cover, so check out the docs for the full list of functions.
-- [Time series comparisons](../time-series/time-series-comparisons.html) shows how to use custom expressions to visualize and compare time series.
-- [Cleaning and formatting text](../../../visualization/formatting.html) uses custom expressions to deal with messy and missing data.
+- [مستندات: عبارات سفارشی در **query builder**](../../../../docs/latest/questions/query-builder/expressions.html). توابع بسیار بیشتری وجود دارند که می‌توانید در عبارات استفاده کنید که پوشش ندادیم، پس مستندات را برای فهرست کامل توابع بررسی کنید.
+- [مقایسه‌های سری زمانی](../time-series/time-series-comparisons.html) نشان می‌دهد چگونه از عبارات سفارشی برای تجسم و مقایسه سری زمانی استفاده کنید.
+- [تمیز و فرمت کردن متن](../../../visualization/formatting.html) از عبارات سفارشی برای برخورد با داده نامرتب و ناقص استفاده می‌کند.
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](drill-through.html)
 [
       
         
         
+
       
       
+        
         
 
       

@@ -1,36 +1,35 @@
 ---
-
-title: "SQL in Metabase"
-description: "How to work with SQL in Metabase."
+title: "SQL در متابیس"
+description: "نحوه کار با SQL در متابیس."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/sql-in-metabase
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
 ---
 
-# SQL in Metabase
+# SQL در متابیس
 
-How to work with SQL in Metabase.
+نحوه کار با SQL در متابیس.
 
-#### [Tutorial: Create filters using SQL variables](sql-variables.html)
-How to create filter widgets in native SQL queries using basic input variables for text, numbers, and dates.
-7 min read
+#### [آموزش: ایجاد فیلترها با استفاده از متغیرهای SQL](sql-variables.html)
+نحوه ایجاد widgetهای فیلتر در پرس‌وجوهای SQL بومی با استفاده از متغیرهای ورودی پایه برای متن، اعداد، و تاریخ‌ها.
+7 دقیقه مطالعه
 
-#### [Tutorial: Field filters for SQL questions](field-filters.html)
-Learn how to use Metabase Field Filters in SQL queries to build smarter filter widgets.
-6 min read
+#### [آموزش: فیلترهای فیلد برای سؤال‌های SQL](field-filters.html)
+یاد بگیرید چگونه از فیلترهای فیلد متابیس در پرس‌وجوهای SQL برای ساخت widgetهای فیلتر هوشمندتر استفاده کنید.
+6 دقیقه مطالعه
 
-#### [Tutorials: Use SQL Snippets to reuse and share code](snippets.html)
-Learn everything you need to know about using snippets in native code.
-5 min read
+#### [آموزشها: استفاده از SQL Snippetها برای استفاده مجدد و اشتراک کد](snippets.html)
+همه آنچه نیاز دارید درباره استفاده از snippetها در کد بومی بدانید.
+5 دقیقه مطالعه
 
-#### [Snippets vs. Saved Questions vs. Views](organizing-sql.html)
-Learn about the Metabase features you can use to keep your SQL code organized.
-4 min read
+#### [Snippetها در مقابل سؤال‌های ذخیره شده در مقابل Viewها](organizing-sql.html)
+درباره ویژگی‌های متابیس که می‌توانید برای سازماندهی کد SQL خود استفاده کنید یاد بگیرید.
+4 دقیقه مطالعه
 
-#### [Tutorial: Adding filters to dashboards with SQL questions](filters.html)
-How to add filter widgets to dashboards and connect them to Field Filter variables in a SQL question.
-6 min read
+#### [آموزش: افزودن فیلترها به داشبوردها با سؤال‌های SQL](filters.html)
+نحوه افزودن widgetهای فیلتر به داشبوردها و اتصال آن‌ها به متغیرهای فیلتر فیلد در یک سؤال SQL.
+6 دقیقه مطالعه

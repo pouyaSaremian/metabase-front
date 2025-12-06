@@ -1,68 +1,67 @@
 ---
-
-title: "Administration and operation"
-description: "Guidance on running and administering Metabase at scale."
+title: "مدیریت و عملیات"
+description: "راهنمایی درباره اجرا و مدیریت متابیس در مقیاس."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
 ---
 
-# Administration and operation
+# مدیریت و عملیات
 
-Guidance on running and administering Metabase at scale.
+راهنمایی درباره اجرا و مدیریت متابیس در مقیاس.
 
-#### [Admin overview](guide.html)
-An overview and list of resources for Metabase admins.
-4 min read
+#### [نمای کلی Admin](guide.html)
+یک نمای کلی و فهرست منابع برای adminهای متابیس.
+4 دقیقه مطالعه
 
-#### [How Metabase works with your database](metabase-and-your-db.html)
-Metabase doesn't store your data. Learn how Metabase queries data in your database, uses metadata to make some magic happen, and gives you options to cache queries and persist models to speed things up.
-5 min read
+#### [نحوه کار متابیس با پایگاه داده شما](metabase-and-your-db.html)
+متابیس داده شما را ذخیره نمی‌کند. یاد بگیرید متابیس چگونه داده را در پایگاه داده شما پرس‌وجو می‌کند، از فراداده برای انجام برخی جادو استفاده می‌کند، و گزینه‌هایی برای cache کردن پرس‌وجوها و persist کردن مدل‌ها برای سریع‌تر کردن چیزها به شما می‌دهد.
+5 دقیقه مطالعه
 
-#### [How to run Metabase in production](metabase-in-production.html)
-If you're self\-hosting Metabase, here are some benchmarks and best practices.
-10 min read
+#### [نحوه اجرای متابیس در production](metabase-in-production.html)
+اگر متابیس را self-host می‌کنید، در اینجا برخی benchmarkها و بهترین روش‌ها هستند.
+10 دقیقه مطالعه
 
-#### [Managing people in Metabase](managing-people.html)
-How to go from managing dozens of users to thousands.
-6 min read
+#### [مدیریت مردم در متابیس](managing-people.html)
+نحوه رفتن از مدیریت ده‌ها کاربر به هزاران.
+6 دقیقه مطالعه
 
-#### [Guide to sharing data](guide-to-sharing-data.html)
-Inside or outside your organization, what are your options for sharing your data or analysis, and when should you use one method over another?
-6 min read
+#### [راهنمای اشتراک‌گذاری داده](guide-to-sharing-data.html)
+داخل یا خارج سازمان شما، گزینه‌های شما برای اشتراک‌گذاری داده یا تحلیل چیست، و چه زمانی باید از یک روش نسبت به دیگری استفاده کنید؟
+6 دقیقه مطالعه
 
-#### [Keeping your analytics organized](same-page.html)
-How to keep your analytics organized as the numbers of users, questions, and dashboards inevitably increases.
-8 min read
+#### [منظم نگه داشتن تحلیل شما](same-page.html)
+نحوه منظم نگه داشتن تحلیل شما همانطور که تعداد کاربران، سؤال‌ها، و داشبوردها به طور اجتناب‌ناپذیری افزایش می‌یابد.
+8 دقیقه مطالعه
 
-#### [Tutorial: Multiple environments](multi-env.html)
-Options for spinning up dev, staging, or test environments.
-2 min read
+#### [آموزش: محیط‌های چندگانه](multi-env.html)
+گزینه‌هایی برای spin up کردن محیط‌های dev، staging، یا test.
+2 دقیقه مطالعه
 
-#### [Tutorial: Use serialization for preloading dashboards in a new Metabase instance](serialization.html)
-How to use Metabase's serialization feature to copy questions, dashboards, collections, settings, and more from one Metabase instance to a new Metabase instance.
-13 min read
+#### [آموزش: استفاده از serialization برای preload کردن داشبوردها در یک instance متابیس جدید](serialization.html)
+نحوه استفاده از ویژگی serialization متابیس برای کپی کردن سؤال‌ها، داشبوردها، مجموعه‌ها، تنظیمات، و بیشتر از یک instance متابیس به یک instance متابیس جدید.
+13 دقیقه مطالعه
 
-#### [Tutorial: Setting up a git-based workflow](git-based-workflow.html)
-Create models, questions, and dashboards in a staging Metabase, commit your changes to a repository, and push those changes to your production Metabase.
-8 min read
+#### [آموزش: تنظیم یک workflow مبتنی بر git](git-based-workflow.html)
+مدل‌ها، سؤال‌ها، و داشبوردها را در یک متابیس staging ایجاد کنید، تغییرات خود را به یک repository commit کنید، و آن تغییرات را به متابیس production خود push کنید.
+8 دقیقه مطالعه
 
-#### [Making dashboards faster](making-dashboards-faster.html)
-How to make your dashboards load faster.
-9 min read
+#### [سریع‌تر کردن داشبوردها](making-dashboards-faster.html)
+نحوه سریع‌تر کردن بارگذاری داشبوردهای خود.
+9 دقیقه مطالعه
 
-#### [How to run Metabase at scale](metabase-at-scale.html)
-Best practices for scaling Metabase to support more people and databases.
-11 min read
+#### [نحوه اجرای متابیس در مقیاس](metabase-at-scale.html)
+بهترین روش‌ها برای scale کردن متابیس برای پشتیبانی از مردم و پایگاه‌های داده بیشتر.
+11 دقیقه مطالعه
 
-#### [Metabase for data engineers](data-engineering.html)
-Stuff data engineers should know about Metabase.
-6 min read
+#### [متابیس برای مهندسان داده](data-engineering.html)
+چیزهایی که مهندسان داده باید درباره متابیس بدانند.
+6 دقیقه مطالعه
 
-#### [Working with the Metabase API](metabase-api.html)
-An introduction to Metabase's API.
-15 min read
+#### [کار با API متابیس](metabase-api.html)
+یک مقدمه بر API متابیس.
+15 دقیقه مطالعه

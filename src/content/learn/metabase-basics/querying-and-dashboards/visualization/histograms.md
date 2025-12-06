@@ -1,118 +1,120 @@
 ---
-
-
-title: "Histograms"
-description: "Learn when to use a histogram, and how Metabase makes it easy to create histograms."
+title: "هیستوگرام‌ها"
+description: "یاد بگیرید چه زمانی از هیستوگرام استفاده کنید و چگونه متابیس ایجاد هیستوگرام‌ها را آسان می‌کند."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/visualization/histograms
   - /learn/basics/visualizing-data/histograms
   - /learn/visualization/histograms
 toc:
   - id: "histograms"
-    title: "Histograms"
+    title: "هیستوگرام‌ها"
     level: 1
     href: "#histograms"
   - id: "histograms-versus-bar-charts"
-    title: "Histograms versus bar charts"
+    title: "هیستوگرام‌ها در مقابل نمودارهای میله‌ای"
     level: 2
     href: "#histograms-versus-bar-charts"
   - id: "create-a-histogram"
-    title: "Create a histogram"
+    title: "ایجاد یک هیستوگرام"
     level: 2
     href: "#create-a-histogram"
   - id: "edit-a-histogram"
-    title: "Edit a histogram"
+    title: "ویرایش یک هیستوگرام"
     level: 2
     href: "#edit-a-histogram"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Visualizing data"
+  - title: "تجسم داده"
     href: "../visualization.html"
 ---
 
-# Histograms
+# هیستوگرام‌ها
 
-Learn when to use a histogram, and how Metabase makes it easy to create histograms.
+یاد بگیرید چه زمانی از هیستوگرام استفاده کنید و چگونه متابیس ایجاد هیستوگرام‌ها را آسان می‌کند.
 
-We’ll walk through creating a **histogram**, which is a type of bar chart that displays groups of data across a continuous range. Histograms are helpful for gaining insights into how much of an item people are likely to buy, the price range they are likely to purchase within, or even the time of year that most people make purchases.
+ایجاد یک **هیستوگرام** را مرور می‌کنیم، که نوعی نمودار میله‌ای است که گروه‌هایی از داده را در یک محدوده continuous نمایش می‌دهد. هیستوگرام‌ها برای دریافت بینش درباره اینکه مردم چقدر از یک مورد احتمالاً می‌خرند، محدوده قیمتی که احتمالاً در آن خرید می‌کنند، یا حتی زمان سال که بیشتر مردم خرید می‌کنند مفید هستند.
 
-## Histograms versus bar charts
+## هیستوگرام‌ها در مقابل نمودارهای میله‌ای
 
-Histograms are a type of [bar chart](bar-charts.html). While the bars on a typical bar chart represent categorical groups, the bars on a histogram represent ranges along a continuous, quantifiable spectrum.
+هیستوگرام‌ها نوعی [نمودار میله‌ای](bar-charts.html) هستند. در حالی که میله‌ها روی یک نمودار میله‌ای معمولی گروه‌های categorical را نشان می‌دهند، میله‌ها روی یک هیستوگرام محدوده‌هایی در امتداد یک spectrum continuous، quantifiable را نشان می‌دهند.
 
-In other words, you split the data into bins in order to view the distribution of values within a range. The bins are of equal length \(and can be empty\), and the bins are contiguous. The height of each bar represents the count \(or proportion\) of the items in the bin. The number of bins is up to the user, though Metabase will automatically select the number of bins for you.
+به عبارت دیگر، داده را به binها تقسیم می‌کنید تا توزیع مقادیر در یک محدوده را مشاهده کنید. binها طول مساوی دارند (و می‌توانند خالی باشند)، و binها contiguous هستند. ارتفاع هر میله تعداد (یا نسبت) موارد در bin را نشان می‌دهد. تعداد binها به کاربر بستگی دارد، اگرچه متابیس به طور خودکار تعداد binها را برای شما انتخاب می‌کند.
 
-Here’s a bar chart that displays the count of people from the People table grouped by referral source.
+در اینجا یک نمودار میله‌ای که تعداد افراد از جدول People را group شده بر اساس منبع referral نمایش می‌دهد.
 
-![A bar chart from the People table that groups people by their referral source.](../../../images/visualizing-your-data-as-a-histogram/bar-graph.png)
+![یک نمودار میله‌ای از جدول People که افراد را بر اساس منبع referral آن‌ها group می‌کند.](../../../images/visualizing-your-data-as-a-histogram/bar-graph.png)
 
-Here’s the histogram we’ll create in [the walkthrough below](#create-a-histogram).
+در اینجا هیستوگرامی که در [walkthrough زیر](#create-a-histogram) ایجاد می‌کنیم.
 
-![The histogram we](../../../images/visualizing-your-data-as-a-histogram/histogram.png)
+![هیستوگرامی که](../../../images/visualizing-your-data-as-a-histogram/histogram.png)
 
-Metabase makes it easy to create a histogram. In fact, if the data is suitable for a histogram, Metabase will automatically create a histogram for you.
+متابیس ایجاد یک هیستوگرام را آسان می‌کند. در واقع، اگر داده برای یک هیستوگرام مناسب باشد، متابیس به طور خودکار یک هیستوگرام برای شما ایجاد می‌کند.
 
-## Create a histogram
+## ایجاد یک هیستوگرام
 
-Follow along with Metabase’s **Sample Database** to create the histogram detailed below.
+با **پایگاه داده نمونه** متابیس همراه باشید تا هیستوگرام توضیح داده شده در زیر را ایجاد کنید.
 
-Select **\+ New** \> **Question**. In the **Query Builder** under **Pick your starting data**, choose **Raw Data** \> **Sample Database**, and select the `Orders` table. Then **Visualize** the results.
+**+ New** > **Question** را انتخاب کنید. در **Query Builder** زیر **Pick your starting data**، **Raw Data** > **Sample Database** را انتخاب کنید، و جدول `Orders` را انتخاب کنید. سپس نتایج را **Visualize** کنید.
 
-Once you’re viewing the Orders table, click **Summarize**. Scroll down and select `Total`, and click the `+` button to add the grouping. Metabase will automatically create a histogram for you!
+وقتی جدول Orders را مشاهده می‌کنید، روی **Summarize** کلیک کنید. پایین اسکرول کنید و `Total` را انتخاب کنید، و روی دکمه `+` کلیک کنید تا grouping اضافه شود. متابیس به طور خودکار یک هیستوگرام برای شما ایجاد می‌کند!
 
-![Creating a histogram.](../../../images/visualizing-your-data-as-a-histogram/create-histogram.png)
+![ایجاد یک هیستوگرام.](../../../images/visualizing-your-data-as-a-histogram/create-histogram.png)
 
-The histogram shows that customers are most likely to make purchases totaling in the $40\-60 range. If you hover over one of the bars, Metabase will display the count of orders in that range. You can also click on a bar to [drill\-through the data](../questions/drill-through.html) and see the orders that compose the bar.
+هیستوگرام نشان می‌دهد که مشتریان به احتمال زیاد خریدهایی با مجموع در محدوده $40-60 انجام می‌دهند. اگر روی یکی از میله‌ها hover کنید، متابیس تعداد سفارش‌ها در آن محدوده را نمایش می‌دهد. همچنین می‌توانید روی یک میله کلیک کنید تا [drill-through داده](../questions/drill-through.html) کنید و سفارش‌هایی که میله را تشکیل می‌دهند ببینید.
 
-## Edit a histogram
+## ویرایش یک هیستوگرام
 
-Metabase gives you [a lot of knobs for customizing a bar chart](bar-charts.html). For now, we’ll hone in on the settings that make histograms shine.
+متابیس [knobهای زیادی برای سفارشی کردن یک نمودار میله‌ای](bar-charts.html) به شما می‌دهد. برای حالا، روی تنظیماتی که هیستوگرام‌ها را می‌درخشند تمرکز می‌کنیم.
 
-Metabase will automatically set the number of bins, but you can change how Metabase bins the data. Click **Summarize**, scroll down to `# Total`, and click on `Auto binned`. A dropdown menu will present the options: `Auto bin`, 10, 50, or 100 bins, or `Don't bin`.
+متابیس به طور خودکار تعداد binها را تنظیم می‌کند، اما می‌توانید نحوه bin کردن داده توسط متابیس را تغییر دهید. روی **Summarize** کلیک کنید، پایین اسکرول کنید به `# Total`، و روی `Auto binned` کلیک کنید. یک منوی dropdown گزینه‌ها را ارائه می‌دهد: `Auto bin`، 10، 50، یا 100 bin، یا `Don't bin`.
 
-![Manually choosing how Metabase should bin the data along the x-axis.](../../../images/visualizing-your-data-as-a-histogram/select-bins.png)
+![انتخاب دستی نحوه bin کردن داده توسط متابیس در امتداد محور x.](../../../images/visualizing-your-data-as-a-histogram/select-bins.png)
 
-Click the **Settings** \> **Axes**. The x\-axis scale currently says `Histogram`. Metabase detects when your [bar chart](bar-charts.html) should present as a histogram, and selects the best x\-axis scale for your visualization.
+روی **Settings** > **Axes** کلیک کنید. scale x-axis در حال حاضر می‌گوید `Histogram`. متابیس زمانی که [نمودار میله‌ای](bar-charts.html) شما باید به عنوان یک هیستوگرام ارائه شود را تشخیص می‌دهد، و بهترین scale x-axis را برای تجسم شما انتخاب می‌کند.
 
-If you toggle between the three options, you’ll see that `Histogram` is the only axes option in which the bars are flush with each other. The flush bars communicate that the x\-axis represents a continuous range of data. Linear axes are good for displaying data in categories. Ordinal axes are good for displaying data that’s grouped in distinct number categories. For example, displaying how many ratings you receive that are either 1, 2, 3, 4, or 5.
+اگر بین سه گزینه toggle کنید، می‌بینید که `Histogram` تنها گزینه axes است که در آن میله‌ها با هم flush هستند. میله‌های flush communicate می‌کنند که x-axis یک محدوده continuous از داده را نشان می‌دهد. محورهای Linear برای نمایش داده در دسته‌ها خوب هستند. محورهای Ordinal برای نمایش داده‌ای که در دسته‌های عددی متمایز group شده است خوب هستند. به عنوان مثال، نمایش اینکه چند رتبه‌بندی دریافت می‌کنید که یا 1، 2، 3، 4، یا 5 هستند.
 
-Ordinals differ from histograms because ordinals group by distinct number values, rather than a continuous range of values.
+Ordinalها از هیستوگرام‌ها متفاوت هستند چون ordinalها بر اساس مقادیر عددی متمایز group می‌کنند، به جای یک محدوده continuous از مقادیر.
 
-You can also change the scale of the y\-axis to make your chart easier to interpret. If the range of your data along the y\-axis is tall, consider using a logarithmic scale. If your range is compact, you can display counts using a power scale \(though you’ll probably never need to do this\).
+همچنین می‌توانید scale محور y را تغییر دهید تا نمودار خود را راحت‌تر تفسیر کنید. اگر محدوده داده شما در امتداد محور y بلند است، استفاده از یک logarithmic scale را در نظر بگیرید. اگر محدوده شما compact است، می‌توانید تعداد‌ها را با استفاده از یک power scale نمایش دهید (اگرچه احتمالاً هرگز نیاز به انجام این کار نخواهید داشت).
 
-Happy histogramming!
+هیستوگرام موفق!
 
-## Further reading
+## مطالعه بیشتر
 
-We’ll cover more visualizations types in future posts. In the meantime, check out:
+انواع تجسم بیشتری را در پست‌های آینده پوشش می‌دهیم. در این میان، بررسی کنید:
 
-- [Visualization options](../../../../docs/latest/questions/visualizations/visualizing-results.html)
-- [Master the bar chart visualization](bar-charts.html)
-- [Drill\-through charts with the action menu](../questions/drill-through.html)
+- [گزینه‌های تجسم](../../../../docs/latest/questions/visualizations/visualizing-results.html)
+- [بر نمودار میله‌ای مسلط شوید](bar-charts.html)
+- [نمودارهای drill-through با منوی action](../questions/drill-through.html)
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](bar-charts.html)
 [
       
         
         
+
       
       
+        
         
 
       

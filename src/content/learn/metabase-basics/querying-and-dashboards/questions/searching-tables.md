@@ -1,70 +1,68 @@
 ---
-
-
-title: "Tutorial: Searching in tables"
-description: "Learn how to search within your SQL questions and simple questions using filters and custom expressions. Finding words or phrases in your tables is now easier than ever."
+title: "آموزش: جستجو در جداول"
+description: "یاد بگیرید چگونه در سؤال‌های SQL و سؤال‌های ساده خود با استفاده از فیلترها و عبارات سفارشی جستجو کنید. پیدا کردن کلمات یا عبارات در جداول شما اکنون آسان‌تر از همیشه است."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/questions/searching-tables
   - /learn/questions/searching-tables
 toc:
   - id: "tutorial-searching-in-tables"
-    title: "Tutorial: Searching in tables"
+    title: "آموزش: جستجو در جداول"
     level: 1
     href: "#tutorial-searching-in-tables"
   - id: "search-within-a-question"
-    title: "Search within a question"
+    title: "جستجو در یک سؤال"
     level: 2
     href: "#search-within-a-question"
   - id: "update-your-search-filter"
-    title: "Update your search filter"
+    title: "به‌روزرسانی فیلتر جستجوی خود"
     level: 3
     href: "#update-your-search-filter"
   - id: "search-for-multiple-values"
-    title: "Search for multiple values"
+    title: "جستجو برای چندین مقدار"
     level: 3
     href: "#search-for-multiple-values"
   - id: "advanced-search-with-custom-expressions"
-    title: "Advanced search with custom expressions"
+    title: "جستجوی پیشرفته با عبارات سفارشی"
     level: 3
     href: "#advanced-search-with-custom-expressions"
   - id: "searching-on-foreign-keys"
-    title: "Searching on foreign keys"
+    title: "جستجو روی foreign keyها"
     level: 2
     href: "#searching-on-foreign-keys"
   - id: "add-a-search-widget-to-your-sql-question"
-    title: "Add a search widget to your SQL question"
+    title: "افزودن یک widget جستجو به سؤال SQL خود"
     level: 2
     href: "#add-a-search-widget-to-your-sql-question"
   - id: "sql-question-breakdown"
-    title: "SQL question breakdown"
+    title: "تجزیه سؤال SQL"
     level: 3
     href: "#sql-question-breakdown"
   - id: "variables-sidebar"
-    title: "Variables sidebar"
+    title: "Sidebar متغیرها"
     level: 3
     href: "#variables-sidebar"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Asking questions"
+  - title: "پرسیدن سؤال‌ها"
     href: "../questions.html"
 ---
 
-# Tutorial: Searching in tables
+# آموزش: جستجو در جداول
 
-Learn how to search within your SQL questions and simple questions using filters and custom expressions. Finding words or phrases in your tables is now easier than ever.
+یاد بگیرید چگونه در سؤال‌های SQL و سؤال‌های ساده خود با استفاده از فیلترها و عبارات سفارشی جستجو کنید. پیدا کردن کلمات یا عبارات در جداول شما اکنون آسان‌تر از همیشه است.
 
-Adding filters to your questions can make searching text in your questions a breeze. You can follow along with the examples in this article using the [Sample Database](../../../../glossary/sample-database.html) included with each Metabase installation.
+افزودن فیلترها به سؤال‌های شما می‌تواند جستجوی متن در سؤال‌های شما را آسان کند. می‌توانید با مثال‌های این مقاله با استفاده از [پایگاه داده نمونه](../../../../glossary/sample-database.html) شامل شده با هر نصب متابیس همراه باشید.
 
-## Search within a question
+## جستجو در یک سؤال
 
-We’ll start by clicking the **Browse Data** button, selecting `Sample Database`, and opening the `Products` table.
+با کلیک روی دکمه **Browse Data**، انتخاب `Sample Database`، و باز کردن جدول `Products` شروع می‌کنیم.
 
-To search within questions, we use a customizable filter. We’ll click the **Filter** button and find the column we want to filter by in the list.
+برای جستجو در سؤال‌ها، از یک فیلتر قابل سفارشی استفاده می‌کنیم. روی دکمه **Filter** کلیک می‌کنیم و ستونی که می‌خواهیم بر اساس آن فیلتر کنیم را در فهرست پیدا می‌کنیم.
 
-Let’s use the column `Title`. There’s the dropdown menu next to the column name that currently says `Is`. A popup with the **text filter options** will appear to offer us:
+بیایید از ستون `Title` استفاده کنیم. منوی dropdown کنار نام ستون وجود دارد که در حال حاضر می‌گوید `Is`. یک popup با **گزینه‌های فیلتر متنی** ظاهر می‌شود تا به ما ارائه دهد:
 
 - `Is`
 - `Is not`
@@ -75,117 +73,116 @@ Let’s use the column `Title`. There’s the dropdown menu next to the column n
 - `Starts with`
 - `Ends with`
 
-We’ll select `Starts with` and type “rustic” in the search box on the **Filter sidebar**. We’ll click **Apply Filter** to add the filter to our question.
+`Starts with` را انتخاب می‌کنیم و "rustic" را در جعبه جستجو در **Sidebar Filter** تایپ می‌کنیم. روی **Apply Filter** کلیک می‌کنیم تا فیلتر را به سؤال خود اضافه کنیم.
 
-![Creating a search widget by adding a filter to a question.](../../../images/searching-your-tables-and-questions/create-search-filter.png)
+![ایجاد یک widget جستجو با افزودن یک فیلتر به یک سؤال.](../../../images/searching-your-tables-and-questions/create-search-filter.png)
 
-With the filter applied, our question will only list product titles that start with “rustic”.
+با فیلتر اعمال شده، سؤال ما فقط عنوان‌های محصولی که با "rustic" شروع می‌شوند را فهرست می‌کند.
 
-### Update your search filter
+### به‌روزرسانی فیلتر جستجوی خود
 
-Now that we’ve added a filter, our search filter is at the top of our table. We can click on the filter description, which says `Title starts with rustic`.
+حالا که یک فیلتر اضافه کردیم، فیلتر جستجوی ما در بالای جدول ما است. می‌توانیم روی توضیحات فیلتر، که می‌گوید `Title starts with rustic` کلیک کنیم.
 
-![Close up picture of the question search filter.](../../../images/searching-your-tables-and-questions/search-widget.png)
+![تصویر نزدیک از فیلتر جستجوی سؤال.](../../../images/searching-your-tables-and-questions/search-widget.png)
 
-In the popup, we can use the text box to replace the current search term, for example with “Marble.” We can also change how the widget filters the results by clicking the dropdown menu that currently says `Starts with`, for example by changing our **text filter options** to `contains`. We update our search widget from `Title starts with rustic` to `Title contains Marble`, and make the search case sensitive.
+در popup، می‌توانیم از جعبه متنی برای جایگزینی عبارت جستجوی فعلی، به عنوان مثال با "Marble" استفاده کنیم. همچنین می‌توانیم نحوه فیلتر کردن نتایج توسط widget را با کلیک روی منوی dropdown که در حال حاضر می‌گوید `Starts with`، به عنوان مثال با تغییر **گزینه‌های فیلتر متنی** خود به `contains` تغییر دهیم. widget جستجوی خود را از `Title starts with rustic` به `Title contains Marble` به‌روزرسانی می‌کنیم، و جستجو را case sensitive می‌کنیم.
 
-![Using the search widget to change what we](../../../images/searching-your-tables-and-questions/updating-search-widget.png)
+![استفاده از widget جستجو برای تغییر آنچه ما](../../../images/searching-your-tables-and-questions/updating-search-widget.png)
 
-### Search for multiple values
+### جستجو برای چندین مقدار
 
-Filter widgets in Metabase allow you to search for multiple values at the same time. Let’s say we want to filter results by products that contain either “Marble”, “Clock”, or “Wallet”. We can click on the filter description again, type “Clock”, then comma \(this tells Metabase “i’m done typing a value and will now enter another value”\), and then “Wallet”:
+Widgetهای فیلتر در متابیس به شما اجازه جستجو برای چندین مقدار در همان زمان را می‌دهند. بگویید می‌خواهیم نتایج را بر اساس محصولاتی که شامل "Marble"، "Clock"، یا "Wallet" هستند فیلتر کنیم. می‌توانیم دوباره روی توضیحات فیلتر کلیک کنیم، "Clock" را تایپ کنیم، سپس کاما (این به متابیس می‌گوید "من تایپ کردن یک مقدار را تمام کردم و حالا مقدار دیگری وارد می‌کنم")، و سپس "Wallet":
 
-![Search with a filter widget](../../../images/searching-your-tables-and-questions/updating-search-widget.png)
+![جستجو با یک widget فیلتر](../../../images/searching-your-tables-and-questions/updating-search-widget.png)
 
-When you use multiple values in the “Contains” filter \(and “Starts with”, and “Ends with” \) Metabase will search for records that contain any *one* of those values \(an implicit `Or`, not `And`\). If you instead want to find records to contain *all* of those values \(for example records that contain both “Marble” *and* “Clock”\), you need to add a filter for each value. Or you could use a custom expression.
+وقتی از چندین مقدار در فیلتر "Contains" استفاده می‌کنید (و "Starts with"، و "Ends with") متابیس برای رکوردهایی که شامل هر *یک* از آن مقادیر هستند (یک `Or` ضمنی، نه `And`) جستجو می‌کند. اگر به جای آن می‌خواهید رکوردهایی پیدا کنید که شامل *همه* آن مقادیر هستند (مثلاً رکوردهایی که شامل هم "Marble" *و* "Clock" هستند)، نیاز به افزودن یک فیلتر برای هر مقدار دارید. یا می‌توانید از یک عبارت سفارشی استفاده کنید.
 
-### Advanced search with custom expressions
+### جستجوی پیشرفته با عبارات سفارشی
 
-[Custom expressions](../../../../glossary/custom-expression.html) are a way to make advanced queries with numbers or text. Let’s say we want to filter results by products that either are rustic or are clocks. So we want records whose title starts with “Rustic” or ends with “Clock”.
+[عبارات سفارشی](../../../../glossary/custom-expression.html) راهی برای ساخت پرس‌وجوهای پیشرفته با اعداد یا متن هستند. بگویید می‌خواهیم نتایج را بر اساس محصولاتی که یا rustic هستند یا ساعت هستند فیلتر کنیم. پس می‌خواهیم رکوردهایی که عنوان آن‌ها با "Rustic" شروع می‌شود یا با "Clock" پایان می‌یابد.
 
-Let’s create a custom expression by clicking on the filter to edit it once again, clicking on **<**, and selecting **Custom Expression** at the bottom of the sidebar.
+بیایید یک عبارت سفارشی با کلیک روی فیلتر برای ویرایش آن دوباره، کلیک روی **<**، و انتخاب **Custom Expression** در پایین sidebar ایجاد کنیم.
 
-If we start typing, we’ll see suggestions pop up that we can use in our custom expression.
+اگر شروع به تایپ کنیم، پیشنهادهایی که می‌توانیم در عبارت سفارشی خود استفاده کنیم را می‌بینیم که pop up می‌شوند.
 
-![The Custom Expression sidebar is open and an expression beginning with `contains()` is visible.](../../../images/searching-your-tables-and-questions/contains-cust-exp.png)
+![Sidebar Custom Expression باز است و یک عبارت شروع شده با `contains()` قابل مشاهده است.](../../../images/searching-your-tables-and-questions/contains-cust-exp.png)
 
-We’ll write our base query like so: \(`startsWith([Title] , "Rustic")`\).
+پرس‌وجوی پایه خود را مثل این می‌نویسیم: (`startsWith([Title] , "Rustic")`).
 
-- `startsWith` is the kind of filter we want
-- `[Title]` is the column to filter
-- `"Rustic"` is the term to filter for
+- `startsWith` نوع فیلتری است که می‌خواهیم
+- `[Title]` ستونی است که باید فیلتر شود
+- `"Rustic"` عبارتی است که باید برای آن فیلتر شود
 
-We’ll add a space and type `OR`, then we’ll write another text search function: `OR endsWith([Title] , "Clock")`, and click **Done**.
+یک فاصله اضافه می‌کنیم و `OR` را تایپ می‌کنیم، سپس یک تابع جستجوی متنی دیگر می‌نویسیم: `OR endsWith([Title] , "Clock")`، و روی **Done** کلیک می‌کنیم.
 
-![Creating a Custom Expression that searches through the Title column of the Products table for the words](../../../images/searching-your-tables-and-questions/create-custom-expression.png)
+![ایجاد یک Custom Expression که از ستون Title جدول Products برای کلمات جستجو می‌کند](../../../images/searching-your-tables-and-questions/create-custom-expression.png)
 
-## Searching on foreign keys
+## جستجو روی foreign keyها
 
-We can use [foreign keys](../../../../glossary/foreign-key.html) to search a table based on data from a connected table. To be able to search on foreign keys with strings as well as ID numbers, admins will need to [change the data model settings](../../../../docs/latest/data-modeling/metadata-editing.html) settings. From the main Metabase navigation bar, click on the **gears icon** to open up the **Admin Panel**, click on the **Data Model tab**, and select `Sample Database`. Next, click on the `Reviews` table and click on the **gears icon** next to the `Product_ID` field.
+می‌توانیم از [foreign keyها](../../../../glossary/foreign-key.html) برای جستجوی یک جدول بر اساس داده از یک جدول متصل استفاده کنیم. برای قادر بودن به جستجو روی foreign keyها با رشته‌ها و همچنین شماره‌های ID، adminها نیاز به [تغییر تنظیمات مدل داده](../../../../docs/latest/data-modeling/metadata-editing.html) دارند. از نوار ناوبری اصلی متابیس، روی **آیکون چرخ‌دنده** کلیک کنید تا **Admin Panel** باز شود، روی **تب Data Model** کلیک کنید، و `Sample Database` را انتخاب کنید. بعد، روی جدول `Reviews` کلیک کنید و روی **آیکون چرخ‌دنده** کنار فیلد `Product_ID` کلیک کنید.
 
-In our example, the `Product_ID` column is set up as a foreign key, with `search box` filter settings, and a display value of `Title`. This way when we filter on the `Product_ID` we can filter by title instead of ID number, and the table will display the title of each product instead of its ID number.
+در مثال ما، ستون `Product_ID` به عنوان یک foreign key، با تنظیمات فیلتر `search box`، و یک مقدار نمایش `Title` تنظیم شده است. به این ترتیب وقتی روی `Product_ID` فیلتر می‌کنیم می‌توانیم بر اساس عنوان به جای شماره ID فیلتر کنیم، و جدول عنوان هر محصول را به جای شماره ID آن نمایش می‌دهد.
 
-![In the data model for the Product_ID field in the Reviews table, the admin has saved the Filtering on this field settings as Search box and the Display values as Title.](../../../images/searching-your-tables-and-questions/data-model-info.png)
+![در مدل داده برای فیلد Product_ID در جدول Reviews، admin تنظیمات Filtering on this field را به عنوان Search box و Display values را به عنوان Title ذخیره کرده است.](../../../images/searching-your-tables-and-questions/data-model-info.png)
 
-You can learn more about editing metadata in our [documentation](../../../../docs/latest/data-modeling/metadata-editing.html).
+می‌توانید بیشتر درباره ویرایش متادیتا در [مستندات](../../../../docs/latest/data-modeling/metadata-editing.html) ما یاد بگیرید.
 
-With our metadata set, we’ll be able to filter Reviews by the product title:
+با متادیتای تنظیم شده ما، قادر به فیلتر کردن Reviews بر اساس عنوان محصول خواهیم بود:
 
-1. Click the **Browse \> Databases** button, select `Sample Database` , and open the `Reviews` table.
-2. Clicking the **Filter** button. This will open the filter editor with all the columns in the `Reviews` and `Products` table
-3. Select the `Products` table in the sidebar of the **Filter** editor.
-4. Find the `Title` field, type “Practical”, and select one of the values in the dropdown, like “Practical Bronze Computer”.
+1. روی دکمه **Browse > Databases** کلیک کنید، `Sample Database` را انتخاب کنید، و جدول `Reviews` را باز کنید.
+2. روی دکمه **Filter** کلیک کنید. این ویرایشگر فیلتر را با همه ستون‌ها در جداول `Reviews` و `Products` باز می‌کند
+3. جدول `Products` را در sidebar ویرایشگر **Filter** انتخاب کنید.
+4. فیلد `Title` را پیدا کنید، "Practical" را تایپ کنید، و یکی از مقادیر در dropdown، مثل "Practical Bronze Computer" را انتخاب کنید.
 
-![Creating a search widget for the Reviews table using the title of the product instead of the ID.](../../../images/searching-your-tables-and-questions/foreign-key-searching.png)
+![ایجاد یک widget جستجو برای جدول Reviews با استفاده از عنوان محصول به جای ID.](../../../images/searching-your-tables-and-questions/foreign-key-searching.png)
 
-## Add a search widget to your SQL question
+## افزودن یک widget جستجو به سؤال SQL خود
 
-In a normal database, we’d need to craft a new SQL query for every search term, but Metabase makes searching our database easy, even when using SQL queries. All we need to do is insert a [variable](../../../../glossary/variable.html) in the `WHERE` clause of a query.
+در یک پایگاه داده عادی، نیاز به ساخت یک پرس‌وجوی SQL جدید برای هر عبارت جستجو داریم، اما متابیس جستجو در پایگاه داده ما را آسان می‌کند، حتی هنگام استفاده از پرس‌وجوهای SQL. همه آنچه نیاز داریم وارد کردن یک [متغیر](../../../../glossary/variable.html) در بند `WHERE` یک پرس‌وجو است.
 
-In the upper right of the main navigation bar, we’ll click on the **pencil icon** to write SQL.
+در بالا سمت راست نوار ناوبری اصلی، روی **آیکون مداد** کلیک می‌کنیم تا SQL بنویسیم.
 
-```
+```sql
 SELECT *
 FROM REVIEWS
 [[WHERE UPPER(Body) LIKE UPPER(CONCAT('%', {{search_term}}, '%'))]]
-
 ```
 
-As soon as we start typing within the curly brackets `{{}}`, the search bar will appear above the SQL input area Metabase will kick out the variables sidebar.
+به محض شروع تایپ در براکت‌های فرفری `{{}}`، نوار جستجو بالای ناحیه ورودی SQL ظاهر می‌شود متابیس sidebar متغیرها را kick out می‌کند.
 
-![The SQL Editor with the example query typed into the SQL text area.](../../../images/searching-your-tables-and-questions/sql-q.png)
+![ویرایشگر SQL با پرس‌وجوی نمونه تایپ شده در ناحیه متنی SQL.](../../../images/searching-your-tables-and-questions/sql-q.png)
 
-### SQL question breakdown
+### تجزیه سؤال SQL
 
-In plain English, this SQL query says, “Show me reviews where the body of the review includes the search term, whether or not the two are capitalized in the same way.”
+به زبان ساده، این پرس‌وجوی SQL می‌گوید، "Reviews را به من نشان بده که body review شامل عبارت جستجو است، چه هر دو به همان شکل capitalize شده باشند یا نه."
 
-Let’s break down the elements in line three:
+بیایید عناصر در خط سوم را تجزیه کنیم:
 
-- `[[]]` The brackets make the filter optional. If no search term is supplied to the variable, the query will return unfiltered rows.
-- `WHERE` filters the results.
-- `UPPER()` capitalizes both the text being searched and the search term, so they will match even if there is a difference in case.
-- `BODY` is the column to filter.
-- `LIKE` searches for a pattern.
-- `CONCAT()` \(short for concatenate\) combines strings.
-- `'%'` A percent symbol is a wild card. If positioned before the search term additional text can come before the term. Wrapping the search term with `%` searches for the term even if it’s surrounded by text.
-- `{{}}` The double curly brackets wrap a variable.
-- `search_term` The variable that the filter widget will supply with text to search for.
+- `[[]]` براکت‌ها فیلتر را اختیاری می‌کنند. اگر هیچ عبارت جستجویی به متغیر ارائه نشود، پرس‌وجو ردیف‌های فیلتر نشده را برمی‌گرداند.
+- `WHERE` نتایج را فیلتر می‌کند.
+- `UPPER()` هم متن جستجو شده و هم عبارت جستجو را capitalize می‌کند، پس حتی اگر تفاوتی در case وجود داشته باشد match می‌شوند.
+- `BODY` ستونی است که باید فیلتر شود.
+- `LIKE` برای یک الگو جستجو می‌کند.
+- `CONCAT()` (مخفف concatenate) رشته‌ها را ترکیب می‌کند.
+- `'%'` یک نماد درصد یک wild card است. اگر قبل از عبارت جستجو قرار گیرد متن اضافی می‌تواند قبل از عبارت بیاید. wrap کردن عبارت جستجو با `%` برای عبارت جستجو می‌کند حتی اگر با متن احاطه شده باشد.
+- `{{}}` براکت‌های فرفری دوتایی یک متغیر را wrap می‌کنند.
+- `search_term` متغیری که widget فیلتر متن را برای جستجو به آن ارائه می‌دهد.
 
-### Variables sidebar
+### Sidebar متغیرها
 
-The variable type has selected `Text`, but there are several other options as well:
+نوع متغیر `Text` را انتخاب کرده است، اما چندین گزینه دیگر نیز وجود دارد:
 
 - Number
 - Date
 - Field filter
 
-Filters can be both complex and insanely useful; check out [filter widgets](../../../../glossary/filter-widget.html) and [field filters](../sql-in-metabase/field-filters.html) to get a sense for the many ways they can provide valuable insights.
+فیلترها می‌توانند هم پیچیده و هم به شدت مفید باشند؛ [widgetهای فیلتر](../../../../glossary/filter-widget.html) و [فیلترهای فیلد](../sql-in-metabase/field-filters.html) را برای دریافت حس از راه‌های زیادی که می‌توانند بینش‌های ارزشمند ارائه دهند بررسی کنید.
 
-Below `Variable type` is `Filter widget label`, which automatically uses the text we type between the curly brackets as our label.
+زیر `Variable type` `Filter widget label` است، که به طور خودکار متنی که بین براکت‌های فرفری تایپ می‌کنیم را به عنوان برچسب ما استفاده می‌کند.
 
-For additional examples and advice on typing SQL queries that support a search widget, click the **Help tab** towards the top of the sidebar.
+برای مثال‌ها و توصیه‌های اضافی درباره تایپ پرس‌وجوهای SQL که از یک widget جستجو پشتیبانی می‌کنند، روی **تب Help** به سمت بالای sidebar کلیک کنید.
 
-![The variable type options, creating a new placeholder for the widget label, and scrolling through the](../../../images/searching-your-tables-and-questions/variables-sidebar.png)
+![گزینه‌های نوع متغیر، ایجاد یک placeholder جدید برای برچسب widget، و اسکرول از طریق](../../../images/searching-your-tables-and-questions/variables-sidebar.png)
 
 [
       
@@ -195,14 +192,17 @@ For additional examples and advice on typing SQL queries that support a search w
       
         
         
+
       
     ](multi-aggregation.html)
 [
       
         
         
+
       
       
+        
         
 
       

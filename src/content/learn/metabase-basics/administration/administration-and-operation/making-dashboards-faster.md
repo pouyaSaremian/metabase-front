@@ -1,218 +1,220 @@
 ---
-
-
-title: "Making dashboards faster"
-description: "How to make your dashboards load faster."
+title: "سریع‌تر کردن داشبوردها"
+description: "نحوه سریع‌تر کردن بارگذاری داشبوردهای خود."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/making-dashboards-faster
   - /learn/administration/making-dashboards-faster
 toc:
   - id: "making-dashboards-faster"
-    title: "Making dashboards faster"
+    title: "سریع‌تر کردن داشبوردها"
     level: 1
     href: "#making-dashboards-faster"
   - id: "ask-for-less-data"
-    title: "Ask for less data"
+    title: "درخواست داده کمتر"
     level: 2
     href: "#ask-for-less-data"
   - id: "cache-answers-to-questions"
-    title: "Cache answers to questions"
+    title: "Cache کردن پاسخ‌ها به سؤال‌ها"
     level: 2
     href: "#cache-answers-to-questions"
   - id: "organize-data-to-anticipate-common-questions"
-    title: "Organize data to anticipate common questions"
+    title: "سازماندهی داده برای پیش‌بینی سؤال‌های رایج"
     level: 2
     href: "#organize-data-to-anticipate-common-questions"
   - id: "index-frequently-queried-columns"
-    title: "Index frequently queried columns"
+    title: "ایندکس کردن ستون‌های مکرراً پرس‌وجو شده"
     level: 3
     href: "#index-frequently-queried-columns"
   - id: "replicate-your-database"
-    title: "Replicate your database"
+    title: "replicate کردن پایگاه داده خود"
     level: 3
     href: "#replicate-your-database"
   - id: "denormalize-data"
-    title: "Denormalize data"
+    title: "denormalize کردن داده"
     level: 3
     href: "#denormalize-data"
   - id: "materialize-views-create-new-tables-to-store-query-results"
-    title: "Materialize views: create new tables to store query results"
+    title: "materialize کردن viewها: ایجاد جداول جدید برای ذخیره نتایج پرس‌وجو"
     level: 3
     href: "#materialize-views-create-new-tables-to-store-query-results"
   - id: "aggregate-data-ahead-of-time-with-summary-tables"
-    title: "Aggregate data ahead of time with summary tables"
+    title: "تجمیع داده از قبل با جداول خلاصه"
     level: 3
     href: "#aggregate-data-ahead-of-time-with-summary-tables"
   - id: "pull-data-out-of-json-and-slot-its-keys-into-columns"
-    title: "Pull data out of JSON and slot its keys into columns"
+    title: "کشیدن داده از JSON و قرار دادن کلیدهای آن در ستون‌ها"
     level: 3
     href: "#pull-data-out-of-json-and-slot-its-keys-into-columns"
   - id: "consider-a-database-optimized-for-analytics"
-    title: "Consider a database optimized for analytics"
+    title: "در نظر گرفتن یک پایگاه داده بهینه شده برای تحلیل"
     level: 3
     href: "#consider-a-database-optimized-for-analytics"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# Making dashboards faster
+# سریع‌تر کردن داشبوردها
 
-How to make your dashboards load faster.
+نحوه سریع‌تر کردن بارگذاری داشبوردهای خود.
 
-When it comes to dashboard performance, there are essentially four ways to get dashboards to load faster:
+وقتی به عملکرد داشبورد می‌رسد، اساساً چهار راه برای سریع‌تر کردن بارگذاری داشبوردها وجود دارد:
 
-- [Ask for less data](#ask-for-less-data) .
-- [Cache answers to questions](#cache-answers-to-questions) .
-- [Organize data to anticipate common questions](#organize-data-to-anticipate-common-questions) .
-- Ask efficient questions.
+- [درخواست داده کمتر](#ask-for-less-data).
+- [Cache کردن پاسخ‌ها به سؤال‌ها](#cache-answers-to-questions).
+- [سازماندهی داده برای پیش‌بینی سؤال‌های رایج](#organize-data-to-anticipate-common-questions).
+- پرسیدن سؤال‌های کارآمد.
 
-![An example dashboard with three filter widgets that uses the Sample Database included with Metabase.](../../../images/faster-dashboards/example-dashboard.png)
+![یک داشبورد نمونه با سه widget فیلتر که از پایگاه داده نمونه شامل شده با متابیس استفاده می‌کند.](../../../images/faster-dashboards/example-dashboard.png)
 
-What follows is some general guidance for how to get your dashboards to load faster. The bulk of this guidance will focus on that third bullet, or how you can organize data to anticipate the most common questions that data will be used to answer.
+آنچه در ادامه می‌آید برخی راهنمایی‌های کلی برای نحوه سریع‌تر کردن بارگذاری داشبوردهای شما است. بخش عمده این راهنمایی روی آن bullet سوم متمرکز می‌شود، یا نحوه سازماندهی داده برای پیش‌بینی رایج‌ترین سؤال‌هایی که داده برای پاسخ دادن به آن‌ها استفاده می‌شود.
 
-The usual caveats about premature optimization being the root of all evil apply. Our advice assumes that you have been exploring your data for some time, and are deriving material benefits from the insight that data yields. Only then should you be asking, “How do I get this dashboard to load faster?”
+هشدارهای معمول درباره بهینه‌سازی زودرس که ریشه همه شر است اعمال می‌شود. توصیه ما فرض می‌کند که شما برای مدتی داده خود را کاوش کرده‌اید، و از بینش‌هایی که داده ارائه می‌دهد منافع مادی به دست می‌آورید. فقط پس از آن باید بپرسید، "چگونه این داشبورد را سریع‌تر بارگذاری کنم؟"
 
-## Ask for less data
+## درخواست داده کمتر
 
-This point is almost too obvious that it often goes overlooked, but it should be the first place to start. Do you actually need the data you’re querying? And even if you do need all that data, how often do you need it?
+این نکته تقریباً آنقدر واضح است که اغلب نادیده گرفته می‌شود، اما باید اولین مکان برای شروع باشد. آیا واقعاً به داده‌ای که پرس‌وجو می‌کنید نیاز دارید؟ و حتی اگر به همه آن داده نیاز دارید، چقدر مکرر به آن نیاز دارید؟
 
-You can save a lot of time simply by restricting the data you query, such as by including adding a [default filter on a dashboard](../../querying-and-dashboards/sql-in-metabase/filters.html). Be especially mindful of data spanning time and space: do you really need to look at the last quarter’s worth of data every day? Or do you really need every transaction for every country?
+می‌توانید زمان زیادی را با محدود کردن داده‌ای که پرس‌وجو می‌کنید صرفه‌جویی کنید، مثل شامل کردن یک [فیلتر پیش‌فرض روی یک داشبورد](../../querying-and-dashboards/sql-in-metabase/filters.html). به خصوص به داده‌های spanning زمان و فضا توجه کنید: آیا واقعاً نیاز دارید هر روز به داده‌های سه‌ماهه گذشته نگاه کنید؟ یا آیا واقعاً به هر تراکنش برای هر کشور نیاز دارید؟
 
-And even if you *do* need to know that information, do you need it every day? Could you relocate that question to another dashboard that’s typically only reviewed weekly or monthly?
+و حتی اگر *نیاز* دارید آن اطلاعات را بدانید، آیا هر روز به آن نیاز دارید؟ آیا می‌توانید آن سؤال را به داشبورد دیگری relocate کنید که معمولاً فقط هفتگی یا ماهانه بررسی می‌شود؟
 
-We should be open to all our data when we’re exploring our datasets, but once we settle on the kinds of decisions our organization needs to make—and the data we need to inform those decisions—we should be ruthless about excluding data that does not significantly improve our analysis.
+باید به همه داده خود وقتی datasetهای خود را کاوش می‌کنیم باز باشیم، اما وقتی روی انواع تصمیماتی که سازمان ما نیاز به گرفتن دارد—و داده‌ای که برای اطلاع دادن به آن تصمیمات نیاز داریم—settle می‌کنیم، باید بی‌رحم باشیم درباره حذف داده‌ای که به طور قابل توجهی تحلیل ما را بهبود نمی‌دهد.
 
-## Cache answers to questions
+## Cache کردن پاسخ‌ها به سؤال‌ها
 
-You don’t need to wait for data if it’s already loaded. Admins can set up Metabase to [cache query results](../../../../docs/latest/configuring-metabase/caching.html), which will store answers to questions. If you have a set of dashboards that everyone runs when they open up their computers first thing in the morning, run that dashboard ahead of time, and the questions in that dashboard will use the saved results for subsequent runs to load in seconds. People will have the option to refresh the data, but typically this is unnecessary, as most often people will only need to review data from the previous day and before.
+نیازی به انتظار برای داده ندارید اگر از قبل load شده است. مدیران می‌توانند متابیس را برای [cache کردن نتایج پرس‌وجو](../../../../docs/latest/configuring-metabase/caching.html) تنظیم کنند، که پاسخ‌ها به سؤال‌ها را ذخیره می‌کند. اگر مجموعه‌ای از داشبوردها دارید که همه وقتی کامپیوترهای خود را اولین بار صبح باز می‌کنند اجرا می‌کنند، آن داشبورد را از قبل اجرا کنید، و سؤال‌ها در آن داشبورد از نتایج ذخیره شده برای اجراهای بعدی استفاده می‌کنند تا در ثانیه‌ها load شوند. مردم گزینه refresh کردن داده را خواهند داشت، اما معمولاً این غیرضروری است، چون اغلب مردم فقط نیاز دارند داده از روز قبل و قبل از آن را بررسی کنند.
 
-Admins can configure caching rules in the **Performance** tab of the **Admin Panel**. You can choose to keep the cache for a number of hours, use a set schedule to invalidate the cache, or use a query’s average execution time to determine how long to cache its results.
+مدیران می‌توانند قوانین caching را در **تب Performance** از **پنل Admin** پیکربندی کنند. می‌توانید انتخاب کنید cache را برای تعدادی ساعت نگه دارید، از یک schedule تنظیم شده برای invalidate کردن cache استفاده کنید، یا از زمان اجرای متوسط یک پرس‌وجو برای تعیین مدت زمان cache کردن نتایج آن استفاده کنید.
 
-![Enable caching to store the results of queries that take a long time to run.](../../../images/faster-dashboards/caching.png)
+![Cache را فعال کنید تا نتایج پرس‌وجوهایی که زمان زیادی برای اجرا می‌برند را ذخیره کنید.](../../../images/faster-dashboards/caching.png)
 
-On [Pro and Enterprise plans](../../../../pricing/index.html) you can also set caching policies specific to individual dashboards and questions.
+در [طرح‌های Pro و Enterprise](../../../../pricing/index.html) همچنین می‌توانید سیاست‌های caching خاص برای داشبوردها و سؤال‌های فردی تنظیم کنید.
 
-You can use Metabase’s [usage analytics](../../../../docs/latest/usage-and-performance-tools/usage-analytics.html) to determine when people typically run various questions, then create a script using [Metabase’s API](../../../../docs/latest/api.html) to programmatically run these questions \(thereby caching their results\) ahead of time. That way, when people log in and navigate to their dashboards, the results load in seconds. Even without taking that extra “pre\-warming” step, when your first person loads that slow query, it’ll be cached for the rest of your folks.
+می‌توانید از [تحلیل‌های استفاده متابیس](../../../../docs/latest/usage-and-performance-tools/usage-analytics.html) برای تعیین زمان معمول اجرای مردم از سؤال‌های مختلف استفاده کنید، سپس یک اسکریپت با استفاده از [API متابیس](../../../../docs/latest/api.html) برای اجرای برنامه‌نویسی این سؤال‌ها (در نتیجه cache کردن نتایج آن‌ها) از قبل ایجاد کنید. به این ترتیب، وقتی مردم وارد می‌شوند و به داشبوردهای خود navigate می‌کنند، نتایج در ثانیه‌ها load می‌شوند. حتی بدون انجام آن مرحله اضافی "pre-warming"، وقتی اولین شخص شما آن پرس‌وجوی کند را load می‌کند، برای بقیه مردم شما cache می‌شود.
 
-## Organize data to anticipate common questions
+## سازماندهی داده برای پیش‌بینی سؤال‌های رایج
 
-The next best thing you can do is organize your data in such a way that it anticipates the questions that will be asked, which will make it easier for your database to retrieve that data.
+بهترین کار بعدی که می‌توانید انجام دهید سازماندهی داده خود به گونه‌ای است که سؤال‌هایی که پرسیده می‌شوند را پیش‌بینی کند، که بازیابی آن داده را برای پایگاه داده شما آسان‌تر می‌کند.
 
-- [Index frequently queried columns](#index-frequently-queried-columns) .
-- [Replicate your database](#replicate-your-database) .
-- [Denormalize data](#denormalize-data) .
-- [Materialize views: create new tables to store query results](#materialize-views-create-new-tables-to-store-query-results) .
-- [Aggregate data ahead of time with summary tables](#aggregate-data-ahead-of-time-with-summary-tables) .
-- [Pull data out of JSON and slot its keys into columns](#pull-data-out-of-json-and-slot-its-keys-into-columns) .
-- [Consider a database specific to analytics](#consider-a-database-optimized-for-analytics) .
+- [ایندکس کردن ستون‌های مکرراً پرس‌وجو شده](#index-frequently-queried-columns).
+- [replicate کردن پایگاه داده خود](#replicate-your-database).
+- [denormalize کردن داده](#denormalize-data).
+- [materialize کردن viewها: ایجاد جداول جدید برای ذخیره نتایج پرس‌وجو](#materialize-views-create-new-tables-to-store-query-results).
+- [تجمیع داده از قبل با جداول خلاصه](#aggregate-data-ahead-of-time-with-summary-tables).
+- [کشیدن داده از JSON و قرار دادن کلیدهای آن در ستون‌ها](#pull-data-out-of-json-and-slot-its-keys-into-columns).
+- [در نظر گرفتن یک پایگاه داده خاص برای تحلیل](#consider-a-database-optimized-for-analytics).
 
-All but that last section below assumes you are using a traditional relational database like PostgreSQL or MySQL. That last section is about moving to a completely different type of database tuned specifically to handle analytics, and should be your last resort, especially for startups.
+همه به جز آن بخش آخر زیر فرض می‌کند از یک پایگاه داده رابطه‌ای سنتی مثل PostgreSQL یا MySQL استفاده می‌کنید. آن بخش آخر درباره انتقال به یک نوع کاملاً متفاوت پایگاه داده tune شده به خصوص برای handle کردن تحلیل است، و باید آخرین راه‌حل شما باشد، به خصوص برای استارتاپ‌ها.
 
-### Index frequently queried columns
+### ایندکس کردن ستون‌های مکرراً پرس‌وجو شده
 
-Adding indexes to your database can significantly improve query performance. But just as it wouldn’t make sense to index everything in a book, indexes do incur some overhead, so they should be used strategically.
+افزودن ایندکس‌ها به پایگاه داده شما می‌تواند عملکرد پرس‌وجو را به طور قابل توجهی بهبود بخشد. اما همانطور که منطقی نیست همه چیز را در یک کتاب ایندکس کنیم، ایندکس‌ها مقداری overhead دارند، پس باید به طور استراتژیک استفاده شوند.
 
-How to use indexes strategically? Find your most queried tables, and the most commonly queried columns in those tables. You could consult your individual database to get this metadata. For example, PostgreSQL offers metadata on query numbers and performance via its [pg\_stat\_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) module.
+نحوه استفاده استراتژیک از ایندکس‌ها؟ بیشتر جداول پرس‌وجو شده خود، و ستون‌های معمولاً پرس‌وجو شده در آن جداول را پیدا کنید. می‌توانید پایگاه داده فردی خود را برای دریافت این فراداده مشورت کنید. به عنوان مثال، PostgreSQL فراداده روی اعداد و عملکرد پرس‌وجو از طریق ماژول [pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) خود ارائه می‌دهد.
 
-Remember to do the simple work of asking your Metabase users which questions and dashboards are important to them, and if they’re experiencing any “slowness” as well. Fields that most often require indexing are either time\-based or id\-based—think timestamps on event data, or IDs on categorical data.
+به یاد داشته باشید کار ساده پرسیدن از کاربران متابیس خود که کدام سؤال‌ها و داشبوردها برای آن‌ها مهم است، و اگر "کندی" را تجربه می‌کنند انجام دهید. فیلدهایی که اغلب نیاز به ایندکس دارند یا مبتنی بر زمان یا مبتنی بر id هستند—به timestampها روی داده رویداد، یا IDها روی داده دسته‌ای فکر کنید.
 
-Alternatively, on [Pro and Enterprise plans](../../../../pricing/index.html), you can use Metabase’s [usage analytics](../../../../docs/latest/usage-and-performance-tools/usage-analytics.html), which makes it easy to see who is running which queries, how often, and how long those queries took to return records.
+به طور جایگزین، در [طرح‌های Pro و Enterprise](../../../../pricing/index.html)، می‌توانید از [تحلیل‌های استفاده متابیس](../../../../docs/latest/usage-and-performance-tools/usage-analytics.html) استفاده کنید، که دیدن اینکه چه کسی کدام پرس‌وجوها را اجرا می‌کند، چقدر مکرر، و چقدر طول کشید آن پرس‌وجوها رکوردها را برگردانند را آسان می‌کند.
 
-Once you’ve identified the tables and columns you’d like to index, consult your database’s documentation to learn how to set up indexes \(for example, here’s [indexing in PostgreSQL](https://www.postgresql.org/docs/12/indexes.html)\).
+وقتی جداول و ستون‌هایی که می‌خواهید ایندکس کنید را شناسایی کردید، مستندات پایگاه داده خود را برای یادگیری نحوه تنظیم ایندکس‌ها (مثلاً، در اینجا [ایندکس کردن در PostgreSQL](https://www.postgresql.org/docs/12/indexes.html)) مشورت کنید.
 
-Indexes are easy to set up \(and take down\). Here’s the basic format for a `CREATE INDEX` statement:
+ایندکس‌ها آسان برای تنظیم (و take down) هستند. در اینجا فرمت پایه برای یک statement `CREATE INDEX`:
 
 ```
 CREATE INDEX index_name ON table_name (column_name)
 
 ```
 
-For example:
+به عنوان مثال:
 
 ```
 CREATE INDEX orders_id_index ON orders (id)
 
 ```
 
-Experiment with indexing to see how you can improve query performance. If your users are commonly using multiple filters on a single table, investigate using compound indexes.
+با ایندکس کردن آزمایش کنید تا ببینید چگونه می‌توانید عملکرد پرس‌وجو را بهبود بخشید. اگر کاربران شما معمولاً از چندین فیلتر روی یک جدول واحد استفاده می‌کنند، استفاده از ایندکس‌های compound را بررسی کنید.
 
-### Replicate your database
+### replicate کردن پایگاه داده خود
 
-If you are using a database for handling both operations \(e.g., app transactions like placing orders, updating profile information, etc.\) as well as for analytics \(e.g., for queries that power Metabase dashboards\), consider creating a replica of that production database for use as an analytics\-only database. Connect Metabase to that replica, update the replica each night, and let your analysts query away. Analysts’ long\-running queries won’t interfere with the day\-to\-day operations of your production database, and vice versa.
+اگر از یک پایگاه داده برای handle کردن هم عملیات (مثلاً، تراکنش‌های برنامه مثل ثبت سفارش، به‌روزرسانی اطلاعات پروفایل، و غیره) و هم برای تحلیل (مثلاً، برای پرس‌وجوهایی که داشبوردهای متابیس را power می‌کنند) استفاده می‌کنید، ایجاد یک replica از آن پایگاه داده production برای استفاده به عنوان یک پایگاه داده فقط-تحلیل را در نظر بگیرید. متابیس را به آن replica متصل کنید، replica را هر شب به‌روزرسانی کنید، و بگذارید تحلیل‌گران شما پرس‌وجو کنند. پرس‌وجوهای long-running تحلیل‌گران با عملیات روزمره پایگاه داده production شما تداخل نخواهند داشت، و برعکس.
 
-Outside of making your dashboards faster, keeping a replica database for data analytics is a good practice to follow to avoid potentially long\-running analytical queries impacting your production environment.
+خارج از سریع‌تر کردن داشبوردهای شما، نگه داشتن یک پایگاه داده replica برای تحلیل داده یک روش خوب برای دنبال کردن است تا از تأثیر پرس‌وجوهای تحلیلی potentially long-running روی محیط production خود جلوگیری کنید.
 
-### Denormalize data
+### denormalize کردن داده
 
-In some cases, it might make sense to [denormalize](https://en.wikipedia.org/wiki/Denormalization) some of your tables \(i.e., to combine multiple tables into a larger table with more columns\). You’ll end up storing some redundant data \(such as including user information each time the user places an order\), but analysts won’t have to join multiple tables to get the data they need to answer their questions.
+در برخی موارد، ممکن است منطقی باشد [denormalize](https://en.wikipedia.org/wiki/Denormalization) برخی از جداول خود (یعنی، ترکیب چندین جدول به یک جدول بزرگ‌تر با ستون‌های بیشتر). در نهایت مقداری داده redundant ذخیره می‌کنید (مثل شامل کردن اطلاعات کاربر هر بار که کاربر سفارش می‌دهد)، اما تحلیل‌گران مجبور نیستند چندین جدول را join کنند تا داده مورد نیاز برای پاسخ دادن به سؤال‌های خود را دریافت کنند.
 
-### Materialize views: create new tables to store query results
+### materialize کردن viewها: ایجاد جداول جدید برای ذخیره نتایج پرس‌وجو
 
-With [materialized views](https://en.wikipedia.org/wiki/Materialized_view), you’ll keep your raw, denormalized data in their tables, and create new tables \(typically during off hours\) to store query results that combine data from multiple tables in a way that anticipates the questions analysts will ask.
+با [viewهای materialized](https://en.wikipedia.org/wiki/Materialized_view)، داده خام، denormalized خود را در جداول آن‌ها نگه می‌دارید، و جداول جدید (معمولاً در ساعات off) ایجاد می‌کنید تا نتایج پرس‌وجو را ذخیره کنید که داده از چندین جدول را به روشی که سؤال‌هایی که تحلیل‌گران می‌پرسند را پیش‌بینی می‌کند ترکیب می‌کند.
 
-For example, you might store order and product information in different tables. You could, once a night, create \(or update\) a materialized view that combines the most frequently queried columns from both of those tables, and connect that materialized view to your questions in Metabase. If you’re using a database for both production and analytics, in addition to eliminating the joining process needed to combine that data, your queries won’t have to compete with production reads and writes on those tables.
+به عنوان مثال، ممکن است اطلاعات سفارش و محصول را در جداول مختلف ذخیره کنید. می‌توانید، یک بار در شب، یک view materialized ایجاد (یا به‌روزرسانی) کنید که ستون‌های مکرراً پرس‌وجو شده از هر دو آن جداول را ترکیب می‌کند، و آن view materialized را به سؤال‌های خود در متابیس متصل کنید. اگر از یک پایگاه داده برای هم production و هم تحلیل استفاده می‌کنید، علاوه بر حذف فرآیند join مورد نیاز برای ترکیب آن داده، پرس‌وجوهای شما مجبور نیستند با readها و writeهای production روی آن جداول رقابت کنند.
 
-The difference between a materialized view and a [Common Table Expression](../../../../glossary/cte.html) \(CTE, sometimes called a view\), is that the materialized view stores its results in the database \(and therefore can be indexed\). CTEs are essentially subqueries, and are computed each time. They may be cached, but they are not stored in the database.
+تفاوت بین یک view materialized و یک [عبارت جدول مشترک](../../../../glossary/cte.html) (CTE، گاهی اوقات view نامیده می‌شود)، این است که view materialized نتایج خود را در پایگاه داده ذخیره می‌کند (و بنابراین می‌تواند ایندکس شود). CTEها اساساً subqueryها هستند، و هر بار محاسبه می‌شوند. ممکن است cache شوند، اما در پایگاه داده ذخیره نمی‌شوند.
 
-Materialized views will, however, consume resources in your database, and you will have to update the view manually \(`refresh materialized view [name]`\).
+viewهای materialized، با این حال، منابع را در پایگاه داده شما مصرف می‌کنند، و باید view را به صورت دستی به‌روزرسانی کنید (`refresh materialized view [name]`).
 
-### Aggregate data ahead of time with summary tables
+### تجمیع داده از قبل با جداول خلاصه
 
-The idea here is to use materialized views—or even a separate set of tables—to create [summary tables](https://mariadb.com/kb/en/data-warehousing-summary-tables/) that minimize computation. Say you have tables with a million rows, and you want to aggregate data in multiple columns. You can create a materialized view based on aggregations of one or more tables, which will perform the initial \(time\-consuming\) computation. Rather than have a dashboard query and compute that raw data several times throughout a day, you could instead create questions that query that summary table to get the data computed the night before.
+ایده در اینجا استفاده از viewهای materialized—یا حتی یک مجموعه جداگانه از جداول—برای ایجاد [جداول خلاصه](https://mariadb.com/kb/en/data-warehousing-summary-tables/) که محاسبه را به حداقل می‌رسانند است. بگویید جداولی با یک میلیون ردیف دارید، و می‌خواهید داده را در چندین ستون تجمیع کنید. می‌توانید یک view materialized بر اساس تجمیع‌های یک یا چند جدول ایجاد کنید، که محاسبه اولیه (زمان‌بر) را انجام می‌دهد. به جای اینکه یک داشبورد داده خام را چندین بار در طول یک روز پرس‌وجو و محاسبه کند، می‌توانید به جای آن سؤال‌هایی ایجاد کنید که آن جدول خلاصه را پرس‌وجو می‌کنند تا داده محاسبه شده شب قبل را دریافت کنند.
 
-For example, you could have an orders table that contains all of the orders table, and an order summary table that updates nightly and stores rollups and other aggregated data, such as order totals per week, month, etc. If a person wants to view the individual orders used to compute that aggregate, you can use [custom destinations](../../querying-and-dashboards/dashboards/custom-destinations.html) to link users to a question or dashboard that *does* query the raw data.
+به عنوان مثال، می‌توانید یک جدول سفارشات داشته باشید که شامل همه جدول سفارشات است، و یک جدول خلاصه سفارشات که هر شب به‌روزرسانی می‌شود و rollupها و سایر داده‌های تجمیع شده، مثل کل سفارشات در هر هفته، ماه، و غیره را ذخیره می‌کند. اگر شخصی می‌خواهد سفارشات فردی استفاده شده برای محاسبه آن تجمیع را مشاهده کند، می‌توانید از [مقاصد سفارشی](../../querying-and-dashboards/dashboards/custom-destinations.html) برای لینک کردن کاربران به یک سؤال یا داشبورد که *داده خام را پرس‌وجو می‌کند استفاده کنید.
 
-### Pull data out of JSON and slot its keys into columns
+### کشیدن داده از JSON و قرار دادن کلیدهای آن در ستون‌ها
 
-We often see organizations storing JSON objects in a single column of a relational database like MySQL or PostgreSQL. Typically, these organizations are storing JSON payloads from event analytics software like [Segment](https://segment.com/), or [Amplitude](https://amplitude.com/).
+اغلب می‌بینیم سازمان‌ها اشیاء JSON را در یک ستون واحد از یک پایگاه داده رابطه‌ای مثل MySQL یا PostgreSQL ذخیره می‌کنند. معمولاً، این سازمان‌ها payloadهای JSON را از نرم‌افزار تحلیل رویداد مثل [Segment](https://segment.com/)، یا [Amplitude](https://amplitude.com/) ذخیره می‌کنند.
 
-Though some databases can index JSON \(PostgreSQL can index JSON binaries, for example\), you still have to grab the full JSON object each time, even if you’re only interested in a single key\-value pair in the object. Instead, consider extracting each field from these JSON objects and mapping those keys to columns in a table.
+اگرچه برخی پایگاه‌های داده می‌توانند JSON را ایندکس کنند (PostgreSQL می‌تواند binaryهای JSON را ایندکس کند، به عنوان مثال)، هنوز باید هر بار شیء JSON کامل را grab کنید، حتی اگر فقط به یک جفت کلید-مقدار در شیء علاقه‌مند هستید. به جای آن، استخراج هر فیلد از این اشیاء JSON و map کردن آن کلیدها به ستون‌ها در یک جدول را در نظر بگیرید.
 
-### Consider a database optimized for analytics
+### در نظر گرفتن یک پایگاه داده بهینه شده برای تحلیل
 
-If you’ve done all of the above, and the length of your dashboard loading times are still interfering with your ability to make decisions in a timely manner, you should consider using a database that is structured specifically for fielding analytical queries. These databases are known as Online Analytics Processing \(OLAP\) databases \(sometimes called data warehouses\).
+اگر همه موارد بالا را انجام داده‌اید، و طول زمان بارگذاری داشبوردهای شما هنوز با توانایی شما برای تصمیم‌گیری به موقع تداخل دارد، باید استفاده از یک پایگاه داده که به طور خاص برای fielding پرس‌وجوهای تحلیلی ساختار یافته است را در نظر بگیرید. این پایگاه‌های داده به عنوان پایگاه‌های داده پردازش تحلیل آنلاین (OLAP) (گاهی اوقات data warehouse نامیده می‌شوند) شناخته می‌شوند.
 
-Traditional relational databases like PostgreSQL and MySQL are designed for transaction processing, and are categorized as Online Transaction Processing \(OLTP\) databases. These databases are better suited for use as operational databases, such as storing data for web or mobile applications. They are quite good at handling the following scenario: someone submits a thoughtful, germane, and not at all inflammatory comment to your website, your app fires a POST request to your backend, which routes the comment and metadata to your database for storage. OLTP databases can handle large volumes of concurrent transactions like comment posts, cart checkouts, profile bio updates, etc.
+پایگاه‌های داده رابطه‌ای سنتی مثل PostgreSQL و MySQL برای پردازش تراکنش طراحی شده‌اند، و به عنوان پایگاه‌های داده پردازش تراکنش آنلاین (OLTP) دسته‌بندی می‌شوند. این پایگاه‌های داده برای استفاده به عنوان پایگاه‌های داده عملیاتی، مثل ذخیره داده برای برنامه‌های وب یا موبایل بهتر مناسب هستند. آن‌ها در handle کردن سناریوی زیر کاملاً خوب هستند: کسی یک نظر متفکرانه، مرتبط، و اصلاً تحریک‌آمیز به وب‌سایت شما ارسال می‌کند، برنامه شما یک درخواست POST به بک‌اند شما fire می‌کند، که نظر و فراداده را به پایگاه داده شما برای ذخیره‌سازی route می‌کند. پایگاه‌های داده OLTP می‌توانند حجم‌های زیادی از تراکنش‌های همزمان مثل پست‌های نظر، checkoutهای سبد خرید، به‌روزرسانی‌های bio پروفایل، و غیره را handle کنند.
 
-The main difference between OLAP and OLTP systems is that OLAP databases optimize analytical queries like sums, aggregates, and other analytical operations on large amounts of data, as well as bulk imports \(via an [ETL](../../../../glossary/etl.html)\), whereas OLTP databases must balance large reads from the database with other transaction types: small inserts, updates, and deletes.
+تفاوت اصلی بین سیستم‌های OLAP و OLTP این است که پایگاه‌های داده OLAP پرس‌وجوهای تحلیلی مثل sumها، تجمیع‌ها، و سایر عملیات تحلیلی روی مقادیر زیاد داده، و همچنین importهای bulk (از طریق یک [ETL](../../../../glossary/etl.html)) را بهینه می‌کنند، در حالی که پایگاه‌های داده OLTP باید readهای بزرگ از پایگاه داده را با انواع دیگر تراکنش متعادل کنند: insertهای کوچک، به‌روزرسانی‌ها، و deleteها.
 
-OLAPs typically use [columnar storage](https://en.wikipedia.org/wiki/Column-oriented_DBMS). Whereas traditional \(OLTP\) relational databases store data by rows, databases that use columnar storage \(unsurprisingly\) store data by columns. This columnar storage strategy gives OLAP databases an advantage when reading data, as queries do not have to sift through irrelevant rows. Data in these databases is typically organized in [fact](https://en.wikipedia.org/wiki/Fact_table) and [dimension](https://en.wikipedia.org/wiki/Dimension_(data_warehouse)#Dimension_table) tables, with \(often massive\) fact tables housing events. Each event contains a list of attributes and foreign key references to dimension tables, which contain information about those events: who was involved, what happened, product information, and so on.
+OLAPها معمولاً از [ذخیره‌سازی ستونی](https://en.wikipedia.org/wiki/Column-oriented_DBMS) استفاده می‌کنند. در حالی که پایگاه‌های داده رابطه‌ای سنتی (OLTP) داده را بر اساس ردیف ذخیره می‌کنند، پایگاه‌های داده‌ای که از ذخیره‌سازی ستونی استفاده می‌کنند (غیرقابل تعجب) داده را بر اساس ستون ذخیره می‌کنند. این استراتژی ذخیره‌سازی ستونی به پایگاه‌های داده OLAP یک مزیت هنگام خواندن داده می‌دهد، چون پرس‌وجوها مجبور نیستند از ردیف‌های نامربوط غربال کنند. داده در این پایگاه‌های داده معمولاً در جداول [fact](https://en.wikipedia.org/wiki/Fact_table) و [dimension](https://en.wikipedia.org/wiki/Dimension_(data_warehouse)#Dimension_table) سازماندهی می‌شود، با جداول fact (اغلب عظیم) که رویدادها را house می‌کنند. هر رویداد شامل لیستی از attributeها و ارجاعات کلید خارجی به جداول dimension است، که شامل اطلاعات درباره آن رویدادها است: چه کسی درگیر بود، چه اتفاقی افتاد، اطلاعات محصول، و غیره.
 
-Metabase supports several popular data warehouses: [Google BigQuery](https://cloud.google.com/bigquery), [Amazon Redshift](https://aws.amazon.com/redshift/), [Snowflake](https://www.snowflake.com/), and [Apache Druid](https://druid.apache.org/) \(which specializes in real\-time analytics\). Metabase also supports [Presto](https://prestodb.io/), which is a query engine that can be paired with a variety of different datastores, including [Amazon S3](https://aws.amazon.com/s3/).
+متابیس چندین data warehouse محبوب را پشتیبانی می‌کند: [Google BigQuery](https://cloud.google.com/bigquery)، [Amazon Redshift](https://aws.amazon.com/redshift/)، [Snowflake](https://www.snowflake.com/)، و [Apache Druid](https://druid.apache.org/) (که در تحلیل‌های real-time تخصص دارد). متابیس همچنین [Presto](https://prestodb.io/) را پشتیبانی می‌کند، که یک موتور پرس‌وجو است که می‌تواند با انواع مختلف datastore، از جمله [Amazon S3](https://aws.amazon.com/s3/) جفت شود.
 
-As you start out using Metabase, don’t worry too much about the underlying data store. But as your data grows, and adoption of [Metabase grows](metabase-at-scale.html), keep an eye out for indicators that you may want to investigate using a data warehouse. Redshift, for example, can query petabytes of data, and scale to querying historical data in Amazon S3. And Snowflake allows you to dynamically scale your compute resources as your organization grows.
+همانطور که شروع به استفاده از متابیس می‌کنید، خیلی نگران data store زیربنایی نباشید. اما همانطور که داده شما رشد می‌کند، و adoption [متابیس رشد می‌کند](metabase-at-scale.html)، مراقب شاخص‌هایی باشید که ممکن است بخواهید استفاده از یک data warehouse را بررسی کنید. Redshift، به عنوان مثال، می‌تواند petabyteهای داده را پرس‌وجو کند، و scale کند تا داده تاریخی را در Amazon S3 پرس‌وجو کند. و Snowflake به شما اجازه می‌دهد منابع compute خود را به طور پویا scale کنید همانطور که سازمان شما رشد می‌کند.
 
-## Further reading
+## مطالعه بیشتر
 
-For more tips on improving performance, check out our articles on [scaling Metabase](metabase-at-scale.html) and [SQL query best practices](../../../sql/working-with-sql/sql-best-practices.html).
+برای نکات بیشتر درباره بهبود عملکرد، مقاله‌های ما درباره [scale کردن متابیس](metabase-at-scale.html) و [بهترین روش‌های پرس‌وجوی SQL](../../../sql/working-with-sql/sql-best-practices.html) را بررسی کنید.
 
-If you’ve improved dashboard performance at your organization, you can share your tips [on our forum](https://discourse.metabase.com/).
+اگر عملکرد داشبورد را در سازمان خود بهبود داده‌اید، می‌توانید نکات خود را [در انجمن ما](https://discourse.metabase.com/) به اشتراک بگذارید.
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](git-based-workflow.html)
 [
       
         
         
+
       
       
+        
         
 
       

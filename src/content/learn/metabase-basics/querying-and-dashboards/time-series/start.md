@@ -1,109 +1,109 @@
 ---
-
-
-title: "Overview of time series analysis"
-description: "An overview of methods you can use to track progress, estimate impact, and more."
+title: "نمای کلی تحلیل سری زمانی"
+description: "یک نمای کلی از روش‌هایی که می‌توانید برای ردیابی پیشرفت، تخمین تأثیر، و بیشتر استفاده کنید."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/time-series/start
   - /learn/time-series/start
 toc:
   - id: "overview-of-time-series-analysis"
-    title: "Overview of time series analysis"
+    title: "نمای کلی تحلیل سری زمانی"
     level: 1
     href: "#overview-of-time-series-analysis"
   - id: "what-is-time-series-analysis"
-    title: "What is time series analysis?"
+    title: "تحلیل سری زمانی چیست؟"
     level: 2
     href: "#what-is-time-series-analysis"
   - id: "trends"
-    title: "Trends"
+    title: "روندها"
     level: 2
     href: "#trends"
   - id: "analyzing-trends-in-metabase"
-    title: "Analyzing trends in Metabase"
+    title: "تحلیل روندها در متابیس"
     level: 3
     href: "#analyzing-trends-in-metabase"
   - id: "rolling-metrics"
-    title: "Rolling metrics"
+    title: "معیارهای rolling"
     level: 2
     href: "#rolling-metrics"
   - id: "kpis"
-    title: "KPIs"
+    title: "KPIها"
     level: 2
     href: "#kpis"
   - id: "measuring-ltv-with-metabase"
-    title: "Measuring LTV with Metabase"
+    title: "اندازه‌گیری LTV با متابیس"
     level: 3
     href: "#measuring-ltv-with-metabase"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Time series analysis"
+  - title: "تحلیل سری زمانی"
     href: "../time-series.html"
 ---
 
-# Overview of time series analysis
+# نمای کلی تحلیل سری زمانی
 
-An overview of methods you can use to track progress, estimate impact, and more.
+یک نمای کلی از روش‌هایی که می‌توانید برای ردیابی پیشرفت، تخمین تأثیر، و بیشتر استفاده کنید.
 
-## What is time series analysis?
+## تحلیل سری زمانی چیست؟
 
-A time series is a dataset where every row represents an event or measurement at a different point in time. For example, all of the tables in the Sample Database are time series datasets, because every row has a “Created At” timestamp. [Fact tables](../data-modeling/fact-table.html) can also be used for time series analysis.
+یک سری زمانی یک مجموعه داده است که هر ردیف یک event یا measurement در نقطه مختلفی در زمان را نشان می‌دهد. به عنوان مثال، همه جداول در پایگاه داده نمونه مجموعه داده‌های سری زمانی هستند، چون هر ردیف یک timestamp "Created At" دارد. [جداول Fact](../data-modeling/fact-table.html) همچنین می‌توانند برای تحلیل سری زمانی استفاده شوند.
 
-Time series analysis combines metrics and data visualizations to answer business questions like:
+تحلیل سری زمانی معیارها و تجسم‌های داده را ترکیب می‌کند تا به سؤال‌های کسب‌وکار مثل:
 
-- How is my revenue growing, shrinking, or plateauing over time?
-- When do my customers come back \(or not\)?
-- Are my customers getting more value from my business over time?
+- درآمد من چگونه در طول زمان رشد، کاهش، یا plateau می‌کند؟
+- مشتریان من چه زمانی برمی‌گردند (یا نمی‌گردند)؟
+- آیا مشتریان من در طول زمان ارزش بیشتری از کسب‌وکار من دریافت می‌کنند؟
 
-## Trends
+## روندها
 
-A trend tracks a [measure](../../../grow-your-data-skills/data-fundamentals/dimensions-and-measures.html) or metric over different time periods.
+یک روند یک [معیار](../../../grow-your-data-skills/data-fundamentals/dimensions-and-measures.html) یا metric را در دوره‌های زمانی مختلف ردیابی می‌کند.
 
-When analyzing trends, you’ll want to pick a time period that matches your business. For example, if you post fresh content to a blog each week, you’ll look at weekly audience engagement metrics. If your business uses a monthly subscription model, you’ll track your subscription revenue monthly.
+وقتی روندها را تحلیل می‌کنید، می‌خواهید یک دوره زمانی که با کسب‌وکار شما match می‌کند انتخاب کنید. به عنوان مثال، اگر محتوای تازه را به یک blog هر هفته پست می‌کنید، به معیارهای engagement مخاطب هفتگی نگاه می‌کنید. اگر کسب‌وکار شما از یک مدل اشتراک ماهانه استفاده می‌کند، درآمد اشتراک خود را به صورت ماهانه ردیابی می‌کنید.
 
-### Analyzing trends in Metabase
+### تحلیل روندها در متابیس
 
-- [Comparing time periods](time-series-comparisons.html) shows you how to get the total revenue one year at a time, so that you can compare the revenue year over year. Month over month and season over season comparisons are also covered in this tutorial.
-- [Visualizing time periods](compare-times.html) gives you tips on how to organize and present trends from different questions on a single dashboard.
-- [Rates of change](time-series-comparisons.html) calculates a percentage metric over all of the months in a dataset and visualizes the trend as a line chart. You’ll also learn how to display extra context in the chart tooltip.
-- [Dates in SQL](time-series-comparisons.html) is the SQL companion to [Rates of change](time-series-comparisons.html) .
-- The [Trend](../../../../docs/latest/questions/visualizations/visualizing-results.html#trends) visualization type is a snapshot of the delta from the previous time period to the current time period.
+- [مقایسه دوره‌های زمانی](time-series-comparisons.html) به شما نشان می‌دهد چگونه کل درآمد را یک سال در یک زمان دریافت کنید، تا بتوانید درآمد را سال به سال مقایسه کنید. مقایسه‌های ماه به ماه و فصل به فصل نیز در این آموزش پوشش داده می‌شوند.
+- [تجسم دوره‌های زمانی](compare-times.html) نکاتی درباره نحوه سازماندهی و ارائه روندها از سؤال‌های مختلف روی یک داشبورد واحد به شما می‌دهد.
+- [نرخ‌های تغییر](time-series-comparisons.html) یک معیار درصد را در همه ماه‌ها در یک مجموعه داده محاسبه می‌کند و روند را به عنوان یک نمودار خطی تجسم می‌کند. همچنین یاد می‌گیرید چگونه زمینه اضافی را در tooltip نمودار نمایش دهید.
+- [تاریخ‌ها در SQL](time-series-comparisons.html) همراه SQL برای [نرخ‌های تغییر](time-series-comparisons.html) است.
+- نوع تجسم [Trend](../../../../docs/latest/questions/visualizations/visualizing-results.html#trends) یک snapshot از delta از دوره زمانی قبلی به دوره زمانی فعلی است.
 
-## Rolling metrics
+## معیارهای rolling
 
-A trend with a rolling metric calculates the metric over a shifting window. For example, instead of calculating revenue each calendar month, you’d calculate revenue over shifting 30\-day periods:
+یک روند با یک معیار rolling معیار را روی یک پنجره shifting محاسبه می‌کند. به عنوان مثال، به جای محاسبه درآمد هر ماه تقویمی، درآمد را روی دوره‌های shifting 30 روزه محاسبه می‌کنید:
 
-- Jan 1 to Jan 30
-- Jan 2 to Jan 31
-- Jan 3 to Feb 1
-- and so on, until Jan 28 to Feb 28
+- 1 ژانویه تا 30 ژانویه
+- 2 ژانویه تا 31 ژانویه
+- 3 ژانویه تا 1 فوریه
+- و غیره، تا 28 ژانویه تا 28 فوریه
 
-The most common type of rolling metric is a rolling average \(sometimes called a moving average\). Rolling metrics are useful because they smooth out seasonality and noise in your data.
+رایج‌ترین نوع معیار rolling یک میانگین rolling (گاهی moving average نامیده می‌شود) است. معیارهای rolling مفید هستند چون seasonality و noise در داده شما را smooth می‌کنند.
 
-For example, churn rate is commonly calculated as a rolling metric, because subscription cancellation can happen at any time in the calendar month.
+به عنوان مثال، نرخ churn معمولاً به عنوان یک معیار rolling محاسبه می‌شود، چون لغو اشتراک می‌تواند در هر زمانی در ماه تقویمی اتفاق بیفتد.
 
-## KPIs
+## KPIها
 
-Some metrics summarize a group of numbers better than an average or ratio. These metrics are often used as Key Performance Indicators \(KPIs\).
+برخی معیارها یک گروه از اعداد را بهتر از یک میانگین یا نسبت خلاصه می‌کنند. این معیارها اغلب به عنوان شاخص‌های عملکرد کلیدی (KPI) استفاده می‌شوند.
 
-For example, Customer Lifetime Value \(CLV or LTV\) is a metric that estimates customer value using a combination of average historical spend and *predicted* future spend.
+به عنوان مثال، Customer Lifetime Value (CLV یا LTV) معیاری است که ارزش مشتری را با استفاده از ترکیبی از خرج تاریخی میانگین و خرج آینده *پیش‌بینی شده* تخمین می‌زند.
 
-The trend in a metric like LTV can give you a better representation of how your business is doing \(compared to an average or ratio\), because the LTV calculation is based on more information.
+روند در یک معیار مثل LTV می‌تواند نمایش بهتری از نحوه عملکرد کسب‌وکار شما (در مقایسه با یک میانگین یا نسبت) به شما بدهد، چون محاسبه LTV بر اساس اطلاعات بیشتری است.
 
-### Measuring LTV with Metabase
+### اندازه‌گیری LTV با متابیس
 
-- [Calculating LTV: are you doing it wrong?](../../../../blog/calculating-ltv.html) is a light primer on when to calculate LTV, and how to interpret the results.
-- [Calculating LTV using SQL](../../../grow-your-data-skills/learn-sql/working-with-sql/ltv-with-metabase.html) is an advanced SQL tutorial that calculates the monthly change in LTV using revenue, active subscriptions, and churn rate.
+- [محاسبه LTV: آیا اشتباه انجام می‌دهید؟](../../../../blog/calculating-ltv.html) یک primer سبک درباره زمانی که باید LTV را محاسبه کنید، و نحوه تفسیر نتایج است.
+- [محاسبه LTV با استفاده از SQL](../../../grow-your-data-skills/learn-sql/working-with-sql/ltv-with-metabase.html) یک آموزش SQL پیشرفته است که تغییر ماهانه در LTV را با استفاده از درآمد، اشتراک‌های فعال، و نرخ churn محاسبه می‌کند.
 
 [
       
         
         
+
       
       
+        
         
 
       

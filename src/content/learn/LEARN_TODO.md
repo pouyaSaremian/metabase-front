@@ -174,33 +174,33 @@
     - [x] `time-series.md`
     - [x] `visualization.md`
 
-    - [ ] زیرپوشهٔ `dashboards/`
-      - [ ] `build-a-record-lookup-tool.md`
-      - [ ] `linking-filters.md`
-      - [ ] `custom-destinations.md`
-      - [ ] `markdown.md`
-      - [ ] `cross-filtering.md`
-      - [ ] `bi-dashboard-best-practices.md`
+    - [x] زیرپوشهٔ `dashboards/`
+      - [x] `build-a-record-lookup-tool.md`
+      - [x] `linking-filters.md`
+      - [x] `custom-destinations.md`
+      - [x] `markdown.md`
+      - [x] `cross-filtering.md`
+      - [x] `bi-dashboard-best-practices.md`
 
-    - [ ] زیرپوشهٔ `questions/`
-      - [ ] `formatting.md`
-      - [ ] `multi-aggregation.md`
-      - [ ] `joins-in-metabase.md`
-      - [ ] `searching-tables.md`
-      - [ ] `cross-db-joins.md`
-      - [ ] `custom-expressions.md`
-      - [ ] `drill-through.md`
+    - [x] زیرپوشهٔ `questions/`
+      - [x] `formatting.md`
+      - [x] `multi-aggregation.md`
+      - [x] `joins-in-metabase.md`
+      - [x] `searching-tables.md`
+      - [x] `cross-db-joins.md`
+      - [x] `custom-expressions.md`
+      - [x] `drill-through.md`
 
-    - [ ] زیرپوشهٔ `time-series/`
-      - [ ] `start.md`
-      - [ ] `time-series-comparisons.md`
-      - [ ] `compare-times.md`
+    - [x] زیرپوشهٔ `time-series/`
+      - [x] `start.md`
+      - [x] `time-series-comparisons.md`
+      - [x] `compare-times.md`
 
-    - [ ] زیرپوشهٔ `visualization/`
-      - [ ] `chart-guide.md`
-      - [ ] `line-charts.md`
-      - [ ] `bar-charts.md`
-      - [ ] `histograms.md`
+    - [x] زیرپوشهٔ `visualization/`
+      - [x] `chart-guide.md`
+      - [x] `line-charts.md`
+      - [x] `bar-charts.md`
+      - [x] `histograms.md`
 
     - [ ] زیرپوشهٔ `sql-in-metabase/`
       - [ ] `field-filters.md`

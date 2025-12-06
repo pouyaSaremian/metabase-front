@@ -1,66 +1,64 @@
 ---
-
-
-title: "Tutorial: Multi-level aggregation"
-description: "How to ask questions with multiple parts using the query builder."
+title: "آموزش: تجمیع چندسطحی"
+description: "نحوه پرسیدن سؤال‌ها با چندین بخش با استفاده از query builder."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/questions/multi-aggregation
 toc:
   - id: "tutorial-multi-level-aggregation"
-    title: "Tutorial: Multi-level aggregation"
+    title: "آموزش: تجمیع چندسطحی"
     level: 1
     href: "#tutorial-multi-level-aggregation"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Asking questions"
+  - title: "پرسیدن سؤال‌ها"
     href: "../questions.html"
 ---
 
-# Tutorial: Multi-level aggregation
+# آموزش: تجمیع چندسطحی
 
-How to ask questions with multiple parts using the query builder.
+نحوه پرسیدن سؤال‌ها با چندین بخش با استفاده از query builder.
 
-Many analytics questions can be answered with just four steps:
+بسیاری از سؤال‌های تحلیل را می‌توان با فقط چهار مرحله پاسخ داد:
 
-1. *Join* a couple of tables to get all the required information in one place.
-2. *Filter* the data so that it only includes the values that are relevant.
-3. *Group* and *aggregate* those values to create the insight you need.
-4. *Visualize* the result so that you can understand what your data is telling you.
+1. *Join* کردن چند جدول برای دریافت همه اطلاعات مورد نیاز در یک مکان.
+2. *فیلتر* کردن داده تا فقط شامل مقادیری باشد که مرتبط هستند.
+3. *Group* و *aggregate* کردن آن مقادیر برای ایجاد بینش مورد نیاز شما.
+4. *تجسم* کردن نتیجه تا بتوانید بفهمید داده شما چه می‌گوید.
 
-Queries don’t have to stop there, though: Metabase allows you to add more filters and calculate more summaries step by step. To see how this works, let’s trace the steps an analyst might go through while exploring how many items of each category are sold weekly.
+پرس‌وجوها لازم نیست آنجا متوقف شوند، اگرچه: متابیس به شما اجازه افزودن فیلترهای بیشتر و محاسبه خلاصه‌های بیشتر گام به گام را می‌دهد. برای دیدن نحوه کار این، بیایید مراحل یک تحلیلگر را در حال کاوش اینکه چند مورد از هر دسته به صورت هفتگی فروخته می‌شود ردیابی کنیم.
 
-We start by counting the number of items sold each week in each product category in the [Sample Database](../../../../glossary/sample-database.html). Information about sales are in the `Orders` table, and product categories are in the `Products` table, so we join those by matching product IDs. For the moment we want to know about all product categories, so we don’t need to filter this data, but we do need to group it and summarize it to calculate weekly totals by category.
+با شمارش تعداد موارد فروخته شده هر هفته در هر دسته محصول در [پایگاه داده نمونه](../../../../glossary/sample-database.html) شروع می‌کنیم. اطلاعات درباره فروش در جدول `Orders` است، و دسته‌های محصول در جدول `Products` است، پس آن‌ها را با match کردن product IDها join می‌کنیم. برای لحظه می‌خواهیم درباره همه دسته‌های محصول بدانیم، پس نیاز به فیلتر کردن این داده نداریم، اما نیاز به group و خلاصه کردن آن برای محاسبه مجموع‌های هفتگی بر اساس دسته داریم.
 
-![Joining orders and products to bring information together, then grouping and summarizing to calculate weekly totals by category.](../../../images/multi-aggregation/join-and-summarize.png)
+![Join کردن سفارش‌ها و محصولات برای آوردن اطلاعات با هم، سپس group و خلاصه کردن برای محاسبه مجموع‌های هفتگی بر اساس دسته.](../../../images/multi-aggregation/join-and-summarize.png)
 
-We can visualize the result so far as a time series\) line chart to get insight we didn’t have before.
+می‌توانیم نتیجه تا اینجا را به عنوان یک نمودار خطی سری زمانی) تجسم کنیم تا بینشی که قبلاً نداشتیم دریافت کنیم.
 
-![Visualizing weekly totals by category.](../../../images/multi-aggregation/viz-weekly-totals-by-category.png)
+![تجسم مجموع‌های هفتگی بر اساس دسته.](../../../images/multi-aggregation/viz-weekly-totals-by-category.png)
 
-However, let’s go further and add another filter *after* the summary step to take widgets out of our data. When we return to the query builder and click the **Add Filter** button at the bottom of the editor, it shows us the three columns in the summarized data: `Created At`, `Category`, and `Count`. A few clicks lets us create a filter that removes rows whose category is widget.
+با این حال، بیایید بیشتر برویم و یک فیلتر دیگر *بعد از* مرحله خلاصه اضافه کنیم تا widgetها را از داده خود حذف کنیم. وقتی به query builder برمی‌گردیم و دکمه **Add Filter** را در پایین ویرایشگر کلیک می‌کنیم، سه ستون در داده خلاصه شده را به ما نشان می‌دهد: `Created At`، `Category`، و `Count`. چند کلیک به ما اجازه ایجاد یک فیلتر که ردیف‌هایی که دسته آن‌ها widget است را حذف می‌کند می‌دهد.
 
-![Defining a filter to remove one category from the summary data.](../../../images/multi-aggregation/filter-out-widgets.png)
+![تعریف یک فیلتر برای حذف یک دسته از داده خلاصه.](../../../images/multi-aggregation/filter-out-widgets.png)
 
-If we save the filter and visualize the data, we’ll get a table of results. If you select the line chart from the visualization settings, the chart now only shows lines for the three product categories we are interested in.
+اگر فیلتر را ذخیره کنیم و داده را تجسم کنیم، یک جدول نتایج دریافت می‌کنیم. اگر نمودار خطی را از تنظیمات تجسم انتخاب کنید، نمودار حالا فقط خطوط برای سه دسته محصول که به آن‌ها علاقه‌مندیم را نشان می‌دهد.
 
-![Visualizing the filtered weekly totals by category.](../../../images/multi-aggregation/viz-filtered-summary.png)
+![تجسم مجموع‌های هفتگی فیلتر شده بر اساس دسته.](../../../images/multi-aggregation/viz-filtered-summary.png)
 
-Now suppose we want to know the average number of products of each of these three categories that were sold weekly. We’ve already calculated the weekly sales by category, so all we have to do is return to the query builder, click the **Summarize button**, choose `Average`, and then tell Metabase that we want to average the `Count` grouped by `Category`.
+حالا فرض کنید می‌خواهیم میانگین تعداد محصولات از هر یک از این سه دسته که به صورت هفتگی فروخته شدند را بدانیم. از قبل فروش هفتگی بر اساس دسته را محاسبه کرده‌ایم، پس همه آنچه باید انجام دهیم برگشت به query builder، کلیک روی دکمه **Summarize**، انتخاب `Average`، و سپس گفتن به متابیس که می‌خواهیم `Count` را بر اساس `Category` group شده average کنیم.
 
-![Adding a second summarization step to condense the data even further.](../../../images/multi-aggregation/create-second-summary.png)
+![افزودن یک مرحله خلاصه دوم برای فشرده‌تر کردن داده حتی بیشتر.](../../../images/multi-aggregation/create-second-summary.png)
 
-Our visualization is now exactly what we want: the average number of doohickeys, gadgets, and gizmos sold each week.
+تجسم ما حالا دقیقاً آنچه می‌خواهیم است: میانگین تعداد doohickeys، gadgets، و gizmos فروخته شده هر هفته.
 
-![The final summary shows a few key numbers.](../../../images/multi-aggregation/final-table.png)
+![خلاصه نهایی چند عدد کلیدی نشان می‌دهد.](../../../images/multi-aggregation/final-table.png)
 
-The full question that produces this table:
+سؤال کامل که این جدول را تولید می‌کند:
 
-![The final analysis shows each step in order from start to finish.](../../../images/multi-aggregation/final-analysis.png)
+![تحلیل نهایی هر مرحله را به ترتیب از شروع تا پایان نشان می‌دهد.](../../../images/multi-aggregation/final-analysis.png)
 
-There are other ways to calculate this result: we could, for example, filter out the widgets before we calculated the first summary \(which most analysts would consider a best practice, since reducing the size of the data set early on improves performance\). The important lesson is that we can construct insight step by step as each answer leads to a new question, and that Metabase allows us to add operations one by one as they occur to us. We don’t have to plan everything in advance: if we find that we are always starting with the same operations, we can save those separately, as explained in the article [Snippets vs. Saved Questions vs. Views](../sql-in-metabase/organizing-sql.html).
+راه‌های دیگری برای محاسبه این نتیجه وجود دارد: می‌توانستیم، به عنوان مثال، widgetها را قبل از محاسبه خلاصه اول حذف کنیم (که بیشتر تحلیلگران آن را یک بهترین روش می‌دانند، چون کاهش اندازه مجموعه داده در ابتدا عملکرد را بهبود می‌دهد). درس مهم این است که می‌توانیم بینش را گام به گام همانطور که هر پاسخ به یک سؤال جدید منجر می‌شود بسازیم، و متابیس به ما اجازه افزودن عملیات یکی یکی همانطور که برای ما رخ می‌دهد را می‌دهد. نیاز به برنامه‌ریزی همه چیز از قبل نداریم: اگر می‌بینیم همیشه با همان عملیات شروع می‌کنیم، می‌توانیم آن‌ها را جداگانه ذخیره کنیم، همانطور که در مقاله [Snippets vs. Saved Questions vs. Views](../sql-in-metabase/organizing-sql.html) توضیح داده شده است.
 
 [
       
@@ -70,14 +68,17 @@ There are other ways to calculate this result: we could, for example, filter out
       
         
         
+
       
     ](cross-db-joins.html)
 [
       
         
         
+
       
       
+        
         
 
       

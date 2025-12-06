@@ -1,19 +1,17 @@
 ---
-
-
-title: "Create interactive charts"
-description: "Build charts that people can explore by using the query builder, building models, or adding custom destinations."
+title: "ایجاد نمودارهای تعاملی"
+description: "نمودارهایی بسازید که مردم می‌توانند با استفاده از query builder، ساخت مدل‌ها، یا افزودن مقصدهای سفارشی کاوش کنند."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/questions/drill-through
   - /learn/basics/questions/drill-through
   - /learn/questions/drill-through
 toc:
   - id: "create-interactive-charts"
-    title: "Create interactive charts"
+    title: "ایجاد نمودارهای تعاملی"
     level: 1
     href: "#create-interactive-charts"
   - id: "what-is-drill-through-and-how-does-it-work"
-    title: "What is drill-through and how does it work?"
+    title: "Drill-through چیست و چگونه کار می‌کند؟"
     level: 2
     href: "#what-is-drill-through-and-how-does-it-work"
   - id: "zoom-in"
@@ -41,137 +39,139 @@ toc:
     level: 2
     href: "#x-rays"
   - id: "how-to-create-charts-you-can-drill-through"
-    title: "How to create charts you can drill through"
+    title: "نحوه ایجاد نمودارهایی که می‌توانید drill through کنید"
     level: 2
     href: "#how-to-create-charts-you-can-drill-through"
   - id: "build-charts-using-query-builder"
-    title: "Build charts using query builder"
+    title: "ساخت نمودارها با استفاده از query builder"
     level: 3
     href: "#build-charts-using-query-builder"
   - id: "convert-sql-questions-to-models"
-    title: "Convert SQL questions to models"
+    title: "تبدیل سؤال‌های SQL به مدل‌ها"
     level: 3
     href: "#convert-sql-questions-to-models"
   - id: "add-the-question-to-a-dashboard-and-set-a-custom-destination"
-    title: "Add the question to a dashboard and set a custom destination"
+    title: "افزودن سؤال به یک داشبورد و تنظیم یک مقصد سفارشی"
     level: 3
     href: "#add-the-question-to-a-dashboard-and-set-a-custom-destination"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Asking questions"
+  - title: "پرسیدن سؤال‌ها"
     href: "../questions.html"
 ---
 
-# Create interactive charts
+# ایجاد نمودارهای تعاملی
 
-Build charts that people can explore by using the query builder, building models, or adding custom destinations.
+نمودارهایی بسازید که مردم می‌توانند با استفاده از query builder، ساخت مدل‌ها، یا افزودن مقصدهای سفارشی کاوش کنند.
 
-You can create charts that people can drill through in Metabase. Like this:
+می‌توانید نمودارهایی در متابیس ایجاد کنید که مردم می‌توانند drill through کنند. مثل این:
 
-![Zooming in on a particular category and timeframe, then viewing the orders that make up one of the bars on the chart.](../../../images/create-charts-with-explorable-data/zoom-and-view.gif)
+![Zoom کردن روی یک دسته و بازه زمانی خاص، سپس مشاهده سفارش‌هایی که یکی از میله‌های نمودار را تشکیل می‌دهند.](../../../images/create-charts-with-explorable-data/zoom-and-view.gif)
 
-If you’ve only ever written questions in SQL, you may have missed the fact that Metabase could make your charts explorable. Or maybe you’ve clicked around on a dashboard and noticed that some charts have more drill\-through options than others. We’ll cover what are the different ways you can drill through those charts and how to set up drill\-through on your charts \(sometimes called drill\-down\).
+اگر فقط سؤال‌ها را در SQL نوشته‌اید، ممکن است این واقعیت را از دست داده باشید که متابیس می‌تواند نمودارهای شما را قابل کاوش کند. یا شاید روی یک داشبورد کلیک کرده‌اید و متوجه شده‌اید که برخی نمودارها گزینه‌های drill-through بیشتری نسبت به سایرین دارند. نحوه‌های مختلفی که می‌توانید از طریق آن نمودارها drill through کنید و نحوه تنظیم drill-through روی نمودارهای خود (گاهی drill-down نامیده می‌شود) را پوشش می‌دهیم.
 
-## What is drill-through and how does it work?
+## Drill-through چیست و چگونه کار می‌کند؟
 
-Let’s tour the drill\-through functionality. Here’s the question that we’ll use for exploration:
+بیایید عملکرد drill-through را tour کنیم. در اینجا سؤالی که برای کاوش استفاده می‌کنیم:
 
-![The question, composed in the query builder, use in the following drill-through examples.](../../../images/create-charts-with-explorable-data/question-notebook-editor.png)
+![سؤال، composed شده در query builder، استفاده در مثال‌های drill-through زیر.](../../../images/create-charts-with-explorable-data/question-notebook-editor.png)
 
-The visualization has been set to a **stacked bar chart**.
+تجسم به یک **نمودار میله‌ای stacked** تنظیم شده است.
 
-![Setting the visualization to a stacked bar chart.](../../../images/create-charts-with-explorable-data/stacked-bar-chart.png)
+![تنظیم تجسم به یک نمودار میله‌ای stacked.](../../../images/create-charts-with-explorable-data/stacked-bar-chart.png)
 
-Click anywhere on the chart to open the **Action Menu**. The **Action Menu** presents a few different drill\-through options that you can choose from when exploring your data.
+روی هر جای نمودار کلیک کنید تا **Action Menu** باز شود. **Action Menu** چند گزینه drill-through مختلف ارائه می‌دهد که می‌توانید هنگام کاوش داده خود از آن‌ها انتخاب کنید.
 
-![Clicking on a value of a chart will bring up the action menu, presenting options to zoom in, view records, breakout, and X-ray.](../../../images/create-charts-with-explorable-data/action-menu.png)
+![کلیک روی یک مقدار از یک نمودار Action Menu را می‌آورد، ارائه گزینه‌هایی برای zoom in، مشاهده رکوردها، breakout، و X-ray.](../../../images/create-charts-with-explorable-data/action-menu.png)
 
-We’ll step through each of the options in the popup menu you see above:
+از هر یک از گزینه‌ها در منوی popup که در بالا می‌بینید گام به گام می‌رویم:
 
-- [Zoom in on the data](#zoom-in)
-- [View the records that compose that data](#view-these-records)
-- [Break out the data](#breakouts)
-- [X\-ray the data](#x-rays)
+- [Zoom in روی داده](#zoom-in)
+- [مشاهده رکوردهایی که آن داده را تشکیل می‌دهند](#view-these-records)
+- [Break out داده](#breakouts)
+- [X-ray داده](#x-rays)
 
 ### Zoom in
 
-There are two ways to zoom in on orders, [Select\-to\-zoom](#select-to-zoom) and [Auto\-zoom](#auto-zoom).
+دو راه برای zoom in روی سفارش‌ها وجود دارد، [Select-to-zoom](#select-to-zoom) و [Auto-zoom](#auto-zoom).
 
 #### Select to zoom
 
-You can click and drag to select an area of a chart to zoom in on.
+می‌توانید کلیک و drag کنید تا یک ناحیه از یک نمودار را برای zoom in انتخاب کنید.
 
-![You can click and drag to select an area of a chart, and Metabase will zoom in on the values in that selected area.](../../../images/create-charts-with-explorable-data/drag-select-to-zoom.png)
+![می‌توانید کلیک و drag کنید تا یک ناحیه از یک نمودار را انتخاب کنید، و متابیس روی مقادیر در آن ناحیه انتخاب شده zoom in می‌کند.](../../../images/create-charts-with-explorable-data/drag-select-to-zoom.png)
 
 #### Auto-zoom
 
-You can left\-click to bring up the **Drill\-through Menu** \> **See this month by week** and Metabase will create a close\-up of the data surrounding the value you selected.
+می‌توانید left-click کنید تا **منوی Drill-through** > **See this month by week** باز شود و متابیس یک close-up از داده اطراف مقداری که انتخاب کردید ایجاد می‌کند.
 
-![Left-click on a chart to bring up the Drill-through menu and select Zoom in. Metabase will automatically create a close-up of the data surrounding the value.](../../../images/create-charts-with-explorable-data/auto-zoom.png)
+![Left-click روی یک نمودار برای باز کردن منوی Drill-through و انتخاب Zoom in. متابیس به طور خودکار یک close-up از داده اطراف مقدار ایجاد می‌کند.](../../../images/create-charts-with-explorable-data/auto-zoom.png)
 
-The **See this date** option will choose an appropriate range of values based on the full range of values in the chart.
+گزینه **See this date** یک محدوده مناسب از مقادیر بر اساس محدوده کامل مقادیر در نمودار انتخاب می‌کند.
 
 ### View these records
 
-You can click on a value on a chart and select `View these orders` to bring up a table with the individual records that compose the value.
+می‌توانید روی یک مقدار روی یک نمودار کلیک کنید و `View these orders` را انتخاب کنید تا یک جدول با رکوردهای فردی که مقدار را تشکیل می‌دهند باز شود.
 
-![Clicking on a value and selecting View these orders will bring up a table of records that compose the value.](../../../images/create-charts-with-explorable-data/view-these-orders.gif)
+![کلیک روی یک مقدار و انتخاب View these orders یک جدول از رکوردهایی که مقدار را تشکیل می‌دهند می‌آورد.](../../../images/create-charts-with-explorable-data/view-these-orders.gif)
 
 ### Breakouts
 
-**Breaking out** by a category lets us do things like see the banana cream pie orders in June 2017 broken out by the status of the customer \(e.g., new or VIP, etc.\) or other different aspects of the order. Different charts will have different breakout options, such as Location and Time.
+**Breaking out** بر اساس یک دسته به ما اجازه انجام چیزهایی مثل دیدن سفارش‌های banana cream pie در ژوئن 2017 broken out بر اساس وضعیت مشتری (مثلاً، جدید یا VIP، و غیره) یا جنبه‌های مختلف دیگر سفارش را می‌دهد. نمودارهای مختلف گزینه‌های breakout مختلفی خواهند داشت، مثل Location و Time.
 
-![Clicking on a value will present options to breakout the data. Different options will appear based on the data in the chart. The GIF shows a breakout by Category: Product Vendor.](../../../images/create-charts-with-explorable-data/breakout-by-vendor.gif)
+![کلیک روی یک مقدار گزینه‌هایی برای breakout داده ارائه می‌دهد. گزینه‌های مختلف بر اساس داده در نمودار ظاهر می‌شوند. GIF یک breakout بر اساس Category: Product Vendor نشان می‌دهد.](../../../images/create-charts-with-explorable-data/breakout-by-vendor.gif)
 
 ## X-rays
 
-[X\-rays](../../../../docs/latest/exploration-and-organization/x-rays.html) are automatically\-generated explorations of your data. You can click anywhere on a chart to perform an X\-ray, and Metabase will generate a dashboard full of different questions about the data. You’ll have an option to save that X\-ray as a dashboard, which you can then edit to your liking, by removing irrelevant questions, or adding new questions or [text boxes](../dashboards/markdown.html) to fill in the story you want to tell.
+[X-rayها](../../../../docs/latest/exploration-and-organization/x-rays.html) کاوش‌های به طور خودکار تولید شده از داده شما هستند. می‌توانید روی هر جای یک نمودار کلیک کنید تا یک X-ray انجام دهید، و متابیس یک داشبورد پر از سؤال‌های مختلف درباره داده تولید می‌کند. گزینه‌ای برای ذخیره آن X-ray به عنوان یک داشبورد خواهید داشت، که سپس می‌توانید آن را به سلیقه خود ویرایش کنید، با حذف سؤال‌های نامرتبط، یا افزودن سؤال‌های جدید یا [جعبه‌های متنی](../dashboards/markdown.html) برای پر کردن داستانی که می‌خواهید بگویید.
 
-![X-rays will create (a lot) of different charts based on data in your table(s).](../../../images/create-charts-with-explorable-data/x-ray.png)
+![X-rayها (زیاد) نمودارهای مختلف بر اساس داده در جدول(های) شما ایجاد می‌کنند.](../../../images/create-charts-with-explorable-data/x-ray.png)
 
-Clicking on a point or a bar additionally gives you the option to compare data, which will give you another dashboard with auto\-generated charts.
+کلیک روی یک نقطه یا میله همچنین گزینه مقایسه داده را به شما می‌دهد، که یک داشبورد دیگر با نمودارهای به طور خودکار تولید شده به شما می‌دهد.
 
-If X\-rays don’t make sense for your data, you can [disable X\-rays](../../../../docs/latest/exploration-and-organization/x-rays.html#disabling-x-rays). Learn more about [X\-rays in our documentation](../../../../docs/latest/exploration-and-organization/x-rays.html).
+اگر X-rayها برای داده شما منطقی نیستند، می‌توانید [X-rayها را غیرفعال کنید](../../../../docs/latest/exploration-and-organization/x-rays.html#disabling-x-rays). بیشتر درباره [X-rayها در مستندات ما](../../../../docs/latest/exploration-and-organization/x-rays.html) یاد بگیرید.
 
-## How to create charts you can drill through
+## نحوه ایجاد نمودارهایی که می‌توانید drill through کنید
 
-### Build charts using query builder
+### ساخت نمودارها با استفاده از query builder
 
-You get the [Action Menu](#what-is-drill-through-and-how-does-it-work) on charts automatically when you create a question using the [query builder](../../../../docs/latest/questions/introduction.html). That’s it. That’s all you need to do.
+[Action Menu](#what-is-drill-through-and-how-does-it-work) را روی نمودارها به طور خودکار وقتی یک سؤال با استفاده از [query builder](../../../../docs/latest/questions/introduction.html) ایجاد می‌کنید دریافت می‌کنید. همین. همه آنچه باید انجام دهید.
 
-### Convert SQL questions to models
+### تبدیل سؤال‌های SQL به مدل‌ها
 
-If you write a question using SQL, you won’t get full drill\-through out of the box. For example, you won’t be able to drill down to unaggregated records, or zoom in on a time period with smaller granularity than your original question. People won’t be able to get more granular information than your SQL query provides.
+اگر یک سؤال با استفاده از SQL می‌نویسید، drill-through کامل out of the box دریافت نمی‌کنید. به عنوان مثال، قادر به drill down به رکوردهای unaggregated، یا zoom in روی یک دوره زمانی با granularity کوچکتر از سؤال اصلی خود نخواهید بود. مردم قادر به دریافت اطلاعات granularتر از آنچه پرس‌وجوی SQL شما ارائه می‌دهد نخواهند بود.
 
-But with careful query planning, you can enable people to drill down on your charts by building your SQL queries with the highest level of detail that makes sense for your problem, and then build models on top of them. For example, if you want people to drill down to unaggregated records, start with a query that doesn’t aggregate records. Or if you want people to be able to change datetime granularity, truncate your dates the smallest granularity that makes sense \(e.g. minute\) and use the query builder to do the rest.
+اما با برنامه‌ریزی دقیق پرس‌وجو، می‌توانید مردم را قادر به drill down روی نمودارهای خود با ساخت پرس‌وجوهای SQL خود با بالاترین سطح جزئیات که برای مشکل شما منطقی است، و سپس ساخت مدل‌ها روی آن‌ها کنید. به عنوان مثال، اگر می‌خواهید مردم drill down به رکوردهای unaggregated کنند، با یک پرس‌وجو که رکوردها را aggregate نمی‌کند شروع کنید. یا اگر می‌خواهید مردم قادر به تغییر granularity datetime باشند، تاریخ‌های خود را کوچک‌ترین granularity که منطقی است (مثلاً دقیقه) truncate کنید و از query builder برای انجام بقیه استفاده کنید.
 
-So the process is:
+پس فرآیند:
 
-1. Write a question in SQL that brings together the starting data you need, like you’re creating a view for people to query. So don’t pre\-filter or pre\-summarize the data \(aside from filtering out rows and columns you wish to exclude from the “view”\).
-2. Save that question and turn it into a [model](../../getting-started/models.html) .
-3. [Edit the model’s metadata](../../../../docs/latest/data-modeling/models.html) to specify each column’s type. If Metabase knows which type of data each column contains, it can work its drill\-through sorcery.
+1. یک سؤال در SQL بنویسید که داده شروع مورد نیاز را کنار هم می‌آورد، مثل اینکه یک view برای مردم برای پرس‌وجو ایجاد می‌کنید. پس داده را از قبل فیلتر یا از قبل خلاصه نکنید (به جز فیلتر کردن ردیف‌ها و ستون‌هایی که می‌خواهید از "view" حذف کنید).
+2. آن سؤال را ذخیره کنید و آن را به یک [مدل](../../getting-started/models.html) تبدیل کنید.
+3. [متادیتای مدل را ویرایش کنید](../../../../docs/latest/data-modeling/models.html) تا نوع هر ستون را مشخص کنید. اگر متابیس بداند هر ستون شامل چه نوع داده‌ای است، می‌تواند جادوی drill-through خود را کار کند.
 
-From there, you can either let people use the model as the starting point for people to ask questions with the query builder, or you can create query builder questions based on that model for people to play around with.
+از آنجا، می‌توانید یا به مردم اجازه استفاده از مدل به عنوان نقطه شروع برای پرسیدن سؤال با query builder بدهید، یا می‌توانید سؤال‌های query builder بر اساس آن مدل برای مردم برای بازی با آن ایجاد کنید.
 
-The other option for SQL\-based questions is to…
+گزینه دیگر برای سؤال‌های مبتنی بر SQL این است که…
 
-### Add the question to a dashboard and set a custom destination
+### افزودن سؤال به یک داشبورد و تنظیم یک مقصد سفارشی
 
-[Custom destinations](../dashboards/custom-destinations.html) aren’t the same thing as providing people with the drill\-through menu. That is, people won’t be able to slice and dice the question’s data if you add a custom destination.
+[مقصدهای سفارشی](../dashboards/custom-destinations.html) همان چیز ارائه دادن منوی drill-through به مردم نیستند. یعنی، مردم قادر به slice و dice داده سؤال نخواهند بود اگر یک مقصد سفارشی اضافه کنید.
 
-But custom destinations *do* give you more control over what happens when people click on a chart, and custom destinations are in some ways more powerful than the drill\-through menu \(despite what our inconsistent capitalization might imply\). You can send people to another question, dashboard, or external URL, and you can even parameterize those destinations based on values in the chart.
+اما مقصدهای سفارشی *کنترل بیشتری* بر آنچه وقتی مردم روی یک نمودار کلیک می‌کنند اتفاق می‌افتد به شما می‌دهند، و مقصدهای سفارشی از برخی جهات قدرتمندتر از منوی drill-through هستند (علیرغم آنچه capitalization ناسازگار ما ممکن است نشان دهد). می‌توانید مردم را به سؤال دیگر، داشبورد، یا URL خارجی ارسال کنید، و حتی می‌توانید آن مقصدها را بر اساس مقادیر در نمودار parameterize کنید.
 
-Custom destinations work for both SQL and query builder questions, as custom destinations override the default click behavior. You can also set up [crossing\-filtering](../dashboards/cross-filtering.html) on a dashboard, so that people can click on a chart to update a filter.
+مقصدهای سفارشی برای هم سؤال‌های SQL و هم query builder کار می‌کنند، چون مقصدهای سفارشی رفتار کلیک پیش‌فرض را override می‌کنند. همچنین می‌توانید [cross-filtering](../dashboards/cross-filtering.html) را روی یک داشبورد تنظیم کنید، تا مردم بتوانند روی یک نمودار کلیک کنند تا یک فیلتر به‌روزرسانی شود.
 
 [
       
         
         
+
       
       
+        
         
 
       

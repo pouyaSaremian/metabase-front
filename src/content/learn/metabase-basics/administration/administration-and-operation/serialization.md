@@ -1,162 +1,161 @@
 ---
-
-
-title: "Tutorial: Use serialization for preloading dashboards in a new Metabase instance"
-description: "How to use Metabase's serialization feature to copy questions, dashboards, collections, settings, and more from one Metabase instance to a new Metabase instance."
+title: "آموزش: استفاده از serialization برای preload کردن داشبوردها در یک instance متابیس جدید"
+description: "نحوه استفاده از ویژگی serialization متابیس برای کپی کردن سؤال‌ها، داشبوردها، مجموعه‌ها، تنظیمات، و بیشتر از یک instance متابیس به یک instance متابیس جدید."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/serialization
   - /learn/administration/serialization
 toc:
   - id: "tutorial-use-serialization-for-preloading-dashboards-in-a-new-metabase-instance"
-    title: "Tutorial: Use serialization for preloading dashboards in a new Metabase instance"
+    title: "آموزش: استفاده از serialization برای preload کردن داشبوردها در یک instance متابیس جدید"
     level: 1
     href: "#tutorial-use-serialization-for-preloading-dashboards-in-a-new-metabase-instance"
   - id: "metabase-serialization"
-    title: "Metabase serialization"
+    title: "Serialization متابیس"
     level: 2
     href: "#metabase-serialization"
   - id: "the-plan"
-    title: "The plan"
+    title: "برنامه"
     level: 2
     href: "#the-plan"
   - id: "prerequisites"
-    title: "Prerequisites"
+    title: "پیش‌نیازها"
     level: 2
     href: "#prerequisites"
   - id: "step-1-create-a-dedicated-network"
-    title: "Step 1 - Create a dedicated network"
+    title: "گام 1 - ایجاد یک شبکه اختصاصی"
     level: 2
     href: "#step-1-create-a-dedicated-network"
   - id: "step-2-spin-up-two-metabases-source-and-target"
-    title: "Step 2 - Spin up two Metabases: source and target"
+    title: "گام 2 - راه‌اندازی دو متابیس: source و target"
     level: 2
     href: "#step-2-spin-up-two-metabases-source-and-target"
   - id: "source-metabase"
-    title: "Source Metabase"
+    title: "متابیس source"
     level: 3
     href: "#source-metabase"
   - id: "target-metabase"
-    title: "Target Metabase"
+    title: "متابیس target"
     level: 3
     href: "#target-metabase"
   - id: "add-users-to-our-source-metabase"
-    title: "Add users to our source Metabase"
+    title: "افزودن کاربران به متابیس source ما"
     level: 3
     href: "#add-users-to-our-source-metabase"
   - id: "step-3-create-dashboards-and-collections-in-the-source-metabase"
-    title: "Step 3 - Create dashboards and collections in the source Metabase"
+    title: "گام 3 - ایجاد داشبوردها و مجموعه‌ها در متابیس source"
     level: 2
     href: "#step-3-create-dashboards-and-collections-in-the-source-metabase"
   - id: "step-4-export-from-source-metabase"
-    title: "Step 4 - Export from source Metabase"
+    title: "گام 4 - Export از متابیس source"
     level: 2
     href: "#step-4-export-from-source-metabase"
   - id: "settings"
-    title: "Settings"
+    title: "تنظیمات"
     level: 3
     href: "#settings"
   - id: "databases"
-    title: "Databases"
+    title: "پایگاه‌های داده"
     level: 3
     href: "#databases"
   - id: "collections"
-    title: "Collections"
+    title: "مجموعه‌ها"
     level: 3
     href: "#collections"
   - id: "step-5-import-into-target-metabase"
-    title: "Step 5 - Import into target Metabase"
+    title: "گام 5 - Import به متابیس target"
     level: 2
     href: "#step-5-import-into-target-metabase"
   - id: "step-6-verify-dashboard-and-collection-in-target-metabase"
-    title: "Step 6 - Verify dashboard and collection in target Metabase"
+    title: "گام 6 - تأیید داشبورد و مجموعه در متابیس target"
     level: 2
     href: "#step-6-verify-dashboard-and-collection-in-target-metabase"
   - id: "serialization-limitations"
-    title: "Serialization limitations"
+    title: "محدودیت‌های serialization"
     level: 2
     href: "#serialization-limitations"
   - id: "serialization-via-the-api"
-    title: "Serialization via the API"
+    title: "Serialization از طریق API"
     level: 2
     href: "#serialization-via-the-api"
   - id: "other-use-cases-for-serialization"
-    title: "Other use cases for serialization"
+    title: "موارد استفاده دیگر برای serialization"
     level: 2
     href: "#other-use-cases-for-serialization"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# Tutorial: Use serialization for preloading dashboards in a new Metabase instance
+# آموزش: استفاده از serialization برای preload کردن داشبوردها در یک instance متابیس جدید
 
-How to use Metabase's serialization feature to copy questions, dashboards, collections, settings, and more from one Metabase instance to a new Metabase instance.
+نحوه استفاده از ویژگی serialization متابیس برای کپی کردن سؤال‌ها، داشبوردها، مجموعه‌ها، تنظیمات، و بیشتر از یک instance متابیس به یک instance متابیس جدید.
 
-## Metabase serialization
+## Serialization متابیس
 
-> Serialization is only available on
-      [Pro](../../../../product/pro.html) and
+> Serialization فقط در
+      [Pro](../../../../product/pro.html) و
       [Enterprise](../../../../product/enterprise.html)
-      plans  \(both self\-hosted and on Metabase Cloud\).
+      (هم self-hosted و هم در متابیس کلود)
+      در دسترس است.
 
-Many customers on [Pro and Enterprise plans](../../../../pricing/index.html) use Metabase in a multi\-tenant environment that requires uploading a predefined set of [questions](../../../../docs/latest/questions/start.html) or [dashboards](../../../../docs/latest/dashboards/start.html), either to set up a new Metabase instance, or a new database connection.
+بسیاری از مشتریان در [طرح‌های Pro و Enterprise](../../../../pricing/index.html) از متابیس در یک محیط multi-tenant استفاده می‌کنند که نیاز به آپلود مجموعه‌ای از پیش تعریف شده از [سؤال‌ها](../../../../docs/latest/questions/start.html) یا [داشبوردها](../../../../docs/latest/dashboards/start.html) دارد، یا برای تنظیم یک instance متابیس جدید، یا یک اتصال پایگاه داده جدید.
 
-This article will cover how to:
+این مقاله نحوه انجام موارد زیر را پوشش می‌دهد:
 
-1. Create a default set of questions and dashboards.
-2. Export those dashboards.
-3. Re\-import those dashboards to a new instance.
+1. ایجاد مجموعه پیش‌فرض سؤال‌ها و داشبوردها.
+2. Export کردن آن داشبوردها.
+3. Re-import کردن آن داشبوردها به یک instance جدید.
 
-Specifically, we’ll use the `export` and `import` commands in Metabase’s [serialization feature](../../../../docs/latest/enterprise-guide/serialization.html) to perform steps two and three, plus a little bit of manual curation of the exported files.
+به طور خاص، از دستورات `export` و `import` در [ویژگی serialization](../../../../docs/latest/enterprise-guide/serialization.html) متابیس برای انجام گام‌های دو و سه، به علاوه کمی curation دستی فایل‌های export شده استفاده خواهیم کرد.
 
-We’ll use [Docker](../../../../docs/latest/installation-and-operation/running-metabase-on-docker.html) to run our source and target Metabases, and use [PostgresSQL](../../../../docs/latest/installation-and-operation/configuring-application-database.html) for their [application databases](../../../../glossary/application-database.html). We don’t recommend using the default [H2](../../../../docs/latest/installation-and-operation/configuring-application-database.html) database for production.
+از [Docker](../../../../docs/latest/installation-and-operation/running-metabase-on-docker.html) برای اجرای متابیس‌های source و target خود، و از [PostgresSQL](../../../../docs/latest/installation-and-operation/configuring-application-database.html) برای [پایگاه‌های داده برنامه](../../../../glossary/application-database.html) آن‌ها استفاده خواهیم کرد. توصیه نمی‌کنیم از پایگاه داده پیش‌فرض [H2](../../../../docs/latest/installation-and-operation/configuring-application-database.html) برای production استفاده کنید.
 
-While this tutorial uses the Metabase `export` and `import` commands, you can also [serialize Metabase application data via the API](../../../../docs/latest/installation-and-operation/serialization.html#serialization-via-the-api).
+در حالی که این آموزش از دستورات `export` و `import` متابیس استفاده می‌کند، همچنین می‌توانید [داده برنامه متابیس را از طریق API serialize کنید](../../../../docs/latest/installation-and-operation/serialization.html#serialization-via-the-api).
 
-## The plan
+## برنامه
 
-We’ll create a source Metabase, create a dashboard, export that dashboard, and import that dashboard into a new Metabase \(our target\). Here’s the plan:
+یک متابیس source ایجاد می‌کنیم، یک داشبورد ایجاد می‌کنیم، آن داشبورد را export می‌کنیم، و آن داشبورد را به یک متابیس جدید (target ما) import می‌کنیم. در اینجا برنامه:
 
-1. [Create a dedicated network called metanet](#step-1---create-a-dedicated-network) .
-2. [Spin up two Metabases: source and target](#step-2---spin-up-two-metabases-source-and-target) .
-3. [Create dashboards and collections in the source Metabase](#step-3---create-dashboards-and-collections-in-the-source-metabase)
-4. [Export the data from the source Metabase](#step-4---export-from-source-metabase) .
-5. [Import the source export into the target Metabase](#step-5---import-into-target-metabase) .
-6. [Verify that our dashboard and collection is loaded in the target Metabase](#step-6---verify-dashboard-and-collection-in-target-metabase) .
+1. [ایجاد یک شبکه اختصاصی به نام metanet](#step-1---create-a-dedicated-network).
+2. [راه‌اندازی دو متابیس: source و target](#step-2---spin-up-two-metabases-source-and-target).
+3. [ایجاد داشبوردها و مجموعه‌ها در متابیس source](#step-3---create-dashboards-and-collections-in-the-source-metabase)
+4. [Export کردن داده از متابیس source](#step-4---export-from-source-metabase).
+5. [Import کردن export source به متابیس target](#step-5---import-into-target-metabase).
+6. [تأیید اینکه داشبورد و مجموعه ما در متابیس target load شده است](#step-6---verify-dashboard-and-collection-in-target-metabase).
 
-## Prerequisites
+## پیش‌نیازها
 
-You’ll need to have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
+نیاز دارید [Docker](https://docs.docker.com/get-docker/) روی ماشین خود نصب داشته باشید.
 
-## Step 1 - Create a dedicated network
+## گام 1 - ایجاد یک شبکه اختصاصی
 
-To create a dedicated network called “metanet”, run the following command from your terminal of choice:
+برای ایجاد یک شبکه اختصاصی به نام "metanet"، دستور زیر را از ترمینال انتخابی خود اجرا کنید:
 
 ```
 docker network create metanet
 
 ```
 
-You can confirm the network was created with:
+می‌توانید ایجاد شبکه را با این تأیید کنید:
 
 ```
 docker network ls
 
 ```
 
-The network will have a local scope and a bridge driver.
+شبکه یک scope محلی و یک driver bridge خواهد داشت.
 
-## Step 2 - Spin up two Metabases: source and target
+## گام 2 - راه‌اندازی دو متابیس: source و target
 
-Spin up two Metabases called `metabase-source` and `metabase-target` \(though you can name these environments whatever you like\). Note that we use `--rm -d` when creating these Docker containers so they both get removed when you stop them and run in the background. Feel free to change those flags to modify that behavior.
+دو متابیس به نام‌های `metabase-source` و `metabase-target` راه‌اندازی کنید (اگرچه می‌توانید این محیط‌ها را هر چه می‌خواهید نام‌گذاری کنید). توجه کنید که از `--rm -d` هنگام ایجاد این containerهای Docker استفاده می‌کنیم تا هر دو وقتی آن‌ها را متوقف می‌کنید حذف شوند و در پس‌زمینه اجرا شوند. آزادانه آن flagها را برای تغییر آن رفتار تغییر دهید.
 
-### Source Metabase
+### متابیس source
 
-Create the Postgres database:
+پایگاه داده Postgres را ایجاد کنید:
 
 ```
 docker run --rm -d --name postgres \
@@ -168,7 +167,7 @@ docker run --rm -d --name postgres \
 
 ```
 
-Create our source Metabase, and connect it to Postgres database we just created:
+متابیس source ما را ایجاد کنید، و آن را به پایگاه داده Postgres که تازه ایجاد کردیم متصل کنید:
 
 ```
 docker run --rm -d --name metabase-source \
@@ -184,25 +183,25 @@ docker run --rm -d --name metabase-source \
 
 ```
 
-You can check the container’s logs to view the container’s progress:
+می‌توانید logهای container را برای مشاهده پیشرفت container بررسی کنید:
 
 ```
 docker logs metabase-source
 
 ```
 
-Once you see the line that contains “Metabase initialization COMPLETE”, you can open a browser to `http://localhost:5001` to view your Metabase instance.
+وقتی خطی که شامل "Metabase initialization COMPLETE" است را می‌بینید، می‌توانید یک مرورگر را به `http://localhost:5001` باز کنید تا instance متابیس خود را مشاهده کنید.
 
-### Target Metabase
+### متابیس target
 
-Setting up a target Metabase is similar. On our metanet network, we’ll set up a Postgres database to serve as our application database, then spin up another Metabase in another Docker container.
+تنظیم یک متابیس target مشابه است. روی شبکه metanet ما، یک پایگاه داده Postgres به عنوان پایگاه داده برنامه خود تنظیم می‌کنیم، سپس متابیس دیگری را در یک container Docker دیگر راه‌اندازی می‌کنیم.
 
-Note the changes to:
+توجه به تغییرات به:
 
-- ports for both Postgres \(5434\) and the Metabase server \(5002\)
-- Instance names: `postgres-target` and `metabase-target`
+- پورت‌ها برای هم Postgres (5434) و هم سرور متابیس (5002)
+- نام‌های instance: `postgres-target` و `metabase-target`
 
-Application database:
+پایگاه داده برنامه:
 
 ```
 docker run --rm -d --name postgres-target \
@@ -213,7 +212,7 @@ docker run --rm -d --name postgres-target \
 
 ```
 
-Metabase instance:
+Instance متابیس:
 
 ```
 docker run --rm -d --name metabase-target \
@@ -229,18 +228,18 @@ docker run --rm -d --name metabase-target \
 
 ```
 
-After our Metabase instances complete their initialization \(patience, this could take a minute or two\), we should now have two Metabases up and running:
+بعد از اینکه instanceهای متابیس ما initialization خود را کامل کردند (صبر کنید، این می‌تواند یک یا دو دقیقه طول بکشد)، باید اکنون دو متابیس راه‌اندازی شده داشته باشیم:
 
-- metabase\-source at `http://localhost:5001`
-- metabase\-target at `http://localhost:5002`
+- metabase-source در `http://localhost:5001`
+- metabase-target در `http://localhost:5002`
 
-### Add users to our source Metabase
+### افزودن کاربران به متابیس source ما
 
-Let’s add one Admin account, and two basic users to our metabase\-source instance.
+بیایید یک حساب Admin، و دو کاربر پایه به instance metabase-source خود اضافه کنیم.
 
-You can [add users to your Metabase manually](../../../../docs/latest/configuring-metabase/setting-up-metabase.html) \(i.e., in the Metabase application\), but here’s a quick bash script that creates an Admin user \(the initial user\) and two basic users:
+می‌توانید [کاربران را به متابیس خود به صورت دستی اضافه کنید](../../../../docs/latest/configuring-metabase/setting-up-metabase.html) (یعنی، در برنامه متابیس)، اما در اینجا یک اسکریپت bash سریع که یک کاربر Admin (کاربر اولیه) و دو کاربر پایه ایجاد می‌کند:
 
-You’ll need to have [jq](https://jqlang.github.io/jq/) installed to handle the JSON in this script.
+نیاز دارید [jq](https://jqlang.github.io/jq/) نصب داشته باشید تا JSON را در این اسکریپت handle کنید.
 
 ```
 #!/bin/sh
@@ -294,55 +293,55 @@ echo -e "\n👥 Basic users created!"
 
 ```
 
-Save the above code as `create_users.sh`, and make it executable:
+کد بالا را به عنوان `create_users.sh` ذخیره کنید، و آن را executable کنید:
 
 ```
 chmod +x create_users.sh
 
 ```
 
-Then run:
+سپس اجرا کنید:
 
 ```
 MB_HOSTNAME=localhost MB_PORT=5001 ./create_users.sh
 
 ```
 
-With your metabase\-source instance up, and your users created, open up `http://localhost:5001` and sign in as the admin user you created. The user ID is `admin@metabase.local` and the password is `Metapass123`.
+با instance metabase-source شما راه‌اندازی شده، و کاربران شما ایجاد شده، `http://localhost:5001` را باز کنید و به عنوان کاربر admin که ایجاد کردید وارد شوید. ID کاربر `admin@metabase.local` و رمز عبور `Metapass123` است.
 
-You should see a fresh instance of Metabase.
+باید یک instance تازه از متابیس ببینید.
 
-![A fresh instance of Metabase.](../../../images/serialization/fresh-metabase.png)
+![یک instance تازه از متابیس.](../../../images/serialization/fresh-metabase.png)
 
-Once you log in, [activate your license key](../../../../docs/latest/installation-and-operation/activating-the-enterprise-edition.html).
+وقتی وارد شدید، [کلید لایسنس خود را فعال کنید](../../../../docs/latest/installation-and-operation/activating-the-enterprise-edition.html).
 
-## Step 3 - Create dashboards and collections in the source Metabase
+## گام 3 - ایجاد داشبوردها و مجموعه‌ها در متابیس source
 
-We’ll need some application data to export, so let’s create some dashboards using the [Sample Database](../../../../glossary/sample-database.html) included with Metabase. Or rather, let’s let Metabase create some dashboards for us!
+نیاز به مقداری داده برنامه برای export داریم، پس بیایید برخی داشبوردها با استفاده از [پایگاه داده نمونه](../../../../glossary/sample-database.html) شامل شده با متابیس ایجاد کنیم. یا بهتر، بگذارید متابیس برخی داشبوردها را برای ما ایجاد کند!
 
-In the `Try These X-Rays Based On Your Data` section, click on the card with a **yellow lightning bolt** that says something like `A look at Products`. Metabase will generate a set of questions for you that you can save as a dashboard.
+در بخش `Try These X-Rays Based On Your Data`، روی کارتی با یک **صاعقه زرد** که چیزی مثل `A look at Products` می‌گوید کلیک کنید. متابیس مجموعه‌ای از سؤال‌ها را برای شما ایجاد می‌کند که می‌توانید به عنوان یک داشبورد ذخیره کنید.
 
-![An X-ray of the Products table in the Sample Database included with Metabase.](../../../images/serialization/x-ray-of-product-table.png)
+![یک X-ray از جدول Products در پایگاه داده نمونه شامل شده با متابیس.](../../../images/serialization/x-ray-of-product-table.png)
 
-Click on the **Save this** button, and Metabase will save the dashboard and its questions in a [collection](../../../../docs/latest/permissions/collections.html) titled something like `A look at Products`.
+روی دکمه **Save this** کلیک کنید، و متابیس داشبورد و سؤال‌های آن را در یک [مجموعه](../../../../docs/latest/permissions/collections.html) با عنوان چیزی مثل `A look at Products` ذخیره می‌کند.
 
-This collection will be saved to a parent collection titled `Automatically Generated Dashboards`. You can find this collection by clicking on the Metabase logo in the upper left of the navigation bar to return to the home screen. From the home page, in the **Our Analytics** section, click on the `Automatically Generated Dashboards` section. From there you should see the collection `A look at your Products table`.
+این مجموعه به یک مجموعه والد با عنوان `Automatically Generated Dashboards` ذخیره می‌شود. می‌توانید این مجموعه را با کلیک روی لوگوی متابیس در بالا سمت چپ نوار navigation برای بازگشت به صفحه اصلی پیدا کنید. از صفحه اصلی، در بخش **Our Analytics**، روی بخش `Automatically Generated Dashboards` کلیک کنید. از آنجا باید مجموعه `A look at your Products table` را ببینید.
 
-![A collection titled A look at your Products table.](../../../images/serialization/products-table-collection.png)
+![یک مجموعه با عنوان A look at your Products table.](../../../images/serialization/products-table-collection.png)
 
-Next, create a new collection. You can call it whatever you like; we’ll use the exciting name `Default collection`, and save it to the **Our Analytics** collection.
+بعد، یک مجموعه جدید ایجاد کنید. می‌توانید آن را هر چه می‌خواهید بنامید؛ ما از نام هیجان‌انگیز `Default collection` استفاده می‌کنیم، و آن را به مجموعه **Our Analytics** ذخیره می‌کنیم.
 
-![Creating a new collection, titled Default Collection.](../../../images/serialization/default-collection.png)
+![ایجاد یک مجموعه جدید، با عنوان Default Collection.](../../../images/serialization/default-collection.png)
 
-Then we’ll move the `A look at Products` collection to our newly created `Default collection`. On the `A look at Products` collection page, click on the ellipses **…** and select **Move**.
+سپس مجموعه `A look at Products` را به مجموعه تازه ایجاد شده `Default collection` خود منتقل می‌کنیم. روی صفحه مجموعه `A look at Products`، روی سه نقطه **…** کلیک کنید و **Move** را انتخاب کنید.
 
-## Step 4 - Export from source Metabase
+## گام 4 - Export از متابیس source
 
-Here’s where we actually start using Metabase’s [serialization](../../../../docs/latest/installation-and-operation/serialization.html) feature.
+اینجا جایی است که واقعاً شروع به استفاده از [ویژگی serialization](../../../../docs/latest/installation-and-operation/serialization.html) متابیس می‌کنیم.
 
-With our `metabase-source` instance set up with some questions, now it’s time to export this data and import it into our `metabase-target`. That way we don’t have to manually recreate our Default Collection in the target Metabase.
+با instance `metabase-source` ما که با برخی سؤال‌ها تنظیم شده است، اکنون زمان export کردن این داده و import کردن آن به `metabase-target` ما است. به این ترتیب مجبور نیستیم مجموعه Default Collection را به صورت دستی در متابیس target دوباره ایجاد کنیم.
 
-Let’s first create a directory in our `/tmp` directory called `metabase_data` to store our export:
+ابتدا یک دایرکتوری در دایرکتوری `/tmp` خود به نام `metabase_data` برای ذخیره export خود ایجاد می‌کنیم:
 
 ```
 cd /tmp
@@ -350,7 +349,7 @@ mkdir metabase_data
 
 ```
 
-Next, we’ll run the export command.
+بعد، دستور export را اجرا می‌کنیم.
 
 ```
 docker run --rm --name metabase-export \
@@ -361,19 +360,19 @@ docker run --rm --name metabase-export \
 
 ```
 
-This command creates a temporary metabase instance called `metabase-export`. This temporary Metabase will connect to the Postgres application database for our source Metabase, and export its application data.
+این دستور یک instance متابیس موقت به نام `metabase-export` ایجاد می‌کند. این متابیس موقت به پایگاه داده برنامه Postgres برای متابیس source ما متصل می‌شود، و داده برنامه آن را export می‌کند.
 
-If all goes well, after a few seconds you should see some output, followed by a message in your terminal that says `serialization.cmd :: Export to '/target' complete! 🚛💨 📦`
+اگر همه چیز خوب پیش برود، بعد از چند ثانیه باید مقداری خروجی ببینید، به دنبال یک پیام در ترمینال شما که می‌گوید `serialization.cmd :: Export to '/target' complete! 🚛💨 📦`
 
-To verify the export, `cd` into your directory: `/tmp/metabase_data`. You should see something like two directories and three YAML files:
+برای تأیید export، `cd` به دایرکتوری خود: `/tmp/metabase_data`. باید چیزی مثل دو دایرکتوری و سه فایل YAML ببینید:
 
 - [`collections/`](#collections)
 - [`databases/`](#databases)
 - [`settings.yaml`](#settings)
 
-### Settings
+### تنظیمات
 
-The settings file contains a number of options that you can configure when setting up a new instance. It’ll look something like:
+فایل تنظیمات شامل تعدادی گزینه است که می‌توانید هنگام تنظیم یک instance جدید پیکربندی کنید. چیزی شبیه این خواهد بود:
 
 ```
 aggregated-query-row-limit: null
@@ -424,15 +423,15 @@ uploads-schema-name: null
 
 ```
 
-### Databases
+### پایگاه‌های داده
 
-This directory contains all of [metadata](../../../../glossary/metadata.html) settings for your connected databases. In this case, we only have the Sample Database included with Metabase.
+این دایرکتوری شامل همه تنظیمات [فراداده](../../../../glossary/metadata.html) برای پایگاه‌های داده متصل شما است. در این مورد، فقط پایگاه داده نمونه شامل شده با متابیس را داریم.
 
-### Collections
+### مجموعه‌ها
 
-In the collections directory are the collections, dashboards, and questions we set up. The `eDuYBjvKEwhFg6QxtBziP_default_collection` directory has sub\-collections and other items. Each item is prefixed with a code to avoid naming collisions.
+در دایرکتوری مجموعه‌ها، مجموعه‌ها، داشبوردها، و سؤال‌هایی که تنظیم کردیم هستند. دایرکتوری `eDuYBjvKEwhFg6QxtBziP_default_collection` مجموعه‌های فرعی و سایر آیتم‌ها را دارد. هر آیتم با یک کد پیشوند شده است تا از collision نام جلوگیری شود.
 
-Here’s a look at a collection yaml file:
+در اینجا نگاهی به یک فایل yaml مجموعه:
 
 ```
 name: Default collection
@@ -453,7 +452,7 @@ serdes/meta:
 
 ```
 
-Here’s a peek at an example question \(called a card\) titled `Products per category`:
+در اینجا نگاهی به یک سؤال نمونه (به نام card) با عنوان `Products per category`:
 
 ```
 ame: Products per Category
@@ -518,32 +517,32 @@ type: question
 
 ```
 
-## Step 5 - Import into target Metabase
+## گام 5 - Import به متابیس target
 
-You’ll need at least one admin account loaded into our target Metabase in order to upload a export. You can login via the app to create that user, or use the script we used above: just remember to change the `MB_PORT` to `5002`, since that’s the port we assigned to our target Metabase. For example, `cd` into the directory where you saved your create\_users.sh script, and run:
+نیاز دارید حداقل یک حساب admin در متابیس target ما load شده باشد تا بتوانید یک export را آپلود کنید. می‌توانید از طریق برنامه وارد شوید تا آن کاربر را ایجاد کنید، یا از اسکریپتی که در بالا استفاده کردیم استفاده کنید: فقط به یاد داشته باشید `MB_PORT` را به `5002` تغییر دهید، چون آن پورتی است که به متابیس target خود اختصاص دادیم. به عنوان مثال، `cd` به دایرکتوری جایی که اسکریپت create\_users.sh خود را ذخیره کردید، و اجرا کنید:
 
 ```
 MB_HOSTNAME=localhost MB_PORT=5002 ./create_users.sh
 
 ```
 
-We can upload all of these settings into the target Metabase, but let’s assume we only want to import our default collection.
+می‌توانیم همه این تنظیمات را به متابیس target آپلود کنیم، اما فرض می‌کنیم فقط می‌خواهیم مجموعه پیش‌فرض خود را import کنیم.
 
-Let’s copy our `/tmp/metabase_data` directory so we can keep the original contents and make changes to the copy.
+بیایید دایرکتوری `/tmp/metabase_data` خود را کپی کنیم تا بتوانیم محتوای اصلی را نگه داریم و تغییراتی به کپی ایجاد کنیم.
 
 ```
 cp -r /tmp/metabase_data /tmp/serialize_import
 
 ```
 
-Since every Metabase instance includes the Sample Database, and we didn’t make any changes to the metadata, let’s delete the `databases` directory. Run:
+چون هر instance متابیس شامل پایگاه داده نمونه است، و هیچ تغییری به فراداده ایجاد نکردیم، بیایید دایرکتوری `databases` را حذف کنیم. اجرا کنید:
 
 ```
 rm -r /tmp/serialize_import/databases
 
 ```
 
-To verify the changes, you can run `diff` to see the changes between the original serialized\_data directory, and the serialized\_load directory you’ll use to import into the target Metabase:
+برای تأیید تغییرات، می‌توانید `diff` را برای دیدن تغییرات بین دایرکتوری serialized\_data اصلی، و دایرکتوری serialized\_load که برای import به متابیس target استفاده خواهید کرد اجرا کنید:
 
 ```
 cd /tmp
@@ -551,16 +550,16 @@ diff -r metabase_data serialize_import
 
 ```
 
-And you should see the following:
+و باید موارد زیر را ببینید:
 
 ```
 Only in metabase_data: databases
 
 ```
 
-Before you import data into your target Metabase, you’ll need to [activate your license](../../../../docs/latest/installation-and-operation/activating-the-enterprise-edition.html).
+قبل از import کردن داده به متابیس target خود، نیاز دارید [لایسنس خود را فعال کنید](../../../../docs/latest/installation-and-operation/activating-the-enterprise-edition.html).
 
-Now, with our `/tmp/serialize_import` directory set, we can run the import command to import the metadata into our target Metabase.
+اکنون، با دایرکتوری `/tmp/serialize_import` ما تنظیم شده، می‌توانیم دستور import را برای import کردن فراداده به متابیس target خود اجرا کنیم.
 
 ```
 docker run --rm --name metabase-export \
@@ -571,50 +570,54 @@ docker run --rm --name metabase-export \
 
 ```
 
-## Step 6 - Verify dashboard and collection in target Metabase
+## گام 6 - تأیید داشبورد و مجموعه در متابیس target
 
-Now, if you log in to the target Metabase at `http://localhost:5002`, you should see our `Default collection` ready to go, containing our `A look at your Products table` collection.
+اکنون، اگر به متابیس target در `http://localhost:5002` وارد شوید، باید مجموعه `Default collection` ما را آماده ببینید، که شامل مجموعه `A look at your Products table` ما است.
 
-And that’s it: you’ve preloaded a fresh instance of Metabase with a collection containing a dashboard full of questions!
+و این تمام است: یک instance تازه از متابیس را با یک مجموعه شامل یک داشبورد پر از سؤال preload کرده‌اید!
 
-## Serialization limitations
+## محدودیت‌های serialization
 
-Just note that serialization dumps do not contain certain data:
+فقط توجه کنید که dumpهای serialization شامل داده‌های خاصی نیستند:
 
-- Permission settings
-- User accounts or settings
-- [Alerts](../../../../docs/latest/questions/alerts.html) on saved questions
-- Personal collections or their contents
+- تنظیمات مجوز
+- حساب‌های کاربری یا تنظیمات
+- [هشدارها](../../../../docs/latest/questions/alerts.html) روی سؤال‌های ذخیره شده
+- مجموعه‌های شخصی یا محتوای آن‌ها
 
-## Serialization via the API
+## Serialization از طریق API
 
-You can also import and export Metabase application data via the API. See [Serializing Metabase via the API](../../../../docs/latest/installation-and-operation/serialization.html#serialization-via-the-api). Exporting and importing via ther API can be useful for instances on Metabase Cloud \(where you don’t have access to the environment\).
+همچنین می‌توانید داده برنامه متابیس را از طریق API import و export کنید. [Serializing متابیس از طریق API](../../../../docs/latest/installation-and-operation/serialization.html#serialization-via-the-api) را ببینید. Export و import از طریق API می‌تواند برای instanceهای روی متابیس کلود (جایی که به محیط دسترسی ندارید) مفید باشد.
 
-## Other use cases for serialization
+## موارد استفاده دیگر برای serialization
 
-Using the serialization feature to export questions and dashboards opens up some cool possibilities, including:
+استفاده از ویژگی serialization برای export کردن سؤال‌ها و داشبوردها برخی امکان‌های جالب را باز می‌کند، از جمله:
 
-- *Adding version control to questions and dashboards* . You can check in the downloaded metadata to a repository, and manage changes to that data via version control software like git.
-- *Setting up a staging environment for Metabase* . You can play around with a staging environment until you’re happy with the changes, then export the metadata, and upload it to a production environment.
+- *افزودن کنترل نسخه به سؤال‌ها و داشبوردها*. می‌توانید فراداده دانلود شده را به یک repository check in کنید، و تغییرات به آن داده را از طریق نرم‌افزار کنترل نسخه مثل git مدیریت کنید.
+- *تنظیم یک محیط staging برای متابیس*. می‌توانید با یک محیط staging بازی کنید تا از تغییرات راضی شوید، سپس فراداده را export کنید، و آن را به یک محیط production آپلود کنید.
 
-Play around with the serialization feature, and let us know how you’re using it on our [on our forum](https://discourse.metabase.com/).
+با ویژگی serialization بازی کنید، و به ما اطلاع دهید چگونه از آن استفاده می‌کنید [در انجمن ما](https://discourse.metabase.com/).
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](multi-env.html)
 [
       
         
         
+
       
       
+        
         
 
       

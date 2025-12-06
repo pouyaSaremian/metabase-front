@@ -1,82 +1,80 @@
 ---
-
-
-title: "Working with the Metabase API"
-description: "An introduction to Metabase's API."
+title: "کار با API متابیس"
+description: "مقدمه‌ای بر API متابیس."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/metabase-api
   - /learn/administration/metabase-api
 toc:
   - id: "working-with-the-metabase-api"
-    title: "Working with the Metabase API"
+    title: "کار با API متابیس"
     level: 1
     href: "#working-with-the-metabase-api"
   - id: "api-reference"
-    title: "API reference"
+    title: "مرجع API"
     level: 2
     href: "#api-reference"
   - id: "warning-the-metabase-api-can-change"
-    title: "Warning: the Metabase API can change"
+    title: "هشدار: API متابیس می‌تواند تغییر کند"
     level: 2
     href: "#warning-the-metabase-api-can-change"
   - id: "getting-started-with-the-metabase-api"
-    title: "Getting started with the Metabase API"
+    title: "شروع کار با API متابیس"
     level: 2
     href: "#getting-started-with-the-metabase-api"
   - id: "create-an-api-key"
-    title: "Create an API key"
+    title: "ایجاد یک کلید API"
     level: 2
     href: "#create-an-api-key"
   - id: "example-get-request"
-    title: "Example GET request"
+    title: "مثال درخواست GET"
     level: 2
     href: "#example-get-request"
   - id: "example-post-request"
-    title: "Example POST request"
+    title: "مثال درخواست POST"
     level: 2
     href: "#example-post-request"
   - id: "see-metabase-s-requests-and-responses"
-    title: "See Metabase’s requests and responses"
+    title: "دیدن درخواست‌ها و پاسخ‌های متابیس"
     level: 2
     href: "#see-metabase-s-requests-and-responses"
   - id: "experiment-in-live-api-docs"
-    title: "Experiment in live API docs"
+    title: "آزمایش در مستندات API زنده"
     level: 3
     href: "#experiment-in-live-api-docs"
   - id: "use-developer-tools"
-    title: "Use developer tools"
+    title: "استفاده از ابزارهای توسعه‌دهنده"
     level: 3
     href: "#use-developer-tools"
   - id: "a-few-things-you-can-do-with-the-metabase-api"
-    title: "A few things you can do with the Metabase API"
+    title: "چند کاری که می‌توانید با API متابیس انجام دهید"
     level: 2
     href: "#a-few-things-you-can-do-with-the-metabase-api"
   - id: "provision-a-metabase-instance"
-    title: "Provision a Metabase instance"
+    title: "Provision کردن یک instance متابیس"
     level: 3
     href: "#provision-a-metabase-instance"
   - id: "add-a-data-source"
-    title: "Add a data source"
+    title: "افزودن یک منبع داده"
     level: 3
     href: "#add-a-data-source"
   - id: "set-up-users-groups-and-permissions"
-    title: "Set up users, groups, and permissions"
+    title: "تنظیم کاربران، گروه‌ها، و مجوزها"
     level: 3
     href: "#set-up-users-groups-and-permissions"
   - id: "generate-reports"
-    title: "Generate reports"
+    title: "تولید گزارش‌ها"
     level: 3
     href: "#generate-reports"
   - id: "useful-endpoints"
-    title: "Useful endpoints"
+    title: "endpointهای مفید"
     level: 2
     href: "#useful-endpoints"
   - id: "running-custom-queries"
-    title: "Running Custom Queries"
+    title: "اجرای پرس‌وجوهای سفارشی"
     level: 2
     href: "#running-custom-queries"
   - id: "examples-in-python-r-and-javascript"
-    title: "Examples in Python, R, and JavaScript"
+    title: "مثال‌ها در Python، R، و JavaScript"
     level: 2
     href: "#examples-in-python-r-and-javascript"
   - id: "python"
@@ -84,58 +82,58 @@ toc:
     level: 3
     href: "#python"
   - id: "r-with-the-tidyverse"
-    title: "R with the Tidyverse"
+    title: "R با Tidyverse"
     level: 3
     href: "#r-with-the-tidyverse"
   - id: "javascript-on-node-js"
-    title: "JavaScript on Node.js"
+    title: "JavaScript روی Node.js"
     level: 3
     href: "#javascript-on-node-js"
   - id: "authenticate-your-requests-with-a-session-token"
-    title: "Authenticate your requests with a session token"
+    title: "احراز هویت درخواست‌های خود با یک token session"
     level: 2
     href: "#authenticate-your-requests-with-a-session-token"
   - id: "have-fun"
-    title: "Have fun"
+    title: "لذت ببرید"
     level: 2
     href: "#have-fun"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# Working with the Metabase API
+# کار با API متابیس
 
-An introduction to Metabase's API.
+مقدمه‌ای بر API متابیس.
 
-This article explains how to automate tasks using [Metabase’s API](../../../../docs/latest/api.html). We use that API ourselves to connect the front end and the back end, so you can script almost everything that Metabase can do.
+این مقاله نحوه خودکار کردن کارها با استفاده از [API متابیس](../../../../docs/latest/api.html) را توضیح می‌دهد. ما خودمان از آن API برای اتصال front end و back end استفاده می‌کنیم، پس می‌توانید تقریباً همه چیز را که متابیس می‌تواند انجام دهد script کنید.
 
-## API reference
+## مرجع API
 
-You can find Metabase API reference [in our docs](../../../../docs/latest/api.html). You can also view live OpenAPI docs in your own running Metabase at `/api/docs`. So if your Metabase is at `https://www.your-metabase.com` you could access them at `https://www.your-metabase.com/api/docs`.
+می‌توانید مرجع API متابیس را [در مستندات ما](../../../../docs/latest/api.html) پیدا کنید. همچنین می‌توانید مستندات OpenAPI زنده را در متابیس در حال اجرای خود در `/api/docs` مشاهده کنید. پس اگر متابیس شما در `https://www.your-metabase.com` است می‌توانید به آن‌ها در `https://www.your-metabase.com/api/docs` دسترسی داشته باشید.
 
-## Warning: the Metabase API can change
+## هشدار: API متابیس می‌تواند تغییر کند
 
-- **The API is subject to change** . We rarely change API endpoints, and almost never remove them, but if you write code that relies on the API, there’s a chance you might have to update your code in the future.
-- **The API isn’t versioned** . So don’t expect to stay on a particular version of Metabase in order to use a “stable” API.
+- **API ممکن است تغییر کند**. ما به ندرت endpointهای API را تغییر می‌دهیم، و تقریباً هرگز آن‌ها را حذف نمی‌کنیم، اما اگر کدی بنویسید که به API تکیه دارد، احتمال دارد در آینده نیاز به به‌روزرسانی کد خود داشته باشید.
+- **API versioned نیست**. پس انتظار نداشته باشید روی یک نسخه خاص متابیس بمانید تا از یک API "پایدار" استفاده کنید.
 
-For API changes, check out the Developer guide’s [API changelog](../../../../docs/latest/developers-guide/api-changelog.html).
+برای تغییرات API، [changelog API](../../../../docs/latest/developers-guide/api-changelog.html) راهنمای توسعه‌دهنده را بررسی کنید.
 
-## Getting started with the Metabase API
+## شروع کار با API متابیس
 
-To keep things simple, we’ll use the venerable command line utility [curl](https://curl.haxx.se/docs/) for our API call examples; you could also consider a dedicated tool for developing API requests \(like [Postman](https://www.postman.com/)\). To follow along, you can [spin up a fresh Metabase on localhost](../../../../start/oss/jar.html) and play around.
+برای ساده نگه داشتن، از ابزار خط فرمان venerable [curl](https://curl.haxx.se/docs/) برای مثال‌های فراخوانی API استفاده می‌کنیم؛ همچنین می‌توانید یک ابزار اختصاصی برای توسعه درخواست‌های API (مثل [Postman](https://www.postman.com/)) را در نظر بگیرید. برای دنبال کردن، می‌توانید [یک متابیس تازه روی localhost راه‌اندازی کنید](../../../../start/oss/jar.html) و بازی کنید.
 
-## Create an API key
+## ایجاد یک کلید API
 
-To use the API, create an [API key](../../../../docs/latest/people-and-groups/api-keys.html).
+برای استفاده از API، یک [کلید API](../../../../docs/latest/people-and-groups/api-keys.html) ایجاد کنید.
 
-## Example GET request
+## مثال درخواست GET
 
-Here’s an example API request that hits the [`/api/permissions/group`](../../../../docs/latest/api.html#tag/apipermissions) endpoint, which returns the permission groups you have set up in your Metabase. Replace `YOUR_API_KEY` with your API key:
+در اینجا یک مثال درخواست API که endpoint [`/api/permissions/group`](../../../../docs/latest/api.html#tag/apipermissions) را hit می‌کند، که گروه‌های مجوزی که در متابیس خود تنظیم کرده‌اید را برمی‌گرداند. `YOUR_API_KEY` را با کلید API خود جایگزین کنید:
 
 ```
 curl \
@@ -144,7 +142,7 @@ curl \
 
 ```
 
-The above request returns an array of JSON objects for the groups in your Metabase \(formatted for readability\):
+درخواست بالا یک آرایه از اشیاء JSON برای گروه‌ها در متابیس شما برمی‌گرداند (فرمت شده برای خوانایی):
 
 ```
 [
@@ -162,23 +160,23 @@ The above request returns an array of JSON objects for the groups in your Metaba
 
 ```
 
-## Example POST request
+## مثال درخواست POST
 
-You can also use a file to store the JSON payload for a POST request. This makes it easy to have a pre\-defined set of requests you want to make to the API.
+همچنین می‌توانید از یک فایل برای ذخیره payload JSON برای یک درخواست POST استفاده کنید. این داشتن مجموعه از پیش تعریف شده درخواست‌هایی که می‌خواهید به API بدهید را آسان می‌کند.
 
 ```
 curl -H @header_file.txt -d @payload.json http://localhost/api/card
 
 ```
 
-Here’s the `header_file.text` in the above command:
+در اینجا `header_file.text` در دستور بالا:
 
 ```txt
 x-api-key: YOUR_API_KEY
 
 ```
 
-Here’s an example of a JSON file \(the `@payload.json` in the command above\) that creates a question:
+در اینجا یک مثال از یک فایل JSON (`@payload.json` در دستور بالا) که یک سؤال ایجاد می‌کند:
 
 ```
 {
@@ -204,47 +202,47 @@ Here’s an example of a JSON file \(the `@payload.json` in the command above\) 
 
 ```
 
-That request generated the question:
+آن درخواست سؤال را ایجاد کرد:
 
-![A question in Metabase generated by the API: a list of the Orders table in the Sample Database](../../../images/metabase-api/api-generated-question.png)
+![یک سؤال در متابیس ایجاد شده توسط API: لیستی از جدول Orders در پایگاه داده نمونه](../../../images/metabase-api/api-generated-question.png)
 
-## See Metabase’s requests and responses
+## دیدن درخواست‌ها و پاسخ‌های متابیس
 
-### Experiment in live API docs
+### آزمایش در مستندات API زنده
 
-You can view live OpenAPI docs, served via [RapiDoc](https://rapidocweb.com/), from your running Metabase at `/api/docs`. So if your Metabase is at `https://www.your-metabase.com` you could access them at `https://www.your-metabase.com/api/docs`.
+می‌توانید مستندات OpenAPI زنده، سرو شده از طریق [RapiDoc](https://rapidocweb.com/)، از متابیس در حال اجرای خود در `/api/docs` مشاهده کنید. پس اگر متابیس شما در `https://www.your-metabase.com` است می‌توانید به آن‌ها در `https://www.your-metabase.com/api/docs` دسترسی داشته باشید.
 
-In live docs, you can experiment with sending requests and see example responses:
+در مستندات زنده، می‌توانید با ارسال درخواست‌ها آزمایش کنید و پاسخ‌های نمونه ببینید:
 
-![Example of an API response in live docs](../../../images/metabase-api/live-docs.png)
+![مثال یک پاسخ API در مستندات زنده](../../../images/metabase-api/live-docs.png)
 
-### Use developer tools
+### استفاده از ابزارهای توسعه‌دهنده
 
-If the auto\-generated API docs are unclear, you can use the developer tools that ship with browsers like Firefox, Chrome, and Edge to view Metabase’s requests and responses.
+اگر مستندات API auto-generated واضح نیستند، می‌توانید از ابزارهای توسعه‌دهنده که با مرورگرهایی مثل Firefox، Chrome، و Edge ship می‌شوند برای مشاهده درخواست‌ها و پاسخ‌های متابیس استفاده کنید.
 
-![Using Firefox](../../../images/metabase-api/firefox-network-json.png)
+![استفاده از Firefox](../../../images/metabase-api/firefox-network-json.png)
 
-In the Metabase application, perform the action that you’d like to script, such as adding a user or creating a dashboard. Then use the developer tools in your browser to view the request Metabase made to the server when you performed that action.
+در برنامه متابیس، عملی که می‌خواهید script کنید را انجام دهید، مثل افزودن یک کاربر یا ایجاد یک داشبورد. سپس از ابزارهای توسعه‌دهنده در مرورگر خود برای مشاهده درخواستی که متابیس به سرور داد وقتی آن عمل را انجام دادید استفاده کنید.
 
-## A few things you can do with the Metabase API
+## چند کاری که می‌توانید با API متابیس انجام دهید
 
-### Provision a Metabase instance
+### Provision کردن یک instance متابیس
 
-In addition to using [environment variables](../../../../docs/latest/configuring-metabase/environment-variables.html), you can use the Metabase API to setup an instance of Metabase. Once you have installed Metabase using your [preferred method](../../../../pricing/index.html), and the Metabase server is up and running, you can create the first user \(as an Admin\) by posting to a special endpoint, [/api/setup](../../../../docs/latest/api.html#tag/apisetup). This `/api/setup` endpoint:
+علاوه بر استفاده از [متغیرهای محیطی](../../../../docs/latest/configuring-metabase/environment-variables.html)، می‌توانید از API متابیس برای راه‌اندازی یک instance متابیس استفاده کنید. وقتی متابیس را با [روش ترجیحی](../../../../pricing/index.html) خود نصب کردید، و سرور متابیس راه‌اندازی و در حال اجرا است، می‌توانید اولین کاربر (به عنوان Admin) را با posting به یک endpoint خاص، [/api/setup](../../../../docs/latest/api.html#tag/apisetup) ایجاد کنید. این endpoint `/api/setup`:
 
-- Creates the first user as an Admin \(superuser\).
-- Logs them in.
-- Returns a session ID.
+- اولین کاربر را به عنوان Admin (superuser) ایجاد می‌کند.
+- آن‌ها را وارد می‌کند.
+- یک session ID برمی‌گرداند.
 
-You can then configure settings using the [`/api/settings`](../../../../docs/latest/api.html#tag/apisetting) endpoint, set up email using the [`/api/email`](../../../../docs/latest/api.html#tag/apiemail) endpoint, and use the [`/api/setup/admin_checklist`](../../../../docs/latest/api.html#tag/apisetup) endpoint to verify your setup progress.
+سپس می‌توانید تنظیمات را با endpoint [`/api/settings`](../../../../docs/latest/api.html#tag/apisetting) پیکربندی کنید، ایمیل را با endpoint [`/api/email`](../../../../docs/latest/api.html#tag/apiemail) تنظیم کنید، و از endpoint [`/api/setup/admin_checklist`](../../../../docs/latest/api.html#tag/apisetup) برای تأیید پیشرفت راه‌اندازی خود استفاده کنید.
 
-![Admin checklist for setting up Metabase to make the most of your application.](../../../images/metabase-api/admin-checklist.png)
+![چک‌لیست Admin برای راه‌اندازی متابیس برای بهره‌برداری حداکثری از برنامه خود.](../../../images/metabase-api/admin-checklist.png)
 
-### Add a data source
+### افزودن یک منبع داده
 
-You can add a new database using the [`POST /api/database/`](../../../../docs/latest/api.html#tag/apidatabase/post/api/database/) endpoint, and validate that database’s connection details using the [`/api/database/validate/`](../../../../docs/latest/api.html#tag/apidatabase/post/api/database/validate) endpoint. Once you’ve connected the database to your Metabase instance, you can rescan the database and update the schema metadata. You can even add our trusty [Sample Database](../../../../glossary/sample-database.html) as a new database to your instance with [`POST /api/database/sample_database`](../../../../docs/latest/api.html#tag/apidatabase/post/api/database/sample_database).
+می‌توانید یک پایگاه داده جدید با استفاده از endpoint [`POST /api/database/`](../../../../docs/latest/api.html#tag/apidatabase/post/api/database/) اضافه کنید، و جزئیات اتصال آن پایگاه داده را با استفاده از endpoint [`/api/database/validate/`](../../../../docs/latest/api.html#tag/apidatabase/post/api/database/validate) validate کنید. وقتی پایگاه داده را به instance متابیس خود متصل کردید، می‌توانید پایگاه داده را rescan کنید و فراداده schema را به‌روزرسانی کنید. حتی می‌توانید [پایگاه داده نمونه](../../../../glossary/sample-database.html) قابل اعتماد ما را به عنوان یک پایگاه داده جدید به instance خود با [`POST /api/database/sample_database`](../../../../docs/latest/api.html#tag/apidatabase/post/api/database/sample_database) اضافه کنید.
 
-Here’s an example database creation call for a [Redshift](https://aws.amazon.com/redshift/) database.
+در اینجا یک مثال فراخوانی ایجاد پایگاه داده برای یک پایگاه داده [Redshift](https://aws.amazon.com/redshift/).
 
 ```
 curl -s -X POST \
@@ -265,9 +263,9 @@ curl -s -X POST \
 
 ```
 
-### Set up users, groups, and permissions
+### تنظیم کاربران، گروه‌ها، و مجوزها
 
-You can use the [`/api/user`](../../../../docs/latest/api.html#tag/apiuser) endpoints to create, update, and disable users, or the [`/api/permissions`](../../../../docs/latest/api.html#tag/apipermissions) endpoints to set up groups or [add users to them](../../../../docs/latest/api.html#tag/apipermissions). Here’s an example curl command to create a user:
+می‌توانید از endpointهای [`/api/user`](../../../../docs/latest/api.html#tag/apiuser) برای ایجاد، به‌روزرسانی، و غیرفعال کردن کاربران، یا endpointهای [`/api/permissions`](../../../../docs/latest/api.html#tag/apipermissions) برای تنظیم گروه‌ها یا [افزودن کاربران به آن‌ها](../../../../docs/latest/api.html#tag/apipermissions) استفاده کنید. در اینجا یک مثال دستور curl برای ایجاد یک کاربر:
 
 ```
 curl -s "http://localhost:3000/api/user" \
@@ -282,61 +280,63 @@ curl -s "http://localhost:3000/api/user" \
 
 ```
 
-### Generate reports
+### تولید گزارش‌ها
 
-In Metabase, “reports” are referred to as [dashboards](../../../../docs/latest/dashboards/introduction.html). You can interact with dashboards using the [`/api/dashboard`](../../../../docs/latest/api.html#tag/apidashboard) endpoint. You can [create a new dashboard](../../../../docs/latest/dashboards/introduction.html#how-to-create-a-dashboard) with [`POST /api/dashboard/`](../../../../docs/latest/api.html#tag/apidashboard), and [add a saved question to a dashboard](../../../../docs/latest/dashboards/introduction.html#adding-or-saving-questions-to-a-dashboard) with \[`POST/api/dashboard/:id/cards`\].
+در متابیس، "گزارش‌ها" به عنوان [داشبوردها](../../../../docs/latest/dashboards/introduction.html) نامیده می‌شوند. می‌توانید با داشبوردها با استفاده از endpoint [`/api/dashboard`](../../../../docs/latest/api.html#tag/apidashboard) تعامل کنید. می‌توانید [یک داشبورد جدید ایجاد کنید](../../../../docs/latest/dashboards/introduction.html#how-to-create-a-dashboard) با [`POST /api/dashboard/`](../../../../docs/latest/api.html#tag/apidashboard)، و [یک سؤال ذخیره شده را به یک داشبورد اضافه کنید](../../../../docs/latest/dashboards/introduction.html#adding-or-saving-questions-to-a-dashboard) با \[`POST/api/dashboard/:id/cards`\].
 
-## Useful endpoints
+## endpointهای مفید
 
-The links in the Endpoint column below will take you to you to the first action available for that endpoint, which alphabetically is usually the DELETE action. You can scroll down in the API documentation to see the full list of actions and URLs for that endpoint, and view descriptions of each.
+لینک‌ها در ستون Endpoint زیر شما را به اولین action در دسترس برای آن endpoint می‌برند، که به ترتیب حروف الفبا معمولاً action DELETE است. می‌توانید در مستندات API پایین بروید تا لیست کامل actions و URLها برای آن endpoint را ببینید، و توضیحات هر کدام را مشاهده کنید.
 
-| Domain | Description | Endpoint |
+| دامنه | توضیحات | Endpoint |
 | --- | --- | --- |
-| Collections | Collections are a great way to organize your dashboards, saved questions, and pulses. | /api/collection |
-| Dashboards | Dashboards are reports that comprise a set of questions and text cards. | /api/dashboard |
-| Databases | Fetch databases, fields, schemas, primary (entity) keys, lists of tables, and more. | /api/database |
-| Email | Update emails settings and send test emails. | /api/email |
-| Embedding | Use signed JWTs to fetch info on embedded cards and dashboards. | /api/embed |
-| Permissions | Metabase manages permissions to databases and collections with groups. Create permission groups, add and remove users to groups, retrieve a graph of all permissions groups, and more. | /api/permissions |
-| Search | Search cards (questions), dashboards, collections and pulses for a substring. | /api/search |
-| Segments | Segments are named sets of filters (like “Active Users”). Create and update segments, revert to previous versions, and more. | /api/segment |
-| Sessions | Reset passwords with tokens, login with Google Auth, send password reset emails, and more. | /api/sessions |
-| Settings | Create/update global application settings. | /api/setting |
-| Queries | Use the API to execute queries and return their results in a specified format. | /api/dataset |
-| Questions | Questions (known as cards in the API) are queries and their visualized results. | /api/card |
+| Collections | مجموعه‌ها راهی عالی برای سازماندهی داشبوردها، سؤال‌های ذخیره شده، و pulseهای شما هستند. | /api/collection |
+| Dashboards | داشبوردها گزارش‌هایی هستند که شامل مجموعه‌ای از سؤال‌ها و کارت‌های متنی هستند. | /api/dashboard |
+| Databases | پایگاه‌های داده، فیلدها، schemaها، کلیدهای اولیه (entity)، لیست جداول، و بیشتر را fetch کنید. | /api/database |
+| Email | تنظیمات ایمیل را به‌روزرسانی کنید و ایمیل‌های تست ارسال کنید. | /api/email |
+| Embedding | از JWTs امضا شده برای fetch کردن اطلاعات روی کارت‌ها و داشبوردهای جاسازی شده استفاده کنید. | /api/embed |
+| Permissions | متابیس مجوزها به پایگاه‌های داده و مجموعه‌ها را با گروه‌ها مدیریت می‌کند. گروه‌های مجوز ایجاد کنید، کاربران را به گروه‌ها اضافه و حذف کنید، یک graph از همه گروه‌های مجوز را retrieve کنید، و بیشتر. | /api/permissions |
+| Search | کارت‌ها (سؤال‌ها)، داشبوردها، مجموعه‌ها و pulseها را برای یک substring جستجو کنید. | /api/search |
+| Segments | بخش‌ها مجموعه‌های نام‌گذاری شده از فیلترها هستند (مثل "کاربران فعال"). بخش‌ها ایجاد و به‌روزرسانی کنید، به نسخه‌های قبلی revert کنید، و بیشتر. | /api/segment |
+| Sessions | رمزهای عبور را با tokenها reset کنید، با Google Auth وارد شوید، ایمیل‌های reset رمز عبور ارسال کنید، و بیشتر. | /api/sessions |
+| Settings | تنظیمات برنامه global ایجاد/به‌روزرسانی کنید. | /api/setting |
+| Queries | از API برای اجرای پرس‌وجوها و برگرداندن نتایج آن‌ها در یک فرمت مشخص استفاده کنید. | /api/dataset |
+| Questions | سؤال‌ها (معروف به cardها در API) پرس‌وجوها و نتایج visualized آن‌ها هستند. | /api/card |
 
-There are some other cool endpoints to check out, like [`api/database/:virtual-db/metadata`](../../../../docs/latest/api.html#tag/apidatabase), which is used to “fool” the frontend so that it can treat saved questions as if they were tables in a virtual database. This is how Metabase lets you use Saved Questions as if they were data sources.
+endpointهای جالب دیگری برای بررسی وجود دارند، مثل [`api/database/:virtual-db/metadata`](../../../../docs/latest/api.html#tag/apidatabase)، که برای "فریب دادن" frontend استفاده می‌شود تا بتواند سؤال‌های ذخیره شده را گویی که جداول در یک پایگاه داده مجازی بودند treat کند. این نحوه‌ای است که متابیس به شما اجازه می‌دهد از سؤال‌های ذخیره شده گویی که منابع داده بودند استفاده کنید.
 
-The documentation contains [a complete list of API endpoints](../../../../docs/latest/api.html) along with documentation for each endpoint, so dig around and see what other cool endpoints you can find.
+مستندات شامل [لیست کامل endpointهای API](../../../../docs/latest/api.html) به همراه مستندات برای هر endpoint است، پس کاوش کنید و ببینید چه endpointهای جالب دیگری می‌توانید پیدا کنید.
 
-The endpoint reference is periodically updated with new versions of Metabase. You can also generate the reference by running:
+مرجع endpoint به طور دوره‌ای با نسخه‌های جدید متابیس به‌روزرسانی می‌شود. همچنین می‌توانید مرجع را با اجرای:
 
 ```
 java -jar metabase.jar api
 
 ```
 
-## Running Custom Queries
+تولید کنید.
 
-Queries written with the [query builder](../../../../docs/latest/questions/introduction.html) are saved in our custom JSON\-based query language, MBQL.
+## اجرای پرس‌وجوهای سفارشی
 
-To familiarize yourself with MBQL, we recommend using the Metabase application to create a question using the [query builder](../../../../docs/latest/questions/introduction.html)\), then use your browser’s developer tools to see how Metabase formatted the request body with the query.
+پرس‌وجوهای نوشته شده با [سازنده کوئری](../../../../docs/latest/questions/introduction.html) در زبان پرس‌وجوی سفارشی مبتنی بر JSON ما، MBQL ذخیره می‌شوند.
 
-## Examples in Python, R, and JavaScript
+برای آشنا شدن با MBQL، توصیه می‌کنیم از برنامه متابیس برای ایجاد یک سؤال با استفاده از [سازنده کوئری](../../../../docs/latest/questions/introduction.html)\) استفاده کنید، سپس از ابزارهای توسعه‌دهنده مرورگر خود برای دیدن نحوه فرمت کردن request body با پرس‌وجو توسط متابیس استفاده کنید.
 
-Curl is a handy tool for exploring APIs, but if you’re integrating Metabase into a large data ecosystem, you will probably use something else. To show how you can access the API with Python, R, and Node.js, let’s create two questions. The first finds the average pre\-tax value of orders over $100 grouped by category. It is shared publicly—[this tutorial](../../embedding/charts-and-dashboards.html) explains how to do that.
+## مثال‌ها در Python، R، و JavaScript
 
-![The notebook of a public question calculating the average value of orders over $100 by product category.](../../../images/metabase-api/public-question.png)
+Curl یک ابزار مفید برای کاوش APIها است، اما اگر متابیس را در یک اکوسیستم داده بزرگ یکپارچه می‌کنید، احتمالاً از چیز دیگری استفاده خواهید کرد. برای نشان دادن نحوه دسترسی به API با Python، R، و Node.js، بیایید دو سؤال ایجاد کنیم. اولی میانگین ارزش pre-tax سفارشات بالای 100 دلار گروه‌بندی شده بر اساس دسته را پیدا می‌کند. به صورت عمومی به اشتراک گذاشته شده است—[این آموزش](../../embedding/charts-and-dashboards.html) نحوه انجام آن را توضیح می‌دهد.
 
-The second question counts the number of people in the database. It is *not* shared: we have included it to show how to distinguish shared from unshared questions.
+![نوت‌بوک یک سؤال عمومی که میانگین ارزش سفارشات بالای 100 دلار بر اساس دسته محصول محاسبه می‌کند.](../../../images/metabase-api/public-question.png)
 
-![The notebook of a non-public question calculating the number of people in the database.](../../../images/metabase-api/non-public-question.png)
+سؤال دوم تعداد مردم در پایگاه داده را می‌شمارد. *به اشتراک گذاشته نشده* است: آن را شامل کردیم تا نشان دهیم چگونه سؤال‌های به اشتراک گذاشته شده را از به اشتراک گذاشته نشده متمایز کنیم.
+
+![نوت‌بوک یک سؤال غیرعمومی که تعداد مردم در پایگاه داده را محاسبه می‌کند.](../../../images/metabase-api/non-public-question.png)
 
 ### Python
 
-Our first example is written in Python. Like most data science programs it uses the [requests](https://pypi.org/project/requests/) library to send HTTP requests and [Pandas](https://pandas.pydata.org/) to manage tabular data, so we start by importing those libraries.
+اولین مثال ما در Python نوشته شده است. مثل بیشتر برنامه‌های علم داده از کتابخانه [requests](https://pypi.org/project/requests/) برای ارسال درخواست‌های HTTP و [Pandas](https://pandas.pydata.org/) برای مدیریت داده جدولی استفاده می‌کند، پس با import کردن آن کتابخانه‌ها شروع می‌کنیم.
 
-Let’s ask Metabase which questions have public IDs, i.e., which ones have been shared so that we can invoke them remotely. When we ask for all cards, we get a list with some information about all of the questions; only the ones with a `public_uuid` field are callable:
+بیایید از متابیس بپرسیم کدام سؤال‌ها ID عمومی دارند، یعنی کدام‌ها به اشتراک گذاشته شده‌اند تا بتوانیم آن‌ها را از راه دور invoke کنیم. وقتی برای همه cardها می‌پرسیم، لیستی با برخی اطلاعات درباره همه سؤال‌ها دریافت می‌کنیم؛ فقط آن‌هایی که فیلد `public_uuid` دارند قابل فراخوانی هستند:
 
 ```
 import requests
@@ -350,14 +350,14 @@ print(f'{len(questions)} public of {len(response)} questions')
 
 ```
 
-In our case, the output tells us that there are two questions, but only one is public:
+در مورد ما، خروجی به ما می‌گوید که دو سؤال وجود دارد، اما فقط یکی عمومی است:
 
 ```
 1 public of 2 questions
 
 ```
 
-Let’s get some information about that public question and print its title:
+بیایید اطلاعاتی درباره آن سؤال عمومی دریافت کنیم و عنوان آن را چاپ کنیم:
 
 ```
 uuid = questions[0]['public_uuid']
@@ -372,7 +372,7 @@ First title: Average value of orders over $100 grouped by category
 
 ```
 
-Finally, we can pull down data from the first question in the list. The `'data'` key in the JSON response has a lot of information; what we’re most interested in are the values under the sub\-key `'rows'`, which stores the result table in the usual list\-of\-lists form. Let’s convert that to a Pandas dataframe and print it:
+در نهایت، می‌توانیم داده را از اولین سؤال در لیست pull down کنیم. کلید `'data'` در پاسخ JSON اطلاعات زیادی دارد؛ آنچه بیشتر به آن علاقه‌مندیم مقادیر زیر کلید فرعی `'rows'` است، که جدول نتیجه را در فرم معمول list-of-lists ذخیره می‌کند. بیایید آن را به یک dataframe Pandas تبدیل کنیم و چاپ کنیم:
 
 ```
 response = requests.get(f'http://localhost:3000/api/public/card/{uuid}/query',
@@ -394,9 +394,9 @@ First data
 
 ```
 
-### R with the Tidyverse
+### R با Tidyverse
 
-The R version of our example has the same structure as the Python version. Like most data scientists we use the [tidyverse](https://www.tidyverse.org/) family of libraries, so let’s load those along with [`httr`](https://cran.r-project.org/web/packages/httr/) for managing HTTP requests, [`jsonlite`](https://cran.r-project.org/web/packages/jsonlite/) for parsing JSON, and [`glue`](https://cran.r-project.org/web/packages/glue/) for string formatting:
+نسخه R مثال ما همان ساختار نسخه Python را دارد. مثل بیشتر دانشمندان داده از خانواده کتابخانه‌های [tidyverse](https://www.tidyverse.org/) استفاده می‌کنیم، پس بیایید آن‌ها را به همراه [`httr`](https://cran.r-project.org/web/packages/httr/) برای مدیریت درخواست‌های HTTP، [`jsonlite`](https://cran.r-project.org/web/packages/jsonlite/) برای parse کردن JSON، و [`glue`](https://cran.r-project.org/web/packages/glue/) برای فرمت کردن رشته load کنیم:
 
 ```
 library(tidyverse)
@@ -406,14 +406,14 @@ library(glue)
 
 ```
 
-We put our API key in the headers.
+کلید API خود را در headerها قرار می‌دهیم.
 
 ```
 headers <- add_headers('x-api-key' = YOUR_API_KEY)
 
 ```
 
-We then get information about all of the questions and ask which ones are public:
+سپس اطلاعات درباره همه سؤال‌ها را دریافت می‌کنیم و می‌پرسیم کدام‌ها عمومی هستند:
 
 ```
 data <- GET('http://localhost:3000/api/card', headers) %>%
@@ -434,7 +434,7 @@ glue('{num_public} public of {num_questions} questions')
 
 ```
 
-Displaying the title of the first public card gives the same result as it did with Python, which is reassuring:
+نمایش عنوان اولین card عمومی همان نتیجه Python را می‌دهد، که اطمینان‌بخش است:
 
 ```
 uuid <- data %>%
@@ -454,7 +454,7 @@ First title: Average value of orders over $100 grouped by category
 
 ```
 
-And the data associated with that card is the same as well once we convert it to a tibble, though R’s default display doesn’t give us as many decimal places:
+و داده مرتبط با آن card نیز همان است وقتی آن را به یک tibble تبدیل می‌کنیم، اگرچه نمایش پیش‌فرض R به ما مکان‌های اعشاری زیادی نمی‌دهد:
 
 ```
 data <- glue('http://localhost:3000/api/public/card/{uuid}/query') %>%
@@ -482,9 +482,9 @@ First data
 
 ```
 
-### JavaScript on Node.js
+### JavaScript روی Node.js
 
-JavaScript is an increasingly popular language for server\-side scripting, but unlike Python and R, JavaScript lacks a single predominant library for data tables. For large projects we are fond of [`data-forge`](https://www.data-forge-js.com/), but for small examples we stick to [Dataframe\-js](https://gmousse.gitbooks.io/dataframe-js/). We also use [`got`](https://www.npmjs.com/package/got) for HTTP requests instead of the older [`request`](https://www.npmjs.com/package/request) package, as the latter has now been deprecated. Finally, since we find `async`/`await` syntax a lot easier to read than promises or callbacks, we put all of our code in an `async` function that we then call immediately:
+JavaScript یک زبان به طور فزاینده محبوب برای script نویسی سمت سرور است، اما برخلاف Python و R، JavaScript فاقد یک کتابخانه غالب واحد برای جداول داده است. برای پروژه‌های بزرگ ما از [`data-forge`](https://www.data-forge-js.com/) خوشمان می‌آید، اما برای مثال‌های کوچک به [Dataframe-js](https://gmousse.gitbooks.io/dataframe-js/) می‌چسبیم. همچنین از [`got`](https://www.npmjs.com/package/got) برای درخواست‌های HTTP به جای بسته قدیمی‌تر [`request`](https://www.npmjs.com/package/request) استفاده می‌کنیم، چون دومی اکنون deprecated شده است. در نهایت، چون syntax `async`/`await` را خیلی آسان‌تر از promiseها یا callbackها برای خواندن می‌یابیم، همه کد خود را در یک تابع `async` قرار می‌دهیم که سپس فوراً فراخوانی می‌کنیم:
 
 ```
 const got = require("got");
@@ -498,14 +498,14 @@ main();
 
 ```
 
-Once again we start by authenticating ourselves:
+دوباره با احراز هویت خود شروع می‌کنیم:
 
 ```
 headers = { "x-api-key": YOUR_API_KEY };
 
 ```
 
-We then ask for the complete list of questions and filter them to select the public ones:
+سپس برای لیست کامل سؤال‌ها می‌پرسیم و آن‌ها را فیلتر می‌کنیم تا عمومی‌ها را انتخاب کنیم:
 
 ```
 response = await got.get("http://localhost:3000/api/card", {
@@ -523,7 +523,7 @@ console.log(`${questions.length} public of ${response.body.length} questions`);
 
 ```
 
-The first public card still has the title we’ve seen before:
+اولین card عمومی هنوز عنوانی که قبلاً دیده‌ایم را دارد:
 
 ```
 const uuid = questions[0].public_uuid;
@@ -540,7 +540,7 @@ First title: Average value of orders over $100 grouped by category
 
 ```
 
-When we pull down its data we get the same values, though the numbers are shown in yet another slightly different way:
+وقتی داده آن را pull down می‌کنیم همان مقادیر را دریافت می‌کنیم، اگرچه اعداد به روشی دیگر کمی متفاوت نمایش داده می‌شوند:
 
 ```
 response = await got.get(
@@ -566,11 +566,11 @@ df.show();
 
 ```
 
-## Authenticate your requests with a session token
+## احراز هویت درخواست‌های خود با یک token session
 
-> You should instead use an [API KEY](../../../../docs/latest/people-and-groups/api-keys.html). Including the info below just in case you need to use a session token for whatever reason.
+> باید به جای آن از [کلید API](../../../../docs/latest/people-and-groups/api-keys.html) استفاده کنید. شامل کردن اطلاعات زیر فقط در صورتی که به هر دلیلی نیاز به استفاده از token session دارید.
 
-You can also use a session token to authenticate your requests. To get a session token, submit a request to the [`/api/session`](../../../../docs/latest/api.html#tag/apisession) endpoint with your username and password:
+همچنین می‌توانید از یک token session برای احراز هویت درخواست‌های خود استفاده کنید. برای دریافت token session، یک درخواست به endpoint [`/api/session`](../../../../docs/latest/api.html#tag/apisession) با نام کاربری و رمز عبور خود submit کنید:
 
 ```
 curl -X POST \
@@ -580,41 +580,43 @@ curl -X POST \
 
 ```
 
-If you’re working with a remote server, you’ll need replace `localhost:3000` with your server address. This request will return a JSON object with a key called `id` and the token as the key’s value, e.g.:
+اگر با یک سرور remote کار می‌کنید، نیاز دارید `localhost:3000` را با آدرس سرور خود جایگزین کنید. این درخواست یک شیء JSON با یک کلید به نام `id` و token به عنوان مقدار کلید برمی‌گرداند، مثلاً:
 
 ```
 { "id": "38f4939c-ad7f-4cbe-ae54-30946daf8593" }
 
 ```
 
-You can then include that session token in the headers of your subsequent requests like this:
+سپس می‌توانید آن token session را در headerهای درخواست‌های بعدی خود مثل این شامل کنید:
 
 ```
 "X-Metabase-Session": "38f4939c-ad7f-4cbe-ae54-30946daf8593"
 
 ```
 
-Some things to note about sessions:
+چیزهایی که باید درباره sessionها توجه کنید:
 
-- *By default, sessions are good for 14 days* . You can configure this session duration by setting the environment variable [`MB_SESSION_AGE`](../../../../docs/latest/configuring-metabase/environment-variables.html#max_session_age) \(value is in minutes\).
-- *You should cache credentials* to reuse them until they expire, because logins are rate\-limited for security.
-- *Invalid and expired session tokens return a 401 \(Unauthorized\) status code.*
-- *Handle 401 status codes gracefully* . We recommend writing your code to fetch a new session token and automatically retry a request when the API returns a [401 status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401) .
-- *Some endpoints require that the user be an admin, also known as a superuser* . Endpoints that require admin or superuser status \(admin = superuser\) generally say so in their documentation. They will return a [403 \(Forbidden\) status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403) if the current user is not an admin.
+- *به طور پیش‌فرض، sessionها برای 14 روز معتبر هستند*. می‌توانید این مدت session را با تنظیم متغیر محیطی [`MB_SESSION_AGE`](../../../../docs/latest/configuring-metabase/environment-variables.html#max_session_age) (مقدار به دقیقه است) پیکربندی کنید.
+- *باید اعتبارنامه‌ها را cache کنید* تا آن‌ها را تا انقضا reuse کنید، چون ورودها برای امنیت rate-limited هستند.
+- *Tokenهای session نامعتبر و منقضی شده کد وضعیت 401 (Unauthorized) برمی‌گردانند.*
+- *کدهای وضعیت 401 را gracefully handle کنید*. توصیه می‌کنیم کد خود را برای fetch کردن یک token session جدید و retry خودکار یک درخواست وقتی API یک [کد وضعیت 401](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401) برمی‌گرداند بنویسید.
+- *برخی endpointها نیاز دارند کاربر یک admin باشد، همچنین به عنوان superuser شناخته می‌شود*. endpointهایی که نیاز به وضعیت admin یا superuser دارند (admin = superuser) به طور کلی در مستندات خود می‌گویند. آن‌ها یک [کد وضعیت 403 (Forbidden)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403) برمی‌گردانند اگر کاربر فعلی admin نباشد.
 
-In short: use an [API key](../../../../docs/latest/people-and-groups/api-keys.html) instead.
+به طور خلاصه: به جای آن از [کلید API](../../../../docs/latest/people-and-groups/api-keys.html) استفاده کنید.
 
-## Have fun
+## لذت ببرید
 
-If you have found this tutorial interesting, you can [spin up a local instance of Metabase](../../../../docs/latest/installation-and-operation/running-metabase-on-docker.html), experiment with the API, and have fun! If you get stuck, [check out our forum](https://discourse.metabase.com/) to see if anyone’s run into a similar issue, or post a new question.
+اگر این آموزش را جالب یافتید، می‌توانید [یک instance محلی متابیس راه‌اندازی کنید](../../../../docs/latest/installation-and-operation/running-metabase-on-docker.html)، با API آزمایش کنید، و لذت ببرید! اگر گیر کردید، [انجمن ما را بررسی کنید](https://discourse.metabase.com/) تا ببینید آیا کسی با مسئله مشابهی مواجه شده است، یا یک سؤال جدید ارسال کنید.
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](data-engineering.html)

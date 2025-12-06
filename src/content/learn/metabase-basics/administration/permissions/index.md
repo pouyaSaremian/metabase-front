@@ -1,48 +1,47 @@
 ---
-
-title: "Permissions"
-description: "Permissions, groups, data segregation, and auditing."
+title: "مجوزها"
+description: "مجوزها، گروه‌ها، جداسازی داده، و auditing."
 redirect_from:
   - /learn/metabase-basics/administration/permissions
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
 ---
 
-# Permissions
+# مجوزها
 
-Permissions, groups, data segregation, and auditing.
+مجوزها، گروه‌ها، جداسازی داده، و auditing.
 
-#### [Permissions strategies](strategy.html)
-How to think about structuring groups and permissions in Metabase.
-5 min read
+#### [استراتژی‌های مجوز](strategy.html)
+نحوه فکر کردن درباره ساختاردهی گروه‌ها و مجوزها در متابیس.
+5 دقیقه خواندن
 
-#### [Tutorial: Setting up data permissions in Metabase](data-permissions.html)
-Learn about how Metabase handles data permissions by setting up permissions on the Sample Database included with Metabase.
-8 min read
+#### [آموزش: تنظیم مجوزهای داده در متابیس](data-permissions.html)
+درباره نحوه handle کردن مجوزهای داده توسط متابیس با تنظیم مجوزها روی پایگاه داده نمونه شامل شده با متابیس بیاموزید.
+8 دقیقه خواندن
 
-#### [Tutorial: Working with collection permissions in Metabase](collection-permissions.html)
-Set up collections with permissions to help people organize and share the work that's relevant to them.
-5 min read
+#### [آموزش: کار با مجوزهای مجموعه در متابیس](collection-permissions.html)
+مجموعه‌ها را با مجوزها تنظیم کنید تا به مردم کمک کنید کار مرتبط با آن‌ها را سازماندهی و به اشتراک بگذارند.
+5 دقیقه خواندن
 
-#### [Tutorial: Row-level permissions in Metabase](row-permissions.html)
-Learn how to set row\-level permissions based on people's user attributes.
-6 min read
+#### [آموزش: مجوزهای سطح ردیف در متابیس](row-permissions.html)
+نحوه تنظیم مجوزهای سطح ردیف بر اساس attributeهای کاربر مردم را بیاموزید.
+6 دقیقه خواندن
 
-#### [Tutorial: Column-level permissions in Metabase](column-permissions.html)
-Learn how to use a saved SQL query to display specific rows and columns to different people.
-5 min read
+#### [آموزش: مجوزهای سطح ستون در متابیس](column-permissions.html)
+نحوه استفاده از یک پرس‌وجوی SQL ذخیره شده برای نمایش ردیف‌ها و ستون‌های خاص به افراد مختلف را بیاموزید.
+5 دقیقه خواندن
 
-#### [Use cases for row and column security](row-and-column-security-use-cases.html)
-Pair row and column security with user attributes to customize data for almost any situation.
-3 min read
+#### [موارد استفاده برای امنیت ردیف و ستون](row-and-column-security-use-cases.html)
+امنیت ردیف و ستون را با attributeهای کاربر جفت کنید تا داده را برای تقریباً هر موقعیتی سفارشی کنید.
+3 دقیقه خواندن
 
-#### [How to keep tabs on your data](keep-tabs-on-your-data.html)
-Set up alerts on usage analytics to get notified about when people change settings, download data, or make data public.
-3 min read
+#### [نحوه نگه داشتن tabs روی داده خود](keep-tabs-on-your-data.html)
+هشدارها را روی تحلیل‌های استفاده تنظیم کنید تا درباره زمان تغییر تنظیمات توسط مردم، دانلود داده، یا عمومی کردن داده مطلع شوید.
+3 دقیقه خواندن
 
-#### [Using LDAP for authentication and access control](ldap-auth-access-control.html)
-Learn about using LDAP to authenticate people and manage their access to data.
-3 min read
+#### [استفاده از LDAP برای احراز هویت و کنترل دسترسی](ldap-auth-access-control.html)
+درباره استفاده از LDAP برای احراز هویت مردم و مدیریت دسترسی آن‌ها به داده بیاموزید.
+3 دقیقه خواندن

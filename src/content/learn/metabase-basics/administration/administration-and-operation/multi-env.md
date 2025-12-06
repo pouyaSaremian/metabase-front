@@ -1,124 +1,126 @@
 ---
-
-
-title: "Tutorial: Multiple environments"
-description: "Options for spinning up dev, staging, or test environments."
+title: "آموزش: محیط‌های چندگانه"
+description: "گزینه‌هایی برای spin up کردن محیط‌های dev، staging، یا test."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/multi-env
   - /learn/administration/multi-env
 toc:
   - id: "tutorial-multiple-environments"
-    title: "Tutorial: Multiple environments"
+    title: "آموزش: محیط‌های چندگانه"
     level: 1
     href: "#tutorial-multiple-environments"
   - id: "one-instance-per-environment"
-    title: "One instance per environment"
+    title: "یک instance برای هر محیط"
     level: 2
     href: "#one-instance-per-environment"
   - id: "example-creating-a-self-hosted-staging-instance"
-    title: "Example: creating a self-hosted staging instance"
+    title: "مثال: ایجاد یک instance staging self-hosted"
     level: 3
     href: "#example-creating-a-self-hosted-staging-instance"
   - id: "one-collection-per-environment"
-    title: "One collection per environment"
+    title: "یک مجموعه برای هر محیط"
     level: 2
     href: "#one-collection-per-environment"
   - id: "example-creating-prod-and-dev-collections"
-    title: "Example: creating Prod and Dev collections"
+    title: "مثال: ایجاد مجموعه‌های Prod و Dev"
     level: 3
     href: "#example-creating-prod-and-dev-collections"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# Tutorial: Multiple environments
+# آموزش: محیط‌های چندگانه
 
-Options for spinning up dev, staging, or test environments.
+گزینه‌هایی برای spin up کردن محیط‌های dev، staging، یا test.
 
-Once you start [running Metabase in production](metabase-in-production.html), you’ll probably want to do your testing and development in separate environments. For most teams, this means making a copy of some \(or all\) of the charts and dashboards in production, making changes to those copies, and then optionally pushing those changes back to production.
+وقتی شروع به [اجرای متابیس در production](metabase-in-production.html) می‌کنید، احتمالاً می‌خواهید تست و توسعه خود را در محیط‌های جداگانه انجام دهید. برای بیشتر تیم‌ها، این به معنای ایجاد یک کپی از برخی (یا همه) نمودارها و داشبوردها در production، ایجاد تغییرات در آن کپی‌ها، و سپس به طور اختیاری push کردن آن تغییرات به production است.
 
-For teams that want to make programmatic changes to many Metabase items or settings at once, it’s best to set up [one instance per environment](#one-instance-per-environment). You can also mimic dev and prod environments for [dashboard maintenance](../../../grow-your-data-skills/analytics/editing-dashboards.html) by creating [one collection per environment](#one-collection-per-environment).
+برای تیم‌هایی که می‌خواهند تغییرات برنامه‌نویسی به بسیاری از آیتم‌ها یا تنظیمات متابیس به طور همزمان ایجاد کنند، بهتر است [یک instance برای هر محیط](#one-instance-per-environment) تنظیم کنید. همچنین می‌توانید محیط‌های dev و prod را برای [نگهداری داشبورد](../../../grow-your-data-skills/analytics/editing-dashboards.html) با ایجاد [یک مجموعه برای هر محیط](#one-collection-per-environment) تقلید کنید.
 
-## One instance per environment
+## یک instance برای هر محیط
 
-To set up one instance for each of your environments, you’ll need a **self\-hosted [Pro or Enterprise plan](../../../../pricing/index.html)**. Since self\-hosted Pro and Enterprise plans conveniently [charge per account](../../../../docs/latest/cloud/how-billing-works.html#what-counts-as-a-user-account), you can spin up as many Metabase instances as you want. Just keep in mind that you’ll pay for the total number of users across all your Metabases, so only add the minimum number of users you need to set up your staging or dev instances \(for example, set up a single test user in one group to test permissions, instead of adding all the users from your prod instance\).
+برای تنظیم یک instance برای هر یک از محیط‌های خود، نیاز به یک **[طرح Pro یا Enterprise self-hosted](../../../../pricing/index.html)** دارید. چون طرح‌های Pro و Enterprise self-hosted به راحتی [به ازای هر حساب شارژ می‌کنند](../../../../docs/latest/cloud/how-billing-works.html#what-counts-as-a-user-account)، می‌توانید به تعداد دلخواه instanceهای متابیس را spin up کنید. فقط به خاطر داشته باشید که برای تعداد کل کاربران در همه متابیس‌های خود پرداخت می‌کنید، پس فقط حداقل تعداد کاربران مورد نیاز برای تنظیم instanceهای staging یا dev خود را اضافه کنید (مثلاً، یک کاربر تست واحد در یک گروه برای تست مجوزها تنظیم کنید، به جای افزودن همه کاربران از instance prod خود).
 
-To stand up a new environment based on your production Metabase, you’ll use Metabase’s [serialization](../../../../docs/latest/installation-and-operation/serialization.html) feature to create an export of your charts, dashboards, and settings. You can also edit the export’s YAML files before importing it into a new staging instance of Metabase. For example, you can create a set of dashboard templates with [branding](../../../../docs/latest/configuring-metabase/appearance.html) that can be used to populate any new environment.
+برای راه‌اندازی یک محیط جدید بر اساس متابیس production خود، از ویژگی [serialization](../../../../docs/latest/installation-and-operation/serialization.html) متابیس برای ایجاد یک export از نمودارها، داشبوردها، و تنظیمات خود استفاده خواهید کرد. همچنین می‌توانید فایل‌های YAML export را قبل از import کردن آن به یک instance staging جدید متابیس ویرایش کنید. به عنوان مثال، می‌توانید مجموعه‌ای از قالب‌های داشبورد با [برندینگ](../../../../docs/latest/configuring-metabase/appearance.html) ایجاد کنید که می‌تواند برای پر کردن هر محیط جدید استفاده شود.
 
-When it’s time to push changes from staging back to prod, your team will use the same serialization process to export from staging and import it into prod. You can also set up your own integration tests to avoid importing anything that might break your production instance.
+وقتی زمان push کردن تغییرات از staging به prod می‌رسد، تیم شما از همان فرآیند serialization برای export از staging و import آن به prod استفاده خواهد کرد. همچنین می‌توانید تست‌های integration خود را تنظیم کنید تا از import کردن هر چیزی که ممکن است instance production شما را بشکند جلوگیری کنید.
 
-### Example: creating a self-hosted staging instance
+### مثال: ایجاد یک instance staging self-hosted
 
-Let’s say your production instance of Metabase is running on Docker or similar:
+بگویید instance production متابیس شما روی Docker یا مشابه آن اجرا می‌شود:
 
-1. Make a backup of the application database used for your prod instance.
-2. Create a new container called **staging** .
-  - Connect to your prod application database using the appropriate [environment variables](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_db_host) .
-  - Add your license key using the [`MB_PREMIUM_EMBEDDING_TOKEN`](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_premium_embedding_token) .
-  - Include the version tag \(such as `metabase/metabase-enterprise:v1.56.12` \) that matches your prod instance.
-3. From the **staging** container, start a fresh Metabase with the following settings:
-4. Once Metabase is running in the **staging** container, run the serialization [export](../../../../docs/latest/installation-and-operation/serialization.html) command.
-5. Persist the export to any object storage you want.
-6. Optional: edit the export’s YAML files. For example, you can run a script to replace `ID = 1` with `ID = 2` .
-7. Restart the **staging** container.
-8. From the **staging** container, create a fresh application database.
-  - Connect to the new application database using the appropriate [environment variables](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_db_host) .
-  - Add your license key using the [`MB_PREMIUM_EMBEDDING_TOKEN`](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_premium_embedding_token) .
-  - Include the version tag \(such as `metabase/metabase-enterprise:v1.56.12` \) that matches your prod instance.
-9. Start Metabase with the serialization \[import\]\(/docs/latest/installation\-and\-operation/serialization command:
+1. یک backup از پایگاه داده برنامه استفاده شده برای instance prod خود ایجاد کنید.
+2. یک container جدید به نام **staging** ایجاد کنید.
+  - با استفاده از [متغیرهای محیطی](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_db_host) مناسب به پایگاه داده برنامه prod خود متصل شوید.
+  - کلید لایسنس خود را با استفاده از [`MB_PREMIUM_EMBEDDING_TOKEN`](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_premium_embedding_token) اضافه کنید.
+  - برچسب نسخه (مثل `metabase/metabase-enterprise:v1.56.12`) که با instance prod شما match می‌کند را شامل کنید.
+3. از container **staging**، یک متابیس تازه با تنظیمات زیر شروع کنید:
+4. وقتی متابیس در container **staging** در حال اجرا است، دستور serialization [export](../../../../docs/latest/installation-and-operation/serialization.html) را اجرا کنید.
+5. export را به هر object storage که می‌خواهید persist کنید.
+6. اختیاری: فایل‌های YAML export را ویرایش کنید. به عنوان مثال، می‌توانید یک اسکریپت اجرا کنید تا `ID = 1` را با `ID = 2` جایگزین کند.
+7. container **staging** را restart کنید.
+8. از container **staging**، یک پایگاه داده برنامه تازه ایجاد کنید.
+  - با استفاده از [متغیرهای محیطی](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_db_host) مناسب به پایگاه داده برنامه جدید متصل شوید.
+  - کلید لایسنس خود را با استفاده از [`MB_PREMIUM_EMBEDDING_TOKEN`](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_premium_embedding_token) اضافه کنید.
+  - برچسب نسخه (مثل `metabase/metabase-enterprise:v1.56.12`) که با instance prod شما match می‌کند را شامل کنید.
+9. متابیس را با دستور serialization [import](../../../../docs/latest/installation-and-operation/serialization.html) شروع کنید:
 
-The exact steps will depend on your deployment. If you get stuck, you can always [ask one of our success engineers](https://www.metabase.com/help-premium)!
+مراحل دقیق به deployment شما بستگی دارد. اگر گیر کردید، همیشه می‌توانید [از یکی از مهندسان موفقیت ما بپرسید](https://www.metabase.com/help-premium)!
 
-## One collection per environment
+## یک مجموعه برای هر محیط
 
-To manage changes to Metabase dashboards without serialization, you can use [collections](../../../../docs/latest/exploration-and-organization/collections.html), [collection permissions](../../../../docs/latest/permissions/collections.html), and [history](../../../../docs/latest/exploration-and-organization/history.html) instead.
+برای مدیریت تغییرات به داشبوردهای متابیس بدون serialization، می‌توانید از [مجموعه‌ها](../../../../docs/latest/exploration-and-organization/collections.html)، [مجوزهای مجموعه](../../../../docs/latest/permissions/collections.html)، و [تاریخچه](../../../../docs/latest/exploration-and-organization/history.html) استفاده کنید.
 
-### Example: creating Prod and Dev collections
+### مثال: ایجاد مجموعه‌های Prod و Dev
 
-Here’s an example of how to set up one “environment” per collection:
+در اینجا مثالی از نحوه تنظیم یک "محیط" برای هر مجموعه:
 
-1. Create two [collections](../../../../docs/latest/exploration-and-organization/collections.html) called **Prod** and **Dev** .
-2. Create two [groups](../../../../docs/latest/people-and-groups/managing.html#creating-a-group) called **End Users** and **Developers** .
-  - **Developers** can **Curate** the **Prod** and **Dev** collections.
-  - **End Users** can **View** the **Prod** collection.
-3. Set [collection permissions](../../../../docs/latest/permissions/collections.html) per group:
-  - **Developers** get **Query builder and native** access to tables or databases used in the **Dev** and **Prod** collections.
-  - **End Users** have **Row and column security** set up for tables or databases used in the **Prod** collection.
-4. Optional: set [data permissions](../../../../docs/latest/permissions/data.html) per group. For example:
+1. دو [مجموعه](../../../../docs/latest/exploration-and-organization/collections.html) به نام‌های **Prod** و **Dev** ایجاد کنید.
+2. دو [گروه](../../../../docs/latest/people-and-groups/managing.html#creating-a-group) به نام‌های **End Users** و **Developers** ایجاد کنید.
+  - **Developers** می‌توانند مجموعه‌های **Prod** و **Dev** را **Curate** کنند.
+  - **End Users** می‌توانند مجموعه **Prod** را **View** کنند.
+3. [مجوزهای مجموعه](../../../../docs/latest/permissions/collections.html) را برای هر گروه تنظیم کنید:
+  - **Developers** دسترسی **Query builder and native** به جداول یا پایگاه‌های داده استفاده شده در مجموعه‌های **Dev** و **Prod** دریافت می‌کنند.
+  - **End Users** **امنیت ردیف و ستون** برای جداول یا پایگاه‌های داده استفاده شده در مجموعه **Prod** تنظیم شده است.
+4. اختیاری: [مجوزهای داده](../../../../docs/latest/permissions/data.html) را برای هر گروه تنظیم کنید. به عنوان مثال:
 
-Members of the Developers group can [copy](../../../../docs/latest/dashboards/introduction.html#duplicating-a-dashboard) and [move](../../../../docs/latest/exploration-and-organization/collections.html#moving-items-from-collection-to-collection) items between the **Prod** to **Dev** collections to make changes without exposing work in progress. People will also be able to view and revert changes using an item’s [**History**](../../../../docs/latest/exploration-and-organization/history.html).
+اعضای گروه Developers می‌توانند آیتم‌ها را بین مجموعه‌های **Prod** و **Dev** [کپی](../../../../docs/latest/dashboards/introduction.html#duplicating-a-dashboard) و [انتقال](../../../../docs/latest/exploration-and-organization/collections.html#moving-items-from-collection-to-collection) دهند تا تغییرات را بدون افشای کار در حال انجام ایجاد کنند. مردم همچنین می‌توانند تغییرات را با استفاده از [**تاریخچه**](../../../../docs/latest/exploration-and-organization/history.html) یک آیتم مشاهده و revert کنند.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Serialization: preloading dashboards in a new Metabase instance](serialization.html)
-- [Working with collection permissions](../permissions/collection-permissions.html)
-- [Metabase at scale](metabase-at-scale.html)
+- [Serialization: preload کردن داشبوردها در یک instance متابیس جدید](serialization.html)
+- [کار با مجوزهای مجموعه](../permissions/collection-permissions.html)
+- [متابیس در مقیاس](metabase-at-scale.html)
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](same-page.html)
 [
       
         
         
+
       
       
+        
         
 
       

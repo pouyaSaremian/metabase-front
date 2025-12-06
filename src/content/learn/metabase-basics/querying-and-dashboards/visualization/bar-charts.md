@@ -1,23 +1,21 @@
 ---
-
-
-title: "Master the bar chart"
-description: "Create a bar chart and customize it with visualization settings."
+title: "بر نمودار میله‌ای مسلط شوید"
+description: "یک نمودار میله‌ای ایجاد کنید و آن را با تنظیمات تجسم سفارشی کنید."
 redirect_from:
   - /learn/metabase-basics/querying-and-dashboards/visualization/bar-charts
   - /learn/basics/visualizing-data/bar-charts
   - /learn/visualization/bar-charts
 toc:
   - id: "master-the-bar-chart"
-    title: "Master the bar chart"
+    title: "بر نمودار میله‌ای مسلط شوید"
     level: 1
     href: "#master-the-bar-chart"
   - id: "create-a-bar-chart"
-    title: "Create a bar chart"
+    title: "ایجاد یک نمودار میله‌ای"
     level: 2
     href: "#create-a-bar-chart"
   - id: "bar-chart-settings"
-    title: "Bar chart settings"
+    title: "تنظیمات نمودار میله‌ای"
     level: 2
     href: "#bar-chart-settings"
   - id: "data"
@@ -25,23 +23,23 @@ toc:
     level: 2
     href: "#data"
   - id: "display-settings"
-    title: "Display settings"
+    title: "تنظیمات Display"
     level: 2
     href: "#display-settings"
   - id: "add-a-goal-line"
-    title: "Add a goal line"
+    title: "افزودن یک خط هدف"
     level: 3
     href: "#add-a-goal-line"
   - id: "show-values"
-    title: "Show values"
+    title: "نمایش مقادیر"
     level: 3
     href: "#show-values"
   - id: "add-a-trend-line"
-    title: "Add a trend line"
+    title: "افزودن یک خط روند"
     level: 3
     href: "#add-a-trend-line"
   - id: "stacking-options"
-    title: "Stacking options"
+    title: "گزینه‌های Stacking"
     level: 3
     href: "#stacking-options"
   - id: "axes"
@@ -53,7 +51,7 @@ toc:
     level: 3
     href: "#label"
   - id: "show-lines-and-marks"
-    title: "Show lines and marks"
+    title: "نمایش خطوط و علامت‌ها"
     level: 3
     href: "#show-lines-and-marks"
   - id: "scale"
@@ -61,11 +59,11 @@ toc:
     level: 3
     href: "#scale"
   - id: "stacked-bar-charts"
-    title: "Stacked bar charts"
+    title: "نمودارهای میله‌ای stacked"
     level: 2
     href: "#stacked-bar-charts"
   - id: "don-t-stack"
-    title: "Don’t stack"
+    title: "Stack نکنید"
     level: 3
     href: "#don-t-stack"
   - id: "stack"
@@ -77,37 +75,37 @@ toc:
     level: 3
     href: "#stack-100"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Querying and dashboards"
+  - title: "پرس‌وجو و داشبوردها"
     href: "../index.html"
-  - title: "Visualizing data"
+  - title: "تجسم داده"
     href: "../visualization.html"
 ---
 
-# Master the bar chart
+# بر نمودار میله‌ای مسلط شوید
 
-Create a bar chart and customize it with visualization settings.
+یک نمودار میله‌ای ایجاد کنید و آن را با تنظیمات تجسم سفارشی کنید.
 
-We’ll walk through [creating a bar chart](#create-a-bar-chart) and [editing that bar chart’s settings](#bar-chart-settings), then talk about [stacked bar charts](#stacked-bar-charts) and when we might want to use them.
+[ایجاد یک نمودار میله‌ای](#create-a-bar-chart) و [ویرایش تنظیمات آن نمودار میله‌ای](#bar-chart-settings) را مرور می‌کنیم، سپس درباره [نمودارهای میله‌ای stacked](#stacked-bar-charts) و زمانی که ممکن است بخواهیم از آن‌ها استفاده کنیم صحبت می‌کنیم.
 
-## Create a bar chart
+## ایجاد یک نمودار میله‌ای
 
-You can follow along using Metabase’s [Sample Database](../../../../glossary/sample-database.html). Select **\+ New** \> **Question** \> **Raw data** \> **Sample database**. Choose the Sample Database’s `Orders` table as your data. Next, summarize the count of rows and group by Product \-\> Category.
+می‌توانید با استفاده از [پایگاه داده نمونه](../../../../glossary/sample-database.html) متابیس همراه باشید. **+ New** > **Question** > **Raw data** > **Sample database** را انتخاب کنید. جدول `Orders` پایگاه داده نمونه را به عنوان داده خود انتخاب کنید. بعد، تعداد ردیف‌ها را خلاصه کنید و بر اساس Product → Category group کنید.
 
-![Notebook of question that summarizes the count of orders grouped by product category.](../../../images/master-the-bar-chart-visualization/notebook.png)
+![Notebook سؤال که تعداد سفارش‌ها را group شده بر اساس دسته محصول خلاصه می‌کند.](../../../images/master-the-bar-chart-visualization/notebook.png)
 
-Click **Visualize**, and Metabase will present the data as a bar chart:
+روی **Visualize** کلیک کنید، و متابیس داده را به عنوان یک نمودار میله‌ای ارائه می‌دهد:
 
-![The humble bar chart.](../../../images/master-the-bar-chart-visualization/bar-chart.png)
+![نمودار میله‌ای متواضع.](../../../images/master-the-bar-chart-visualization/bar-chart.png)
 
-## Bar chart settings
+## تنظیمات نمودار میله‌ای
 
-To customize the chart, click on the **gear** icon at the bottom left of the chart to open the settings sidebar, within the settings, you’ll find the following tabs:
+برای سفارشی کردن نمودار، روی آیکون **چرخ‌دنده** در پایین سمت چپ نمودار کلیک کنید تا sidebar تنظیمات باز شود، در تنظیمات، تب‌های زیر را پیدا می‌کنید:
 
 - [Data](#data)
 - [Display](#display-settings)
@@ -115,49 +113,49 @@ To customize the chart, click on the **gear** icon at the bottom left of the cha
 
 ## Data
 
-Here we can format and style our bar chart by clicking the `...` under Y\-axis.
-To change bar colors, click the color swatch and choose from the palette.
+اینجا می‌توانیم نمودار میله‌ای خود را با کلیک روی `...` زیر Y-axis فرمت و style کنیم.
+برای تغییر رنگ میله‌ها، روی swatch رنگ کلیک کنید و از palette انتخاب کنید.
 
-Customize your chart in the **Formatting tab** by adjusting numbers, separators, decimals, and scale. You can also add Prefix/Suffix as needed. In the **Style tab**, select colors, modify labels, choose a chart type \(line, area, or bar\), and position the Y\-axis according to your chart preferences.
+نمودار خود را در **تب Formatting** با تنظیم اعداد، جداکننده‌ها، اعشار، و scale سفارشی کنید. همچنین می‌توانید Prefix/Suffix را در صورت نیاز اضافه کنید. در **تب Style**، رنگ‌ها را انتخاب کنید، برچسب‌ها را تغییر دهید، یک نوع نمودار (خط، area، یا میله) انتخاب کنید، و Y-axis را بر اساس ترجیحات نمودار خود position کنید.
 
-![formart and style.](../../../images/master-the-bar-chart-visualization/format-style.png)
+![فرمت و style.](../../../images/master-the-bar-chart-visualization/format-style.png)
 
-## Display settings
+## تنظیمات Display
 
-In the Settings \> Display section, you can customize your chart in several ways:
+در بخش Settings > Display، می‌توانید نمودار خود را به چندین روش سفارشی کنید:
 
-### Add a goal line
+### افزودن یک خط هدف
 
-This specifies where you want the values to be. Metabase can [alert](../../../../docs/latest/questions/alerts.html) you when the values exceed \(or drop below\) that goal. For example, you can add a goal line at 5500 and name it ‘Arbitrary Sales Goal’.
+این مشخص می‌کند کجا می‌خواهید مقادیر باشند. متابیس می‌تواند [هشدار](../../../../docs/latest/questions/alerts.html) دهد وقتی مقادیر از آن هدف exceed می‌کنند (یا زیر آن drop می‌کنند). به عنوان مثال، می‌توانید یک خط هدف در 5500 اضافه کنید و آن را 'Arbitrary Sales Goal' نامگذاری کنید.
 
-### Show values
+### نمایش مقادیر
 
-Toggling on ‘Show values’ places the count values above each column.
+Toggle کردن 'Show values' مقادیر count را بالای هر ستون قرار می‌دهد.
 
-![Adding a goal line for our arbitrary sales goal.](../../../images/master-the-bar-chart-visualization/goal-line.png)
+![افزودن یک خط هدف برای هدف فروش دلخواه ما.](../../../images/master-the-bar-chart-visualization/goal-line.png)
 
-### Add a trend line
+### افزودن یک خط روند
 
-When your data is summarized and grouped by a datetime field, you can add a trend lie. The trend line shows the general direction that your data is heading in over time. To add a trend line, simply toggle on the ‘Trend line’ option.
+وقتی داده شما خلاصه شده و بر اساس یک فیلد datetime group شده است، می‌توانید یک خط روند اضافه کنید. خط روند جهت کلی که داده شما در طول زمان به آن می‌رود را نشان می‌دهد. برای افزودن یک خط روند، به سادگی گزینه 'Trend line' را toggle کنید.
 
-### Stacking options
+### گزینه‌های Stacking
 
-When creating bar or area charts with multiple series, you can choose how the series are displayed with the stacking options. You can choose not to stack the series, stack them, or stack them at 100%.
-We can also set the display to a [stacked bar chart](#stacked-bar-charts), which we’ll get into in a bit.
+وقتی نمودارهای میله یا area با چندین سری ایجاد می‌کنید، می‌توانید نحوه نمایش سری‌ها را با گزینه‌های stacking انتخاب کنید. می‌توانید انتخاب کنید سری‌ها را stack نکنید، stack کنید، یا در 100% stack کنید.
+همچنین می‌توانیم display را به یک [نمودار میله‌ای stacked](#stacked-bar-charts) تنظیم کنیم، که کمی بعد به آن می‌پردازیم.
 
 ## Axes
 
-Select `Axes` in the **Settings sidebar**.
+`Axes` را در **Sidebar Settings** انتخاب کنید.
 
-Here we can specify how we want our table organized.
+اینجا می‌توانیم مشخص کنیم چگونه می‌خواهیم جدول ما سازماندهی شود.
 
 ### Label
 
-Here we can hide or customize axes labels.
+اینجا می‌توانیم برچسب‌های محورها را مخفی یا سفارشی کنیم.
 
-### Show lines and marks
+### نمایش خطوط و علامت‌ها
 
-With the **Show lines and marks** options we can change the way the categories and quantities are represented on each axis. The options for the y\-axis are hide and show, while the x\-axis has several more:
+با گزینه‌های **Show lines and marks** می‌توانیم نحوه نمایش دسته‌ها و مقادیر در هر محور را تغییر دهیم. گزینه‌ها برای y-axis مخفی و نمایش هستند، در حالی که x-axis چندین گزینه بیشتر دارد:
 
 - Hide
 - Show
@@ -167,41 +165,41 @@ With the **Show lines and marks** options we can change the way the categories a
 
 ### Scale
 
-We’ll find three Y\-axis scaling options:
+سه گزینه scaling Y-axis پیدا می‌کنیم:
 
 - Linear
 - Power
 - Log
 
-The linear option is selected automatically, and for our example provides the most accurate representation of our data, so we’ll keep it.
+گزینه linear به طور خودکار انتخاب می‌شود، و برای مثال ما دقیق‌ترین نمایش از داده ما را ارائه می‌دهد، پس آن را نگه می‌داریم.
 
-## Stacked bar charts
+## نمودارهای میله‌ای stacked
 
-If the data we’re visualizing can be broken down into multiple categories within a whole, we could consider using a stacked bar chart. A 100% stacked bar chart is similar, but displays those parts as relative percentages, so every bar spans the full y\-axis.
+اگر داده‌ای که تجسم می‌کنیم می‌تواند به چندین دسته در یک کل breakdown شود، می‌توانیم استفاده از یک نمودار میله‌ای stacked را در نظر بگیریم. یک نمودار میله‌ای stacked 100% مشابه است، اما آن بخش‌ها را به عنوان درصدهای نسبی نمایش می‌دهد، پس هر میله کل y-axis را span می‌کند.
 
-To create a stacked bar chart, click on **Settings** \> **Display** and select either **Stack** or **Stack \- 100%**.
+برای ایجاد یک نمودار میله‌ای stacked، روی **Settings** > **Display** کلیک کنید و **Stack** یا **Stack - 100%** را انتخاب کنید.
 
-Let’s say we wanted to see how many orders were placed per product category across different quarters of a year. Here’s that example displayed in three different bar chart styles:
+بگویید می‌خواستیم ببینیم چند سفارش برای هر دسته محصول در سه‌ماهه‌های مختلف یک سال قرار داده شد. در اینجا آن مثال نمایش داده شده در سه style مختلف نمودار میله‌ای:
 
-### Don’t stack
+### Stack نکنید
 
-![An unstacked multi-series bar chart.](../../../images/master-the-bar-chart-visualization/multi-series-bar-chart.png)
+![یک نمودار میله‌ای چندسری unstacked.](../../../images/master-the-bar-chart-visualization/multi-series-bar-chart.png)
 
 ### Stack
 
-![A standard stacked bar chart.](../../../images/master-the-bar-chart-visualization/stacked-bar-chart.png)
+![یک نمودار میله‌ای stacked استاندارد.](../../../images/master-the-bar-chart-visualization/stacked-bar-chart.png)
 
 ### Stack-100%
 
-![A 100% stacked bar chart.](../../../images/master-the-bar-chart-visualization/stacked-100-bar-chart.png)
+![یک نمودار میله‌ای stacked 100%.](../../../images/master-the-bar-chart-visualization/stacked-100-bar-chart.png)
 
-Explore different display settings to tailor the visualization to your data and team preferences.
+تنظیمات display مختلف را برای tailor کردن تجسم به داده و ترجیحات تیم خود کاوش کنید.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Visualization options](../../../../docs/latest/questions/visualizations/visualizing-results.html#line-charts)
-- [Setting default formatting for your data](../../../../docs/latest/data-modeling/formatting.html)
-- [Create charts with explorable data](../questions/drill-through.html)
+- [گزینه‌های تجسم](../../../../docs/latest/questions/visualizations/visualizing-results.html#line-charts)
+- [تنظیم فرمت پیش‌فرض برای داده خود](../../../../docs/latest/data-modeling/formatting.html)
+- [ایجاد نمودارها با داده قابل کاوش](../questions/drill-through.html)
 
 [
       
@@ -211,14 +209,17 @@ Explore different display settings to tailor the visualization to your data and 
       
         
         
+
       
     ](line-charts.html)
 [
       
         
         
+
       
       
+        
         
 
       

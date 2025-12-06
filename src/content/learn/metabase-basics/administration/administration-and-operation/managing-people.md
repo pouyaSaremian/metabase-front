@@ -1,188 +1,190 @@
 ---
-
-
-title: "Managing people in Metabase"
-description: "How to go from managing dozens of users to thousands."
+title: "مدیریت مردم در متابیس"
+description: "نحوه رفتن از مدیریت ده‌ها کاربر به هزاران."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/managing-people
 toc:
   - id: "managing-people-in-metabase"
-    title: "Managing people in Metabase"
+    title: "مدیریت مردم در متابیس"
     level: 1
     href: "#managing-people-in-metabase"
   - id: "1-create-groups-in-metabase"
-    title: "1. Create groups in Metabase"
+    title: "1. ایجاد گروه‌ها در متابیس"
     level: 2
     href: "#1-create-groups-in-metabase"
   - id: "group-managers"
-    title: "Group managers"
+    title: "مدیران گروه"
     level: 3
     href: "#group-managers"
   - id: "2-assign-data-and-collection-permissions-to-those-groups"
-    title: "2. Assign data and collection permissions to those groups"
+    title: "2. اختصاص مجوزهای داده و مجموعه به آن گروه‌ها"
     level: 2
     href: "#2-assign-data-and-collection-permissions-to-those-groups"
   - id: "hiding-irrelevant-or-technical-data-for-all-users"
-    title: "Hiding irrelevant or technical data for all users"
+    title: "پنهان کردن داده نامربوط یا فنی برای همه کاربران"
     level: 3
     href: "#hiding-irrelevant-or-technical-data-for-all-users"
   - id: "row-and-column-security"
-    title: "Row and column security"
+    title: "امنیت ردیف و ستون"
     level: 3
     href: "#row-and-column-security"
   - id: "sql-editor-access-and-row-or-column-security-are-mutually-exclusive"
-    title: "SQL editor access and row or column security are mutually exclusive"
+    title: "دسترسی ویرایشگر SQL و امنیت ردیف یا ستون متقابلاً انحصاری هستند"
     level: 3
     href: "#sql-editor-access-and-row-or-column-security-are-mutually-exclusive"
   - id: "sql-permissions"
-    title: "SQL permissions"
+    title: "مجوزهای SQL"
     level: 3
     href: "#sql-permissions"
   - id: "application-permissions"
-    title: "Application permissions"
+    title: "مجوزهای برنامه"
     level: 3
     href: "#application-permissions"
   - id: "3-set-up-sso-in-your-metabase"
-    title: "3. Set up SSO in your Metabase"
+    title: "3. تنظیم SSO در متابیس خود"
     level: 2
     href: "#3-set-up-sso-in-your-metabase"
   - id: "authentication-options"
-    title: "Authentication options"
+    title: "گزینه‌های احراز هویت"
     level: 3
     href: "#authentication-options"
   - id: "4-synchronize-sso-and-metabase-groups"
-    title: "4. Synchronize SSO and Metabase groups"
+    title: "4. همگام‌سازی SSO و گروه‌های متابیس"
     level: 2
     href: "#4-synchronize-sso-and-metabase-groups"
   - id: "5-tell-people-they-can-create-a-metabase-account-just-by-logging-in"
-    title: "5. Tell people they can create a Metabase account just by logging in"
+    title: "5. به مردم بگویید می‌توانند فقط با ورود یک حساب متابیس ایجاد کنند"
     level: 2
     href: "#5-tell-people-they-can-create-a-metabase-account-just-by-logging-in"
   - id: "6-use-the-usage-analytics-collection-to-monitor-how-people-are-using-your-metabase"
-    title: "6. Use the Usage Analytics collection to monitor how people are using your Metabase"
+    title: "6. استفاده از مجموعه Usage Analytics برای نظارت بر نحوه استفاده مردم از متابیس شما"
     level: 2
     href: "#6-use-the-usage-analytics-collection-to-monitor-how-people-are-using-your-metabase"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# Managing people in Metabase
+# مدیریت مردم در متابیس
 
-How to go from managing dozens of users to thousands.
+نحوه رفتن از مدیریت ده‌ها کاربر به هزاران.
 
-This article gives an overview of how to set up and scale self\-service analytics. We’ll stay at a high\-level and link out to more detailed guides on individual features, and our focus here will be on the administration of Metabase, particularly of people in your organization. For operational scaling—the actual running of the Metabase application—check out [Metabase at scale](metabase-at-scale.html).
+این مقاله یک نمای کلی از نحوه راه‌اندازی و scale کردن تحلیل‌های self-service ارائه می‌دهد. ما در سطح بالا می‌مانیم و به راهنماهای دقیق‌تر درباره ویژگی‌های فردی لینک می‌دهیم، و تمرکز ما در اینجا بر مدیریت متابیس، به خصوص مردم در سازمان شما خواهد بود. برای scale کردن عملیاتی—اجرای واقعی برنامه متابیس—[متابیس در مقیاس](metabase-at-scale.html) را بررسی کنید.
 
-The goal with democratizing data in your organization is to give people the information they need to make better decisions. And the best way to do that is to give everyone access to as much data as you can, while ensuring that they can’t see any data they’re not supposed to see.
+هدف با دموکراتیک کردن داده در سازمان شما این است که اطلاعات مورد نیاز مردم برای تصمیم‌گیری بهتر را به آن‌ها بدهید. و بهترین راه برای انجام این کار این است که به همه دسترسی به هر چه بیشتر داده را بدهید، در حالی که اطمینان حاصل کنید که نمی‌توانند هیچ داده‌ای را که نباید ببینند ببینند.
 
-To that end, we recommend you organize your Metabase with the goal of simplifying permissions. You probably collect sensitive data for various reasons \(payments, taxes, liability, and so on\), but that data isn’t relevant for business intelligence \(though it’s probably mixed in with data that *is* relevant\). The idea is to put hard boundaries in key places so you don’t have to worry about who can see what, then set up lightweight systems—or even just conventions—that [keep the place tidy](same-page.html) as the number of people grows.
+برای این منظور، توصیه می‌کنیم متابیس خود را با هدف ساده کردن مجوزها سازماندهی کنید. احتمالاً داده‌های حساس را به دلایل مختلف (پرداخت‌ها، مالیات‌ها، مسئولیت، و غیره) جمع‌آوری می‌کنید، اما آن داده برای هوش تجاری مرتبط نیست (اگرچه احتمالاً با داده‌ای که *مرتبط است* مخلوط شده است). ایده این است که مرزهای سخت در مکان‌های کلیدی قرار دهید تا نگران اینکه چه کسی چه چیزی را می‌بیند نباشید، سپس سیستم‌های سبک—یا حتی فقط قراردادها—را تنظیم کنید که [مکان را مرتب نگه دارند](same-page.html) با افزایش تعداد مردم.
 
-## 1. Create groups in Metabase
+## 1. ایجاد گروه‌ها در متابیس
 
-Metabase manages permissions using [groups](../../../../docs/latest/people-and-groups/managing.html#groups), which is more efficient and more manageable than setting permissions for each person. We recommend that you set up your Metabase so that the groups in your identity provider map to the same groups in Metabase. In general, your groups should map to departments in your organization, and possibly also to project or mission teams that cut across departments. That way, once the new person in Accounting starts, they’ll log into Metabase and already have access to the same databases and collections that other people in Accounting have.
+متابیس مجوزها را با استفاده از [گروه‌ها](../../../../docs/latest/people-and-groups/managing.html#groups) مدیریت می‌کند، که کارآمدتر و قابل مدیریت‌تر از تنظیم مجوزها برای هر شخص است. توصیه می‌کنیم متابیس خود را به گونه‌ای تنظیم کنید که گروه‌ها در ارائه‌دهنده هویت شما به همان گروه‌ها در متابیس map شوند. به طور کلی، گروه‌های شما باید به بخش‌های سازمان شما map شوند، و احتمالاً همچنین به تیم‌های پروژه یا مأموریت که در بخش‌ها می‌برند. به این ترتیب، وقتی شخص جدید در حسابداری شروع می‌کند، به متابیس وارد می‌شود و از قبل دسترسی به همان پایگاه‌های داده و مجموعه‌هایی که سایر مردم در حسابداری دارند را دارد.
 
-### Group managers
+### مدیران گروه
 
-On [Pro and Enterprise plans](../../../../pricing/index.html), you can deputize [group managers](../../../../docs/latest/people-and-groups/managing.html#group-managers) that can add and remove people from the group.
+در [طرح‌های Pro و Enterprise](../../../../pricing/index.html)، می‌توانید [مدیران گروه](../../../../docs/latest/people-and-groups/managing.html#group-managers) را منصوب کنید که می‌توانند مردم را به گروه اضافه و حذف کنند.
 
-## 2. Assign data and collection permissions to those groups
+## 2. اختصاص مجوزهای داده و مجموعه به آن گروه‌ها
 
-There are fundamentally two types of permissions in Metabase: [data permissions](../permissions/data-permissions.html), which determine access to databases, and [collection permissions](../permissions/collection-permissions.html), which determine access to items in Metabase like questions and dashboards. These permissions work at the level of tables or collections, but what if you need to restrict access to rows or columns?
+اساساً دو نوع مجوز در متابیس وجود دارد: [مجوزهای داده](../permissions/data-permissions.html)، که دسترسی به پایگاه‌های داده را تعیین می‌کنند، و [مجوزهای مجموعه](../permissions/collection-permissions.html)، که دسترسی به آیتم‌ها در متابیس مثل سؤال‌ها و داشبوردها را تعیین می‌کنند. این مجوزها در سطح جداول یا مجموعه‌ها کار می‌کنند، اما اگر نیاز به محدود کردن دسترسی به ردیف‌ها یا ستون‌ها دارید چه؟
 
-### Hiding irrelevant or technical data for all users
+### پنهان کردن داده نامربوط یا فنی برای همه کاربران
 
-If there are fields \(or entire tables\) that aren’t very helpful or relevant, administrators can hide those in the **Data Model tab**. Note that SQL queries are *not* affected by this setting—users with SQL editor access for a database can always access all tables and fields in that database.
+اگر فیلدهایی (یا کل جداول) وجود دارند که خیلی مفید یا مرتبط نیستند، مدیران می‌توانند آن‌ها را در **تب مدل داده** پنهان کنند. توجه کنید که پرس‌وجوهای SQL *تحت تأثیر* این تنظیم قرار نمی‌گیرند—کاربران با دسترسی ویرایشگر SQL برای یک پایگاه داده همیشه می‌توانند به همه جداول و فیلدها در آن پایگاه داده دسترسی داشته باشند.
 
-![Selecting Do not include will hide fields in the GUI interfaces (though the field will still be acccesible in SQL/native queries.](../../../images/scaling-self-service-analytics/do-not-include.png)
+![انتخاب Do not include فیلدها را در رابط‌های GUI پنهان می‌کند (اگرچه فیلد هنوز در پرس‌وجوهای SQL/بومی قابل دسترسی است.](../../../images/scaling-self-service-analytics/do-not-include.png)
 
-Setting a field’s visibility to `Do not include` will exclude the field from menus and tables in questions built with the Query Builder. The disadvantage of changing the field visibility at the data model level is that the action is global, so it’s not very flexible. If, however, you want to *selectively* grant access to rows or columns to different groups of people, you’ll need to use row and column security permissions.
+تنظیم visibility یک فیلد به `Do not include` فیلد را از منوها و جداول در سؤال‌های ساخته شده با Query Builder حذف می‌کند. عیب تغییر visibility فیلد در سطح مدل داده این است که عمل global است، پس خیلی انعطاف‌پذیر نیست. اگر، با این حال، می‌خواهید دسترسی به ردیف‌ها یا ستون‌ها را به *انتخابی* به گروه‌های مختلف مردم بدهید، نیاز به استفاده از مجوزهای امنیت ردیف و ستون دارید.
 
-### Row and column security
+### امنیت ردیف و ستون
 
-[Row and column](../../../../docs/latest/permissions/row-and-column-security.html) is a feature available in Metabase [Pro and Enterprise plans](../../../../pricing/index.html) that, when combined with single sign\-on \(SSO\), lets you restrict access to rows or columns based on user attributes. You can add these attributes manually in Metabase, or via your authentication service. You can set up [row\-level access](../permissions/row-permissions.html) keyed to a user attribute, or you can [restrict access to columns](../permissions/column-permissions.html) by creating custom views of tables that exclude certain fields. Note that row and column security policies only apply to questions built with a graphical query builder, which brings us to:
+[ردیف و ستون](../../../../docs/latest/permissions/row-and-column-security.html) یک ویژگی در دسترس در [طرح‌های Pro و Enterprise](../../../../pricing/index.html) متابیس است که، وقتی با single sign-on (SSO) ترکیب می‌شود، به شما اجازه می‌دهد دسترسی به ردیف‌ها یا ستون‌ها را بر اساس attributeهای کاربر محدود کنید. می‌توانید این attributeها را به صورت دستی در متابیس، یا از طریق سرویس احراز هویت خود اضافه کنید. می‌توانید [دسترسی سطح ردیف](../permissions/row-permissions.html) keyed به یک attribute کاربر تنظیم کنید، یا می‌توانید [دسترسی به ستون‌ها را محدود کنید](../permissions/column-permissions.html) با ایجاد viewهای سفارشی از جداول که فیلدهای خاص را حذف می‌کنند. توجه کنید که سیاست‌های امنیت ردیف و ستون فقط به سؤال‌های ساخته شده با یک سازنده کوئری گرافیکی اعمال می‌شوند، که ما را به این می‌رساند:
 
-### SQL editor access and row or column security are mutually exclusive
+### دسترسی ویرایشگر SQL و امنیت ردیف یا ستون متقابلاً انحصاری هستند
 
-An important thing you need to know about permissions is that groups with SQL access to a database can access *all* data in the database. Even if a field is not visible in the query builder or in the [data browser](../../querying-and-dashboards/data-browser.html), people with SQL access will still be able to query the tables \(and all rows and columns\) in the database. More specifically, they’ll be able to query any data available to the user account in the database that you used to connect Metabase to that database. Which brings us to:
+یک چیز مهم که باید درباره مجوزها بدانید این است که گروه‌های با دسترسی SQL به یک پایگاه داده می‌توانند به *همه* داده در پایگاه داده دسترسی داشته باشند. حتی اگر یک فیلد در سازنده کوئری یا در [مرورگر داده](../../querying-and-dashboards/data-browser.html) قابل مشاهده نباشد، مردم با دسترسی SQL هنوز می‌توانند جداول (و همه ردیف‌ها و ستون‌ها) را در پایگاه داده پرس‌وجو کنند. به طور خاص‌تر، آن‌ها می‌توانند هر داده‌ای را که برای حساب کاربری در پایگاه داده که از آن برای اتصال متابیس به آن پایگاه داده استفاده کردید در دسترس است پرس‌وجو کنند. که ما را به این می‌رساند:
 
-### SQL permissions
+### مجوزهای SQL
 
-Metabase lacks table\-level SQL permissions: you either grant a group SQL editor access to a database, or you don’t. But since you can set SQL editor permissions at the database level, you can create two \(or more\) connections to the same database, each with different connection strings for different user accounts in that database. For example, you could set up:
+متابیس فاقد مجوزهای SQL سطح جدول است: یا به یک گروه دسترسی ویرایشگر SQL به یک پایگاه داده می‌دهید، یا نمی‌دهید. اما چون می‌توانید مجوزهای ویرایشگر SQL را در سطح پایگاه داده تنظیم کنید، می‌توانید دو (یا بیشتر) اتصال به همان پایگاه داده ایجاد کنید، هر کدام با رشته‌های اتصال مختلف برای حساب‌های کاربری مختلف در آن پایگاه داده. به عنوان مثال، می‌توانید تنظیم کنید:
 
-- Connection 1 with access to the whole database
-- Connection 2 with access to tables A, B, and C only
+- اتصال 1 با دسترسی به کل پایگاه داده
+- اتصال 2 با دسترسی فقط به جداول A، B، و C
 
-You can then grant most of your groups access to connection 2 \(the less permissive one\), and grant select users \(like dedicated data analysts\) access to connection 1 \(the whole database\). Metabase will treat these connections as if they were two separate databases, even though they are just two different access levels to the same database. From the perspective of each person, however, they’ll only see one database \(the one their group has access to\).
+سپس می‌توانید به بیشتر گروه‌های خود دسترسی به اتصال 2 (کم‌تر مجاز) بدهید، و به کاربران انتخابی (مثل تحلیل‌گران داده اختصاصی) دسترسی به اتصال 1 (کل پایگاه داده) بدهید. متابیس این اتصال‌ها را گویی که دو پایگاه داده جداگانه بودند رفتار می‌کند، حتی اگر فقط دو سطح دسترسی مختلف به همان پایگاه داده باشند. از دیدگاه هر شخص، با این حال، فقط یک پایگاه داده را می‌بینند (یکی که گروه آن‌ها به آن دسترسی دارد).
 
-### Application permissions
+### مجوزهای برنامه
 
-On [Pro and Enterprise plans](../../../../pricing/index.html), you can assign [application permissions](../../../../docs/latest/permissions/application.html) to groups to give people access to administrative tools a la carte, without giving them access to data.
+در [طرح‌های Pro و Enterprise](../../../../pricing/index.html)، می‌توانید [مجوزهای برنامه](../../../../docs/latest/permissions/application.html) را به گروه‌ها اختصاص دهید تا دسترسی مردم به ابزارهای مدیریتی à la carte را بدهید، بدون دادن دسترسی به داده.
 
-## 3. Set up SSO in your Metabase
+## 3. تنظیم SSO در متابیس خود
 
-While we hope Metabase will always have a special place in your heart, we know it’s not the only piece of software you use. If your organization is starting to grow, chances are you’re working with a single sign\-on \(SSO\) identity provider like [Okta](https://www.okta.com/products/single-sign-on/), [Auth0](https://auth0.com/single-sign-on/), or [OneLogin](https://www.onelogin.com/product/sso) that lets people authenticate once and get access to all the apps your org uses. Metabase integrates with services that use the SAML and JWT standards, which will give you fine\-grained control over access to data.
+در حالی که امیدواریم متابیس همیشه جایگاه خاصی در قلب شما داشته باشد، می‌دانیم که تنها نرم‌افزاری نیست که استفاده می‌کنید. اگر سازمان شما شروع به رشد می‌کند، احتمالاً با یک ارائه‌دهنده هویت single sign-on (SSO) مثل [Okta](https://www.okta.com/products/single-sign-on/)، [Auth0](https://auth0.com/single-sign-on/)، یا [OneLogin](https://www.onelogin.com/product/sso) کار می‌کنید که به مردم اجازه می‌دهد یک بار احراز هویت کنند و به همه برنامه‌هایی که سازمان شما استفاده می‌کند دسترسی پیدا کنند. متابیس با سرویس‌هایی که از استانداردهای SAML و JWT استفاده می‌کنند یکپارچه می‌شود، که کنترل دقیق بر دسترسی به داده را به شما می‌دهد.
 
-### Authentication options
+### گزینه‌های احراز هویت
 
-There are currently four basic options for authentication in Metabase. In the open source edition, you have:
+در حال حاضر چهار گزینه پایه برای احراز هویت در متابیس وجود دارد. در نسخه open source، دارید:
 
-- [Google Sign\-In](../../../../docs/latest/people-and-groups/google-sign-in.html)
+- [ورود Google](../../../../docs/latest/people-and-groups/google-sign-in.html)
 - [LDAP](../../../../docs/latest/people-and-groups/ldap.html)
 
-On [Pro and Enterprise](../../../../pricing/index.html), you also have:
+در [Pro و Enterprise](../../../../pricing/index.html)، همچنین دارید:
 
 - [SAML](../../../../docs/latest/people-and-groups/authenticating-with-saml.html)
 - [JWT](../../../../docs/latest/people-and-groups/authenticating-with-jwt.html)
 
-**SAML** is an open protocol for exchanging data between identity and service providers using XML. JWT is similar, though less formal—it’s a token, not a protocol. Both standards are used by identity providers like Okta and Auth0 to create authentication services \(essentially a global password manager for the people in your organization\). With Okta, for example, can sign in to your identity provider once, then they’ll be able to use all the services they have access to without having to constantly re\-enter their login and password—or different logins and passwords. The identity provider \(in this case Okta\) will handle the handshakes with each service provider. To learn more, check out Auth0’s [overview of SAML](https://auth0.com/blog/how-saml-authentication-works/).
+**SAML** یک پروتکل باز برای تبادل داده بین ارائه‌دهندگان هویت و سرویس با استفاده از XML است. JWT مشابه است، اگرچه کمتر رسمی—یک token است، نه یک پروتکل. هر دو استاندارد توسط ارائه‌دهندگان هویت مثل Okta و Auth0 برای ایجاد سرویس‌های احراز هویت (اساساً یک مدیر رمز عبور global برای مردم در سازمان شما) استفاده می‌شوند. با Okta، به عنوان مثال، می‌توانند یک بار به ارائه‌دهنده هویت شما وارد شوند، سپس می‌توانند از همه سرویس‌هایی که به آن‌ها دسترسی دارند استفاده کنند بدون نیاز به مداوم re-enter کردن ورود و رمز عبور خود—یا ورودها و رمزهای عبور مختلف. ارائه‌دهنده هویت (در این مورد Okta) handshakeها را با هر ارائه‌دهنده سرویس handle می‌کند. برای یادگیری بیشتر، [نمای کلی SAML](https://auth0.com/blog/how-saml-authentication-works/) Auth0 را بررسی کنید.
 
-The big advantage with setting up SSO with SAML or JWT is that you can pass user attributes to Metabase, which allows you to set up row and column security based on who the user is.
+مزیت بزرگ با تنظیم SSO با SAML یا JWT این است که می‌توانید attributeهای کاربر را به متابیس پاس دهید، که به شما اجازه می‌دهد امنیت ردیف و ستون را بر اساس اینکه کاربر چه کسی است تنظیم کنید.
 
-## 4. Synchronize SSO and Metabase groups
+## 4. همگام‌سازی SSO و گروه‌های متابیس
 
-Now that you’ve created groups, set permissions, and connected your SSO provider to Metabase, it’s time to synchronize groups. Check out our documentation to learn how to [synchronize group membership with your identity provider](../../../../docs/latest/people-and-groups/authenticating-with-saml.html#synchronizing-group-membership-with-your-idp). Note that you can also [synchronize groups using LDAP](../../../../docs/latest/people-and-groups/ldap.html) \(an option available for the free, open source edition of Metabase\).
+حالا که گروه‌ها را ایجاد کردید، مجوزها را تنظیم کردید، و ارائه‌دهنده SSO خود را به متابیس متصل کردید، زمان همگام‌سازی گروه‌ها است. مستندات ما را برای یادگیری نحوه [همگام‌سازی عضویت گروه با ارائه‌دهنده هویت خود](../../../../docs/latest/people-and-groups/authenticating-with-saml.html#synchronizing-group-membership-with-your-idp) بررسی کنید. توجه کنید که همچنین می‌توانید [گروه‌ها را با استفاده از LDAP همگام‌سازی کنید](../../../../docs/latest/people-and-groups/ldap.html) (یک گزینه در دسترس برای نسخه رایگان، open source متابیس).
 
-## 5. Tell people they can create a Metabase account just by logging in
+## 5. به مردم بگویید می‌توانند فقط با ورود یک حساب متابیس ایجاد کنند
 
-At this point, you should have everything set up. People should be able to log in to Metabase and see everything they need to see, and no more.
+در این نقطه، باید همه چیز را تنظیم کرده باشید. مردم باید بتوانند به متابیس وارد شوند و همه چیز را که نیاز دارند ببینند، و نه بیشتر.
 
-## 6. Use the Usage Analytics collection to monitor how people are using your Metabase
+## 6. استفاده از مجموعه Usage Analytics برای نظارت بر نحوه استفاده مردم از متابیس شما
 
-Lastly, on [Pro and Enterprise plans](../../../../pricing/index.html), you can explore [Metabase usage analytics](../../../../docs/latest/usage-and-performance-tools/usage-analytics.html) to verify what people are looking at and confirm that your permissions work as you expect. You can see which dashboards and questions people view, the contents of SQL queries they run, and what data they download. It’s also a great way to see how your rollout is going, like how many new users are logging in over time, and how much stuff everyone’s looking at.
+در نهایت، در [طرح‌های Pro و Enterprise](../../../../pricing/index.html)، می‌توانید [تحلیل‌های استفاده متابیس](../../../../docs/latest/usage-and-performance-tools/usage-analytics.html) را کاوش کنید تا تأیید کنید مردم به چه چیزی نگاه می‌کنند و تأیید کنید که مجوزهای شما همانطور که انتظار دارید کار می‌کنند. می‌توانید ببینید کدام داشبوردها و سؤال‌ها مردم مشاهده می‌کنند، محتوای پرس‌وجوهای SQL که اجرا می‌کنند، و چه داده‌ای دانلود می‌کنند. همچنین راهی عالی برای دیدن نحوه پیشرفت rollout شما است، مثل اینکه چند کاربر جدید در طول زمان وارد می‌شوند، و چقدر همه به چیزها نگاه می‌کنند.
 
-Usage Analytics is also useful for checking the performance of your workhorse dashboards and questions. One of the issues with democratizing data is that people of all skill ranges will be asking questions, and that can sometimes lead to some less efficient queries. You can use Usage Analytics to find commonly viewed items that are running slowly, then check out our posts for tips on [making dashboards faster](making-dashboards-faster.html) and [best practices for writing SQL queries](../../../sql/working-with-sql/sql-best-practices.html).
+Usage Analytics همچنین برای بررسی عملکرد داشبوردها و سؤال‌های workhorse شما مفید است. یکی از مسائل با دموکراتیک کردن داده این است که مردم از همه محدوده‌های مهارت سؤال می‌پرسند، و این می‌تواند گاهی منجر به برخی پرس‌وجوهای کمتر کارآمد شود. می‌توانید از Usage Analytics برای پیدا کردن آیتم‌های معمولاً مشاهده شده که به کندی اجرا می‌شوند استفاده کنید، سپس پست‌های ما را برای نکات درباره [سریع‌تر کردن داشبوردها](making-dashboards-faster.html) و [بهترین روش‌ها برای نوشتن پرس‌وجوهای SQL](../../../sql/working-with-sql/sql-best-practices.html) بررسی کنید.
 
-To learn more about usage analytics, check out our article on [how to keep tabs on your data](../permissions/keep-tabs-on-your-data.html).
+برای یادگیری بیشتر درباره تحلیل‌های استفاده، مقاله ما درباره [نحوه نگه داشتن tabs روی داده خود](../permissions/keep-tabs-on-your-data.html) را بررسی کنید.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Keeping your analytics organized](same-page.html) .
-- [Deliver self\-service analytics to your customers](../../embedding/multi-tenant-self-service-analytics.html) .
+- [منظم نگه داشتن تحلیل شما](same-page.html).
+- [تحویل تحلیل‌های self-service به مشتریان خود](../../embedding/multi-tenant-self-service-analytics.html).
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](metabase-in-production.html)
 [
       
         
         
+
       
       
+        
         
 
       

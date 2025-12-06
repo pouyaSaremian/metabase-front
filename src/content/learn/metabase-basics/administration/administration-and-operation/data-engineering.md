@@ -1,159 +1,157 @@
 ---
-
-
-title: "Metabase for data engineers"
-description: "Stuff data engineers should know about Metabase."
+title: "متابیس برای مهندسان داده"
+description: "چیزهایی که مهندسان داده باید درباره متابیس بدانند."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/data-engineering
 toc:
   - id: "metabase-for-data-engineers"
-    title: "Metabase for data engineers"
+    title: "متابیس برای مهندسان داده"
     level: 1
     href: "#metabase-for-data-engineers"
   - id: "metabase-as-a-client-to-databases"
-    title: "Metabase as a client to databases"
+    title: "متابیس به عنوان یک کلاینت به پایگاه‌های داده"
     level: 2
     href: "#metabase-as-a-client-to-databases"
   - id: "database-types-and-metabase"
-    title: "Database types and Metabase"
+    title: "انواع پایگاه داده و متابیس"
     level: 2
     href: "#database-types-and-metabase"
   - id: "async-processes-and-metadata"
-    title: "Async processes and metadata"
+    title: "فرآیندهای async و فراداده"
     level: 2
     href: "#async-processes-and-metadata"
   - id: "disabling-the-get-filter-values-process"
-    title: "Disabling the “Get filter values” process"
+    title: "غیرفعال کردن فرآیند \"دریافت مقادیر فیلتر\""
     level: 3
     href: "#disabling-the-get-filter-values-process"
   - id: "disabling-fingerprinting"
-    title: "Disabling fingerprinting"
+    title: "غیرفعال کردن fingerprinting"
     level: 3
     href: "#disabling-fingerprinting"
   - id: "how-to-identify-the-queries-that-metabase-is-sending-to-the-database"
-    title: "How to identify the queries that Metabase is sending to the database"
+    title: "نحوه شناسایی پرس‌وجوهایی که متابیس به پایگاه داده می‌فرستد"
     level: 2
     href: "#how-to-identify-the-queries-that-metabase-is-sending-to-the-database"
   - id: "performance-considerations"
-    title: "Performance considerations"
+    title: "ملاحظات عملکرد"
     level: 2
     href: "#performance-considerations"
   - id: "the-notify-endpoint"
-    title: "The notify endpoint"
+    title: "endpoint notify"
     level: 2
     href: "#the-notify-endpoint"
   - id: "metadata-storage"
-    title: "Metadata storage"
+    title: "ذخیره‌سازی فراداده"
     level: 2
     href: "#metadata-storage"
   - id: "the-metabasemetadata-table"
-    title: "The _metabase_metadata table"
+    title: "جدول _metabase_metadata"
     level: 2
     href: "#the-metabasemetadata-table"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# Metabase for data engineers
+# متابیس برای مهندسان داده
 
-Stuff data engineers should know about Metabase.
+چیزهایی که مهندسان داده باید درباره متابیس بدانند.
 
-- Metabase is a data visualization tool based on the philosophy of self\-service analytics. We want everyone to be able to ask their own questions about their data. How easy it’ll be for people to ask questions depends on the data they have available and how you’ve modeled that data.
-- Metabase is a self\-contained web application that exposes REST APIs: you can use Metabase’s UI, or you can talk with it via our [REST API](../../../../docs/latest/api.html) . You can integrate it with the rest of your stack with just HTTP calls.
-- Like with any data tool, be mindful of permissions. If you give Metabase a root account on your database, anyone who has SQL access in Metabase will be able to do anything that a root user can, so be deliberate about the credentials you use to connect Metabase to your database and the permissions you give to Metabase groups.
+- متابیس یک ابزار تجسم داده بر اساس فلسفه تحلیل‌های self-service است. ما می‌خواهیم همه بتوانند سؤال‌های خود را درباره داده خود بپرسند. چقدر آسان خواهد بود برای مردم که سؤال بپرسند به داده‌ای که در دسترس دارند و نحوه مدل کردن آن داده بستگی دارد.
+- متابیس یک برنامه وب self-contained است که REST APIها را expose می‌کند: می‌توانید از UI متابیس استفاده کنید، یا می‌توانید از طریق [REST API](../../../../docs/latest/api.html) ما با آن صحبت کنید. می‌توانید آن را با بقیه stack خود با فقط فراخوانی‌های HTTP یکپارچه کنید.
+- مثل هر ابزار داده، به مجوزها توجه کنید. اگر به متابیس یک حساب root در پایگاه داده خود بدهید، هر کسی که دسترسی SQL در متابیس دارد می‌تواند هر کاری که یک کاربر root می‌تواند انجام دهد، پس درباره اعتبارنامه‌هایی که برای اتصال متابیس به پایگاه داده خود استفاده می‌کنید و مجوزهایی که به گروه‌های متابیس می‌دهید deliberate باشید.
 
-## Metabase as a client to databases
+## متابیس به عنوان یک کلاینت به پایگاه‌های داده
 
-Metabase uses JDBC drivers to connect to databases, but we don’t use the pure drivers: we wrap these in Clojure code \(Metabase’s backend is written in Clojure\). We do this wrapping for a reason: our drivers are high\-level abstractions that transform database data types into simpler data types that people can understand. Our drivers also pull in metadata from your database so Metabase can learn how to work with your data.
+متابیس از درایورهای JDBC برای اتصال به پایگاه‌های داده استفاده می‌کند، اما از درایورهای pure استفاده نمی‌کنیم: آن‌ها را در کد Clojure wrap می‌کنیم (بک‌اند متابیس در Clojure نوشته شده است). این wrapping را به دلیلی انجام می‌دهیم: درایورهای ما abstractionهای سطح بالا هستند که انواع داده پایگاه داده را به انواع داده ساده‌تر که مردم می‌توانند درک کنند تبدیل می‌کنند. درایورهای ما همچنین فراداده را از پایگاه داده شما pull می‌کنند تا متابیس بتواند یاد بگیرد چگونه با داده شما کار کند.
 
-You shouldn’t expect the same response time from a query that you run in Metabase compared with a query run from a native client \(or, if your database is a SaaS product, the database’s web console\). But we’re talking just a few milliseconds: the time Metabase needs to transform these Java objects that the JDBC protocol speaks into JSON.
+نباید انتظار همان زمان پاسخ از یک پرس‌وجو که در متابیس اجرا می‌کنید در مقایسه با یک پرس‌وجو اجرا شده از یک کلاینت بومی (یا، اگر پایگاه داده شما یک محصول SaaS است، کنسول وب پایگاه داده) داشته باشید. اما فقط چند میلی‌ثانیه صحبت می‌کنیم: زمانی که متابیس نیاز دارد این اشیاء Java که پروتکل JDBC با آن‌ها صحبت می‌کند را به JSON تبدیل کند.
 
-## Database types and Metabase
+## انواع پایگاه داده و متابیس
 
-Metabase supports many databases officially and some others unofficially \(via community drivers\). If you need to connect to a database that we don’t support, check if your database engine can do federated queries to other engines. Many database engines support connections to all kinds of services, and if these connections work, you’ll be able to use Metabase fine.
+متابیس بسیاری از پایگاه‌های داده را به طور رسمی و برخی دیگر را به طور غیررسمی (از طریق درایورهای انجمن) پشتیبانی می‌کند. اگر نیاز به اتصال به پایگاهی دارید که ما پشتیبانی نمی‌کنیم، بررسی کنید که آیا موتور پایگاه داده شما می‌تواند پرس‌وجوهای federated به موتورهای دیگر انجام دهد. بسیاری از موتورهای پایگاه داده از اتصال به انواع مختلف سرویس‌ها پشتیبانی می‌کنند، و اگر این اتصال‌ها کار کنند، می‌توانید از متابیس به خوبی استفاده کنید.
 
-If you don’t have any way to connect Metabase to your database, you could pipe your data into a supported database. There are many products on the market that let you pick a source and destination, and in a few hours, you’ll be good to go.
+اگر هیچ راهی برای اتصال متابیس به پایگاه داده خود ندارید، می‌توانید داده خود را به یک پایگاه داده پشتیبانی شده pipe کنید. محصولات زیادی در بازار وجود دارند که به شما اجازه می‌دهند یک منبع و مقصد انتخاب کنید، و در چند ساعت، آماده خواهید بود.
 
-## Async processes and metadata
+## فرآیندهای async و فراداده
 
-To make it easy for people to query your data, Metabase [syncs metadata](../../../../docs/latest/databases/sync-scan.html) from your database:
+برای آسان کردن پرسیدن سؤال از داده شما برای مردم، متابیس [metadata را sync می‌کند](../../../../docs/latest/databases/sync-scan.html) از پایگاه داده شما:
 
-- **Sync and scan** : Metabase asks for the list of schemas, tables, columns, and column data types.
-- **Get filter values** : During this process, Metabase will fire queries to your database asking for the first 1,000 unique values of any text field it finds.
-- **Fingerprinting** : This process runs after the first two. It takes a sample of the first 10,000 values of numbers and dates to understand the minimum, maximum, and average of every field. This helps Metabase offer better x and y axes on charts, and more.
+- **Sync و scan**: متابیس لیست schemaها، جداول، ستون‌ها، و انواع داده ستون را می‌پرسد.
+- **دریافت مقادیر فیلتر**: در طول این فرآیند، متابیس پرس‌وجوهایی به پایگاه داده شما fire می‌کند که اولین 1000 مقدار منحصر به فرد هر فیلد متنی که پیدا می‌کند را می‌پرسد.
+- **Fingerprinting**: این فرآیند بعد از دو مورد اول اجرا می‌شود. نمونه‌ای از اولین 10000 مقدار اعداد و تاریخ‌ها می‌گیرد تا minimum، maximum، و average هر فیلد را درک کند. این به متابیس کمک می‌کند محورهای x و y بهتری روی نمودارها ارائه دهد، و بیشتر.
 
-Metabase will also pick up the comments you add to tables and columns in your `CREATE TABLE` statements. It’ll show these comments in the data reference, as well as the query builder and table view \(hover over a column to see its description\).
+متابیس همچنین نظراتی که به جداول و ستون‌ها در statementهای `CREATE TABLE` خود اضافه می‌کنید را pick up می‌کند. این نظرات را در مرجع داده، و همچنین سازنده کوئری و نمای جدول (hover روی یک ستون برای دیدن توضیحات آن) نمایش می‌دهد.
 
-You can change sync and scan processes from hourly to daily. You can also [turn off syncing and scanning for specific tables](../../../../docs/latest/databases/sync-scan.html#disabling-syncing-and-scanning-for-specific-tables).
+می‌توانید فرآیندهای sync و scan را از ساعتی به روزانه تغییر دهید. همچنین می‌توانید [sync و scan را برای جداول خاص خاموش کنید](../../../../docs/latest/databases/sync-scan.html#disabling-syncing-and-scanning-for-specific-tables).
 
-You can also turn off getting filter values and fingerprinting, but you should understand the implications:
+همچنین می‌توانید دریافت مقادیر فیلتر و fingerprinting را خاموش کنید، اما باید پیامدها را درک کنید:
 
-### Disabling the “Get filter values” process
+### غیرفعال کردن فرآیند "دریافت مقادیر فیلتر"
 
-Disabling this process is a good choice if your database has massive tables or simply doesn’t care about `LIMIT` clauses and performs a full column scan, like BigQuery does.
+غیرفعال کردن این فرآیند انتخاب خوبی است اگر پایگاه داده شما جداول عظیم دارد یا به سادگی به بندهای `LIMIT` اهمیت نمی‌دهد و یک scan کامل ستون انجام می‌دهد، مثل BigQuery.
 
-Consequence: people won’t see the list of available values when trying to filter on a text field in questions and dashboards. They’ll have to either enter a value in an input or search box. If you configure the field to show a search box, Metabase will fire a `LIKE` query statement to the database to look for the value that the person enters, so take precautions if your database struggles with those types of queries.
+پیامد: مردم لیست مقادیر در دسترس را هنگام تلاش برای فیلتر کردن روی یک فیلد متنی در سؤال‌ها و داشبوردها نمی‌بینند. باید یا یک مقدار در یک input یا جعبه جستجو وارد کنند. اگر فیلد را برای نمایش یک جعبه جستجو پیکربندی کنید، متابیس یک statement پرس‌وجوی `LIKE` به پایگاه داده fire می‌کند تا به دنبال مقداری که شخص وارد می‌کند بگردد، پس احتیاط کنید اگر پایگاه داده شما با آن نوع پرس‌وجوها مشکل دارد.
 
-If even the search box approach is a problem, you might want to consider getting the field values through an external process. You can grab those values more efficiently, then populate the filter values in Metabase dashboards via an API call. For example, you could create a data pipeline queries your database to get the unique values of a column via optimized statements \(e.g., HLL or approximate count\), and then call Metabase’s API to update the filters in the dashboards.
+اگر حتی رویکرد جعبه جستجو یک مشکل است، ممکن است بخواهید دریافت مقادیر فیلد را از طریق یک فرآیند خارجی در نظر بگیرید. می‌توانید آن مقادیر را به طور کارآمدتر grab کنید، سپس مقادیر فیلتر را در داشبوردهای متابیس از طریق یک فراخوانی API populate کنید. به عنوان مثال، می‌توانید یک pipeline داده ایجاد کنید که پایگاه داده شما را برای دریافت مقادیر منحصر به فرد یک ستون از طریق statementهای بهینه‌شده (مثلاً، HLL یا approximate count) پرس‌وجو می‌کند، و سپس API متابیس را برای به‌روزرسانی فیلترها در داشبوردها فراخوانی کند.
 
-### Disabling fingerprinting
+### غیرفعال کردن fingerprinting
 
-When you hover over column headings, you might see that the data’s off: like maximums, minimums, or averages that aren’t right.
+وقتی روی عنوان‌های ستون hover می‌کنید، ممکن است ببینید که داده off است: مثل maximumها، minimumها، یا averageهایی که درست نیستند.
 
-## How to identify the queries that Metabase is sending to the database
+## نحوه شناسایی پرس‌وجوهایی که متابیس به پایگاه داده می‌فرستد
 
-Sync and scan processes:
+فرآیندهای sync و scan:
 
-- Query the information schema, or any schema that your database uses to keep the inventory of schemas, tables, and columns, or
-- Query `SELECT TRUE` or `SELECT 1` on specific tables.
+- پرس‌وجو از information schema، یا هر schema که پایگاه داده شما برای نگه داشتن inventory از schemaها، جداول، و ستون‌ها استفاده می‌کند، یا
+- پرس‌وجو `SELECT TRUE` یا `SELECT 1` روی جداول خاص.
 
-If the query ends with `LIMIT 1000`, then you’re seeing the `get-filter-values` process, while if you’re seeing queries that end with `LIMIT 10000`, then you’re most probably seeing fingerprinting queries. You can’t override those limits. The limits determine how and what data is displayed in the application, like filters or charts.
+اگر پرس‌وجو با `LIMIT 1000` پایان می‌یابد، پس فرآیند `get-filter-values` را می‌بینید، در حالی که اگر پرس‌وجوهایی می‌بینید که با `LIMIT 10000` پایان می‌یابند، پس احتمالاً پرس‌وجوهای fingerprinting را می‌بینید. نمی‌توانید آن محدودیت‌ها را override کنید. محدودیت‌ها تعیین می‌کنند چگونه و چه داده‌ای در برنامه نمایش داده می‌شود، مثل فیلترها یا نمودارها.
 
-## Performance considerations
+## ملاحظات عملکرد
 
-As databases grow in size, some metadata queries might be very costly to run. For example, if your database has 500 million rows, you might not want Metabase running queries to fingerprint data or get field values at random times. We recommend taking the following precautions when your data grows considerably \(both when tables get big in terms of rows or when your database has more than 100 tables\):
+همانطور که پایگاه‌های داده در اندازه رشد می‌کنند، برخی پرس‌وجوهای فراداده ممکن است بسیار پرهزینه برای اجرا باشند. به عنوان مثال، اگر پایگاه داده شما 500 میلیون ردیف دارد، ممکن است نخواهید متابیس پرس‌وجوهایی برای fingerprint کردن داده یا دریافت مقادیر فیلد در زمان‌های تصادفی اجرا کند. توصیه می‌کنیم احتیاط‌های زیر را وقتی داده شما به طور قابل توجهی رشد می‌کند (هم وقتی جداول از نظر ردیف بزرگ می‌شوند و هم وقتی پایگاه داده شما بیش از 100 جدول دارد) انجام دهید:
 
-- Go to your database settings under **Admin settings** \> **Databases** .
-- Enable **Choose when sync and scan happens** .
-- Set the sync and scan cadence to weekly.
-- Set **Scan for filter values** to “Never, I’ll do it manually if I need to” or to “When a filter is added”.
-- Keep fingerprinting disabled.
+- به تنظیمات پایگاه داده خود در **تنظیمات Admin** > **پایگاه‌های داده** بروید.
+- **انتخاب زمان sync و scan** را فعال کنید.
+- cadence sync و scan را به هفتگی تنظیم کنید.
+- **Scan برای مقادیر فیلتر** را به "هرگز، در صورت نیاز به صورت دستی انجام می‌دهم" یا به "وقتی یک فیلتر اضافه می‌شود" تنظیم کنید.
+- fingerprinting را غیرفعال نگه دارید.
 
-The “100 tables” number we mention above is heavily dependent on how fast your queries can run. If you have 100 tables of 5 rows each with 10 columns, that’s not the same as 100 tables of 500 columns each with 10 million rows, so take this recommendation with a grain of salt.
+عدد "100 جدول" که در بالا ذکر می‌کنیم به شدت به سرعت اجرای پرس‌وجوهای شما بستگی دارد. اگر 100 جدول از 5 ردیف هر کدام با 10 ستون دارید، این همان 100 جدول از 500 ستون هر کدام با 10 میلیون ردیف نیست، پس این توصیه را با grain of salt در نظر بگیرید.
 
-## The notify endpoint
+## endpoint notify
 
-Metabase has a special endpoint designed specifically for data pipelines and/or very large databases. This endpoint tells Metabase when a data pipeline has finished running so Metabase can go to a specific table or schema and crawl it.
+متابیس یک endpoint خاص طراحی شده به خصوص برای pipelineهای داده و/یا پایگاه‌های داده بسیار بزرگ دارد. این endpoint به متابیس می‌گوید وقتی یک pipeline داده اجرای خود را تمام کرده است تا متابیس بتواند به یک جدول یا schema خاص برود و آن را crawl کند.
 
-If your data is big enough, or if you need to tell Metabase at any moment to go over a specific table or schema \(maybe the hourly job isn’t enough or very costly\), consider using the notify endpoint and leaving the sync job to run only once a day.
+اگر داده شما به اندازه کافی بزرگ است، یا اگر نیاز دارید به متابیس در هر لحظه بگویید روی یک جدول یا schema خاص برود (شاید کار ساعتی کافی نیست یا بسیار پرهزینه است)، استفاده از endpoint notify و گذاشتن کار sync برای اجرای فقط یک بار در روز را در نظر بگیرید.
 
-The endpoint comes in two flavors, which need the Metabase database internal ID passed in the URL:
+endpoint در دو flavor می‌آید، که نیاز به ID داخلی پایگاه داده متابیس در URL دارد:
 
-- `/api/notify/db/<id>` : endpoint will rescan known tables
+- `/api/notify/db/<id>`: endpoint جداول شناخته شده را rescan می‌کند
 
-This endpoint needs the following parameters passed in the body of the HTTP call:
+این endpoint نیاز به پارامترهای زیر دارد که در body فراخوانی HTTP پاس داده می‌شوند:
 
-- `scan` : ‘full’ or ‘schema’, means that you want Metabase to go over all the schemas or a specific one
-- `table_name` or `table_id` : you want Metabase to go over a specific table, not all. Useful for atomic syncs.
-- `synchronous`: if you want Metabase to start the process right away, or schedule it for the next few minutes \(when the internal task runner starts polling for available jobs\). Useful if people need to see updated changes as soon as possible.
-- `/api/notify/db/<id>/new-table` : endpoint will search for a new table in the database and scan it.
+- `scan`: 'full' یا 'schema'، به معنای اینکه می‌خواهید متابیس روی همه schemaها یا یک مورد خاص برود
+- `table_name` یا `table_id`: می‌خواهید متابیس روی یک جدول خاص برود، نه همه. مفید برای syncهای atomic.
+- `synchronous`: اگر می‌خواهید متابیس فرآیند را فوراً شروع کند، یا آن را برای چند دقیقه بعد schedule کند (وقتی task runner داخلی شروع به polling برای کارهای در دسترس می‌کند). مفید اگر مردم نیاز دارند تغییرات به‌روزرسانی شده را در اسرع وقت ببینند.
+- `/api/notify/db/<id>/new-table`: endpoint یک جدول جدید در پایگاه داده جستجو می‌کند و آن را scan می‌کند.
 
-This endpoint requires the new table name and a schema name. These parameters should be in the body of the HTTP call.
+این endpoint نیاز به نام جدول جدید و نام schema دارد. این پارامترها باید در body فراخوانی HTTP باشند.
 
-## Metadata storage
+## ذخیره‌سازی فراداده
 
-Metabase stores all the metadata in the application database. If at some point Metabase can’t find a schema, table, or column that was there before, it will soft delete the record in Metabase’s application database \(it puts a flag in the database to completely hide it from the UI\).
+متابیس همه فراداده را در پایگاه داده برنامه ذخیره می‌کند. اگر در نقطه‌ای متابیس نتواند یک schema، جدول، یا ستون که قبلاً آنجا بود را پیدا کند، رکورد را در پایگاه داده برنامه متابیس soft delete می‌کند (یک flag در پایگاه داده قرار می‌دهد تا کاملاً آن را از UI پنهان کند).
 
-Don’t give Metabase access to data that people won’t ever query. If Metabase accesses those objects in the database and syncs them, they’ll be kept there forever—even if you remove access to them. Having those tables in there won’t cause any kind of performance penalty in the Metabase backend, but it will make the backups of the Metabase application database bigger than they need to be.
+به متابیس دسترسی به داده‌ای که مردم هرگز پرس‌وجو نمی‌کنند ندهید. اگر متابیس به آن اشیاء در پایگاه داده دسترسی پیدا کند و آن‌ها را sync کند، برای همیشه آنجا نگه داشته می‌شوند—حتی اگر دسترسی به آن‌ها را حذف کنید. داشتن آن جداول در آنجا هیچ نوع جریمه عملکردی در بک‌اند متابیس ایجاد نمی‌کند، اما backupهای پایگاه داده برنامه متابیس را بزرگ‌تر از آنچه نیاز است می‌کند.
 
-## The _metabase_metadata table
+## جدول _metabase_metadata
 
-If you haven’t added any comments on your `CREATE TABLE` statements or your database simply doesn’t support it, you can create a special table in the database with the following structure:
+اگر هیچ نظری روی statementهای `CREATE TABLE` خود اضافه نکرده‌اید یا پایگاه داده شما به سادگی از آن پشتیبانی نمی‌کند، می‌توانید یک جدول خاص در پایگاه داده با ساختار زیر ایجاد کنید:
 
 ```
 CREATE TABLE public._metabase_metadata (
@@ -166,24 +164,28 @@ INSERT INTO public._metabase_metadata VALUES
 
 ```
 
-You can use this pattern to insert the metadata you want for your tables and fields.
+می‌توانید از این الگو برای insert کردن فراداده مورد نظر خود برای جداول و فیلدها استفاده کنید.
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](metabase-at-scale.html)
 [
       
         
         
+
       
       
+        
         
 
       

@@ -1,292 +1,294 @@
 ---
-
-
-title: "How to run Metabase at scale"
-description: "Best practices for scaling Metabase to support more people and databases."
+title: "نحوه اجرای متابیس در مقیاس"
+description: "بهترین روش‌ها برای scale کردن متابیس برای پشتیبانی از مردم و پایگاه‌های داده بیشتر."
 redirect_from:
   - /learn/metabase-basics/administration/administration-and-operation/metabase-at-scale
   - /learn/administration/metabase-at-scale
 toc:
   - id: "how-to-run-metabase-at-scale"
-    title: "How to run Metabase at scale"
+    title: "نحوه اجرای متابیس در مقیاس"
     level: 1
     href: "#how-to-run-metabase-at-scale"
   - id: "factors-that-impact-metabase-performance-and-availability"
-    title: "Factors that impact Metabase performance and availability"
+    title: "عوامل تأثیرگذار بر عملکرد و در دسترس بودن متابیس"
     level: 2
     href: "#factors-that-impact-metabase-performance-and-availability"
   - id: "vertical-scaling"
-    title: "Vertical scaling"
+    title: "Scale کردن عمودی"
     level: 2
     href: "#vertical-scaling"
   - id: "for-every-20-concurrent-users-figure-roughly-need-1-cpu-core-and-1gb-of-ram"
-    title: "For every 20 concurrent users, figure roughly need 1 CPU core and 1GB of RAM"
+    title: "برای هر 20 کاربر همزمان، تقریباً به 1 هسته CPU و 1GB RAM نیاز است"
     level: 3
     href: "#for-every-20-concurrent-users-figure-roughly-need-1-cpu-core-and-1gb-of-ram"
   - id: "horizontal-scaling-preferred"
-    title: "Horizontal scaling (preferred)"
+    title: "Scale کردن افقی (ترجیح داده شده)"
     level: 2
     href: "#horizontal-scaling-preferred"
   - id: "taking-advantage-of-time-based-horizontal-scaling"
-    title: "Taking advantage of time-based horizontal scaling"
+    title: "استفاده از scale کردن افقی مبتنی بر زمان"
     level: 3
     href: "#taking-advantage-of-time-based-horizontal-scaling"
   - id: "straightforward-load-balancing"
-    title: "Straightforward load balancing"
+    title: "Load balancing ساده"
     level: 3
     href: "#straightforward-load-balancing"
   - id: "data-warehouse-tuning"
-    title: "Data warehouse tuning"
+    title: "tune کردن data warehouse"
     level: 2
     href: "#data-warehouse-tuning"
   - id: "metabase-application-best-practices"
-    title: "Metabase application best practices"
+    title: "بهترین روش‌های برنامه متابیس"
     level: 2
     href: "#metabase-application-best-practices"
   - id: "only-ask-for-the-data-you-need"
-    title: "Only ask for the data you need"
+    title: "فقط داده مورد نیاز خود را درخواست کنید"
     level: 3
     href: "#only-ask-for-the-data-you-need"
   - id: "use-a-managed-relational-database-to-store-your-metabase-application-data"
-    title: "Use a managed relational database to store your Metabase application data"
+    title: "استفاده از یک پایگاه داده رابطه‌ای مدیریت شده برای ذخیره داده برنامه متابیس خود"
     level: 3
     href: "#use-a-managed-relational-database-to-store-your-metabase-application-data"
   - id: "cache-your-queries"
-    title: "Cache your queries"
+    title: "Cache کردن پرس‌وجوهای خود"
     level: 3
     href: "#cache-your-queries"
   - id: "look-for-bottlenecks"
-    title: "Look for bottlenecks"
+    title: "جستجوی bottlenecks"
     level: 3
     href: "#look-for-bottlenecks"
   - id: "increase-the-maximum-number-of-connections-to-the-app-db"
-    title: "Increase the maximum number of connections to the app db"
+    title: "افزایش حداکثر تعداد اتصال‌ها به پایگاه داده برنامه"
     level: 3
     href: "#increase-the-maximum-number-of-connections-to-the-app-db"
   - id: "increase-the-maximum-number-of-connections-to-each-database"
-    title: "Increase the maximum number of connections to each database"
+    title: "افزایش حداکثر تعداد اتصال‌ها به هر پایگاه داده"
     level: 3
     href: "#increase-the-maximum-number-of-connections-to-each-database"
   - id: "sync-with-your-databases-only-when-you-need-to"
-    title: "Sync with your databases only when you need to"
+    title: "Sync با پایگاه‌های داده خود فقط وقتی نیاز دارید"
     level: 3
     href: "#sync-with-your-databases-only-when-you-need-to"
   - id: "upgrade-to-the-latest-version-of-metabase"
-    title: "Upgrade to the latest version of Metabase"
+    title: "ارتقا به آخرین نسخه متابیس"
     level: 3
     href: "#upgrade-to-the-latest-version-of-metabase"
   - id: "serve-metabase-via-https-over-http-2"
-    title: "Serve Metabase via HTTPS over HTTP/2"
+    title: "سرو کردن متابیس از طریق HTTPS روی HTTP/2"
     level: 3
     href: "#serve-metabase-via-https-over-http-2"
   - id: "keep-your-browser-up-to-date"
-    title: "Keep your browser up to date"
+    title: "مرورگر خود را به‌روز نگه دارید"
     level: 3
     href: "#keep-your-browser-up-to-date"
   - id: "supported-deployments"
-    title: "Supported deployments"
+    title: "deploymentهای پشتیبانی شده"
     level: 2
     href: "#supported-deployments"
   - id: "hosted-metabase"
-    title: "Hosted Metabase"
+    title: "متابیس میزبانی شده"
     level: 2
     href: "#hosted-metabase"
   - id: "getting-help"
-    title: "Getting help"
+    title: "دریافت کمک"
     level: 2
     href: "#getting-help"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Administration and operation"
+  - title: "مدیریت و عملیات"
     href: "index.html"
 ---
 
-# How to run Metabase at scale
+# نحوه اجرای متابیس در مقیاس
 
-Best practices for scaling Metabase to support more people and databases.
+بهترین روش‌ها برای scale کردن متابیس برای پشتیبانی از مردم و پایگاه‌های داده بیشتر.
 
-Metabase is scalable, battle\-hardened software used by tens of thousands of companies to deliver high quality, self\-service analytics. It supports high availability via horizontal scaling, and it’s efficient out of the box: a single core machine with 4 Gbyte of RAM can scale Metabase to hundreds of users.
+متابیس نرم‌افزار scalable، battle-hardened است که توسط ده‌ها هزار شرکت برای تحویل تحلیل‌های self-service با کیفیت بالا استفاده می‌شود. از در دسترس بودن بالا از طریق scale کردن افقی پشتیبانی می‌کند، و از جعبه کارآمد است: یک ماشین single-core با 4 گیگابایت RAM می‌تواند متابیس را به صدها کاربر scale کند.
 
-![A single Metabase instance connected to multiple databases, as well as to its application database, which stores questions, dashboards, and other data specific to Metabase. You can easily add more Metabase instances as you grow.](../../../images/scaling-metabase/metabase-setup-diagram.png)
+![یک instance متابیس واحد متصل به چندین پایگاه داده، و همچنین به پایگاه داده برنامه خود، که سؤال‌ها، داشبوردها، و سایر داده‌های خاص متابیس را ذخیره می‌کند. می‌توانید به راحتی instanceهای متابیس بیشتری همانطور که رشد می‌کنید اضافه کنید.](../../../images/scaling-metabase/metabase-setup-diagram.png)
 
-This article provides high\-level guidance and best practices on how to keep Metabase running smoothly in production as the numbers of users and data sources increase. Each data system is different, so we can only discuss scaling strategies at a high level, but you should be able to translate these strategies to your particular environment and usage.
+این مقاله راهنمایی سطح بالا و بهترین روش‌ها درباره نحوه نگه داشتن متابیس در حال اجرای روان در production همانطور که تعداد کاربران و منابع داده افزایش می‌یابد ارائه می‌دهد. هر سیستم داده متفاوت است، پس فقط می‌توانیم استراتژی‌های scaling را در سطح بالا بحث کنیم، اما باید بتوانید این استراتژی‌ها را به محیط و استفاده خاص خود ترجمه کنید.
 
-## Factors that impact Metabase performance and availability
+## عوامل تأثیرگذار بر عملکرد و در دسترس بودن متابیس
 
-Metabase scales well both vertically and horizontally, but it is only one component of your data warehouse, and the overall performance of your system will depend on the composition of your system and your usage patterns. Major factors that impact your experience using Metabase include:
+متابیس هم به صورت عمودی و هم افقی به خوبی scale می‌شود، اما فقط یک کامپوننت از data warehouse شما است، و عملکرد کلی سیستم شما به ترکیب سیستم و الگوهای استفاده شما بستگی دارد. عوامل اصلی که بر تجربه استفاده از متابیس تأثیر می‌گذارند شامل:
 
-- The number of databases connected to Metabase.
-- The number of tables in each database.
-- The efficiency of your data warehouse.
-- The number of questions in your dashboards.
+- تعداد پایگاه‌های داده متصل به متابیس.
+- تعداد جداول در هر پایگاه داده.
+- کارایی data warehouse شما.
+- تعداد سؤال‌ها در داشبوردهای شما.
 
-For example, it won’t matter how many instances of Metabase you run if a question needs to run a query that your database\(s\) takes 30 minutes to complete: that’s just going to take 30 minutes. The solution is to re\-evaluate your need for that data \(do you really need all that info every time?\) or to find ways to improve the performance of your database, such as reorganizing, indexing, or caching your data.
+به عنوان مثال، مهم نیست چند instance متابیس اجرا می‌کنید اگر یک سؤال نیاز به اجرای یک پرس‌وجو دارد که پایگاه داده(های) شما 30 دقیقه طول می‌کشد تا کامل شود: این فقط 30 دقیقه طول می‌کشد. راه‌حل این است که نیاز خود به آن داده را دوباره ارزیابی کنید (آیا واقعاً هر بار به همه آن اطلاعات نیاز دارید؟) یا راه‌هایی برای بهبود عملکرد پایگاه داده خود پیدا کنید، مثل reorganize کردن، index کردن، یا cache کردن داده شما.
 
-The number of databases and tables can also affect client performance, but only in large\-scale situations where you’re managing hundreds of databases and/or thousands of tables, as the metadata itself can be a lot to query. To help keep performance smooth even at this scale, you can [manage when Metabase syncs its metadata](#sync-with-your-databases-only-when-you-need-to) with your connected databases.
+تعداد پایگاه‌های داده و جداول همچنین می‌تواند عملکرد کلاینت را تحت تأثیر قرار دهد، اما فقط در موقعیت‌های large-scale که صدها پایگاه داده و/یا هزاران جدول را مدیریت می‌کنید، چون خود فراداده می‌تواند برای پرس‌وجو زیاد باشد. برای کمک به نگه داشتن عملکرد روان حتی در این مقیاس، می‌توانید [زمان sync کردن فراداده توسط متابیس](#sync-with-your-databases-only-when-you-need-to) با پایگاه‌های داده متصل خود را مدیریت کنید.
 
-Now let’s make sure your Metabase application is well\-tuned to scale.
+اکنون بیایید مطمئن شویم برنامه متابیس شما به خوبی tune شده است تا scale کند.
 
-## Vertical scaling
+## Scale کردن عمودی
 
-Vertical scaling is the brute force approach. Give Metabase more cores and memory, and it will have more resources available to do its work. If you are experiencing performance issues related to the application itself \(i.e., unrelated to the breadth and magnitude of your databases\), running Metabase on a more powerful machine can improve performance.
+Scale کردن عمودی رویکرد brute force است. به متابیس هسته‌ها و حافظه بیشتری بدهید، و منابع بیشتری برای انجام کار خود در دسترس خواهد داشت. اگر مشکلات عملکرد مرتبط با خود برنامه را تجربه می‌کنید (یعنی، نامرتبط با breadth و magnitude پایگاه‌های داده شما)، اجرای متابیس روی یک ماشین قدرتمندتر می‌تواند عملکرد را بهبود بخشد.
 
-### For every 20 concurrent users, figure roughly need 1 CPU core and 1GB of RAM
+### برای هر 20 کاربر همزمان، تقریباً به 1 هسته CPU و 1GB RAM نیاز است
 
-Metabase is already efficient out of the box. To start, a single\-core machine with 2 gigabytes of RAM should be more than enough for solo users or small teams.
+متابیس از جعبه از قبل کارآمد است. برای شروع، یک ماشین single-core با 2 گیگابایت RAM باید برای کاربران solo یا تیم‌های کوچک بیش از حد کافی باشد.
 
-When to add more memory and cores: If you see that your server is consistently using more than 80% of its current resources \(memory or compute\).
+چه زمانی حافظه و هسته بیشتری اضافه کنیم: اگر می‌بینید سرور شما به طور مداوم بیش از 80% منابع فعلی خود (حافظه یا compute) را استفاده می‌کند.
 
-The Metabase application database should respond in less than one second for any operation \(not counting the response time for the data warehouse your Metabase is connected to\).
+پایگاه داده برنامه متابیس باید در کمتر از یک ثانیه برای هر عملیاتی پاسخ دهد (شمارش زمان پاسخ برای data warehouse که متابیس شما به آن متصل است).
 
-Machines with 4\-8 Gigabytes should handle hundreds of users, and you can bump the number of cores and gigabytes of memory if needed.
+ماشین‌های با 4-8 گیگابایت باید صدها کاربر را handle کنند، و می‌توانید تعداد هسته‌ها و گیگابایت حافظه را در صورت نیاز bump کنید.
 
-While adding more cores and memory can be effective, you’re generally better off using horizontal scaling to support more users. The reason is because there are database connectivity limits built into each Metabase instance to prevent the instance from overwhelming your data warehouse with requests. You can [increase the number of connections](#increase-the-maximum-number-of-connections-to-each-database) available for your instance, but we still recommend multiple instances.
+در حالی که افزودن هسته‌ها و حافظه بیشتر می‌تواند مؤثر باشد، به طور کلی بهتر است از scale کردن افقی برای پشتیبانی از کاربران بیشتر استفاده کنید. دلیل این است که محدودیت‌های اتصال پایگاه داده در هر instance متابیس ساخته شده است تا از overwhelming کردن data warehouse شما با درخواست‌ها توسط instance جلوگیری کند. می‌توانید [تعداد اتصال‌ها را افزایش دهید](#increase-the-maximum-number-of-connections-to-each-database) در دسترس برای instance خود، اما هنوز چندین instance را توصیه می‌کنیم.
 
-## Horizontal scaling (preferred)
+## Scale کردن افقی (ترجیح داده شده)
 
-Instead of increasing the size of the server running Metabase, horizontal scaling involves spinning up more servers, each running Metabase, which you connect to the same application database. This way you can run multiple instances of Metabase in combination with a load balancer to direct traffic to the instances. Metabase is set up for horizontal scaling out of the box, so you don’t need any special configuration to run multiple instances of Metabase. When a Metabase server connects to an existing application database, it will recognize itself as a part of a cluster.
+به جای افزایش اندازه سرور در حال اجرای متابیس، scale کردن افقی شامل راه‌اندازی سرورهای بیشتر، هر کدام در حال اجرای متابیس، که به همان پایگاه داده برنامه متصل می‌کنید است. به این ترتیب می‌توانید چندین instance متابیس را در ترکیب با یک load balancer برای هدایت ترافیک به instanceها اجرا کنید. متابیس برای scale کردن افقی از جعبه تنظیم شده است، پس نیازی به پیکربندی خاص برای اجرای چندین instance متابیس ندارید. وقتی یک سرور متابیس به یک پایگاه داده برنامه موجود متصل می‌شود، خود را به عنوان بخشی از یک cluster تشخیص می‌دهد.
 
-The primary use case for horizontal scaling is to improve reliability \(a.k.a. “high availability”\), but horizontal scaling can also improve multi\-user performance. When the load is balanced, a high\-traffic, CPU\-bound Metabase instance will perform better \(faster\) when some of its traffic is directed to other instances, as the CPU load will be distributed across multiple machines.
+مورد استفاده اصلی برای scale کردن افقی بهبود قابلیت اطمینان (a.k.a. "در دسترس بودن بالا") است، اما scale کردن افقی همچنین می‌تواند عملکرد multi-user را بهبود بخشد. وقتی load متعادل است، یک instance متابیس high-traffic، CPU-bound عملکرد بهتری (سریع‌تر) خواهد داشت وقتی بخشی از ترافیک آن به instanceهای دیگر هدایت می‌شود، چون CPU load در چندین ماشین توزیع می‌شود.
 
-Metabase ships with a local [H2 database](https://www.h2database.com/html/main.html) to store your application data \(all of your questions, dashboards, logs, and other Metabase data\), but when running in production you should upgrade to a relational database like [PostgreSQL](https://www.postgresql.org/) running on a separate server. In fact, when scaling horizontally, you must use a relational database that runs on a separate server to store your application data. That way, all instances of Metabase can share a common database. We recommend an external database on a separate server for all production instances, even if you only ever run one instance of Metabase, so an external database is not an added cost for horizontal scaling.
+متابیس با یک پایگاه داده محلی [H2](https://www.h2database.com/html/main.html) برای ذخیره داده برنامه شما (همه سؤال‌ها، داشبوردها، logها، و سایر داده‌های متابیس) ship می‌شود، اما وقتی در production اجرا می‌کنید باید به یک پایگاه داده رابطه‌ای مثل [PostgreSQL](https://www.postgresql.org/) در حال اجرا روی یک سرور جداگانه upgrade کنید. در واقع، وقتی به صورت افقی scale می‌کنید، باید از یک پایگاه داده رابطه‌ای که روی یک سرور جداگانه اجرا می‌شود برای ذخیره داده برنامه خود استفاده کنید. به این ترتیب، همه instanceهای متابیس می‌توانند یک پایگاه داده مشترک را share کنند. ما یک پایگاه داده خارجی روی یک سرور جداگانه برای همه instanceهای production توصیه می‌کنیم، حتی اگر فقط یک instance متابیس اجرا می‌کنید، پس یک پایگاه داده خارجی هزینه اضافی برای scale کردن افقی نیست.
 
-Metabase uses the external [application database](../../../../glossary/application-database.html) to store user session data, so people don’t have to worry about losing saved work if one or all Metabase instances go down, and administrators don’t have to deal with configuring sticky sessions to ensure people are connected to the right Metabase instance. The load balancer will route people to an available instance so they can keep right on working.
+متابیس از [پایگاه داده برنامه](../../../../glossary/application-database.html) خارجی برای ذخیره داده session کاربر استفاده می‌کند، پس مردم نگران از دست دادن کار ذخیره شده نیستند اگر یک یا همه instanceهای متابیس down شوند، و مدیران مجبور نیستند با پیکربندی sticky sessionها برای اطمینان از اتصال مردم به instance متابیس درست deal کنند. load balancer مردم را به یک instance در دسترس route می‌کند تا بتوانند به کار خود ادامه دهند.
 
-### Taking advantage of time-based horizontal scaling
+### استفاده از scale کردن افقی مبتنی بر زمان
 
-Some customers adjust the number of Metabase instances based on the time of day. For example, some companies will spin up multiple instances of Metabase in the morning to handle a burst of traffic when people log in and run their morning dashboards, then spin down those instances in the afternoon \(or at night, or on the weekends\) to save money on cloud spend.
+برخی مشتریان تعداد instanceهای متابیس را بر اساس زمان روز تنظیم می‌کنند. به عنوان مثال، برخی شرکت‌ها چندین instance متابیس را صبح راه‌اندازی می‌کنند تا burst ترافیک را وقتی مردم وارد می‌شوند و داشبوردهای صبحگاهی خود را اجرا می‌کنند handle کنند، سپس آن instanceها را بعدازظهر (یا شب، یا آخر هفته) spin down می‌کنند تا در هزینه کلود صرفه‌جویی کنند.
 
-For environments like [Kubernetes](https://kubernetes.io/) or [Google Cloud Platform](https://cloud.google.com/), you’ll need to refer to each system’s respective documentation to set up similar autoscaling rules.
+برای محیط‌هایی مثل [Kubernetes](https://kubernetes.io/) یا [Google Cloud Platform](https://cloud.google.com/)، نیاز دارید به مستندات مربوط به هر سیستم برای تنظیم قوانین autoscaling مشابه مراجعه کنید.
 
-### Straightforward load balancing
+### Load balancing ساده
 
-Load balancers direct traffic to multiple Metabase instances to ensure that each request gets the fastest response. If one instance of Metabase goes down temporarily, the load balancer will route requests to another available instance.
+Load balancerها ترافیک را به چندین instance متابیس هدایت می‌کنند تا اطمینان حاصل کنند هر درخواست سریع‌ترین پاسخ را دریافت می‌کند. اگر یک instance متابیس به طور موقت down شود، load balancer درخواست‌ها را به instance در دسترس دیگری route می‌کند.
 
-Setting up a load balancer with Metabase is simple. Metabase’s [API](../../../../docs/latest/api.html) exposes a health check endpoint, `/api/health`, that load balancers can call to determine whether a Metabase instance is up and responding to requests. If the instance is healthy, the endpoint will return an HTTP status code `200 OK`. Otherwise, the load balancer will know to route the request to another instance.
+تنظیم یک load balancer با متابیس ساده است. [API](../../../../docs/latest/api.html) متابیس یک endpoint health check، `/api/health` را expose می‌کند که load balancerها می‌توانند برای تعیین اینکه آیا یک instance متابیس up است و به درخواست‌ها پاسخ می‌دهد فراخوانی کنند. اگر instance سالم باشد، endpoint یک کد وضعیت HTTP `200 OK` برمی‌گرداند. در غیر این صورت، load balancer می‌داند درخواست را به instance دیگری route کند.
 
-## Data warehouse tuning
+## tune کردن data warehouse
 
-Architecting a data warehouse is beyond the scope of this article, but you should know that your queries in Metabase will only be as fast as your databases can return data. If you have questions that ask for a lot of data that takes your database a long time to retrieve, those query times will impact your experience, regardless of how fast Metabase is.
+معماری یک data warehouse خارج از محدوده این مقاله است، اما باید بدانید پرس‌وجوهای شما در متابیس فقط به اندازه سرعت برگرداندن داده توسط پایگاه‌های داده شما سریع خواهند بود. اگر سؤال‌هایی دارید که مقدار زیادی داده می‌پرسند که پایگاه داده شما زمان زیادی برای retrieve کردن آن می‌برد، آن زمان‌های پرس‌وجو بر تجربه شما تأثیر می‌گذارند، صرف نظر از اینکه متابیس چقدر سریع است.
 
-Here are some ways you can improve data warehouse performance:
+در اینجا برخی راه‌هایی که می‌توانید عملکرد data warehouse را بهبود بخشید:
 
-- **Structure your data in a way that anticipates the questions people will ask.** Identify your usage patterns and store your data in a way that make its easy to return results for questions common in your organization. Compose ETLs to create new tables that bring together frequently queried data from multiple sources.
-- **Tune your databases.** Read up on the documentation for your databases to learn how to improve their performance via indexing, caching, and other optimizations.
-- **Filter your data** . Encourage people to filter data when asking questions. They should also take advantage of Metabase’s data exploration tools \(including record previews\) so they only query data relevant to the question they’re trying to answer.
-- **Decide whether to use a database or a data warehouse.** Folks often get started with Metabase using a transactional database like [MySQL](https://www.mysql.com/) or [PostgreSQL](https://www.postgresql.org/) . While these databases scale quite well, they often aren’t optimized for the type of analytical queries that Metabase will use. Operations like `sum` or `max` can slow down once you reach a certain scale. As analytics adoption grows, you may find the need to explore dedicated data warehouses like [Amazon Redshift](https://aws.amazon.com/redshift/) , [Google BigQuery](https://cloud.google.com/bigquery) , or [Snowflake](https://www.snowflake.com/) .
+- **داده خود را به روشی که سؤال‌هایی که مردم می‌پرسند را پیش‌بینی می‌کند ساختار دهید.** الگوهای استفاده خود را شناسایی کنید و داده خود را به روشی ذخیره کنید که بازگشت نتایج برای سؤال‌های رایج در سازمان شما را آسان می‌کند. ETLها را compose کنید تا جداول جدیدی ایجاد کنید که داده مکرراً پرس‌وجو شده از چندین منبع را با هم می‌آورند.
+- **پایگاه‌های داده خود را tune کنید.** مستندات پایگاه‌های داده خود را بخوانید تا یاد بگیرید چگونه عملکرد آن‌ها را از طریق index کردن، cache کردن، و سایر بهینه‌سازی‌ها بهبود بخشید.
+- **داده خود را فیلتر کنید**. مردم را تشویق کنید داده را هنگام پرسیدن سؤال فیلتر کنند. آن‌ها همچنین باید از ابزارهای کاوش داده متابیس (از جمله previewهای رکورد) استفاده کنند تا فقط داده مرتبط با سؤالی که سعی در پاسخ دادن به آن دارند را پرس‌وجو کنند.
+- **تصمیم بگیرید از یک پایگاه داده یا یک data warehouse استفاده کنید.** مردم اغلب با استفاده از یک پایگاه داده تراکنشی مثل [MySQL](https://www.mysql.com/) یا [PostgreSQL](https://www.postgresql.org/) شروع می‌کنند. در حالی که این پایگاه‌های داده به خوبی scale می‌شوند، اغلب برای نوع پرس‌وجوهای تحلیلی که متابیس استفاده می‌کند بهینه نشده‌اند. عملیات‌هایی مثل `sum` یا `max` می‌توانند کند شوند وقتی به یک مقیاس خاص می‌رسید. همانطور که adoption تحلیل رشد می‌کند، ممکن است نیاز به کاوش data warehouseهای اختصاصی مثل [Amazon Redshift](https://aws.amazon.com/redshift/)، [Google BigQuery](https://cloud.google.com/bigquery)، یا [Snowflake](https://www.snowflake.com/) را پیدا کنید.
 
-## Metabase application best practices
+## بهترین روش‌های برنامه متابیس
 
-Here are some strategies to get the most out of your Metabase application:
+در اینجا برخی استراتژی‌ها برای بهره‌برداری حداکثری از برنامه متابیس:
 
-- [Only ask for the data you need](#only-ask-for-the-data-you-need) .
-- [Use a managed relational database to store your Metabase application data](#use-a-managed-relational-database-to-store-your-metabase-application-data) .
-- [Cache your queries](#cache-your-queries) .
-- [Look for bottlenecks](#look-for-bottlenecks) .
-- [Increase the maximum number of connections to the app db](#increase-the-maximum-number-of-connections-to-the-app-db) .
-- [Increase the maximum number of connection to each database](#increase-the-maximum-number-of-connections-to-each-database) .
-- [Sync with your databases only when you need to](#sync-with-your-databases-only-when-you-need-to) .
-- [Upgrade to the latest version of Metabase](#upgrade-to-the-latest-version-of-metabase) .
-- [Keep your browser up to date](#keep-your-browser-up-to-date) .
+- [فقط داده مورد نیاز خود را درخواست کنید](#only-ask-for-the-data-you-need).
+- [از یک پایگاه داده رابطه‌ای مدیریت شده برای ذخیره داده برنامه متابیس خود استفاده کنید](#use-a-managed-relational-database-to-store-your-metabase-application-data).
+- [پرس‌وجوهای خود را cache کنید](#cache-your-queries).
+- [به دنبال bottlenecks بگردید](#look-for-bottlenecks).
+- [حداکثر تعداد اتصال‌ها به پایگاه داده برنامه را افزایش دهید](#increase-the-maximum-number-of-connections-to-the-app-db).
+- [حداکثر تعداد اتصال به هر پایگاه داده را افزایش دهید](#increase-the-maximum-number-of-connections-to-each-database).
+- [با پایگاه‌های داده خود فقط وقتی نیاز دارید sync کنید](#sync-with-your-databases-only-when-you-need-to).
+- [به آخرین نسخه متابیس upgrade کنید](#upgrade-to-the-latest-version-of-metabase).
+- [مرورگر خود را به‌روز نگه دارید](#keep-your-browser-up-to-date).
 
-### Only ask for the data you need
+### فقط داده مورد نیاز خود را درخواست کنید
 
-If people are running a lot of queries that return a lot of records, it won’t matter that Metabase is fast: the users will get their data only as fast as your data warehouse can return the requested records. And sometimes people go overboard with dashboards: when a dashboard with \(for example\) 50 questions loads, it sends 50 simultaneous requests asking for data. Depending on the size of that database, it can be quite some time before those records return.
+اگر مردم پرس‌وجوهای زیادی اجرا می‌کنند که رکوردهای زیادی برمی‌گردانند، مهم نیست متابیس سریع است: کاربران داده خود را فقط به اندازه سرعت برگرداندن رکوردهای درخواست شده توسط data warehouse شما دریافت می‌کنند. و گاهی مردم با داشبوردها زیاده‌روی می‌کنند: وقتی یک داشبورد با (مثلاً) 50 سؤال load می‌شود، 50 درخواست همزمان برای داده ارسال می‌کند. بسته به اندازه آن پایگاه داده، می‌تواند زمان زیادی طول بکشد تا آن رکوردها برگردند.
 
-![Example dashboard with filter widgets using data from the Sample Database included with Metabase.](../../../images/scaling-metabase/example-dashboard.png)
+![مثال داشبورد با widgetهای فیلتر با استفاده از داده از پایگاه داده نمونه شامل شده با متابیس.](../../../images/scaling-metabase/example-dashboard.png)
 
-But that’s not the whole story. Metabase doesn’t slow down simply because you put more questions in your dashboard. If your questions don’t pull a lot of data, or your data warehouse can return results in under a second, 50 questions will load quickly.
+اما این همه داستان نیست. متابیس به سادگی کند نمی‌شود چون سؤال‌های بیشتری در داشبورد خود قرار می‌دهید. اگر سؤال‌های شما مقدار زیادی داده pull نمی‌کنند، یا data warehouse شما می‌تواند نتایج را در کمتر از یک ثانیه برگرداند، 50 سؤال به سرعت load می‌شوند.
 
-In general, however, encourage people to keep their dashboards focused. Dashboards are meant to tell a story about your data, and you can tell a good story with just a handful of questions \(or even a single question\). Take advantage of Metabase’s data exploration tools to learn about your data \(such as the ability to preview records in tables\) so you can dial in on only the records you need to answer your questions.
+به طور کلی، با این حال، مردم را تشویق کنید داشبوردهای خود را متمرکز نگه دارند. داشبوردها برای گفتن یک داستان درباره داده شما هستند، و می‌توانید یک داستان خوب با فقط چند سؤال (یا حتی یک سؤال واحد) بگویید. از ابزارهای کاوش داده متابیس برای یادگیری درباره داده خود (مثل توانایی preview کردن رکوردها در جداول) استفاده کنید تا بتوانید فقط روی رکوردهایی که برای پاسخ دادن به سؤال‌های خود نیاز دارید dial in کنید.
 
-So make sure each question is necessary to complete the dashboard, and be especially mindful when querying data across time or space, as you can filter out a lot of unnecessary data by restricting your question to a shorter timespan or a smaller area.
+پس مطمئن شوید هر سؤال برای کامل کردن داشبورد ضروری است، و به خصوص هنگام پرس‌وجو داده در زمان یا فضا توجه کنید، چون می‌توانید مقدار زیادی داده غیرضروری را با محدود کردن سؤال خود به یک بازه زمانی کوتاه‌تر یا یک منطقه کوچک‌تر فیلتر کنید.
 
-![Example question using a pin map to visualize latitude and longitude. Geospatial data can add up quickly, slowing query times, so it](../../../images/scaling-metabase/example-question-with-map.png)
+![مثال سؤال با استفاده از نقشه pin برای تجسم عرض و طول جغرافیایی. داده geospatial می‌تواند به سرعت جمع شود، زمان‌های پرس‌وجو را کند می‌کند، پس آن](../../../images/scaling-metabase/example-question-with-map.png)
 
-### Use a managed relational database to store your Metabase application data
+### استفاده از یک پایگاه داده رابطه‌ای مدیریت شده برای ذخیره داده برنامه متابیس خود
 
-The application database stores all of your questions, dashboards, collections, permissions, and other data related to the Metabase application. You can use an relational database \(like PostgreSQL or MySQL\) to manage your application database, but we recommend a managed solution like [AWS RDS](https://aws.amazon.com/rds/). RDS will automate backups and make it easy for you to adjust storage and compute as you scale, giving you one less thing to worry about.
+پایگاه داده برنامه همه سؤال‌ها، داشبوردها، مجموعه‌ها، مجوزها، و سایر داده‌های مرتبط با برنامه متابیس را ذخیره می‌کند. می‌توانید از یک پایگاه داده رابطه‌ای (مثل PostgreSQL یا MySQL) برای مدیریت پایگاه داده برنامه خود استفاده کنید، اما یک راه‌حل مدیریت شده مثل [AWS RDS](https://aws.amazon.com/rds/) را توصیه می‌کنیم. RDS backupها را خودکار می‌کند و تنظیم storage و compute را همانطور که scale می‌کنید آسان می‌کند، یک چیز کمتر برای نگرانی به شما می‌دهد.
 
-### Cache your queries
+### Cache کردن پرس‌وجوهای خود
 
-You can [configure caching](../../../../docs/latest/configuring-metabase/caching.html) to store the results of recently asked questions so that they don’t need to be recalculated. Metabase will show people the timestamp for the results, and they can manually refresh the results of the question if they want to rerun the query. Caching is suitable for results that do not update frequently.
+می‌توانید [caching را پیکربندی کنید](../../../../docs/latest/configuring-metabase/caching.html) تا نتایج سؤال‌های اخیراً پرسیده شده را ذخیره کنید تا نیازی به محاسبه مجدد نداشته باشند. متابیس timestamp برای نتایج را به مردم نشان می‌دهد، و آن‌ها می‌توانند نتایج سؤال را به صورت دستی refresh کنند اگر می‌خواهند پرس‌وجو را دوباره اجرا کنند. Cache کردن برای نتایجی که به طور مکرر به‌روزرسانی نمی‌شوند مناسب است.
 
-![Enable caching to store question results](../../../images/scaling-metabase/caching-ui.png)
+![Cache را فعال کنید تا نتایج سؤال را ذخیره کنید](../../../images/scaling-metabase/caching-ui.png)
 
-### Look for bottlenecks
+### جستجوی bottlenecks
 
-[Pro and Enterprise plans](../../../../pricing/index.html) offer [Usage Analytics](../../../../docs/latest/usage-and-performance-tools/usage-analytics.html) for you to monitor the usage and performance of your application. You can, for example, see how many questions are being asked, by whom, and how long the questions took to run, which can help identify any bottlenecks that need attention.
+[طرح‌های Pro و Enterprise](../../../../pricing/index.html) [Usage Analytics](../../../../docs/latest/usage-and-performance-tools/usage-analytics.html) را برای نظارت بر استفاده و عملکرد برنامه شما ارائه می‌دهند. می‌توانید، به عنوان مثال، ببینید چند سؤال پرسیده می‌شود، توسط چه کسی، و چقدر طول کشید سؤال‌ها اجرا شوند، که می‌تواند به شناسایی bottlenecks که نیاز به توجه دارند کمک کند.
 
-![Usage analytics](../../../images/scaling-metabase/metabase-analytics.png)
+![تحلیل‌های استفاده](../../../images/scaling-metabase/metabase-analytics.png)
 
-### Increase the maximum number of connections to the app db
+### افزایش حداکثر تعداد اتصال‌ها به پایگاه داده برنامه
 
-The default number of connections to the Metabase application database is specified by the [`MB_APPLICATION_DB_MAX_CONNECTION_POOL_SIZE`](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_application_db_max_connection_pool_size) environment variable, which is currently set to 15 by default. If your usage regularly consumes all of those connections, you can improve performance by increasing the maximum number of connections. Alternatively, you can increase the number of connections via horizontal scaling \(e.g., if you add an additional Metabase instance, you effectively add an additional 15 connections to the application database\).
+تعداد پیش‌فرض اتصال‌ها به پایگاه داده برنامه متابیس توسط متغیر محیطی [`MB_APPLICATION_DB_MAX_CONNECTION_POOL_SIZE`](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_application_db_max_connection_pool_size) مشخص شده است، که در حال حاضر به طور پیش‌فرض روی 15 تنظیم شده است. اگر استفاده شما به طور منظم همه آن اتصال‌ها را مصرف می‌کند، می‌توانید عملکرد را با افزایش حداکثر تعداد اتصال‌ها بهبود بخشید. به طور جایگزین، می‌توانید تعداد اتصال‌ها را از طریق scale کردن افقی افزایش دهید (مثلاً، اگر یک instance متابیس اضافی اضافه کنید، به طور مؤثر 15 اتصال اضافی به پایگاه داده برنامه اضافه می‌کنید).
 
-You can check the number of connections by [viewing the logs](../../../../docs/latest/troubleshooting-guide/index.html), and checking for lines like `... App DB connections: 12/15`. In that example, Metabase is using 12 out of the 15 available application database connections.
+می‌توانید تعداد اتصال‌ها را با [مشاهده logها](../../../../docs/latest/troubleshooting-guide/index.html)، و بررسی خطوطی مثل `... App DB connections: 12/15` بررسی کنید. در آن مثال، متابیس از 12 از 15 اتصال پایگاه داده برنامه در دسترس استفاده می‌کند.
 
-### Increase the maximum number of connections to each database
+### افزایش حداکثر تعداد اتصال‌ها به هر پایگاه داده
 
-Similarly, the default maximum number of connections for a single Metabase instance to each database is 15. That’s 15 for each database, so if you’ve connected Metabase to two databases, you’ll have a maximum of 30 connections.
+به طور مشابه، حداکثر تعداد پیش‌فرض اتصال‌ها برای یک instance متابیس واحد به هر پایگاه داده 15 است. این 15 برای هر پایگاه داده است، پس اگر متابیس را به دو پایگاه داده متصل کرده‌اید، حداکثر 30 اتصال خواهید داشت.
 
-You can increase the maximum number of connections to each database by changing the [`MB_JDBC_DATA_WAREHOUSE_MAX_CONNECTION_POOL_SIZE`](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_jdbc_data_warehouse_max_connection_pool_size) environment variable. As above with the application database connections, you can also increase the number of connections via horizontal scaling. Each additional Metabase instance would increase the maximum number of connections by 15 \(or by whatever maximum you’ve set\). To learn more, see our [documentation on environment variables](../../../../docs/latest/configuring-metabase/environment-variables.html).
+می‌توانید حداکثر تعداد اتصال‌ها به هر پایگاه داده را با تغییر متغیر محیطی [`MB_JDBC_DATA_WAREHOUSE_MAX_CONNECTION_POOL_SIZE`](../../../../docs/latest/configuring-metabase/environment-variables.html#mb_jdbc_data_warehouse_max_connection_pool_size) افزایش دهید. همانطور که در بالا با اتصال‌های پایگاه داده برنامه، همچنین می‌توانید تعداد اتصال‌ها را از طریق scale کردن افقی افزایش دهید. هر instance متابیس اضافی حداکثر تعداد اتصال‌ها را 15 (یا هر حداکثری که تنظیم کرده‌اید) افزایش می‌دهد. برای یادگیری بیشتر، [مستندات ما درباره متغیرهای محیطی](../../../../docs/latest/configuring-metabase/environment-variables.html) را ببینید.
 
-### Sync with your databases only when you need to
+### Sync با پایگاه‌های داده خود فقط وقتی نیاز دارید
 
-By default, Metabase performs a lightweight sync every hour. The sync does not copy any of your data. Metabase merely checks to make sure the list of tables, columns, and rows it maintains in its application database is up to date with the tables, columns, and rows in your databases.
+به طور پیش‌فرض، متابیس یک sync سبک هر ساعت انجام می‌دهد. sync هیچ یک از داده شما را کپی نمی‌کند. متابیس فقط بررسی می‌کند تا مطمئن شود لیست جداول، ستون‌ها، و ردیف‌هایی که در پایگاه داده برنامه خود نگه می‌دارد با جداول، ستون‌ها، و ردیف‌ها در پایگاه‌های داده شما به‌روز است.
 
-You can [set the timing and frequency of these synchronizations](../../../../docs/latest/databases/sync-scan.html#choose-when-syncs-and-scans-happen). For large databases, you might consider limiting the number of times Metabase performs the sync, and restricting those synchronizations to off\-peak hours, especially if you aren’t frequently adding new tables to your database.
+می‌توانید [زمان‌بندی و فرکانس این همگام‌سازی‌ها را تنظیم کنید](../../../../docs/latest/databases/sync-scan.html#choose-when-syncs-and-scans-happen). برای پایگاه‌های داده بزرگ، ممکن است محدود کردن تعداد دفعاتی که متابیس sync را انجام می‌دهد، و محدود کردن آن همگام‌سازی‌ها به ساعات off-peak را در نظر بگیرید، به خصوص اگر به طور مکرر جداول جدید به پایگاه داده خود اضافه نمی‌کنید.
 
-![You can change when Metabase syncs with your databases, which can improve performance when you](../../../images/scaling-metabase/sync-settings.png)
+![می‌توانید زمان sync متابیس با پایگاه‌های داده خود را تغییر دهید، که می‌تواند عملکرد را بهبود بخشد وقتی شما](../../../images/scaling-metabase/sync-settings.png)
 
-### Upgrade to the latest version of Metabase
+### ارتقا به آخرین نسخه متابیس
 
-If you haven’t already, we recommend you [upgrade to the latest Metabase version](../../../../docs/latest/installation-and-operation/upgrading-metabase.html) to get the most recent performance improvements.
+اگر هنوز نکرده‌اید، توصیه می‌کنیم [به آخرین نسخه متابیس upgrade کنید](../../../../docs/latest/installation-and-operation/upgrading-metabase.html) تا آخرین بهبودهای عملکرد را دریافت کنید.
 
-### Serve Metabase via HTTPS over HTTP/2
+### سرو کردن متابیس از طریق HTTPS روی HTTP/2
 
-Serving your Metabase instance via HTTPS over HTTP/2 can increase performance, since browsers on HTTP/1.1 can limit connections to approximately 6 concurrent connections per domain, whereas HTTP/2 is multiplexed on a single connection. More available connections won’t fix a slow database, or an overloaded Metabase instance that has run out of threads, but you’ll at least know that your browser isn’t throttling your connections.
+سرو کردن instance متابیس از طریق HTTPS روی HTTP/2 می‌تواند عملکرد را افزایش دهد، چون مرورگرها روی HTTP/1.1 می‌توانند اتصال‌ها را به تقریباً 6 اتصال همزمان در هر دامنه محدود کنند، در حالی که HTTP/2 روی یک اتصال واحد multiplex می‌شود. اتصال‌های بیشتر در دسترس یک پایگاه داده کند، یا یک instance متابیس overload شده که threadها تمام شده است را fix نمی‌کند، اما حداقل می‌دانید مرورگر شما اتصال‌های شما را throttle نمی‌کند.
 
-### Keep your browser up to date
+### مرورگر خود را به‌روز نگه دارید
 
-Metabase is a web application, and can benefit from the latest and greatest versions of browsers like [Firefox](https://www.mozilla.org/en-US/firefox/), [Chrome](https://www.google.com/chrome/), [Edge](https://www.microsoft.com/en-us/edge), and [Safari](https://www.apple.com/safari/).
+متابیس یک برنامه وب است، و می‌تواند از آخرین و بهترین نسخه‌های مرورگرهایی مثل [Firefox](https://www.mozilla.org/en-US/firefox/)، [Chrome](https://www.google.com/chrome/)، [Edge](https://www.microsoft.com/en-us/edge)، و [Safari](https://www.apple.com/safari/) بهره ببرد.
 
-## Supported deployments
+## deploymentهای پشتیبانی شده
 
-There are many ways to set up Metabase; some of our favorites include:
+راه‌های زیادی برای تنظیم متابیس وجود دارد؛ برخی از مورد علاقه‌های ما شامل:
 
-- AWS Elastic Beanstalk: Check out our [guide to setting up Metabase on Elastic Beanstalk](../../../../docs/latest/installation-and-operation/running-metabase-on-elastic-beanstalk.html) . We use Elastic Beanstalk to host our internal Metabase application.
-- Docker: See [running Metabase on Docker](../../../../docs/latest/installation-and-operation/running-metabase-on-docker.html) .
+- AWS Elastic Beanstalk: [راهنمای ما برای تنظیم متابیس روی Elastic Beanstalk](../../../../docs/latest/installation-and-operation/running-metabase-on-elastic-beanstalk.html) را بررسی کنید. ما از Elastic Beanstalk برای میزبانی برنامه متابیس داخلی خود استفاده می‌کنیم.
+- Docker: [اجرای متابیس روی Docker](../../../../docs/latest/installation-and-operation/running-metabase-on-docker.html) را ببینید.
 
-[Google Cloud Platform](https://cloud.google.com/), [Microsoft Azure](https://azure.microsoft.com/en-us/), [Digital Ocean](https://www.digitalocean.com/), and other cloud providers offer other great alternatives for hosting your Metabase application.
+[Google Cloud Platform](https://cloud.google.com/)، [Microsoft Azure](https://azure.microsoft.com/en-us/)، [Digital Ocean](https://www.digitalocean.com/)، و سایر ارائه‌دهندگان کلود جایگزین‌های عالی دیگری برای میزبانی برنامه متابیس شما ارائه می‌دهند.
 
-## Hosted Metabase
+## متابیس میزبانی شده
 
-If you don’t want to deal with the care and feeding of a Metabase application, Metabase offers a [hosted solution](../../../../cloud/index.html). You still have to ensure your data sources are performant, but you no longer have to manage running the Metabase application.
+اگر نمی‌خواهید با مراقبت و تغذیه یک برنامه متابیس deal کنید، متابیس یک [راه‌حل میزبانی شده](../../../../cloud/index.html) ارائه می‌دهد. هنوز باید اطمینان حاصل کنید منابع داده شما performant هستند، اما دیگر مجبور نیستید اجرای برنامه متابیس را مدیریت کنید.
 
-## Getting help
+## دریافت کمک
 
-If you still have questions, chances are someone’s already had the same question. Check out the [Metabase discussion forum](https://discourse.metabase.com/) and search for your issue. If you can’t find a solution, submit a question of your own.
+اگر هنوز سؤال دارید، احتمالاً کسی قبلاً همان سؤال را داشته است. [انجمن بحث متابیس](https://discourse.metabase.com/) را بررسی کنید و برای مسئله خود جستجو کنید. اگر نمی‌توانید راه‌حلی پیدا کنید، سؤال خود را ارسال کنید.
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](making-dashboards-faster.html)
 [
       
         
         
+
       
       
+        
         
 
       

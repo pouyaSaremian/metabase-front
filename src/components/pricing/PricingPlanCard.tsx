@@ -97,9 +97,7 @@ export const PricingPlanCard: React.FC<PricingPlanCardProps> = ({
   };
 
   return (
-    <div
-      className={`border border-[#e4ecfb] bg-metabase-bg-neutral-98 shadow-sm transition-shadow duration-300 ${rootTheme} ${className}`}
-    >
+    <div className={`border-metabase-border-light ${rootTheme} ${className}`}>
       <div className="p-5 md:p-6">
         <h2 className="text-neutral-900 text-lg md:text-xl font-bold mb-2">
           {title}
