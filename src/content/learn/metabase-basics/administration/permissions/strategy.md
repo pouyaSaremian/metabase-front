@@ -1,153 +1,153 @@
 ---
-
-
-title: "Permissions strategies"
-description: "How to think about structuring groups and permissions in Metabase."
+title: "استراتژی‌های مجوز"
+description: "نحوه فکر کردن درباره ساختاردهی گروه‌ها و مجوزها در متابیس."
 redirect_from:
   - /learn/metabase-basics/administration/permissions/strategy
   - /learn/permissions/strategy
 toc:
   - id: "permissions-strategies"
-    title: "Permissions strategies"
+    title: "استراتژی‌های مجوز"
     level: 1
     href: "#permissions-strategies"
   - id: "the-basics-of-structuring-permissions"
-    title: "The basics of structuring permissions"
+    title: "مبانی ساختاردهی مجوزها"
     level: 2
     href: "#the-basics-of-structuring-permissions"
   - id: "default-permissive-or-default-restrictive"
-    title: "Default permissive or default restrictive"
+    title: "پیش‌فرض permissive یا پیش‌فرض restrictive"
     level: 3
     href: "#default-permissive-or-default-restrictive"
   - id: "security-and-compliance"
-    title: "Security and compliance"
+    title: "امنیت و compliance"
     level: 3
     href: "#security-and-compliance"
   - id: "how-to-approach-permissions"
-    title: "How to approach permissions"
+    title: "نحوه رویکرد به مجوزها"
     level: 2
     href: "#how-to-approach-permissions"
   - id: "simple-is-best"
-    title: "Simple is best"
+    title: "ساده بهترین است"
     level: 3
     href: "#simple-is-best"
   - id: "expect-to-change-your-strategy"
-    title: "Expect to change your strategy"
+    title: "انتظار تغییر استراتژی خود را داشته باشید"
     level: 3
     href: "#expect-to-change-your-strategy"
   - id: "example-permissions-structures"
-    title: "Example permissions structures"
+    title: "ساختارهای مجوز نمونه"
     level: 2
     href: "#example-permissions-structures"
   - id: "org-chart-based-permissions"
-    title: "Org chart-based permissions"
+    title: "مجوزهای مبتنی بر org chart"
     level: 3
     href: "#org-chart-based-permissions"
   - id: "attribute-based-permissions"
-    title: "Attribute-based permissions"
+    title: "مجوزهای مبتنی بر attribute"
     level: 3
     href: "#attribute-based-permissions"
   - id: "onion-ring-permissions"
-    title: "Onion ring permissions"
+    title: "مجوزهای onion ring"
     level: 3
     href: "#onion-ring-permissions"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Permissions"
+  - title: "مجوزها"
     href: "index.html"
 ---
 
-# Permissions strategies
+# استراتژی‌های مجوز
 
-How to think about structuring groups and permissions in Metabase.
+نحوه فکر کردن درباره ساختاردهی گروه‌ها و مجوزها در متابیس.
 
-This article offers some strategies to consider as you think about how to structure permissions in Metabase. A **permissions structure** refers to the combination of databases and collections of questions, models, and dashboards that people create in Metabase, and the level of access to these resources that you grant to different groups of people.
+این مقاله برخی استراتژی‌ها برای در نظر گرفتن همانطور که درباره نحوه ساختاردهی مجوزها در متابیس فکر می‌کنید ارائه می‌دهد. یک **ساختار مجوز** به ترکیب پایگاه‌های داده و مجموعه‌های سؤال‌ها، مدل‌ها، و داشبوردهایی که مردم در متابیس ایجاد می‌کنند، و سطح دسترسی به این منابع که به گروه‌های مختلف مردم اعطا می‌کنید اشاره دارد.
 
-We’re not telling you what you should do, but instead offering suggestions to keep in mind as you build and refine an overall permissions strategy, followed by [three example strategies](#example-permissions-structures) to consider. It may take some experimentation, but your goal should be to find the simplest solution that will work for your organizational structure and security needs.
+ما به شما نمی‌گوییم چه کاری باید انجام دهید، بلکه پیشنهاداتی برای در نظر داشتن همانطور که یک استراتژی مجوز کلی می‌سازید و اصلاح می‌کنید ارائه می‌دهیم، به دنبال [سه استراتژی نمونه](#example-permissions-structures) برای در نظر گرفتن. ممکن است نیاز به مقداری آزمایش داشته باشد، اما هدف شما باید یافتن ساده‌ترین راه‌حلی باشد که برای ساختار سازمانی و نیازهای امنیتی شما کار کند.
 
-If you’re looking for an overview of how permissions work in Metabase, check out our [documentation](../../../../docs/latest/permissions/introduction.html).
+اگر به دنبال یک نمای کلی از نحوه کار مجوزها در متابیس هستید، [مستندات](../../../../docs/latest/permissions/introduction.html) ما را بررسی کنید.
 
-## The basics of structuring permissions
+## مبانی ساختاردهی مجوزها
 
-Your permissions structure lies at the intersection of three moving parts:
+ساختار مجوز شما در تقاطع سه بخش متحرک قرار دارد:
 
-1. The collections you build in Metabase
-2. How groups in Metabase map to your org chart
-3. Your underlying data warehouse
+1. مجموعه‌هایی که در متابیس می‌سازید
+2. نحوه map کردن گروه‌ها در متابیس به org chart شما
+3. data warehouse زیربنایی شما
 
-### Default permissive or default restrictive
+### پیش‌فرض permissive یا پیش‌فرض restrictive
 
-Based on sector and company culture, most organizations will either default to a permissive or restrictive starting point. Now this isn’t a setting you choose somewhere in Metabase, but rather a framework to think about when structuring your permissions. Do you start with all data and dashboards open and restrict as needed? Or does your organization need to restrict all data from the get\-go, and only open up access to dashboards and questions on a need\-to\-know basis?
+بر اساس بخش و فرهنگ شرکت، بیشتر سازمان‌ها یا به یک نقطه شروع permissive یا restrictive پیش‌فرض می‌روند. حالا این یک تنظیماتی که در جایی در متابیس انتخاب می‌کنید نیست، بلکه یک چارچوب برای فکر کردن هنگام ساختاردهی مجوزهای شما است. آیا با همه داده و داشبوردها باز شروع می‌کنید و در صورت نیاز محدود می‌کنید؟ یا سازمان شما نیاز دارد همه داده را از ابتدا محدود کند، و فقط دسترسی به داشبوردها و سؤال‌ها را بر اساس need-to-know باز کند؟
 
-If you aren’t sure, [keep it simple](#simple-is-best) for starters with a default permissive stance, so that everyone can have access to the data they need — as long as you’re keeping sensitive info locked down.
+اگر مطمئن نیستید، [آن را ساده نگه دارید](#simple-is-best) برای شروع با یک موضع permissive پیش‌فرض، تا همه بتوانند به داده مورد نیاز خود دسترسی داشته باشند — تا زمانی که اطلاعات حساس را قفل نگه می‌دارید.
 
-### Security and compliance
+### امنیت و compliance
 
-If your organization handles medical, financial, or similarly sensitive data, you have hard constraints that you must adhere to when creating data and collection permissions. In these scenarios, discoverability in Metabase has to take a backseat to security and compliance.
+اگر سازمان شما داده‌های پزشکی، مالی، یا به طور مشابه حساس را handle می‌کند، محدودیت‌های سختی دارید که باید هنگام ایجاد مجوزهای داده و مجموعه رعایت کنید. در این سناریوها، discoverability در متابیس باید به امنیت و compliance اولویت بدهد.
 
-## How to approach permissions
+## نحوه رویکرد به مجوزها
 
-At a high level, this process should look something like this:
+در سطح بالا، این فرآیند باید چیزی شبیه این باشد:
 
-1. Divide your organization up into groups. These groups may map directly to [your org chart](#org-chart-based-permissions) , fall along the lines of [the roles that different employees perform](#attribute-based-permissions) , or into tiers of access \(like security clearances\).
-2. Within each group, figure out what [questions](../../../../docs/latest/questions/introduction.html) and [dashboards](../../../../docs/latest/dashboards/introduction.html) people need to see to do their jobs, and create them if you haven’t already \(or have them create their own stuff\).
-3. Identify what each group needs to have self\-service access to, and make sure they can curate those [collections](../../../../docs/latest/permissions/collections.html) .
-4. Pinpoint and restrict any data that you need to keep tightly controlled within your organization for security or legal compliance reasons.
-5. Evaluate and refine your Metabase groups and permissions on a regular basis.
+1. سازمان خود را به گروه‌ها تقسیم کنید. این گروه‌ها ممکن است مستقیماً به [org chart شما](#org-chart-based-permissions) map شوند، در خطوط [نقش‌هایی که کارمندان مختلف انجام می‌دهند](#attribute-based-permissions) قرار گیرند، یا به سطوح دسترسی (مثل security clearanceها) تقسیم شوند.
+2. در هر گروه، بفهمید چه [سؤال‌هایی](../../../../docs/latest/questions/introduction.html) و [داشبوردهایی](../../../../docs/latest/dashboards/introduction.html) مردم نیاز دارند ببینند تا کار خود را انجام دهند، و اگر هنوز ایجاد نکرده‌اید آن‌ها را ایجاد کنید (یا بگذارید چیزهای خود را ایجاد کنند).
+3. شناسایی کنید هر گروه نیاز دارد به چه چیزهایی دسترسی self-service داشته باشد، و مطمئن شوید می‌توانند آن [مجموعه‌ها](../../../../docs/latest/permissions/collections.html) را curate کنند.
+4. هر داده‌ای که نیاز دارید به شدت در سازمان خود برای دلایل امنیتی یا compliance قانونی کنترل شده نگه دارید را pinpoint و محدود کنید.
+5. گروه‌ها و مجوزهای متابیس خود را به طور منظم ارزیابی و اصلاح کنید.
 
-### Simple is best
+### ساده بهترین است
 
-It’s a good idea to keep your Metabase permissions as simple as possible within the constraints of your organization’s security and access needs. Put simply, people are more productive when they have access to a wide array of tools and information. The more levels of permissions you have, the more complex enforcing gets. It’s important to find ways to segment sensitive data without breaking browsability and organization, so try to make things work with as few groups as possible, as few groups will be more straightforward to maintain over time. A simple and self\-explanatory permissions structure can also make things easier in the event of staff turnover. If a single administrator puts together a convoluted system for granting collection permissions and then leaves the company, remaining employees may not know how to pick up the pieces.
+ایده خوبی است مجوزهای متابیس خود را تا حد امکان ساده در محدودیت‌های نیازهای امنیتی و دسترسی سازمان خود نگه دارید. به سادگی، مردم وقتی به طیف وسیعی از ابزارها و اطلاعات دسترسی دارند مولدتر هستند. هر چه سطوح مجوز بیشتری داشته باشید، enforce کردن پیچیده‌تر می‌شود. مهم است راه‌هایی برای segment کردن داده حساس بدون شکستن browsability و سازماندهی پیدا کنید، پس سعی کنید با کمترین گروه‌های ممکن کارها را انجام دهید، چون گروه‌های کمتر با گذشت زمان ساده‌تر maintain می‌شوند. یک ساختار مجوز ساده و self-explanatory همچنین می‌تواند در صورت جابجایی کارکنان کارها را آسان‌تر کند. اگر یک مدیر واحد یک سیستم پیچیده برای اعطای مجوزهای مجموعه کنار هم می‌گذارد و سپس شرکت را ترک می‌کند، کارمندان باقی‌مانده ممکن است ندانند چگونه قطعات را بردارند.
 
-### Expect to change your strategy
+### انتظار تغییر استراتژی خود را داشته باشید
 
-Your needs will change, so check in on a quarterly basis to evaluate how your permissions structure is working. Are people at your organization able to access the questions and dashboards they need to do their jobs? Is your sensitive data locked down?
+نیازهای شما تغییر خواهد کرد، پس به صورت سه‌ماهه check in کنید تا ارزیابی کنید ساختار مجوز شما چگونه کار می‌کند. آیا مردم در سازمان شما قادر به دسترسی به سؤال‌ها و داشبوردهایی که برای انجام کار خود نیاز دارند هستند؟ آیا داده حساس شما قفل شده است؟
 
-## Example permissions structures
+## ساختارهای مجوز نمونه
 
-Now that we’ve covered what and how to keep in mind when developing your permissions strategy, let’s dig into a few different approaches that your organization can take depending on your size, structure, and security needs.
+حالا که آنچه باید هنگام توسعه استراتژی مجوز خود در نظر داشته باشید را پوشش دادیم، بیایید به چند رویکرد مختلف که سازمان شما بسته به اندازه، ساختار، و نیازهای امنیتی خود می‌تواند اتخاذ کند بپردازیم.
 
-### Org chart-based permissions
+### مجوزهای مبتنی بر org chart
 
-The simplest, most straightforward option — and where most companies will want to start off — is mapping groups and collections in Metabase to your existing organizational chart. If you have Marketing and Accounting departments, create corresponding Marketing and Accounting groups, as well as collections that hold saved questions and dashboards for Marketing and Accounting needs.
+ساده‌ترین، مستقیم‌ترین گزینه — و جایی که بیشتر شرکت‌ها می‌خواهند شروع کنند — map کردن گروه‌ها و مجموعه‌ها در متابیس به org chart موجود شما است. اگر بخش‌های Marketing و Accounting دارید، گروه‌های Marketing و Accounting متناظر، و همچنین مجموعه‌هایی که سؤال‌ها و داشبوردهای ذخیره شده برای نیازهای Marketing و Accounting را نگه می‌دارند ایجاد کنید.
 
-In this scenario, everything that a person needs to do their job can be traced directly to the group they’re in. People in the Marketing department \(and by extension, group\) can edit the Marketing collection, which can be viewed — but not edited — by the Accounting department. You’ll likely need sub\-collections to house more specific Marketing needs — say, saved questions related to a specific campaign. If those subfolders contain sensitive information, you can restrict them, and Accounting won’t see them at all. You’ll need to set permissions on each collection and sub\-collection to make sure they’re accessible to those who need them — see [this article](collection-permissions.html) to learn more about that process.
+در این سناریو، همه چیزهایی که یک شخص برای انجام کار خود نیاز دارد می‌تواند مستقیماً به گروهی که در آن هستند trace شود. مردم در بخش Marketing (و به طور گسترش، گروه) می‌توانند مجموعه Marketing را edit کنند، که می‌تواند توسط بخش Accounting مشاهده شود — اما edit نشود. احتمالاً نیاز به زیرمجموعه‌ها برای house کردن نیازهای Marketing خاص‌تر دارید — مثلاً، سؤال‌های ذخیره شده مرتبط با یک کمپین خاص. اگر آن پوشه‌های فرعی اطلاعات حساس دارند، می‌توانید آن‌ها را محدود کنید، و Accounting اصلاً آن‌ها را نمی‌بیند. نیاز دارید مجوزها را روی هر مجموعه و زیرمجموعه تنظیم کنید تا مطمئن شوید برای کسانی که به آن‌ها نیاز دارند قابل دسترسی هستند — [این مقاله](collection-permissions.html) را برای یادگیری بیشتر درباره آن فرآیند ببینید.
 
-Org chart\-based permissions, where top\-level collections are readable by everyone and writable by some, with hidden sub\-collections as needed, are a great start for most organizations. This structure is most effective when each person belongs to a single group. As your organization grows more complex, you may find org\-chart\-based permissions cumbersome, especially if you’re big on cross\-departmental collaboration. If that’s the case, you may want to consider an attribute\-based approach to Metabase permissions.
+مجوزهای مبتنی بر org chart، جایی که مجموعه‌های سطح بالا توسط همه قابل خواندن و توسط برخی قابل نوشتن هستند، با زیرمجموعه‌های مخفی در صورت نیاز، شروع عالی برای بیشتر سازمان‌ها هستند. این ساختار زمانی مؤثرترین است که هر شخص به یک گروه واحد تعلق دارد. همانطور که سازمان شما پیچیده‌تر می‌شود، ممکن است مجوزهای مبتنی بر org chart را دست‌وپاگیر بیابید، به خصوص اگر روی همکاری cross-departmental بزرگ هستید. اگر چنین است، ممکن است بخواهید یک رویکرد مبتنی بر attribute به مجوزهای متابیس را در نظر بگیرید.
 
-### Attribute-based permissions
+### مجوزهای مبتنی بر attribute
 
-Attribute\-based permissions may be useful if your organization adheres to a matrix\-style organizational structure, where people regularly work in pods or across teams. If this is the case, and you’ve found that one group per person is no longer cutting it, mapping your groups to functions may be more effective.
+مجوزهای مبتنی بر attribute ممکن است مفید باشد اگر سازمان شما به یک ساختار سازمانی matrix-style پایبند است، جایی که مردم به طور منظم در podها یا در سراسر تیم‌ها کار می‌کنند. اگر چنین است، و متوجه شده‌اید یک گروه برای هر شخص دیگر کافی نیست، map کردن گروه‌های خود به functionها ممکن است مؤثرتر باشد.
 
-Let’s say you have a new employee. They’re an analyst, will be working on a specific marketing campaign, and will need access to underlying event data. These three attributes can’t be cleanly captured by a simple departmental group mapping, so instead, you can create groups that begin to mirror functions rather than places in the org chart. Since people can belong to multiple groups in Metabase, this route offers more flexibility for crafting permissions solutions on a more granular level.
+بیایید بگوییم یک کارمند جدید دارید. آن‌ها یک analyst هستند، روی یک کمپین marketing خاص کار خواهند کرد، و نیاز به دسترسی به داده event زیربنایی دارند. این سه attribute نمی‌توانند به طور تمیز توسط یک map کردن گروه departmental ساده capture شوند، پس به جای آن، می‌توانید گروه‌هایی ایجاد کنید که شروع به mirror کردن functionها به جای مکان‌ها در org chart می‌کنند. چون مردم می‌توانند به چندین گروه در متابیس تعلق داشته باشند، این مسیر انعطاف‌پذیری بیشتری برای crafting راه‌حل‌های مجوز در سطح granularتر ارائه می‌دهد.
 
-### Onion ring permissions
+### مجوزهای onion ring
 
-A third model to consider involves thinking of your permissions structure like an onion, with different rings or layers representing the breadth of access to collections. A simple example would be a company where everything is transparent and editable by all, except for one layer \(or collection\) within that is only accessible by executives and HR personnel. Approaching permissions with this onion ring model in mind can help you consider the *depth* of access that each person or group in your organization needs.
+یک مدل سوم برای در نظر گرفتن شامل فکر کردن به ساختار مجوز خود مثل یک پیاز، با حلقه‌ها یا لایه‌های مختلف نشان‌دهنده breadth دسترسی به مجموعه‌ها است. یک مثال ساده یک شرکت خواهد بود جایی که همه چیز transparent و قابل edit توسط همه است، به جز یک لایه (یا مجموعه) درون آن که فقط توسط executives و پرسنل HR قابل دسترسی است. رویکرد به مجوزها با این مدل onion ring در ذهن می‌تواند به شما کمک کند *عمق* دسترسی که هر شخص یا گروه در سازمان شما نیاز دارد را در نظر بگیرید.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Permissions overview](../../../../docs/latest/permissions/introduction.html)
-- [Data permissions](../../../../docs/latest/permissions/data.html)
-- [Collection permissions](../../../../docs/latest/permissions/collections.html#setting-permissions-for-collections)
-- [Managing people in Metabase](../administration-and-operation/managing-people.html)
-- [Keeping your analytics organized](../administration-and-operation/same-page.html)
-- [Metabase at scale](../administration-and-operation/metabase-at-scale.html)
-- [Row and column security](../../../../docs/latest/permissions/row-and-column-security.html)
+- [نمای کلی مجوزها](../../../../docs/latest/permissions/introduction.html)
+- [مجوزهای داده](../../../../docs/latest/permissions/data.html)
+- [مجوزهای مجموعه](../../../../docs/latest/permissions/collections.html#setting-permissions-for-collections)
+- [مدیریت مردم در متابیس](../administration-and-operation/managing-people.html)
+- [منظم نگه داشتن تحلیل شما](../administration-and-operation/same-page.html)
+- [متابیس در مقیاس](../administration-and-operation/metabase-at-scale.html)
+- [امنیت ردیف و ستون](../../../../docs/latest/permissions/row-and-column-security.html)
 
 [
       
         
         
+
       
       
+        
         
 
       

@@ -1,91 +1,89 @@
 ---
-
-
-title: "Tutorial: Column-level permissions in Metabase"
-description: "Learn how to use a saved SQL query to display specific rows and columns to different people."
+title: "آموزش: مجوزهای سطح ستون در متابیس"
+description: "نحوه استفاده از یک پرس‌وجوی SQL ذخیره شده برای نمایش ردیف‌ها و ستون‌های خاص به افراد مختلف را بیاموزید."
 redirect_from:
   - /learn/metabase-basics/administration/permissions/column-permissions
   - /learn/metabase-basics/administration/permissions/data-sandboxing-column-permissions
   - /learn/permissions/data-sandboxing-column-permissions
 toc:
   - id: "tutorial-column-level-permissions-in-metabase"
-    title: "Tutorial: Column-level permissions in Metabase"
+    title: "آموزش: مجوزهای سطح ستون در متابیس"
     level: 1
     href: "#tutorial-column-level-permissions-in-metabase"
   - id: "the-plan"
-    title: "The plan"
+    title: "برنامه"
     level: 2
     href: "#the-plan"
   - id: "create-a-collection-accessible-only-by-admins"
-    title: "Create a collection accessible only by admins"
+    title: "ایجاد یک مجموعه قابل دسترسی فقط توسط adminها"
     level: 2
     href: "#create-a-collection-accessible-only-by-admins"
   - id: "create-a-sql-query"
-    title: "Create a SQL query"
+    title: "ایجاد یک پرس‌وجوی SQL"
     level: 3
     href: "#create-a-sql-query"
   - id: "restrict-the-view-of-the-products-table-using-our-saved-question"
-    title: "Restrict the view of the Products table using our saved question"
+    title: "محدود کردن view جدول Products با استفاده از سؤال ذخیره شده ما"
     level: 2
     href: "#restrict-the-view-of-the-products-table-using-our-saved-question"
   - id: "check-settings-as-the-restricted-user"
-    title: "Check settings as the restricted user"
+    title: "بررسی تنظیمات به عنوان کاربر محدود شده"
     level: 2
     href: "#check-settings-as-the-restricted-user"
   - id: "use-a-sql-question-to-create-a-custom-restricted-view-of-a-table"
-    title: "Use a SQL question to create a custom restricted view of a table"
+    title: "استفاده از یک سؤال SQL برای ایجاد یک view محدود شده سفارشی از یک جدول"
     level: 2
     href: "#use-a-sql-question-to-create-a-custom-restricted-view-of-a-table"
   - id: "recap"
-    title: "Recap"
+    title: "خلاصه"
     level: 2
     href: "#recap"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Permissions"
+  - title: "مجوزها"
     href: "index.html"
 ---
 
-# Tutorial: Column-level permissions in Metabase
+# آموزش: مجوزهای سطح ستون در متابیس
 
-Learn how to use a saved SQL query to display specific rows and columns to different people.
+نحوه استفاده از یک پرس‌وجوی SQL ذخیره شده برای نمایش ردیف‌ها و ستون‌های خاص به افراد مختلف را بیاموزید.
 
-> Looking for docs on column security? See [Docs: Row and column security](../../../../docs/latest/permissions/row-and-column-security.html).
+> به دنبال مستندات درباره امنیت ستون هستید؟ [مستندات: امنیت ردیف و ستون](../../../../docs/latest/permissions/row-and-column-security.html) را ببینید.
 
-Row and column security is available on [Pro and Enterprise plans](../../../../pricing/index.html) as a way to specify what data people can access based on who they are. Our article on [row\-level permissions](row-permissions.html) covered how to restrict rows based on a person’s user attribute. As an example, we created a user, Ms. Brown, and gave her access to rows in the `People` and `Orders` tables that matched her `user_id` attribute.
+امنیت ردیف و ستون در [طرح‌های Pro و Enterprise](../../../../pricing/index.html) به عنوان راهی برای مشخص کردن چه داده‌ای مردم می‌توانند بر اساس اینکه چه کسی هستند دسترسی داشته باشند در دسترس است. مقاله ما درباره [مجوزهای سطح ردیف](row-permissions.html) نحوه محدود کردن ردیف‌ها بر اساس attribute کاربر یک شخص را پوشش داد. به عنوان مثال، یک کاربر، خانم Brown، ایجاد کردیم و به او دسترسی به ردیف‌ها در جداول `People` و `Orders` که با attribute `user_id` او match می‌کردند دادیم.
 
-In this article, we’ll walk through how to limit the rows *and columns* of the Products table that Ms. Brown can view. In this case, we want Ms. Brown to:
+در این مقاله، نحوه محدود کردن ردیف‌ها *و ستون‌های* جدول Products که خانم Brown می‌تواند مشاهده کند را طی می‌کنیم. در این مورد، می‌خواهیم خانم Brown:
 
-- Only see products she’s placed an order for in the `Products` table \(row\-level security\)
-- Only see the `Title` , `Category` , and `Price` columns \(and not any of the other columns\).
+- فقط محصولاتی که برای آن‌ها سفارش داده است در جدول `Products` ببیند (امنیت سطح ردیف)
+- فقط ستون‌های `Title`، `Category`، و `Price` را ببیند (و نه هیچ یک از ستون‌های دیگر).
 
-> Row and column security was formerly called data sandboxing. It’s the same feature, it just now has a more descriptive name.
+> امنیت ردیف و ستون قبلاً data sandboxing نامیده می‌شد. همان ویژگی است، فقط اکنون نام توصیفی‌تری دارد.
 
-## The plan
+## برنامه
 
-We’re going to:
+ما می‌خواهیم:
 
-1. Create a collection that only admins can access.
-2. Create a new SQL query. The `Products` table doesn’t include information about users. So to limit Ms. Brown’s access to the `Products` table, we’ll need to find out which products Ms. Brown ordered. We’ll write a SQL query that combines data from the `Products` table with data from the `Orders` table. In combining these tables, we’ll create a new tabular result that only includes the columns we want.
-3. Restrict Ms. Brown’s view of the `Products` table by displaying our query’s results instead of the original table.
-4. Confirm our the access by verifying what data Ms. Brown can see.
+1. یک مجموعه ایجاد کنیم که فقط adminها می‌توانند به آن دسترسی داشته باشند.
+2. یک پرس‌وجوی SQL جدید ایجاد کنیم. جدول `Products` اطلاعاتی درباره کاربران شامل نمی‌شود. پس برای محدود کردن دسترسی خانم Brown به جدول `Products`، نیاز داریم بفهمیم خانم Brown کدام محصولات را سفارش داده است. یک پرس‌وجوی SQL می‌نویسیم که داده از جدول `Products` را با داده از جدول `Orders` ترکیب می‌کند. در ترکیب این جداول، یک نتیجه جدولی جدید ایجاد می‌کنیم که فقط ستون‌هایی که می‌خواهیم را شامل می‌شود.
+3. view خانم Brown از جدول `Products` را با نمایش نتایج پرس‌وجوی ما به جای جدول اصلی محدود کنیم.
+4. دسترسی خود را با تأیید اینکه خانم Brown چه داده‌ای می‌تواند ببیند تأیید کنیم.
 
-## Create a collection accessible only by admins
+## ایجاد یک مجموعه قابل دسترسی فقط توسط adminها
 
-We’ll want to create a collection to store the SQL query that we’ll use to restrict Ms.Brown’s view of the `Products` table . Let’s call it `Restricted view questions` and set permissions on this collection so that only admins can curate its questions. This way non\-admins won’t be able to alter the question and change the “dimensions” of the restricted view, for example by including columns Ms. Brown shouldn’t be able to see. See [Collection permissions](collection-permissions.html) to learn more about setting up permissions.
+می‌خواهیم یک مجموعه برای ذخیره پرس‌وجوی SQL که برای محدود کردن view خانم Brown از جدول `Products` استفاده می‌کنیم ایجاد کنیم. بیایید آن را `Restricted view questions` بنامیم و مجوزها را روی این مجموعه تنظیم کنیم تا فقط adminها بتوانند سؤال‌های آن را curate کنند. به این ترتیب non-adminها قادر به تغییر سؤال و تغییر "ابعاد" view محدود شده نخواهند بود، مثلاً با شامل کردن ستون‌هایی که خانم Brown نباید بتواند ببیند. [مجوزهای مجموعه](collection-permissions.html) را برای یادگیری بیشتر درباره تنظیم مجوزها ببینید.
 
-### Create a SQL query
+### ایجاد یک پرس‌وجوی SQL
 
-From the top bar, click on **\+ New** \> **SQL query** to [ask a SQL question](../../../../docs/latest/questions/native-editor/writing-sql.html). Select the [Sample Database](../../../../glossary/sample-database.html) included with Metabase.
+از نوار بالا، روی **+ New** \> **SQL query** کلیک کنید تا [یک سؤال SQL بپرسید](../../../../docs/latest/questions/native-editor/writing-sql.html). [پایگاه داده نمونه](../../../../glossary/sample-database.html) شامل شده با متابیس را انتخاب کنید.
 
-Here’s the query we’ll paste into the editor:
+در اینجا پرس‌وجویی که در ویرایشگر paste می‌کنیم:
 
 ```
 SELECT DISTINCT PRODUCTS.TITLE,
@@ -97,96 +95,100 @@ FROM PRODUCTS
 
 ```
 
-And here’s what the query does:
+و در اینجا آنچه پرس‌وجو انجام می‌دهد:
 
-- Returns a result with columns from the `Products` table: `Title` , `Category` , and `Price` .
-- Checks that the products are distinct, i.e., only one row for each product.
-- Optionally filters this list to only show products that were ordered by the user with restricted access.
+- یک نتیجه با ستون‌هایی از جدول `Products` برمی‌گرداند: `Title`، `Category`، و `Price`.
+- بررسی می‌کند محصولات distinct هستند، یعنی فقط یک ردیف برای هر محصول.
+- به طور اختیاری این لیست را فیلتر می‌کند تا فقط محصولاتی که توسط کاربر با دسترسی محدود شده سفارش داده شده‌اند را نشان دهد.
 
-The double square brackets `[[…]]` around the `WHERE` clause make the clause optional. The double curly braces `{{user_id}}` define the variable. We’ll use this `{{user_id}}` variable when using this question to restrict access by user.
+براکت‌های مربع دوتایی `[[…]]` دور بند `WHERE` بند را اختیاری می‌کند. براکت‌های فرفری دوتایی `{{user_id}}` متغیر را تعریف می‌کنند. از این متغیر `{{user_id}}` هنگام استفاده از این سؤال برای محدود کردن دسترسی بر اساس کاربر استفاده می‌کنیم.
 
-Let’s run the query, which gives this result:
+بیایید پرس‌وجو را اجرا کنیم، که این نتیجه را می‌دهد:
 
-![SQL query to create new table.](../../../images/column-permissions/sql-question.png)
+![پرس‌وجوی SQL برای ایجاد جدول جدید.](../../../images/column-permissions/sql-question.png)
 
-Now let’s save this question as `Products from Orders`, store it in the `Restricted view questions` collection we created, and opt out of adding the question to a dashboard.
+حالا بیایید این سؤال را به عنوان `Products from Orders` ذخیره کنیم، آن را در مجموعه `Restricted view questions` که ایجاد کردیم ذخیره کنیم، و از افزودن سؤال به یک داشبورد opt out کنیم.
 
-One point to reiterate here: we only selected columns from the `Products` table, as our query should only return columns from the table we want restrict.
+یک نکته برای تکرار در اینجا: ما فقط ستون‌هایی از جدول `Products` را انتخاب کردیم، چون پرس‌وجوی ما باید فقط ستون‌هایی از جدولی که می‌خواهیم محدود کنیم را برگرداند.
 
-## Restrict the view of the Products table using our saved question
+## محدود کردن view جدول Products با استفاده از سؤال ذخیره شده ما
 
-Now that we’ve created our `Products from Orders` question, it’s time to restrict the `Products` table. We’ll set up the permissions so that Metabase inserts the `user_id` attribute we gave Ms. Brown in the article on [row permissions](row-permissions.html) into the `{{user_id}}` variable in our saved SQL question, `Products from Orders`.
+حالا که سؤال `Products from Orders` خود را ایجاد کردیم، زمان محدود کردن جدول `Products` است. مجوزها را تنظیم می‌کنیم تا متابیس attribute `user_id` که به خانم Brown در مقاله درباره [مجوزهای ردیف](row-permissions.html) دادیم را در متغیر `{{user_id}}` در سؤال SQL ذخیره شده ما، `Products from Orders` insert کند.
 
-We’ll click on the **gears icon**, select **Admin settings**, and click on the **Permissions** tab. On the left, under **Databases**, we’ll click on `Sample Database` and `Products`.
+روی **آیکون چرخ‌دنده** کلیک می‌کنیم، **Admin settings** را انتخاب می‌کنیم، و روی تب **Permissions** کلیک می‌کنیم. در سمت چپ، زیر **Databases**، روی `Sample Database` و `Products` کلیک می‌کنیم.
 
-If you went through our tutorial on [row permissions](row-permissions.html) already, you should have permissions for All users group set to “View data: Blocked” and “Create queries: Query builder only”. If not, you’ll need to [make those edits](row-permissions.html#revoke-access-from-all-users-group) before setting up permissions for the Customers group.
+اگر از آموزش ما درباره [مجوزهای ردیف](row-permissions.html) عبور کرده‌اید، باید مجوزها برای گروه All users روی "View data: Blocked" و "Create queries: Query builder only" تنظیم شده باشد. اگر نه، نیاز دارید [آن editها را انجام دهید](row-permissions.html#revoke-access-from-all-users-group) قبل از تنظیم مجوزها برای گروه Customers.
 
-Since Ms. Brown is a member of the Customers group, and Metabase [grants data permissions to groups](data-permissions.html), not individuals, we’ll restrict access to the `Products` table for the Customers group. Click on the droptdown in the “View data” column for the “Customers” group and select **Row and column security**.
+از آنجایی که خانم Brown یک عضو گروه Customers است، و متابیس [مجوزهای داده را به گروه‌ها اعطا می‌کند](data-permissions.html)، نه افراد، دسترسی به جدول `Products` را برای گروه Customers محدود می‌کنیم. روی dropdown در ستون "View data" برای گروه "Customers" کلیک کنید و **Row and column security** را انتخاب کنید.
 
-![Set up access to the Products table for the Customer group.](../../../images/column-permissions/set-up-column-security.png)
+![تنظیم دسترسی به جدول Products برای گروه Customer.](../../../images/column-permissions/set-up-column-security.png)
 
-When Metabase asks **How do you want to filter this table?** section, we’ll select the second filter option: **Use a saved question to create a custom view for this table.**
+وقتی متابیس می‌پرسد بخش **How do you want to filter this table?**، گزینه فیلتر دوم را انتخاب می‌کنیم: **Use a saved question to create a custom view for this table.**
 
-We’ll navigate to our admin\-only `Restricted view questions` collection and select our question, `Products from Orders`. For **PARAMETER OR VARIABLE**, we’ll select the variable we included in our SQL query, `{{user_id}}`. For the `USER ATTRIBUTE`, we’ll select `user_id`.
+به مجموعه admin-only `Restricted view questions` خود navigate می‌کنیم و سؤال خود، `Products from Orders` را انتخاب می‌کنیم. برای **PARAMETER OR VARIABLE**، متغیری که در پرس‌وجوی SQL خود شامل کردیم، `{{user_id}}` را انتخاب می‌کنیم. برای `USER ATTRIBUTE`، `user_id` را انتخاب می‌کنیم.
 
-![Configuring column security](../../../images/column-permissions/configure-row-column-security.png)
+![پیکربندی امنیت ستون](../../../images/column-permissions/configure-row-column-security.png)
 
-Our summary now says:
+خلاصه ما اکنون می‌گوید:
 
-- People in the Customers group
-- Can view rows in the `Products from Orders` question
-- Where the `user_id` variable’s value equals `user_id` attribute.
+- مردم در گروه Customers
+- می‌توانند ردیف‌ها در سؤال `Products from Orders` را مشاهده کنند
+- جایی که مقدار متغیر `user_id` برابر attribute `user_id` است.
 
-Let’s click **Save** in the modal, then confirm our changes by clicking on **Save Changes** in the notice bar.
+بیایید روی **Save** در modal کلیک کنیم، سپس تغییرات خود را با کلیک روی **Save Changes** در نوار notice تأیید کنیم.
 
-## Check settings as the restricted user
+## بررسی تنظیمات به عنوان کاربر محدود شده
 
-Let’s see what our restricted `Products` table looks like from Ms. Brown’s perspective. Open a private browser window, navigate to our Metabase, and sign in as Ms. Brown.
+بیایید ببینیم جدول `Products` محدود شده ما از دیدگاه خانم Brown چگونه به نظر می‌رسد. یک پنجره مرورگر private باز کنید، به متابیس خود navigate کنید، و به عنوان خانم Brown وارد شوید.
 
-When we open up the `Products` table using the [data browser](../../querying-and-dashboards/data-browser.html), we can confirm that Ms. Brown can only see a list of the products she’s ordered, and only the three columns we included in our saved `Products from Orders` question: `Title`, `Category`, and `Price`.
+وقتی جدول `Products` را با استفاده از [مرورگر داده](../../querying-and-dashboards/data-browser.html) باز می‌کنیم، می‌توانیم تأیید کنیم خانم Brown فقط می‌تواند لیستی از محصولاتی که سفارش داده است را ببیند، و فقط سه ستونی که در سؤال ذخیره شده `Products from Orders` خود شامل کردیم: `Title`، `Category`، و `Price`.
 
-![The Products table from the Metabase home page only showing products that Ms. Brown has ordered.](../../../images/column-permissions/products-table.png)
+![جدول Products از صفحه اصلی متابیس فقط محصولاتی که خانم Brown سفارش داده است را نشان می‌دهد.](../../../images/column-permissions/products-table.png)
 
-If Ms. Brown asks a question that queries the `Products` table, she’ll still only see results based on the products she’s ordered. If she has access to a question that includes columns outside of her custom view, she’ll see an error.
+اگر خانم Brown سؤالی بپرسد که جدول `Products` را پرس‌وجو می‌کند، هنوز فقط نتایج بر اساس محصولاتی که سفارش داده است را خواهد دید. اگر دسترسی به سؤالی دارد که ستون‌هایی خارج از view سفارشی او شامل می‌شود، یک خطا خواهد دید.
 
-## Use a SQL question to create a custom restricted view of a table
+## استفاده از یک سؤال SQL برای ایجاد یک view محدود شده سفارشی از یک جدول
 
-While in theory you *could* use a query builder question to create a custom view of a table, you should always use SQL questions instead. Behind the scenes, questions create SQL queries based off the [filters](../../../../docs/latest/questions/query-builder/filters.html), [summaries](../../../../docs/latest/questions/query-builder/summarizing-and-grouping.html), and [joins](../../../../docs/latest/questions/query-builder/join.html) in our question. When you create a custom view based on a query builder question, you may not realize the full extent of the information you’re giving people access to.
+در حالی که در تئوری *می‌توانید* از یک سؤال سازنده کوئری برای ایجاد یک view سفارشی از یک جدول استفاده کنید، باید همیشه از سؤال‌های SQL به جای آن استفاده کنید. در پشت صحنه، سؤال‌ها پرس‌وجوهای SQL بر اساس [فیلترها](../../../../docs/latest/questions/query-builder/filters.html)، [خلاصه‌ها](../../../../docs/latest/questions/query-builder/summarizing-and-grouping.html)، و [joinها](../../../../docs/latest/questions/query-builder/join.html) در سؤال ما ایجاد می‌کنند. وقتی یک view سفارشی بر اساس یک سؤال سازنده کوئری ایجاد می‌کنید، ممکن است متوجه محدوده کامل اطلاعاتی که به مردم دسترسی می‌دهید نشوید.
 
-## Recap
+## خلاصه
 
-When restricting row and column access with questions:
+هنگام محدود کردن دسترسی ردیف و ستون با سؤال‌ها:
 
-- [Use SQL questions](../../../../docs/latest/permissions/row-and-column-security.html#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table) .
-- Make sure your saved SQL question only returns columns from the table you intend to restrict.
-- Save questions that you’re using to create custom views in a dedicated admin\-only collection.
+- [از سؤال‌های SQL استفاده کنید](../../../../docs/latest/permissions/row-and-column-security.html#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table).
+- مطمئن شوید سؤال SQL ذخیره شده شما فقط ستون‌هایی از جدولی که قصد محدود کردن آن را دارید برمی‌گرداند.
+- سؤال‌هایی که برای ایجاد viewهای سفارشی استفاده می‌کنید را در یک مجموعه admin-only اختصاصی ذخیره کنید.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Tutorial: row\-level permissions](row-permissions.html)
-- [Row and column security documentation](../../../../docs/latest/permissions/row-and-column-security.html)
-- [Permissions overview](../../../../docs/latest/permissions/introduction.html)
-- [Guide to data permissions](data-permissions.html)
-- [Working with collection permissions](collection-permissions.html)
-- [Single sign on with SAML](../../../../docs/latest/people-and-groups/authenticating-with-saml.html)
-- [Configuring Metabase appearance](../../../../docs/latest/configuring-metabase/appearance.html)
+- [آموزش: مجوزهای سطح ردیف](row-permissions.html)
+- [مستندات امنیت ردیف و ستون](../../../../docs/latest/permissions/row-and-column-security.html)
+- [نمای کلی مجوزها](../../../../docs/latest/permissions/introduction.html)
+- [راهنمای مجوزهای داده](data-permissions.html)
+- [کار با مجوزهای مجموعه](collection-permissions.html)
+- [Single sign on با SAML](../../../../docs/latest/people-and-groups/authenticating-with-saml.html)
+- [پیکربندی ظاهر متابیس](../../../../docs/latest/configuring-metabase/appearance.html)
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](row-permissions.html)
 [
       
         
         
+
       
       
+        
         
 
       

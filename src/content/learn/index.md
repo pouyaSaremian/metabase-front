@@ -8,7 +8,7 @@ redirect_from:
 [
                 
               ](../index.html)
-Product
+محصول
 [
                         
                           
@@ -25,28 +25,27 @@ Product
                           
                         
 
-                        Data sources](../data-sources/index.html)
+                        منابع داده](../data-sources/index.html)
 [
                         
                           
                           
                         
-                        Security](../security.html)
+                        امنیت](../security.html)
 [
-                          
                         
-                        Cloud](../cloud/index.html)
-Features
+                        
+                        کلود](../cloud/index.html)
+ویژگی‌ها
 [
                           
                             
                             
                             
                           
-
                           
                             
-                              Analytics dashboards
+                              داشبوردهای تحلیل
                             
                           
                         ](../features/analytics-dashboards.html)
@@ -54,10 +53,9 @@ Features
                           
                             
                           
-
                           
                             
-                              Query builder
+                              سازنده کوئری
                             
                           
                         ](../features/query-builder.html)
@@ -65,10 +63,9 @@ Features
                           
                             
                           
-
                           
                             
-                              Data segregation
+                              جداسازی داده
                             
                           
                         ](../features/data-segregation.html)
@@ -80,9 +77,8 @@ Features
                             
                             
                           
-
                           
-                             Models 
+                             مدل‌ها 
                           
                         ](../features/models.html)
 [
@@ -94,10 +90,8 @@ Features
                             
                             
                           
-
                           
-                            
-                              Usage analytics
+                              تحلیل‌های استفاده
                             
                           
                         ](../features/usage-analytics.html)
@@ -110,21 +104,19 @@ Features
                             
                             
                           
-
                           
                              Metabot AI 
 
-                            Beta
+                            بتا
                           
                         ](../features/metabot-ai.html)
 [
                           
                             
                           
-
                           
                             
-                              Embedded analytics SDK
+                              SDK تحلیل‌های جاسازی شده
                             
                           
                         ](../product/embedded-analytics-sdk.html)
@@ -132,10 +124,9 @@ Features
                           
                             
                           
-
                           
                             
-                              White\-label analytics
+                              تحلیل‌های White-label
                             
                           
                         ](../features/white-label-analytics.html)
@@ -143,10 +134,9 @@ Features
                           
                             
                           
-
                           
                             
-                              Drill\-through
+                              Drill-through
                             
                           
                         ](../features/drill-through.html)
@@ -154,9 +144,8 @@ Features
                           
                             
                           
-
                           
-                             SQL editor 
+                             ویرایشگر SQL 
                           
                         ](../features/sql-editor.html)
 [
@@ -164,9 +153,8 @@ Features
                             
                             
                           
-
                           
-                             Permissions 
+                             مجوزها 
                           
                         ](../features/permissions.html)
 [
@@ -175,20 +163,19 @@ Features
                             
                             
                           
-
                           
-                             CSV upload 
+                             آپلود CSV 
                           
                         ](../product/csv-uploads.html)
 [
                           
                         
-                        What’s new](../releases.html)
+                        چه چیز جدیدی است](../releases.html)
 [
                           
                         
-                        Roadmap](../roadmap.html)
-Docs
+                        نقشه راه](../roadmap.html)
+مستندات
 [
                         
                           
@@ -207,7 +194,7 @@ Docs
                           
                         
                       ](index.html)
-Getting Started
+شروع کار
 [
                           
                             
@@ -235,21 +222,19 @@ Getting Started
                             
                           
                         ](metabase-basics/administration/administration-and-operation/guide.html)
-Guides
-[Installing Metabase](../docs/latest/installation-and-operation/installing-metabase.html)
-[Adding a database](../docs/latest/databases/connecting.html)
-[Asking questions](../docs/latest/questions/introduction.html)
-[Creating a dashboard](../docs/latest/dashboards/introduction.html)
-[Solving common problems](../docs/latest/troubleshooting-guide/index.html)
-Resources
+راهنماها
+[نصب متابیس](../docs/latest/installation-and-operation/installing-metabase.html)
+[افزودن یک پایگاه داده](../docs/latest/databases/connecting.html)
+[پرسیدن سؤال](../docs/latest/questions/introduction.html)
+[ایجاد یک داشبورد](../docs/latest/dashboards/introduction.html)
+[حل مشکلات رایج](../docs/latest/troubleshooting-guide/index.html)
+منابع
 [
                           
                             
                           
-
                           
-                             Blog 
-
+                             بلاگ 
                             
                           
                         ](../blog.html)
@@ -258,10 +243,8 @@ Resources
                             
                             
                           
-
                           
-                             Events 
-
+                             رویدادها 
                             
                           
                         ](../events/index.html)
@@ -269,10 +252,8 @@ Resources
                           
                             
                           
-
                           
-                             Customers 
-
+                             مشتریان 
                             
                           
                         ](../case-studies.html)
@@ -283,10 +264,8 @@ Resources
                             
                             
                           
-
                           
-                             Discussion 
-
+                             بحث 
                             
                           
                         ](https://discourse.metabase.com/)
@@ -296,12 +275,9 @@ Resources
                             
                             
                           
-
                           
+                              خدمات حرفه‌ای
                             
-                              Professional Services
-                            
-
                             
                           
                         ](../product/professional-services.html)
@@ -312,39 +288,36 @@ Resources
                             
                             
                           
-
                           
+                              متخصصان متابیس
                             
-                              Metabase Experts
-                            
-
                             
                           
                         ](../partners/index.html)
-Recent Blog Posts
+پست‌های اخیر بلاگ
 [
                           
                             
                           
-                          Metabase Community Data Stack Report 2025
+                          گزارش پشته داده جامعه متابیس 2025
                         ](../blog/metabase-community-data-stack-report-2025-key-analysis.html)
 [
-                          The story behind our AI Dataset Generator
+                          داستان پشت تولیدکننده مجموعه داده AI ما
                         ](../blog/story-behind-ai-dataset-generator.html)
 [
-                          How to build sales dashboards that sales teams
-                            actually use
+                          نحوه ساخت داشبوردهای فروش که تیم‌های فروش
+                            واقعاً استفاده می‌کنند
                         ](../blog/how-to-build-sales-dashboards.html)
 [
-                          What is embedded analytics?
+                          تحلیل‌های جاسازی شده چیست؟
                         ](../blog/what-is-embedded-analytics.html)
 [
-                          The Metabase Community Data Stack Survey: by data
-                            teams, for data teams
+                          نظرسنجی پشته داده جامعه متابیس: توسط تیم‌های
+                            داده، برای تیم‌های داده
                         ](../blog/metabase-community-data-stack-survey-2025.html)
-[Pricing](../pricing/index.html)
-[Log in](../cloud/login.html)
-[Get started](https://store.metabase.com/checkout)
+[قیمت‌گذاری](../pricing/index.html)
+[ورود](../cloud/login.html)
+[شروع کنید](https://store.metabase.com/checkout)
 [
                 
                   
@@ -357,14 +330,13 @@ Recent Blog Posts
                   
                 
               ](../product/embedded-analytics.html)
-Platform
+پلتفرم
 [
               
                 
               
-
               
-                 Data Sources 
+                 منابع داده 
               
             ](../data-sources/index.html)
 [
@@ -372,25 +344,21 @@ Platform
                 
                 
               
-
               
-                 Security 
+                 امنیت 
               
             ](../security.html)
 [
               
                 
               
-
               
-                 Cloud 
+                 کلود 
               
             ](../cloud/index.html)
-Demo
+دمو
 [
               
-                
-
                 
               
             ](../demo.html)
@@ -398,18 +366,16 @@ Demo
               
                 
               
-
               
-                 Embedded analytics SDK 
+                 SDK تحلیل‌های جاسازی شده 
               
             ](../product/embedded-analytics-sdk.html)
 [
               
                 
               
-
               
-                 White\-label analytics 
+                 تحلیل‌های White-label 
               
             ](../features/white-label-analytics.html)
 [
@@ -418,36 +384,32 @@ Demo
                 
                 
               
-
               
-                 Analytics dashboards 
+                 داشبوردهای تحلیل 
               
             ](../features/analytics-dashboards.html)
 [
               
                 
               
-
               
-                 Drill\-through 
+                 Drill-through 
               
             ](../features/drill-through.html)
 [
               
                 
               
-
               
-                 Query builder 
+                 سازنده کوئری 
               
             ](../features/query-builder.html)
 [
               
                 
               
-
               
-                 SQL editor 
+                 ویرایشگر SQL 
               
             ](../features/sql-editor.html)
 [
@@ -458,9 +420,8 @@ Demo
                 
                 
               
-
               
-                 Models 
+                 مدل‌ها 
               
             ](../features/models.html)
 [
@@ -468,9 +429,8 @@ Demo
                 
                 
               
-
               
-                 Permissions 
+                 مجوزها 
               
             ](../features/permissions.html)
 [
@@ -479,18 +439,16 @@ Demo
                 
                 
               
-
               
-                 CSV upload 
+                 آپلود CSV 
               
             ](../product/csv-uploads.html)
 [
               
                 
               
-
               
-                 Data segregation 
+                 جداسازی داده 
               
             ](../features/data-segregation.html)
 [
@@ -500,11 +458,9 @@ Demo
                 
                 
                 
-                
               
-
               
-                 Usage analytics 
+                 تحلیل‌های استفاده 
               
             ](../features/usage-analytics.html)
 [
@@ -514,30 +470,26 @@ Demo
                 
                 
                 
-                
               
-
               
                  Metabot AI 
               
             ](../features/metabot-ai.html)
-Updates
+به‌روزرسانی‌ها
 [
               
                 
               
-
               
-                 What’s new 
+                 چه چیز جدیدی است 
               
             ](../releases.html)
 [
               
                 
               
-
               
-                 Roadmap 
+                 نقشه راه 
               
             ](../roadmap.html)
 [
@@ -545,10 +497,8 @@ Updates
                   
                   
                 
-
-                
-                   Documentation 
-
+                  
+                   مستندات 
                   
                 
               ](../docs/latest/index.html)
@@ -557,14 +507,12 @@ Updates
                   
                   
                 
-
-                
-                   Learn 
-
+                  
+                   یادگیری 
                   
                 
               ](index.html)
-Getting Started
+شروع کار
 [
                   
                     
@@ -592,19 +540,18 @@ Getting Started
                     
                   
                 ](metabase-basics/administration/administration-and-operation/guide.html)
-Guides
-[Installing Metabase](../docs/latest/installation-and-operation/installing-metabase.html)
-[Adding a database](../docs/latest/databases/connecting.html)
-[Asking questions](../docs/latest/questions/introduction.html)
-[Creating a dashboard](../docs/latest/dashboards/introduction.html)
-[Solving common problems](../docs/latest/troubleshooting-guide/index.html)
+راهنماها
+[نصب متابیس](../docs/latest/installation-and-operation/installing-metabase.html)
+[افزودن یک پایگاه داده](../docs/latest/databases/connecting.html)
+[پرسیدن سؤال](../docs/latest/questions/introduction.html)
+[ایجاد یک داشبورد](../docs/latest/dashboards/introduction.html)
+[حل مشکلات رایج](../docs/latest/troubleshooting-guide/index.html)
 [
               
                 
               
-
               
-                 Blog 
+                 بلاگ 
               
             ](../blog.html)
 [
@@ -612,18 +559,16 @@ Guides
                 
                 
               
-
               
-                 Events 
+                 رویدادها 
               
             ](../events/index.html)
 [
               
                 
               
-
               
-                 Customers 
+                 مشتریان 
               
             ](../case-studies.html)
 [
@@ -633,9 +578,8 @@ Guides
                 
                 
               
-
               
-                 Discussion 
+                 بحث 
               
             ](https://discourse.metabase.com/)
 [
@@ -644,9 +588,8 @@ Guides
                 
                 
               
-
               
-                 Professional Services 
+                 خدمات حرفه‌ای 
               
             ](../product/professional-services.html)
 [
@@ -656,14 +599,13 @@ Guides
                 
                 
               
-
               
-                 Metabase Experts 
+                 متخصصان متابیس 
               
             ](../partners/index.html)
 [
-            Pricing
+            قیمت‌گذاری
           ](../pricing/index.html)
 [
-            Log in
+            ورود
           ](../cloud/login.html)

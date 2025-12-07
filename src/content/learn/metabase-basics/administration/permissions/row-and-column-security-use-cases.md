@@ -1,138 +1,140 @@
 ---
-
-
-title: "Use cases for row and column security"
-description: "Pair row and column security with user attributes to customize data for almost any situation."
+title: "موارد استفاده برای امنیت ردیف و ستون"
+description: "امنیت ردیف و ستون را با attributeهای کاربر جفت کنید تا داده را برای تقریباً هر موقعیتی سفارشی کنید."
 redirect_from:
   - /learn/metabase-basics/administration/permissions/row-and-column-security-use-cases
 toc:
   - id: "use-cases-for-row-and-column-security"
-    title: "Use cases for row and column security"
+    title: "موارد استفاده برای امنیت ردیف و ستون"
     level: 1
     href: "#use-cases-for-row-and-column-security"
   - id: "managing-permissions-in-a-multi-tenant-environment"
-    title: "Managing permissions in a multi-tenant environment"
+    title: "مدیریت مجوزها در یک محیط multi-tenant"
     level: 2
     href: "#managing-permissions-in-a-multi-tenant-environment"
   - id: "restricting-the-email-recipient-list-in-a-dashboard-subscription"
-    title: "Restricting the email recipient list in a dashboard subscription"
+    title: "محدود کردن لیست گیرنده ایمیل در یک اشتراک داشبورد"
     level: 2
     href: "#restricting-the-email-recipient-list-in-a-dashboard-subscription"
   - id: "selectively-granting-access-to-sensitive-data"
-    title: "Selectively granting access to sensitive data"
+    title: "اعطای دسترسی انتخابی به داده حساس"
     level: 2
     href: "#selectively-granting-access-to-sensitive-data"
   - id: "displaying-custom-data-formats-to-different-groups"
-    title: "Displaying custom data formats to different groups"
+    title: "نمایش فرمت‌های داده سفارشی به گروه‌های مختلف"
     level: 2
     href: "#displaying-custom-data-formats-to-different-groups"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Permissions"
+  - title: "مجوزها"
     href: "index.html"
 ---
 
-# Use cases for row and column security
+# موارد استفاده برای امنیت ردیف و ستون
 
-Pair row and column security with user attributes to customize data for almost any situation.
+امنیت ردیف و ستون را با attributeهای کاربر جفت کنید تا داده را برای تقریباً هر موقعیتی سفارشی کنید.
 
-> Row and column security was formerly called data sandboxing. It’s the same feature, it just now has a more descriptive name.
+> امنیت ردیف و ستون قبلاً data sandboxing نامیده می‌شد. همان ویژگی است، فقط اکنون نام توصیفی‌تری دارد.
 
-## Managing permissions in a multi-tenant environment
+## مدیریت مجوزها در یک محیط multi-tenant
 
-If you’re [embedding Metabase](../../../../docs/latest/embedding/introduction.html) for [multi\-tenant self\-service analytics](../../embedding/multi-tenant-self-service-analytics.html), you can use row and column security to make sure tenant A won’t be able to see tenant B’s data, and vice versa.
+اگر [متابیس را embed می‌کنید](../../../../docs/latest/embedding/introduction.html) برای [تحلیل‌های self-service multi-tenant](../../embedding/multi-tenant-self-service-analytics.html)، می‌توانید از امنیت ردیف و ستون استفاده کنید تا مطمئن شوید tenant A قادر به دیدن داده tenant B نخواهد بود، و برعکس.
 
-Row and column security policies are excellent at managing permissions for complex org structures, even if you only have one customer. For example, if your customer is a university, that university could require different permissions for different groups:
+policyهای امنیت ردیف و ستون در مدیریت مجوزها برای ساختارهای org پیچیده عالی هستند، حتی اگر فقط یک مشتری داشته باشید. به عنوان مثال، اگر مشتری شما یک دانشگاه است، آن دانشگاه می‌تواند نیاز به مجوزهای مختلف برای گروه‌های مختلف داشته باشد:
 
-- **Admins** should be able to see data from all students.
-- **Students** should only see their own data, but not the data of other students.
-- **Professors** should see the data from multiple students \(the ones that they teach\), but not all students.
+- **Adminها** باید قادر به دیدن داده از همه دانشجویان باشند.
+- **دانشجویان** باید فقط داده خود را ببینند، اما نه داده دانشجویان دیگر.
+- **استادان** باید داده از چندین دانشجو (آن‌هایی که تدریس می‌کنند) را ببینند، اما نه همه دانشجویان.
 
-In this scenario, you’d create separate [groups](../../../../docs/latest/people-and-groups/managing.html#groups) for your Admins, Students, and Professors, and then configure row and column security policies for those groups to automatically display a different set of rows or columns to each group.
+در این سناریو، [گروه‌های](../../../../docs/latest/people-and-groups/managing.html#groups) جداگانه برای Adminها، دانشجویان، و استادان خود ایجاد می‌کنید، و سپس policyهای امنیت ردیف و ستون را برای آن گروه‌ها پیکربندی می‌کنید تا به طور خودکار مجموعه متفاوتی از ردیف‌ها یا ستون‌ها را به هر گروه نمایش دهند.
 
-Your setup will look a bit different depending on whether your tenant data is commingled into one schema or not — you can compare the options using our [Multi\-tenant permissions](multi-tenant-permissions.html) article.
+راه‌اندازی شما بسته به اینکه داده tenant شما در یک schema commingled شده است یا نه کمی متفاوت به نظر می‌رسد — می‌توانید گزینه‌ها را با استفاده از مقاله [مجوزهای Multi-tenant](multi-tenant-permissions.html) ما مقایسه کنید.
 
-If you’re ready to tinker with row and column security yourself, try the [examples](../../../../docs/latest/permissions/row-and-column-security-examples.html), or have a look in the [docs](../../../../docs/latest/permissions/row-and-column-security.html).
+اگر آماده هستید خودتان با امنیت ردیف و ستون tinker کنید، [مثال‌ها](../../../../docs/latest/permissions/row-and-column-security-examples.html) را امتحان کنید، یا در [مستندات](../../../../docs/latest/permissions/row-and-column-security.html) نگاهی بیندازید.
 
-## Restricting the email recipient list in a dashboard subscription
+## محدود کردن لیست گیرنده ایمیل در یک اشتراک داشبورد
 
-Some members of our community use row and column security to lock down email addresses in Metabase. When creating a [dashboard subscription](../../../../docs/latest/dashboards/subscriptions.html), a person in a group with row and column security configured will only see their own email address in the list of recipients.
+برخی اعضای جامعه ما از امنیت ردیف و ستون برای قفل کردن آدرس‌های ایمیل در متابیس استفاده می‌کنند. هنگام ایجاد یک [اشتراک داشبورد](../../../../docs/latest/dashboards/subscriptions.html)، یک شخص در یک گروه با امنیت ردیف و ستون پیکربندی شده فقط آدرس ایمیل خود را در لیست گیرندگان خواهد دید.
 
-Say you have a group of **Professors** who need to send dashboard subscription emails to their respective **Students**. If you configure row and column security for the **Students** group, you’ll automatically prevent students from:
+بگویید یک گروه **استادان** دارید که نیاز به ارسال ایمیل‌های اشتراک داشبورد به **دانشجویان** مربوطه خود دارند. اگر امنیت ردیف و ستون را برای گروه **دانشجویان** پیکربندی کنید، به طور خودکار از دانشجویان جلوگیری می‌کنید:
 
-- Sending subscription emails to their **Professors** .
-- Seeing the email addresses of other students.
+- ارسال ایمیل‌های اشتراک به **استادان** خود.
+- دیدن آدرس‌های ایمیل دانشجویان دیگر.
 
-If you only want to restrict email lists without necessarily hiding any rows or columns from a group, use a [security configuration with a custom view](../../../../docs/latest/permissions/row-and-column-security.html#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table) and set the view to `SELECT * FROM table`.
+اگر فقط می‌خواهید لیست‌های ایمیل را بدون لزوماً پنهان کردن هر ردیف یا ستونی از یک گروه محدود کنید، از یک [پیکربندی امنیت با یک view سفارشی](../../../../docs/latest/permissions/row-and-column-security.html#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table) استفاده کنید و view را روی `SELECT * FROM table` تنظیم کنید.
 
-## Selectively granting access to sensitive data
+## اعطای دسترسی انتخابی به داده حساس
 
-If you work with sensitive information, like financial or medical data, you can use row and column security to:
+اگر با اطلاعات حساس کار می‌کنید، مثل داده مالی یا پزشکی، می‌توانید از امنیت ردیف و ستون استفاده کنید تا:
 
-- Let specific teams see sensitive data on a need\-to\-know basis.
-- Hide that sensitive data from everyone else.
+- به تیم‌های خاص اجازه دهید داده حساس را بر اساس need-to-know ببینند.
+- آن داده حساس را از همه دیگران پنهان کنید.
 
-For example, say you work in telemedicine, and you have a **Patient Chat** table that records the interactions between a nurse and a telemedicine patient in a schema like this:
+به عنوان مثال، بگویید در telemedicine کار می‌کنید، و یک جدول **Patient Chat** دارید که تعاملات بین یک پرستار و یک بیمار telemedicine را در یک schema مثل این ثبت می‌کند:
 
 | Nurse ID | Start Time | End Time | Transcript |
 | --- | --- | --- | --- |
 | … | … | … | … |
 
-To ensure that nurses can see the full records \(including the **Transcript** column\) for their own chats, but not the chats of other nurses:
+برای اطمینان از اینکه پرستاران می‌توانند رکوردهای کامل (شامل ستون **Transcript**) برای chatهای خود را ببینند، اما نه chatهای پرستاران دیگر:
 
-- Create a **Nurse** group with a user attribute for “Nurse ID”, and add your nurses to the group.
-- Set up [row\-level security](../../../../docs/latest/permissions/row-and-column-security.html#row-level-security-filter-by-a-column-in-the-table) for the **Nurse** group and **Patient Chat** table so that nurses can only see rows that match their Nurse ID.
+- یک گروه **Nurse** با یک attribute کاربر برای "Nurse ID" ایجاد کنید، و پرستاران خود را به گروه اضافه کنید.
+- [امنیت سطح ردیف](../../../../docs/latest/permissions/row-and-column-security.html#row-level-security-filter-by-a-column-in-the-table) را برای گروه **Nurse** و جدول **Patient Chat** تنظیم کنید تا پرستاران فقط ردیف‌هایی که با Nurse ID آن‌ها match می‌کنند را ببینند.
 
-Then, to restrict the columns of the chat table, so that everyone else at the company can see the **Nurse ID**, **Start Time**, and **End Time** of a chat, but not the sensitive **Transcript**:
+سپس، برای محدود کردن ستون‌های جدول chat، تا همه دیگران در شرکت بتوانند **Nurse ID**، **Start Time**، و **End Time** یک chat را ببینند، اما نه **Transcript** حساس:
 
-- Create a **Non\-Nurse** group and add non\-nurse employees to the group.
-- Set up a [column\-level security](../../../../docs/latest/permissions/row-and-column-security.html#setting-up-column-security) for the **Non\-Nurse** group and **Patient Chat** table that hides the sensitive **Transcript** column.
+- یک گروه **Non-Nurse** ایجاد کنید و کارمندان non-nurse را به گروه اضافه کنید.
+- [امنیت سطح ستون](../../../../docs/latest/permissions/row-and-column-security.html#setting-up-column-security) را برای گروه **Non-Nurse** و جدول **Patient Chat** تنظیم کنید که ستون حساس **Transcript** را پنهان می‌کند.
 
-## Displaying custom data formats to different groups
+## نمایش فرمت‌های داده سفارشی به گروه‌های مختلف
 
-A lesser\-known use case for row and column security is that you can use them to format data for different groups.
+یک مورد استفاده کمتر شناخته شده برای امنیت ردیف و ستون این است که می‌توانید از آن‌ها برای فرمت کردن داده برای گروه‌های مختلف استفاده کنید.
 
-For example, you can display a table’s currency in:
+به عنوان مثال، می‌توانید ارز یک جدول را در:
 
-- Pounds \(£\) for people in a **United Kingdom** group.
-- Yen \(¥\) for people in a **Japan** group.
+- پوند (£) برای مردم در یک گروه **United Kingdom** نمایش دهید.
+- ین (¥) برای مردم در یک گروه **Japan** نمایش دهید.
 
-Or maybe you want to display a column of datetimes in:
+یا شاید می‌خواهید یک ستون از datetimeها را در:
 
-- 24\-hour format for people in a **Military** group.
-- 12\-hour format for people in a **Non\-Military** group.
+- فرمت 24 ساعته برای مردم در یک گروه **Military** نمایش دهید.
+- فرمت 12 ساعته برای مردم در یک گروه **Non-Military** نمایش دهید.
 
-You can do your custom formatting in a SQL question, then use this question to create [custom view](../../../../docs/latest/permissions/row-and-column-security.html#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table) of the data for people in different groups.
+می‌توانید فرمت‌بندی سفارشی خود را در یک سؤال SQL انجام دهید، سپس از این سؤال برای ایجاد [view سفارشی](../../../../docs/latest/permissions/row-and-column-security.html#custom-row-and-column-security-use-a-sql-question-to-create-a-custom-view-of-a-table) از داده برای مردم در گروه‌های مختلف استفاده کنید.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Managing people in Metabase](../../../../docs/latest/people-and-groups/managing.html)
-- [Strategies for delivering customer\-facing analytics](../../embedding/overview.html)
-- [Multi\-tenant self\-service analytics](../../embedding/multi-tenant-self-service-analytics.html)
+- [مدیریت مردم در متابیس](../../../../docs/latest/people-and-groups/managing.html)
+- [استراتژی‌ها برای تحویل تحلیل‌های customer-facing](../../embedding/overview.html)
+- [تحلیل‌های self-service multi-tenant](../../embedding/multi-tenant-self-service-analytics.html)
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](column-permissions.html)
 [
       
         
         
+
       
       
+        
         
 
       

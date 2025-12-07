@@ -1,201 +1,203 @@
 ---
-
-
-title: "Tutorial: Working with collection permissions in Metabase"
-description: "Set up collections with permissions to help people organize and share the work that's relevant to them."
+title: "آموزش: کار با مجوزهای مجموعه در متابیس"
+description: "مجموعه‌ها را با مجوزها تنظیم کنید تا به مردم کمک کنید کار مرتبط با آن‌ها را سازماندهی و به اشتراک بگذارند."
 redirect_from:
   - /learn/metabase-basics/administration/permissions/collection-permissions
   - /learn/permissions/collection-permissions
 toc:
   - id: "tutorial-working-with-collection-permissions-in-metabase"
-    title: "Tutorial: Working with collection permissions in Metabase"
+    title: "آموزش: کار با مجوزهای مجموعه در متابیس"
     level: 1
     href: "#tutorial-working-with-collection-permissions-in-metabase"
   - id: "reviewing-the-default-collection-permissions"
-    title: "Reviewing the default collection permissions"
+    title: "بررسی مجوزهای مجموعه پیش‌فرض"
     level: 2
     href: "#reviewing-the-default-collection-permissions"
   - id: "configuring-permissions-to-our-analytics"
-    title: "Configuring permissions to “Our analytics”"
+    title: "پیکربندی مجوزها به \"Our analytics\""
     level: 2
     href: "#configuring-permissions-to-our-analytics"
   - id: "creating-new-groups-and-collections"
-    title: "Creating new groups and collections"
+    title: "ایجاد گروه‌ها و مجموعه‌های جدید"
     level: 2
     href: "#creating-new-groups-and-collections"
   - id: "setting-collection-permissions"
-    title: "Setting collection permissions"
+    title: "تنظیم مجوزهای مجموعه"
     level: 2
     href: "#setting-collection-permissions"
   - id: "how-collection-permissions-interact-with-data-permissions"
-    title: "How collection permissions interact with data permissions"
+    title: "نحوه تعامل مجوزهای مجموعه با مجوزهای داده"
     level: 2
     href: "#how-collection-permissions-interact-with-data-permissions"
   - id: "how-permissions-apply-to-dashboards-with-questions-from-different-collections"
-    title: "How permissions apply to dashboards with questions from different collections"
+    title: "نحوه اعمال مجوزها به داشبوردها با سؤال‌ها از مجموعه‌های مختلف"
     level: 2
     href: "#how-permissions-apply-to-dashboards-with-questions-from-different-collections"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Permissions"
+  - title: "مجوزها"
     href: "index.html"
 ---
 
-# Tutorial: Working with collection permissions in Metabase
+# آموزش: کار با مجوزهای مجموعه در متابیس
 
-Set up collections with permissions to help people organize and share the work that's relevant to them.
+مجموعه‌ها را با مجوزها تنظیم کنید تا به مردم کمک کنید کار مرتبط با آن‌ها را سازماندهی و به اشتراک بگذارند.
 
-> Looking for docs on collection permissions? See [Docs: Collection permissions](../../../../docs/latest/permissions/collections.html).
+> به دنبال مستندات درباره مجوزهای مجموعه هستید؟ [مستندات: مجوزهای مجموعه](../../../../docs/latest/permissions/collections.html) را ببینید.
 
-Collections keep questions, dashboards, and models organized and easy to find. It’s helpful to think of collections as folders that store our work. Collection permissions give [groups of people](strategy.html#how-to-approach-permissions) access to:
+مجموعه‌ها سؤال‌ها، داشبوردها، و مدل‌ها را منظم و آسان برای پیدا کردن نگه می‌دارند. مفید است مجموعه‌ها را به عنوان پوشه‌هایی که کار ما را ذخیره می‌کنند فکر کنیم. مجوزهای مجموعه به [گروه‌های مردم](strategy.html#how-to-approach-permissions) دسترسی به:
 
-- View or edit the questions, dashboards, or models saved in a collection.
-- Edit collection details, such as a collection’s name, or where it’s saved.
+- مشاهده یا edit کردن سؤال‌ها، داشبوردها، یا مدل‌های ذخیره شده در یک مجموعه.
+- Edit کردن جزئیات مجموعه، مثل نام یک مجموعه، یا جایی که ذخیره شده است.
 
-In this tutorial, we’ll create collections for a company with teams called Canoes and Sailboats, and set up collection permissions so that:
+در این آموزش، مجموعه‌هایی برای یک شرکت با تیم‌های Canoes و Sailboats ایجاد می‌کنیم، و مجوزهای مجموعه را تنظیم می‌کنیم تا:
 
-- Everyone at the company can view, but not edit, the work that’s saved in the top\-level collection for the company \(in Metabase, it’s called **Our analytics** —you might think of this as a root directory or a parent folder\).
-- People on the Canoes team will be able to save, view, and edit work that’s shared between team members in the Canoes collection. People on the Sailboats team will get access to their own Sailboats collection.
-- The Canoes team will get view\-only access to the work saved in the Sailboats collection. The Sailboats team will get view\-only access to the Canoes collection.
+- همه در شرکت می‌توانند مشاهده کنند، اما edit نکنند، کار ذخیره شده در مجموعه سطح بالا برای شرکت (در متابیس، **Our analytics** نامیده می‌شود — ممکن است این را به عنوان یک دایرکتوری root یا یک پوشه parent فکر کنید).
+- مردم در تیم Canoes قادر به ذخیره، مشاهده، و edit کردن کاری که بین اعضای تیم در مجموعه Canoes به اشتراک گذاشته شده است خواهند بود. مردم در تیم Sailboats به مجموعه Sailboats خود دسترسی خواهند داشت.
+- تیم Canoes دسترسی view-only به کار ذخیره شده در مجموعه Sailboats دریافت می‌کند. تیم Sailboats دسترسی view-only به مجموعه Canoes دریافت می‌کند.
 
-## Reviewing the default collection permissions
+## بررسی مجوزهای مجموعه پیش‌فرض
 
-In a fresh, brand new Metabase:
+در یک متابیس تازه، brand new:
 
-1. Click on the **gear icon** and select **Admin settings** \> **Permissions** \> **Collections** .
-2. Click on **Our analytics** to go to the collection permissions page for the root collection.
+1. روی **آیکون چرخ‌دنده** کلیک کنید و **Admin settings** \> **Permissions** \> **Collections** را انتخاب کنید.
+2. روی **Our analytics** کلیک کنید تا به صفحه مجوزهای مجموعه برای مجموعه root بروید.
 
-From the **Permissions for Our analytics** page, you’ll find that **Collection access** is set to **Curate** for the default groups Administrators and All Users.
+از صفحه **Permissions for Our analytics**، می‌یابید که **Collection access** روی **Curate** برای گروه‌های پیش‌فرض Administrators و All Users تنظیم شده است.
 
-All Users includes everyone that’s added to your Metabase, and the **Curate** permission allows a group to view and edit a collection. So, Metabase’s default collection permissions will allow everyone at Boats to view and edit the work that’s saved in **Our analytics**.
+All Users شامل همه کسانی است که به متابیس شما اضافه شده‌اند، و مجوز **Curate** به یک گروه اجازه می‌دهد یک مجموعه را مشاهده و edit کند. پس، مجوزهای مجموعه پیش‌فرض متابیس به همه در Boats اجازه می‌دهد کار ذخیره شده در **Our analytics** را مشاهده و edit کنند.
 
-## Configuring permissions to “Our analytics”
+## پیکربندی مجوزها به "Our analytics"
 
-We’re going to revoke access to **Our analytics**, because Metabase grants the *most permissive* level of access across all of the groups that someone belongs to.
+ما می‌خواهیم دسترسی به **Our analytics** را revoke کنیم، چون متابیس *permissiveترین* سطح دسترسی را در همه گروه‌هایی که کسی به آن‌ها تعلق دارد اعطا می‌کند.
 
-You can’t remove people from the All Users group, so if you give All Users **Curate** permissions to **Our analytics**, then that’ll always be the most permissive setting for everyone who uses your Metabase, regardless of any other group that you put people in.
+نمی‌توانید مردم را از گروه All Users حذف کنید، پس اگر به All Users مجوزهای **Curate** به **Our analytics** بدهید، آن همیشه permissiveترین تنظیمات برای همه کسانی که از متابیس شما استفاده می‌کنند خواهد بود، صرف نظر از هر گروه دیگری که مردم را در آن قرار می‌دهید.
 
-1. Go to **Admin settings** \> **Permissions** \> **Collections** \> **Our analytics** .
-2. Click on the dropdown menu at the **All Users** row and **Collection access** column..
-3. Select **No access** . Toggle on **Also change sub\-collections** so that these permissions apply to all sub\-collections nested under **Our analytics** .
+1. به **Admin settings** \> **Permissions** \> **Collections** \> **Our analytics** بروید.
+2. روی منوی dropdown در ردیف **All Users** و ستون **Collection access** کلیک کنید..
+3. **No access** را انتخاب کنید. **Also change sub-collections** را toggle کنید تا این مجوزها به همه زیرمجموعه‌های nested زیر **Our analytics** اعمال شوند.
 
-![Revoking All Users access to the Our analytics collection and its sub-collections.](../../../images/guide-to-collection-permissions/no-access-our-analytics.png)
+![Revoke کردن دسترسی All Users به مجموعه Our analytics و زیرمجموعه‌های آن.](../../../images/guide-to-collection-permissions/no-access-our-analytics.png)
 
-## Creating new groups and collections
+## ایجاد گروه‌ها و مجموعه‌های جدید
 
-Next, we’ll create groups to match our Canoes and Sailboats teams. Go to **Admin settings** \> **People** \> **Groups** \> [Create a group](../../../../docs/latest/people-and-groups/managing.html#groups), and call the group “Canoes”.
+بعد، گروه‌هایی برای match کردن تیم‌های Canoes و Sailboats ایجاد می‌کنیم. به **Admin settings** \> **People** \> **Groups** \> [Create a group](../../../../docs/latest/people-and-groups/managing.html#groups) بروید، و گروه را "Canoes" بنامید.
 
-To create a new collection, we’ll go to the Metabase homepage and click **\+ New** \> **Collection**. We’ll create two collections named [after our new groups](strategy.html#org-chart-based-permissions), and save each of those collections inside **Our analytics**.
+برای ایجاد یک مجموعه جدید، به صفحه اصلی متابیس می‌رویم و روی **+ New** \> **Collection** کلیک می‌کنیم. دو مجموعه به نام [گروه‌های جدید ما](strategy.html#org-chart-based-permissions) ایجاد می‌کنیم، و هر یک از آن مجموعه‌ها را درون **Our analytics** ذخیره می‌کنیم.
 
-## Setting collection permissions
+## تنظیم مجوزهای مجموعه
 
-We’ll set up collection permissions for the Canoes collection first, so that:
+ابتدا مجوزهای مجموعه را برای مجموعه Canoes تنظیم می‌کنیم، تا:
 
-- The Canoes group can view and edit questions, dashboards, and models saved in the Canoes collection.
-- The Canoes group can move, re\-name, or archive the Canoes collection.
-- The Sailboats group can only view the work that’s saved in the Canoes collection.
+- گروه Canoes بتواند سؤال‌ها، داشبوردها، و مدل‌های ذخیره شده در مجموعه Canoes را مشاهده و edit کند.
+- گروه Canoes بتواند مجموعه Canoes را move، re-name، یا archive کند.
+- گروه Sailboats فقط بتواند کار ذخیره شده در مجموعه Canoes را مشاهده کند.
 
-You can navigate back to **Admin settings** and go to the collection permissions page for each collection, or you can set up permissions directly from the Metabase homepage.
+می‌توانید به **Admin settings** برگردید و به صفحه مجوزهای مجموعه برای هر مجموعه بروید، یا می‌توانید مجوزها را مستقیماً از صفحه اصلی متابیس تنظیم کنید.
 
-1. Click on the Canoes collection in the sidebar.
-2. Click on the **lock icon** to open a collection permissions modal.
-3. Select **Curate** from the dropdown menu for the **Canoes** row and **Collection access** column.
-4. Select **View** from the dropdown menu for the **Sailboats** row and **Collection access** column.
-5. Click **Save** .
+1. روی مجموعه Canoes در sidebar کلیک کنید.
+2. روی **آیکون قفل** کلیک کنید تا یک modal مجوزهای مجموعه باز شود.
+3. **Curate** را از منوی dropdown برای ردیف **Canoes** و ستون **Collection access** انتخاب کنید.
+4. **View** را از منوی dropdown برای ردیف **Sailboats** و ستون **Collection access** انتخاب کنید.
+5. روی **Save** کلیک کنید.
 
-![Granting different permissions to the Canoes collection.](../../../images/guide-to-collection-permissions/collection-permissions-modal.png)
+![اعطای مجوزهای مختلف به مجموعه Canoes.](../../../images/guide-to-collection-permissions/collection-permissions-modal.png)
 
-To set up permissions for the **Sailboats** collection so that the Sailboats group has **Curate** access, but the Canoes group has view\-only access:
+برای تنظیم مجوزها برای مجموعه **Sailboats** تا گروه Sailboats دسترسی **Curate** داشته باشد، اما گروه Canoes دسترسی view-only داشته باشد:
 
-1. Click on the **Sailboats** collection in the sidebar.
-2. Click on the **lock icon** to open a collection permissions modal.
-3. Select **Curate** from the dropdown menu for the **Sailboats** row and **Collection access** column.
-4. Select **View** from the dropdown menu for the **Canoes** row and **Collection access** column.
-5. Click **Save** .
+1. روی مجموعه **Sailboats** در sidebar کلیک کنید.
+2. روی **آیکون قفل** کلیک کنید تا یک modal مجوزهای مجموعه باز شود.
+3. **Curate** را از منوی dropdown برای ردیف **Sailboats** و ستون **Collection access** انتخاب کنید.
+4. **View** را از منوی dropdown برای ردیف **Canoes** و ستون **Collection access** انتخاب کنید.
+5. روی **Save** کلیک کنید.
 
-## How collection permissions interact with data permissions
+## نحوه تعامل مجوزهای مجموعه با مجوزهای داده
 
-| Collection permissions | Data permissions |
+| مجوزهای مجموعه | مجوزهای داده |
 | --- | --- |
-| View the results of a question, dashboard, or model saved in a given collection. | View and query the underlying tables used by a question, dashboard, or model. |
+| مشاهده نتایج یک سؤال، داشبورد، یا مدل ذخیره شده در یک مجموعه معین. | مشاهده و پرس‌وجو جداول زیربنایی استفاده شده توسط یک سؤال، داشبورد، یا مدل. |
 
-Let’s say that our Canoes group has two sets of permissions:
+بیایید بگوییم گروه Canoes ما دو مجموعه مجوز دارد:
 
-- **Curate** collection permissions to the Canoes collection;
-- **Can view** data permissions on the `Orders` table;
+- مجوزهای مجموعه **Curate** به مجموعه Canoes؛
+- مجوزهای داده **Can view** روی جدول `Orders`؛
 
-If the Canoes collection contains a question created using the `Orders` table, here’s what you can expect each permission to allow the Canoes group to do:
+اگر مجموعه Canoes شامل یک سؤال ایجاد شده با استفاده از جدول `Orders` باشد، در اینجا آنچه می‌توانید انتظار داشته باشید هر مجوز به گروه Canoes اجازه انجام دهد:
 
-| Curate the Canoes collection | Can view permissions to Orders |
+| Curate مجموعه Canoes | مجوزهای Can view به Orders |
 | --- | --- |
-| Edit the question title or description. | View the visualization (the “result”) of the question. |
-| Move or copy the question to another collection. | Change the visualization type of the existing result returned by the question. |
+| Edit کردن عنوان یا توضیحات سؤال. | مشاهده visualization (نتیجه) سؤال. |
+| Move یا copy کردن سؤال به مجموعه دیگری. | تغییر نوع visualization نتیجه موجود برگردانده شده توسط سؤال. |
 
-Essentially, the Canoes group will have the ability to interact with the question that’s saved in their collection, but they won’t be able to query any additional data from the `Orders` table \(whether through the question or the data browser\).
+اساساً، گروه Canoes توانایی تعامل با سؤالی که در مجموعه آن‌ها ذخیره شده است را خواهد داشت، اما قادر به پرس‌وجو هر داده اضافی از جدول `Orders` نخواهند بود (چه از طریق سؤال یا مرورگر داده).
 
-![Viewing a question saved in an accessible collection with No self-service permissions to the question](../../../images/guide-to-collection-permissions/no-data-access.png)
+![مشاهده یک سؤال ذخیره شده در یک مجموعه قابل دسترسی با No self-service مجوزها به سؤال](../../../images/guide-to-collection-permissions/no-data-access.png)
 
-To allow people to create and edit questions, you can set the Canoes group’s **Create query** permissions to **Query builder only** for the `Orders` table. Then Canoes will be able to:
+برای اجازه دادن به مردم برای ایجاد و edit کردن سؤال‌ها، می‌توانید مجوزهای **Create query** گروه Canoes را روی **Query builder only** برای جدول `Orders` تنظیم کنید. سپس Canoes قادر خواهد بود:
 
-- Use the query builder to change the query used by the question.
-- Filter or summarize data from the `Orders` table to update the result returned by the question.
-- View the `Orders` table from the link below the question name.
+- از سازنده کوئری برای تغییر پرس‌وجوی استفاده شده توسط سؤال استفاده کند.
+- داده از جدول `Orders` را فیلتر یا خلاصه کند تا نتیجه برگردانده شده توسط سؤال را به‌روزرسانی کند.
+- جدول `Orders` را از لینک زیر نام سؤال مشاهده کند.
 
-![Viewing a question saved in an accessible collection with Unrestricted permissions to the question](../../../images/guide-to-collection-permissions/full-data-access.png)
+![مشاهده یک سؤال ذخیره شده در یک مجموعه قابل دسترسی با Unrestricted مجوزها به سؤال](../../../images/guide-to-collection-permissions/full-data-access.png)
 
-## How permissions apply to dashboards with questions from different collections
+## نحوه اعمال مجوزها به داشبوردها با سؤال‌ها از مجموعه‌های مختلف
 
-Let’s say that the Canoes group has an updated set of permissions:
+بیایید بگوییم گروه Canoes یک مجموعه به‌روزرسانی شده مجوز دارد:
 
-- **Curate** collection permissions to the Canoes collection.
-- **No access** collection permissions to the Sailboats collection.
-- **Can view** data permissions to the `Orders` table.
+- مجوزهای مجموعه **Curate** به مجموعه Canoes.
+- مجوزهای مجموعه **No access** به مجموعه Sailboats.
+- مجوزهای داده **Can view** به جدول `Orders`.
 
-If all of the questions on a dashboard are also saved in the Canoes collection, the Canoes group will see all of the cards:
+اگر همه سؤال‌های روی یک داشبورد همچنین در مجموعه Canoes ذخیره شده‌اند، گروه Canoes همه cardها را خواهد دید:
 
-![Viewing a dashboard with questions saved in an accessible collection.](../../../images/guide-to-collection-permissions/full-dash-card-access.png)
+![مشاهده یک داشبورد با سؤال‌های ذخیره شده در یک مجموعه قابل دسترسی.](../../../images/guide-to-collection-permissions/full-dash-card-access.png)
 
-If one of the questions on a dashboard is saved in the Sailboats collection \(even if that question uses the `Orders` table\), the Canoes group will see a “locked” card:
+اگر یکی از سؤال‌های روی یک داشبورد در مجموعه Sailboats ذخیره شده است (حتی اگر آن سؤال از جدول `Orders` استفاده می‌کند)، گروه Canoes یک card "قفل شده" خواهد دید:
 
-![Viewing a dashboard with a locked card caused by a question saved in an inaccessible collection.](../../../images/guide-to-collection-permissions/partial-dash-card-access.png)
+![مشاهده یک داشبورد با یک card قفل شده ناشی از یک سؤال ذخیره شده در یک مجموعه غیرقابل دسترسی.](../../../images/guide-to-collection-permissions/partial-dash-card-access.png)
 
-Since non\-admins aren’t aware of groups or permissions, “locked” cards can happen when people with broader permissions try to share their work with people who have more restricted permissions.
+از آنجایی که non-adminها از گروه‌ها یا مجوزها آگاه نیستند، cardهای "قفل شده" می‌توانند زمانی اتفاق بیفتند که مردم با مجوزهای broader سعی می‌کنند کار خود را با مردم با مجوزهای restrictedتر به اشتراک بگذارند.
 
-For example, let’s say that the Pirate Ships group has permissions to help themselves from both of the Canoes and Sailboats collections. If the Pirate Ships group builds a dashboard and shares it with a Canoes group member, the Canoes group member will see locked cards for any questions that are still saved in the Sailboats collection.
+به عنوان مثال، بیایید بگوییم گروه Pirate Ships مجوزهایی برای help کردن خود از هر دو مجموعه Canoes و Sailboats دارد. اگر گروه Pirate Ships یک داشبورد می‌سازد و آن را با یک عضو گروه Canoes به اشتراک می‌گذارد، عضو گروه Canoes cardهای قفل شده برای هر سؤالی که هنوز در مجموعه Sailboats ذخیره شده است را خواهد دید.
 
-To avoid locked cards, we recommend duplicating questions into the collection where you intend to save your dashboard.
+برای اجتناب از cardهای قفل شده، توصیه می‌کنیم سؤال‌ها را در مجموعه‌ای که قصد دارید داشبورد خود را در آن ذخیره کنید duplicate کنید.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Collection permissions documentation](../../../../docs/latest/permissions/collections.html)
-- [Data permissions tutorial](data-permissions.html)
-- [Data permissions documentation](../../../../docs/latest/permissions/data.html)
-- [Troubleshooting permissions](../../../../docs/latest/troubleshooting-guide/permissions.html)
-- [Keeping your analytics organized](../administration-and-operation/same-page.html)
+- [مستندات مجوزهای مجموعه](../../../../docs/latest/permissions/collections.html)
+- [آموزش مجوزهای داده](data-permissions.html)
+- [مستندات مجوزهای داده](../../../../docs/latest/permissions/data.html)
+- [عیب‌یابی مجوزها](../../../../docs/latest/troubleshooting-guide/permissions.html)
+- [منظم نگه داشتن تحلیل شما](../administration-and-operation/same-page.html)
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](data-permissions.html)
 [
       
         
         
+
       
       
+        
         
 
       

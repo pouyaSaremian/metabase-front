@@ -1,187 +1,189 @@
 ---
-
-
-title: "Tutorial: Row-level permissions in Metabase"
-description: "Learn how to set row-level permissions based on people's user attributes."
+title: "آموزش: مجوزهای سطح ردیف در متابیس"
+description: "نحوه تنظیم مجوزهای سطح ردیف بر اساس attributeهای کاربر مردم را بیاموزید."
 redirect_from:
   - /learn/metabase-basics/administration/permissions/row-permissions
   - /learn/metabase-basics/administration/permissions/data-sandboxing-row-permissions
   - /learn/permissions/data-sandboxing-row-permissions
 toc:
   - id: "tutorial-row-level-permissions-in-metabase"
-    title: "Tutorial: Row-level permissions in Metabase"
+    title: "آموزش: مجوزهای سطح ردیف در متابیس"
     level: 1
     href: "#tutorial-row-level-permissions-in-metabase"
   - id: "before-you-set-up-row-security"
-    title: "Before you set up row security"
+    title: "قبل از تنظیم امنیت ردیف"
     level: 2
     href: "#before-you-set-up-row-security"
   - id: "our-scenario"
-    title: "Our scenario"
+    title: "سناریوی ما"
     level: 2
     href: "#our-scenario"
   - id: "creating-a-customer-group"
-    title: "Creating a customer group"
+    title: "ایجاد یک گروه مشتری"
     level: 2
     href: "#creating-a-customer-group"
   - id: "creating-an-account-and-adding-an-attribute"
-    title: "Creating an account and adding an attribute"
+    title: "ایجاد یک حساب و افزودن یک attribute"
     level: 2
     href: "#creating-an-account-and-adding-an-attribute"
   - id: "restricting-row-access-for-a-group"
-    title: "Restricting row access for a group"
+    title: "محدود کردن دسترسی ردیف برای یک گروه"
     level: 2
     href: "#restricting-row-access-for-a-group"
   - id: "revoke-access-from-all-users-group"
-    title: "Revoke access from All Users group"
+    title: "Revoke کردن دسترسی از گروه All Users"
     level: 2
     href: "#revoke-access-from-all-users-group"
   - id: "check-settings-as-ms-brown-sees-the-world"
-    title: "Check settings as Ms. Brown sees the world"
+    title: "بررسی تنظیمات همانطور که خانم Brown دنیا را می‌بیند"
     level: 2
     href: "#check-settings-as-ms-brown-sees-the-world"
   - id: "limitations-of-row-level-security-with-user-attributes"
-    title: "Limitations of row-level security with user attributes"
+    title: "محدودیت‌های امنیت سطح ردیف با attributeهای کاربر"
     level: 2
     href: "#limitations-of-row-level-security-with-user-attributes"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Permissions"
+  - title: "مجوزها"
     href: "index.html"
 ---
 
-# Tutorial: Row-level permissions in Metabase
+# آموزش: مجوزهای سطح ردیف در متابیس
 
-Learn how to set row-level permissions based on people's user attributes.
+نحوه تنظیم مجوزهای سطح ردیف بر اساس attributeهای کاربر مردم را بیاموزید.
 
-> Looking for docs on row\-level security? See [Docs: Row and column security](../../../../docs/latest/permissions/row-and-column-security.html).
+> به دنبال مستندات درباره امنیت سطح ردیف هستید؟ [مستندات: امنیت ردیف و ستون](../../../../docs/latest/permissions/row-and-column-security.html) را ببینید.
 
-Metabase’s [Pro and Enterprise plans](../../../../pricing/index.html) include [row and column security](../../../../docs/latest/permissions/row-and-column-security.html) that gives you granular control over the rows and columns that people can see and use in questions.
+[طرح‌های Pro و Enterprise](../../../../pricing/index.html) متابیس شامل [امنیت ردیف و ستون](../../../../docs/latest/permissions/row-and-column-security.html) است که کنترل granular روی ردیف‌ها و ستون‌هایی که مردم می‌توانند در سؤال‌ها ببینند و استفاده کنند به شما می‌دهد.
 
-In this article, we’ll walk through an example of setting up [row\-level security](../../../../docs/latest/permissions/row-and-column-security.html#row-level-security-filter-by-a-column-in-the-table) using the [Sample Database](../../../../glossary/sample-database.html) included with Metabase. For column\-level permissions, see [Column\-level security](column-permissions.html).
+در این مقاله، یک مثال از تنظیم [امنیت سطح ردیف](../../../../docs/latest/permissions/row-and-column-security.html#row-level-security-filter-by-a-column-in-the-table) با استفاده از [پایگاه داده نمونه](../../../../glossary/sample-database.html) شامل شده با متابیس را طی می‌کنیم. برای مجوزهای سطح ستون، [امنیت سطح ستون](column-permissions.html) را ببینید.
 
-> Row and column security was formerly called data sandboxing. It’s the same feature, it just now has a more descriptive name.
+> امنیت ردیف و ستون قبلاً data sandboxing نامیده می‌شد. همان ویژگی است، فقط اکنون نام توصیفی‌تری دارد.
 
-## Before you set up row security
+## قبل از تنظیم امنیت ردیف
 
-You should back up [your Metabase application data](../../../../docs/latest/installation-and-operation/backing-up-metabase-application-data.html). In addition, you may want to check out our [guide to data permissions](data-permissions.html), [guide to collection permissions](collection-permissions.html), and our [permissions overview](../../../../docs/latest/permissions/introduction.html) to get a better sense of how row and column security fits in with Metabase’s permissions system.
+باید [داده برنامه متابیس خود](../../../../docs/latest/installation-and-operation/backing-up-metabase-application-data.html) را backup کنید. علاوه بر این، ممکن است بخواهید [راهنمای مجوزهای داده](data-permissions.html)، [راهنمای مجوزهای مجموعه](collection-permissions.html)، و [نمای کلی مجوزهای ما](../../../../docs/latest/permissions/introduction.html) را بررسی کنید تا درک بهتری از نحوه fit شدن امنیت ردیف و ستون با سیستم مجوزهای متابیس داشته باشید.
 
-## Our scenario
+## سناریوی ما
 
-Our goal is to make sure a customer, Ms. Brown, is only able to see table rows related to her account.
+هدف ما اطمینان از این است که یک مشتری، خانم Brown، فقط قادر به دیدن ردیف‌های جدول مرتبط با حساب او باشد.
 
-## Creating a customer group
+## ایجاد یک گروه مشتری
 
-Metabase uses groups to organize permissions, so we’ll first need to [create a group](../../../../docs/latest/people-and-groups/managing.html#groups), which we’ll call Customers. To do this, click on the **gears icon** in the navigation sidebar and select \> **Admin settings** \> **People** \> **Groups**. Then choose **Create a Group**.
+متابیس از گروه‌ها برای سازماندهی مجوزها استفاده می‌کند، پس ابتدا نیاز به [ایجاد یک گروه](../../../../docs/latest/people-and-groups/managing.html#groups) داریم، که آن را Customers می‌نامیم. برای انجام این کار، روی **آیکون چرخ‌دنده** در navigation sidebar کلیک کنید و \> **Admin settings** \> **People** \> **Groups** را انتخاب کنید. سپس **Create a Group** را انتخاب کنید.
 
-![The Groups page after creating our Customers group.](../../../images/row-permissions/customer-group.png)
+![صفحه Groups بعد از ایجاد گروه Customers ما.](../../../images/row-permissions/customer-group.png)
 
-## Creating an account and adding an attribute
+## ایجاد یک حساب و افزودن یک attribute
 
-Before we can set up row\-level security for the Customers group, we need to [create an account](../../../../docs/latest/people-and-groups/managing.html#creating-an-account) for Ms. Brown, and add an attribute to her account. From **Admin settings** \> **People** tab, we’ll click **Invite Someone**, fill out the names and email fields, and add her to the Customers group.
+قبل از اینکه بتوانیم امنیت سطح ردیف را برای گروه Customers تنظیم کنیم، نیاز به [ایجاد یک حساب](../../../../docs/latest/people-and-groups/managing.html#creating-an-account) برای خانم Brown داریم، و یک attribute به حساب او اضافه کنیم. از **Admin settings** \> تب **People**، روی **Invite Someone** کلیک می‌کنیم، فیلدهای نام و ایمیل را پر می‌کنیم، و او را به گروه Customers اضافه می‌کنیم.
 
-And here’s the important part: we’ll add an attribute to our new person, Ms. Brown, with a key of `user_id` and a value of `20`.
+و در اینجا بخش مهم است: یک attribute به شخص جدید ما، خانم Brown، با یک کلید `user_id` و یک مقدار `20` اضافه می‌کنیم.
 
-![Adding Ms. Brown to the Customers group, and giving her an attribute: user_id: 20.](../../../images/row-permissions/add-someone-with-attribute.png)
+![افزودن خانم Brown به گروه Customers، و دادن یک attribute به او: user_id: 20.](../../../images/row-permissions/add-someone-with-attribute.png)
 
-There’s nothing magical about the `user_id` key: it’s just a variable. We can add attributes with whatever key\-value pairs we choose. What we want is to use a key that corresponds to a column, and a value that corresponds to row values, for the relevant table that we want to restrict. The idea is that we’ll link this attribute to a column in a table to determine which rows Ms. Brown can view.
+هیچ چیز جادویی درباره کلید `user_id` وجود ندارد: فقط یک متغیر است. می‌توانیم attributeها را با هر جفت key-value که انتخاب می‌کنیم اضافه کنیم. آنچه می‌خواهیم استفاده از یک کلید است که با یک ستون مطابقت دارد، و یک مقدار که با مقادیر ردیف مطابقت دارد، برای جدول مرتبط که می‌خواهیم محدود کنیم. ایده این است که این attribute را به یک ستون در یک جدول link می‌کنیم تا تعیین کنیم خانم Brown کدام ردیف‌ها را می‌تواند مشاهده کند.
 
-We’re setting this attribute up manually for the sake of this walkthrough, but we can use single sign\-on services \(SSO\), like [SAML](../../../../docs/latest/people-and-groups/authenticating-with-saml.html) to programmatically assign and synchronize attributes to users.
+ما این attribute را به صورت دستی برای این walkthrough تنظیم می‌کنیم، اما می‌توانیم از سرویس‌های single sign-on (SSO)، مثل [SAML](../../../../docs/latest/people-and-groups/authenticating-with-saml.html) برای assign و همگام‌سازی programmatic attributeها به کاربران استفاده کنیم.
 
-## Restricting row access for a group
+## محدود کردن دسترسی ردیف برای یک گروه
 
-Now that we have our group, and at least one member of that group with an attribute \(Ms. Brown\), we’re ready to head over to the [data permissions page](data-permissions.html) to set up row\-level security for the Sample Database.
+حالا که گروه خود را داریم، و حداقل یک عضو از آن گروه با یک attribute (خانم Brown)، آماده هستیم به [صفحه مجوزهای داده](data-permissions.html) برویم تا امنیت سطح ردیف را برای پایگاه داده نمونه تنظیم کنیم.
 
-In the left\-hand sidebar, we’ll click **Databases** and **Sample Database**. To restrict View data access to the `Orders` table for the Customer group, all we need to do is click on the `Orders` table, navigate to the Customers row and in **View data** column, select **Row and column security** from the dropdown menu.
+در sidebar سمت چپ، روی **Databases** و **Sample Database** کلیک می‌کنیم. برای محدود کردن دسترسی View data به جدول `Orders` برای گروه Customer، همه کاری که باید انجام دهیم کلیک روی جدول `Orders`، navigate به ردیف Customers و در ستون **View data**، **Row and column security** را از منوی dropdown انتخاب کنیم.
 
-![Restricting row access for the Customer group for the Orders table.](../../../images/row-permissions/restrict-row-access.png)
+![محدود کردن دسترسی ردیف برای گروه Customer برای جدول Orders.](../../../images/row-permissions/restrict-row-access.png)
 
-If you didn’t edit permissions for the **All Users** group, you’ll see a message warning you that the All Users group has greater access.
+اگر مجوزها را برای گروه **All Users** edit نکردید، یک پیام هشدار می‌بینید که گروه All Users دسترسی بیشتر دارد.
 
-![Restricting row access for the Customer group for the Orders table.](../../../images/row-permissions/all-users-warning.png)
+![محدود کردن دسترسی ردیف برای گروه Customer برای جدول Orders.](../../../images/row-permissions/all-users-warning.png)
 
-What this means: if a person is in multiple user groups, Metabase chooses the **most permissive** access for them. Because all people using your Metabase are always in the All Users group, this means that if All Users group has more permissive access \(e.g. unrestricted access to rows\), this will override the row\-level security that we about to set up. So after we’re done setting up row\-level security, we’ll need to change permissions for the All Users group. For now, click **Revoke access** on the warning. This will revoke table access for the currently selected group only.
+این به چه معناست: اگر یک شخص در چندین گروه کاربر باشد، متابیس **permissiveترین** دسترسی را برای آن‌ها انتخاب می‌کند. چون همه مردم استفاده‌کننده از متابیس شما همیشه در گروه All Users هستند، این به معنای این است که اگر گروه All Users دسترسی permissiveتر داشته باشد (مثلاً دسترسی unrestricted به ردیف‌ها)، این امنیت سطح ردیفی که می‌خواهیم تنظیم کنیم را override می‌کند. پس بعد از اینکه تنظیم امنیت سطح ردیف را تمام کردیم، نیاز به تغییر مجوزها برای گروه All Users داریم. برای حالا، روی **Revoke access** در هشدار کلیک کنید. این دسترسی جدول را فقط برای گروه در حال حاضر انتخاب شده revoke می‌کند.
 
-Next, Metabase will ask if you want to change the access permissions for this **database**.
+بعد، متابیس می‌پرسد آیا می‌خواهید مجوزهای دسترسی برای این **پایگاه داده** را تغییر دهید.
 
 ![alt text](../../../images/row-permissions/change-access-for-db.png)
 
-Remember that we’re trying to set up row\-level security just for the Orders table. The reason Metabase is asking about the entire database is because our Customers group currently can has permissions to write native \(SQL\) queries. But Metabase doesn’t parse the SQL that people write, so it doesn’t know which tables are being queried \- and so it won’t know if a person with restricted row access is trying to query the restricted table. This means that a person with row\-level restrictions on any table can’t be allowed to write SQL queries, so Metabase warns you that it’ll remove SQL querying permissions. Click **Change** to remove native querying permissions for the Sample Database from the Customers group.
+به یاد داشته باشید که ما فقط می‌خواهیم امنیت سطح ردیف را فقط برای جدول Orders تنظیم کنیم. دلیل اینکه متابیس درباره کل پایگاه داده می‌پرسد این است که گروه Customers ما در حال حاضر مجوز نوشتن پرس‌وجوهای native (SQL) دارد. اما متابیس SQL که مردم می‌نویسند را parse نمی‌کند، پس نمی‌داند کدام جداول پرس‌وجو می‌شوند — و بنابراین نمی‌داند آیا یک شخص با دسترسی ردیف محدود شده سعی می‌کند جدول محدود شده را پرس‌وجو کند. این به معنای این است که یک شخص با محدودیت‌های سطح ردیف روی هر جدولی نمی‌تواند اجازه نوشتن پرس‌وجوهای SQL داشته باشد، پس متابیس به شما هشدار می‌دهد که مجوزهای پرس‌وجوی SQL را حذف می‌کند. روی **Change** کلیک کنید تا مجوزهای پرس‌وجوی native را برای پایگاه داده نمونه از گروه Customers حذف کنید.
 
-Finally, Metabase will ask you “How do you want to filter this table for users in this group?” and present two options:
+در نهایت، متابیس از شما می‌پرسد "چگونه می‌خواهید این جدول را برای کاربران در این گروه فیلتر کنید؟" و دو گزینه ارائه می‌دهد:
 
-- Filter by a column in the table.
-- Use a saved question to create a custom view for this table.
+- فیلتر بر اساس یک ستون در جدول.
+- استفاده از یک سؤال ذخیره شده برای ایجاد یک view سفارشی برای این جدول.
 
-For now, we’ll leave the setting as **Filter by a column in the table**—using a saved question is a more advanced feature, and we discuss it [here](data-permissions.html).
+برای حالا، تنظیمات را به عنوان **Filter by a column in the table**—استفاده از یک سؤال ذخیره شده یک ویژگی پیشرفته‌تر است، و [اینجا](data-permissions.html) درباره آن بحث می‌کنیم.
 
 ![Configure RLS.](../../../images/row-permissions/configure-rls.png)
 
-For the column, we’ll select the `User ID` column of the `Orders` table, and we’ll connect that to the `user_id` attribute from the dropdown menu of attributes we’ve assigned to people.
+برای ستون، ستون `User ID` جدول `Orders` را انتخاب می‌کنیم، و آن را به attribute `user_id` از منوی dropdown attributeهایی که به مردم assign کرده‌ایم متصل می‌کنیم.
 
-Metabase will provide us with a summary of the changes we’ve made: “Users in Customers can view rows in the `Orders` table where `User ID` field equals `user_id`.” Let’s save our changes and repeat the process for the `People` table.
+متابیس یک خلاصه از تغییراتی که انجام داده‌ایم ارائه می‌دهد: "کاربران در Customers می‌توانند ردیف‌ها در جدول `Orders` را مشاهده کنند جایی که فیلد `User ID` برابر `user_id` است." بیایید تغییرات خود را ذخیره کنیم و فرآیند را برای جدول `People` تکرار کنیم.
 
-- Pick “Row and column security” permissions for the Customers group for the `People` table.
-- Select the **Filter by a column** option.
-- Select the `ID` column of the `People` table and connect that to the `user_id` attribute.
-- Review the summary and click save.
+- مجوزهای "Row and column security" را برای گروه Customers برای جدول `People` انتخاب کنید.
+- گزینه **Filter by a column** را انتخاب کنید.
+- ستون `ID` جدول `People` را انتخاب کنید و آن را به attribute `user_id` متصل کنید.
+- خلاصه را بررسی کنید و save را کلیک کنید.
 
-Finally, we’ll need to click the **Save Changes** button to confirm our changes.
+در نهایت، نیاز داریم روی دکمه **Save Changes** کلیک کنیم تا تغییرات خود را تأیید کنیم.
 
-## Revoke access from All Users group
+## Revoke کردن دسترسی از گروه All Users
 
-When we were setting up row\-level security, Metabase warned us that the All Users group has higher level of access, which will override the rules we set up for Customers. So we’ll need to revoke access from All Users group.
+وقتی امنیت سطح ردیف را تنظیم می‌کردیم، متابیس به ما هشدار داد که گروه All Users سطح دسترسی بالاتری دارد، که قوانینی که برای Customers تنظیم کردیم را override می‌کند. پس نیاز داریم دسترسی را از گروه All Users revoke کنیم.
 
-Keep in mind that this means that everyone who *isn’t* in the Customers or Admin groups will lose access to the tables, so if you have more people in your Metabase, you should set up groups and permissions for them before revoking access from All Users.
+به خاطر داشته باشید که این به معنای این است که همه کسانی که در گروه‌های Customers یا Admin *نیستند* دسترسی به جداول را از دست می‌دهند، پس اگر مردم بیشتری در متابیس خود دارید، باید گروه‌ها و مجوزها را برای آن‌ها قبل از revoke کردن دسترسی از All Users تنظیم کنید.
 
-Go into the permissions settings for the Sample Database \(just like you did for Customers\) and set **View data** permissions to **Blocked**. Note that this will also remove any querying permissions from the group.
+به تنظیمات مجوز برای پایگاه داده نمونه بروید (درست مثل کاری که برای Customers انجام دادید) و مجوزهای **View data** را روی **Blocked** تنظیم کنید. توجه کنید که این همچنین هر مجوز پرس‌وجویی را از گروه حذف می‌کند.
 
-## Check settings as Ms. Brown sees the world
+## بررسی تنظیمات همانطور که خانم Brown دنیا را می‌بیند
 
-Now let’s test out our settings to confirm that our customer, Ms. Brown, can only see orders connected to her user ID. We’ll open our Metabase instance in an incognito browser window and log in as Ms. Brown. When we navigate to the `Orders` table, Ms. Brown will only see the orders she placed \(User ID 20\).
+حالا بیایید تنظیمات خود را تست کنیم تا تأیید کنیم مشتری ما، خانم Brown، فقط می‌تواند سفارشات متصل به user ID او را ببیند. instance متابیس خود را در یک پنجره مرورگر incognito باز می‌کنیم و به عنوان خانم Brown وارد می‌شویم. وقتی به جدول `Orders` navigate می‌کنیم، خانم Brown فقط سفارشاتی که گذاشته است (User ID 20) را خواهد دید.
 
-![Ms. Brown will only see orders associated with her ID: 20.](../../../images/row-permissions/orders-user-20.png)
+![خانم Brown فقط سفارشات مرتبط با ID او را خواهد دید: 20.](../../../images/row-permissions/orders-user-20.png)
 
-With row\-level security, we can create a single question or dashboard, and rest assured that people with restricted row access to that data will only be able to see the data associated with their account.
+با امنیت سطح ردیف، می‌توانیم یک سؤال یا داشبورد واحد ایجاد کنیم، و مطمئن باشیم که مردم با دسترسی ردیف محدود شده به آن داده فقط قادر به دیدن داده مرتبط با حساب خود خواهند بود.
 
-If we combine row\-level security with [embedding](../../../../docs/latest/embedding/embedded-analytics-js.html), we can embed these dashboards in our application, and use SSO to pass attributes to the embedded Metabase instance, allowing us to restrict which data do people see on the questions and dashboards embedded in our application. To learn more, see [How to embed Metabase in your app to deliver multi\-tenant, self\-service analytics](../../embedding/multi-tenant-self-service-analytics.html).
+اگر امنیت سطح ردیف را با [embedding](../../../../docs/latest/embedding/embedded-analytics-js.html) ترکیب کنیم، می‌توانیم این داشبوردها را در برنامه خود embed کنیم، و از SSO برای pass کردن attributeها به instance متابیس embedded استفاده کنیم، که به ما اجازه می‌دهد کدام داده مردم در سؤال‌ها و داشبوردهای embedded در برنامه ما می‌بینند را محدود کنیم. برای یادگیری بیشتر، [نحوه embed کردن متابیس در برنامه خود برای تحویل تحلیل‌های multi-tenant، self-service](../../embedding/multi-tenant-self-service-analytics.html) را ببینید.
 
-## Limitations of row-level security with user attributes
+## محدودیت‌های امنیت سطح ردیف با attributeهای کاربر
 
-- A user can only have one row and column security configuration for each table per table, so only add users to a single group that has restricted row or column access.
-- If a group has SQL querying access to a database, row\-level security policy cannot prevent people in that group from viewing data in those tables.
-- By extension, if people in that group have access to questions written in SQL, those questions are unaware of row\-level security policies, and will show people in that group all results, not just the results restricted by row\-level security policies.
+- یک کاربر فقط می‌تواند یک پیکربندی امنیت ردیف و ستون برای هر جدول در هر جدول داشته باشد، پس فقط کاربران را به یک گروه واحد که دسترسی ردیف یا ستون محدود شده دارد اضافه کنید.
+- اگر یک گروه دسترسی پرس‌وجوی SQL به یک پایگاه داده دارد، policy امنیت سطح ردیف نمی‌تواند از مشاهده داده در آن جداول توسط مردم در آن گروه جلوگیری کند.
+- به طور گسترش، اگر مردم در آن گروه دسترسی به سؤال‌های نوشته شده در SQL دارند، آن سؤال‌ها از policyهای امنیت سطح ردیف آگاه نیستند، و همه نتایج را به مردم در آن گروه نشان می‌دهند، نه فقط نتایج محدود شده توسط policyهای امنیت سطح ردیف.
 
-Learn more about the [limitations of row and column security](../../../../docs/latest/permissions/row-and-column-security.html#limitations).
+درباره [محدودیت‌های امنیت ردیف و ستون](../../../../docs/latest/permissions/row-and-column-security.html#limitations) بیشتر بیاموزید.
 
-## Further reading
+## مطالعه بیشتر
 
-- [Row and column security reference](../../../../docs/latest/permissions/row-and-column-security.html) .
-- [Column\-level security](column-permissions.html) .
+- [مرجع امنیت ردیف و ستون](../../../../docs/latest/permissions/row-and-column-security.html).
+- [امنیت سطح ستون](column-permissions.html).
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](collection-permissions.html)
 [
       
         
         
+
       
       
+        
         
 
       

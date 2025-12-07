@@ -1,166 +1,164 @@
 ---
-
-
-title: "Tutorial: Setting up data permissions in Metabase"
-description: "Learn about how Metabase handles data permissions by setting up permissions on the Sample Database included with Metabase."
+title: "آموزش: تنظیم مجوزهای داده در متابیس"
+description: "درباره نحوه handle کردن مجوزهای داده توسط متابیس با تنظیم مجوزها روی پایگاه داده نمونه شامل شده با متابیس بیاموزید."
 redirect_from:
   - /learn/metabase-basics/administration/permissions/data-permissions
   - /learn/organization/organization/data-permissions
   - /learn/permissions/data-permissions
 toc:
   - id: "tutorial-setting-up-data-permissions-in-metabase"
-    title: "Tutorial: Setting up data permissions in Metabase"
+    title: "آموزش: تنظیم مجوزهای داده در متابیس"
     level: 1
     href: "#tutorial-setting-up-data-permissions-in-metabase"
   - id: "introducing-data-permissions"
-    title: "Introducing data permissions"
+    title: "معرفی مجوزهای داده"
     level: 2
     href: "#introducing-data-permissions"
   - id: "configuring-query-permissions-for-the-all-users-group"
-    title: "Configuring query permissions for the All Users group"
+    title: "پیکربندی مجوزهای پرس‌وجو برای گروه All Users"
     level: 2
     href: "#configuring-query-permissions-for-the-all-users-group"
   - id: "configuring-view-data-permissions-for-the-all-users-group"
-    title: "Configuring view data permissions for the All Users group"
+    title: "پیکربندی مجوزهای مشاهده داده برای گروه All Users"
     level: 2
     href: "#configuring-view-data-permissions-for-the-all-users-group"
   - id: "creating-user-groups"
-    title: "Creating user groups"
+    title: "ایجاد گروه‌های کاربر"
     level: 2
     href: "#creating-user-groups"
   - id: "reviewing-default-data-permissions"
-    title: "Reviewing default data permissions"
+    title: "بررسی مجوزهای داده پیش‌فرض"
     level: 2
     href: "#reviewing-default-data-permissions"
   - id: "configuring-query-permissions-for-user-groups"
-    title: "Configuring query permissions for user groups"
+    title: "پیکربندی مجوزهای پرس‌وجو برای گروه‌های کاربر"
     level: 2
     href: "#configuring-query-permissions-for-user-groups"
   - id: "configuring-permissions-for-a-user-in-multiple-groups"
-    title: "Configuring permissions for a user in multiple groups"
+    title: "پیکربندی مجوزها برای یک کاربر در چندین گروه"
     level: 2
     href: "#configuring-permissions-for-a-user-in-multiple-groups"
   - id: "more-data-permission-options"
-    title: "More data permission options"
+    title: "گزینه‌های مجوز داده بیشتر"
     level: 2
     href: "#more-data-permission-options"
   - id: "further-reading"
-    title: "Further reading"
+    title: "مطالعه بیشتر"
     level: 2
     href: "#further-reading"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Permissions"
+  - title: "مجوزها"
     href: "index.html"
 ---
 
-# Tutorial: Setting up data permissions in Metabase
+# آموزش: تنظیم مجوزهای داده در متابیس
 
-Learn about how Metabase handles data permissions by setting up permissions on the Sample Database included with Metabase.
+درباره نحوه handle کردن مجوزهای داده توسط متابیس با تنظیم مجوزها روی پایگاه داده نمونه شامل شده با متابیس بیاموزید.
 
-> Looking for docs on data permissions? See [Docs: data permissions](../../../../docs/latest/permissions/data.html).
+> به دنبال مستندات درباره مجوزهای داده هستید؟ [مستندات: مجوزهای داده](../../../../docs/latest/permissions/data.html) را ببینید.
 
-Data permissions specify how different [groups of people](../../../../docs/latest/people-and-groups/managing.html#groups) can interact with tables and databases.
+مجوزهای داده مشخص می‌کنند چگونه [گروه‌های مختلف مردم](../../../../docs/latest/people-and-groups/managing.html#groups) می‌توانند با جداول و پایگاه‌های داده تعامل کنند.
 
-For each database, schema, and table you can specify:
+برای هر پایگاه داده، schema، و جدول می‌توانید مشخص کنید:
 
-- Who can see the results of questions;
-- Who can create new questions \(and how\);
-- Who can download results;
-- Who can edit metadata.
+- چه کسی می‌تواند نتایج سؤال‌ها را ببیند؛
+- چه کسی می‌تواند سؤال‌های جدید ایجاد کند (و چگونه)؛
+- چه کسی می‌تواند نتایج را دانلود کند؛
+- چه کسی می‌تواند فراداده را edit کند.
 
-In this article, we’ll walk through an example of how to give people permission to view results of questions and create new questions based on the tables from the [Sample Database](../../../../glossary/sample-database.html).
+در این مقاله، یک مثال از نحوه اعطای مجوز به مردم برای مشاهده نتایج سؤال‌ها و ایجاد سؤال‌های جدید بر اساس جداول از [پایگاه داده نمونه](../../../../glossary/sample-database.html) را طی می‌کنیم.
 
-## Introducing data permissions
+## معرفی مجوزهای داده
 
-Let’s start by navigating to **Admin** \> **Permissions**, and selecting **Databases** \> **Sample Database**. This will take us to the data permissions page at the database level. If you want to configure permissions for each *table* in the Sample Database, you can click on the table name at the left.
+بیایید با navigate کردن به **Admin** \> **Permissions**، و انتخاب **Databases** \> **Sample Database** شروع کنیم. این ما را به صفحه مجوزهای داده در سطح پایگاه داده می‌برد. اگر می‌خواهید مجوزها را برای هر *جدول* در پایگاه داده نمونه پیکربندی کنید، می‌توانید روی نام جدول در سمت چپ کلیک کنید.
 
-![The data permissions page for the Sample Database before any changes are made.](../../../images/guide-to-data-permissions/automatic-data-settings.png)
+![صفحه مجوزهای داده برای پایگاه داده نمونه قبل از هر تغییری.](../../../images/guide-to-data-permissions/automatic-data-settings.png)
 
-[Data permissions must be configured for groups](strategy.html#how-to-approach-permissions). Metabase comes with two default groups: Administrators and All Users. We’ll create two new sample groups called Canoes and Sailboats, and set up data permissions to:
+[مجوزهای داده باید برای گروه‌ها پیکربندی شوند](strategy.html#how-to-approach-permissions). متابیس با دو گروه پیش‌فرض ship می‌شود: Administrators و All Users. دو گروه نمونه جدید به نام Canoes و Sailboats ایجاد می‌کنیم، و مجوزهای داده را تنظیم می‌کنیم تا:
 
-- Adjust the default permission settings for All Users: by default all users won’t be able to create new questions
-- Give the Canoes group permission to create questions in the query builder based on the `Orders` table only.
-- Give the Sailboats group permission to create questions in the query builder based on the `People` and `Products` tables only.
+- تنظیمات مجوز پیش‌فرض برای All Users را تنظیم کنیم: به طور پیش‌فرض همه کاربران قادر به ایجاد سؤال‌های جدید نخواهند بود
+- به گروه Canoes مجوز ایجاد سؤال در سازنده کوئری بر اساس جدول `Orders` فقط بدهیم.
+- به گروه Sailboats مجوز ایجاد سؤال در سازنده کوئری بر اساس جداول `People` و `Products` فقط بدهیم.
 
-## Configuring query permissions for the All Users group
+## پیکربندی مجوزهای پرس‌وجو برای گروه All Users
 
-First, we’ll confirm that the **Create queries** permissions to the database for All Users, because Metabase grants the *most permissive* level of access across all the groups that someone belongs to.
+ابتدا، تأیید می‌کنیم که مجوزهای **Create queries** به پایگاه داده برای All Users، چون متابیس *permissiveترین* سطح دسترسی را در همه گروه‌هایی که کسی به آن‌ها تعلق دارد اعطا می‌کند.
 
-You can’t remove anyone from the All Users group, so if you give All Users **Query builder and native** permissions to the Sample Database, then that’ll always be the most permissive setting for everyone who uses your Metabase, regardless of any other group that you put people in.
+نمی‌توانید هیچ کسی را از گروه All Users حذف کنید، پس اگر به All Users مجوزهای **Query builder and native** به پایگاه داده نمونه بدهید، آن همیشه permissiveترین تنظیمات برای همه کسانی که از متابیس شما استفاده می‌کنند خواهد بود، صرف نظر از هر گروه دیگری که مردم را در آن قرار می‌دهید.
 
-1. Go to **Admin** \> **Permissions** \> **Database** \> **Sample Database** .
-2. Click on the dropdown menu at the **All Users** row and **Create queries** column.
-3. Confirm it’s set to **No** \(or set it to “No”\).
-4. Click **Save changes** in the banner that appears at the top.
+1. به **Admin** \> **Permissions** \> **Database** \> **Sample Database** بروید.
+2. روی منوی dropdown در ردیف **All Users** و ستون **Create queries** کلیک کنید.
+3. تأیید کنید روی **No** تنظیم شده است (یا آن را روی "No" تنظیم کنید).
+4. روی **Save changes** در banner که در بالا ظاهر می‌شود کلیک کنید.
 
-![Selecting the No query permissions for the All Users group to the Sample Database.](../../../images/guide-to-data-permissions/revoke-db-access.png)
+![انتخاب مجوزهای پرس‌وجو No برای گروه All Users به پایگاه داده نمونه.](../../../images/guide-to-data-permissions/revoke-db-access.png)
 
-Selecting **No** for All Users to the Sample Database will:
+انتخاب **No** برای All Users به پایگاه داده نمونه:
 
-- Prevent All Users from seeing any data from the Sample Database in the [data browser](../../querying-and-dashboards/data-browser.html).
-- Prevent All Users from creating questions \(both using query builder and SQL\) from data from the Sample Database.
+- از دیدن هر داده از پایگاه داده نمونه توسط All Users در [مرورگر داده](../../querying-and-dashboards/data-browser.html) جلوگیری می‌کند.
+- از ایجاد سؤال توسط All Users (هم با استفاده از سازنده کوئری و هم SQL) از داده پایگاه داده نمونه جلوگیری می‌کند.
 
-## Configuring view data permissions for the All Users group
+## پیکربندی مجوزهای مشاهده داده برای گروه All Users
 
-The All Users group has the **View data** set to “Can view” permissions on the Sample Database. “Can view” means that All Users will be able to *view the results* for the questions and dashboard in collections that match the [collection permissions](collection-permissions.html) for your All Users group. If you revoked the query permissions, All Users won’t be able to see the underlying data.
+گروه All Users **View data** را روی "Can view" برای پایگاه داده نمونه تنظیم شده دارد. "Can view" به معنای این است که All Users قادر به *مشاهده نتایج* برای سؤال‌ها و داشبورد در مجموعه‌هایی که با [مجوزهای مجموعه](collection-permissions.html) برای گروه All Users شما match می‌کنند خواهند بود. اگر مجوزهای پرس‌وجو را revoke کردید، All Users قادر به دیدن داده زیربنایی نخواهند بود.
 
-We’ll keep these permissions as is.
+این مجوزها را همانطور که هستند نگه می‌داریم.
 
-## Creating user groups
+## ایجاد گروه‌های کاربر
 
-Let’s create two new groups, and call them Canoes and Sailboats.
+بیایید دو گروه جدید ایجاد کنیم، و آن‌ها را Canoes و Sailboats بنامیم.
 
-1. Go to **Admin** \> **People** .
-2. Select the **Groups tab** .
-3. Click **Create a group** and name it “Canoes”.
+1. به **Admin** \> **People** بروید.
+2. تب **Groups** را انتخاب کنید.
+3. روی **Create a group** کلیک کنید و آن را "Canoes" نام‌گذاری کنید.
 
-Repeat to create a group “Sailboats”.
-For more details, see [Creating groups](../../../../docs/latest/people-and-groups/managing.html#groups).
+تکرار کنید تا یک گروه "Sailboats" ایجاد کنید.
+برای جزئیات بیشتر، [ایجاد گروه‌ها](../../../../docs/latest/people-and-groups/managing.html#groups) را ببینید.
 
-## Reviewing default data permissions
+## بررسی مجوزهای داده پیش‌فرض
 
-Go to **Admin** \> **Permissions** \> **Databases** and select the **Sample Database** to see our new groups:
+به **Admin** \> **Permissions** \> **Databases** بروید و **Sample Database** را انتخاب کنید تا گروه‌های جدید ما را ببینید:
 
-![The data permissions page with our newly added Canoes and Sailboats groups.](../../../images/guide-to-data-permissions/data-perm-with-groups.png)
+![صفحه مجوزهای داده با گروه‌های Canoes و Sailboats تازه اضافه شده ما.](../../../images/guide-to-data-permissions/data-perm-with-groups.png)
 
-New groups default to **No** permissions to create queries because All Users have **No** permissions. This lets us selectively add permissions to each group.
+گروه‌های جدید به طور پیش‌فرض **No** مجوز برای ایجاد پرس‌وجو دارند چون All Users **No** مجوز دارند. این به ما اجازه می‌دهد به طور انتخابی مجوزها را به هر گروه اضافه کنیم.
 
-For the Canoes and Sailboats groups, we want to:
+برای گروه‌های Canoes و Sailboats، می‌خواهیم:
 
-- Prevent people in Canoes and Sailboats from viewing any Sample Database tables in the [data browser](../../getting-started/find-data.html#browse-databases-and-tables).
-- Prevent people in Canoes and Sailboats from using the query builder to create questions on top of Sample Database tables.
-- Continue to allow people in Canoes and Sailboats to view the results of questions that are built on tables from the Sample Database, as long as these questions are saved in collections that match a given group’s [collection permissions](collection-permissions.html).
+- از مشاهده هر جدول پایگاه داده نمونه توسط مردم در Canoes و Sailboats در [مرورگر داده](../../getting-started/find-data.html#browse-databases-and-tables) جلوگیری کنیم.
+- از استفاده از سازنده کوئری برای ایجاد سؤال روی جداول پایگاه داده نمونه توسط مردم در Canoes و Sailboats جلوگیری کنیم.
+- ادامه دهیم به اجازه دادن به مردم در Canoes و Sailboats برای مشاهده نتایج سؤال‌هایی که روی جداول از پایگاه داده نمونه ساخته شده‌اند، تا زمانی که این سؤال‌ها در مجموعه‌هایی ذخیره شده‌اند که با [مجوزهای مجموعه](collection-permissions.html) یک گروه معین match می‌کنند.
 
-## Configuring query permissions for user groups
+## پیکربندی مجوزهای پرس‌وجو برای گروه‌های کاربر
 
-To give the Canoes group permission to create questions in the query builder based on `Orders` table only:
+برای اعطای مجوز به گروه Canoes برای ایجاد سؤال در سازنده کوئری بر اساس جدول `Orders` فقط:
 
-1. Go to **Admin** \> **Permissions** \> **Groups** .
-2. Select the **Canoes** group.
-3. Click **Sample Database** .
-4. At the **Orders** row in the **Create queries** column, select **Query builder only** from the dropdown menu.
-5. Click **Save Changes** .
-6. In the modal that appears, review the effects of your permission changes: the Canoes group will have granular query creation permissions for Sample Database. Click **Change** to confirm.
+1. به **Admin** \> **Permissions** \> **Groups** بروید.
+2. گروه **Canoes** را انتخاب کنید.
+3. روی **Sample Database** کلیک کنید.
+4. در ردیف **Orders** در ستون **Create queries**، **Query builder only** را از منوی dropdown انتخاب کنید.
+5. روی **Save Changes** کلیک کنید.
+6. در modal که ظاهر می‌شود، اثرات تغییرات مجوز خود را بررسی کنید: گروه Canoes مجوزهای ایجاد پرس‌وجوی granular برای پایگاه داده نمونه خواهد داشت. روی **Change** کلیک کنید تا تأیید کنید.
 
-![Granting the Canoes group permission to access the Orders table.](../../../images/guide-to-data-permissions/grant-table-access.png)
+![اعطای مجوز به گروه Canoes برای دسترسی به جدول Orders.](../../../images/guide-to-data-permissions/grant-table-access.png)
 
-You’ll notice that you can only select **Query builder only** permissions on a table, but not **Query builder and native**. If you want to allow people to create native queries \(for example, in SQL\), you’ll need to specify it on database level, not at the table level. Metabase doesn’t parse your SQL so it won’t know which tables are used in a query, and so it can’t restrict access to specific tables.
+متوجه می‌شوید که فقط می‌توانید مجوزهای **Query builder only** را روی یک جدول انتخاب کنید، اما نه **Query builder and native**. اگر می‌خواهید به مردم اجازه دهید پرس‌وجوهای native ایجاد کنند (مثلاً، در SQL)، نیاز دارید آن را در سطح پایگاه داده مشخص کنید، نه در سطح جدول. متابیس SQL شما را parse نمی‌کند پس نمی‌داند کدام جداول در یک پرس‌وجو استفاده می‌شوند، و بنابراین نمی‌تواند دسترسی به جداول خاص را محدود کند.
 
-If you go back to the Sample Database permissions for the Canoes group, you’ll be taken to the data permissions page at the group level. From there, you’ll see that Metabase auto\-populates the yellow **Granular** permission under the **Create queries** column for the Sample Database. The **Granular** permission indicates that the Canoes group now has access to some, but not all of the tables in the Sample Database.
+اگر به مجوزهای پایگاه داده نمونه برای گروه Canoes برگردید، به صفحه مجوزهای داده در سطح گروه برده می‌شوید. از آنجا، می‌بینید که متابیس به طور خودکار مجوز زرد **Granular** را زیر ستون **Create queries** برای پایگاه داده نمونه populate می‌کند. مجوز **Granular** نشان می‌دهد که گروه Canoes اکنون به برخی، اما نه همه جداول در پایگاه داده نمونه دسترسی دارد.
 
-![The Canoes group now has granular access to the Sample Database.](../../../images/guide-to-data-permissions/canoes-granular-access.png)
+![گروه Canoes اکنون دسترسی granular به پایگاه داده نمونه دارد.](../../../images/guide-to-data-permissions/canoes-granular-access.png)
 
-Let’s configure another set of data permissions for the Sailboats groups to give Sailboats **Query builder only** permissions to the `People` and `Products` tables in the Sample Database:
+بیایید مجموعه دیگری از مجوزهای داده را برای گروه‌های Sailboats پیکربندی کنیم تا به Sailboats مجوزهای **Query builder only** به جداول `People` و `Products` در پایگاه داده نمونه بدهیم:
 
-![The data permissions page after the Sailboats group has been granted access to the People and Products tables.](../../../images/guide-to-data-permissions/two-table-access.png)
+![صفحه مجوزهای داده بعد از اعطای دسترسی به جداول People و Products به گروه Sailboats.](../../../images/guide-to-data-permissions/two-table-access.png)
 
-Here’s what our current data permissions do:
+در اینجا آنچه مجوزهای داده فعلی ما انجام می‌دهند:
 
-**View data** for a table:
+**View data** برای یک جدول:
 
 | Group \ Table | All Users | Canoes | Sailboats |
 | --- | --- | --- | --- |
@@ -168,7 +166,7 @@ Here’s what our current data permissions do:
 | People |  |  |  |
 | Product |  |  |  |
 
-**Create queries** in the query builder based on a table:
+**Create queries** در سازنده کوئری بر اساس یک جدول:
 
 | Table \ Group | All Users | Canoes | Sailboats |
 | --- | --- | --- | --- |
@@ -176,62 +174,66 @@ Here’s what our current data permissions do:
 | People |  |  |  |
 | Product |  |  |  |
 
-## Configuring permissions for a user in multiple groups
+## پیکربندی مجوزها برای یک کاربر در چندین گروه
 
-Suppose Mr. Captain belongs to both the Canoes and Sailboats groups.
+فرض کنید آقای Captain به هر دو گروه Canoes و Sailboats تعلق دارد.
 
-He has three sets of **Create queries** is permissions that are being applied from three different groups:
+او سه مجموعه مجوز **Create queries** دارد که از سه گروه مختلف اعمال می‌شوند:
 
-- **No** query permission permissions to the Sample Database from the All Users group.
-- **Query builder only** permissions to the `Orders` table from the Canoes group.
-- **Query builder only** permissions to the `People` and `Products` tables from the Sailboats group.
+- مجوزهای پرس‌وجو **No** به پایگاه داده نمونه از گروه All Users.
+- مجوزهای **Query builder only** به جدول `Orders` از گروه Canoes.
+- مجوزهای **Query builder only** به جداول `People` و `Products` از گروه Sailboats.
 
-Since Metabase applies the most permissive settings across all groups, Mr. Captain will have “Create queries: Query builder only” permissions to the `Orders`, `People`, and `Products` tables. “Query builder only” permissions to these three tables means that Mr. Captain will be able to:
+از آنجایی که متابیس permissiveترین تنظیمات را در همه گروه‌ها اعمال می‌کند، آقای Captain مجوزهای "Create queries: Query builder only" به جداول `Orders`، `People`، و `Products` خواهد داشت. مجوزهای "Query builder only" به این سه جدول به معنای این است که آقای Captain قادر خواهد بود:
 
-- See `Orders` , `People` , and `Products` tables in the **Data browser**
-- Create questions in the query builder using any combination of `Orders` , `People` , or `Products` .
-- Drill down and manipulate other people’s query builder questions that use `Orders` , `People` , or `Products` , as long those questions are saved in collections that match his [collection permissions](collection-permissions.html) .
+- جداول `Orders`، `People`، و `Products` را در **مرورگر داده** ببیند
+- سؤال‌ها را در سازنده کوئری با استفاده از هر ترکیبی از `Orders`، `People`، یا `Products` ایجاد کند.
+- drill down کند و سؤال‌های سازنده کوئری دیگران که از `Orders`، `People`، یا `Products` استفاده می‌کنند را manipulate کند، تا زمانی که آن سؤال‌ها در مجموعه‌هایی ذخیره شده‌اند که با [مجوزهای مجموعه](collection-permissions.html) او match می‌کنند.
 
-Mr. Captain doesn’t belong to any groups with Create queries permissions to the `Reviews` table or the Sample Database, which will:
+آقای Captain به هیچ گروهی با مجوزهای Create queries به جدول `Reviews` یا پایگاه داده نمونه تعلق ندارد، که:
 
-- Prevent him from creating questions using the `Reviews` table.
-- Prevent him from interacting with the native query editor at all \(e.g., viewing, editing, or writing SQL queries\).
+- از ایجاد سؤال با استفاده از جدول `Reviews` توسط او جلوگیری می‌کند.
+- از تعامل با ویرایشگر پرس‌وجوی native به طور کامل توسط او جلوگیری می‌کند (مثلاً، مشاهده، editing، یا نوشتن پرس‌وجوهای SQL).
 
-Since Mr. Captain is also part of the All Users group with **Can view** permissions to the Sample Database, he’ll still be able to view the results of questions that are built using the `Reviews` table or the native query editor, as long as he has the right collection permissions.
+از آنجایی که آقای Captain همچنین بخشی از گروه All Users با مجوزهای **Can view** به پایگاه داده نمونه است، هنوز قادر به مشاهده نتایج سؤال‌هایی که با استفاده از جدول `Reviews` یا ویرایشگر پرس‌وجوی native ساخته شده‌اند خواهد بود، تا زمانی که مجوزهای مجموعه درست را داشته باشد.
 
-## More data permission options
+## گزینه‌های مجوز داده بیشتر
 
-- [Downloading results](../../../../docs/latest/permissions/data.html#download-results-permissions) \*.
+- [دانلود نتایج](../../../../docs/latest/permissions/data.html#download-results-permissions) \*.
 - [Block](../../../../docs/latest/permissions/data.html#blocked-view-data-permission) \*.
-- Managing the data model\*. See [Editing metadata](../../../../docs/latest/data-modeling/metadata-editing.html) .
-- Managing the database\*. See [managing databases](../../../../docs/latest/databases/connecting.html) \(though only admins can delete databases\).
+- مدیریت مدل داده\*. [Editing metadata](../../../../docs/latest/data-modeling/metadata-editing.html) را ببینید.
+- مدیریت پایگاه داده\*. [مدیریت پایگاه‌های داده](../../../../docs/latest/databases/connecting.html) را ببینید (اگرچه فقط adminها می‌توانند پایگاه‌های داده را حذف کنند).
 
-*\* Only available on [Pro and Enterprise plans](../../../../pricing/index.html).*
+*\* فقط در [طرح‌های Pro و Enterprise](../../../../pricing/index.html) در دسترس است.*
 
-## Further reading
+## مطالعه بیشتر
 
-- [Data permissions documentation](../../../../docs/latest/permissions/data.html)
-- [Collection permissions tutorial](collection-permissions.html)
-- [Collection permissions documentation](../../../../docs/latest/permissions/collections.html)
-- [Troubleshooting permissions](../../../../docs/latest/troubleshooting-guide/permissions.html)
-- [Row and column security](../../../../docs/latest/permissions/row-and-column-security.html)
+- [مستندات مجوزهای داده](../../../../docs/latest/permissions/data.html)
+- [آموزش مجوزهای مجموعه](collection-permissions.html)
+- [مستندات مجوزهای مجموعه](../../../../docs/latest/permissions/collections.html)
+- [عیب‌یابی مجوزها](../../../../docs/latest/troubleshooting-guide/permissions.html)
+- [امنیت ردیف و ستون](../../../../docs/latest/permissions/row-and-column-security.html)
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](strategy.html)
 [
       
         
         
+
       
       
+        
         
 
       

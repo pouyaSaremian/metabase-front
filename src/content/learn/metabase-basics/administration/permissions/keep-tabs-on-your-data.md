@@ -1,191 +1,193 @@
 ---
-
-
-title: "How to keep tabs on your data"
-description: "Set up alerts on usage analytics to get notified about when people change settings, download data, or make data public."
+title: "نحوه نگه داشتن tabs روی داده خود"
+description: "هشدارها را روی تحلیل‌های استفاده تنظیم کنید تا درباره زمان تغییر تنظیمات توسط مردم، دانلود داده، یا عمومی کردن داده مطلع شوید."
 redirect_from:
   - /learn/metabase-basics/administration/permissions/keep-tabs-on-your-data
 toc:
   - id: "how-to-keep-tabs-on-your-data"
-    title: "How to keep tabs on your data"
+    title: "نحوه نگه داشتن tabs روی داده خود"
     level: 1
     href: "#how-to-keep-tabs-on-your-data"
   - id: "some-things-you-can-keep-tabs-on-with-usage-analytics"
-    title: "Some things you can keep tabs on with usage analytics"
+    title: "برخی چیزهایی که می‌توانید با تحلیل‌های استفاده tabs نگه دارید"
     level: 2
     href: "#some-things-you-can-keep-tabs-on-with-usage-analytics"
   - id: "new-people-in-town"
-    title: "New people in town"
+    title: "مردم جدید در شهر"
     level: 3
     href: "#new-people-in-town"
   - id: "logins-and-content-views"
-    title: "Logins and content views"
+    title: "ورودها و مشاهده محتوا"
     level: 3
     href: "#logins-and-content-views"
   - id: "content-that-people-have-made-public"
-    title: "Content that people have made public"
+    title: "محتوایی که مردم عمومی کرده‌اند"
     level: 3
     href: "#content-that-people-have-made-public"
   - id: "check-for-data-downloads"
-    title: "Check for data downloads"
+    title: "بررسی برای دانلود داده"
     level: 3
     href: "#check-for-data-downloads"
   - id: "changes-to-settings"
-    title: "Changes to settings"
+    title: "تغییرات به تنظیمات"
     level: 3
     href: "#changes-to-settings"
   - id: "how-to-keep-an-eye-on-your-metabase"
-    title: "How to keep an eye on your Metabase"
+    title: "نحوه نگه داشتن چشم روی متابیس خود"
     level: 2
     href: "#how-to-keep-an-eye-on-your-metabase"
   - id: "set-up-alerts"
-    title: "Set up alerts"
+    title: "تنظیم هشدارها"
     level: 3
     href: "#set-up-alerts"
   - id: "delegate-responsibility"
-    title: "Delegate responsibility"
+    title: "واگذاری مسئولیت"
     level: 3
     href: "#delegate-responsibility"
 breadcrumbs:
-  - title: "Home"
+  - title: "خانه"
     href: "../../../index.html"
-  - title: "Administration"
+  - title: "مدیریت"
     href: "../index.html"
-  - title: "Permissions"
+  - title: "مجوزها"
     href: "index.html"
 ---
 
-# How to keep tabs on your data
+# نحوه نگه داشتن tabs روی داده خود
 
-Set up alerts on usage analytics to get notified about when people change settings, download data, or make data public.
+هشدارها را روی تحلیل‌های استفاده تنظیم کنید تا درباره زمان تغییر تنظیمات توسط مردم، دانلود داده، یا عمومی کردن داده مطلع شوید.
 
-A proper *self\-service* analytics setup is the ideal analytics setup. If you configure your groups and permissions correctly \(“correct” according to whatever your requirements are\), you’ll have a smoothly running analytics machine. But humans have an uncanny ingenuity for errors—even admins setting up these systems.
+یک راه‌اندازی *self-service* مناسب analytics راه‌اندازی analytics ایده‌آل است. اگر گروه‌ها و مجوزهای خود را به درستی پیکربندی کنید ("درست" طبق هر نیازمندی که دارید)، یک ماشین analytics در حال اجرای روان خواهید داشت. اما انسان‌ها یک نبوغ عجیب برای خطاها دارند — حتی adminهایی که این سیستم‌ها را تنظیم می‌کنند.
 
-So this article is about how to set up tripwires around your analytics to pick up on unintended \(or shady\) behavior: someone’s in a group they shouldn’t be in; they saw or downloaded something they shouldn’t; downloaded a ton of data, or other “intriguing” activity that you should probably keep an eye on.
+پس این مقاله درباره نحوه تنظیم tripwireها در اطراف تحلیل‌های شما برای pick up کردن رفتارهای ناخواسته (یا shady) است: کسی در گروهی است که نباید باشد؛ چیزی را دیده یا دانلود کرده که نباید؛ مقدار زیادی داده دانلود کرده، یا فعالیت "جالب" دیگری که احتمالاً باید روی آن نظارت داشته باشید.
 
-The following isn’t intended to be best practice security advice. It’s more an à la carte menu of things admins can do to make sure your data’s working for you, not against you.
+موارد زیر قصد ندارد بهترین توصیه امنیتی باشد. بیشتر یک منوی à la carte از چیزهایی است که adminها می‌توانند انجام دهند تا مطمئن شوند داده شما برای شما کار می‌کند، نه علیه شما.
 
-## Some things you can keep tabs on with usage analytics
+## برخی چیزهایی که می‌توانید با تحلیل‌های استفاده tabs نگه دارید
 
-[Pro](../../../../product/pro.html) and [Enterprise](../../../../product/enterprise.html) plans ship with usage analytics built in. The [Usage Analytics](../../../../docs/latest/usage-and-performance-tools/usage-analytics.html) collection tracks all sorts of usage in your Metabase: user activity, logs of all queries, query execution time, dashboard activity, and more.
+[طرح‌های Pro](../../../../product/pro.html) و [Enterprise](../../../../product/enterprise.html) با تحلیل‌های استفاده built-in ship می‌شوند. مجموعه [Usage Analytics](../../../../docs/latest/usage-and-performance-tools/usage-analytics.html) انواع استفاده در متابیس شما را track می‌کند: فعالیت کاربر، logهای همه پرس‌وجوها، زمان اجرای پرس‌وجو، فعالیت داشبورد، و بیشتر.
 
-![Some models with usage analytics in the Usage Analytics collection](../../../images/keep-tabs-on-your-data/usage-analytics-models.png)
+![برخی مدل‌ها با تحلیل‌های استفاده در مجموعه Usage Analytics](../../../images/keep-tabs-on-your-data/usage-analytics-models.png)
 
-Here are some ways to put this usage data to use.
+در اینجا برخی راه‌هایی برای استفاده از این داده استفاده.
 
-### New people in town
+### مردم جدید در شهر
 
-To see when someone joined or updated their account:
+برای دیدن زمان پیوستن یا به‌روزرسانی حساب کسی:
 
-1. Go to the **Usage Analytics collection** .
-2. Check out the **Activity log** .
-  - `user-invited` to see who’s been invited to your Metabase, and
-  - `user-joined` to see when people first logged in to your Metabase.
-  - `user-update` to see when an account was changed.
-  - `user-deactivated` to see when an account has been deactivated.
-3. You can filter by:
+1. به مجموعه **Usage Analytics** بروید.
+2. **Activity log** را بررسی کنید.
+  - `user-invited` برای دیدن کسی که به متابیس شما دعوت شده است، و
+  - `user-joined` برای دیدن زمان اولین ورود مردم به متابیس شما.
+  - `user-update` برای دیدن زمان تغییر یک حساب.
+  - `user-deactivated` برای دیدن زمان غیرفعال شدن یک حساب.
+3. می‌توانید فیلتر کنید بر اساس:
 
-To learn more about the person, you can plug in the `User ID` into the **Person overview** dashboard.
+برای یادگیری بیشتر درباره شخص، می‌توانید `User ID` را در داشبورد **Person overview** plug کنید.
 
-If you want to see all the topics in the Activity log:
+اگر می‌خواهید همه topicها را در Activity log ببینید:
 
-1. Click the `Topic` field
-2. Select **Distribution** .
-3. Click on the table view to see a more readable list of topics.
+1. فیلد `Topic` را کلیک کنید
+2. **Distribution** را انتخاب کنید.
+3. روی view جدول کلیک کنید تا لیست خوانا‌تر topicها را ببینید.
 
-### Logins and content views
+### ورودها و مشاهده محتوا
 
-Know who’s logging into your Metabase and when. For example, to see logins by day of week:
+بدانید چه کسی به متابیس شما وارد می‌شود و چه زمانی. به عنوان مثال، برای دیدن ورودها بر اساس روز هفته:
 
-1. Go to the **Usage Analytics collection** .
-2. Go to the **View log**
-3. Summarize by count of rows.
-4. Group by timestamp.
+1. به مجموعه **Usage Analytics** بروید.
+2. به **View log** بروید
+3. بر اساس تعداد ردیف‌ها خلاصه کنید.
+4. بر اساس timestamp گروه‌بندی کنید.
 
-![Views by day of week](../../../images/keep-tabs-on-your-data/view-log-day-of-week.png)
+![مشاهده‌ها بر اساس روز هفته](../../../images/keep-tabs-on-your-data/view-log-day-of-week.png)
 
-If you just want to see Saturday and Sunday, you can filter out days of the week by clicking on **Filter** \> **Exclude…** \> **Days of the week**, then selecting the days you want.
+اگر فقط می‌خواهید شنبه و یکشنبه را ببینید، می‌توانید روزهای هفته را با کلیک روی **Filter** \> **Exclude…** \> **Days of the week**، سپس انتخاب روزهایی که می‌خواهید فیلتر کنید.
 
-### Content that people have made public
+### محتوایی که مردم عمومی کرده‌اند
 
-You can see what’s been shared to make sure you’re not accidentally sharing stuff, like your accounts list or financial data.
+می‌توانید ببینید چه چیزی به اشتراک گذاشته شده است تا مطمئن شوید به طور تصادفی چیزهایی مثل لیست حساب‌های خود یا داده مالی را به اشتراک نمی‌گذارید.
 
-To see what content’s been made public, and by whom:
+برای دیدن چه محتوایی عمومی شده است، و توسط چه کسی:
 
-1. Go to the **Usage Analytics collection** .
-2. Check out the **Content model** .
-3. Filter the `Made public by user` column for `Not empty` .
+1. به مجموعه **Usage Analytics** بروید.
+2. مدل **Content** را بررسی کنید.
+3. ستون `Made public by user` را برای `Not empty` فیلتر کنید.
 
-The column will show the `User ID` for the person who made the item public.
+ستون `User ID` شخصی که مورد را عمومی کرده است را نشان می‌دهد.
 
-### Check for data downloads
+### بررسی برای دانلود داده
 
-![Filter by query source downloads](../../../images/keep-tabs-on-your-data/query-source-downloads.png)
+![فیلتر بر اساس منبع پرس‌وجو دانلودها](../../../images/keep-tabs-on-your-data/query-source-downloads.png)
 
-You can check to see if someone is exporting a list of accounts or contact details, or downloading a massive table.
+می‌توانید بررسی کنید ببینید آیا کسی یک لیست حساب‌ها یا جزئیات تماس را export می‌کند، یا یک جدول عظیم را دانلود می‌کند.
 
-1. Go to the **Usage Analytics collection** .
-2. Head to the **Query log** model.
-3. Filter on `Query source` .
+1. به مجموعه **Usage Analytics** بروید.
+2. به مدل **Query log** بروید.
+3. روی `Query source` فیلتر کنید.
   - `csv-download`
   - `json-download`
   - `xlsx-download`
-4. Select all download types:
+4. همه انواع دانلود را انتخاب کنید:
 
-You’ll also be able to filter on the number of rows exported.
+همچنین می‌توانید بر اساس تعداد ردیف‌های export شده فیلتر کنید.
 
-### Changes to settings
+### تغییرات به تنظیمات
 
-You can also check to see if anyone has made any changes to the settings for your Metabase:
+همچنین می‌توانید بررسی کنید ببینید آیا کسی تغییراتی به تنظیمات متابیس شما ایجاد کرده است:
 
-1. Go to the **Usage Analytics collection** .
-2. Go to the `Activity log` model.
-3. Filter `Topic` for `settings-update` .
-4. You can then filter on the `Details` column to target the setting change you’re looking for.
+1. به مجموعه **Usage Analytics** بروید.
+2. به مدل `Activity log` بروید.
+3. `Topic` را برای `settings-update` فیلتر کنید.
+4. سپس می‌توانید روی ستون `Details` فیلتر کنید تا تغییر تنظیماتی که به دنبال آن هستید را target کنید.
 
-## How to keep an eye on your Metabase
+## نحوه نگه داشتن چشم روی متابیس خود
 
-A couple of tips on how to be lazy about monitoring activity.
+چند نکته درباره نحوه lazy بودن در نظارت بر فعالیت.
 
-### Set up alerts
+### تنظیم هشدارها
 
-Alerts \(and dashboard subscriptions\) are great at getting data in front of people without making them go to Metabase — even if they’re outside of your org.
+هشدارها (و اشتراک‌های داشبورد) در قرار دادن داده در مقابل مردم بدون وادار کردن آن‌ها به رفتن به متابیس عالی هستند — حتی اگر خارج از org شما باشند.
 
-You can set up alerts so Metabase [notifies you when something happens](../../../../docs/latest/questions/alerts.html#results-alerts), or if values cross a certain threshold.
+می‌توانید هشدارها را تنظیم کنید تا متابیس [وقتی چیزی اتفاق می‌افتد به شما اطلاع دهد](../../../../docs/latest/questions/alerts.html#results-alerts)، یا اگر مقادیر از یک آستانه خاص عبور کنند.
 
-As a trivial example, let’s say you want to get notified any time someone sets up an account in your Metabase without using SSO.
+به عنوان یک مثال trivial، بگویید می‌خواهید هر زمان کسی یک حساب در متابیس شما بدون استفاده از SSO تنظیم می‌کند مطلع شوید.
 
-1. Go to the **Usage Analytics collection** .
-2. Go to the `People` model.
-3. Filter `Is Active` true, `Sso source` set to `is empty` , and `Date joined` for `today` .
-4. Save the question \(you could save it in Usage Analytics’s custom reports sub\-collection, for example.\)
+1. به مجموعه **Usage Analytics** بروید.
+2. به مدل `People` بروید.
+3. `Is Active` true، `Sso source` روی `is empty` تنظیم شده، و `Date joined` برای `today` فیلتر کنید.
+4. سؤال را ذخیره کنید (می‌توانید آن را در زیرمجموعه custom reports Usage Analytics ذخیره کنید، مثلاً.)
 
-![Is a person an admin?](../../../images/keep-tabs-on-your-data/email-and-password-sign-ups.png)
+![آیا یک شخص admin است؟](../../../images/keep-tabs-on-your-data/email-and-password-sign-ups.png)
 
-With the question saved, you can then set up an [alert](../../../../docs/latest/questions/alerts.html) to email you any time this question returns results \(that is, whenever someone creates an account using email and password\).
+با سؤال ذخیره شده، سپس می‌توانید یک [هشدار](../../../../docs/latest/questions/alerts.html) تنظیم کنید تا هر زمان این سؤال نتایجی برمی‌گرداند (یعنی، هر زمان کسی یک حساب با استفاده از ایمیل و رمز عبور ایجاد می‌کند) به شما ایمیل بزند.
 
-### Delegate responsibility
+### واگذاری مسئولیت
 
-With larger, more bureaucratized companies, you, the admin, may not know who is supposed to be in which group and why. But different groups can manage their own stuff.
+با شرکت‌های بزرگتر، bureaucratizedتر، شما، admin، ممکن است ندانید چه کسی باید در کدام گروه باشد و چرا. اما گروه‌های مختلف می‌توانند چیزهای خود را مدیریت کنند.
 
-To delegate responsibility, you can make people [group managers](../../../../docs/latest/people-and-groups/managing.html#group-managers), so they can manage their respective groups, and you can give them permissions to view the Usage Analytics collection so they can keep tabs on their own groups.
+برای واگذاری مسئولیت، می‌توانید مردم را [مدیران گروه](../../../../docs/latest/people-and-groups/managing.html#group-managers) کنید، تا بتوانند گروه‌های مربوطه خود را مدیریت کنند، و می‌توانید به آن‌ها مجوز مشاهده مجموعه Usage Analytics بدهید تا بتوانند tabs روی گروه‌های خود نگه دارند.
 
 [
       
         
+        
 
       
       
         
         
+
       
     ](row-and-column-security-use-cases.html)
 [
       
         
         
+
       
       
+        
         
 
       
