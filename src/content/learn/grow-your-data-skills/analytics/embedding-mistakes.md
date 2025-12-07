@@ -117,26 +117,6 @@ breadcrumbs:
 - [مدل داده چیست؟](../../../glossary/data-model.html)
 - [اشتباهات رایج مدل داده انجام شده توسط استارتاپ‌ها](data-model-mistakes.html)
 
-[
-      
-        
+[اشتباهات رایج در تحلیل](analytics-mistakes.html)
 
-      
-      
-        
-        
-
-      
-    ](analytics-mistakes.html)
-[
-      
-        
-        
-
-      
-      
-        
-        
-
-      
-    ](push-and-pull.html)
+[push و pull](push-and-pull.html)

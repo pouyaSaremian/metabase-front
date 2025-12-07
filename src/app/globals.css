@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./metabase-colors.css";
+@import "prismjs/themes/prism.min.css";
 
 @theme {
   --font-family-vazirmatn: var(--font-vazirmatn), ui-sans-serif, system-ui,
@@ -129,7 +130,6 @@ html[dir="rtl"] .animate-marquee-faster {
 /* Docs Sidebar Styles - Matching original HTML structure */
 .learn-left-sidebar {
   border-right: 1px solid #f1f2f4;
-  box-shadow: 4px 2px 4px 0 rgba(16, 24, 40, 0.05);
   height: 100vh;
   max-height: calc(100vh - 84px);
   overflow-y: auto;
@@ -140,34 +140,19 @@ html[dir="rtl"] .animate-marquee-faster {
   width: 100%;
   min-width: 226px;
   max-width: 226px;
-  /* Minimal scrollbar styling */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  /* Hide scrollbar but keep scrolling functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-/* Webkit scrollbar styling (Chrome, Safari, Edge) */
+/* Hide scrollbar for Webkit browsers (Chrome, Safari, Edge) */
 .learn-left-sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.learn-left-sidebar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.learn-left-sidebar::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  transition: background-color 0.2s ease;
-}
-
-.learn-left-sidebar::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
 }
 
 html[dir="rtl"] .learn-left-sidebar {
   border-left: 1px solid #f1f2f4;
   border-right: none;
-  box-shadow: -4px 2px 4px 0 rgba(16, 24, 40, 0.05);
   padding-left: 10px;
   padding-right: 0;
 }
@@ -380,6 +365,8 @@ html[dir="rtl"] .hoverable-toggler .hover-highlight {
 .learn__post.learn__article {
   margin-bottom: 0;
   padding-top: 56px;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 @media (max-width: 1399.98px) {
@@ -400,6 +387,9 @@ html[dir="rtl"] .hoverable-toggler .hover-highlight {
   min-width: 0;
   padding-right: 72px;
   z-index: 2;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 1199.98px) {
@@ -474,4 +464,178 @@ html[dir="rtl"] .learn__post__content {
 .learn__post a:hover,
 .learn__post__content a:hover {
   color: #1c6bb0;
+}
+
+/* Learn Code Block Styling - Matching original HTML structure */
+/* Structure: .language-* .highlighter-rouge > .highlight > pre.highlight > code */
+.learn__post__content .highlighter-rouge {
+  display: block;
+  margin: 1.5rem 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+.learn__post__content .highlighter-rouge .highlight {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+
+.learn__post__content .highlighter-rouge .highlight pre.highlight {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 3px 24px rgba(0, 0, 0, 0.08);
+  direction: ltr;
+  margin: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 1.5rem;
+  text-align: left;
+  width: 100%;
+}
+
+.learn__post__content .highlighter-rouge .highlight pre.highlight code {
+  background: #fff;
+  border-radius: 0.75rem;
+  color: #22242b;
+  direction: ltr;
+  display: block;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  max-width: 100%;
+  padding: 0;
+  text-align: left;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+/* Inline code (not in pre) */
+.learn__post__content code:not(pre code) {
+  background-color: #e4ecfb;
+  border-radius: 0.25rem;
+  color: #5a6072;
+  font-family: "Roboto Mono", monospace;
+  padding: 0 2px;
+  white-space: normal;
+}
+
+/* Code in headings */
+.learn__post__content h2 code,
+.learn__post__content h3 code,
+.learn__post__content h4 code,
+.learn__post__content h5 code {
+  background: #e4ecfb;
+  border-radius: 0.25rem;
+  color: #5a6072;
+  padding: 0;
+}
+
+/* Code in links */
+.learn__post__content a code {
+  color: #509ee3;
+  transition: color 0.25s ease;
+}
+
+.learn__post__content a:hover code {
+  color: #509ee3;
+}
+
+/* Fallback for pre without highlighter-rouge wrapper */
+.learn__post__content pre:not(.highlighter-rouge pre) {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 3px 24px rgba(0, 0, 0, 0.08);
+  direction: ltr;
+  margin: 1.5rem 0;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 1.5rem;
+  text-align: left;
+  width: 100%;
+}
+
+.learn__post__content pre:not(.highlighter-rouge pre) code {
+  background: transparent;
+  color: #22242b;
+  direction: ltr;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.875rem;
+  padding: 0;
+  text-align: left;
+  white-space: pre;
+}
+
+/* Learn Blockquote Styling - Matching original HTML structure */
+.learn__post__content blockquote {
+  background-color: #eef6fc;
+  border: 1px solid #509ee3;
+  border-radius: 0.625rem;
+  color: #5a6072;
+  margin: 2rem 0;
+  padding: 1.5rem;
+}
+
+.learn__post__content blockquote p {
+  font-size: 16px !important;
+  line-height: 1.5rem !important;
+  margin: 0;
+}
+
+/* Learn Image Styling - Matching original HTML structure */
+.learn__post__content img {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.728em;
+  margin-top: 1.2em;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Learn Heading Styling - Matching original HTML structure */
+/* h1: 40px, font-weight 900, color #22242b (from main.css base styles) */
+.learn__post__content h1 {
+  font-size: 40px;
+  font-weight: 900;
+  color: #22242b;
+}
+
+/* h2: 24px, font-weight 700, margin 64px 0 24px, color #22242b */
+.learn__post__content h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.34;
+  margin: 64px 0 24px;
+  color: #22242b;
+  width: 100%;
+}
+
+.learn__post__content > h2:first-of-type {
+  border-bottom: 1px solid #c6c9d2;
+  padding-bottom: 16px;
+}
+
+/* h3: Assuming similar to base, but with font-weight 700 */
+.learn__post__content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.34;
+  color: #22242b;
+}
+
+/* h4: 1.15rem, font-weight 700, line-height 1.34 */
+.learn__post__content h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.34;
+  color: #22242b;
+}
+
+/* h5, h6: Base sizes with font-weight 700 */
+.learn__post__content h5,
+.learn__post__content h6 {
+  font-weight: 700;
+  color: #22242b;
 }

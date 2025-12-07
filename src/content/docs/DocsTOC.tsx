@@ -76,7 +76,7 @@ export const DocsTOC: React.FC<DocsTOCProps> = ({ items, className }) => {
         "w-[250px] max-w-[250px] min-w-[250px] shrink-0",
         "overflow-y-auto",
         "sticky top-[63px]",
-        "bg-white z-10",
+        "z-10",
         "self-start",
         "rtl:ml-0",
         "block",

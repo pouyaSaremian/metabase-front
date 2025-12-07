@@ -39,7 +39,7 @@ export default function DocsPage() {
           }),
         }}
       />
-      <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <div className="container mx-auto px-4 pb-16 max-w-4xl">
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             مستندات متابیس

@@ -15,6 +15,8 @@ export const DocsContent: React.FC<DocsContentProps> = ({
       className={cn(
         "learn__post__content",
         "w-full",
+        "min-w-0",
+        "overflow-x-hidden",
         // Typography - matching original CSS
         "[&_p]:text-[18px] [&_p]:leading-[30px] [&_p]:text-[#4c5773] [&_p]:mb-3.5 [&_p]:mt-2",
         "[&_li]:text-[18px] [&_li]:leading-[30px] [&_li]:text-[#4c5773]",

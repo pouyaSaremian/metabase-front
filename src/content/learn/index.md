@@ -5,223 +5,35 @@ redirect_from:
   - /learn/index
 ---
 
-[
-                
-              ](../index.html)
+[](../index.html)
 محصول
-[
-                        
-                          
-                          
-                        
-                      ](../product/business-intelligence.html)
-[
-                        
-                          
-                          
-                        
-                      ](../product/embedded-analytics.html)
-[
-                          
-                        
-
-                        منابع داده](../data-sources/index.html)
-[
-                        
-                          
-                          
-                        
-                        امنیت](../security.html)
-[
-                        
-                        
-                        کلود](../cloud/index.html)
+[](../product/business-intelligence.html)
+[](../product/embedded-analytics.html)
+[منابع داده](../data-sources/index.html)
+[امنیت](../security.html)
+[کلود](../cloud/index.html)
 ویژگی‌ها
-[
-                          
-                            
-                            
-                            
-                          
-                          
-                            
-                              داشبوردهای تحلیل
-                            
-                          
-                        ](../features/analytics-dashboards.html)
-[
-                          
-                            
-                          
-                          
-                            
-                              سازنده کوئری
-                            
-                          
-                        ](../features/query-builder.html)
-[
-                          
-                            
-                          
-                          
-                            
-                              جداسازی داده
-                            
-                          
-                        ](../features/data-segregation.html)
-[
-                          
-                            
-                            
-                            
-                            
-                            
-                          
-                          
-                             مدل‌ها 
-                          
-                        ](../features/models.html)
-[
-                          
-                            
-                            
-                            
-                            
-                            
-                            
-                          
-                          
-                              تحلیل‌های استفاده
-                            
-                          
-                        ](../features/usage-analytics.html)
-[
-                          
-                            
-                            
-                            
-                            
-                            
-                            
-                          
-                          
-                             Metabot AI 
-
-                            بتا
-                          
-                        ](../features/metabot-ai.html)
-[
-                          
-                            
-                          
-                          
-                            
-                              SDK تحلیل‌های جاسازی شده
-                            
-                          
-                        ](../product/embedded-analytics-sdk.html)
-[
-                          
-                            
-                          
-                          
-                            
-                              تحلیل‌های White-label
-                            
-                          
-                        ](../features/white-label-analytics.html)
-[
-                          
-                            
-                          
-                          
-                            
-                              Drill-through
-                            
-                          
-                        ](../features/drill-through.html)
-[
-                          
-                            
-                          
-                          
-                             ویرایشگر SQL 
-                          
-                        ](../features/sql-editor.html)
-[
-                          
-                            
-                            
-                          
-                          
-                             مجوزها 
-                          
-                        ](../features/permissions.html)
-[
-                          
-                            
-                            
-                            
-                          
-                          
-                             آپلود CSV 
-                          
-                        ](../product/csv-uploads.html)
-[
-                          
-                        
-                        چه چیز جدیدی است](../releases.html)
-[
-                          
-                        
-                        نقشه راه](../roadmap.html)
+[داشبوردهای تحلیل](../features/analytics-dashboards.html)
+[سازنده کوئری](../features/query-builder.html)
+[جداسازی داده](../features/data-segregation.html)
+[مدل‌ها](../features/models.html)
+[تحلیل‌های استفاده](../features/usage-analytics.html)
+[Metabot AI بتا](../features/metabot-ai.html)
+[SDK تحلیل‌های جاسازی شده](../product/embedded-analytics-sdk.html)
+[تحلیل‌های White-label](../features/white-label-analytics.html)
+[Drill-through](../features/drill-through.html)
+[ویرایشگر SQL](../features/sql-editor.html)
+[مجوزها](../features/permissions.html)
+[آپلود CSV](../product/csv-uploads.html)
+[چه چیز جدیدی است](../releases.html)
+[نقشه راه](../roadmap.html)
 مستندات
-[
-                        
-                          
-                        
-                        
-                          
-                          
-                        
-                      ](../docs/latest/index.html)
-[
-                        
-                          
-                        
-                        
-                          
-                          
-                        
-                      ](index.html)
+[](../docs/latest/index.html)
+[](index.html)
 شروع کار
-[
-                          
-                            
-                          
-                          
-                            
-                            
-                          
-                        ](metabase-basics/getting-started/index.html)
-[
-                          
-                            
-                          
-                          
-                            
-                            
-                          
-                        ](metabase-basics/embedding/overview.html)
-[
-                          
-                            
-                          
-                          
-                            
-                            
-                          
-                        ](metabase-basics/administration/administration-and-operation/guide.html)
+[](metabase-basics/getting-started/index.html)
+[](metabase-basics/embedding/overview.html)
+[](metabase-basics/administration/administration-and-operation/guide.html)
 راهنماها
 [نصب متابیس](../docs/latest/installation-and-operation/installing-metabase.html)
 [افزودن یک پایگاه داده](../docs/latest/databases/connecting.html)
@@ -229,383 +41,61 @@ redirect_from:
 [ایجاد یک داشبورد](../docs/latest/dashboards/introduction.html)
 [حل مشکلات رایج](../docs/latest/troubleshooting-guide/index.html)
 منابع
-[
-                          
-                            
-                          
-                          
-                             بلاگ 
-                            
-                          
-                        ](../blog.html)
-[
-                          
-                            
-                            
-                          
-                          
-                             رویدادها 
-                            
-                          
-                        ](../events/index.html)
-[
-                          
-                            
-                          
-                          
-                             مشتریان 
-                            
-                          
-                        ](../case-studies.html)
-[
-                          
-                            
-                            
-                            
-                            
-                          
-                          
-                             بحث 
-                            
-                          
-                        ](https://discourse.metabase.com/)
-[
-                          
-                            
-                            
-                            
-                          
-                          
-                              خدمات حرفه‌ای
-                            
-                            
-                          
-                        ](../product/professional-services.html)
-[
-                          
-                            
-                            
-                            
-                            
-                          
-                          
-                              متخصصان متابیس
-                            
-                            
-                          
-                        ](../partners/index.html)
+[بلاگ](../blog.html)
+[رویدادها](../events/index.html)
+[مشتریان](../case-studies.html)
+[بحث](https://discourse.metabase.com/)
+[خدمات حرفه‌ای](../product/professional-services.html)
+[متخصصان متابیس](../partners/index.html)
 پست‌های اخیر بلاگ
-[
-                          
-                            
-                          
-                          گزارش پشته داده جامعه متابیس 2025
-                        ](../blog/metabase-community-data-stack-report-2025-key-analysis.html)
-[
-                          داستان پشت تولیدکننده مجموعه داده AI ما
-                        ](../blog/story-behind-ai-dataset-generator.html)
-[
-                          نحوه ساخت داشبوردهای فروش که تیم‌های فروش
-                            واقعاً استفاده می‌کنند
-                        ](../blog/how-to-build-sales-dashboards.html)
-[
-                          تحلیل‌های جاسازی شده چیست؟
-                        ](../blog/what-is-embedded-analytics.html)
-[
-                          نظرسنجی پشته داده جامعه متابیس: توسط تیم‌های
-                            داده، برای تیم‌های داده
-                        ](../blog/metabase-community-data-stack-survey-2025.html)
+[گزارش پشته داده جامعه متابیس 2025](../blog/metabase-community-data-stack-report-2025-key-analysis.html)
+[داستان پشت تولیدکننده مجموعه داده AI ما](../blog/story-behind-ai-dataset-generator.html)
+[نحوه ساخت داشبوردهای فروش که تیم‌های فروش واقعاً استفاده می‌کنند](../blog/how-to-build-sales-dashboards.html)
+[تحلیل‌های جاسازی شده چیست؟](../blog/what-is-embedded-analytics.html)
+[نظرسنجی پشته داده جامعه متابیس: توسط تیم‌های داده، برای تیم‌های داده](../blog/metabase-community-data-stack-survey-2025.html)
 [قیمت‌گذاری](../pricing/index.html)
 [ورود](../cloud/login.html)
 [شروع کنید](https://store.metabase.com/checkout)
-[
-                
-                  
-                  
-                
-              ](../product/business-intelligence.html)
-[
-                
-                  
-                  
-                
-              ](../product/embedded-analytics.html)
+[](../product/business-intelligence.html)
+[](../product/embedded-analytics.html)
 پلتفرم
-[
-              
-                
-              
-              
-                 منابع داده 
-              
-            ](../data-sources/index.html)
-[
-              
-                
-                
-              
-              
-                 امنیت 
-              
-            ](../security.html)
-[
-              
-                
-              
-              
-                 کلود 
-              
-            ](../cloud/index.html)
+[منابع داده](../data-sources/index.html)
+[امنیت](../security.html)
+[کلود](../cloud/index.html)
 دمو
-[
-              
-                
-              
-            ](../demo.html)
-[
-              
-                
-              
-              
-                 SDK تحلیل‌های جاسازی شده 
-              
-            ](../product/embedded-analytics-sdk.html)
-[
-              
-                
-              
-              
-                 تحلیل‌های White-label 
-              
-            ](../features/white-label-analytics.html)
-[
-              
-                
-                
-                
-              
-              
-                 داشبوردهای تحلیل 
-              
-            ](../features/analytics-dashboards.html)
-[
-              
-                
-              
-              
-                 Drill-through 
-              
-            ](../features/drill-through.html)
-[
-              
-                
-              
-              
-                 سازنده کوئری 
-              
-            ](../features/query-builder.html)
-[
-              
-                
-              
-              
-                 ویرایشگر SQL 
-              
-            ](../features/sql-editor.html)
-[
-              
-                
-                
-                
-                
-                
-              
-              
-                 مدل‌ها 
-              
-            ](../features/models.html)
-[
-              
-                
-                
-              
-              
-                 مجوزها 
-              
-            ](../features/permissions.html)
-[
-              
-                
-                
-                
-              
-              
-                 آپلود CSV 
-              
-            ](../product/csv-uploads.html)
-[
-              
-                
-              
-              
-                 جداسازی داده 
-              
-            ](../features/data-segregation.html)
-[
-              
-                
-                
-                
-                
-                
-              
-              
-                 تحلیل‌های استفاده 
-              
-            ](../features/usage-analytics.html)
-[
-              
-                
-                
-                
-                
-                
-              
-              
-                 Metabot AI 
-              
-            ](../features/metabot-ai.html)
+[](../demo.html)
+[SDK تحلیل‌های جاسازی شده](../product/embedded-analytics-sdk.html)
+[تحلیل‌های White-label](../features/white-label-analytics.html)
+[داشبوردهای تحلیل](../features/analytics-dashboards.html)
+[Drill-through](../features/drill-through.html)
+[سازنده کوئری](../features/query-builder.html)
+[ویرایشگر SQL](../features/sql-editor.html)
+[مدل‌ها](../features/models.html)
+[مجوزها](../features/permissions.html)
+[آپلود CSV](../product/csv-uploads.html)
+[جداسازی داده](../features/data-segregation.html)
+[تحلیل‌های استفاده](../features/usage-analytics.html)
+[Metabot AI](../features/metabot-ai.html)
 به‌روزرسانی‌ها
-[
-              
-                
-              
-              
-                 چه چیز جدیدی است 
-              
-            ](../releases.html)
-[
-              
-                
-              
-              
-                 نقشه راه 
-              
-            ](../roadmap.html)
-[
-                
-                  
-                  
-                
-                  
-                   مستندات 
-                  
-                
-              ](../docs/latest/index.html)
-[
-                
-                  
-                  
-                
-                  
-                   یادگیری 
-                  
-                
-              ](index.html)
+[چه چیز جدیدی است](../releases.html)
+[نقشه راه](../roadmap.html)
+[مستندات](../docs/latest/index.html)
+[یادگیری](index.html)
 شروع کار
-[
-                  
-                    
-                  
-                  
-                    
-                    
-                  
-                ](metabase-basics/getting-started/index.html)
-[
-                  
-                    
-                  
-                  
-                    
-                    
-                  
-                ](metabase-basics/embedding/overview.html)
-[
-                  
-                    
-                  
-                  
-                    
-                    
-                  
-                ](metabase-basics/administration/administration-and-operation/guide.html)
+[](metabase-basics/getting-started/index.html)
+[](metabase-basics/embedding/overview.html)
+[](metabase-basics/administration/administration-and-operation/guide.html)
 راهنماها
 [نصب متابیس](../docs/latest/installation-and-operation/installing-metabase.html)
 [افزودن یک پایگاه داده](../docs/latest/databases/connecting.html)
 [پرسیدن سؤال](../docs/latest/questions/introduction.html)
 [ایجاد یک داشبورد](../docs/latest/dashboards/introduction.html)
 [حل مشکلات رایج](../docs/latest/troubleshooting-guide/index.html)
-[
-              
-                
-              
-              
-                 بلاگ 
-              
-            ](../blog.html)
-[
-              
-                
-                
-              
-              
-                 رویدادها 
-              
-            ](../events/index.html)
-[
-              
-                
-              
-              
-                 مشتریان 
-              
-            ](../case-studies.html)
-[
-              
-                
-                
-                
-                
-              
-              
-                 بحث 
-              
-            ](https://discourse.metabase.com/)
-[
-              
-                
-                
-                
-              
-              
-                 خدمات حرفه‌ای 
-              
-            ](../product/professional-services.html)
-[
-              
-                
-                
-                
-                
-              
-              
-                 متخصصان متابیس 
-              
-            ](../partners/index.html)
-[
-            قیمت‌گذاری
-          ](../pricing/index.html)
-[
-            ورود
-          ](../cloud/login.html)
+[بلاگ](../blog.html)
+[رویدادها](../events/index.html)
+[مشتریان](../case-studies.html)
+[بحث](https://discourse.metabase.com/)
+[خدمات حرفه‌ای](../product/professional-services.html)
+[متخصصان متابیس](../partners/index.html)
+[قیمت‌گذاری](../pricing/index.html)
+[ورود](../cloud/login.html)
