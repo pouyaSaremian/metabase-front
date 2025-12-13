@@ -40,9 +40,24 @@ export const DocsContent: React.FC<DocsContentProps> = ({
         // Blockquotes
         "[&_blockquote]:border-r-4 [&_blockquote]:border-[#509ee3] [&_blockquote]:pr-4 [&_blockquote]:bg-gray-50 [&_blockquote]:my-4",
         "rtl:[&_blockquote]:border-l-4 rtl:[&_blockquote]:border-r-0 rtl:[&_blockquote]:pl-4 rtl:[&_blockquote]:pr-0",
+        // Tables - matching learn component styling
+        "[&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_table]:bg-white [&_table]:border [&_table]:border-gray-200 [&_table]:rounded",
+        "[&_table_thead]:bg-gray-50",
+        "[&_table_th]:px-4 [&_table_th]:py-3 [&_table_th]:text-right [&_table_th]:font-bold [&_table_th]:text-[#22242b] [&_table_th]:border-b [&_table_th]:border-gray-200",
+        "[&_table_td]:px-4 [&_table_td]:py-3 [&_table_td]:text-right [&_table_td]:border-b [&_table_td]:border-gray-100",
+        "[&_table_tbody_tr:hover]:bg-gray-50",
+        "[&_table_tbody_tr:last-child_td]:border-b-0",
         // RTL adjustments
         "rtl:[&_ul]:pr-6 rtl:[&_ul]:pl-0",
         "rtl:[&_ol]:pr-6 rtl:[&_ol]:pl-0",
+        "rtl:[&_table_th]:text-right",
+        "rtl:[&_table_td]:text-right",
+        // Mobile table responsiveness
+        "max-md:[&_table]:block max-md:[&_table]:overflow-x-auto",
+        "max-md:[&_table_thead]:hidden",
+        "max-md:[&_table_tbody_tr]:block max-md:[&_table_tbody_tr]:mb-4 max-md:[&_table_tbody_tr]:border max-md:[&_table_tbody_tr]:rounded",
+        "max-md:[&_table_td]:block max-md:[&_table_td]:border-0 max-md:[&_table_td]:px-4 max-md:[&_table_td]:py-2",
+        "max-md:[&_table_td]:before:content-[attr(data-label)] max-md:[&_table_td]:before:font-bold max-md:[&_table_td]:before:block max-md:[&_table_td]:before:mb-1",
         className
       )}
     >

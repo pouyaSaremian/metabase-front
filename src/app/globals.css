@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "./metabase-colors.css";
-@import "prismjs/themes/prism.min.css";
 
 @theme {
   --font-family-vazirmatn: var(--font-vazirmatn), ui-sans-serif, system-ui,

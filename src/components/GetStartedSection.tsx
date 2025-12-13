@@ -42,7 +42,7 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
 
   return (
     <section
-      className={`bg-metabase-bg-light py-12 lg:py-16 select-none w-full ${className}`}
+      className={`bg-white py-12 lg:py-16 select-none w-full ${className}`}
       aria-labelledby="get-started-section-title"
     >
       <div className="w-full max-w-6xl mx-auto">

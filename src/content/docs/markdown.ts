@@ -129,6 +129,13 @@ const resolveDocsFilePath = async (
     { filePath: directPath, slugUsed: slug },
   ];
 
+  // Check for index.md in the directory
+  const withIndex = path.join(docsRootDir, joined, "index.md");
+  tryPaths.push({
+    filePath: withIndex,
+    slugUsed: slug,
+  });
+
   if (slug[slug.length - 1] !== "start") {
     const withStart = path.join(docsRootDir, joined, "start.md");
     tryPaths.push({
@@ -156,7 +163,8 @@ const resolveDocsFilePath = async (
 
 const resolveRelativeDocsHref = (
   href: string,
-  currentSlug: string[]
+  currentSlug: string[],
+  isIndexFile: boolean = false
 ): string => {
   const trimmedHref = href.trim();
 
@@ -172,12 +180,17 @@ const resolveRelativeDocsHref = (
   const [pathPart, hashPart] = trimmedHref.split("#");
   const hash = hashPart ? `#${hashPart}` : "";
 
-  if (pathPart.startsWith("/docs")) {
+  // Treat absolute paths starting with /docs or /learn as-is
+  if (pathPart.startsWith("/docs") || pathPart.startsWith("/learn")) {
     return `${pathPart}${hash}`;
   }
 
   const withoutExt = pathPart.replace(/\.md$/i, "");
-  const currentDir = currentSlug.slice(0, -1).join("/");
+  // For index.md files, use the full slug as the directory
+  // For other files, use all but the last segment as the directory
+  const currentDir = isIndexFile
+    ? currentSlug.join("/")
+    : currentSlug.slice(0, -1).join("/");
 
   const base = currentDir || "";
   const joined = base
@@ -192,14 +205,22 @@ const resolveRelativeDocsHref = (
   return `/docs/latest/${normalized}${hash}`;
 };
 
-const resolveImageSrc = (src: string, currentSlug: string[]): string => {
+const resolveImageSrc = (
+  src: string,
+  currentSlug: string[],
+  isIndexFile: boolean = false
+): string => {
   const trimmed = src.trim();
 
   if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
     return trimmed;
   }
 
-  const currentDir = currentSlug.slice(0, -1).join("/");
+  // For index.md files, use the full slug as the directory
+  // For other files, use all but the last segment as the directory
+  const currentDir = isIndexFile
+    ? currentSlug.join("/")
+    : currentSlug.slice(0, -1).join("/");
   const withoutLeading = trimmed.replace(/^\.?\//, "");
 
   const joined = currentDir
@@ -226,21 +247,49 @@ export const getDocBySlug = async (
   const raw = await fs.readFile(filePath, "utf8");
   const { metadata, redirectFrom, body } = parseFrontmatter(raw);
 
+  // Check if this is an index.md file
+  const isIndexFile = filePath.endsWith("index.md");
+
   const renderer = new marked.Renderer();
 
   renderer.link = (href, title, text) => {
     const safeHref = href ?? "";
-    const finalHref = resolveRelativeDocsHref(safeHref, slugUsed);
+    const finalHref = resolveRelativeDocsHref(safeHref, slugUsed, isIndexFile);
     const titleAttr = title ? ` title="${title}"` : "";
     return `<a href="${finalHref}"${titleAttr}>${text}</a>`;
   };
 
   renderer.image = (href, title, text) => {
     const safeSrc = href ?? "";
-    const finalSrc = resolveImageSrc(safeSrc, slugUsed);
+    const finalSrc = resolveImageSrc(safeSrc, slugUsed, isIndexFile);
     const altAttr = text ? ` alt="${text}"` : ` alt=""`;
     const titleAttr = title ? ` title="${title}"` : "";
     return `<img src="${finalSrc}"${altAttr}${titleAttr} />`;
+  };
+
+  renderer.table = (header, body) => {
+    return `<table>
+<thead>
+${header}
+</thead>
+<tbody>
+${body}
+</tbody>
+</table>`;
+  };
+
+  renderer.tablerow = (content) => {
+    return `<tr>${content}</tr>`;
+  };
+
+  renderer.tablecell = (content, flags) => {
+    const tag = flags.header ? "th" : "td";
+    // Extract text content for data-label (for mobile responsiveness)
+    const textContent = content.replace(/<[^>]*>/g, "").trim();
+    const dataLabel = flags.header
+      ? ""
+      : ` data-label="${textContent.substring(0, 30)}"`;
+    return `<${tag}${dataLabel}>${content}</${tag}>`;
   };
 
   marked.setOptions({
@@ -286,6 +335,13 @@ export const getAllDocsSlugs = async (): Promise<string[][]> => {
       const segments = withoutExt.split(path.sep).filter(Boolean);
 
       if (segments.length === 0) continue;
+
+      // For index.md files, remove the "index" segment from the slug
+      // e.g., "troubleshooting-guide/index" -> ["troubleshooting-guide"]
+      if (entry.name === "index.md" && segments.length > 0) {
+        segments.pop(); // Remove the "index" segment
+        if (segments.length === 0) continue; // Skip if no segments left
+      }
 
       result.push(segments);
     }

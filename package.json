@@ -6,7 +6,13 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check-links": "tsx scripts/check-links.ts",
+    "check-links:external": "tsx scripts/check-links.ts --external",
+    "check-links:report": "tsx scripts/check-links.ts --output link-report.txt",
+    "check-links:http": "tsx scripts/check-links-http.ts",
+    "check-links:http:external": "tsx scripts/check-links-http.ts --external",
+    "check-links:http:report": "tsx scripts/check-links-http.ts --output link-report.txt"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -31,6 +37,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

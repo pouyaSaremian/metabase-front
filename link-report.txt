@@ -1,0 +1,216 @@
+
+================================================================================
+🔍 LINK CHECKER REPORT
+================================================================================
+
+Total links checked: 8001
+✅ Working: 7950
+❌ Broken: 51
+
+BROKEN LINKS:
+--------------------------------------------------------------------------------
+
+❌ https://metabase.ir/
+   Source: sitemap
+   Error: Route not found
+
+❌ /learn/metabase-basics/administration/administration-and-operation/
+   Source: administration/index_redirect.md
+   Error: Route not found
+
+❌ /learn/metabase-basics/getting-started
+   Source: courses/getting-started_redirect.md
+   Error: Route not found
+
+❌ /learn/grow-your-data-skills/data-fundamentals/what-is-a-database-view
+   Source: grow-your-data-skills/data-fundamentals/view_redirect.md
+   Error: Route not found
+
+❌ /learn/metabase-basics/administration/permissions/index-2
+   Source: permissions_redirect.md
+   Error: Route not found
+
+❌ /learn/grow-your-data-skills/learn-sql/working-with-sql
+   Source: sql-questions_redirect.md
+   Error: Route not found
+
+❌ /demo
+   Source: src/components/Button.tsx
+   Error: Route not found
+
+❌ /start/oss/
+   Source: src/components/CTAButtons.tsx
+   Error: Route not found
+
+❌ /
+   Source: src/components/Footer.tsx
+   Error: Route not found
+
+❌ /blog/story-behind-ai-dataset-generator
+   Source: src/components/Header.tsx
+   Error: Route not found
+
+❌ /
+   Source: src/components/Footer.tsx
+   Error: Route not found
+
+❌ /features/metabot-ai
+   Source: src/components/business-intelligence/AvoidRepeatedRequestsSection.tsx
+   Error: Route not found
+
+❌ /start/oss
+   Source: src/components/business-intelligence/BusinessIntelligenceFooter.tsx
+   Error: Route not found
+
+❌ /start/oss
+   Source: src/components/business-intelligence/BusinessIntelligenceFooter.tsx
+   Error: Route not found
+
+❌ /case-studies
+   Source: src/components/business-intelligence/CustomerLogosSection.tsx
+   Error: Route not found
+
+❌ /talk-to-a-person
+   Source: src/components/comparison/MetabaseVsDomoHero.tsx
+   Error: Route not found
+
+❌ /talk-to-a-person
+   Source: src/components/comparison/MetabaseVsDomoHero.tsx
+   Error: Route not found
+
+❌ /talk-to-a-person
+   Source: src/components/comparison/MetabaseVsDomoHero.tsx
+   Error: Route not found
+
+❌ /features/metabot-ai
+   Source: src/components/business-intelligence/AvoidRepeatedRequestsSection.tsx
+   Error: Route not found
+
+❌ /demo
+   Source: src/components/Button.tsx
+   Error: Route not found
+
+❌ /talk-to-a-person
+   Source: src/components/comparison/MetabaseVsDomoHero.tsx
+   Error: Route not found
+
+❌ /talk-to-a-person
+   Source: src/components/comparison/MetabaseVsDomoHero.tsx
+   Error: Route not found
+
+❌ /embedding-demo
+   Source: src/components/embedded-analytics/ImplementationTypeSection.tsx
+   Error: Route not found
+
+❌ /events/embedded-analytics-with-metabase
+   Source: src/components/embedded-analytics/WebinarPromo.tsx
+   Error: Route not found
+
+❌ /embedding-demo
+   Source: src/components/embedded-analytics/ImplementationTypeSection.tsx
+   Error: Route not found
+
+❌ /start/oss
+   Source: src/components/business-intelligence/BusinessIntelligenceFooter.tsx
+   Error: Route not found
+
+❌ /sales?plan=enterprise
+   Source: src/components/pricing/PricingGrid.tsx
+   Error: Route not found
+
+❌ /
+   Source: src/components/Footer.tsx
+   Error: Route not found
+
+❌ /docs/latest/cloud/cloud-vs-self-hosting
+   Source: src/app/docs/latest/page.tsx
+   Error: Route not found
+
+❌ /learn/metabase-basics/getting-started
+   Source: courses/getting-started_redirect.md
+   Error: Route not found
+
+❌ /docs/latest/cloud/start
+   Source: src/app/docs/latest/page.tsx
+   Error: Route not found
+
+❌ /docs/latest/api
+   Source: src/app/docs/latest/page.tsx
+   Error: Route not found
+
+❌ /community
+   Source: src/app/docs/latest/page.tsx
+   Error: Route not found
+
+❌ /blog
+   Source: src/app/docs/latest/page.tsx
+   Error: Route not found
+
+❌ /case-studies
+   Source: src/components/business-intelligence/CustomerLogosSection.tsx
+   Error: Route not found
+
+❌ /glossary
+   Source: src/app/docs/latest/page.tsx
+   Error: Route not found
+
+❌ /partners
+   Source: src/app/docs/latest/page.tsx
+   Error: Route not found
+
+❌ /partners
+   Source: src/app/docs/latest/page.tsx
+   Error: Route not found
+
+❌ /docs/all
+   Source: src/app/docs/latest/page.tsx
+   Error: Route not found
+
+❌ /docs/all
+   Source: src/app/docs/latest/page.tsx
+   Error: Route not found
+
+❌ /docs/latest/getting-started
+   Source: src/app/docs/page.tsx
+   Error: Route not found
+
+❌ /docs/latest/analytics
+   Source: src/app/docs/page.tsx
+   Error: Route not found
+
+❌ /docs/latest/data-modeling
+   Source: src/app/docs/page.tsx
+   Error: Route not found
+
+❌ /docs/latest/databases
+   Source: src/app/docs/page.tsx
+   Error: Route not found
+
+❌ /docs/latest/permissions
+   Source: src/app/docs/page.tsx
+   Error: Route not found
+
+❌ /docs/latest/embedding
+   Source: src/app/docs/page.tsx
+   Error: Route not found
+
+❌ /blog/metabase-alternatives
+   Source: src/app/lp/metabase-vs-domo/page.tsx
+   Error: Route not found
+
+❌ /blog/metabase-alternatives
+   Source: src/app/lp/metabase-vs-domo/page.tsx
+   Error: Route not found
+
+❌ /blog/metabase-alternatives
+   Source: src/app/lp/metabase-vs-domo/page.tsx
+   Error: Route not found
+
+❌ /
+   Source: src/components/Footer.tsx
+   Error: Route not found
+
+❌ /product/air-gapping
+   Source: src/app/security/page.tsx
+   Error: Route not found
+

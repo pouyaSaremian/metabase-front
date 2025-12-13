@@ -297,7 +297,7 @@ const resolveImageSrc = (src: string, currentSlug: string[]): string => {
 
   // Resolve relative path
   const parts = trimmed.split("/").filter(Boolean);
-  let resolvedParts = [...markdownDir];
+  const resolvedParts = [...markdownDir];
 
   for (const part of parts) {
     if (part === "..") {
