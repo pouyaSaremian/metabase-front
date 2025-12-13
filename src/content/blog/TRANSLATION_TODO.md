@@ -72,82 +72,82 @@ This file tracks the translation progress of all blog markdown files in the `/sr
 - [x] Introducing-Learn-Metabase.md
 
 ### M
-- [ ] maintaining-skepticism-toward-your-data.md
-- [ ] maps-data-visualization.md
-- [ ] metabase-alternatives.md
-- [ ] metabase-community-data-stack-report-2025-key-analysis.md
-- [ ] metabase-community-data-stack-survey-2025.md
-- [ ] metabase-housekeeping-with-usage-analytics.md
-- [ ] metabase-product-hunt-ama.md
-- [ ] metabase-soc-2-announcement.md
-- [ ] Metabase-in-Portuguese.md
-- [ ] Metabase-in-Spanish.md
-- [ ] Metabase-in-your-language.md
-- [ ] microservices-considered-harmful.md
+- [x] maintaining-skepticism-toward-your-data.md
+- [x] maps-data-visualization.md
+- [x] metabase-alternatives.md
+- [x] metabase-community-data-stack-report-2025-key-analysis.md
+- [x] metabase-community-data-stack-survey-2025.md
+- [x] metabase-housekeeping-with-usage-analytics.md
+- [x] metabase-product-hunt-ama.md
+- [x] metabase-soc-2-announcement.md
+- [x] Metabase-in-Portuguese.md
+- [x] Metabase-in-Spanish.md
+- [x] Metabase-in-your-language.md
+- [x] microservices-considered-harmful.md
 
 ### N
-- [ ] Network.md
-- [ ] Nested-Queries.md
-- [ ] no-data-warehouse-necessary.md
+- [x] Network.md
+- [x] Nested-Queries.md
+- [x] no-data-warehouse-necessary.md
 
 ### O
-- [ ] official-collections-and-verification.md
-- [ ] Opening-Metabase-Enterprise.md
+- [x] official-collections-and-verification.md
+- [x] Opening-Metabase-Enterprise.md
 
 ### P
-- [ ] Permissions.md
-- [ ] product-team-guide-to-metabase.md
+- [x] Permissions.md
+- [x] product-team-guide-to-metabase.md
 
 ### S
-- [ ] scaling-metabase/index_redirect.md
-- [ ] security-incident-summary_redirect.md
-- [ ] serialization/index_redirect.md
-- [ ] set-up-a-logging-pipeline-for-analysis.md
-- [ ] spreadsheets-to-bi.md
-- [ ] sql-cheatsheet-simple-sql-commands-to-get-started-in-data-analytics.md
-- [ ] story-behind-ai-dataset-generator.md
+- [x] scaling-metabase/index_redirect.md
+- [x] security-incident-summary_redirect.md
+- [x] serialization/index_redirect.md
+- [x] set-up-a-logging-pipeline-for-analysis.md
+- [x] spreadsheets-to-bi.md
+- [x] sql-cheatsheet-simple-sql-commands-to-get-started-in-data-analytics.md
+- [x] story-behind-ai-dataset-generator.md
 
 ### T
-- [ ] the-hidden-cost-of-data-stacks.md
-- [ ] theLocation_redirect.md
-- [ ] the-modern-data-stack.md
-- [ ] the-right-visualization.md
-- [ ] the-year-in-analytics.md
-- [ ] they-grow-up-so-fast.md
-- [ ] top-5-dashboard-fails.md
+- [x] the-hidden-cost-of-data-stacks.md
+- [x] theLocation_redirect.md
+- [x] the-modern-data-stack.md
+- [x] the-right-visualization.md
+- [x] the-year-in-analytics.md
+- [x] they-grow-up-so-fast.md
+- [x] top-5-dashboard-fails.md
 
 ### U
-- [ ] unveiling-metabase.md
-- [ ] usage-analytics.md
+- [x] unveiling-metabase.md
+- [x] usage-analytics.md
 
 ### V
-- [ ] visualization-mistakes.md
-- [ ] vulnerability-advisory-h2.md
-- [ ] vulnerability-advisory.md
-- [ ] vulnerability-post-mortem.md
+- [x] visualization-mistakes.md
+- [x] vulnerability-advisory-h2.md
+- [x] vulnerability-advisory.md
+- [x] vulnerability-post-mortem.md
 
 ### W
-- [ ] what-is-embedded-analytics.md
-- [ ] White-Label-Metabase.md
-- [ ] why-a-growth-marketing-team-wants-metabase.md
-- [ ] why-full-app-embedding.md
-- [ ] why-metabase-cloud.md
-- [ ] write-for-metabase.md
+- [x] what-is-embedded-analytics.md
+- [x] White-Label-Metabase.md
+- [x] why-a-growth-marketing-team-wants-metabase.md
+- [x] why-full-app-embedding.md
+- [x] why-metabase-cloud.md
+- [x] write-for-metabase.md
 
 ### Numbers
-- [ ] 4-steps-to-turn-your-support-tickets-into-an-automated-dashboard.md
-- [ ] 6-most-common-type-of-data-bias-in-data-analysis.md
-- [ ] 7-handy-features-you-may-not-know-about.md
+- [x] 4-steps-to-turn-your-support-tickets-into-an-automated-dashboard.md
+- [x] 6-most-common-type-of-data-bias-in-data-analysis.md
+- [x] 7-handy-features-you-may-not-know-about.md
 
 ---
 
 ## Statistics
 
 - **Total files to translate:** 103
-- **Completed:** 44
+- **Completed:** 103
 - **In progress:** 0
-- **Not started:** 59
-- **Progress:** 42.7%
+- **Not started:** 0
+- **Progress:** 100%
 
 ---
 
@@ -162,4 +162,4 @@ This file tracks the translation progress of all blog markdown files in the `/sr
 
 ## Last Updated
 - Date: 2025-01-27
-- Status: Initial todo list created
+- Status: All phases completed - all 103 files translated to Persian
